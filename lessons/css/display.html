@@ -1,0 +1,83 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Display and Visibility</h2>
+
+<p class="mb-6 text-gray-700">
+CSS controls how elements behave in layout flow. The <code>display</code> and <code>visibility</code> properties define whether elements stack, line up, disappear, or remain part of the structure invisibly.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 Display Values</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>block</code> — stacks vertically, full-width</li>
+  <li><code>inline</code> — flows within text, width not enforced</li>
+  <li><code>inline-block</code> — flows inline but allows width/height</li>
+  <li><code>none</code> — element is completely removed from layout</li>
+</ul>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+div {
+  display: block;
+}
+
+span {
+  display: inline;
+}
+
+button {
+  display: inline-block;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Display Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-center mb-6 space-y-2">
+  <div style="display: block; background: white; padding: 10px;">Block Element</div>
+  <span style="background: white;">Inline Span</span>
+  <button style="display: inline-block; background: white; padding: 10px;">Inline-block Button</button>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🙈 Visibility Control</h3>
+
+<p class="text-gray-700 mb-2">
+Use <code>visibility</code> to hide elements but keep layout intact.
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.hidden-box {
+  visibility: hidden;
+}
+
+.none-box {
+  display: none;
+}
+</pre>
+
+<div class="bg-blue-50 p-4 text-center rounded mb-6 space-x-4">
+  <span class="px-4 py-2 bg-white border">Visible</span>
+  <span class="px-4 py-2 bg-white border" style="visibility: hidden;">Hidden</span>
+  <span class="px-4 py-2 bg-white border" style="display: none;">None</span>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Display Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>display: none</code> removes the element from the flow</li>
+  <li><code>visibility: hidden</code> keeps the space reserved</li>
+  <li><code>inline-block</code> is great for buttons and cards</li>
+  <li>Flex and Grid introduce advanced layout behaviors — covered soon</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which CSS value hides an element but preserves its layout space?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> display: none;</label></li>
+  <li><label><input type="radio" name="q1"> visibility: hidden;</label></li>
+  <li><label><input type="radio" name="q1"> opacity: 0;</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

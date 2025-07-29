@@ -1,0 +1,203 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Attributes</h2>
+
+<p class="mb-4 text-gray-700">
+HTML attributes provide additional information about HTML elements. They’re always specified in the start tag and usually come in name/value pairs like <code>name="value"</code>.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔧 Attribute Basics</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>All HTML elements can have attributes</li>
+  <li>Attributes are written in the start tag</li>
+  <li>They usually follow the format: <code>name="value"</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔗 The <code>href</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+The <code>&lt;a&gt;</code> tag defines a hyperlink. The <code>href</code> attribute specifies the destination URL.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;a href="new-page.html"&gt;New Page&lt;/a&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="new-page.html"&gt;New Page&lt;/a&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🖼️ The <code>src</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+The <code>&lt;img&gt;</code> tag embeds an image. The <code>src</code> attribute specifies the image path.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;img src="img_girl.jpg" alt="Girl"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="img_girl.jpg"&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Width and Height Attributes</h3>
+<p class="mb-2 text-gray-700">
+Specify image dimensions in pixels:
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;img src="img_girl.jpg" width="500" height="600" alt="Girl"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="img_girl.jpg" width="500" height="600"&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧩 The <code>alt</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+Provides alternate text if the image can’t be displayed:
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;img src="img_typo.jpg" alt="Girl with a jacket"&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="img_typo.jpg" alt="Girl with a jacket"&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 The <code>style</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+Used to apply inline CSS styles:
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p style="color:red;"&gt;This is a red paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p style="color:red;"&gt;This is a red paragraph.&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌍 The <code>lang</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+Declares the language of the page:
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en-US"&gt;
+  &lt;body&gt;
+    &lt;p&gt;This page is declared in English (US).&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;html lang="en-US"&gt;
+  &lt;body&gt;
+    &lt;p&gt;This page is declared in English (US).&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">💬 The <code>title</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+Displays a tooltip when hovering over an element:
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p title="I'm a tooltip"&gt;This is a paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p title="I'm a tooltip"&gt;This is a paragraph.&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">✅ Best Practices</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Use lowercase attribute names</li>
+  <li>Always quote attribute values</li>
+  <li>Use double quotes unless single quotes are needed</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">Which of the following is a correct syntax for using an HTML attribute?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <strong>&lt;img src='img_girl.jpg'&gt;</strong></label></li>
+  <li><label><input type="radio" name="q1"> &lt;img src('img_girl.jpg')&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;img src:'img_girl.jpg'&gt;</label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

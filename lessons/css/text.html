@@ -1,0 +1,85 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Text Styling</h2>
+
+<p class="mb-6 text-gray-700">
+CSS gives you tools to control how text looks, flows, and interacts within a layout. You can style alignment, spacing, transformations, decoration, and more — essential for clean, readable design.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📍 Text Alignment</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+text-align: left;
+text-align: center;
+text-align: right;
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <p style="text-align: left;" class="bg-blue-50 p-3 rounded">Left-aligned text</p>
+  <p style="text-align: center;" class="bg-blue-50 p-3 rounded">Center-aligned text</p>
+  <p style="text-align: right;" class="bg-blue-50 p-3 rounded">Right-aligned text</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔡 Text Transform</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+text-transform: uppercase;
+text-transform: lowercase;
+text-transform: capitalize;
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <p style="text-transform: uppercase;" class="bg-blue-100 p-3 rounded">this is uppercase</p>
+  <p style="text-transform: lowercase;" class="bg-blue-100 p-3 rounded">THIS IS LOWERCASE</p>
+  <p style="text-transform: capitalize;" class="bg-blue-100 p-3 rounded">capitalize each word</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📏 Letter & Line Spacing</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+letter-spacing: 2px;
+line-height: 1.6;
+</pre>
+
+<div class="bg-blue-50 p-4 rounded mb-6">
+  <p style="letter-spacing: 2px; line-height: 1.6;">
+    Increased letter spacing and line height makes this text easier to read. These properties adjust text rhythm and density for optimal readability.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎀 Text Decoration</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+text-decoration: underline;
+text-decoration: line-through;
+text-decoration: none;
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <p style="text-decoration: underline;" class="bg-blue-100 p-3 rounded">Underlined text</p>
+  <p style="text-decoration: line-through;" class="bg-blue-100 p-3 rounded">Strikethrough text</p>
+  <p style="text-decoration: none;" class="bg-blue-100 p-3 rounded">No decoration</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Text Styling Notes</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>text-align</code> only affects block-level elements</li>
+  <li><code>letter-spacing</code> improves legibility on all-caps headings</li>
+  <li><code>line-height</code> prevents cramped paragraphs</li>
+  <li><code>text-decoration</code> is often used for links, headers, or emphasis</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which property capitalizes the first letter of each word?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> text-transform: uppercase;</label></li>
+  <li><label><input type="radio" name="q1"> text-transform: capitalize;</label></li>
+  <li><label><input type="radio" name="q1"> text-transform: lowercase;</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

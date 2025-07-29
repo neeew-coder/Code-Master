@@ -1,0 +1,81 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Margins</h2>
+
+<p class="mb-6 text-gray-700">
+Margins create space <strong>outside</strong> an element’s border — separating it from neighbors. You can apply margin to one side, opposite sides, or all sides at once using shorthand.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+div {
+  margin: 20px;              /* all sides */
+  margin-left: 10px;         /* left only */
+  margin: 10px 20px;         /* vertical | horizontal */
+  margin: 10px 15px 20px 25px; /* top | right | bottom | left */
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-center">
+  <div style="margin: 20px; background-color: white; padding: 10px; border: 1px solid #ccc;">
+    This box has <strong>20px margin</strong> around it.
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧭 Side-Specific Margins</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+margin-top
+margin-right
+margin-bottom
+margin-left
+</pre>
+
+<div class="grid grid-cols-2 gap-4 mb-6">
+  <div class="p-4" style="margin-left: 40px; background-color: #e0f2ff;">Left margin</div>
+  <div class="p-4" style="margin-top: 20px; background-color: #e0f2ff;">Top margin</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎯 Auto-Centering</h3>
+
+<p class="text-gray-700 mb-2">
+Horizontally center a block with auto side margins:
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+div {
+  width: 300px;
+  margin: 0 auto;
+}
+</pre>
+
+<div class="p-4 mb-6 bg-blue-50 text-center">
+  <div style="width: 300px; margin: 0 auto; background: white; border: 1px solid #ccc;">
+    Centered with <code>margin: 0 auto;</code>
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Margin Notes</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Margin collapses between stacked elements (<code>p + p</code>) — only the largest margin is applied</li>
+  <li>Negative margins are allowed but can break layout</li>
+  <li><code>auto</code> helps with alignment, especially in centering blocks</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which CSS property controls spacing outside the border?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> padding</label></li>
+  <li><label><input type="radio" name="q1"> margin</label></li>
+  <li><label><input type="radio" name="q1"> border-spacing</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button> 

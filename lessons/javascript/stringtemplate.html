@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript String Templates | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript String Templates</h2>
+
+  <p class="mb-6 text-gray-700">
+    Template literals use backticks (<code>` `</code>) to create flexible strings. You can embed variables, expressions, and even write multiline text without escape characters.
+  </p>
+
+  <!-- Syntax Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Syntax Example</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let name = "User";
+let age = 25;
+
+let message = \`Hello, \${name}. You are \${age} years old.\`;
+
+let multiline = \`
+Line 1
+Line 2
+Line 3
+\`;
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>\${}</code> to embed variables or expressions. Template literals improve readability and reduce string concatenation.
+  </p>
+
+  <!-- Embedded Expressions -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧵 Embedded Expressions</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Message Template</span>
+      <button onclick="runMessageDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="messageOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Multiline Template -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Multiline Template</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Multiline Template</span>
+      <button onclick="runMultilineDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="multilineOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runMessageDemo() {
+      let name = "User";
+      let age = 25;
+      let message = `Hello, ${name}. You are ${age} years old.`;
+      document.getElementById("messageOutput").innerHTML = `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-quote-left text-yellow-400 text-xs mt-1"></i>
+          <span>${message}</span>
+        </div>
+      `;
+    }
+
+    function runMultilineDemo() {
+      let multiline = `
+Line 1
+Line 2
+Line 3
+`;
+      document.getElementById("multilineOutput").innerHTML = `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-align-left text-yellow-400 text-xs mt-1"></i>
+          <span>${multiline.replace(/\n/g, "<br>")}</span>
+        </div>
+      `;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Use backticks <code>` `</code> instead of quotes</li>
+    <li>Embed variables with <code>\${variable}</code></li>
+    <li>Supports multiline strings without <code>\n</code></li>
+    <li>Great for dynamic messages and HTML templates</li>
+    <li>Template literals are part of ES6 (modern JavaScript)</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>`Hi, ${"User"}!`</code> evaluate to?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "Hi, User!"</label></li>
+    <li><label><input type="radio" name="q1"> "Hi, ${User}!"</label></li>
+    <li><label><input type="radio" name="q1"> "Hi, \${User}!"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

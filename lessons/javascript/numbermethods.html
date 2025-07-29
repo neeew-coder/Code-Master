@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Number Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Number Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    Number methods format and convert numeric values. These instance methods return strings and are useful for display, precision control, and base conversion.
+  </p>
+
+  <!-- .toFixed() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔢 .toFixed()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let num = 123.456;
+num.toFixed(2); // "123.46"
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .toFixed()</span>
+      <button onclick="runToFixedDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="toFixedOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .toExponential() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧪 .toExponential()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+num.toExponential(1); // "1.2e+2"
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .toExponential()</span>
+      <button onclick="runToExponentialDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="toExponentialOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .toPrecision() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🎯 .toPrecision()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+num.toPrecision(4); // "123.5"
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .toPrecision()</span>
+      <button onclick="runToPrecisionDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="toPrecisionOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .toString() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔤 .toString()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+num.toString(); // "123.456"
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .toString()</span>
+      <button onclick="runToStringDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="toStringOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .toString(2) -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⚙️ .toString(2)</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+num.toString(2); // binary
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Binary</span>
+      <button onclick="runToStringBinaryDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="toStringBinaryOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .toString(16) -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧮 .toString(16)</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+num.toString(16); // hexadecimal
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Hex</span>
+      <button onclick="runToStringHexDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="toStringHexOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const num = 123.456;
+
+    function runToFixedDemo() {
+      document.getElementById("toFixedOutput").innerHTML = `toFixed(2): ${num.toFixed(2)}`;
+    }
+
+    function runToExponentialDemo() {
+      document.getElementById("toExponentialOutput").innerHTML = `toExponential(1): ${num.toExponential(1)}`;
+    }
+
+    function runToPrecisionDemo() {
+      document.getElementById("toPrecisionOutput").innerHTML = `toPrecision(4): ${num.toPrecision(4)}`;
+    }
+
+    function runToStringDemo() {
+      document.getElementById("toStringOutput").innerHTML = `toString(): ${num.toString()}`;
+    }
+
+    function runToStringBinaryDemo() {
+      document.getElementById("toStringBinaryOutput").innerHTML = `toString(2): ${num.toString(2)}`;
+    }
+
+    function runToStringHexDemo() {
+      document.getElementById("toStringHexOutput").innerHTML = `toString(16): ${num.toString(16)}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+    <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>.toFixed()</code> returns a string with fixed decimals</li>
+    <li><code>.toExponential()</code> formats in scientific notation</li>
+    <li><code>.toPrecision()</code> controls total digits (not just decimals)</li>
+    <li><code>.toString()</code> converts a number to text</li>
+    <li><code>.toString(radix)</code> converts to binary, octal, or hex</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>(255).toString(16)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "255"</label></li>
+    <li><label><input type="radio" name="q1"> "ff"</label></li>
+    <li><label><input type="radio" name="q1"> "0xff"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

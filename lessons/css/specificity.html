@@ -1,0 +1,71 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Specificity</h2>
+
+<p class="mb-6 text-gray-700">
+Specificity is the system CSS uses to decide which rule wins when multiple selectors target the same element. It calculates "weight" based on how specific a selector is.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Specificity Scoring</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Selector</th><th class="border px-3 py-2">Specificity Score</th><th class="border px-3 py-2">Explanation</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">* (universal)</td><td class="border px-3 py-2">0,0,0</td><td class="border px-3 py-2">No specificity</td></tr>
+    <tr><td class="border px-3 py-2">element (e.g. p)</td><td class="border px-3 py-2">0,0,1</td><td class="border px-3 py-2">One type selector</td></tr>
+    <tr><td class="border px-3 py-2">.class</td><td class="border px-3 py-2">0,1,0</td><td class="border px-3 py-2">One class selector</td></tr>
+    <tr><td class="border px-3 py-2">#id</td><td class="border px-3 py-2">1,0,0</td><td class="border px-3 py-2">One ID selector</td></tr>
+    <tr><td class="border px-3 py-2">inline style</td><td class="border px-3 py-2">1,0,0 (highest)</td><td class="border px-3 py-2">Overrides all external selectors</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔍 Example Conflict</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+p {
+  color: gray;          /* specificity 0,0,1 */
+}
+
+.text {
+  color: blue;          /* specificity 0,1,0 */
+}
+
+#main p {
+  color: red;           /* specificity 1,0,1 */
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+If a paragraph has <code>#main</code> as an ancestor and <code>class="text"</code>, it will be red because the ID selector wins.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Debug Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 space-y-2 text-gray-800">
+  <p style="color: gray;">Basic paragraph (element selector)</p>
+  <p class="text" style="color: blue;">Class wins over element</p>
+  <div id="main">
+    <p class="text" style="color: red;">ID wins over both</p>
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Specificity Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>More IDs = higher specificity</li>
+  <li><code>!important</code> overrides specificity but should be avoided unless necessary</li>
+  <li>Specificity is cumulative — multiple classes beat a single type</li>
+  <li>Inline styles beat all selectors from stylesheets</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which selector below has the highest specificity?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> div p</label></li>
+  <li><label><input type="radio" name="q1"> .container p</label></li>
+  <li><label><input type="radio" name="q1"> #content .container p</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

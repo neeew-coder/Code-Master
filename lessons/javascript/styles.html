@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Style Guide | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Style Guide</h2>
+
+  <p class="mb-6 text-gray-700">
+    Coding conventions improve readability, consistency, and maintainability. Follow consistent rules for naming, spacing, indentation, and structure across all your JavaScript projects.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li>Use <strong>camelCase</strong> for variables and functions</li>
+      <li>Use <strong>2 spaces</strong> for indentation (no tabs)</li>
+      <li>Put <strong>spaces around operators</strong> and after commas</li>
+      <li>Use <strong>lowercase file names</strong> for consistency across servers</li>
+      <li>Break long lines after operators or commas</li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🎯 Style Comparison Preview</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button id="runBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Style Comparison
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+Clean Code:
+const fullPrice = price + (price * tax);
+
+Messy Code:
+var fullprice=price+(price*tax)
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Syntax Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Syntax Reference</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-sm text-gray-700">
+    <p><strong>Function:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+function toCelsius(fahrenheit) {
+  return (5 / 9) * (fahrenheit - 32);
+}
+    </pre>
+
+    <p><strong>Object:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+    </pre>
+
+    <p><strong>Conditional:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+if (time < 20) {
+  greeting = "Good day";
+} else {
+  greeting = "Good evening";
+}
+    </pre>
+
+    <p><strong>File Naming:</strong></p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li>Use <code>.html</code>, <code>.css</code>, <code>.js</code> extensions</li>
+      <li>Use lowercase: <code>script.js</code>, not <code>Script.js</code></li>
+      <li>Use consistent casing across HTML and JavaScript</li>
+    </ul>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What is the recommended indentation style for JavaScript code?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 4 spaces</label></li>
+    <li><label><input type="radio" name="q1"> Tabs</label></li>
+    <li><label><input type="radio" name="q1"> 2 spaces</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("runBtn").addEventListener("click", () => {
+      const price = 19.90;
+      const tax = 0.20;
+
+      // Clean style
+      const fullPriceClean = price + (price * tax);
+
+      // Messy style (same logic, poor formatting)
+      var fullprice = price+(price*tax);
+
+      const output = `
+Clean Code Result: ${fullPriceClean.toFixed(2)}
+Messy Code Result: ${fullprice.toFixed(2)}
+Both work, but clean code is easier to read and maintain.
+      `;
+      document.getElementById("output").innerText = output;
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

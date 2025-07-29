@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Objects | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Objects</h2>
+
+  <p class="mb-6 text-gray-700">
+    Objects are collections of key-value pairs. They’re used to group related data and behavior together. In JavaScript, almost everything is an object — including arrays and functions.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Creating an Object</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let user = {
+  name: "User",
+  age: 25,
+  isStudent: true,
+  greet: function() {
+    return "Hello, " + this.name;
+  }
+};
+
+console.log(user.name);       // "User"
+console.log(user["age"]);     // 25
+console.log(user.greet());    // "Hello, User"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use dot notation (<code>user.name</code>) or bracket notation (<code>user["name"]</code>) to access properties. Functions inside objects are called <strong>methods</strong>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🧾 Object Info</span>
+      <button onclick="showUser()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Show Object Info
+      </button>
+    </div>
+    <div id="objectOutput" class="text-sm text-gray-700 mt-2 space-y-1">
+      Click the button to display object properties and method output.
+    </div>
+  </div>
+
+  <script>
+    let user = {
+      name: "User",
+      age: 25,
+      isStudent: true,
+      greet: function() {
+        return "Hello, " + this.name;
+      }
+    };
+
+    function showUser() {
+      const output = [
+        `Name: ${user.name}`,
+        `Age: ${user["age"]}`,
+        `Student: ${user.isStudent}`,
+        `Greeting: ${user.greet()}`
+      ];
+      document.getElementById("objectOutput").innerHTML = output.map(line => `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-circle text-yellow-400 text-xs"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Objects store data as key-value pairs</li>
+    <li>Keys are always strings (even if you don’t quote them)</li>
+    <li>Use <code>this</code> inside methods to refer to the object itself</li>
+    <li>Objects can contain other objects, arrays, or functions</li>
+    <li>Bracket notation is useful when keys are dynamic or contain spaces</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>user.greet()</code> return if <code>user.name = "Alex"</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "Hello, User"</label></li>
+    <li><label><input type="radio" name="q1"> "Hello, Alex"</label></li>
+    <li><label><input type="radio" name="q1"> "Hello, name"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Mutation | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Mutation</h2>
+
+  <p class="mb-6 text-gray-700">
+    Mutation methods change the contents of an array directly. You can add, remove, or delete items using built-in array methods.
+  </p>
+
+  <!-- .push() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">➕ .push()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+colors.push("yellow"); // Add to end
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .push()</span>
+      <button onclick="runPushDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="pushOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .pop() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➖ .pop()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+colors.pop(); // Remove from end
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .pop()</span>
+      <button onclick="runPopDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="popOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .unshift() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⬅️ .unshift()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+colors.unshift("purple"); // Add to start
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .unshift()</span>
+      <button onclick="runUnshiftDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="unshiftOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .shift() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➡️ .shift()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+colors.shift(); // Remove from start
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .shift()</span>
+      <button onclick="runShiftDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="shiftOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- delete -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧨 delete</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+delete colors[1]; // Leaves a hole (undefined)
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run delete</span>
+      <button onclick="runDeleteDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="deleteOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runPushDemo() {
+      const colors = ["red", "green", "blue"];
+      colors.push("yellow");
+      document.getElementById("pushOutput").innerHTML = `After push: [${colors.join(", ")}]`;
+    }
+
+    function runPopDemo() {
+      const colors = ["red", "green", "blue"];
+      colors.pop();
+      document.getElementById("popOutput").innerHTML = `After pop: [${colors.join(", ")}]`;
+    }
+
+    function runUnshiftDemo() {
+      const colors = ["red", "green", "blue"];
+      colors.unshift("purple");
+      document.getElementById("unshiftOutput").innerHTML = `After unshift: [${colors.join(", ")}]`;
+    }
+
+    function runShiftDemo() {
+      const colors = ["red", "green", "blue"];
+      colors.shift();
+      document.getElementById("shiftOutput").innerHTML = `After shift: [${colors.join(", ")}]`;
+    }
+
+    function runDeleteDemo() {
+      const colors = ["red", "green", "blue"];
+      delete colors[1];
+      const cleaned = colors.map(c => c ?? "undefined");
+      document.getElementById("deleteOutput").innerHTML = `After delete: [${cleaned.join(", ")}]`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>.push()</code> adds to the end</li>
+    <li><code>.pop()</code> removes from the end</li>
+    <li><code>.unshift()</code> adds to the start</li>
+    <li><code>.shift()</code> removes from the start</li>
+    <li><code>delete</code> removes a value but leaves an empty slot</li>
+    <li>Use <code>splice()</code> for clean removal and insertion</li>
+  </ul>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>["a", "b", "c"].shift()</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "a"</label></li>
+    <li><label><input type="radio" name="q1"> "b"</label></li>
+    <li><label><input type="radio" name="q1"> "c"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

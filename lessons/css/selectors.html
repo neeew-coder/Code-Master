@@ -1,0 +1,88 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Selectors</h2>
+
+<p class="mb-6 text-gray-700">
+Selectors determine which elements get styled. By using element names, class names, IDs, and grouping techniques, you can control exactly what gets affected by your CSS declarations.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔹 Selector Types</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><strong>Element selector</strong> — targets by tag name (<code>p</code>, <code>h1</code>)</li>
+  <li><strong>Class selector</strong> — targets by class name (<code>.menu</code>)</li>
+  <li><strong>ID selector</strong> — targets by unique ID (<code>#header</code>)</li>
+  <li><strong>Group selector</strong> — targets multiple elements (<code>h1, p</code>)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax Examples</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+p {
+  color: navy;
+}
+
+.menu {
+  background-color: lightgray;
+  padding: 10px;
+}
+
+#header {
+  font-size: 32px;
+  color: darkblue;
+}
+
+h1, p {
+  font-family: Arial;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="grid grid-cols-2 gap-6">
+
+  <div class="border p-4 rounded bg-blue-100">
+    <h3 class="text-blue-800 font-bold mb-2">Element Selector: <code>p</code></h3>
+    <p class="text-blue-700">This paragraph is styled via the <code>p</code> selector.</p>
+  </div>
+
+  <div class="border p-4 rounded bg-blue-100">
+    <h3 class="text-blue-800 font-bold mb-2">Class Selector: <code>.menu</code></h3>
+    <div class="menu bg-gray-200 p-2 rounded">Menu container using a class selector.</div>
+  </div>
+
+  <div class="border p-4 rounded bg-blue-100">
+    <h3 class="text-blue-800 font-bold mb-2">ID Selector: <code>#header</code></h3>
+    <h1 id="header" class="text-blue-900">Main heading styled with ID</h1>
+  </div>
+
+  <div class="border p-4 rounded bg-blue-100">
+    <h3 class="text-blue-800 font-bold mb-2">Group Selector: <code>h1, p</code></h3>
+    <h1 class="text-blue-900">Grouped heading</h1>
+    <p class="text-blue-700">Grouped paragraph shares font styling</p>
+  </div>
+
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Selector Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use classes for reusable styling across multiple elements</li>
+  <li>Use IDs for unique elements — avoid reusing the same ID</li>
+  <li>Group selectors with commas to apply shared styles</li>
+  <li>Selectors can also target <strong>states</strong> like <code>:hover</code>, or nested structures — covered in later modules</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which selector targets a single element with a unique identifier?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> .title</label></li>
+  <li><label><input type="radio" name="q1"> #title</label></li>
+  <li><label><input type="radio" name="q1"> title</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

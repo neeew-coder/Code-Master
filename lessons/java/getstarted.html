@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Getting Started | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">Java Getting Started</h2>
+
+  <p class="mb-6 text-gray-700">
+    You can run Java code directly in your browser using CodeMaster’s preview pane. No installation needed!
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">☕ Hello World in Java</h3>
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+
+    <pre class="bg-black text-red-400 p-3 rounded text-sm overflow-x-auto font-mono">
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}
+    </pre>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">🖥️ Installing Java Locally</h3>
+  <p class="text-gray-700 mb-4">
+    To check if Java is installed on your PC, open <code>cmd.exe</code> and type:
+  </p>
+
+  <pre class="bg-gray-800 text-gray-100 p-4 rounded text-sm overflow-auto font-mono">
+<code>
+C:\Users\Your Name&gt;java -version
+</code>
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    If installed, you'll see something like:
+  </p>
+
+  <pre class="bg-gray-900 text-gray-100 p-4 rounded text-sm overflow-auto font-mono">
+<code>
+java version "22.0.0" 2024-08-21 LTS  
+Java(TM) SE Runtime Environment 22.9 (build 22.0.0+13-LTS)  
+Java HotSpot(TM) 64-Bit Server VM 22.9 (build 22.0.0+13-LTS, mixed mode)
+</code>
+  </pre>
+
+  <p class="text-gray-700 mb-6">
+    If not, download Java from <a href="https://www.oracle.com/java/technologies/javase-downloads.html" target="_blank" class="text-red-600 underline">oracle.com</a>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">📂 Writing and Running Java Locally</h3>
+  <p class="text-gray-700 mb-4">
+    Save the following code in a file called <code>Main.java</code> using any text editor:
+  </p>
+
+  <pre class="bg-black text-red-400 p-4 rounded text-sm overflow-auto font-mono">
+<code>
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World");
+  }
+}
+</code>
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Then open <code>cmd.exe</code>, navigate to the file location, and type:
+  </p>
+
+  <pre class="bg-gray-800 text-gray-100 p-4 rounded text-sm overflow-auto font-mono">
+<code>
+C:\Users\Your Name&gt;javac Main.java  
+C:\Users\Your Name&gt;java Main
+</code>
+  </pre>
+
+  <p class="text-gray-700 mb-6">
+    The output should be:
+  </p>
+
+  <pre class="bg-black text-red-400 p-4 rounded font-mono text-sm">
+Hello World
+  </pre>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📚 Explanation</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li><code>public class Main</code> defines the class named <code>Main</code>.</li>
+    <li><code>public static void main(String[] args)</code> is the entry point of every Java application.</li>
+    <li><code>System.out.println("Hello World");</code> prints text to the console.</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What is the correct file extension for a Java source file?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q2"> .js</label></li>
+    <li><label><input type="radio" name="q2"> .java</label></li>
+    <li><label><input type="radio" name="q2"> .class</label></li>
+    <li><label><input type="radio" name="q2"> .txt</label></li>
+  </ul>
+
+  <p class="text-gray-700 mb-2">
+    What does the <code>javac</code> command do?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q3"> Runs the Java program</label></li>
+    <li><label><input type="radio" name="q3"> Compiles the Java source code into bytecode</label></li>
+    <li><label><input type="radio" name="q3"> Installs Java</label></li>
+    <li><label><input type="radio" name="q3"> Opens the Java editor</label></li>
+  </ul>
+
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-getting-started')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+        Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

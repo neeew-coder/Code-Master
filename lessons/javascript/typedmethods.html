@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Typed Array Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Typed Array Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    Typed arrays support many standard array methods, plus some unique properties and constructors for working with binary data efficiently.
+  </p>
+
+  <!-- from() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📥 from()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Create from Array</span>
+      <button onclick="runFrom()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = Int16Array.from([1, 2, 3, 4, 5]);
+    </pre>
+    <div id="fromOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- of() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 of()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Create from Arguments</span>
+      <button onclick="runOf()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = Int16Array.of(10, 20, 30, 40);
+    </pre>
+    <div id="ofOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- constructor.name -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 constructor.name</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Get Type Name</span>
+      <button onclick="runTypeName()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = new Uint8Array(5);
+myArr.constructor.name;
+    </pre>
+    <div id="typeNameOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- BYTES_PER_ELEMENT -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📏 BYTES_PER_ELEMENT</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Bytes Per Element</span>
+      <button onclick="runBytes()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = new Float32Array(5);
+myArr.BYTES_PER_ELEMENT;
+    </pre>
+    <div id="bytesOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- fill() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 fill()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Fill Values</span>
+      <button onclick="runFill()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = new Uint8Array(5);
+myArr.fill(200, 1, 4);
+    </pre>
+    <div id="fillOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- find() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 find()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Find Value</span>
+      <button onclick="runFind()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = Uint8Array.from([10, 20, 30, 40]);
+myArr.find(x => x > 25);
+    </pre>
+    <div id="findOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- some() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">✅ some()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check Condition</span>
+      <button onclick="runSome()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = Uint8Array.of(5, 10, 15, 20);
+myArr.some(x => x > 18);
+    </pre>
+    <div id="someOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+    <!-- Unsupported Methods Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚫 Unsupported Methods</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Method</th>
+        <th class="px-4 py-2 border">Standard Array</th>
+        <th class="px-4 py-2 border">Typed Array</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">push()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">pop()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">shift()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">unshift()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">splice()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">concat()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">flat()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">flatMap()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+      <tr><td class="px-4 py-2 border">toSpliced()</td><td class="px-4 py-2 border">✅</td><td class="px-4 py-2 border">❌</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which method is <strong>not</strong> available on typed arrays?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> map()</label></li>
+    <li><label><input type="radio" name="q1"> push()</label></li>
+    <li><label><input type="radio" name="q1"> fill()</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML &lt;input&gt; Form Attributes</h2>
+
+<p class="mb-6 text-gray-700">
+Form-scoped attributes modify how individual <code>&lt;input&gt;</code> elements interact with their form. They enable advanced control over submission behavior, validation, encoding, and target windows — perfect for multi-button workflows or modular layout structures.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔗 form</h3>
+
+<p class="text-gray-700 mb-2">Connects an input to a form using its <code>id</code> — even if placed outside.</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form action=&quot;/action_page.php&quot; id=&quot;form1&quot;&gt;
+  &lt;input type=&quot;text&quot; name=&quot;fname&quot;&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+
+&lt;input type=&quot;text&quot; name=&quot;lname&quot; form=&quot;form1&quot;&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📍 formaction</h3>
+
+<p class="text-gray-700 mb-2">
+Overrides the form’s <code>action</code> URL — useful for multiple submit buttons.
+</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form action=&quot;/action_page.php&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+  &lt;input type=&quot;submit&quot; formaction=&quot;/action_page2.php&quot; value=&quot;Admin Submit&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📦 formenctype</h3>
+
+<p class="text-gray-700 mb-2">Specifies how form data should be encoded (e.g. for file uploads).</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form method=&quot;post&quot; action=&quot;/upload&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Default&quot;&gt;
+  &lt;input type=&quot;submit&quot; formenctype=&quot;multipart/form-data&quot; value=&quot;Send as File&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">⚙️ formmethod</h3>
+
+<p class="text-gray-700 mb-2">Overrides the <code>method</code> used for data transmission.</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form action=&quot;/action_page.php&quot; method=&quot;get&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Send via GET&quot;&gt;
+  &lt;input type=&quot;submit&quot; formmethod=&quot;post&quot; value=&quot;Send via POST&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🪟 formtarget</h3>
+
+<p class="text-gray-700 mb-2">Controls where the response is displayed — tab, window, or frame.</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form action=&quot;/submit&quot;&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Current tab&quot;&gt;
+  &lt;input type=&quot;submit&quot; formtarget=&quot;_blank&quot; value=&quot;New Tab&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🚫 formnovalidate</h3>
+
+<p class="text-gray-700 mb-2">Skips validation for this specific input even if the form uses it.</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form&gt;
+  &lt;input type=&quot;email&quot; required&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;Validate&quot;&gt;
+  &lt;input type=&quot;submit&quot; formnovalidate value=&quot;Skip Validation&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧾 novalidate (form-only)</h3>
+
+<p class="text-gray-700 mb-2">Disables validation for all form elements on submit.</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form action=&quot;/submit&quot; novalidate&gt;
+  &lt;input type=&quot;email&quot; required&gt;
+  &lt;input type=&quot;submit&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which of the following is <strong>not</strong> a valid form-scoped attribute for an <code>&lt;input&gt;</code> element?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> formaction</label></li>
+  <li><label><input type="radio" name="q1"> formtype</label></li>
+  <li><label><input type="radio" name="q1"> formtarget</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

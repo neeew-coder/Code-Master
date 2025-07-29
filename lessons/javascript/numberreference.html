@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Number Reference | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Number Reference</h2>
+
+  <p class="mb-6 text-gray-700">
+    Numbers in JavaScript are primitive and immutable. When assigned to another variable, they’re copied by value. However, using <code>new Number()</code> creates a wrapper object, which behaves differently.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Value vs Reference</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+// Primitive
+let a = 100;
+let b = a;
+b = 200;
+
+console.log(a); // 100
+console.log(b); // 200
+
+// Object wrapper
+let x = new Number(100);
+let y = x;
+y.extra = "hello";
+
+console.log(x.extra); // "hello"
+console.log(x === y); // true
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Primitive numbers are copied by value. <code>new Number()</code> creates an object, which is copied by reference — allowing mutation and shared identity.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🔗 Reference Demo</span>
+      <button onclick="runNumberReference()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Demo
+      </button>
+    </div>
+    <div id="numberRefOutput" class="text-sm text-gray-700 mt-2 space-y-1">
+      Click to compare primitive vs object number behavior.
+    </div>
+  </div>
+
+  <script>
+    function runNumberReference() {
+      let a = 100;
+      let b = a;
+      b = 200;
+
+      let x = new Number(100);
+      let y = x;
+      y.extra = "hello";
+
+      const output = [
+        `Primitive a: ${a}`,
+        `Primitive b: ${b}`,
+        `Object x.extra: ${x.extra}`,
+        `x === y: ${x === y}`,
+        `typeof a: ${typeof a}`,
+        `typeof x: ${typeof x}`
+      ];
+
+      document.getElementById("numberRefOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-link text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Primitive numbers are immutable and copied by value</li>
+    <li><code>new Number()</code> creates a wrapper object</li>
+    <li>Object numbers are copied by reference and can be mutated</li>
+    <li><code>typeof 100</code> is <code>"number"</code>, but <code>typeof new Number(100)</code> is <code>"object"</code></li>
+    <li>Use primitives for most cases — they’re faster and safer</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>typeof new Number(42)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "number"</label></li>
+    <li><label><input type="radio" name="q1"> "object"</label></li>
+    <li><label><input type="radio" name="q1"> "function"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

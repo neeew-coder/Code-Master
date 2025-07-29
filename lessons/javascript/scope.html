@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Scope | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Scope</h2>
+
+  <p class="mb-6 text-gray-700">
+    Scope determines the visibility and lifetime of variables. JavaScript supports block scope, function scope, and global scope.
+  </p>
+
+  <!-- Block Scope -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧱 Block Scope (let/const)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runBlockScope()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+{
+  let x = 2;
+}
+// x is not accessible here
+    </pre>
+    <div id="blockScopeOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Function Scope -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔧 Function Scope</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runFunctionScope()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+function myFunction() {
+  let carName = "Volvo";
+  return carName;
+}
+    </pre>
+    <div id="functionScopeOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Global Scope -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🌍 Global Scope</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runGlobalScope()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let carName = "Volvo";
+function showCar() {
+  return carName;
+}
+    </pre>
+    <div id="globalScopeOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Automatic Global -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⚠️ Automatically Global (non-strict)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runAutoGlobal()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+function myFunction() {
+  carName = "Volvo"; // undeclared
+}
+myFunction();
+// carName is now global
+    </pre>
+    <div id="autoGlobalOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runBlockScope() {
+      try {
+        {
+          let x = 2;
+        }
+        document.getElementById("blockScopeOutput").innerHTML = x;
+      } catch (err) {
+        document.getElementById("blockScopeOutput").innerHTML = "Error: " + err.message;
+      }
+    }
+
+    function runFunctionScope() {
+      function myFunction() {
+        let carName = "Volvo";
+        return carName;
+      }
+      document.getElementById("functionScopeOutput").innerHTML = myFunction();
+    }
+
+    let carName = "Volvo";
+    function showCar() {
+      return carName;
+    }
+
+    function runGlobalScope() {
+      document.getElementById("globalScopeOutput").innerHTML = showCar();
+    }
+
+    function runAutoGlobal() {
+      function myFunction() {
+        carName = "Volvo"; // undeclared
+      }
+      myFunction();
+      document.getElementById("autoGlobalOutput").innerHTML = carName;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What type of scope does <code>let</code> provide when used inside a block?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Global scope</label></li>
+    <li><label><input type="radio" name="q1"> Function scope</label></li>
+    <li><label><input type="radio" name="q1"> Block scope</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

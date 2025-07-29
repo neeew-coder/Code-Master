@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript let | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript <code>let</code></h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>let</code> keyword declares a block-scoped variable. It’s the modern way to define variables that can change, and it avoids many of the pitfalls of <code>var</code>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Syntax Example</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let count = 1;
+count = count + 1;
+console.log(count); // Outputs: 2
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    You can reassign a <code>let</code> variable, but you cannot redeclare it in the same block.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🔄 Count with <code>let</code></span>
+      <button onclick="incrementCount()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Increment Count
+      </button>
+    </div>
+    <div id="countOutput" class="text-sm text-gray-700 mt-2">
+      Click the button to update the count using <code>let</code>.
+    </div>
+  </div>
+
+  <script>
+    let count = 1;
+    function incrementCount() {
+      count++;
+      document.getElementById("countOutput").innerHTML = `
+        <div class="flex items-center gap-2 mt-2">
+          <i class="fas fa-plus-circle text-yellow-400 text-sm"></i>
+          <span>Count is: ${count}</span>
+        </div>
+      `;
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>let</code> is block-scoped — it only exists within <code>{ }</code></li>
+    <li>You can reassign a <code>let</code> variable, but not redeclare it in the same scope</li>
+    <li>Use <code>let</code> when the value will change over time</li>
+    <li>Prefer <code>let</code> over <code>var</code> for modern JavaScript</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What happens if you try to redeclare a <code>let</code> variable in the same block?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> It overwrites the original value</label></li>
+    <li><label><input type="radio" name="q1"> It throws a syntax error</label></li>
+    <li><label><input type="radio" name="q1"> It creates a global variable</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

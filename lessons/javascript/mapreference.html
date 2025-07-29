@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Map Reference | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Map Reference</h2>
+
+  <p class="mb-6 text-gray-700">Complete reference of Map methods and properties. Revised July 2025.</p>
+
+  <!-- Method Reference Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 Method Reference</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Method</th>
+        <th class="px-4 py-2 border">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">new Map()</td><td class="px-4 py-2 border">Creates a new Map object</td></tr>
+      <tr><td class="px-4 py-2 border">clear()</td><td class="px-4 py-2 border">Removes all elements</td></tr>
+      <tr><td class="px-4 py-2 border">delete()</td><td class="px-4 py-2 border">Removes a key</td></tr>
+      <tr><td class="px-4 py-2 border">entries()</td><td class="px-4 py-2 border">Returns [key, value] pairs</td></tr>
+      <tr><td class="px-4 py-2 border">forEach()</td><td class="px-4 py-2 border">Invokes a callback for each pair</td></tr>
+      <tr><td class="px-4 py-2 border">get()</td><td class="px-4 py-2 border">Gets value by key</td></tr>
+      <tr><td class="px-4 py-2 border">groupBy()</td><td class="px-4 py-2 border">Groups items by callback result</td></tr>
+      <tr><td class="px-4 py-2 border">has()</td><td class="px-4 py-2 border">Checks if key exists</td></tr>
+      <tr><td class="px-4 py-2 border">keys()</td><td class="px-4 py-2 border">Returns all keys</td></tr>
+      <tr><td class="px-4 py-2 border">set()</td><td class="px-4 py-2 border">Sets value for key</td></tr>
+      <tr><td class="px-4 py-2 border">values()</td><td class="px-4 py-2 border">Returns all values</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Property Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📐 Property Reference</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Property</th>
+        <th class="px-4 py-2 border">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">size</td><td class="px-4 py-2 border">Returns number of elements</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Visual Previews -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <!-- Example: set() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ set()</span>
+      <button onclick="runSet()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map();
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+    </pre>
+    <div id="setOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Repeat similar blocks for get(), delete(), clear(), has(), size, entries(), keys(), values(), forEach(), groupBy() -->
+
+  <!-- Script -->
+  <script>
+    function runSet() {
+      const fruits = new Map();
+      fruits.set("apples", 500);
+      fruits.set("bananas", 300);
+      fruits.set("oranges", 200);
+      let result = "";
+      for (const [key, value] of fruits) {
+        result += `${key}: ${value}<br>`;
+      }
+      document.getElementById("setOutput").innerHTML = result;
+    }
+
+    // Add similar functions for get, delete, clear, has, size, entries, keys, values, forEach, groupBy
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>Map.prototype.entries()</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> An array of keys</label></li>
+    <li><label><input type="radio" name="q1"> An iterator of [key, value] pairs</label></li>
+    <li><label><input type="radio" name="q1"> A list of values</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

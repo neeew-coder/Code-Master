@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Reserved Words | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Reserved Words</h2>
+
+  <p class="mb-6 text-gray-700">
+    Reserved words are identifiers that cannot be used as variable names, function names, or labels. They are part of the JavaScript language syntax or built-in objects.
+  </p>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚫 Naming Error Simulation</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button id="runBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Naming Test
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+Invalid:
+let class = "Math"; // ❌ SyntaxError
+
+Valid:
+let className = "Math"; // ✅
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Reserved Words Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Reserved Words by Category</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm text-sm text-gray-700 space-y-6">
+
+    <div>
+      <p class="font-semibold mb-2">🔒 JavaScript Language Keywords</p>
+      <div class="grid grid-cols-4 gap-2">
+        <span>break</span><span>case</span><span>catch</span><span>class*</span>
+        <span>const*</span><span>continue</span><span>debugger</span><span>default</span>
+        <span>delete</span><span>do</span><span>else</span><span>export*</span>
+        <span>extends*</span><span>false</span><span>finally</span><span>for</span>
+        <span>function</span><span>if</span><span>import*</span><span>in</span>
+        <span>instanceof</span><span>new</span><span>null</span><span>return</span>
+        <span>super*</span><span>switch</span><span>this</span><span>throw</span>
+        <span>true</span><span>try</span><span>typeof</span><span>var</span>
+        <span>void</span><span>while</span><span>with</span><span>yield</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-semibold mb-2">🧠 Built-in Objects & Methods</p>
+      <div class="grid grid-cols-4 gap-2">
+        <span>Array</span><span>Date</span><span>eval</span><span>function</span>
+        <span>Infinity</span><span>isNaN</span><span>Math</span><span>NaN</span>
+        <span>Number</span><span>Object</span><span>String</span><span>undefined</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-semibold mb-2">🌐 HTML & Window Properties</p>
+      <div class="grid grid-cols-4 gap-2">
+        <span>alert</span><span>document</span><span>window</span><span>location</span>
+        <span>navigator</span><span>screen</span><span>history</span><span>frames</span>
+        <span>setTimeout</span><span>clearInterval</span><span>form</span><span>submit</span>
+      </div>
+    </div>
+
+    <div>
+      <p class="font-semibold mb-2">⚠️ HTML Event Handlers</p>
+      <div class="grid grid-cols-4 gap-2">
+        <span>onclick</span><span>onload</span><span>onerror</span><span>onfocus</span>
+        <span>onkeydown</span><span>onkeypress</span><span>onkeyup</span><span>onsubmit</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which of the following is a valid variable name?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> let return = "value";</label></li>
+    <li><label><input type="radio" name="q1"> let class = "Math";</label></li>
+    <li><label><input type="radio" name="q1"> let className = "Math";</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("runBtn").addEventListener("click", () => {
+      let output = "";
+
+      try {
+        eval("let class = 'Math';");
+      } catch (err) {
+        output += "❌ Error: 'class' is a reserved word.\n";
+      }
+
+      try {
+        let className = "Math";
+        output += `✅ Success: className = ${className}\n`;
+      } catch (err) {
+        output += "❌ Unexpected error with valid name.\n";
+      }
+
+      document.getElementById("output").innerText = output;
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

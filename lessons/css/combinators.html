@@ -1,0 +1,81 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Combinators</h2>
+
+<p class="mb-6 text-gray-700">
+Combinators let you target elements based on their position or relationship in the HTML tree. They enhance selector precision and help you apply styles only where needed.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 Types of Combinators</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Combinator</th><th class="border px-3 py-2">Symbol</th><th class="border px-3 py-2">Meaning</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">Descendant</td><td class="border px-3 py-2">space</td><td class="border px-3 py-2">Any level nested inside</td></tr>
+    <tr><td class="border px-3 py-2">Child</td><td class="border px-3 py-2">&gt;</td><td class="border px-3 py-2">Direct child only</td></tr>
+    <tr><td class="border px-3 py-2">Adjacent Sibling</td><td class="border px-3 py-2">+</td><td class="border px-3 py-2">Next sibling (one after)</td></tr>
+    <tr><td class="border px-3 py-2">General Sibling</td><td class="border px-3 py-2">~</td><td class="border px-3 py-2">Any next siblings</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔍 Examples and Output</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* Descendant */
+section p {
+  color: blue;
+}
+
+/* Child */
+section > p {
+  font-weight: bold;
+}
+
+/* Adjacent Sibling */
+h2 + p {
+  margin-top: 0;
+}
+
+/* General Sibling */
+h2 ~ p {
+  font-style: italic;
+}
+</pre>
+
+<div class="bg-blue-50 p-4 rounded mb-6 text-gray-800 space-y-2">
+  <section>
+    <p>This &lt;p&gt; inside &lt;section&gt; is blue.</p>
+    <div>
+      <p>This nested &lt;p&gt; is not bold.</p>
+    </div>
+    <p>This direct child &lt;p&gt; is bold.</p>
+  </section>
+  <h2>Heading</h2>
+  <p>First paragraph after h2 — margin removed.</p>
+  <p>Another paragraph after h2 — italicized.</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Combinator Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>&gt;</code> when you only want to style direct children, not nested ones</li>
+  <li><code>+</code> applies to one immediate sibling — great for spacing</li>
+  <li><code>~</code> styles all following siblings — useful for themes or announcements</li>
+  <li>Combine with classes for scoped precision</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which combinator styles only the element that comes immediately after another?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> ~</label></li>
+  <li><label><input type="radio" name="q1"> +</label></li>
+  <li><label><input type="radio" name="q1"> &gt;</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

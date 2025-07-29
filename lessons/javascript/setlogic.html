@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Set Logic | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Set Logic</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript 2025 introduced new logical methods for <code>Set</code> objects: <code>union()</code>, <code>intersection()</code>, <code>difference()</code>, <code>symmetricDifference()</code>, <code>isSubsetOf()</code>, <code>isSupersetOf()</code>, and <code>isDisjointFrom()</code>.
+  </p>
+
+  <!-- Union -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔗 union()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run union()</span>
+      <button onclick="runUnion()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="unionOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Intersection -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔗 intersection()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run intersection()</span>
+      <button onclick="runIntersection()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="intersectionOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Difference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➖ difference()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run difference()</span>
+      <button onclick="runDifference()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="differenceOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Symmetric Difference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⚖️ symmetricDifference()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run symmetricDifference()</span>
+      <button onclick="runSymmetricDifference()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="symmetricOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Subset -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📉 isSubsetOf()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check isSubsetOf()</span>
+      <button onclick="runSubset()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="subsetOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Superset -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📈 isSupersetOf()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check isSupersetOf()</span>
+      <button onclick="runSuperset()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="supersetOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Disjoint -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🚫 isDisjointFrom()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check isDisjointFrom()</span>
+      <button onclick="runDisjoint()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="disjointOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const A = new Set(['a', 'b', 'c']);
+    const B = new Set(['b', 'c', 'd']);
+
+    function runUnion() {
+      const C = A.union(B);
+      document.getElementById("unionOutput").innerHTML = [...C].join(", ");
+    }
+
+    function runIntersection() {
+      const C = A.intersection(B);
+      document.getElementById("intersectionOutput").innerHTML = [...C].join(", ");
+    }
+
+    function runDifference() {
+      const C = A.difference(B);
+      document.getElementById("differenceOutput").innerHTML = [...C].join(", ");
+    }
+
+    function runSymmetricDifference() {
+      const C = A.symmetricDifference(B);
+      document.getElementById("symmetricOutput").innerHTML = [...C].join(", ");
+    }
+
+    function runSubset() {
+      const result = A.isSubsetOf(B);
+      document.getElementById("subsetOutput").innerHTML = `A is subset of B → ${result}`;
+    }
+
+    function runSuperset() {
+      const result = A.isSupersetOf(B);
+      document.getElementById("supersetOutput").innerHTML = `A is superset of B → ${result}`;
+    }
+
+    function runDisjoint() {
+      const result = A.isDisjointFrom(B);
+      document.getElementById("disjointOutput").innerHTML = `A is disjoint from B → ${result}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>union()</code> combines all elements from both sets</li>
+    <li><code>intersection()</code> returns common elements</li>
+    <li><code>difference()</code> returns elements in A but not in B</li>
+    <li><code>symmetricDifference()</code> returns elements in A or B but not both</li>
+    <li><code>isSubsetOf()</code> checks if all elements in A are in B</li>
+    <li><code>isSupersetOf()</code> checks if all elements in B are in A</li>
+    <li><code>isDisjointFrom()</code> returns true if A and B share no elements</li>
+    <li>All methods return new sets or booleans — original sets remain unchanged</li>
+    <li>These methods are supported in modern browsers since mid-2024</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>A.symmetricDifference(B)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Elements in both A and B</label></li>
+    <li><label><input type="radio" name="q1"> Elements in A or B but not both</label></li>
+    <li><label><input type="radio" name="q1"> Elements only in A</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

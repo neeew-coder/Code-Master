@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Iteration | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Iteration</h2>
+
+  <p class="mb-6 text-gray-700">
+    Iteration methods allow you to loop through arrays and apply logic to each item. Some return new arrays, others return single values or booleans.
+  </p>
+
+  <!-- .map() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔁 .map()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let nums = [1, 2, 3, 4, 5];
+nums.map(x => x * 2); // [2, 4, 6, 8, 10]
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .map()</span>
+      <button onclick="runMapDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="mapOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .filter() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 .filter()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+nums.filter(x => x % 2 === 0); // [2, 4]
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .filter()</span>
+      <button onclick="runFilterDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="filterOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .reduce() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➕ .reduce()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+nums.reduce((sum, x) => sum + x, 0); // 15
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .reduce()</span>
+      <button onclick="runReduceDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="reduceOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .some() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">✅ .some()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+nums.some(x => x > 4); // true
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .some()</span>
+      <button onclick="runSomeDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="someOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .every() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔒 .every()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+nums.every(x => x > 0); // true
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .every()</span>
+      <button onclick="runEveryDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="everyOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const nums = [1, 2, 3, 4, 5];
+
+    function runMapDemo() {
+      const result = nums.map(x => x * 2);
+      document.getElementById("mapOutput").innerHTML = `Result: [${result.join(", ")}]`;
+    }
+
+    function runFilterDemo() {
+      const result = nums.filter(x => x % 2 === 0);
+      document.getElementById("filterOutput").innerHTML = `Result: [${result.join(", ")}]`;
+    }
+
+    function runReduceDemo() {
+      const result = nums.reduce((sum, x) => sum + x, 0);
+      document.getElementById("reduceOutput").innerHTML = `Sum: ${result}`;
+    }
+
+    function runSomeDemo() {
+      const result = nums.some(x => x > 4);
+      document.getElementById("someOutput").innerHTML = `Some > 4: ${result}`;
+    }
+
+    function runEveryDemo() {
+      const result = nums.every(x => x > 0);
+      document.getElementById("everyOutput").innerHTML = `Every > 0: ${result}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>.forEach()</code> runs a function for each item (no return)</li>
+    <li><code>.map()</code> returns a new array with transformed items</li>
+    <li><code>.filter()</code> returns a new array with matching items</li>
+    <li><code>.reduce()</code> combines items into a single value</li>
+    <li><code>.some()</code> returns <code>true</code> if any match</li>
+    <li><code>.every()</code> returns <code>true</code> if all match</li>
+  </ul>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>[1, 2, 3].map(x => x * 2)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> [1, 2, 3]</label></li>
+    <li><label><input type="radio" name="q1"> [2, 4, 6]</label></li>
+    <li><label><input type="radio" name="q1"> [3, 6, 9]</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

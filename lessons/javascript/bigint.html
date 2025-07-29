@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript BigInt | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript BigInt</h2>
+
+  <p class="mb-6 text-gray-700">
+    <code>BigInt</code> is a special numeric type for integers larger than <code>Number.MAX_SAFE_INTEGER</code>. It allows precise arithmetic with very large values.
+  </p>
+
+  <!-- Declaring BigInts -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Declaring BigInts</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let regular = 9007199254740991;       // Max safe integer
+let big = 9007199254740993n;          // BigInt literal
+let fromString = BigInt("123456789012345678901234567890");
+
+console.log(typeof big);              // "bigint"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Add <code>n</code> to the end of a number or use <code>BigInt()</code> to create one. BigInts are a separate type and cannot mix directly with regular numbers.
+  </p>
+
+  <!-- Max Safe Integer vs BigInt -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔢 Beyond Safe Integer</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Compare Safe vs BigInt</span>
+      <button onclick="runMaxSafeDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="maxSafeOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- BigInt Literal -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 BigInt Literal</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Show Literal</span>
+      <button onclick="runLiteralDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="literalOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- typeof BigInt -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 typeof BigInt</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check Type</span>
+      <button onclick="runTypeofDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="typeofOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runMaxSafeDemo() {
+      const regular = Number.MAX_SAFE_INTEGER;
+      const big = BigInt(regular) + 2n;
+      const output = [
+        `Max Safe Integer: ${regular}`,
+        `BigInt beyond safe: ${big}`
+      ];
+      document.getElementById("maxSafeOutput").innerHTML = output.join("<br>");
+    }
+
+    function runLiteralDemo() {
+      const literal = 1234567890123456789012345678901234567890n;
+      document.getElementById("literalOutput").innerHTML = `BigInt literal: ${literal}`;
+    }
+
+    function runTypeofDemo() {
+      const big = 12345678901234567890n;
+      document.getElementById("typeofOutput").innerHTML = `typeof big: ${typeof big}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>BigInt</code> handles integers beyond <code>2⁵³ - 1</code></li>
+    <li>Use <code>n</code> suffix or <code>BigInt()</code> constructor</li>
+    <li>Cannot mix <code>BigInt</code> with <code>Number</code> in operations</li>
+    <li>Use <code>typeof</code> to check: returns <code>"bigint"</code></li>
+    <li>Useful for cryptography, finance, and precise counters</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>typeof 12345678901234567890n</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "number"</label></li>
+    <li><label><input type="radio" name="q1"> "bigint"</label></li>
+    <li><label><input type="radio" name="q1"> "string"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

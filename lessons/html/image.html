@@ -1,0 +1,126 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Images</h2>
+
+<p class="mb-4 text-gray-700">
+Images add visual appeal and communicate ideas effectively. In HTML, images are defined using the <code>&lt;img&gt;</code> element.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📷 Basic Syntax</h3>
+<p class="mb-2 text-gray-700">
+The <code>&lt;img&gt;</code> tag is empty — it holds no content, only attributes. Required attributes:
+</p>
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><strong>src</strong> – Image path or URL</li>
+  <li><strong>alt</strong> – Text alternative if image fails</li>
+</ul>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="images/trulli.jpg" alt="Italian Trulli"&gt;
+  </pre>
+</div>
+
+<!-- Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6"  style="color: black;">
+  <img src="image/trulli.jpg" alt="Italian Trulli" style="max-width:100%; height:auto;">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔁 Broken Images & alt Text</h3>
+<p class="mb-2 text-gray-700">
+If the image file is missing, the alt text will appear instead:
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="images/wrongname.jpg" alt="Trulli in Italy"&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <img src="image/wrongname.jpg" alt="Trulli in Italy" style="max-width:100%; height:auto; color: black;">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Image Size</h3>
+<p class="mb-2 text-gray-700">Use <code>style</code>, <code>width</code>, or <code>height</code> to resize:</p>
+
+<!-- Style -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="images/girl.jpg" alt="Girl in a jacket" style="width:300px;height:400px;"&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <img src="image/girl.png" alt="Girl in a jacket" style="width:300px;height:400px;">
+</div>
+
+<!-- Attributes -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="images/girl.jpg" alt="Girl in a jacket" width="300" height="400"&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <img src="image/girl.png" alt="Girl in a jacket" width="300" height="400">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📁 Folder Paths</h3>
+<p class="mb-2 text-gray-700">Include folder name in <code>src</code> if images are stored inside subfolders:</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="images/html5.png" alt="HTML5 Icon" style="width:128px;height:128px;"&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <img src="image/html5.webp" alt="HTML5 Icon" style="width:128px;height:128px;">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌀 Animated Images</h3>
+<p class="mb-2 text-gray-700">GIFs allow simple animations without JavaScript:</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;img src="images/loading.gif" alt="Loading icon" style="width:48px;height:48px;"&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <img src="image/loading.gif" alt="Loading icon" style="width:48px;height:48px;">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔗 Image as a Link</h3>
+<p class="mb-2 text-gray-700">
+Make an image clickable by wrapping it in a link tag:
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="lesson.html"&gt;
+  &lt;img src="images/smiley.png" alt="Lesson" style="width:42px;height:42px;"&gt;
+&lt;/a&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <a href="lesson.html">
+    <img src="image/smiley.png" alt="Lesson" style="width:42px;height:42px;">
+  </a>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧭 Floating Images</h3>
+<p class="mb-2 text-gray-700">Use <code>float: left</code> or <code>float: right</code> to position images beside text:</p>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <p style="color:black"><img src="image/smiley.png" alt="Smiley" style="float:right;width:42px;height:42px;">
+    This image floats to the right of the text.</p>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <p style="color:black"><img src="image/smiley.png" alt="Smiley" style="float:left;width:42px;height:42px;">
+    This image floats to the left of the text.</p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">Which element correctly inserts an image in HTML?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>&lt;image&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>&lt;img&gt;</code></strong></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;media&gt;</code></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

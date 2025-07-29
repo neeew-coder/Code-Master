@@ -1,0 +1,116 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Table Borders</h2>
+
+<p class="mb-4 text-gray-700">
+HTML tables can be styled with borders to better organize and emphasize data. With CSS, you control how those borders appear and behave.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧱 Adding a Basic Border</h3>
+<p class="mb-2 text-gray-700">Apply the <code>border</code> property to table elements:</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+table, th, td {
+  border: 1px solid black;
+}
+  </pre>
+</div>
+<img src="image/tableborder.png" alt="" srcset="">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧊 Collapsing Borders</h3>
+<p class="mb-2 text-gray-700">
+Use <code>border-collapse: collapse</code> to remove double borders between cells:
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+  </pre>
+</div>
+<img src="image/tablecollapse.png" alt="" srcset="">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">👻 Invisible Borders</h3>
+<p class="mb-2 text-gray-700">
+White borders on a colored background give a seamless look:
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+th, td {
+  background-color: #96D4D4;
+}
+  </pre>
+</div>
+<img src="image/tableinvisible.png" alt="" srcset="">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🏵️ Rounded Corners</h3>
+<p class="mb-2 text-gray-700">Use <code>border-radius</code> to round table borders:</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+table, th, td {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+  </pre>
+</div>
+<img src="image/tableroundborder.png" alt="" srcset="">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌿 Selective Borders</h3>
+<p class="mb-2 text-gray-700">Skip the border around the full table:</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+th, td {
+  border: 1px solid black;
+  border-radius: 10px;
+}
+  </pre>
+</div>
+<img src="image/tableroundborder2.png" alt="" srcset="">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎯 Border Styles</h3>
+<p class="mb-2 text-gray-700">
+You can change how borders appear with <code>border-style</code>:
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+th, td {
+  border-style: dotted;
+}
+  </pre>
+</div>
+<img src="image/tabledotted.png" alt="" srcset="">
+<p class="mb-4 text-gray-700">
+Allowed styles include: <code>dotted</code>, <code>dashed</code>, <code>solid</code>, <code>double</code>, <code>groove</code>, <code>ridge</code>, <code>inset</code>, <code>outset</code>, <code>none</code>, and <code>hidden</code>.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌈 Border Color</h3>
+<p class="mb-2 text-gray-700">Set border colors using <code>border-color</code>:</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+th, td {
+  border-color: orange;
+}
+  </pre>
+</div>
+<img src="image/bordercolor.png" alt="" srcset="">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is the correct CSS property for styling the border of a table?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>table-border</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>table-style</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>border</code></strong></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>border</code> adds a table border</li>
+  <li><code>border-collapse</code> merges inner lines</li>
+  <li><code>border-style</code> controls the design (dotted, dashed, solid...)</li>
+  <li><code>border-color</code> defines border color</li>
+  <li><code>border-radius</code> adds rounded corners</li>
+</ul>

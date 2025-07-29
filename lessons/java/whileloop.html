@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java While Loop | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">Java While Loop</h2>
+
+  <p class="mb-6 text-gray-700">
+    Loops allow your program to repeat actions until a condition changes. The <code>while</code> loop is one of Java’s simplest looping constructs. It checks a condition before each iteration and continues as long as the condition is <code>true</code>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🔁 Counting Example</h3>
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-between items-center">
+      <p class="text-gray-600">Try editing the code below:</p>
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+
+    <textarea id="codeInput" rows="12" class="bg-black text-red-400 p-3 rounded text-sm overflow-x-auto font-mono w-full h-[200px] resize-none">
+public class Main {
+  public static void main(String[] args) {
+    int count = 1;
+
+    while (count <= 5) {
+      System.out.println("Count: " + count);
+      count++;
+    }
+  }
+}
+    </textarea>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📚 Explanation</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li><code>while</code> checks the condition before each loop iteration.</li>
+    <li>If the condition is <code>true</code>, the loop body runs.</li>
+    <li>Once the condition becomes <code>false</code>, the loop stops.</li>
+    <li>Be careful: if the condition never becomes false, the loop runs forever (infinite loop).</li>
+    <li>Use a counter or condition that changes inside the loop to avoid infinite loops.</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Concept Check</h3>
+  <p class="text-gray-700 mb-2">
+    What will be printed if <code>count = 3</code> and the condition is <code>count &lt;= 5</code>?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Count: 3 to Count: 5</label></li>
+    <li><label><input type="radio" name="q1"> Count: 1 to Count: 3</label></li>
+    <li><label><input type="radio" name="q1"> Count: 3 only</label></li>
+    <li><label><input type="radio" name="q1"> No output</label></li>
+  </ul>
+
+  <p class="text-gray-700 mb-2">
+    What happens if the condition is always <code>true</code>?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q2"> The loop runs once</label></li>
+    <li><label><input type="radio" name="q2"> The loop never runs</label></li>
+    <li><label><input type="radio" name="q2"> The loop runs forever</label></li>
+    <li><label><input type="radio" name="q2"> The loop throws an error</label></li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try This</h3>
+  <p class="text-gray-700 mb-4">
+    Change the loop to count down from 5 to 1. What condition and update do you need?
+  </p>
+
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-while-loop')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

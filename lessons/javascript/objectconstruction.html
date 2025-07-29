@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Object Construction | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Object Construction</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript objects can be created using different techniques. Each method offers flexibility depending on the structure, inheritance, and reuse you need.
+  </p>
+
+  <!-- Construction Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Construction Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+// Object literal
+let user1 = {
+  name: "User",
+  age: 25
+};
+
+// Constructor function
+function User(name, age) {
+  this.name = name;
+  this.age = age;
+}
+let user2 = new User("Alex", 30);
+
+// Object.create()
+let baseUser = {
+  greet() {
+    return "Hello, " + this.name;
+  }
+};
+let user3 = Object.create(baseUser);
+user3.name = "Sam";
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use literals for quick objects, constructors for reusable templates, and <code>Object.create()</code> for prototypal inheritance.
+  </p>
+
+  <!-- Object Literal -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Object Literal</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Show Literal</span>
+      <button onclick="showLiteral()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="literalOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Constructor Function -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🏗️ Constructor Function</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Show Constructor</span>
+      <button onclick="showConstructor()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="constructorOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Object.create -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧬 Object.create()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Show Prototype</span>
+      <button onclick="showPrototype()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="prototypeOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function showLiteral() {
+      const user1 = { name: "User", age: 25 };
+      document.getElementById("literalOutput").innerHTML = `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-cube text-yellow-400 text-xs"></i>
+          <span>Literal → ${user1.name}, ${user1.age}</span>
+        </div>
+      `;
+    }
+
+    function showConstructor() {
+      function User(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+      const user2 = new User("Alex", 30);
+      document.getElementById("constructorOutput").innerHTML = `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-cogs text-yellow-400 text-xs"></i>
+          <span>Constructor → ${user2.name}, ${user2.age}</span>
+        </div>
+      `;
+    }
+
+    function showPrototype() {
+      const baseUser = {
+        greet() {
+          return "Hello, " + this.name;
+        }
+      };
+      const user3 = Object.create(baseUser);
+      user3.name = "Sam";
+      document.getElementById("prototypeOutput").innerHTML = `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-project-diagram text-yellow-400 text-xs"></i>
+          <span>Object.create → ${user3.name}, ${user3.greet()}</span>
+        </div>
+      `;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Object literals are quick and readable</li>
+    <li>Constructor functions use <code>new</code> to create instances</li>
+    <li><code>Object.create()</code> sets up prototype chains</li>
+    <li>Use constructors for reusable blueprints</li>
+    <li>Use <code>Object.create()</code> for inheritance without classes</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which method allows you to inherit from another object?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Object literal</label></li>
+    <li><label><input type="radio" name="q1"> Constructor function</label></li>
+    <li><label><input type="radio" name="q1"> Object.create()</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Flexbox</h2>
+
+<p class="mb-6 text-gray-700">
+Flexbox (Flexible Box Layout) is a one-dimensional layout system — perfect for aligning elements horizontally or vertically with spacing control, dynamic sizing, and responsive flow.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 Flex Container Basics</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.flex-parent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>flex-direction</code>: row, row-reverse, column, column-reverse</li>
+  <li><code>justify-content</code>: main-axis spacing (start → end)</li>
+  <li><code>align-items</code>: cross-axis alignment (top ↕ bottom)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Flex Demo</h3>
+
+<div style="display: flex; justify-content: space-between; align-items: center; background: #eff6ff; padding: 12px; gap: 12px;">
+  <div style="background: #93c5fd; padding: 16px; border-radius: 8px;">Box 1</div>
+  <div style="background: #60a5fa; padding: 16px; border-radius: 8px;">Box 2</div>
+  <div style="background: #3b82f6; padding: 16px; border-radius: 8px; color: white;">Box 3</div>
+</div>
+
+<p class="text-sm text-gray-500 mt-2">This row uses <code>space-between</code> and <code>center</code> alignment.</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔀 Flex Direction Grid</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Value</th><th class="border px-3 py-2">Layout Axis</th><th class="border px-3 py-2">Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">row</td><td class="border px-3 py-2">horizontal</td><td class="border px-3 py-2">Left to right (default)</td></tr>
+    <tr><td class="border px-3 py-2">column</td><td class="border px-3 py-2">vertical</td><td class="border px-3 py-2">Top to bottom</td></tr>
+    <tr><td class="border px-3 py-2">row-reverse</td><td class="border px-3 py-2">horizontal</td><td class="border px-3 py-2">Right to left</td></tr>
+    <tr><td class="border px-3 py-2">column-reverse</td><td class="border px-3 py-2">vertical</td><td class="border px-3 py-2">Bottom to top</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Child Item Control</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.flex-child {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 100px;
+}
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>flex-grow</code>: how much item expands (relative)</li>
+  <li><code>flex-shrink</code>: how much item shrinks when needed</li>
+  <li><code>flex-basis</code>: initial size before growing/shrinking</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧩 Common Layout Patterns</h3>
+
+- Horizontal nav bar  
+- Sidebar + content stretch  
+- Equal width cards  
+- Footer pinning + sticky headers  
+- Button group alignment
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🪛 Flexbox Debug Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use browser dev tools to inspect flex containers</li>
+  <li>Try <code>gap</code> instead of margin spacing</li>
+  <li>Remember: child items won’t align unless parent has <code>display: flex</code></li>
+  <li><code>flex-wrap</code>: use for row wrapping behavior</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which property controls horizontal spacing between flex items?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> align-items</label></li>
+  <li><label><input type="radio" name="q1"> justify-content</label></li>
+  <li><label><input type="radio" name="q1"> flex-direction</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

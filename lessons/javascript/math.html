@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Math Object | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Math Object</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>Math</code> object provides static methods and constants for mathematical operations. You don’t need to create a Math object — just call methods directly.
+  </p>
+
+  <!-- Constants -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Constants</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.PI; Math.E; Math.SQRT2; Math.SQRT1_2;
+Math.LN2; Math.LN10; Math.LOG2E; Math.LOG10E;
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Constants</span>
+      <button onclick="runConstants()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="constantsOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Rounding -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Rounding</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.round(4.6); Math.floor(4.9); Math.ceil(4.2); Math.trunc(-4.9);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Rounding</span>
+      <button onclick="runRounding()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="roundingOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Sign -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Sign</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.sign(-5); Math.sign(0); Math.sign(5);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Sign</span>
+      <button onclick="runSign()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="signOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Power, Root, Abs -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Power, Root, Absolute</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.pow(2, 3); Math.sqrt(64); Math.abs(-5);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Power/Root/Abs</span>
+      <button onclick="runPower()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="powerOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Trigonometry -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Trigonometry</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.sin(90 * Math.PI / 180); Math.cos(0 * Math.PI / 180);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Trig</span>
+      <button onclick="runTrig()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="trigOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Min/Max -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Min / Max</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.min(0, 150, -8); Math.max(0, 150, -8);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Min/Max</span>
+      <button onclick="runMinMax()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="minmaxOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Random -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Random</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.random();
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Random</span>
+      <button onclick="runRandom()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="randomOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Logs -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Logarithms</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.log(10); Math.log2(8); Math.log10(1000);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Logs</span>
+      <button onclick="runLogs()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="logsOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function runConstants() {
+      const output = [
+        `PI: ${Math.PI}`,
+        `E: ${Math.E}`,
+        `SQRT2: ${Math.SQRT2}`,
+        `SQRT1_2: ${Math.SQRT1_2}`,
+        `LN2: ${Math.LN2}`,
+        `LN10: ${Math.LN10}`,
+        `LOG2E: ${Math.LOG2E}`,
+        `LOG10E: ${Math.LOG10E}`
+      ];
+      document.getElementById("constantsOutput").innerHTML = output.join("<br>");
+    }
+
+    function runRounding() {
+      const output = [
+        `round(4.6): ${Math.round(4.6)}`,
+        `floor(4.9): ${Math.floor(4.9)}`,
+        `ceil(4.2): ${Math.ceil(4.2)}`,
+        `trunc(-4.9): ${Math.trunc(-4.9)}`
+      ];
+      document.getElementById("roundingOutput").innerHTML = output.join("<br>");
+    }
+
+    function runSign() {
+      const output = [
+        `sign(-5): ${Math.sign(-5)}`,
+        `sign(0): ${Math.sign(0)}`,
+        `sign(5): ${Math.sign(5)}`
+      ];
+      document.getElementById("signOutput").innerHTML = output.join("<br>");
+    }
+
+    function runPower() {
+      const output = [
+        `pow(2, 3): ${Math.pow(2, 3)}`,
+        `sqrt(64): ${Math.sqrt(64)}`,
+        `abs(-5): ${Math.abs(-5)}`
+      ];
+      document.getElementById("powerOutput").innerHTML = output.join("<br>");
+    }
+
+    function runTrig() {
+      const output = [
+        `sin(90°): ${Math.sin(90 * Math.PI / 180).toFixed(4)}`,
+        `cos(0°): ${Math.cos(0 * Math.PI / 180).toFixed(4)}`
+      ];
+      document.getElementById("trigOutput").innerHTML = output.join("<br>");
+    }
+
+    function runMinMax() {
+      const output = [
+        `min(0,150,-8): ${Math.min(0, 150, -8)}`,
+        `max(0,150,-8): ${Math.max(0, 150, -8)}`
+      ];
+      document.getElementById("minmaxOutput").innerHTML = output.join("<br>");
+    }
+
+    function runRandom() {
+      const output = [
+        `random(): ${Math.random().toFixed(4)}`
+      ];
+      document.getElementById("randomOutput").innerHTML = output.join("<br>");
+    }
+
+    function runLogs() {
+      const output = [
+        `log(10): ${Math.log(10).toFixed(4)}`,
+        `log2(8): ${Math.log2(8)}`,
+        `log10(1000): ${Math.log10(1000)}`
+      ];
+      document.getElementById("logsOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+<!-- 📝 Quiz -->
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+<p class="text-gray-700 mb-2">
+  What is the correct syntax for rounding down a number to its nearest integer?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Math.roundDown(4.9)</label></li>
+  <li><label><input type="radio" name="q1"> Math.floor(4.9)</label></li>
+  <li><label><input type="radio" name="q1"> Math.abs(4.9)</label></li>
+  <li><label><input type="radio" name="q1"> Math.min(4.9)</label></li>
+</ul>
+
+<button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+  Mark as Complete
+</button>
+
+<div class="min-h-[280px]"></div>
+
+</body>
+</html>

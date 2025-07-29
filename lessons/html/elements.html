@@ -1,0 +1,111 @@
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔍 HTML Element Structure</h3>
+<p class="mb-4 text-gray-700">
+The HTML element is everything from the start tag to the end tag:
+</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;tagname&gt;Content goes here...&lt;/tagname&gt;
+
+Examples of some HTML elements:
+
+&lt;h1&gt;My First Heading&lt;/h1&gt;
+&lt;p&gt;My first paragraph.&lt;/p&gt;
+
+Start tag      Element content        End tag
+&lt;h1&gt;           My First Heading       &lt;/h1&gt;
+&lt;p&gt;            My first paragraph.    &lt;/p&gt;
+&lt;br&gt;           none                   (no end tag)
+  </pre>
+</div>
+
+<p class="mb-4 text-gray-700">
+Some elements like <code>&lt;br&gt;</code> have no content and no closing tag. These are called <strong>empty elements</strong>.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Nested HTML Elements</h3>
+<p class="mb-2 text-gray-700">
+HTML elements can be nested — meaning one element can contain another. All HTML documents are made of nested elements.
+</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;My First Heading&lt;/h1&gt;
+    &lt;p&gt;My first paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Example Explained</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li><code>&lt;html&gt;</code> is the root element</li>
+  <li><code>&lt;body&gt;</code> contains visible content</li>
+  <li><code>&lt;h1&gt;</code> defines a heading</li>
+  <li><code>&lt;p&gt;</code> defines a paragraph</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">⚠️ Never Skip the End Tag</h3>
+<p class="mb-2 text-gray-700">
+Some browsers may still render content if you forget the end tag, but this can cause unexpected results.
+</p>
+
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;This is a paragraph
+    &lt;p&gt;This is a paragraph
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<p class="mb-4 text-gray-700">
+Always close your tags properly to avoid rendering issues.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Empty HTML Elements</h3>
+<p class="mb-2 text-gray-700">
+Empty elements have no content and no closing tag. Example:
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;p&gt;This is a &lt;br&gt; paragraph with a line break.&lt;/p&gt;
+  </pre>
+<img style="width: 600px; height: 100px;" src="image/br.png" alt="" srcset="">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔡 HTML Is Not Case Sensitive</h3>
+<p class="mb-4 text-gray-700">
+HTML tags are not case sensitive: <code>&lt;P&gt;</code> means the same as <code>&lt;p&gt;</code>. However, lowercase is recommended by W3C and required in XHTML.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">True or False: Empty elements must have a closing tag.</p>
+<ul class="space-y-2 text-gray-700">
+  <li><label><input type="radio" name="q1"> True</label></li>
+  <li><label><input type="radio" name="q1"> False</label></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📖 HTML Tag Reference</h3>
+<table class="table-auto w-full text-sm text-left text-gray-700 mb-6">
+  <thead class="bg-orange-100 text-orange-700 font-semibold">
+    <tr>
+      <th class="px-4 py-2">Tag</th>
+      <th class="px-4 py-2">Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="px-4 py-2">&lt;html&gt;</td><td class="px-4 py-2">Defines the root of an HTML document</td></tr>
+    <tr><td class="px-4 py-2">&lt;body&gt;</td><td class="px-4 py-2">Defines the document's body</td></tr>
+    <tr><td class="px-4 py-2">&lt;h1&gt; to &lt;h6&gt;</td><td class="px-4 py-2">Defines HTML headings</td></tr>
+  </tbody>
+</table>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

@@ -1,0 +1,162 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML class Attribute</h2>
+
+<p class="mb-4 text-gray-700">
+The <code>class</code> attribute lets you assign style rules to HTML elements. You can reuse class names across multiple elements, combine them, and target them with CSS or JavaScript.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Styling with a Class</h3>
+<p class="mb-2 text-gray-700">Define a class in CSS using a period (.) followed by the class name:</p>
+
+<!-- CSS Syntax -->
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
+<pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;City Class Example&lt;/title&gt;
+  &lt;style&gt;
+    .city {
+      background-color: tomato;
+      color: white;
+      border: 2px solid black;
+      margin: 20px;
+      padding: 20px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div class=&quot;city&quot;&gt;
+    &lt;h2&gt;London&lt;/h2&gt;
+    &lt;p&gt;London is the capital of England.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;city&quot;&gt;
+    &lt;h2&gt;Paris&lt;/h2&gt;
+    &lt;p&gt;Paris is the capital of France.&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;city&quot;&gt;
+    &lt;h2&gt;Tokyo&lt;/h2&gt;
+    &lt;p&gt;Tokyo is the capital of Japan.&lt;/p&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</div>
+
+<!-- HTML Elements with "city" class -->
+<div class="bg-white p-4 rounded-lg shadow-md border mb-6">
+  <div class="city" style="background-color: tomato; color: white; border: 2px solid black; margin: 20px; padding: 20px;">
+    <h2>London</h2>
+    <p>London is the capital of England.</p>
+  </div>
+  <div class="city" style="background-color: tomato; color: white; border: 2px solid black; margin: 20px; padding: 20px;">
+    <h2>Paris</h2>
+    <p>Paris is the capital of France.</p>
+  </div>
+  <div class="city" style="background-color: tomato; color: white; border: 2px solid black; margin: 20px; padding: 20px;">
+    <h2>Tokyo</h2>
+    <p>Tokyo is the capital of Japan.</p>
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Styling Inline Elements</h3>
+<p class="mb-2 text-gray-700">
+The <code>class</code> attribute works with inline elements too — like <code>&lt;span&gt;</code>:
+</p>
+
+<!-- CSS and HTML -->
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
+  <pre>
+.note {
+  font-size: 120%;
+  color: red;
+}
+...
+&lt;h1&gt;My &lt;span class="note"&gt;Important&lt;/span&gt; Heading&lt;/h1&gt;
+&lt;p&gt;Some &lt;span class="note"&gt;important&lt;/span&gt; text.&lt;/p&gt;
+  </pre>
+</div>
+
+<!-- Preview -->
+<div class="bg-white p-4 rounded-lg border mb-6">
+  <h1>My <span style="font-size:120%; color:red;">Important</span> Heading</h1>
+  <p style="color: black;">This is some <span style="font-size:120%; color:red;">important</span> text.</p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Multiple Classes</h3>
+<p class="mb-2 text-gray-700">
+You can assign more than one class to an element. Just separate them by spaces:
+</p>
+
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
+  <pre>
+&lt;h2 class="city main"&gt;London&lt;/h2&gt;
+&lt;h2 class="city"&gt;Paris&lt;/h2&gt;
+&lt;h2 class="city"&gt;Tokyo&lt;/h2&gt;
+  </pre>
+</div>
+
+<p class="text-gray-700 mb-4">
+The <code>London</code> heading will inherit styles from both <code>.city</code> and <code>.main</code>.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔁 Shared Classes Across Elements</h3>
+<p class="mb-2 text-gray-700">Different element types can share the same class:</p>
+
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
+  <pre>
+&lt;h2 class="city"&gt;Paris&lt;/h2&gt;
+&lt;p class="city"&gt;Paris is the capital of France&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Using Class in JavaScript</h3>
+<p class="mb-2 text-gray-700">
+You can target classes with JavaScript using <code>getElementsByClassName()</code>:
+</p>
+
+<!-- JS Code -->
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
+  <pre>
+function hideCities() {
+  var x = document.getElementsByClassName("city");
+  for (var i = 0; i &lt; x.length; i++) {
+    x[i].style.display = "none";
+  }
+}
+  </pre>
+</div>
+
+<p class="text-gray-700 mb-6">Clicking a button could trigger this function to hide all elements with the class <code>city</code>.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📌 Syntax Reminder</h3>
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li>Create a class in CSS using a period: <code>.city { ... }</code></li>
+  <li>Add it to HTML using: <code>class="city"</code></li>
+  <li>Class names are <strong>case sensitive</strong></li>
+  <li>Multiple elements can share a class name</li>
+  <li>Multiple classes = space-separated values</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">True or False: The class name is case sensitive.</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> False</label></li>
+  <li><label><input type="radio" name="q1"> <strong>True</strong></label></li>
+</ul>
+
+<button onclick="markComplete()" class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Chapter Summary</h3>
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li><code>class</code> allows you to style and target HTML elements</li>
+  <li>It can be reused across elements and combined with other classes</li>
+  <li>Works with both CSS and JavaScript</li>
+  <li>Syntax: <code>.classname</code> in CSS, <code>class="classname"</code> in HTML</li>
+</ul>

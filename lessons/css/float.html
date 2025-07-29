@@ -1,0 +1,81 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Float and Clear</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>float</code> property lets elements move beside others — like text wrapping around an image. But it also removes them from normal document flow, so <code>clear</code> helps reset and restore layout structure.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Float Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+img {
+  float: left;
+  margin-right: 20px;
+}
+
+aside {
+  float: right;
+  width: 200px;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Float Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6">
+  <img src="https://via.placeholder.com/100" style="float: left; margin-right: 10px;" alt="Float">
+  <p>
+    This text wraps around the floated image. Floats move elements to one side, letting text flow beside them — a classic newspaper-style layout.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧼 Clear Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+Use <code>clear</code> to stop floating influence and preserve vertical stacking. The clearfix method keeps containers from collapsing when inner floats are used.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Direct Clear Usage</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+footer {
+  clear: both;
+}
+</pre>
+
+<div class="bg-blue-50 p-4 rounded mb-6">
+  <div style="float: left; width: 40%; background: #d4e8ff; padding: 10px;">Sidebar (float left)</div>
+  <div style="float: right; width: 40%; background: #b0d4f1; padding: 10px;">Ad box (float right)</div>
+  <div style="clear: both; padding: 10px; background: white; margin-top: 10px;">Footer clears both floats</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Float Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Floats are great for image-text layouts or sidebars</li>
+  <li>Use <code>clear</code> on the next block element to reset flow</li>
+  <li>Floating elements shrink container height unless cleared</li>
+  <li>Modern layouts prefer Flexbox or Grid — but float is still useful!</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which property prevents elements from wrapping around previous floats?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> wrap</label></li>
+  <li><label><input type="radio" name="q1"> clear</label></li>
+  <li><label><input type="radio" name="q1"> reset</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

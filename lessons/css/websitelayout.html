@@ -1,0 +1,84 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Website Layout</h2>
+
+<p class="mb-6 text-gray-700">
+A website layout uses CSS to organize content across the page — headers, navigation, main body, sidebars, and footers. Semantic elements give structure, while CSS controls positioning, flow, and spacing.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Basic HTML Structure</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;header&gt;Site Logo&lt;/header&gt;
+
+&lt;nav&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;About&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;main&gt;
+  &lt;article&gt;Main content here&lt;/article&gt;
+  &lt;aside&gt;Sidebar content&lt;/aside&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;© 2025 CodeMaster Curriculum&lt;/footer&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Layout Styling with CSS Grid</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+body {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "main aside"
+    "footer footer";
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  padding: 20px;
+}
+
+header    { grid-area: header; background: #1e3a8a; color: white; padding: 12px; }
+nav       { grid-area: nav; background: #3b82f6; padding: 12px; }
+main      { display: contents; }
+article   { grid-area: main; background: white; padding: 12px; }
+aside     { grid-area: aside; background: #f0f9ff; padding: 12px; }
+footer    { grid-area: footer; background: #1e3a8a; color: white; text-align: center; padding: 12px; }
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Layout Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 text-gray-800 space-y-2">
+  <div style="background:#1e3a8a; color:white; padding:12px;">Header</div>
+  <div style="background:#3b82f6; color:white; padding:12px;">Navigation</div>
+  <div style="display: flex; gap:16px;">
+    <div style="flex:2; background:white; padding:12px;">Main content</div>
+    <div style="flex:1; background:#f0f9ff; padding:12px;">Sidebar</div>
+  </div>
+  <div style="background:#1e3a8a; color:white; padding:12px; text-align:center;">Footer</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Layout Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>grid-template-areas</code> for readable layout zones</li>
+  <li>Use semantic HTML tags: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;aside&gt;</code>, <code>&lt;footer&gt;</code></li>
+  <li><code>flexbox</code> is great for sub-layouts inside each section</li>
+  <li>Use <code>gap</code> to space layout elements visually</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which CSS property defines named areas for grid layout structure?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> grid-template-areas</label></li>
+  <li><label><input type="radio" name="q1"> display: inline-block</label></li>
+  <li><label><input type="radio" name="q1"> justify-content</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Copy & Flatten | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Copy & Flatten</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript provides methods to copy parts of arrays and flatten nested structures. These are useful for restructuring data without loops.
+  </p>
+
+  <!-- copyWithin -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📌 copyWithin()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let items = ["a", "b", "c", "d", "e"];
+items.copyWithin(2, 0);     // Overwrites from index 2
+items.copyWithin(2, 0, 2);  // Overwrites from index 2 with slice 0–2
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run copyWithin()</span>
+      <button onclick="runCopyWithinDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="copyWithinOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- flat -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📥 flat()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let nested = [[1, 2], [3, 4]];
+nested.flat(); // [1, 2, 3, 4]
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run flat()</span>
+      <button onclick="runFlatDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="flatOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- flatMap -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔄 flatMap()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let nums = [1, 2, 3];
+nums.flatMap(x => [x, x * 10]); // [1, 10, 2, 20, 3, 30]
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run flatMap()</span>
+      <button onclick="runFlatMapDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="flatMapOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runCopyWithinDemo() {
+      const items = ["a", "b", "c", "d", "e"];
+      const copy1 = [...items];
+      copy1.copyWithin(2, 0);
+      const copy2 = [...items];
+      copy2.copyWithin(2, 0, 2);
+      const output = [
+        `Original: [${items.join(", ")}]`,
+        `copyWithin(2, 0): [${copy1.join(", ")}]`,
+        `copyWithin(2, 0, 2): [${copy2.join(", ")}]`
+      ];
+      document.getElementById("copyWithinOutput").innerHTML = output.join("<br>");
+    }
+
+    function runFlatDemo() {
+      const nested = [[1, 2], [3, 4]];
+      const flat = nested.flat();
+      document.getElementById("flatOutput").innerHTML = `flat(): [${flat.join(", ")}]`;
+    }
+
+    function runFlatMapDemo() {
+      const nums = [1, 2, 3];
+      const mapped = nums.flatMap(x => [x, x * 10]);
+      document.getElementById("flatMapOutput").innerHTML = `flatMap(x => [x, x*10]): [${mapped.join(", ")}]`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>.copyWithin()</code> overwrites values in-place</li>
+    <li><code>.flat()</code> reduces nesting by one level</li>
+    <li><code>.flatMap()</code> maps and flattens in one step</li>
+    <li>Use <code>spread syntax</code> to preserve originals before mutation</li>
+    <li>All methods are supported in modern browsers (ES2019+)</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>[[1,2],[3,4]].flat()</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> [1,2,[3,4]]</label></li>
+    <li><label><input type="radio" name="q1"> [1,2,3,4]</label></li>
+    <li><label><input type="radio" name="q1"> [[1,2],[3,4]]</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

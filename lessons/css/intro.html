@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Introduction | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css"> <!-- Adjust path if needed -->
+</head>
+<body class="bg-blue-50 font-sans p-6">
+
+  <h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Introduction</h2>
+
+  <p class="mb-6 text-gray-700">
+    CSS (Cascading Style Sheets) is the language used to style HTML documents. It controls the visual layout, colors, spacing, and structure across devices. CSS brings design logic to your markup.
+  </p>
+
+  <h3 class="text-lg font-semibold text-blue-500 mb-2">🎯 Why Use CSS?</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Separates content from design</li>
+    <li>Reduces repetitive styling</li>
+    <li>Makes layout consistent across pages</li>
+    <li>Supports responsive and adaptive design</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-blue-500 mb-2">📄 CSS Syntax Example</h3>
+
+  <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+body {
+  background-color: lightblue;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: verdana;
+  font-size: 20px;
+}
+  </pre>
+
+  <h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 CSS vs HTML Formatting</h3>
+
+  <p class="text-gray-700 mb-4">
+    In early HTML versions, developers used tags like <code>&lt;font&gt;</code> and inline color attributes — cluttering markup and making updates difficult across large websites.
+  </p>
+
+  <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;h1&gt;This is a heading&lt;/h1&gt;
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    CSS was introduced by W3C to offload layout logic — simplifying web development and allowing centralized control.
+  </p>
+
+  <h3 class="text-lg font-semibold text-blue-500 mb-2">💾 External Stylesheets</h3>
+
+  <p class="text-gray-700 mb-2">
+    You can save all styles in one file and apply them to multiple HTML pages:
+  </p>
+
+  <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;link rel="stylesheet" href="styles.css"&gt;
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    With just one file change, you can transform the look of an entire site.
+  </p>
+
+  <h3 class="text-lg font-semibold text-blue-500 mb-2">🎭 CSS Demo Concept</h3>
+
+  <p class="text-gray-700 mb-4">
+    One HTML page styled with different stylesheets can look dramatically different. Just link a new stylesheet, and the layout, fonts, colors — everything — will update.
+  </p>
+
+  <div class="grid grid-cols-2 gap-6 mt-4">
+    <div class="border p-4 rounded-lg bg-blue-100">
+      <h2 class="text-xl font-bold text-blue-800 mb-2">Stylesheet 1</h2>
+      <div class="bg-white p-3 rounded shadow text-gray-800">
+        <h1 style="color: darkblue; font-family: serif;">Welcome</h1>
+        <p style="font-size: 16px;">Classic serif style with deep blue heading.</p>
+      </div>
+    </div>
+
+    <div class="border p-4 rounded-lg bg-blue-100">
+      <h2 class="text-xl font-bold text-blue-800 mb-2">Stylesheet 2</h2>
+      <div class="bg-gray-800 p-3 rounded shadow text-white">
+        <h1 style="color: lightblue; font-family: sans-serif;">Welcome</h1>
+        <p style="font-size: 18px;">Dark mode with light text and airy spacing.</p>
+      </div>
+    </div>
+
+    <div class="border p-4 rounded-lg bg-blue-100">
+      <h2 class="text-xl font-bold text-blue-800 mb-2">Stylesheet 3</h2>
+      <div class="bg-blue-50 p-3 rounded shadow text-gray-700">
+        <h1 style="text-transform: uppercase; font-weight: bold;">Welcome</h1>
+        <p style="letter-spacing: 1px;">Modern layout with uppercase title and tracking.</p>
+      </div>
+    </div>
+
+    <div class="border p-4 rounded-lg bg-blue-100">
+      <h2 class="text-xl font-bold text-blue-800 mb-2">Stylesheet 4</h2>
+      <div class="bg-gradient-to-r from-blue-300 to-purple-300 p-3 rounded shadow text-white">
+        <h1 style="font-style: italic;">Welcome</h1>
+        <p style="font-size: 20px;">Gradient background with stylish emphasis.</p>
+      </div>
+    </div>
+  </div>
+
+  <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;link rel="stylesheet" href="style1.css"&gt;
+&lt;link rel="stylesheet" href="style2.css"&gt;
+&lt;link rel="stylesheet" href="style3.css"&gt;
+&lt;link rel="stylesheet" href="style4.css"&gt;
+  </pre>
+
+  <p class="text-gray-700 mb-4 italic">
+    Use browser dev tools to toggle stylesheets or simulate different devices.
+  </p>
+
+  <h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does CSS stand for?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Computer Style Syntax</label></li>
+    <li><label><input type="radio" name="q1"> Cascading Style Sheets</label></li>
+    <li><label><input type="radio" name="q1"> Creative Styling Source</label></li>
+  </ul>
+
+  <button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+    Mark as Complete
+  </button>
+
+</body>
+</html>

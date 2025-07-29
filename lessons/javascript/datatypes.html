@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Data Types | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Data Types</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript variables can hold different types of data. These types determine how values behave, how they’re stored, and how they interact with other values. JavaScript is <strong>dynamically typed</strong>, meaning a variable’s type can change during execution.
+  </p>
+
+  <!-- Primitive vs Reference Types -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Primitive vs Reference Types</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><strong>Primitive Types:</strong> immutable, stored by value
+      <ul class="ml-4 list-disc">
+        <li><code>String</code> — text (<code>"Hello"</code>)</li>
+        <li><code>Number</code> — integers or decimals (<code>42</code>, <code>3.14</code>)</li>
+        <li><code>Boolean</code> — <code>true</code> or <code>false</code></li>
+        <li><code>Undefined</code> — declared but not assigned</li>
+        <li><code>Null</code> — explicitly empty</li>
+        <li><code>Symbol</code> — unique identifiers (advanced)</li>
+        <li><code>BigInt</code> — large integers beyond <code>Number.MAX_SAFE_INTEGER</code></li>
+      </ul>
+    </li>
+    <li><strong>Reference Types:</strong> mutable, stored by reference
+      <ul class="ml-4 list-disc">
+        <li><code>Object</code> — key-value pairs (<code>{ name: "User" }</code>)</li>
+        <li><code>Array</code> — ordered list (<code>[1, 2, 3]</code>)</li>
+        <li><code>Function</code> — executable code blocks</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- Syntax Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Syntax Example</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let name = "User";               // String
+let age = 25;                    // Number
+let isStudent = true;           // Boolean
+let score;                      // Undefined
+let empty = null;               // Null
+let user = { name: "User" };    // Object
+let grades = [90, 85, 88];      // Array
+let greet = function() { return "Hi"; }; // Function
+let big = 12345678901234567890n; // BigInt
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>typeof</code> to inspect a variable’s type. Note that <code>typeof null</code> returns <code>"object"</code> — this is a known quirk in JavaScript.
+  </p>
+
+  <!-- Primitive Types Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 Primitive Types</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Inspect Primitives</span>
+      <button onclick="showPrimitiveTypes()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="primitiveOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Reference Types Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 Reference Types</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Inspect References</span>
+      <button onclick="showReferenceTypes()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="referenceOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function showPrimitiveTypes() {
+      let name = "User";
+      let age = 25;
+      let isStudent = true;
+      let score;
+      let empty = null;
+      let big = 12345678901234567890n;
+
+      const output = [
+        `name → ${typeof name}`,
+        `age → ${typeof age}`,
+        `isStudent → ${typeof isStudent}`,
+        `score → ${typeof score}`,
+        `empty → ${typeof empty}`,
+        `big → ${typeof big}`
+      ];
+
+      document.getElementById("primitiveOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-circle text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    function showReferenceTypes() {
+      let user = { name: "User" };
+      let grades = [90, 85, 88];
+      let greet = function () { return "Hi"; };
+
+      const output = [
+        `user → ${typeof user}`,
+        `grades → ${typeof grades}`,
+        `greet → ${typeof greet}`
+      ];
+
+      document.getElementById("referenceOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-box text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>typeof null</code> returns <code>"object"</code> — a legacy bug</li>
+    <li><code>typeof []</code> also returns <code>"object"</code> — use <code>Array.isArray()</code> to check</li>
+    <li>Functions are objects with callable behavior</li>
+    <li>JavaScript variables can change types — dynamic typing means flexibility but requires caution</li>
+    <li>Use <code>BigInt</code> for numbers beyond <code>2^53 - 1</code></li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which of the following returns <code>"object"</code> when checked with <code>typeof</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> null</label></li>
+    <li><label><input type="radio" name="q1"> array</label></li>
+    <li><label><input type="radio" name="q1"> both</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

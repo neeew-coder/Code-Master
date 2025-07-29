@@ -1,0 +1,66 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Performance Best Practices</h2>
+
+<p class="mb-6 text-gray-700">
+CSS performance matters for rendering speed, layout recalculations, and overall user experience. Clean, scoped, and optimized styles minimize browser work and improve interactivity — especially on mobile.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🚀 Efficient Selectors</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Target elements directly: avoid deep descendant chains like <code>div ul li a</code></li>
+  <li>Prefer class selectors: <code>.btn</code> is faster than <code>ul > li:first-child a</code></li>
+  <li>Avoid universal <code>*</code> or overly generic selectors</li>
+  <li>Minimize use of <code>:nth-child()</code> unless needed — slows matching</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 Reduce Layout Reflows</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>transform</code> and <code>opacity</code> for animations — not <code>top/left</code> or <code>width</code></li>
+  <li>Group layout changes into one class toggle or style change</li>
+  <li>Limit use of table layouts — they’re slower to reflow</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Minimize File Size</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Remove unused selectors or obsolete rules</li>
+  <li>Bundle styles into fewer files to reduce HTTP requests</li>
+  <li>Minify in production: strip comments, whitespace, and line breaks</li>
+  <li>Prefer shorthand properties where possible</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Design Best Practices</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use variables or utility classes for reuse and consistency</li>
+  <li>Scope rules to specific sections with unique classes</li>
+  <li>Load critical styles inline to speed up rendering of above-the-fold content</li>
+  <li>Use media queries smartly — don’t over-nest them</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Optimization Snapshot</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* Bad: Overqualified and inefficient */
+div.container ul li a.button {
+  color: blue;
+}
+
+/* Better: Direct, scoped */
+.button {
+  color: blue;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which animation property avoids layout recalculation and performs better?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> left</label></li>
+  <li><label><input type="radio" name="q1"> width</label></li>
+  <li><label><input type="radio" name="q1"> transform</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

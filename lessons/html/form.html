@@ -1,0 +1,143 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Forms</h2>
+
+<p class="mb-6 text-gray-700">
+HTML forms are used to collect user input. This input is typically sent to a server for processing. Forms contain fields like text boxes, radio buttons, checkboxes, and submit buttons.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 The <code>&lt;form&gt;</code> Element</h3>
+
+<p class="mb-4 text-gray-700">
+The <code>&lt;form&gt;</code> element wraps all input fields. It defines how data is grouped and where it will be sent. The <code>action</code> attribute specifies the server endpoint, and <code>method</code> defines how data is sent (e.g. <code>GET</code> or <code>POST</code>).
+</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;form action=&quot;/submit.php&quot; method=&quot;post&quot;&gt;
+  ...form elements...
+&lt;/form&gt;
+</pre>
+
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">✏️ Text Fields</h3>
+
+<p class="mb-2 text-gray-700">
+Single-line input using <code>&lt;input type="text"&gt;</code>.
+</p>
+
+<!-- Preview -->
+<div class="bg-gray-300 border rounded px-4 py-3 mb-4 w-[300px] text-gray-700">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" style="width:100%;"><br><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" style="width:100%;">
+</div>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;form&gt;
+  &lt;label for=&quot;fname&quot;&gt;First name:&lt;/label&gt;&lt;br&gt;
+  &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot;&gt;&lt;br&gt;
+  &lt;label for=&quot;lname&quot;&gt;Last name:&lt;/label&gt;&lt;br&gt;
+  &lt;input type=&quot;text&quot; id=&quot;lname&quot; name=&quot;lname&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎯 Radio Buttons</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;input type="radio"&gt;</code> to allow users to select ONE option.
+</p>
+
+<!-- Preview -->
+<form class="text-gray-700 mb-2 text-sm">
+  <p class="font-semibold mb-2">Choose your favorite Web language:</p>
+  <input type="radio" id="html" name="fav_language">
+  <label for="html">HTML</label><br>
+  <input type="radio" id="css" name="fav_language">
+  <label for="css">CSS</label><br>
+  <input type="radio" id="javascript" name="fav_language">
+  <label for="javascript">JavaScript</label>
+</form>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;form&gt;
+  &lt;input type=&quot;radio&quot; id=&quot;html&quot; name=&quot;fav_language&quot;&gt;
+  &lt;label for=&quot;html&quot;&gt;HTML&lt;/label&gt;&lt;br&gt;
+
+  &lt;input type=&quot;radio&quot; id=&quot;css&quot; name=&quot;fav_language&quot;&gt;
+  &lt;label for=&quot;css&quot;&gt;CSS&lt;/label&gt;&lt;br&gt;
+
+  &lt;input type=&quot;radio&quot; id=&quot;javascript&quot; name=&quot;fav_language&quot;&gt;
+  &lt;label for=&quot;javascript&quot;&gt;JavaScript&lt;/label&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">☑️ Checkboxes</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;input type="checkbox"&gt;</code> for multiple selections.
+</p>
+
+<!-- Preview -->
+<form class="text-gray-700 mb-2 text-sm">
+  <input type="checkbox" id="bike">
+  <label for="bike"> I have a bike</label><br>
+  <input type="checkbox" id="car">
+  <label for="car"> I have a car</label><br>
+  <input type="checkbox" id="boat">
+  <label for="boat"> I have a boat</label>
+</form>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;form&gt;
+  &lt;input type=&quot;checkbox&quot; id=&quot;vehicle1&quot; name=&quot;vehicle1&quot; value=&quot;Bike&quot;&gt;
+  &lt;label for=&quot;vehicle1&quot;&gt; I have a bike&lt;/label&gt;&lt;br&gt;
+
+  &lt;input type=&quot;checkbox&quot; id=&quot;vehicle2&quot; name=&quot;vehicle2&quot; value=&quot;Car&quot;&gt;
+  &lt;label for=&quot;vehicle2&quot;&gt; I have a car&lt;/label&gt;&lt;br&gt;
+
+  &lt;input type=&quot;checkbox&quot; id=&quot;vehicle3&quot; name=&quot;vehicle3&quot; value=&quot;Boat&quot;&gt;
+  &lt;label for=&quot;vehicle3&quot;&gt; I have a boat&lt;/label&gt;
+&lt;/form&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📤 Submit Button</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;input type="submit"&gt;</code> to send data to a server. The <code>action</code> attribute defines the endpoint.
+</p>
+
+<!-- Preview -->
+<form class="text-gray-700 mb-2 text-sm" action="/action_page.php">
+  <label for="fname">First name:</label><br>
+  <input type="text" id="fname" name="fname" value="John"><br>
+  <label for="lname">Last name:</label><br>
+  <input type="text" id="lname" name="lname" value="Doe"><br><br>
+  <input type="submit" value="Submit">
+</form>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;form action=&quot;/action_page.php&quot;&gt;
+  &lt;label for=&quot;fname&quot;&gt;First name:&lt;/label&gt;&lt;br&gt;
+  &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot; value=&quot;John&quot;&gt;&lt;br&gt;
+  
+  &lt;label for=&quot;lname&quot;&gt;Last name:&lt;/label&gt;&lt;br&gt;
+  &lt;input type=&quot;text&quot; id=&quot;lname&quot; name=&quot;lname&quot; value=&quot;Doe&quot;&gt;&lt;br&gt;&lt;br&gt;
+  
+  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+&lt;/form&gt;
+</pre>
+
+<p class="text-sm text-gray-500 italic mb-6">Note: Inputs must have a <code>name</code> attribute to be submitted.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">What is the correct HTML element for defining a form?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> &lt;schema&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;ff&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;form&gt;</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Sets | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Sets</h2>
+
+  <p class="mb-6 text-gray-700">
+    A JavaScript <code>Set</code> is a collection of unique values. Each value can only occur once. Values can be of any type — primitives or objects.
+  </p>
+
+  <!-- Create from Array -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Create from Array</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const letters = new Set(["a", "b", "c"]);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Create from Array</span>
+      <button onclick="createFromArray()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="arrayOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Add Values -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➕ Add Values</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const letters = new Set();
+letters.add("a");
+letters.add("b");
+letters.add("c");
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Add Values</span>
+      <button onclick="addValues()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="addOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Add Duplicates -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🚫 Add Duplicates</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+letters.add("c");
+letters.add("c");
+letters.add("c");
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Add Duplicates</span>
+      <button onclick="addDuplicates()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="duplicateOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- List Elements -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📋 List Elements</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+for (const x of letters) {
+  text += x;
+}
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ List Elements</span>
+      <button onclick="listElements()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="listOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Type Inspection -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 Type Inspection</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+typeof letters;         // "object"
+letters instanceof Set; // true
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Inspect Type</span>
+      <button onclick="inspectType()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="typeOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function createFromArray() {
+      const letters = new Set(["a", "b", "c"]);
+      let result = "";
+      for (const x of letters) result += x + " ";
+      document.getElementById("arrayOutput").innerHTML = result.trim();
+    }
+
+    function addValues() {
+      const letters = new Set();
+      letters.add("a");
+      letters.add("b");
+      letters.add("c");
+      let result = "";
+      for (const x of letters) result += x + " ";
+      document.getElementById("addOutput").innerHTML = result.trim();
+    }
+
+    function addDuplicates() {
+      const letters = new Set();
+      letters.add("a");
+      letters.add("b");
+      letters.add("c");
+      letters.add("c");
+      letters.add("c");
+      let result = "";
+      for (const x of letters) result += x + " ";
+      document.getElementById("duplicateOutput").innerHTML = result.trim();
+    }
+
+    function listElements() {
+      const letters = new Set(["a", "b", "c"]);
+      let result = "";
+      for (const x of letters) result += x + " ";
+      document.getElementById("listOutput").innerHTML = result.trim();
+    }
+
+    function inspectType() {
+      const letters = new Set(["a", "b", "c"]);
+      const output = [
+        `typeof letters → ${typeof letters}`,
+        `letters instanceof Set → ${letters instanceof Set}`
+      ];
+      document.getElementById("typeOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-info-circle text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Sets store unique values only — duplicates are ignored</li>
+    <li>Use <code>add()</code> to insert values</li>
+    <li>Use <code>for...of</code> to iterate over a Set</li>
+    <li><code>typeof</code> returns <code>"object"</code> for Sets</li>
+    <li><code>instanceof Set</code> returns <code>true</code> for Set instances</li>
+  </ul>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What happens when you add duplicate values to a Set?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> All duplicates are stored</label></li>
+    <li><label><input type="radio" name="q1"> Only the first occurrence is stored</label></li>
+    <li><label><input type="radio" name="q1"> An error is thrown</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

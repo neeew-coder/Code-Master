@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Introduction | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Introduction</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript is a <strong>scripting language</strong> that runs in the browser — enabling interactivity, logic, and dynamic content. It powers everything from button clicks to animations, form validation, and full web apps.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 How JavaScript Works</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Runs inside the browser’s JavaScript engine (like V8 in Chrome)</li>
+    <li>Executes code line-by-line, top to bottom</li>
+    <li>Can manipulate HTML and CSS via the DOM</li>
+    <li>Responds to user actions: clicks, typing, scrolling</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧩 Basic Syntax</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+console.log("Hello, JavaScript!");
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    <code>console.log()</code> outputs messages to the browser’s developer console — useful for testing and debugging.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="space-y-6">
+
+    <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-left">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-yellow-500 text-sm">🔔 Alert Preview</span>
+        <button onclick="alert('Hello, JavaScript!')" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+          Click Me
+        </button>
+      </div>
+      <div class="text-sm text-gray-700">
+        This button triggers a JavaScript <code>alert()</code> — a simple way to display messages to the user.
+      </div>
+    </div>
+
+    <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-left">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-yellow-500 text-sm">🖥️ Console Preview</span>
+        <button onclick="console.log('Hello, JavaScript!')" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+          Log to Console
+        </button>
+      </div>
+      <div class="text-sm text-gray-700">
+        Open your browser’s developer console to see the output from <code>console.log()</code>.
+      </div>
+    </div>
+
+  </div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>JavaScript is case-sensitive: <code>console</code> ≠ <code>Console</code></li>
+    <li>Semicolons are optional but recommended for clarity</li>
+    <li>Use <code>console.log()</code> to test values and flow</li>
+    <li>JavaScript runs after the HTML loads — place scripts at the bottom or use <code>defer</code></li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    Which method displays a message in the browser’s developer console?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> alert()</label></li>
+    <li><label><input type="radio" name="q1"> console.log()</label></li>
+    <li><label><input type="radio" name="q1"> prompt()</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

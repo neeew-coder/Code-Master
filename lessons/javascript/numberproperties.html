@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Number Properties | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Number Properties</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>Number</code> object provides static properties that describe numeric limits and special values. These are useful for validation, boundary checks, and understanding JavaScript's numeric behavior.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Common Properties</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Number.MAX_VALUE;           // Largest possible number
+Number.MIN_VALUE;           // Smallest positive number
+Number.NaN;                 // Not-a-Number value
+Number.POSITIVE_INFINITY;   // Infinity
+Number.NEGATIVE_INFINITY;   // -Infinity
+Number.MAX_SAFE_INTEGER;    // 2^53 - 1
+Number.MIN_SAFE_INTEGER;    // -(2^53 - 1)
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    These properties are read-only and accessed directly from the <code>Number</code> object. They help you handle edge cases and avoid precision errors.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">📐 Property Demo</span>
+      <button onclick="showNumberProperties()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Show Properties
+      </button>
+    </div>
+    <div id="numberPropOutput" class="text-sm text-gray-700 mt-2 space-y-1">
+      Click to view numeric limits and special values.
+    </div>
+  </div>
+
+  <script>
+    function showNumberProperties() {
+      const output = [
+        `MAX_VALUE: ${Number.MAX_VALUE}`,
+        `MIN_VALUE: ${Number.MIN_VALUE}`,
+        `MAX_SAFE_INTEGER: ${Number.MAX_SAFE_INTEGER}`,
+        `MIN_SAFE_INTEGER: ${Number.MIN_SAFE_INTEGER}`,
+        `NaN: ${Number.NaN}`,
+        `POSITIVE_INFINITY: ${Number.POSITIVE_INFINITY}`,
+        `NEGATIVE_INFINITY: ${Number.NEGATIVE_INFINITY}`
+      ];
+
+      document.getElementById("numberPropOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-ruler-combined text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>Number.MAX_VALUE</code> ≈ 1.7976931348623157e+308</li>
+    <li><code>Number.MIN_VALUE</code> ≈ 5e-324 (smallest positive number)</li>
+    <li><code>Number.NaN</code> is returned from invalid math like <code>0 / 0</code></li>
+    <li><code>Number.MAX_SAFE_INTEGER</code> is <code>2^53 - 1</code></li>
+    <li>Use these properties to validate and guard against overflow</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>Number.MAX_SAFE_INTEGER</code> represent?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> The largest decimal number</label></li>
+    <li><label><input type="radio" name="q1"> The largest integer with safe precision</label></li>
+    <li><label><input type="radio" name="q1"> The smallest positive number</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

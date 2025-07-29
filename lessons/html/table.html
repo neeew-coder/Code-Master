@@ -1,0 +1,137 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Tables</h2>
+
+<p class="mb-4 text-gray-700">
+HTML tables allow developers to organize data into rows and columns. You can use tables for lists, comparisons, schedules, and more.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Basic Table Structure</h3>
+<p class="mb-2 text-gray-700">
+A table is made up of rows (<code>&lt;tr&gt;</code>) and cells (<code>&lt;td&gt;</code> or <code>&lt;th&gt;</code>).
+</p>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Company&lt;/th&gt;
+    &lt;th&gt;Contact&lt;/th&gt;
+    &lt;th&gt;Country&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Alfreds Futterkiste&lt;/td&gt;
+    &lt;td&gt;Maria Anders&lt;/td&gt;
+    &lt;td&gt;Germany&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Centro comercial Moctezuma&lt;/td&gt;
+    &lt;td&gt;Francisco Chang&lt;/td&gt;
+    &lt;td&gt;Mexico&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<!-- Table Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 overflow-auto">
+  <table class="table-auto w-full border border-gray-300" style="color: black;">
+    <thead class="bg-orange-100">
+      <tr>
+        <th class="border px-4 py-2 text-left">Company</th>
+        <th class="border px-4 py-2 text-left">Contact</th>
+        <th class="border px-4 py-2 text-left">Country</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border px-4 py-2">Alfreds Futterkiste</td>
+        <td class="border px-4 py-2">Maria Anders</td>
+        <td class="border px-4 py-2">Germany</td>
+      </tr>
+      <tr>
+        <td class="border px-4 py-2">Centro comercial Moctezuma</td>
+        <td class="border px-4 py-2">Francisco Chang</td>
+        <td class="border px-4 py-2">Mexico</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔤 Table Cells</h3>
+<p class="mb-2 text-gray-700">
+A cell is defined with <code>&lt;td&gt;</code> for data or <code>&lt;th&gt;</code> for header.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Emil&lt;/td&gt;
+    &lt;td&gt;Tobias&lt;/td&gt;
+    &lt;td&gt;Linus&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 Table Rows</h3>
+<p class="mb-2 text-gray-700">
+A row begins with <code>&lt;tr&gt;</code> and contains one or more cells.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Emil&lt;/td&gt;
+    &lt;td&gt;Tobias&lt;/td&gt;
+    &lt;td&gt;Linus&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;16&lt;/td&gt;
+    &lt;td&gt;14&lt;/td&gt;
+    &lt;td&gt;10&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🏷️ Table Headers</h3>
+<p class="mb-2 text-gray-700">
+Use <code>&lt;th&gt;</code> for header cells — these are bold and centered by default.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Person 1&lt;/th&gt;
+    &lt;th&gt;Person 2&lt;/th&gt;
+    &lt;th&gt;Person 3&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Emil&lt;/td&gt;
+    &lt;td&gt;Tobias&lt;/td&gt;
+    &lt;td&gt;Linus&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is the correct tag for a table cell?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>&lt;tc&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>&lt;td&gt;</code></strong></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;tr&gt;</code></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>&lt;table&gt;</code> creates a table</li>
+  <li><code>&lt;tr&gt;</code> creates a row</li>
+  <li><code>&lt;td&gt;</code> is a data cell</li>
+  <li><code>&lt;th&gt;</code> is a header cell</li>
+  <li>Cell content can include text, images, links, or other HTML elements</li>
+</ul>

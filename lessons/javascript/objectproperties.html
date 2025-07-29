@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Object Properties | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Object Properties</h2>
+
+  <p class="mb-6 text-gray-700">
+    Object properties are the named values inside an object. You can access, update, add, or delete properties using dot or bracket notation. Properties can hold any data type — including functions, arrays, or other objects.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Property Access & Modification</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let user = {
+  name: "User",
+  age: 25
+};
+
+// Access
+console.log(user.name);        // "User"
+console.log(user["age"]);      // 25
+
+// Update
+user.age = 26;
+
+// Add
+user.isStudent = true;
+
+// Delete
+delete user.name;
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use dot notation for known keys and bracket notation for dynamic or special keys. Deleting a property removes it from the object entirely.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-yellow-50 p-4 rounded text-center space-y-4">
+    <button onclick="showProperties()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+      Show Initial Properties
+    </button>
+    <button onclick="updateProperties()" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded">
+      Update & Add Properties
+    </button>
+    <button onclick="deleteProperty()" class="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold px-4 py-2 rounded">
+      Delete Property
+    </button>
+
+    <div id="propertyOutput" class="mt-4 bg-white border border-yellow-300 rounded-lg p-4 text-left text-sm text-gray-800 shadow-sm space-y-2">
+      <!-- Output will be injected here -->
+    </div>
+  </div>
+
+  <script>
+    let user = {
+      name: "User",
+      age: 25
+    };
+
+    function renderOutput(lines) {
+      document.getElementById("propertyOutput").innerHTML = lines.map(line => `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-circle text-yellow-400 text-xs"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    function showProperties() {
+      const output = [
+        `Name: ${user.name}`,
+        `Age: ${user.age}`,
+        `Student: ${user.isStudent ?? "not defined"}`
+      ];
+      renderOutput(output);
+    }
+
+    function updateProperties() {
+      user.age = 26;
+      user.isStudent = true;
+      const output = [
+        `Name: ${user.name}`,
+        `Age (updated): ${user.age}`,
+        `Student (added): ${user.isStudent}`
+      ];
+      renderOutput(output);
+    }
+
+    function deleteProperty() {
+      delete user.name;
+      const output = [
+        `Name (deleted): ${user.name ?? "undefined"}`,
+        `Age: ${user.age}`,
+        `Student: ${user.isStudent}`
+      ];
+      renderOutput(output);
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Use <code>object.key</code> or <code>object["key"]</code> to access properties</li>
+    <li>Use <code>delete object.key</code> to remove a property</li>
+    <li>Use <code>in</code> or <code>hasOwnProperty()</code> to check if a property exists</li>
+    <li>Bracket notation allows dynamic keys: <code>object[key]</code></li>
+    <li>Properties can be added or updated at any time</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>delete user.name</code> do?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Sets <code>user.name</code> to <code>null</code></label></li>
+    <li><label><input type="radio" name="q1"> Removes <code>name</code> from the object</label></li>
+    <li><label><input type="radio" name="q1"> Makes <code>user.name</code> undefined</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript toString() | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript toString()</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>toString()</code> method converts values to readable strings. It’s available on arrays, numbers, dates, functions, and objects — and can be customized.
+  </p>
+
+  <!-- Array toString() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Array toString()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runArrayToString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = ["Banana", "Orange", "Apple", "Mango"];
+let myList = fruits.toString();
+    </pre>
+    <div id="arrayOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Date toString() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📅 Date toString()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runDateToString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const d = new Date();
+let text = d.toString();
+    </pre>
+    <div id="dateOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Number toString() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔢 Number toString()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runNumberToString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 123;
+let text = x.toString();
+let binary = x.toString(2);
+    </pre>
+    <div id="numberOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Function toString() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Function toString()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runFunctionToString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+function greet() {
+  return "Hello!";
+}
+let source = greet.toString();
+    </pre>
+    <div id="functionOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Object toString() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧱 Object toString()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runObjectToString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let person = {
+  firstname: "John",
+  lastname: "Doe"
+};
+let text = person.toString(); // [object Object]
+    </pre>
+    <div id="objectOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runArrayToString() {
+      const fruits = ["Banana", "Orange", "Apple", "Mango"];
+      document.getElementById("arrayOutput").innerHTML = fruits.toString();
+    }
+
+    function runDateToString() {
+      const d = new Date();
+      document.getElementById("dateOutput").innerHTML = d.toString();
+    }
+
+    function runNumberToString() {
+      const x = 123;
+      const text = x.toString();
+      const binary = x.toString(2);
+      document.getElementById("numberOutput").innerHTML = `Decimal: ${text}<br>Binary: ${binary}`;
+    }
+
+    function runFunctionToString() {
+      function greet() {
+        return "Hello!";
+      }
+      document.getElementById("functionOutput").innerHTML = greet.toString();
+    }
+
+    function runObjectToString() {
+      const person = { firstname: "John", lastname: "Doe" };
+      document.getElementById("objectOutput").innerHTML = person.toString();
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>toString()</code> return when called on an object?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> A JSON string</label></li>
+    <li><label><input type="radio" name="q1"> "[object Object]"</label></li>
+    <li><label><input type="radio" name="q1"> The object's keys</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

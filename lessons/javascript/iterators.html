@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Iterator Helpers | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Iterator Helpers</h2>
+
+  <p class="mb-6 text-gray-700">
+    ECMAScript 2025 introduces powerful helper methods for iterators, enabling functional transformations like <code>map()</code>, <code>filter()</code>, <code>reduce()</code>, and more — directly on iterator streams.
+  </p>
+
+  <!-- Iterator.from() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📥 Iterator.from()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Create Iterator</span>
+      <button onclick="runFrom()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myIterator = Iterator.from([1, 2, 3]);
+for (const x of myIterator) {
+  console.log(x);
+}
+    </pre>
+    <div id="fromOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- map() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 map()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Transform Elements</span>
+      <button onclick="runMap()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myIterator = Iterator.from("123456");
+const mapped = myIterator.map(x => x * 2);
+    </pre>
+    <div id="mapOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- filter() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 filter()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Filter Elements</span>
+      <button onclick="runFilter()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myIterator = Iterator.from([32, 33, 16, 40]);
+const filtered = myIterator.filter(x => x > 18);
+    </pre>
+    <div id="filterOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- flatMap() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧩 flatMap()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Expand Elements</span>
+      <button onclick="runFlatMap()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myIterator = Iterator.from([1, 2, 3]);
+const expanded = myIterator.flatMap(x => [x, x * 10]);
+    </pre>
+    <div id="flatMapOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- take() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🎯 take()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Take Elements</span>
+      <button onclick="runTake()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myIterator = Iterator.from([1, 2, 3, 4, 5]);
+const firstThree = myIterator.take(3);
+    </pre>
+    <div id="takeOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- drop() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🚫 drop()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Drop Elements</span>
+      <button onclick="runDrop()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myIterator = Iterator.from([1, 2, 3, 4, 5]);
+const afterTwo = myIterator.drop(2);
+    </pre>
+    <div id="dropOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runFrom() {
+      const iter = Iterator.from([1, 2, 3]);
+      document.getElementById("fromOutput").innerHTML = [...iter].join(", ");
+    }
+
+    function runMap() {
+      const iter = Iterator.from("123456");
+      const mapped = iter.map(x => Number(x) * 2);
+      document.getElementById("mapOutput").innerHTML = [...mapped].join(", ");
+    }
+
+    function runFilter() {
+      const iter = Iterator.from([32, 33, 16, 40]);
+      const filtered = iter.filter(x => x > 18);
+      document.getElementById("filterOutput").innerHTML = [...filtered].join(", ");
+    }
+
+    function runFlatMap() {
+      const iter = Iterator.from([1, 2, 3]);
+      const expanded = iter.flatMap(x => [x, x * 10]);
+      document.getElementById("flatMapOutput").innerHTML = [...expanded].join(", ");
+    }
+
+    function runTake() {
+      const iter = Iterator.from([1, 2, 3, 4, 5]);
+      const firstThree = iter.take(3);
+      document.getElementById("takeOutput").innerHTML = [...firstThree].join(", ");
+    }
+
+    function runDrop() {
+      const iter = Iterator.from([1, 2, 3, 4, 5]);
+      const afterTwo = iter.drop(2);
+      document.getElementById("dropOutput").innerHTML = [...afterTwo].join(", ");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>Iterator.from()</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> An array</label></li>
+    <li><label><input type="radio" name="q1"> A generator</label></li>
+    <li><label><input type="radio" name="q1"> An iterator object</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

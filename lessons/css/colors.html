@@ -1,0 +1,91 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Colors</h2>
+
+<p class="mb-6 text-gray-700">
+CSS lets you define colors using <strong>named values</strong>, <strong>hex codes</strong>, <strong>RGB</strong>, and <strong>HSL</strong> — each method gives you precise control over the appearance of text, backgrounds, borders, and more.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Named Colors</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+color: red;
+background-color: lightblue;
+border-color: orange;
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <div class="text-center p-4 rounded-lg bg-red-500 text-white">red</div>
+  <div class="text-center p-4 rounded-lg bg-blue-200 text-black">lightblue</div>
+  <div class="text-center p-4 rounded-lg bg-orange-400 text-black">orange</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 HEX Colors</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+color: #ff0000;     /* red */
+color: #00ff00;     /* green */
+color: #0000ff;     /* blue */
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <div class="text-center p-4 rounded-lg" style="background-color: #ff0000; color: white;">#ff0000</div>
+  <div class="text-center p-4 rounded-lg" style="background-color: #00ff00;">#00ff00</div>
+  <div class="text-center p-4 rounded-lg" style="background-color: #0000ff; color: white;">#0000ff</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🌈 RGB Colors</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+color: rgb(255, 0, 0);      /* red */
+color: rgb(0, 255, 0);      /* green */
+color: rgb(0, 0, 255);      /* blue */
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <div class="text-center p-4 rounded-lg" style="background-color: rgb(255,0,0); color: white;">rgb(255,0,0)</div>
+  <div class="text-center p-4 rounded-lg" style="background-color: rgb(0,255,0);">rgb(0,255,0)</div>
+  <div class="text-center p-4 rounded-lg" style="background-color: rgb(0,0,255); color: white;">rgb(0,0,255)</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🌤️ HSL Colors</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+color: hsl(0, 100%, 50%);    /* red */
+color: hsl(120, 100%, 50%);  /* green */
+color: hsl(240, 100%, 50%);  /* blue */
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <div class="text-center p-4 rounded-lg" style="background-color: hsl(0,100%,50%); color: white;">hsl(0,100%,50%)</div>
+  <div class="text-center p-4 rounded-lg" style="background-color: hsl(120,100%,50%);">hsl(120,100%,50%)</div>
+  <div class="text-center p-4 rounded-lg" style="background-color: hsl(240,100%,50%); color: white;">hsl(240,100%,50%)</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Format Comparison</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Format</th><th class="border px-3 py-2">Example</th><th class="border px-3 py-2">Best For</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">Named</td><td class="border px-3 py-2">red</td><td class="border px-3 py-2">Quick use</td></tr>
+    <tr><td class="border px-3 py-2">HEX</td><td class="border px-3 py-2">#ff0000</td><td class="border px-3 py-2">Precise web color</td></tr>
+    <tr><td class="border px-3 py-2">RGB</td><td class="border px-3 py-2">rgb(255,0,0)</td><td class="border px-3 py-2">Dynamic JS styling</td></tr>
+    <tr><td class="border px-3 py-2">HSL</td><td class="border px-3 py-2">hsl(0,100%,50%)</td><td class="border px-3 py-2">Easy theme tweaks</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which CSS color format uses hue, saturation, and lightness?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> HEX</label></li>
+  <li><label><input type="radio" name="q1"> HSL</label></li>
+  <li><label><input type="radio" name="q1"> RGB</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

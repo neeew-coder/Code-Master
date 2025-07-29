@@ -1,0 +1,66 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS max-width</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>max-width</code> property sets the <strong>maximum allowable width</strong> of an element. It prevents content from stretching too wide — especially helpful in responsive layouts and fluid designs.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.element {
+  max-width: 600px;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-center mb-6">
+  <div style="max-width: 600px; margin: 0 auto; padding: 10px; background: white; border: 1px solid #ccc;">
+    This content block won’t stretch beyond <strong>600px</strong>, even on large screens.
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Usage Scenarios</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Prevent container from becoming too wide on desktops</li>
+  <li>Ensure readable line lengths in paragraphs</li>
+  <li>Center content blocks with <code>margin: 0 auto;</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔁 Combining with Width</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.element {
+  width: 100%;
+  max-width: 800px;
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+This sets the container to scale with screen width, but never exceed <code>800px</code>.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 max-width Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use with <code>width: 100%</code> for responsive scaling</li>
+  <li>Combine with <code>margin: auto</code> to center fixed-width blocks</li>
+  <li><code>max-width</code> overrides <code>width</code> if the content grows</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which property prevents a container from stretching too wide?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> width</label></li>
+  <li><label><input type="radio" name="q1"> padding</label></li>
+  <li><label><input type="radio" name="q1"> max-width</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

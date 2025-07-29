@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Where to Place JavaScript | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">Where to Place JavaScript</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript can be placed in different parts of your HTML file — each location affects when and how the code runs. You can write scripts <strong>inline</strong>, in the <code>&lt;head&gt;</code>, at the end of <code>&lt;body&gt;</code>, or in external files.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Inline Script</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;script&gt;
+  console.log("Inline script runs immediately");
+&lt;/script&gt;
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Placed directly in the HTML — runs as soon as the browser reaches it. If placed in the <code>&lt;head&gt;</code>, it may run before the DOM is ready.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 External Script</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;script src="script.js"&gt;&lt;/script&gt;
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Loads JavaScript from a separate file — keeps HTML clean and makes code reusable. Best placed at the end of <code>&lt;body&gt;</code> or with <code>defer</code>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">⏱️ Script Placement Options</h3>
+
+  <table class="w-full text-sm border border-gray-300 mb-6">
+    <thead class="bg-yellow-100">
+      <tr>
+        <th class="border px-3 py-2">Location</th>
+        <th class="border px-3 py-2">Behavior</th>
+        <th class="border px-3 py-2">Best Use</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="border px-3 py-2">&lt;head&gt;</td>
+        <td class="border px-3 py-2">Runs before DOM loads</td>
+        <td class="border px-3 py-2">Use with <code>defer</code> or <code>async</code></td>
+      </tr>
+      <tr>
+        <td class="border px-3 py-2">End of &lt;body&gt;</td>
+        <td class="border px-3 py-2">Runs after HTML is loaded</td>
+        <td class="border px-3 py-2">Safest for DOM manipulation</td>
+      </tr>
+      <tr>
+        <td class="border px-3 py-2">External file</td>
+        <td class="border px-3 py-2">Loaded separately</td>
+        <td class="border px-3 py-2">Keeps code modular</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">📁 External Script Simulation</span>
+      <button onclick="runScript()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Script
+      </button>
+    </div>
+    <div id="output" class="text-sm text-gray-700 mt-2">
+      Click the button to simulate running a script from an external file.
+    </div>
+  </div>
+
+  <script>
+    function runScript() {
+      document.getElementById("output").innerHTML = `
+        <div class="flex items-center gap-2 mt-2">
+          <i class="fas fa-check-circle text-green-500 text-sm"></i>
+          <span>Script executed from external placement!</span>
+        </div>
+      `;
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Place scripts at the end of <code>&lt;body&gt;</code> to ensure HTML is loaded</li>
+    <li>Use <code>defer</code> to delay execution until DOM is ready</li>
+    <li>External scripts improve maintainability and caching</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    Which script placement ensures the DOM is fully loaded before JavaScript runs?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Inside &lt;head&gt; without defer</label></li>
+    <li><label><input type="radio" name="q1"> At the end of &lt;body&gt;</label></li>
+    <li><label><input type="radio" name="q1"> Inline inside &lt;title&gt;</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

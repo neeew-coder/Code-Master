@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Object Display | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Object Display</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript objects can be displayed using loops, built-in methods, or string conversion. These techniques help visualize and extract object data for debugging or rendering.
+  </p>
+
+  <!-- Display Techniques -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Display Techniques</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let user = {
+  name: "User",
+  age: 25,
+  isStudent: true
+};
+
+// Loop through keys
+for (let key in user) {
+  console.log(key + ": " + user[key]);
+}
+
+// Get keys and values
+console.log(Object.keys(user));   // ["name", "age", "isStudent"]
+console.log(Object.values(user)); // ["User", 25, true]
+
+// Convert to string
+console.log(JSON.stringify(user)); // '{"name":"User","age":25,"isStudent":true}'
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>for...in</code> for iteration, <code>Object.keys()</code> and <code>Object.values()</code> for arrays, and <code>JSON.stringify()</code> for readable output.
+  </p>
+
+  <!-- for...in -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔁 for...in Loop</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run for...in</span>
+      <button onclick="runForIn()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="forInOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Object.keys -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🗝️ Object.keys()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Show Keys</span>
+      <button onclick="runKeys()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="keysOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Object.values -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 Object.values()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Show Values</span>
+      <button onclick="runValues()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="valuesOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- JSON.stringify -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧾 JSON.stringify()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Convert to String</span>
+      <button onclick="runStringify()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="stringifyOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const user = {
+      name: "User",
+      age: 25,
+      isStudent: true
+    };
+
+    function runForIn() {
+      let lines = [];
+      for (let key in user) {
+        lines.push(`${key}: ${user[key]}`);
+      }
+      document.getElementById("forInOutput").innerHTML = lines.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-sync text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    function runKeys() {
+      const keys = Object.keys(user).join(", ");
+      document.getElementById("keysOutput").innerHTML = `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-key text-yellow-400 text-xs mt-1"></i>
+          <span>${keys}</span>
+        </div>
+      `;
+    }
+
+    function runValues() {
+      const values = Object.values(user).join(", ");
+      document.getElementById("valuesOutput").innerHTML = `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-box text-yellow-400 text-xs mt-1"></i>
+          <span>${values}</span>
+        </div>
+      `;
+    }
+
+    function runStringify() {
+      const json = JSON.stringify(user);
+      document.getElementById("stringifyOutput").innerHTML = `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-file-alt text-yellow-400 text-xs mt-1"></i>
+          <span>${json}</span>
+        </div>
+      `;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>for...in</code> loops through all enumerable keys</li>
+    <li><code>Object.keys()</code> returns an array of keys</li>
+    <li><code>Object.values()</code> returns an array of values</li>
+    <li><code>JSON.stringify()</code> converts the object to a readable string</li>
+    <li>Use these methods to inspect or render object data dynamically</li>
+  </ul>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>JSON.stringify({ name: "User", age: 25 })</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> ["name", "age"]</label></li>
+    <li><label><input type="radio" name="q1"> "User, 25"</label></li>
+    <li><label><input type="radio" name="q1"> '{"name":"User","age":25}'</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

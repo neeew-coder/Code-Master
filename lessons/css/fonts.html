@@ -1,0 +1,99 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Fonts</h2>
+
+<p class="mb-6 text-gray-700">
+Fonts define the typographic tone of your site. CSS lets you control family, size, style, weight, spacing, and fallback behavior to create readable, expressive text.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📚 Font Families</h3>
+
+<p class="text-gray-700 mb-2">
+Use system fonts, web-safe fonts, or web fonts (like Google Fonts). Always define fallback families.
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+body {
+  font-family: "Arial", sans-serif;
+}
+
+h1 {
+  font-family: "Georgia", serif;
+}
+
+p {
+  font-family: "Courier New", monospace;
+}
+</pre>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+  <p style="font-family: Arial, sans-serif;" class="text-center p-3 bg-blue-50 rounded">Arial Sample</p>
+  <p style="font-family: Georgia, serif;" class="text-center p-3 bg-blue-50 rounded">Georgia Sample</p>
+  <p style="font-family: 'Courier New', monospace;" class="text-center p-3 bg-blue-50 rounded">Courier Sample</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔠 Font Size</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+p {
+  font-size: 16px;
+}
+h1 {
+  font-size: 2em;
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+Use <code>px</code>, <code>em</code>, <code>rem</code>, <code>%</code> — depending on responsiveness goals.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">💪 Font Weight</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+h1 {
+  font-weight: bold;      /* keyword */
+}
+
+p {
+  font-weight: 300;       /* numeric */
+}
+</pre>
+
+<div class="grid grid-cols-2 gap-4 mb-6">
+  <p style="font-weight: bold;" class="bg-blue-100 p-3 rounded">Bold Text</p>
+  <p style="font-weight: 300;" class="bg-blue-100 p-3 rounded">Light Text (300 weight)</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎭 Font Style</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+p {
+  font-style: italic;
+}
+</pre>
+
+<p class="italic bg-blue-50 p-3 rounded mb-6">
+  This text uses <code>font-style: italic;</code>
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Font Notes</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use fallback fonts to ensure rendering if the first choice isn’t supported</li>
+  <li>Web fonts require linking via <code>&lt;link&gt;</code> or <code>@import</code></li>
+  <li><code>em</code> scales relative to parent size; <code>rem</code> scales to root</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which CSS property controls how thick or light the text appears?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> font-style</label></li>
+  <li><label><input type="radio" name="q1"> font-weight</label></li>
+  <li><label><input type="radio" name="q1"> font-variant</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

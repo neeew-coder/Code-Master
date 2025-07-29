@@ -1,0 +1,112 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">How to Add CSS</h2>
+
+<p class="mb-6 text-gray-700">
+There are three main ways to apply CSS to HTML: inline, internal, and external. Each method controls styling, but their use cases differ based on scale and maintainability.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧵 1. Inline CSS</h3>
+
+<p class="text-gray-700 mb-2">
+Style applied directly to the HTML element using the <code>style</code> attribute.
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;p style=&quot;color: blue; font-size: 18px;&quot;&gt;Styled with inline CSS&lt;/p&gt;
+</pre>
+
+<div class="border p-4 rounded bg-blue-50 mb-6">
+  <p style="color: blue; font-size: 18px;">Styled with inline CSS</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 2. Internal CSS</h3>
+
+<p class="text-gray-700 mb-2">
+Style rules placed inside a <code>&lt;style&gt;</code> tag in the <code>&lt;head&gt;</code> section.
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;head&gt;
+  &lt;style&gt;
+    p {
+      color: darkblue;
+      font-size: 18px;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+  &lt;p&gt;This is styled with internal CSS&lt;/p&gt;
+&lt;/body&gt;
+</pre>
+
+<div class="border p-4 rounded bg-blue-50 mb-6">
+  <p style="color: darkblue; font-size: 18px;">This is styled with internal CSS</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🗂️ 3. External CSS</h3>
+
+<p class="text-gray-700 mb-2">
+Styles written in a separate <code>.css</code> file and linked with <code>&lt;link&gt;</code> in the HTML <code>&lt;head&gt;</code>.
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;head&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;style.css&quot;&gt;
+&lt;/head&gt;
+</pre>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* style.css */
+p {
+  color: steelblue;
+  font-size: 18px;
+}
+</pre>
+
+<div class="border p-4 rounded bg-blue-50 mb-6">
+  <p style="color: steelblue; font-size: 18px;">This is styled using an external stylesheet</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Comparison Table</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Method</th><th class="border px-3 py-2">Use Case</th><th class="border px-3 py-2">Pros</th><th class="border px-3 py-2">Cons</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-3 py-2">Inline</td>
+      <td class="border px-3 py-2">Quick one-off styling</td>
+      <td class="border px-3 py-2">Easy to apply</td>
+      <td class="border px-3 py-2">Hard to maintain</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Internal</td>
+      <td class="border px-3 py-2">Single-page projects</td>
+      <td class="border px-3 py-2">Centralized styling</td>
+      <td class="border px-3 py-2">Not reusable across pages</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">External</td>
+      <td class="border px-3 py-2">Multi-page websites</td>
+      <td class="border px-3 py-2">Efficient and reusable</td>
+      <td class="border px-3 py-2">Requires file management</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which method is best for styling multiple pages with consistent design?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Inline CSS</label></li>
+  <li><label><input type="radio" name="q1"> Internal CSS</label></li>
+  <li><label><input type="radio" name="q1"> External CSS</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

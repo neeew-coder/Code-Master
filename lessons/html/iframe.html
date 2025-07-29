@@ -1,0 +1,114 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML <code>&lt;iframe&gt;</code> Element</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>&lt;iframe&gt;</code> tag allows you to embed another webpage inside your current one — useful for tutorials, previews, external videos, or navigation panes.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📌 Syntax</h3>
+
+<pre class="bg-gray-900 p-3 rounded-lg text-sm overflow-x-auto">
+&lt;iframe src="URL" title="Description"&gt;&lt;/iframe&gt;
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li><strong>src</strong>: URL of the embedded page</li>
+  <li><strong>title</strong>: Provides a description for screen readers</li>
+</ul>
+
+---
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Set Height and Width</h3>
+
+<p class="mb-2 text-gray-700">You can control the iframe size using HTML attributes or CSS:</p>
+
+<pre class="bg-gray-900 p-3 rounded-lg text-sm overflow-x-auto">
+&lt;iframe src="https://codemaster.ph" height="300" width="500" title="CodeMaster Demo"&gt;&lt;/iframe&gt;
+</pre>
+
+<pre class="bg-gray-900 p-3 rounded-lg text-sm overflow-x-auto">
+&lt;iframe src="https://codemaster.ph" style="height:300px; width:500px;" title="CodeMaster Demo"&gt;&lt;/iframe&gt;
+</pre>
+
+<!-- Simulated Preview -->
+<div class="border rounded mb-6" style="height:300px; width:500px; background-color:#fafafa; display:flex; align-items:center; justify-content:center; color:#666; border-color: black;">
+  Iframe would load: <em>https://codemaster.ph</em>
+</div>
+
+---
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🚫 Remove or Style Borders</h3>
+
+<p class="mb-2 text-gray-700">Use inline CSS to control border visibility and style:</p>
+
+<pre class="bg-gray-900 p-3 rounded-lg text-sm overflow-x-auto">
+&lt;iframe src="..." style="border:none;" title="No Border Iframe"&gt;&lt;/iframe&gt;
+</pre>
+
+<pre class="bg-gray-900 p-3 rounded-lg text-sm overflow-x-auto">
+&lt;iframe src="..." style="border:2px solid red;" title="Red Border Iframe"&gt;&lt;/iframe&gt;
+</pre>
+
+---
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎯 Targeting an Iframe with a Link</h3>
+
+<p class="mb-2 text-gray-700">
+Assign a <code>name</code> to your iframe and link using <code>target</code>:
+</p>
+
+<pre class="bg-gray-900 p-3 rounded-lg text-sm overflow-x-auto">
+&lt;iframe src="https://codemaster.ph" name="iframe_a" title="CodeMaster Target"&gt;&lt;/iframe&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">🧠 Clicking the link loads Code Master inside the named iframe.---
+</p>
+
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+
+<table class="w-full border border-gray-300 text-sm mb-6" style="color: black;">
+  <thead class="bg-orange-100">
+    <tr>
+      <th class="border px-3 py-2">Feature</th>
+      <th class="border px-3 py-2">Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-3 py-2">Tag</td>
+      <td class="border px-3 py-2"><code>&lt;iframe&gt;</code></td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">URL attribute</td>
+      <td class="border px-3 py-2"><code>src</code></td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Accessibility</td>
+      <td class="border px-3 py-2"><code>title</code> describes frame for screen readers</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Sizing</td>
+      <td class="border px-3 py-2"><code>height</code> & <code>width</code> or inline <code>style</code></td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Border Control</td>
+      <td class="border px-3 py-2"><code>style="border:none;"</code> or custom border</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Navigation</td>
+      <td class="border px-3 py-2"><code>name</code> on iframe + <code>target</code> on link</td>
+    </tr>
+  </tbody>
+</table>
+
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">Which <code>&lt;iframe&gt;</code> attribute specifies the URL?</p>
+<ul class="mb-6 space-y-2"  style="color: black;">
+  <li><label><input type="radio" name="q1"> href</label></li>
+  <li><label><input type="radio" name="q1"> src</label></li>
+  <li><label><input type="radio" name="q1"> url</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">Mark as Complete</button>

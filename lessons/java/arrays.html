@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Arrays | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-600">Java Arrays</h2>
+
+  <p class="mb-4 text-gray-700">
+    Arrays store multiple values of the same type. In Java, arrays are fixed in size and accessed by index.
+  </p>
+
+  <div class="mb-6">
+    <h3 class="text-xl font-semibold text-red-500 mb-2">📌 Syntax Example</h3>
+  </div>
+
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-between items-center">
+      <p class="text-gray-600">Edit and run the code below:</p>
+      <button onclick="showJavaArrayOutput()" class="bg-red-500 hover:bg-red-600 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+
+    <textarea id="java-array-code" rows="10" class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full resize-none">
+int[] scores = {85, 90, 78, 92, 88};
+
+for (int i = 0; i < scores.length; i++) {
+  System.out.println("Score " + (i + 1) + ": " + scores[i]);
+}
+    </textarea>
+    <div class=" bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700" id="java-array-output-placeholder"> 
+      Output will appear here after running the code.
+    </div>
+    <section id="java-array-output" class=" bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700 hidden">
+      Score 1: 85<br>
+      Score 2: 90<br>
+      Score 3: 78<br>
+      Score 4: 92<br>
+      Score 5: 88
+    </section>
+  </div>
+
+  <div class="mt-8">
+    <h3 class="text-lg font-semibold text-red-500 mb-2">🧩 Practice Tasks</h3>
+    <ul class="list-disc list-inside text-gray-700 space-y-1">
+      <li>Change the array values to your own test scores</li>
+      <li>Print only scores above 90</li>
+      <li>Calculate and print the average score</li>
+      <li>Reverse the array and print the values</li>
+    </ul>
+  </div>
+
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-arrays')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+
+</body>
+</html>

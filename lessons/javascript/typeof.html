@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript typeof | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript typeof</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>typeof</code> operator returns the type of a variable or expression. It works on primitives and objects, but has quirks with <code>null</code> and arrays.
+  </p>
+
+  <!-- typeof on primitives -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 typeof on Primitives</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runPrimitiveTypes()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+typeof "John"         // "string"
+typeof 3.14           // "number"
+typeof true           // "boolean"
+typeof 1234n          // "bigint"
+typeof Symbol()       // "symbol"
+typeof undefined      // "undefined"
+typeof null           // "object"
+    </pre>
+    <div id="primitiveOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- typeof on objects -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 typeof on Objects</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runObjectTypes()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+typeof {name:'John'}   // "object"
+typeof [1,2,3]         // "object"
+typeof new Set()       // "object"
+typeof new Map()       // "object"
+typeof function(){}    // "function"
+    </pre>
+    <div id="objectOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Array.isArray -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧪 Array.isArray()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runIsArray()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = ["apples", "bananas"];
+Array.isArray(fruits); // true
+    </pre>
+    <div id="arrayOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- instanceof -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔎 instanceof</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runInstanceof()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+new Date() instanceof Date       // true
+["a", "b"] instanceof Array      // true
+new Map() instanceof Map         // true
+new Set() instanceof Set         // true
+    </pre>
+    <div id="instanceOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- constructor -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🏗️ constructor Property</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runConstructor()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+[].constructor === Array         // true
+new Date().constructor === Date // true
+    </pre>
+    <div id="constructorOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- void operator -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🕳️ void Operator</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runVoid()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+void(0); // returns undefined
+    </pre>
+    <div id="voidOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runPrimitiveTypes() {
+      const result = [
+        typeof "John",
+        typeof 3.14,
+        typeof true,
+        typeof 1234n,
+        typeof Symbol(),
+        typeof undefined,
+        typeof null
+      ].join(", ");
+      document.getElementById("primitiveOutput").innerHTML = result;
+    }
+
+    function runObjectTypes() {
+      const result = [
+        typeof { name: "John" },
+        typeof [1, 2, 3],
+        typeof new Set(),
+        typeof new Map(),
+        typeof function () {}
+      ].join(", ");
+      document.getElementById("objectOutput").innerHTML = result;
+    }
+
+    function runIsArray() {
+      const fruits = ["apples", "bananas"];
+      document.getElementById("arrayOutput").innerHTML = `Array.isArray(fruits) → ${Array.isArray(fruits)}`;
+    }
+
+    function runInstanceof() {
+      const result = [
+        new Date() instanceof Date,
+        ["a", "b"] instanceof Array,
+        new Map() instanceof Map,
+        new Set() instanceof Set
+      ].join(", ");
+      document.getElementById("instanceOutput").innerHTML = result;
+    }
+
+    function runConstructor() {
+      const result = [
+        [].constructor === Array,
+        new Date().constructor === Date
+      ].join(", ");
+      document.getElementById("constructorOutput").innerHTML = result;
+    }
+
+    function runVoid() {
+      document.getElementById("voidOutput").innerHTML = `void(0) → ${void(0)}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>typeof null</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "null"</label></li>
+    <li><label><input type="radio" name="q1"> "undefined"</label></li>
+    <li><label><input type="radio" name="q1"> "object"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

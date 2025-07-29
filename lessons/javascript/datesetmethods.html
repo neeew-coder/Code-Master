@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Set Date Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Set Date Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    Set methods allow you to change parts of a date object — year, month, day, hour, minute, second, or millisecond. Overflow values automatically adjust the date.
+  </p>
+
+  <!-- setFullYear -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📅 setFullYear()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const d = new Date("January 01, 2025");
+d.setFullYear(2020);            // Year only
+d.setFullYear(2020, 11, 3);     // Year, month, day
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run setFullYear</span>
+      <button onclick="runSetFullYear()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="fullYearOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- setDate -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📆 setDate()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+d.setDate(15);               // 15th day
+d.setDate(d.getDate() + 50); // Adds 50 days
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run setDate</span>
+      <button onclick="runSetDate()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="dateOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- setHours -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⏰ setHours()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+d.setHours(22);              // 10 PM
+d.setHours(22, 10, 20);      // 10:10:20 PM
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run setHours</span>
+      <button onclick="runSetHours()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="hoursOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- setMinutes, setSeconds, setMilliseconds -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🕒 setMinutes(), setSeconds(), setMilliseconds()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+d.setMinutes(30);        // 30 minutes
+d.setSeconds(45);        // 45 seconds
+d.setMilliseconds(500);  // Half a second
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Time Setters</span>
+      <button onclick="runSetTimeParts()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="timePartsOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- setTime -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📍 setTime()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+d.setTime(86400000); // Jan 2, 1970
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run setTime</span>
+      <button onclick="runSetTime()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="setTimeOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runSetFullYear() {
+      const d = new Date("January 01, 2025");
+      d.setFullYear(2020, 11, 3);
+      document.getElementById("fullYearOutput").innerHTML = `Updated: ${d.toDateString()}`;
+    }
+
+    function runSetDate() {
+      const d = new Date("January 01, 2025");
+      d.setDate(d.getDate() + 50);
+      document.getElementById("dateOutput").innerHTML = `After adding 50 days: ${d.toDateString()}`;
+    }
+
+    function runSetHours() {
+      const d = new Date("January 01, 2025");
+      d.setHours(22, 10, 20);
+      document.getElementById("hoursOutput").innerHTML = `Time set: ${d.toTimeString()}`;
+    }
+
+    function runSetTimeParts() {
+      const d = new Date("January 01, 2025");
+      d.setMinutes(30);
+      d.setSeconds(45);
+      d.setMilliseconds(500);
+      document.getElementById("timePartsOutput").innerHTML = `Updated time: ${d.toTimeString()}`;
+    }
+
+    function runSetTime() {
+      const d = new Date();
+      d.setTime(86400000);
+      document.getElementById("setTimeOutput").innerHTML = `Set to: ${d.toUTCString()}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>setDate()</code> accepts 1–31 and handles overflow</li>
+    <li><code>setFullYear()</code> can also set month and day</li>
+    <li><code>setHours()</code> can also set minutes and seconds</li>
+    <li><code>setTime()</code> sets milliseconds since Jan 1, 1970</li>
+    <li>Use <code>getDate()</code> + N to add days</li>
+  </ul>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What is the expected format of the argument in <code>setDate()</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> A number between 1 and 31</label></li>
+    <li><label><input type="radio" name="q1"> A number between 0 and 30</label></li>
+    <li><label><input type="radio" name="q1"> A number between 1 and 7</label></li>
+    <li><label><input type="radio" name="q1"> A number between 0 and 6</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

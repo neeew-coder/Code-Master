@@ -1,0 +1,73 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS inline-block</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>inline-block</code> value lets elements flow inline — side by side — while allowing you to control width, height, and margin like block elements. It's perfect for menus, buttons, badges, and small layout components.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.element {
+  display: inline-block;
+  width: 120px;
+  height: 60px;
+  padding: 10px;
+  background-color: lightblue;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-center mb-6 space-x-2">
+  <div style="display: inline-block; width: 100px; height: 60px; background: #cceaff; padding: 10px;">Box 1</div>
+  <div style="display: inline-block; width: 100px; height: 60px; background: #b0d4f1; padding: 10px;">Box 2</div>
+  <div style="display: inline-block; width: 100px; height: 60px; background: #90c2e7; padding: 10px;">Box 3</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Compared to block and inline</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Display Type</th><th class="border px-3 py-2">Stacks or Flows</th><th class="border px-3 py-2">Width/Height Control</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">block</td><td class="border px-3 py-2">Stacks vertically</td><td class="border px-3 py-2">Yes</td></tr>
+    <tr><td class="border px-3 py-2">inline</td><td class="border px-3 py-2">Flows horizontally</td><td class="border px-3 py-2">No</td></tr>
+    <tr><td class="border px-3 py-2">inline-block</td><td class="border px-3 py-2">Flows horizontally</td><td class="border px-3 py-2">Yes</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧩 Common Use Cases</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Horizontal nav menus with padding</li>
+  <li>Button rows and badge groups</li>
+  <li>Card components that size independently</li>
+  <li>Layout chunks where Flexbox isn’t needed</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Spacing Quirks</h3>
+
+<p class="text-gray-700 mb-2">
+By default, <code>inline-block</code> elements have whitespace between them (from HTML source). Use:
+</p>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>font-size: 0;</code> on parent (then reset for children)</li>
+  <li>HTML comments or tighter markup</li>
+  <li>Flexbox for more precise control</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which display value allows horizontal flow AND accepts width/height?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> block</label></li>
+  <li><label><input type="radio" name="q1"> inline</label></li>
+  <li><label><input type="radio" name="q1"> inline-block</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

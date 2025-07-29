@@ -1,0 +1,24 @@
+<div class="simulation-box bg-gray-100 p-6 rounded shadow">
+  <pre>
+class Person {
+  String name;
+
+  Person(String name) {
+    this.name = name;
+  }
+
+  void greet() {
+    System.out.println("Hello, " + name + "!");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Person p = new Person("Mark");
+    p.greet();
+  }
+}
+  </pre>
+</div>
+
+<button onclick="markComplete()" class="mt-6 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Mark as Complete</button>

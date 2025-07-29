@@ -1,0 +1,108 @@
+<style>
+  .white {
+    color: white;
+  }
+</style>
+
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Introduction</h2>
+
+<p class="mb-4 text-gray-700">
+HTML is the standard markup language for creating web pages. It describes the structure of content using elements like headings, paragraphs, and links.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What is HTML?</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>HTML stands for <strong>Hyper Text Markup Language</strong></li>
+  <li>It describes the structure of a web page</li>
+  <li>HTML consists of a series of elements</li>
+  <li>Elements tell the browser how to display content</li>
+  <li>They label pieces of content like “this is a heading”, “this is a paragraph”, or “this is a link”</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 A Simple HTML Document</h3>
+<div class="simulation-box bg-gray-100 p-6 rounded shadow mb-6">
+  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Page Titled&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;h1&gt;First Heading&lt;/h1&gt;
+    &lt;p&gt;First paragraph&lt;/p&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+  </div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔍 Example Explained</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li><code>&lt;!DOCTYPE html&gt;</code> defines the document as HTML5</li>
+  <li><code>&lt;html&gt;</code> is the root element</li>
+  <li><code>&lt;head&gt;</code> contains meta information</li>
+  <li><code>&lt;title&gt;</code> sets the page title (shown in the browser tab)</li>
+  <li><code>&lt;body&gt;</code> contains all visible content</li>
+  <li><code>&lt;h1&gt;</code> defines a large heading</li>
+  <li><code>&lt;p&gt;</code> defines a paragraph</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔧 What is an HTML Element?</h3>
+<p class="mb-2 text-gray-700">
+An HTML element is defined by a start tag, content, and an end tag:
+</p>
+<div class="bg-gray-50 p-4 rounded border border-gray-200 text-sm font-mono text-gray-800 mb-4">
+  &lt;tagname&gt; Content goes here... &lt;/tagname&gt;
+</div>
+<p class="mb-4 text-gray-700">
+Examples:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li><code>&lt;h1&gt;My First Heading&lt;/h1&gt;</code></li>
+  <li><code>&lt;p&gt;My first paragraph.&lt;/p&gt;</code></li>
+  <li><code>&lt;br&gt;</code> (empty element with no end tag)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌐 Web Browsers</h3>
+<p class="mb-4 text-gray-700">
+Browsers like Chrome, Edge, Firefox, and Safari read HTML documents and display them. They don’t show the tags — they use them to render the content.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 HTML Page Structure</h3>
+<div class="bg-gray-100 p-6 rounded shadow mb-4">
+<img style="width: 600px;" src="image/document.png" alt="" srcset="">
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📜 HTML History</h3>
+<table class="table-auto w-full text-sm text-left text-gray-700 mb-6">
+  <thead class="bg-orange-100 text-orange-700 font-semibold">
+    <tr>
+      <th class="px-4 py-2">Year</th>
+      <th class="px-4 py-2">Version</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="px-4 py-2">1989</td><td class="px-4 py-2">Tim Berners-Lee invented www</td></tr>
+    <tr><td class="px-4 py-2">1991</td><td class="px-4 py-2">Tim Berners-Lee invented HTML</td></tr>
+    <tr><td class="px-4 py-2">1995</td><td class="px-4 py-2">HTML 2.0</td></tr>
+    <tr><td class="px-4 py-2">1997</td><td class="px-4 py-2">HTML 3.2</td></tr>
+    <tr><td class="px-4 py-2">1999</td><td class="px-4 py-2">HTML 4.01</td></tr>
+    <tr><td class="px-4 py-2">2008</td><td class="px-4 py-2">HTML5 Draft</td></tr>
+    <tr><td class="px-4 py-2">2014–2017</td><td class="px-4 py-2">HTML5 Final Recommendations</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What does HTML stand for?</p>
+<ul class="space-y-2 text-gray-700">
+  <li><label><input type="radio" name="q1"> Hot Typing Markup Language</label></li>
+  <li><label><input type="radio" name="q1"> Home Typing Modern Language</label></li>
+  <li><label><input type="radio" name="q1"> Hyper Text Markup Language</label></li>
+  <li><label><input type="radio" name="q1"> Home Testing Mixed Language</label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

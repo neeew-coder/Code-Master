@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Arithmetic | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Arithmetic Operators</h2>
+
+  <p class="mb-6 text-gray-700">
+    Arithmetic operators perform mathematical calculations on numbers. JavaScript supports basic operations like addition, subtraction, multiplication, division, and remainder — all using familiar symbols.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Supported Operators</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>+</code> — Addition</li>
+    <li><code>-</code> — Subtraction</li>
+    <li><code>*</code> — Multiplication</li>
+    <li><code>/</code> — Division</li>
+    <li><code>%</code> — Modulus (remainder)</li>
+    <li><code>**</code> — Exponentiation (ES6+)</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Syntax Example</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let a = 12;
+let b = 5;
+
+let sum = a + b;        // 17
+let difference = a - b; // 7
+let product = a * b;    // 60
+let remainder = a % b;  // 2
+let power = a ** 2;     // 144
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Arithmetic expressions follow standard math rules. Use parentheses <code>( )</code> to group operations and control order.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">➗ Arithmetic Demo</span>
+      <button onclick="runArithmetic()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Calculate
+      </button>
+    </div>
+    <div id="arithOutput" class="text-sm text-gray-700 mt-2">
+      Click the button to see arithmetic results.
+    </div>
+  </div>
+
+  <script>
+    function runArithmetic() {
+      let a = 12;
+      let b = 5;
+      let sum = a + b;
+      let diff = a - b;
+      let prod = a * b;
+      let div = a / b;
+      let mod = a % b;
+      let exp = a ** 2;
+
+      document.getElementById("arithOutput").innerHTML = `
+        <div class="flex items-center gap-2 mt-2">
+          <i class="fas fa-plus text-yellow-400 text-sm"></i>
+          <span>Sum: ${sum}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-minus text-yellow-400 text-sm"></i>
+          <span>Difference: ${diff}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-times text-yellow-400 text-sm"></i>
+          <span>Product: ${prod}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-divide text-yellow-400 text-sm"></i>
+          <span>Division: ${div.toFixed(2)}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-percent text-yellow-400 text-sm"></i>
+          <span>Remainder: ${mod}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-superscript text-yellow-400 text-sm"></i>
+          <span>Power: ${exp}</span>
+        </div>
+      `;
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Use <code>%</code> to check even/odd: <code>n % 2 === 0</code></li>
+    <li><code>**</code> is supported in modern browsers — use <code>Math.pow()</code> for older ones</li>
+    <li>Division returns floating-point results — use <code>.toFixed()</code> to format</li>
+    <li>Arithmetic works with numbers only — avoid mixing with strings unless intentional</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>7 % 3</code> evaluate to?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 1</label></li>
+    <li><label><input type="radio" name="q1"> 2</label></li>
+    <li><label><input type="radio" name="q1"> 3</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

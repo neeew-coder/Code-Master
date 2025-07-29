@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Math.random() | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Math.random()</h2>
+
+  <p class="mb-6 text-gray-700">
+    <code>Math.random()</code> returns a floating-point number between <code>0</code> (inclusive) and <code>1</code> (exclusive). You can combine it with <code>Math.floor()</code> to generate random integers.
+  </p>
+
+  <!-- Basic Random Float -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Random Float</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.random(); // returns a float between 0 and 1
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Generate Float</span>
+      <button onclick="runFloat()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Generate
+      </button>
+    </div>
+    <div id="floatOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Random Integers -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Random Integers</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Math.floor(Math.random() * 10);       // 0–9
+Math.floor(Math.random() * 100) + 1;  // 1–100
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Generate Integers</span>
+      <button onclick="runIntegers()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Generate
+      </button>
+    </div>
+    <div id="intOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Custom Functions -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Custom Functions</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function getRndIntegerInclusive(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Custom Range</span>
+      <button onclick="runCustom()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Generate
+      </button>
+    </div>
+    <div id="customOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function getRndInteger(min, max) {
+      return Math.floor(Math.random() * (max - min)) + min;
+    }
+
+    function getRndIntegerInclusive(min, max) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    function runFloat() {
+      document.getElementById("floatOutput").innerHTML = `Random float: ${Math.random().toFixed(4)}`;
+    }
+
+    function runIntegers() {
+      const output = [
+        `0–9: ${Math.floor(Math.random() * 10)}`,
+        `1–100: ${Math.floor(Math.random() * 100) + 1}`
+      ];
+      document.getElementById("intOutput").innerHTML = output.join("<br>");
+    }
+
+    function runCustom() {
+      const output = [
+        `Custom (5–15 excl): ${getRndInteger(5, 15)}`,
+        `Custom (5–15 incl): ${getRndIntegerInclusive(5, 15)}`
+      ];
+      document.getElementById("customOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>Math.random()</code> returns a float between 0 and 1</li>
+    <li>Use <code>Math.floor()</code> to convert to integers</li>
+    <li>Multiply by range size to scale output</li>
+    <li>Use <code>+ min</code> to shift the range</li>
+    <li>Custom functions help reuse logic for inclusive/exclusive bounds</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    How many parameters can <code>Math.random()</code> take?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 0</label></li>
+    <li><label><input type="radio" name="q1"> 1</label></li>
+    <li><label><input type="radio" name="q1"> 2</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

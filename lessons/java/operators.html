@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Operators | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">➕ Java Operators</h2>
+
+  <p class="mb-6 text-gray-700">
+    Operators are special symbols that perform operations on variables and values. Java includes several types:
+  </p>
+
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li><strong>Arithmetic Operators</strong>: <code>+, -, *, /, %</code></li>
+    <li><strong>Comparison Operators</strong>: <code>==, !=, >, <, >=, <=</code></li>
+    <li><strong>Logical Operators</strong>: <code>&&, ||, !</code></li>
+  </ul>
+
+  <!-- Arithmetic Operators -->
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+    <h3 class="text-lg font-semibold text-red-500">➗ Arithmetic Operators</h3>
+    <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+public class Main {
+  public static void main(String[] args) {
+    int a = 10;
+    int b = 3;
+
+    System.out.println("Addition: " + (a + b));
+    System.out.println("Subtraction: " + (a - b));
+    System.out.println("Multiplication: " + (a * b));
+    System.out.println("Division: " + (a / b));
+    System.out.println("Modulus: " + (a % b));
+  }
+}
+    </textarea>
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+    <div class="text-right">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+  </div>
+
+  <!-- Comparison Operators -->
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+    <h3 class="text-lg font-semibold text-red-500">🔍 Comparison Operators</h3>
+    <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+public class Main {
+  public static void main(String[] args) {
+    int x = 5;
+    int y = 10;
+
+    System.out.println(x == y);  // false
+    System.out.println(x != y);  // true
+    System.out.println(x > y);   // false
+    System.out.println(x < y);   // true
+    System.out.println(x >= 5);  // true
+    System.out.println(y <= 10); // true
+  }
+}
+    </textarea>
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+    <div class="text-right">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+  </div>
+
+  <!-- Logical Operators -->
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+    <h3 class="text-lg font-semibold text-red-500">🧠 Logical Operators</h3>
+    <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+public class Main {
+  public static void main(String[] args) {
+    int age = 20;
+    boolean hasID = true;
+
+    System.out.println(age >= 18 && hasID); // true
+    System.out.println(age < 18 || hasID);  // true
+    System.out.println(!hasID);             // false
+  }
+}
+    </textarea>
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+    <div class="text-right">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+  </div>
+
+  <!-- Exercise -->
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which operator is used to check if two values are equal?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> =</label></li>
+    <li><label><input type="radio" name="q1"> ==</label></li>
+    <li><label><input type="radio" name="q1"> !=</label></li>
+    <li><label><input type="radio" name="q1"> equals()</label></li>
+  </ul>
+
+  <p class="text-gray-700 mb-2">
+    What does the <code>&&</code> operator do?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q2"> Performs addition</label></li>
+    <li><label><input type="radio" name="q2"> Checks if both conditions are true</label></li>
+    <li><label><input type="radio" name="q2"> Negates a condition</label></li>
+    <li><label><input type="radio" name="q2"> Compares two strings</label></li>
+  </ul>
+
+  <!-- Completion Button -->
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-operators')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

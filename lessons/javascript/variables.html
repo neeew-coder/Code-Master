@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Variables | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Variables</h2>
+
+  <p class="mb-6 text-gray-700">
+    Variables store data that your program can use and manipulate. In JavaScript, you can declare variables using <code>let</code>, <code>const</code>, or <code>var</code>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Variable Declaration</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let name = "User";
+const age = 20;
+var city = "Sample City";
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>let</code> for variables that may change, <code>const</code> for constants, and <code>var</code> (older syntax) for legacy code.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">📦 Variable Output</span>
+      <button onclick="showVariables()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Show Variables
+      </button>
+    </div>
+    <div id="varOutput" class="text-sm text-gray-700 mt-2">
+      Click the button to display variable values.
+    </div>
+  </div>
+
+  <script>
+    function showVariables() {
+      let name = "User";
+      const age = 20;
+      var city = "Sample City";
+      document.getElementById("varOutput").innerHTML = `
+        <div class="flex items-center gap-2 mt-2">
+          <i class="fas fa-user text-yellow-400 text-sm"></i>
+          <span>Name: ${name}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-calendar text-yellow-400 text-sm"></i>
+          <span>Age: ${age}</span>
+        </div>
+        <div class="flex items-center gap-2 mt-1">
+          <i class="fas fa-map-marker-alt text-yellow-400 text-sm"></i>
+          <span>City: ${city}</span>
+        </div>
+      `;
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Variable names are case-sensitive and must start with a letter, <code>_</code>, or <code>$</code></li>
+    <li><code>let</code> and <code>const</code> are block-scoped (preferred)</li>
+    <li><code>var</code> is function-scoped and can lead to unexpected behavior</li>
+    <li>Use <code>const</code> when the value should never change</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    Which keyword is best for declaring a variable that should never change?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> let</label></li>
+    <li><label><input type="radio" name="q1"> const</label></li>
+    <li><label><input type="radio" name="q1"> var</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Quotation and Citation Elements</h2>
+
+<p class="mb-4 text-gray-700">
+HTML provides semantic elements for quotations, citations, abbreviations, contact info, and text direction control.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧾 <code>&lt;blockquote&gt;</code> — Long Quotations</h3>
+<p class="mb-2 text-gray-700">
+Defines a section quoted from another source. Browsers usually indent it.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;Here is a quote from WWF's website:&lt;/p&gt;
+&lt;blockquote cite="http://www.worldwildlife.org/who/index.html"&gt;
+For 60 years, WWF has worked to help people and nature thrive...
+&lt;/blockquote&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <p style="color: black;">Here is a quote from WWF's website:</p>
+  <blockquote cite="http://www.worldwildlife.org/who/index.html">
+    For 60 years, WWF has worked to help people and nature thrive...
+  </blockquote>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">💬 <code>&lt;q&gt;</code> — Short Quotations</h3>
+<p class="mb-2 text-gray-700">
+Defines a short inline quotation. Browsers automatically add quotation marks.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;WWF's goal is to: &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;&lt;/p&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <p style="color: black;">WWF's goal is to: <q>Build a future where people live in harmony with nature.</q></p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔤 <code>&lt;abbr&gt;</code> — Abbreviations</h3>
+<p class="mb-2 text-gray-700">
+Defines an abbreviation or acronym. Use the <code>title</code> attribute to show full meaning on hover.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;The &lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt; was founded in 1948.&lt;/p&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <p style="color: black;">The <abbr title="World Health Organization">WHO</abbr> was founded in 1948.</p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📬 <code>&lt;address&gt;</code> — Contact Info</h3>
+<p class="mb-2 text-gray-700">
+Defines contact information. Usually renders in italic with line breaks.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;address&gt;
+Written by John Doe.&lt;br&gt;
+Visit us at:&lt;br&gt;
+Example.com&lt;br&gt;
+Box 564, Disneyland&lt;br&gt;
+USA
+&lt;/address&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <address style="color: black;">
+    Written by John Doe.<br>
+    Visit us at:<br>
+    Example.com<br>
+    Box 564, Disneyland<br>
+    USA
+  </address>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 <code>&lt;cite&gt;</code> — Creative Work Titles</h3>
+<p class="mb-2 text-gray-700">
+Defines the title of a creative work. Usually renders in italic.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;&lt;cite&gt;The Scream&lt;/cite&gt; by Edvard Munch. Painted in 1893.&lt;/p&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <p style="color: black;"><cite>The Scream</cite> by Edvard Munch. Painted in 1893.</p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">↔️ <code>&lt;bdo&gt;</code> — Bi-Directional Override</h3>
+<p class="mb-2 text-gray-700">
+Overrides the current text direction. Use <code>dir="rtl"</code> for right-to-left.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;bdo dir="rtl"&gt;This text will be written from right to left&lt;/bdo&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <bdo dir="rtl" style="color: black;">This text will be written from right to left</bdo>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">Which of the following is <strong>not</strong> a quotation element (and not a valid HTML tag)?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>&lt;q&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;quote&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;blockquote&gt;</code></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

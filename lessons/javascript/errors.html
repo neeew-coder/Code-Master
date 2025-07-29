@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Errors | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Errors</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript uses <code>try</code>, <code>catch</code>, <code>finally</code>, and <code>throw</code> to handle errors and control program flow. Errors are represented by the built-in <code>Error</code> object.
+  </p>
+
+  <!-- try...catch -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 try...catch</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runTryCatch()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+try {
+  adddlert("Welcome guest!");
+} catch (err) {
+  output = err.message;
+}
+    </pre>
+    <div id="tryCatchOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- throw -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🚨 throw Custom Error</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runThrow()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+try {
+  throw "Too big";
+} catch (err) {
+  output = "Error: " + err;
+}
+    </pre>
+    <div id="throwOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- finally -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔁 finally Block</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runFinally()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+try {
+  throw "fail";
+} catch (err) {
+  output = "Caught: " + err;
+} finally {
+  output += " | Finally executed";
+}
+    </pre>
+    <div id="finallyOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Error Types -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⚠️ Error Types</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end space-x-2">
+      <button onclick="runRangeError()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">RangeError</button>
+      <button onclick="runReferenceError()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">ReferenceError</button>
+      <button onclick="runSyntaxError()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">SyntaxError</button>
+      <button onclick="runTypeError()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">TypeError</button>
+      <button onclick="runURIError()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">URIError</button>
+    </div>
+    <div id="errorTypeOutput" class="text-sm text-gray-700 mt-3">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runTryCatch() {
+      let output = "";
+      try {
+        adddlert("Welcome guest!");
+      } catch (err) {
+        output = err.message;
+      }
+      document.getElementById("tryCatchOutput").innerHTML = output;
+    }
+
+    function runThrow() {
+      let output = "";
+      try {
+        throw "Too big";
+      } catch (err) {
+        output = "Error: " + err;
+      }
+      document.getElementById("throwOutput").innerHTML = output;
+    }
+
+    function runFinally() {
+      let output = "";
+      try {
+        throw "fail";
+      } catch (err) {
+        output = "Caught: " + err;
+      } finally {
+        output += " | Finally executed";
+      }
+      document.getElementById("finallyOutput").innerHTML = output;
+    }
+
+    function runRangeError() {
+      try {
+        let num = 1;
+        num.toPrecision(500);
+      } catch (err) {
+        document.getElementById("errorTypeOutput").innerHTML = err.name;
+      }
+    }
+
+    function runReferenceError() {
+      try {
+        let x = y + 1;
+      } catch (err) {
+        document.getElementById("errorTypeOutput").innerHTML = err.name;
+      }
+    }
+
+    function runSyntaxError() {
+      try {
+        eval("alert('Hello)");
+      } catch (err) {
+        document.getElementById("errorTypeOutput").innerHTML = err.name;
+      }
+    }
+
+    function runTypeError() {
+      try {
+        let num = 1;
+        num.toUpperCase();
+      } catch (err) {
+        document.getElementById("errorTypeOutput").innerHTML = err.name;
+      }
+    }
+
+    function runURIError() {
+      try {
+        decodeURI("%%%");
+      } catch (err) {
+        document.getElementById("errorTypeOutput").innerHTML = err.name;
+      }
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does the <code>finally</code> block do?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Runs only if no error occurs</label></li>
+    <li><label><input type="radio" name="q1"> Runs only if an error occurs</label></li>
+    <li><label><input type="radio" name="q1"> Runs regardless of error outcome</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Layout Elements & Techniques</h2>
+
+<p class="mb-6 text-gray-700">
+Websites often arrange content in multiple columns—like newspapers or magazines. HTML provides semantic structure for this, while CSS offers techniques to control layout behavior across screen sizes and devices.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📌 Semantic Layout Elements</h3>
+
+<p class="mb-2 text-gray-700">These tags describe sections of your page meaningfully:</p>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>&lt;header&gt;</code> – Document or section header</li>
+  <li><code>&lt;nav&gt;</code> – Navigation links</li>
+  <li><code>&lt;section&gt;</code> – Logical content grouping</li>
+  <li><code>&lt;article&gt;</code> – Self-contained content block</li>
+  <li><code>&lt;aside&gt;</code> – Sidebar or secondary info</li>
+  <li><code>&lt;footer&gt;</code> – Footer for document/section</li>
+  <li><code>&lt;details&gt;</code> – Expandable info section</li>
+  <li><code>&lt;summary&gt;</code> – Label for a details block</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Popular Layout Techniques</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li><strong>CSS Framework</strong> – Use tools like Bootstrap or W3.CSS for rapid layout</li>
+  <li><strong>CSS Float</strong> – Aligns content via float/clear (older technique)</li>
+  <li><strong>CSS Flexbox</strong> – Arranges items in flexible rows/columns</li>
+  <li><strong>CSS Grid</strong> – Defines layout using rows and columns explicitly</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Example Layout (Flexbox)</h3>
+<div class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;Flexbox Layout Demo&lt;/title&gt;
+  &lt;style&gt;
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .column {
+      flex: 1;
+      padding: 20px;
+      background-color: #eee;
+      border-radius: 8px;
+    }
+    footer {
+      margin-top: 30px;
+      text-align: center;
+      color: #999;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Cities&lt;/h1&gt;
+
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;h2&gt;London&lt;/h2&gt;
+      &lt;p&gt;London is the capital city of England...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;h2&gt;Paris&lt;/h2&gt;
+      &lt;p&gt;Paris is the capital city of France...&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;column&quot;&gt;
+      &lt;h2&gt;Tokyo&lt;/h2&gt;
+      &lt;p&gt;Tokyo is the capital city of Japan...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;footer&gt;© 2025 CodeMaster&lt;/footer&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">⚖️ Technique Comparison</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6" style="color: black;">
+  <thead class="bg-orange-100">
+    <tr><th class="border px-3 py-2">Technique</th><th class="border px-3 py-2">Pros</th><th class="border px-3 py-2">Cons</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="border px-3 py-2">CSS Framework</td>
+      <td class="border px-3 py-2">Fast setup, mobile-ready</td>
+      <td class="border px-3 py-2">Adds external dependency</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Float</td>
+      <td class="border px-3 py-2">Simple alignment</td>
+      <td class="border px-3 py-2">Harder to control spacing</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Flexbox</td>
+      <td class="border px-3 py-2">Responsive and intuitive</td>
+      <td class="border px-3 py-2">Less control over precise grids</td>
+    </tr>
+    <tr>
+      <td class="border px-3 py-2">Grid</td>
+      <td class="border px-3 py-2">Explicit rows/columns</td>
+      <td class="border px-3 py-2">Requires browser support knowledge</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">Which layout technique uses <code>display: flex</code>?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> CSS Grid</label></li>
+  <li><label><input type="radio" name="q1"> CSS Float</label></li>
+  <li><label><input type="radio" name="q1"> CSS Framework</label></li>
+  <li><label><input type="radio" name="q1"> CSS Flexbox</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

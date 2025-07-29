@@ -1,0 +1,48 @@
+<h2 class="text-2xl font-bold mb-4 text-green-600">Classes & Objects</h2>
+
+<p class="mb-4 text-gray-700">
+C# is an object-oriented language. Classes define blueprints for objects, which encapsulate data and behavior.
+</p>
+
+<h3 class="text-lg font-semibold text-green-500 mb-2">🎯 Learning Objectives</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Define classes and create objects</li>
+  <li>Use constructors and methods</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-green-500 mb-2">🧩 Key Concepts</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Encapsulation and access modifiers</li>
+  <li>Object instantiation</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-green-500 mb-2">🛠️ Real-world Application</h3>
+<p class="mb-4 text-gray-700">
+Classes and objects are used in everything from game characters to data models in enterprise apps.
+</p>
+
+<h3 class="text-lg font-semibold text-green-500 mb-2">✅ Expected Outcome</h3>
+<p class="mb-4 text-gray-700">
+You’ll be able to define classes and create objects to organize your code.
+</p>
+
+<div class="simulation-box bg-gray-100 p-6 rounded shadow">
+  <pre>
+class Person {
+  public string Name;
+
+  public Person(string name) {
+    Name = name;
+  }
+
+  public void Greet() {
+    Console.WriteLine($"Hello, {Name}!");
+  }
+}
+
+Person p = new Person("Mark");
+p.Greet();
+  </pre>
+</div>
+
+<button onclick="markComplete()" class="mt-6 bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Mark as Complete</button>

@@ -1,0 +1,114 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Table Colspan & Rowspan</h2>
+
+<p class="mb-4 text-gray-700">
+HTML tables support cells that span across multiple <strong>columns</strong> or <strong>rows</strong>. This allows for more flexible layouts and grouped content.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Colspan (Across Columns)</h3>
+<p class="mb-2 text-gray-700">
+To make a cell stretch across multiple columns, use the <code>colspan</code> attribute inside a <code>&lt;th&gt;</code> or <code>&lt;td&gt;</code>. The value represents how many columns to span.
+</p>
+
+<!-- Code Example -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th colspan="2"&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;43&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Eve&lt;/td&gt;
+    &lt;td&gt;Jackson&lt;/td&gt;
+    &lt;td&gt;57&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<!-- Colspan Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100">
+      <th colspan="2" class="border px-4 py-2">Name</th>
+      <th class="border px-4 py-2">Age</th>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">43</td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Eve</td>
+      <td class="border px-4 py-2">Jackson</td>
+      <td class="border px-4 py-2">57</td>
+    </tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Rowspan (Down Rows)</h3>
+<p class="mb-2 text-gray-700">
+To make a cell stretch over multiple rows, use the <code>rowspan</code> attribute. This is helpful when labeling vertically stacked data.
+</p>
+
+<!-- Code Example -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Name&lt;/th&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th rowspan="2"&gt;Phone&lt;/th&gt;
+    &lt;td&gt;555-1234&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;555-8745&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<!-- Rowspan Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100">
+      <th class="border px-4 py-2">Name</th>
+      <td class="border px-4 py-2">Jill</td>
+    </tr>
+    <tr>
+      <th rowspan="2" class="border px-4 py-2 bg-orange-100">Phone</th>
+      <td class="border px-4 py-2">555-1234</td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">555-8745</td>
+    </tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">
+What is the correct HTML attribute for specifying how many rows a cell should span?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>span</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>rowspan</code></strong></label></li>
+  <li><label><input type="radio" name="q1"> <code>spanning</code></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>colspan</code> allows a cell to stretch across multiple columns</li>
+  <li><code>rowspan</code> allows a cell to stretch across multiple rows</li>
+  <li>Use with <code>&lt;td&gt;</code> or <code>&lt;th&gt;</code> elements</li>
+</ul>

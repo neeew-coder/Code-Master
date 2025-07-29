@@ -1,0 +1,66 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Padding</h2>
+
+<p class="mb-6 text-gray-700">
+Padding creates space <strong>inside</strong> an element’s border — keeping the content from touching the edges. It improves readability, breathing room, and overall visual comfort.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+div {
+  padding: 20px;                /* all sides */
+  padding-left: 10px;           /* left only */
+  padding: 10px 20px;           /* vertical | horizontal */
+  padding: 10px 15px 20px 25px; /* top | right | bottom | left */
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-center">
+  <div style="padding: 20px; background-color: white; border: 2px solid #ccc;">
+    This box has <strong>20px padding</strong> around the content.
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧭 Side-Specific Padding</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+padding-top
+padding-right
+padding-bottom
+padding-left
+</pre>
+
+<div class="grid grid-cols-2 gap-4 mb-6">
+  <div class="bg-blue-100 border rounded p-4">
+    <div style="padding-top: 40px; background-color: white;">Top padding</div>
+  </div>
+  <div class="bg-blue-100 border rounded p-4">
+    <div style="padding-left: 40px; background-color: white;">Left padding</div>
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Padding Notes</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Padding is inside the border — unlike margin</li>
+  <li>Padding affects overall box size unless <code>box-sizing: border-box</code> is set</li>
+  <li>Can be used to add spacing around text, images, buttons, or any content block</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+What does CSS padding control?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Spacing between elements</label></li>
+  <li><label><input type="radio" name="q1"> Spacing inside an element’s border</label></li>
+  <li><label><input type="radio" name="q1"> Width of the border</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

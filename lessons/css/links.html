@@ -1,0 +1,59 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Links</h2>
+
+<p class="mb-6 text-gray-700">
+Links are crucial for navigation and interaction. CSS lets you style normal, visited, hover, active, and focus states — making your site feel polished and intuitive.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔗 Link States</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>a:link</code> — unvisited link</li>
+  <li><code>a:visited</code> — visited link</li>
+  <li><code>a:hover</code> — mouse over link</li>
+  <li><code>a:active</code> — clicked link</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Styling Example</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+a {
+  text-decoration: none;
+  color: blue;
+}
+
+a:hover {
+  color: darkblue;
+  text-decoration: underline;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-center mb-6">
+  <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline font-semibold">
+    Hover Over This Link
+  </a>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Link Styling Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>:hover</code> and <code>:focus</code> to improve accessibility</li>
+  <li>Remove <code>text-decoration</code> to hide underline if desired</li>
+  <li>Group state styles together: <code>a, a:visited, a:hover, a:active</code></li>
+  <li>Use classes for consistent navigation styling</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which pseudo-class targets a link when the user hovers over it?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> a:active</label></li>
+  <li><label><input type="radio" name="q1"> a:hover</label></li>
+  <li><label><input type="radio" name="q1"> a:visited</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

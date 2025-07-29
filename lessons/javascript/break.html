@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Break and Continue | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Break and Continue</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>break</code> statement "jumps out" of a loop or block.  
+    The <code>continue</code> statement "skips" one iteration and continues with the next.
+  </p>
+
+  <!-- Break in Loop -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🛑 Break in Loop</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { break; }
+  text += "The number is " + i + "<br>";
+}
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Break Demo</span>
+      <button onclick="runBreakDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="breakOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Continue in Loop -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⏭️ Continue in Loop</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+for (let i = 0; i < 10; i++) {
+  if (i === 3) { continue; }
+  text += "The number is " + i + "<br>";
+}
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Continue Demo</span>
+      <button onclick="runContinueDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="continueOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Break with Label -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🏷️ Break with Label</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const cars = ["BMW", "Volvo", "Saab", "Ford"];
+list: {
+  text += cars[0] + "<br>";
+  text += cars[1] + "<br>";
+  break list;
+  text += cars[2] + "<br>";
+  text += cars[3] + "<br>";
+}
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Label Break</span>
+      <button onclick="runLabelBreakDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="labelOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runBreakDemo() {
+      let text = "";
+      for (let i = 0; i < 10; i++) {
+        if (i === 3) break;
+        text += `The number is ${i}<br>`;
+      }
+      document.getElementById("breakOutput").innerHTML = text;
+    }
+
+    function runContinueDemo() {
+      let text = "";
+      for (let i = 0; i < 10; i++) {
+        if (i === 3) continue;
+        text += `The number is ${i}<br>`;
+      }
+      document.getElementById("continueOutput").innerHTML = text;
+    }
+
+    function runLabelBreakDemo() {
+      const cars = ["BMW", "Volvo", "Saab", "Ford"];
+      let text = "";
+      list: {
+        text += cars[0] + "<br>";
+        text += cars[1] + "<br>";
+        break list;
+        text += cars[2] + "<br>";
+        text += cars[3] + "<br>";
+      }
+      document.getElementById("labelOutput").innerHTML = text;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>break</code> exits a loop or block immediately</li>
+    <li><code>continue</code> skips the current iteration</li>
+    <li>Labels allow <code>break</code> or <code>continue</code> to target specific blocks</li>
+    <li><code>break</code> without label works in loops and <code>switch</code></li>
+    <li><code>continue</code> only works inside loops</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>continue</code> do inside a loop?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Exits the loop entirely</label></li>
+    <li><label><input type="radio" name="q1"> Skips the current iteration</label></li>
+    <li><label><input type="radio" name="q1"> Restarts the loop from the beginning</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

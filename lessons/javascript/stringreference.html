@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript String Reference | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript String Reference</h2>
+
+  <p class="mb-6 text-gray-700">
+    Strings in JavaScript are primitive and immutable. When you assign or modify strings, you're working with copies — not references. However, the <code>String</code> object behaves differently.
+  </p>
+
+  <!-- Value vs Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Value vs Reference</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+// Primitive string
+let a = "Hello";
+let b = a;
+b = "Hi";
+
+console.log(a); // "Hello"
+console.log(b); // "Hi"
+
+// String object
+let x = new String("Hello");
+let y = x;
+y.message = "Hi";
+
+console.log(x.message); // "Hi"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Primitive strings are copied by value. <code>new String()</code> creates an object, which is copied by reference — allowing mutation.
+  </p>
+
+  <!-- Primitive vs Object Demo -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔗 Primitive vs Object</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Compare Behavior</span>
+      <button onclick="runPrimitiveVsObjectDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="primitiveOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- typeof Comparison -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 typeof Comparison</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check typeof</span>
+      <button onclick="runTypeofDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="typeofOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runPrimitiveVsObjectDemo() {
+      let a = "Hello";
+      let b = a;
+      b = "Hi";
+
+      let x = new String("Hello");
+      let y = x;
+      y.message = "Hi";
+
+      const output = [
+        `Primitive a: "${a}"`,
+        `Primitive b: "${b}"`,
+        `Object x.message: "${x.message}"`,
+        `Object y === x: ${y === x}`
+      ];
+
+      document.getElementById("primitiveOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-link text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    function runTypeofDemo() {
+      const primitive = "text";
+      const object = new String("text");
+
+      const output = [
+        `typeof "text": ${typeof primitive}`,
+        `typeof new String("text"): ${typeof object}`
+      ];
+
+      document.getElementById("typeofOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-info-circle text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Primitive strings are immutable and copied by value</li>
+    <li><code>new String()</code> creates a wrapper object</li>
+    <li>String objects are copied by reference and can be mutated</li>
+    <li>Use primitives for most cases — they’re faster and safer</li>
+    <li>Use <code>typeof</code> to distinguish: <code>"text"</code> is <code>string</code>, <code>new String()</code> is <code>object</code></li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>typeof new String("Hi")</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "string"</label></li>
+    <li><label><input type="radio" name="q1"> "object"</label></li>
+    <li><label><input type="radio" name="q1"> "function"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

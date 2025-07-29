@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Strings | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Strings</h2>
+
+  <p class="mb-6 text-gray-700">
+    Strings are sequences of characters used to represent text. JavaScript provides many methods to inspect, modify, and format strings.
+  </p>
+
+  <!-- Declaring Strings -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Declaring Strings</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let name = "User";
+let greeting = 'Hello';
+let phrase = \`Welcome, \${name}!\`; // Template literal
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Strings can be declared using double quotes, single quotes, or backticks for template literals. Use <code>\${}</code> inside backticks to embed expressions.
+  </p>
+
+  <!-- Common Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Common Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let text = "JavaScript";
+
+text.length;           // 10
+text.toUpperCase();    // "JAVASCRIPT"
+text.slice(4);         // "Script"
+text.includes("Script"); // true
+text.replace("Java", "Type"); // "TypeScript"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use string methods to transform, search, and extract content. Strings are immutable — methods return new strings.
+  </p>
+
+  <!-- .length -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔢 .length</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .length</span>
+      <button onclick="runLengthDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="lengthOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .toUpperCase -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔠 .toUpperCase()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .toUpperCase()</span>
+      <button onclick="runUpperDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="upperOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .slice -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">✂️ .slice()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .slice(4)</span>
+      <button onclick="runSliceDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="sliceOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .includes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 .includes()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .includes("Script")</span>
+      <button onclick="runIncludesDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="includesOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .replace -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔁 .replace()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .replace("Java", "Type")</span>
+      <button onclick="runReplaceDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="replaceOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const text = "JavaScript";
+
+    function runLengthDemo() {
+      document.getElementById("lengthOutput").innerHTML = `Length: ${text.length}`;
+    }
+
+    function runUpperDemo() {
+      document.getElementById("upperOutput").innerHTML = `Uppercase: ${text.toUpperCase()}`;
+    }
+
+    function runSliceDemo() {
+      document.getElementById("sliceOutput").innerHTML = `Slice(4): ${text.slice(4)}`;
+    }
+
+    function runIncludesDemo() {
+      document.getElementById("includesOutput").innerHTML = `Includes "Script": ${text.includes("Script")}`;
+    }
+
+    function runReplaceDemo() {
+      document.getElementById("replaceOutput").innerHTML = `Replace "Java" → "Type": ${text.replace("Java", "Type")}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Strings are immutable — methods return new strings</li>
+    <li>Use <code>.length</code> to get character count</li>
+    <li><code>.slice()</code> extracts part of a string</li>
+    <li><code>.includes()</code> checks for substring presence</li>
+    <li>Template literals allow embedded expressions with backticks</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>"JavaScript".slice(4)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "Java"</label></li>
+    <li><label><input type="radio" name="q1"> "Script"</label></li>
+    <li><label><input type="radio" name="q1"> "JavaScript"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Comments | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">Java Comments</h2>
+
+  <p class="mb-6 text-gray-700">
+    Comments can be used to explain Java code and make it more readable. They can also be used to prevent execution when testing alternative code.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🗒️ Single-line Comments</h3>
+  <p class="text-gray-700 mb-4">
+    Single-line comments start with two forward slashes <code>//</code>. Any text between <code>//</code> and the end of the line is ignored by Java.
+  </p>
+
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run Java
+      </button>
+    </div>
+
+    <textarea class="bg-black text-red-400 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// This is a comment
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World"); // This is a comment
+  }
+}
+    </textarea>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📋 Multi-line Comments</h3>
+  <p class="text-gray-700 mb-4">
+    Multi-line comments start with <code>/*</code> and end with <code>*/</code>. Any text between them is ignored by Java.
+  </p>
+
+  <pre class="bg-gray-900 text-red-200 p-4 rounded font-mono text-sm overflow-auto mb-6">
+/* The code below will print the words Hello World
+to the screen, and it is amazing */
+System.out.println("Hello World");
+  </pre>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Which to Use?</h3>
+  <p class="text-gray-700 mb-6">
+    It's up to you! Use <code>//</code> for short comments and <code>/* */</code> for longer explanations or comment blocks.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which symbol starts a single-line comment in Java?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> &lt;!-- --&gt; </label></li>
+    <li><label><input type="radio" name="q1"> /* */ </label></li>
+    <li><label><input type="radio" name="q1"> // </label></li>
+    <li><label><input type="radio" name="q1"> # </label></li>
+  </ul>
+
+  <button onclick="updateProgress('java-comments')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+
+</body>
+</html>

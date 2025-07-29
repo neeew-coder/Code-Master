@@ -1,0 +1,75 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Pseudo-Elements</h2>
+
+<p class="mb-6 text-gray-700">
+Pseudo-elements style specific parts of an element — like the first letter, first line, or allow injected content before/after without modifying HTML. They’re written with <strong>double colons (::)</strong>.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎯 Common Pseudo-Elements</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Selector</th><th class="border px-3 py-2">Effect</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">::before</td><td class="border px-3 py-2">Inserts content before the element</td></tr>
+    <tr><td class="border px-3 py-2">::after</td><td class="border px-3 py-2">Inserts content after the element</td></tr>
+    <tr><td class="border px-3 py-2">::first-letter</td><td class="border px-3 py-2">Targets the first letter</td></tr>
+    <tr><td class="border px-3 py-2">::first-line</td><td class="border px-3 py-2">Styles the first line of a paragraph</td></tr>
+    <tr><td class="border px-3 py-2">::selection</td><td class="border px-3 py-2">Styles highlighted text</td></tr>
+    <tr><td class="border px-3 py-2">::placeholder</td><td class="border px-3 py-2">Styles input placeholder text</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Syntax Examples</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+p::first-letter {
+  font-size: 2em;
+  color: blue;
+}
+
+p::before {
+  content: "★ ";
+  color: steelblue;
+}
+
+p::after {
+  content: " ✔";
+  color: green;
+}
+
+input::placeholder {
+  color: darkblue;
+  font-style: italic;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded text-gray-800 mb-6 space-y-2">
+  <p>This paragraph has styled <strong>first letter</strong>, injected symbol <strong>before</strong>, and checkmark <strong>after</strong>.</p>
+  <input type="text" placeholder="Styled placeholder…" class="px-3 py-2 border rounded w-full" />
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Pseudo-Element Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>content:</code> for <code>::before</code> and <code>::after</code> — must be set to render</li>
+  <li><code>::selection</code> styles browser highlight color (cross-browser caution)</li>
+  <li><code>::placeholder</code> can differ in syntax between browsers — use vendor prefixes if needed</li>
+  <li>Double colon <code>::</code> is standard, but single colon <code>:</code> still works for older browsers</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which pseudo-element adds content before the element?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> ::first-letter</label></li>
+  <li><label><input type="radio" name="q1"> ::after</label></li>
+  <li><label><input type="radio" name="q1"> ::before</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

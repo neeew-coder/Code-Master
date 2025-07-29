@@ -1,0 +1,76 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Counters</h2>
+
+<p class="mb-6 text-gray-700">
+CSS counters allow you to create and manage automatic numbering — useful for headings, steps, list items, or dynamic labels. You define, increment, and inject them with <code>content</code>.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔢 Basic Setup</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+section {
+  counter-reset: section-counter;
+}
+
+h2::before {
+  counter-increment: section-counter;
+  content: "Section " counter(section-counter) ": ";
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+This adds a number before each <code>&lt;h2&gt;</code> inside the section — auto-incrementing for each one.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📂 Nested Counters</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+ol {
+  counter-reset: item;
+}
+
+li::before {
+  counter-increment: item;
+  content: counters(item, ".") " ";
+}
+</pre>
+
+<ul class="bg-blue-50 p-4 rounded mb-6 text-gray-800">
+  <li>List Item One</li>
+  <li>List Item Two</li>
+  <li>List Item Three</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6">
+  <section style="counter-reset: section-counter;">
+    <h2 style="counter-increment: section-counter;">Introduction</h2>
+    <h2 style="counter-increment: section-counter;">Concepts</h2>
+    <h2 style="counter-increment: section-counter;">Practice</h2>
+  </section>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Counter Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>counter-reset</code> to start or restart numbering</li>
+  <li><code>counter-increment</code> adds one (or a custom value)</li>
+  <li><code>content: counter(name)</code> or <code>counters(name, separator)</code> injects number</li>
+  <li>Counters work best with pseudo-elements like <code>::before</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which property initializes a counter to a starting value?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> counter-increment</label></li>
+  <li><label><input type="radio" name="q1"> counter-reset</label></li>
+  <li><label><input type="radio" name="q1"> counter-start</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

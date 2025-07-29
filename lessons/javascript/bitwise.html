@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Bitwise Operations | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Bitwise Operations</h2>
+
+  <p class="mb-6 text-gray-700">
+    Bitwise operators treat numbers as 32-bit integers and operate on their binary representations. They're useful for low-level tasks, flags, and performance tricks.
+  </p>
+
+  <!-- AND -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔹 Bitwise AND (&)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runAnd()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 5 & 1; // 0101 & 0001 → 0001 → 1
+    </pre>
+    <div id="andOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- OR -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔸 Bitwise OR (|)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runOr()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 5 | 1; // 0101 | 0001 → 0101 → 5
+    </pre>
+    <div id="orOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- XOR -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">❌ Bitwise XOR (^)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runXor()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 5 ^ 1; // 0101 ^ 0001 → 0100 → 4
+    </pre>
+    <div id="xorOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- NOT -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔄 Bitwise NOT (~)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runNot()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = ~5; // ~00000000000000000000000000000101 → -6
+    </pre>
+    <div id="notOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Left Shift -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⬅️ Left Shift (<<)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runLeftShift()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 5 << 1; // 0101 << 1 → 1010 → 10
+    </pre>
+    <div id="leftShiftOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Right Shift -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➡️ Right Shift (>>)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runRightShift()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = -5 >> 1; // sign-preserving shift → -3
+    </pre>
+    <div id="rightShiftOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Zero Fill Right Shift -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➡️ Zero Fill Right Shift (>>>)</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runZeroFill()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 5 >>> 1; // 0101 >>> 1 → 0010 → 2
+    </pre>
+    <div id="zeroFillOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Conversion Functions -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔁 Decimal ↔ Binary Conversion</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end space-x-2">
+      <button onclick="runDec2Bin()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Decimal to Binary</button>
+      <button onclick="runBin2Dec()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Binary to Decimal</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+function dec2bin(dec) {
+  return (dec >>> 0).toString(2);
+}
+
+function bin2dec(bin) {
+  return parseInt(bin, 2).toString(10);
+}
+    </pre>
+    <div id="conversionOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runAnd() {
+      document.getElementById("andOutput").innerHTML = `5 & 1 = ${5 & 1}`;
+    }
+
+    function runOr() {
+      document.getElementById("orOutput").innerHTML = `5 | 1 = ${5 | 1}`;
+    }
+
+    function runXor() {
+      document.getElementById("xorOutput").innerHTML = `5 ^ 1 = ${5 ^ 1}`;
+    }
+
+    function runNot() {
+      document.getElementById("notOutput").innerHTML = `~5 = ${~5}`;
+    }
+
+    function runLeftShift() {
+      document.getElementById("leftShiftOutput").innerHTML = `5 << 1 = ${5 << 1}`;
+    }
+
+    function runRightShift() {
+      document.getElementById("rightShiftOutput").innerHTML = `-5 >> 1 = ${-5 >> 1}`;
+    }
+
+    function runZeroFill() {
+      document.getElementById("zeroFillOutput").innerHTML = `5 >>> 1 = ${5 >>> 1}`;
+    }
+
+    function dec2bin(dec) {
+      return (dec >>> 0).toString(2);
+    }
+
+    function bin2dec(bin) {
+      return parseInt(bin, 2).toString(10);
+    }
+
+    function runDec2Bin() {
+      const dec = 45;
+      document.getElementById("conversionOutput").innerHTML = `Decimal ${dec} → Binary ${dec2bin(dec)}`;
+    }
+
+    function runBin2Dec() {
+      const bin = "101101";
+      document.getElementById("conversionOutput").innerHTML = `Binary ${bin} → Decimal ${bin2dec(bin)}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What is the result of <code>~5</code> in JavaScript?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 10</label></li>
+    <li><label><input type="radio" name="q1"> -6</label></li>
+    <li><label><input type="radio" name="q1"> 6</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

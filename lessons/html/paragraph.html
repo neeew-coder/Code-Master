@@ -1,0 +1,211 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Paragraphs</h2>
+
+<p class="mb-4 text-gray-700">
+A paragraph always starts on a new line and is typically a block of text. Browsers automatically add spacing before and after paragraphs.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 The <code>&lt;p&gt;</code> Element</h3>
+<p class="mb-2 text-gray-700">
+The <code>&lt;p&gt;</code> tag defines a paragraph. It’s a block-level element that starts on a new line.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    &lt;p&gt;This is another paragraph.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🖥️ HTML Display Behavior</h3>
+<p class="mb-4 text-gray-700">
+HTML ignores extra spaces and line breaks in source code. The browser collapses whitespace when rendering.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;This paragraph contains a lot of lines but the browser ignores it.&lt;/p&gt;
+    &lt;p&gt;This paragraph contains a lot of spaces but the browser ignores it.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;
+This paragraph
+contains a lot of lines
+in the source code,
+but the browser
+ignores it.
+&lt;/p&gt;
+
+&lt;p&gt;
+This paragraph
+contains         a lot of spaces
+in the source         code,
+but the        browser
+ignores it.
+&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Horizontal Rules</h3>
+<p class="mb-2 text-gray-700">
+The <code>&lt;hr&gt;</code> tag defines a thematic break and is often rendered as a horizontal line.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;This is heading 1&lt;/h1&gt;
+    &lt;p&gt;This is some text.&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;h2&gt;This is heading 2&lt;/h2&gt;
+    &lt;p&gt;This is some other text.&lt;/p&gt;
+    &lt;hr&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;h1&gt;This is heading 1&lt;/h1&gt;
+&lt;p&gt;This is some text.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;This is heading 2&lt;/h2&gt;
+&lt;p&gt;This is some other text.&lt;/p&gt;
+&lt;hr&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">↩️ Line Breaks</h3>
+<p class="mb-2 text-gray-700">
+Use <code>&lt;br&gt;</code> to insert a line break without starting a new paragraph.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;This is&lt;br&gt;a paragraph&lt;br&gt;with line breaks.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;This is&lt;br&gt;a paragraph&lt;br&gt;with line breaks.&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📜 The Poem Problem</h3>
+<p class="mb-2 text-gray-700">
+HTML collapses whitespace, so poems written with line breaks will appear as a single line.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;p&gt;My Bonnie lies over the ocean. My Bonnie lies over the sea. My Bonnie lies over the ocean. Oh, bring back my Bonnie to me.&lt;/p&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;p&gt;
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+&lt;/p&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧾 Solution: The <code>&lt;pre&gt;</code> Element</h3>
+<p class="mb-2 text-gray-700">
+Use <code>&lt;pre&gt;</code> to preserve whitespace and line breaks. It displays text in a fixed-width font.
+</p>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;pre&gt;
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+    &lt;/pre&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;pre&gt;
+  My Bonnie lies over the ocean.
+
+  My Bonnie lies over the sea.
+
+  My Bonnie lies over the ocean.
+
+  Oh, bring back my Bonnie to me.
+&lt;/pre&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">True or False: HTML paragraphs always start on a new line.</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> True</label></li>
+  <li><label><input type="radio" name="q1"> False</label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

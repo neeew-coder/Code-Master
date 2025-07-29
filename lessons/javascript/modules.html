@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Modules (Simplified) | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Modules (Simplified)</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript modules let you split code into reusable files using <code>export</code> and <code>import</code>. This makes your code easier to maintain, test, and organize.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li><strong>Named exports</strong> let you export multiple values by name</li>
+      <li><strong>Default exports</strong> let you export a single main value</li>
+      <li><strong>Modules must use <code>type="module"</code></strong> in the script tag</li>
+      <li><strong>Modules only work over HTTP(s)</strong> — not file://</li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Module Simulation Preview</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end space-x-2">
+      <button id="runNamed" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Named Export
+      </button>
+      <button id="runDefault" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Default Export
+      </button>
+    </div>
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Modules (Simplified) | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Modules (Simplified)</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript modules let you split code into reusable files using <code>export</code> and <code>import</code>. This makes your code easier to maintain, test, and organize.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li><strong>Named exports</strong> let you export multiple values by name</li>
+      <li><strong>Default exports</strong> let you export a single main value</li>
+      <li><strong>Modules must use <code>type="module"</code></strong> in the script tag</li>
+      <li><strong>Modules only work over HTTP(s)</strong> — not file://</li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Module Simulation Preview</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end space-x-2">
+      <button id="runNamed" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Named Export
+      </button>
+      <button id="runDefault" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Default Export
+      </button>
+    </div>
+
+    <p class="text-sm text-gray-600 italic">Simulated module code preview:</p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+&lt;script type="module"&gt;
+// Named exports
+export const name = "Jesse";
+export const age = 40;
+
+// Default export
+export default function message() {
+  return `${name} is ${age} years old.`;
+}
+&lt;/script&gt;
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Syntax Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Syntax Reference</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-sm text-gray-700">
+    <p><strong>Named Export:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+export const name = "Jesse";
+export const age = 40;
+    </pre>
+
+    <p><strong>Default Export:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+const message = () => `${name} is ${age} years old.`;
+export default message;
+    </pre>
+
+    <p><strong>Import:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+import { name, age } from "./person.js";
+import message from "./message.js";
+    </pre>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does a default export allow you to do?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Export multiple values by name</label></li>
+    <li><label><input type="radio" name="q1"> Export a single main value</label></li>
+    <li><label><input type="radio" name="q1"> Export only functions</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Simulated Module Logic -->
+  <script type="module">
+    document.addEventListener("DOMContentLoaded", () => {
+      // Simulated named exports
+      const name = "Jesse";
+      const age = 40;
+
+      // Simulated default export
+      const message = () => `${name} is ${age} years old.`;
+
+      // Named export button
+      document.getElementById("runNamed").addEventListener("click", () => {
+        const output = `Named exports: name = ${name}, age = ${age}`;
+        document.getElementById("output").innerText = output;
+      });
+
+      // Default export button
+      document.getElementById("runDefault").addEventListener("click", () => {
+        const output = `Default export: ${message()}`;
+        document.getElementById("output").innerText = output;
+      });
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

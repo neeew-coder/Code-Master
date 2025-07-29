@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Functions | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Functions</h2>
+
+  <p class="mb-6 text-gray-700">
+    Functions are reusable blocks of code that perform specific tasks. They help organize logic, reduce repetition, and make your code more readable and maintainable.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Declaring a Function</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+function greet(name) {
+  return "Hello, " + name + "!";
+}
+
+let message = greet("User"); // "Hello, User!"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Functions can accept parameters and return values. You call a function by using its name followed by parentheses.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Anonymous & Arrow Functions</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let greet = function(name) {
+  return "Hi, " + name;
+};
+
+let shout = (text) => text.toUpperCase();
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Anonymous functions are stored in variables. Arrow functions offer a shorter syntax and are common in modern JavaScript.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🔁 Function Execution</span>
+      <button onclick="runFunction()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Function
+      </button>
+    </div>
+    <div id="funcOutput" class="text-sm text-gray-700 mt-2">
+      Click the button to run a named function with a parameter.
+    </div>
+  </div>
+
+  <script>
+    function greet(name) {
+      return "Hello, " + name + "!";
+    }
+
+    function runFunction() {
+      let result = greet("User");
+      document.getElementById("funcOutput").innerHTML = `
+        <div class="flex items-center gap-2 mt-2">
+          <i class="fas fa-check-circle text-yellow-400 text-sm"></i>
+          <span>${result}</span>
+        </div>
+      `;
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Use <code>function</code> to declare named functions</li>
+    <li>Functions can return values using <code>return</code></li>
+    <li>Arrow functions are concise but behave differently with <code>this</code></li>
+    <li>Functions improve modularity and reusability</li>
+    <li>Parameters are placeholders — arguments are actual values passed in</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>function greet(name) { return "Hi " + name; }</code> return when called with <code>"User"</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "Hi name"</label></li>
+    <li><label><input type="radio" name="q1"> "Hi User"</label></li>
+    <li><label><input type="radio" name="q1"> "name User"</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

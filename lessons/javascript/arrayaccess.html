@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Access | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Access</h2>
+
+  <p class="mb-6 text-gray-700">
+    Arrays are indexed collections. You can access items using bracket notation, the <code>.at()</code> method, or format them using <code>.join()</code> and <code>.toString()</code>.
+  </p>
+
+  <!-- Access Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Access Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let fruits = ["Banana", "Orange", "Apple", "Mango"];
+
+fruits[0];         // "Banana"
+fruits.at(-1);     // "Mango" (ES2022)
+fruits.length;     // 4
+fruits.join(" - "); // "Banana - Orange - Apple - Mango"
+fruits.toString(); // "Banana,Orange,Apple,Mango"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>[index]</code> or <code>.at()</code> to access items. Use <code>.join()</code> or <code>.toString()</code> to format arrays as strings.
+  </p>
+
+  <!-- Visual Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🔍 Access Demo</span>
+      <button onclick="runArrayAccess()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Demo
+      </button>
+    </div>
+    <div id="arrayAccessOutput" class="text-sm text-gray-700 mt-2 space-y-1">
+      Click to see array access and formatting.
+    </div>
+  </div>
+
+  <script>
+    function runArrayAccess() {
+      let fruits = ["Banana", "Orange", "Apple", "Mango"];
+      const output = [
+        `Array: [${fruits.join(", ")}]`,
+        `First item: ${fruits[0]}`,
+        `Last item (at): ${fruits.at(-1)}`,
+        `Length: ${fruits.length}`,
+        `Joined: ${fruits.join(" - ")}`,
+        `toString(): ${fruits.toString()}`
+      ];
+
+      document.getElementById("arrayAccessOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-arrow-right text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>[index]</code> accesses items by position</li>
+    <li><code>.at()</code> supports negative indexing (ES2022)</li>
+    <li><code>.length</code> returns the number of items</li>
+    <li><code>.join()</code> joins items with a custom separator</li>
+    <li><code>.toString()</code> converts array to comma-separated string</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>["a", "b", "c"].at(-1)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> "a"</label></li>
+    <li><label><input type="radio" name="q1"> "c"</label></li>
+    <li><label><input type="radio" name="q1"> undefined</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

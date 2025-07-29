@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Set Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Set Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript <code>Set</code> objects store unique values. You can use methods like <code>add()</code>, <code>has()</code>, <code>clear()</code>, <code>forEach()</code>, and iterators like <code>values()</code>, <code>keys()</code>, and <code>entries()</code>.
+  </p>
+
+  <!-- Add and Uniqueness -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">➕ add() and Uniqueness</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Add Values</span>
+      <button onclick="runAddDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="addOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- size Property -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📏 size Property</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check Size</span>
+      <button onclick="runSizeDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="sizeOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- has() Method -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 has() Method</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Check Membership</span>
+      <button onclick="runHasDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="hasOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- forEach() Method -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔁 forEach() Method</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Loop with forEach()</span>
+      <button onclick="runForEachDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="forEachOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- values(), keys(), entries() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 Iterators: values(), keys(), entries()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Iterators</span>
+      <button onclick="runIteratorDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="iteratorOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runAddDemo() {
+      const letters = new Set();
+      letters.add("a");
+      letters.add("b");
+      letters.add("c");
+      letters.add("c");
+      letters.add("c");
+      let result = "";
+      for (const x of letters) result += x + " ";
+      document.getElementById("addOutput").innerHTML = `Set contents: ${result.trim()}`;
+    }
+
+    function runSizeDemo() {
+      const mySet = new Set(["a", "b", "c"]);
+      document.getElementById("sizeOutput").innerHTML = `Set size: ${mySet.size}`;
+    }
+
+    function runHasDemo() {
+      const letters = new Set(["a", "b", "c"]);
+      const result = letters.has("d");
+      document.getElementById("hasOutput").innerHTML = `Set has "d"? → ${result}`;
+    }
+
+    function runForEachDemo() {
+      const letters = new Set(["a", "b", "c"]);
+      let result = "";
+      letters.forEach(value => result += value + " ");
+      document.getElementById("forEachOutput").innerHTML = `forEach output: ${result.trim()}`;
+    }
+
+    function runIteratorDemo() {
+      const letters = new Set(["a", "b", "c"]);
+      let values = [...letters.values()].join(" ");
+      let keys = [...letters.keys()].join(" ");
+      let entries = [...letters.entries()].map(pair => `[${pair}]`).join(" ");
+      document.getElementById("iteratorOutput").innerHTML = `
+        <div><strong>values():</strong> ${values}</div>
+        <div><strong>keys():</strong> ${keys}</div>
+        <div><strong>entries():</strong> ${entries}</div>
+      `;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>add()</code> inserts values — duplicates are ignored</li>
+    <li><code>size</code> returns the number of elements</li>
+    <li><code>has()</code> checks for membership</li>
+    <li><code>forEach()</code> loops through all elements</li>
+    <li><code>values()</code>, <code>keys()</code>, and <code>entries()</code> return iterators</li>
+    <li><code>keys()</code> and <code>values()</code> are identical in Sets</li>
+    <li><code>entries()</code> returns [value, value] pairs for compatibility with Maps</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>entries()</code> return for a Set?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> [key, value] pairs</label></li>
+    <li><label><input type="radio" name="q1"> [value, value] pairs</label></li>
+    <li><label><input type="radio" name="q1"> Only values</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+</body>
+</html>

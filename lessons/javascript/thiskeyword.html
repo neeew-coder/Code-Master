@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript this Keyword | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript <code>this</code> Keyword</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>this</code> keyword refers to the object that is executing the current function. Its value depends on how the function is called.
+  </p>
+
+  <!-- this in object method -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👤 this in Object Method</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runObjectMethod()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const person = {
+  firstName: "John",
+  lastName: "Doe",
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+person.fullName(); // "John Doe"
+    </pre>
+    <div id="objectMethodOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- this in global scope -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🌍 this in Global Scope</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runGlobalThis()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = this; // refers to window in browsers
+    </pre>
+    <div id="globalThisOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- this in strict mode -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔒 this in Strict Mode</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runStrictThis()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+"use strict";
+function myFunction() {
+  return this; // undefined
+}
+    </pre>
+    <div id="strictThisOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- this with call -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📞 Explicit Binding with call()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runCallBinding()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const person1 = {
+  fullName: function() {
+    return this.firstName + " " + this.lastName;
+  }
+};
+const person2 = {
+  firstName: "John",
+  lastName: "Doe"
+};
+person1.fullName.call(person2); // "John Doe"
+    </pre>
+    <div id="callOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runObjectMethod() {
+      const person = {
+        firstName: "John",
+        lastName: "Doe",
+        fullName: function() {
+          return this.firstName + " " + this.lastName;
+        }
+      };
+      document.getElementById("objectMethodOutput").innerHTML = person.fullName();
+    }
+
+    function runGlobalThis() {
+      const x = this;
+      document.getElementById("globalThisOutput").innerHTML = x === window ? "this is window" : "this is not window";
+    }
+
+    function runStrictThis() {
+      "use strict";
+      function myFunction() {
+        return this;
+      }
+      const result = myFunction();
+      document.getElementById("strictThisOutput").innerHTML = result === undefined ? "this is undefined" : "this is not undefined";
+    }
+
+    function runCallBinding() {
+      const person1 = {
+        fullName: function() {
+          return this.firstName + " " + this.lastName;
+        }
+      };
+      const person2 = {
+        firstName: "John",
+        lastName: "Doe"
+      };
+      const result = person1.fullName.call(person2);
+      document.getElementById("callOutput").innerHTML = result;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>this</code> refer to inside a method of an object?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> The global object</label></li>
+    <li><label><input type="radio" name="q1"> The object itself</label></li>
+    <li><label><input type="radio" name="q1"> undefined</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

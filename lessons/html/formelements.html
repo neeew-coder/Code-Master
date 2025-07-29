@@ -1,0 +1,127 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Form Elements</h2>
+
+<p class="mb-6 text-gray-700">
+HTML forms use structured elements to collect user input and submit it for processing. Each element has a clear role, styling options, and accessibility behavior. Let’s break them down with interactive examples.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📋 Core Form Tags Overview</h3>
+
+<table class="w-full border border-gray-300 text-sm mb-6 text-gray-700">
+  <thead class="bg-orange-100">
+    <tr><th class="border px-3 py-2">Tag</th><th class="border px-3 py-2">Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">&lt;form&gt;</td><td class="border px-3 py-2">Form container</td></tr>
+    <tr><td class="border px-3 py-2">&lt;input&gt;</td><td class="border px-3 py-2">Various input types</td></tr>
+    <tr><td class="border px-3 py-2">&lt;label&gt;</td><td class="border px-3 py-2">Clickable/accessibility label</td></tr>
+    <tr><td class="border px-3 py-2">&lt;select&gt;</td><td class="border px-3 py-2">Drop-down list</td></tr>
+    <tr><td class="border px-3 py-2">&lt;textarea&gt;</td><td class="border px-3 py-2">Multiline input</td></tr>
+    <tr><td class="border px-3 py-2">&lt;button&gt;</td><td class="border px-3 py-2">Clickable action button</td></tr>
+    <tr><td class="border px-3 py-2">&lt;fieldset&gt;</td><td class="border px-3 py-2">Group input elements</td></tr>
+    <tr><td class="border px-3 py-2">&lt;legend&gt;</td><td class="border px-3 py-2">Caption for fieldset</td></tr>
+    <tr><td class="border px-3 py-2">&lt;datalist&gt;</td><td class="border px-3 py-2">Predefined autocomplete list</td></tr>
+    <tr><td class="border px-3 py-2">&lt;output&gt;</td><td class="border px-3 py-2">Calculation or dynamic result</td></tr>
+    <tr><td class="border px-3 py-2">&lt;option&gt;</td><td class="border px-3 py-2">Drop-down item</td></tr>
+    <tr><td class="border px-3 py-2">&lt;optgroup&gt;</td><td class="border px-3 py-2">Grouped options in select</td></tr>
+  </tbody>
+</table>
+
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">✏️ Basic Text Field</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;label for=&quot;fname&quot;&gt;First name:&lt;/label&gt;
+&lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot;&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">🔹 Text fields are single-line and require a matching <code>name</code> to be submitted.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔽 Drop-Down Select</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;label for=&quot;cars&quot;&gt;Choose a car:&lt;/label&gt;
+&lt;select id=&quot;cars&quot; name=&quot;cars&quot;&gt;
+  &lt;option value=&quot;volvo&quot;&gt;Volvo&lt;/option&gt;
+  &lt;option value=&quot;fiat&quot; selected&gt;Fiat&lt;/option&gt;
+  &lt;option value=&quot;audi&quot;&gt;Audi&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">🔸 Use <code>size</code> to show multiple options at once, and <code>multiple</code> to allow multi-select.</p>
+
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Textarea</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;textarea name=&quot;message&quot; rows=&quot;5&quot; cols=&quot;30&quot;&gt;
+The cat was playing in the garden.
+&lt;/textarea&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">🔸 You can also control width/height via inline styles or CSS.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🚀 Button</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;button type=&quot;button&quot; onclick=&quot;alert('Hello World!')&quot;&gt;
+Click Me!
+&lt;/button&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">⚠️ Always specify <code>type</code> ("button", "submit", or "reset") — otherwise behavior may vary by browser.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📦 Fieldset with Legend</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Personalia&lt;/legend&gt;
+    &lt;label for=&quot;fname&quot;&gt;First name:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;fname&quot; name=&quot;fname&quot;&gt;&lt;br&gt;
+    &lt;label for=&quot;lname&quot;&gt;Last name:&lt;/label&gt;
+    &lt;input type=&quot;text&quot; id=&quot;lname&quot; name=&quot;lname&quot;&gt;&lt;br&gt;
+    &lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">✅ Fieldsets group related inputs with a visual box and a caption.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">💡 Datalist Autocomplete</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;input list=&quot;browsers&quot;&gt;
+&lt;datalist id=&quot;browsers&quot;&gt;
+  &lt;option value=&quot;Edge&quot;&gt;
+  &lt;option value=&quot;Firefox&quot;&gt;
+  &lt;option value=&quot;Chrome&quot;&gt;
+&lt;/datalist&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">🔍 Datalist works only with compatible input types like <code>text</code>.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📊 Output Calculations</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;form oninput=&quot;x.value=parseInt(a.value)+parseInt(b.value)&quot;&gt;
+  &lt;input type=&quot;range&quot; id=&quot;a&quot; name=&quot;a&quot; value=&quot;50&quot;&gt;
+  + &lt;input type=&quot;number&quot; id=&quot;b&quot; name=&quot;b&quot; value=&quot;50&quot;&gt;
+  = &lt;output name=&quot;x&quot; for=&quot;a b&quot;&gt;&lt;/output&gt;
+&lt;/form&gt;
+</pre>
+
+<p class="mb-2 text-gray-700">🔸 The <code>&lt;output&gt;</code> tag reflects real-time calculations, ideal for range sliders and form math.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">Which HTML element groups related data and draws a visible border around inputs by default?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> &lt;group&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;fieldset&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;fence&gt;</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

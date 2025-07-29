@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Comparison & Logical Operators | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Comparison & Logical Operators</h2>
+
+  <p class="mb-6 text-gray-700">
+    Comparison and logical operators return <code>true</code> or <code>false</code> based on the evaluation of expressions. They’re essential for conditions, loops, and decision-making.
+  </p>
+
+  <!-- Comparison Operators -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Comparison Operators</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let x = 5;
+
+x == 5;      // true
+x == "5";    // true
+x === 5;     // true
+x === "5";   // false
+x != 8;      // true
+x !== "5";   // true
+x > 8;       // false
+x < 8;       // true
+x >= 5;      // true
+x <= 4;      // false
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Comparison</span>
+      <button onclick="runComparison()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="comparisonOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Logical Operators -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔗 Logical Operators</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let x = 6, y = 3;
+
+x < 10 && y > 1;  // true
+x == 5 || y == 5; // false
+!(x == y);        // true
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Logic</span>
+      <button onclick="runLogic()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="logicOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Ternary, Nullish, Optional -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🎯 Ternary, Nullish, Optional</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let age = 17;
+let voteable = (age < 18) ? "Too young" : "Old enough";
+
+let name = null;
+let result = name ?? "missing";
+
+const car = { type: "Fiat", model: "500" };
+let model = car?.model;
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Ternary & More</span>
+      <button onclick="runExtras()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="extrasOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function runComparison() {
+      let x = 5, y = "5";
+      const output = [
+        `x == "5": ${x == y}`,
+        `x === "5": ${x === y}`,
+        `x !== "5": ${x !== y}`,
+        `x > 8: ${x > 8}`,
+        `x < 8: ${x < 8}`,
+        `x >= 5: ${x >= 5}`,
+        `x <= 4: ${x <= 4}`
+      ];
+      document.getElementById("comparisonOutput").innerHTML = output.join("<br>");
+    }
+
+    function runLogic() {
+      let x = 6, y = 3;
+      const output = [
+        `x < 10 && y > 1: ${x < 10 && y > 1}`,
+        `x == 5 || y == 5: ${x == 5 || y == 5}`,
+        `!(x == y): ${!(x == y)}`
+      ];
+      document.getElementById("logicOutput").innerHTML = output.join("<br>");
+    }
+
+    function runExtras() {
+      let age = 17;
+      let name = null;
+      const car = { type: "Fiat", model: "500" };
+      const output = [
+        `Ternary: ${(age < 18) ? "Too young" : "Old enough"}`,
+        `Nullish: ${name ?? "missing"}`,
+        `Optional chaining: ${car?.model}`
+      ];
+      document.getElementById("extrasOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>==</code> compares value only; <code>===</code> compares value and type</li>
+    <li><code>!=</code> and <code>!==</code> are not equal and not equal type</li>
+    <li><code>&&</code> requires both conditions true; <code>||</code> requires one</li>
+    <li><code>!</code> negates a condition</li>
+    <li><code>??</code> returns first non-nullish value</li>
+    <li><code>?.</code> safely accesses properties of possibly null/undefined objects</li>
+    <li>Use <code>Number()</code> to convert strings before comparing numerically</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Consider the following code: <code>let x = (5 == 5 || 5 &lt; 2);</code><br>What will be the value of <code>x</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> true</label></li>
+    <li><label><input type="radio" name="q1"> false</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

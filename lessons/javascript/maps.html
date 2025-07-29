@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Maps | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Maps</h2>
+
+  <p class="mb-6 text-gray-700">
+    A <code>Map</code> object holds key-value pairs where keys can be any datatype. Maps remember the original insertion order of keys and are directly iterable.
+  </p>
+
+  <!-- Create from Array -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Create from Array</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Create from Array</span>
+      <button onclick="createFromArray()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="arrayOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+  <!-- set() and get() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔧 set() and get()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const fruits = new Map();
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+fruits.get("apples"); // 500
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Set & Get</span>
+      <button onclick="runSetGet()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="setGetOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+  <!-- Type Inspection -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 Type Inspection</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+typeof fruits;         // "object"
+fruits instanceof Map; // true
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Inspect Type</span>
+      <button onclick="inspectMapType()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="typeOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+  <!-- Comparison Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📊 Objects vs Maps</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Feature</th>
+        <th class="px-4 py-2 border">Object</th>
+        <th class="px-4 py-2 border">Map</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">Iterable</td><td class="px-4 py-2 border">No</td><td class="px-4 py-2 border">Yes</td></tr>
+      <tr><td class="px-4 py-2 border">Size property</td><td class="px-4 py-2 border">No</td><td class="px-4 py-2 border">Yes</td></tr>
+      <tr><td class="px-4 py-2 border">Key types</td><td class="px-4 py-2 border">Strings/Symbols</td><td class="px-4 py-2 border">Any datatype</td></tr>
+      <tr><td class="px-4 py-2 border">Key order</td><td class="px-4 py-2 border">Not guaranteed</td><td class="px-4 py-2 border">Insertion order</td></tr>
+      <tr><td class="px-4 py-2 border">Default keys</td><td class="px-4 py-2 border">Yes</td><td class="px-4 py-2 border">No</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Script -->
+  <script>
+    function createFromArray() {
+      const fruits = new Map([
+        ["apples", 500],
+        ["bananas", 300],
+        ["oranges", 200]
+      ]);
+      let result = "";
+      for (const [key, value] of fruits) {
+        result += `${key}: ${value}<br>`;
+      }
+      document.getElementById("arrayOutput").innerHTML = result;
+    }
+
+    function runSetGet() {
+      const fruits = new Map();
+      fruits.set("apples", 500);
+      fruits.set("bananas", 300);
+      fruits.set("oranges", 200);
+      const value = fruits.get("apples");
+      document.getElementById("setGetOutput").innerHTML = `apples → ${value}`;
+    }
+
+    function inspectMapType() {
+      const fruits = new Map();
+      const output = [
+        `typeof fruits → ${typeof fruits}`,
+        `fruits instanceof Map → ${fruits instanceof Map}`
+      ];
+      document.getElementById("typeOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which of the following is true about Maps?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Keys must be strings</label></li>
+    <li><label><input type="radio" name="q1"> Keys are unordered</label></li>
+    <li><label><input type="radio" name="q1"> Keys can be any datatype</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

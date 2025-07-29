@@ -1,0 +1,57 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Units</h2>
+
+<p class="mb-6 text-gray-700">
+Units define the size and spacing of elements in CSS — from pixels to percentages, viewport widths to scalable ems. Understanding units helps create precise, flexible, and responsive designs.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧮 Common CSS Units</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr>
+      <th class="border px-3 py-2">Unit</th>
+      <th class="border px-3 py-2">Type</th>
+      <th class="border px-3 py-2">Example</th>
+      <th class="border px-3 py-2">Usage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">px</td><td class="border px-3 py-2">Absolute</td><td class="border px-3 py-2">width: 200px</td><td class="border px-3 py-2">Fixed size</td></tr>
+    <tr><td class="border px-3 py-2">%</td><td class="border px-3 py-2">Relative</td><td class="border px-3 py-2">width: 80%</td><td class="border px-3 py-2">Relative to parent</td></tr>
+    <tr><td class="border px-3 py-2">em</td><td class="border px-3 py-2">Font-relative</td><td class="border px-3 py-2">font-size: 1.2em</td><td class="border px-3 py-2">Relative to parent font</td></tr>
+    <tr><td class="border px-3 py-2">rem</td><td class="border px-3 py-2">Root-relative</td><td class="border px-3 py-2">padding: 2rem</td><td class="border px-3 py-2">Relative to root font-size</td></tr>
+    <tr><td class="border px-3 py-2">vw</td><td class="border px-3 py-2">Viewport</td><td class="border px-3 py-2">width: 50vw</td><td class="border px-3 py-2">50% of viewport width</td></tr>
+    <tr><td class="border px-3 py-2">vh</td><td class="border px-3 py-2">Viewport</td><td class="border px-3 py-2">height: 100vh</td><td class="border px-3 py-2">Full viewport height</td></tr>
+    <tr><td class="border px-3 py-2">fr</td><td class="border px-3 py-2">Grid-specific</td><td class="border px-3 py-2">grid-template-columns: 1fr 2fr</td><td class="border px-3 py-2">Fractional space</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Demo: Unit Comparison</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 space-y-2 text-center">
+  <div style="width: 200px; background: #dbeafe; padding: 8px;">200px wide</div>
+  <div style="width: 80%; background: #bfdbfe; padding: 8px;">80% of parent</div>
+  <div style="font-size: 16px;"><span style="font-size: 1.5em;">1.5em text</span> vs <span style="font-size: 1.5rem;">1.5rem text</span></div>
+  <div style="width: 50vw; background: #93c5fd; padding: 8px;">50vw wide</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Unit Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>rem</code> for consistent spacing across modules</li>
+  <li><code>em</code> stacks — 1.2em inside 1.2em compounds</li>
+  <li>Use <code>vw</code> and <code>vh</code> for full-screen layouts or responsive wrappers</li>
+  <li><code>fr</code> units work inside CSS Grid only</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which unit is based on the font size of the root HTML element?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> em</label></li>
+  <li><label><input type="radio" name="q1"> rem</label></li>
+  <li><label><input type="radio" name="q1"> px</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

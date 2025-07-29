@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Syntax | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">📐 Java Syntax</h2>
+
+  <p class="mb-6 text-gray-700">
+    Java syntax refers to the set of rules that define how a Java program is written and interpreted. Every Java program must follow a specific structure to compile and run correctly.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🧱 Basic Structure</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li>Java code is written inside <code>classes</code>.</li>
+    <li>The <code>main()</code> method is the entry point of any Java application.</li>
+    <li>Statements end with a semicolon <code>;</code>.</li>
+    <li>Code blocks are enclosed in curly braces <code>{ }</code>.</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">📦 Code Example</h3>
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+
+    <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+public class SyntaxDemo {
+  public static void main(String[] args) {
+    System.out.println("Java syntax is simple!");
+  }
+}
+    </textarea>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which of the following is the correct way to start a Java class?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> class Main()</label></li>
+    <li><label><input type="radio" name="q1"> public class Main</label></li>
+    <li><label><input type="radio" name="q1"> void class Main</label></li>
+    <li><label><input type="radio" name="q1"> static class Main</label></li>
+  </ul>
+
+  <p class="text-gray-700 mb-2">
+    What symbol is used to end a statement in Java?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q2"> :</label></li>
+    <li><label><input type="radio" name="q2"> .</label></li>
+    <li><label><input type="radio" name="q2"> ;</label></li>
+    <li><label><input type="radio" name="q2"> ,</label></li>
+  </ul>
+
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-syntax')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Map Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Map Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript <code>Map</code> objects offer flexible key-value storage with powerful methods for setting, retrieving, deleting, and iterating over entries. Keys can be any datatype, including objects.
+  </p>
+
+  <!-- set() and get() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔧 set() and get()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Set & Get</span>
+      <button onclick="runSetGet()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map();
+fruits.set("apples", 500);
+fruits.set("bananas", 300);
+fruits.set("oranges", 200);
+const value = fruits.get("apples");
+    </pre>
+    <div id="setGetOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- delete(), clear(), has(), size -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧹 delete(), clear(), has(), size</h3>
+
+  <!-- delete() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ delete()</span>
+      <button onclick="runDelete()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+fruits.delete("apples");
+fruits.has("apples");
+    </pre>
+    <div id="deleteOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- clear() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ clear()</span>
+      <button onclick="runClear()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+fruits.clear();
+fruits.size;
+    </pre>
+    <div id="clearOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- has() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ has()</span>
+      <button onclick="runHas()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500]]);
+fruits.has("apples");
+    </pre>
+    <div id="hasOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- size -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ size</span>
+      <button onclick="runSize()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+fruits.size;
+    </pre>
+    <div id="sizeOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Iteration Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔁 Iteration: forEach(), entries(), keys(), values()</h3>
+
+  <!-- forEach() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ forEach()</span>
+      <button onclick="runForEach()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+fruits.forEach((value, key) => {
+  text += key + " = " + value;
+});
+    </pre>
+    <div id="forEachOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- entries() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ entries()</span>
+      <button onclick="runEntries()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+for (const entry of fruits.entries()) {
+  text += entry;
+}
+    </pre>
+    <div id="entriesOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- keys() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ keys()</span>
+      <button onclick="runKeys()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+for (const key of fruits.keys()) {
+  text += key;
+}
+    </pre>
+    <div id="keysOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+    <!-- values() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ values()</span>
+      <button onclick="runValues()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([["apples", 500], ["bananas", 300]]);
+for (const value of fruits.values()) {
+  text += value;
+}
+    </pre>
+    <div id="valuesOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runSetGet() {
+      const fruits = new Map();
+      fruits.set("apples", 500);
+      fruits.set("bananas", 300);
+      fruits.set("oranges", 200);
+      const value = fruits.get("apples");
+      document.getElementById("setGetOutput").innerHTML = `apples → ${value}`;
+    }
+
+    function runDelete() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      fruits.delete("apples");
+      document.getElementById("deleteOutput").innerHTML = `Has "apples"? → ${fruits.has("apples")}`;
+    }
+
+    function runClear() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      fruits.clear();
+      document.getElementById("clearOutput").innerHTML = `Map cleared → size: ${fruits.size}`;
+    }
+
+    function runHas() {
+      const fruits = new Map([["apples", 500]]);
+      document.getElementById("hasOutput").innerHTML = `Has "apples"? → ${fruits.has("apples")}`;
+    }
+
+    function runSize() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      document.getElementById("sizeOutput").innerHTML = `Map size → ${fruits.size}`;
+    }
+
+    function runForEach() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      let result = "";
+      fruits.forEach((value, key) => result += `${key} = ${value}<br>`);
+      document.getElementById("forEachOutput").innerHTML = result;
+    }
+
+    function runEntries() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      let result = "";
+      for (const entry of fruits.entries()) result += `[${entry}]<br>`;
+      document.getElementById("entriesOutput").innerHTML = result;
+    }
+
+    function runKeys() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      let result = "";
+      for (const key of fruits.keys()) result += `${key}<br>`;
+      document.getElementById("keysOutput").innerHTML = result;
+    }
+
+    function runValues() {
+      const fruits = new Map([["apples", 500], ["bananas", 300]]);
+      let result = "";
+      for (const value of fruits.values()) result += `${value}<br>`;
+      document.getElementById("valuesOutput").innerHTML = result;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>Map.prototype.values()</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> An array of values</label></li>
+    <li><label><input type="radio" name="q1"> An iterator of values</label></li>
+    <li><label><input type="radio" name="q1"> A list of keys</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

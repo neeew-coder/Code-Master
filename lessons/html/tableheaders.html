@@ -1,0 +1,166 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Table Headers</h2>
+
+<p class="mb-4 text-gray-700">
+Table headers label rows and columns and improve table accessibility. They’re defined using the <code>&lt;th&gt;</code> tag, which is bold and centered by default.
+</p>
+
+<!-- Column Headers -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📊 Column Headers</h3>
+<p class="mb-2 text-gray-700">
+The most common type of table header labels each column from the first row using <code>&lt;th&gt;</code>.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Firstname&lt;/th&gt;
+    &lt;th&gt;Lastname&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;50&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100">
+      <th class="border px-4 py-2">Firstname</th>
+      <th class="border px-4 py-2">Lastname</th>
+      <th class="border px-4 py-2">Age</th>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">50</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Vertical Headers -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Vertical Headers</h3>
+<p class="mb-2 text-gray-700">
+To create row headers, place <code>&lt;th&gt;</code> as the first cell in each row.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Firstname&lt;/th&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Eve&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Lastname&lt;/th&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;Jackson&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100">
+      <th class="border px-4 py-2">Firstname</th>
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Eve</td>
+    </tr>
+    <tr>
+      <th class="border px-4 py-2">Lastname</th>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">Jackson</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Colspan Header -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧩 Header Spanning Multiple Columns</h3>
+<p class="mb-2 text-gray-700">
+The <code>colspan</code> attribute allows a single header cell to stretch across multiple columns.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;th colspan="2"&gt;Name&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;50&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100">
+      <th colspan="2" class="border px-4 py-2">Name</th>
+      <th class="border px-4 py-2">Age</th>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">50</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Caption -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📋 Table Caption</h3>
+<p class="mb-2 text-gray-700">
+To describe the overall purpose of a table, use the <code>&lt;caption&gt;</code> tag immediately after the opening <code>&lt;table&gt;</code>.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table style="width:100%"&gt;
+  &lt;caption&gt;Monthly savings&lt;/caption&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Month&lt;/th&gt;
+    &lt;th&gt;Savings&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;January&lt;/td&gt;
+    &lt;td&gt;$100&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table style="width:100%; color: black;" class="table-auto border border-gray-300">
+    <caption class="text-left text-gray-700 font-semibold mb-2">Monthly savings</caption>
+    <tr class="bg-orange-100">
+      <th class="border px-4 py-2">Month</th>
+      <th class="border px-4 py-2">Savings</th>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">January</td>
+      <td class="border px-4 py-2">$100</td>
+    </tr>
+  </table>
+</div>
+
+<!-- Exercise -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is the correct tag name for a table-header in HTML?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>&lt;table-header&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;td&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>&lt;th&gt;</code></strong></label></li>
+</ul>
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<!-- Summary -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>&lt;th&gt;</code> creates a header cell</li>
+  <li>Use headers for columns or rows</li>
+  <li><code>colspan</code> lets headers span multiple columns</li>
+  <li><code>&lt;caption&gt;</code> describes the table’s purpose</li>
+</ul>

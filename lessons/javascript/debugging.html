@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Debugging | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Debugging</h2>
+
+  <p class="mb-6 text-gray-700">
+    Debugging is the process of finding and fixing errors in your code. JavaScript provides tools like <code>console.log()</code>, <code>debugger</code>, and browser developer tools to help you track down issues.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li>Use <code>console.log()</code> to print values to the browser console</li>
+      <li>Use <code>debugger</code> to pause execution and inspect variables</li>
+      <li>Open your browser’s developer tools with <strong>F12</strong> or right-click → Inspect</li>
+      <li>Set breakpoints to pause code and step through execution</li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Debugging Preview</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button id="runBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Debugging Demo
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let a = 5;
+let b = 6;
+let c = a + b;
+console.log(c); // 11
+debugger;
+document.getElementById("output").innerText = c;
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Syntax Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Debugging Tools Reference</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-sm text-gray-700">
+    <p><strong>console.log()</strong> — Print values to the console</p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+console.log("Debug message");
+    </pre>
+
+    <p><strong>debugger</strong> — Pause execution in dev tools</p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+let x = 15 * 5;
+debugger;
+console.log(x);
+    </pre>
+
+    <p><strong>Browser Console Access:</strong></p>
+    <ul class="list-disc pl-6 space-y-1">
+      <li><strong>Chrome:</strong> F12 → Console</li>
+      <li><strong>Firefox:</strong> F12 → Web Console</li>
+      <li><strong>Edge:</strong> F12 → Console</li>
+      <li><strong>Safari:</strong> Preferences → Advanced → Enable Develop menu → Show Error Console</li>
+    </ul>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does the <code>debugger</code> keyword do?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Prints a message to the console</label></li>
+    <li><label><input type="radio" name="q1"> Pauses code execution for inspection</label></li>
+    <li><label><input type="radio" name="q1"> Deletes a variable</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("runBtn").addEventListener("click", () => {
+      let a = 5;
+      let b = 6;
+      let c = a + b;
+      console.log("Debugging value of c:", c); // Should log 11
+      debugger; // Pauses execution if dev tools are open
+      document.getElementById("output").innerText = `Result: ${c}`;
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

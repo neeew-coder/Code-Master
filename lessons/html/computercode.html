@@ -1,0 +1,120 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Computer Code Elements</h2>
+
+<p class="mb-6 text-gray-700">
+HTML provides semantic tags for displaying programming logic, variables, user input, and code output. These elements are displayed using the browser's default monospace font for clarity.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧑‍💻 <code>&lt;code&gt;</code> — Display Computer Code</h3>
+
+<p class="mb-2 text-gray-700">Use <code>&lt;code&gt;</code> to mark up short snippets of code or inline logic.</p>
+
+<!-- Preview -->
+<div class="bg-gray-100 text-sm font-mono p-4 rounded-lg border mb-4" style="color: black;">
+  x = 5;<br>
+  y = 6;<br>
+  z = x + y;
+</div>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;code&gt;
+x = 5;
+y = 6;
+z = x + y;
+&lt;/code&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 <code>&lt;pre&gt;</code> — Preserve Formatting</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;pre&gt;</code> to preserve spacing, line breaks, and tabs. It's often combined with <code>&lt;code&gt;</code> for readable code blocks.
+</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;pre&gt;
+  &lt;code&gt;
+    x = 5;
+    y = 6;
+    z = x + y;
+  &lt;/code&gt;
+&lt;/pre&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">⌨️ <code>&lt;kbd&gt;</code> — Keyboard Input</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;kbd&gt;</code> to show keys users should press — commonly used in documentation or tutorials.
+</p>
+
+<!-- Preview -->
+<p class="text-gray-700 mb-2">Save by pressing <kbd class="bg-gray-200 px-2 py-1 rounded border text-sm">Ctrl + S</kbd></p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;p&gt;Save by pressing &lt;kbd&gt;Ctrl + S&lt;/kbd&gt;&lt;/p&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🖥️ <code>&lt;samp&gt;</code> — Sample Output</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;samp&gt;</code> to display simulated output from a program.
+</p>
+
+<!-- Preview -->
+<div class="bg-gray-100 p-4 rounded-lg border text-sm font-mono mb-2" style="color: black;">
+Message from my computer:<br>
+File not found.<br>
+Press F1 to continue
+</div>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;p&gt;Message from my computer:&lt;/p&gt;
+&lt;p&gt;&lt;samp&gt;File not found.&lt;br&gt;Press F1 to continue&lt;/samp&gt;&lt;/p&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧮 <code>&lt;var&gt;</code> — Variables in Logic</h3>
+
+<p class="mb-2 text-gray-700">
+Use <code>&lt;var&gt;</code> to identify variables in code or math expressions. Most browsers render it in italics.
+</p>
+
+<!-- Preview -->
+<p class="text-gray-700 mb-2">The area of a triangle is: 1/2 × <var>b</var> × <var>h</var>, where <var>b</var> is base, and <var>h</var> is height.</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;p&gt;
+  The area of a triangle is: 1/2 × &lt;var&gt;b&lt;/var&gt; × &lt;var&gt;h&lt;/var&gt;, 
+  where &lt;var&gt;b&lt;/var&gt; is base, and &lt;var&gt;h&lt;/var&gt; is height.
+&lt;/p&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary Table</h3>
+
+<table class="w-full border border-gray-300 text-sm mb-6" style="color: black;">
+  <thead class="bg-orange-100">
+    <tr>
+      <th class="border px-3 py-2">Tag</th>
+      <th class="border px-3 py-2">Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">&lt;code&gt;</td><td class="border px-3 py-2">Inline or block code</td></tr>
+    <tr><td class="border px-3 py-2">&lt;pre&gt;</td><td class="border px-3 py-2">Preserve whitespace and formatting</td></tr>
+    <tr><td class="border px-3 py-2">&lt;kbd&gt;</td><td class="border px-3 py-2">Keyboard input</td></tr>
+    <tr><td class="border px-3 py-2">&lt;samp&gt;</td><td class="border px-3 py-2">Sample output from a computer</td></tr>
+    <tr><td class="border px-3 py-2">&lt;var&gt;</td><td class="border px-3 py-2">Variables in expressions</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">Which one of the following is NOT an HTML element?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> &lt;code&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;pre&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;kbd&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;xamp&gt;</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

@@ -1,0 +1,94 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">Common CSS Errors</h2>
+
+<p class="mb-6 text-gray-700">
+CSS errors won’t usually break a page completely — but they can stop styles from working as intended. Understanding and spotting these issues is key to clean, predictable design.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🚫 Syntax Mistakes</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Missing semicolon between properties</li>
+  <li>Unmatched curly braces</li>
+  <li>Invalid property names or values</li>
+</ul>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* ❌ Incorrect */
+p {
+  color: blue
+  font-size: 18px;
+}
+
+/* ✅ Correct */
+p {
+  color: blue;
+  font-size: 18px;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎯 Selector Issues</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Typos in class or ID names</li>
+  <li>Using a class selector (<code>.title</code>) but forgetting to add the class in HTML</li>
+  <li>Overly specific selectors that miss the actual target</li>
+</ul>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* Targeting class .title */
+.title {
+  font-size: 24px;
+}
+
+/* HTML must match */
+&lt;h1 class=&quot;title&quot;&gt;Welcome&lt;/h1&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📏 Overridden Styles</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Multiple conflicting rules — last one wins due to cascade</li>
+  <li>Inline styles override external and internal styles</li>
+  <li>Specificity beats location — <code>#id</code> > <code>.class</code> > <code>tag</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="grid grid-cols-2 gap-6">
+
+  <div class="border p-4 rounded bg-red-100">
+    <h3 class="text-red-800 font-bold mb-2">❌ Broken Output</h3>
+    <p>This paragraph is supposed to be blue, but a semicolon was missing.</p>
+  </div>
+
+  <div class="border p-4 rounded bg-green-100">
+    <h3 class="text-green-800 font-bold mb-2">✅ Fixed Output</h3>
+    <p style="color: blue; font-size: 18px;">Now the paragraph is styled correctly.</p>
+  </div>
+
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🛠️ Debugging Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use browser DevTools (<kbd>F12</kbd>) to inspect elements and see applied styles</li>
+  <li>Check for typos in selector names</li>
+  <li>Verify external CSS files are linked correctly</li>
+  <li>Look for override issues — use DevTools "Computed" panel to trace style origin</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which of these issues will prevent a style from working properly?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Using a valid selector</label></li>
+  <li><label><input type="radio" name="q1"> Forgetting a semicolon</label></li>
+  <li><label><input type="radio" name="q1"> Linking the CSS file in &lt;head&gt;</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

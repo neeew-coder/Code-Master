@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Reference | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Reference</h2>
+
+  <p class="mb-6 text-gray-700">
+    Arrays are objects in JavaScript. When you assign an array to another variable, both variables point to the same reference. Changes affect both.
+  </p>
+
+  <!-- Reference Assignment -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔗 Reference Assignment</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let a = ["x", "y"];
+let b = a;
+b.push("z");
+
+console.log(a); // ["x", "y", "z"]
+console.log(b); // ["x", "y", "z"]
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Reference Assignment</span>
+      <button onclick="runReferenceAssignment()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="refAssignOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Safe Copy -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📤 Safe Copy</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let c = [...a]; // or a.slice()
+c.push("new");
+
+console.log(a); // ["x", "y", "z"]
+console.log(c); // ["x", "y", "z", "new"]
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Safe Copy</span>
+      <button onclick="runSafeCopy()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="safeCopyOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Equality Check -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⚖️ Reference Equality</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+console.log(a === b); // true
+console.log(a === c); // false
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Equality Check</span>
+      <button onclick="runEqualityCheck()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="equalityOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let a, b, c;
+
+    function runReferenceAssignment() {
+      a = ["x", "y"];
+      b = a;
+      b.push("z");
+      const output = [
+        `a: [${a.join(", ")}]`,
+        `b: [${b.join(", ")}]`
+      ];
+      document.getElementById("refAssignOutput").innerHTML = output.join("<br>");
+    }
+
+    function runSafeCopy() {
+      if (!a) a = ["x", "y", "z"];
+      c = [...a];
+      c.push("new");
+      const output = [
+        `a: [${a.join(", ")}]`,
+        `c (copy): [${c.join(", ")}]`
+      ];
+      document.getElementById("safeCopyOutput").innerHTML = output.join("<br>");
+    }
+
+    function runEqualityCheck() {
+      const output = [
+        `a === b: ${a === b}`,
+        `a === c: ${a === c}`
+      ];
+      document.getElementById("equalityOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Arrays are objects and copied by reference</li>
+    <li>Mutating one reference affects all linked variables</li>
+    <li>Use <code>[...array]</code> or <code>slice()</code> to copy safely</li>
+    <li><code>a === b</code> checks if two variables share the same reference</li>
+    <li>Shallow copies only duplicate top-level values</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>a === b</code> return if <code>b = a</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> true</label></li>
+    <li><label><input type="radio" name="q1"> false</label></li>
+    <li><label><input type="radio" name="q1"> undefined</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Backgrounds</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>background</code> property group lets you style the backdrop of HTML elements. You can control color, images, positioning, repetition, and sizing for rich visual layering.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Background Color</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+div {
+  background-color: lightblue;
+}
+</pre>
+
+<div class="p-4 rounded bg-blue-200 text-gray-800 mb-6">
+  This box has a light blue background.
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🖼️ Background Image</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+body {
+  background-image: url('stars.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+</pre>
+
+<p class="text-gray-700 mb-4 italic">
+Tip: Use high-resolution images and compress them for performance.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔁 Repeating Backgrounds</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+div {
+  background-image: url('pattern.png');
+  background-repeat: repeat;
+}
+</pre>
+
+<div class="p-4 rounded border mb-6" style="background-image: url('pattern.png'); background-repeat: repeat;">
+  Repeated pattern background (placeholder image).
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📍 Background Position & Size</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+background-position: top right;
+background-size: contain;
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>cover</code> — scales to fill the container</li>
+  <li><code>contain</code> — scales to fit without cutting</li>
+  <li><code>no-repeat</code> — disables image tiling</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Common Background Properties</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Property</th><th class="border px-3 py-2">Description</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">background-color</td><td class="border px-3 py-2">Sets background color</td></tr>
+    <tr><td class="border px-3 py-2">background-image</td><td class="border px-3 py-2">Sets background image</td></tr>
+    <tr><td class="border px-3 py-2">background-repeat</td><td class="border px-3 py-2">Defines repeat behavior</td></tr>
+    <tr><td class="border px-3 py-2">background-position</td><td class="border px-3 py-2">Aligns image inside container</td></tr>
+    <tr><td class="border px-3 py-2">background-size</td><td class="border px-3 py-2">Controls image scaling</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which background-size value scales an image to fill its container and crop any overflow?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> contain</label></li>
+  <li><label><input type="radio" name="q1"> cover</label></li>
+  <li><label><input type="radio" name="q1"> stretch</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript If Else Statements | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript If Else Statements</h2>
+
+  <p class="mb-6 text-gray-700">
+    Conditional statements control the flow of your program. Use <code>if</code>, <code>else if</code>, and <code>else</code> to execute code based on Boolean logic.
+  </p>
+
+  <!-- Syntax Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Syntax</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let hour = 14;
+
+if (hour < 12) {
+  greeting = "Good morning";
+} else if (hour < 18) {
+  greeting = "Good afternoon";
+} else {
+  greeting = "Good evening";
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Single Hour</span>
+      <button onclick="runSingleIfElse()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="singleIfElseOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Multi-Hour Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Multiple Hour Evaluation</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const hours = [8, 14, 20];
+for (let hour of hours) {
+  if (hour < 12) {
+    console.log("Good morning");
+  } else if (hour < 18) {
+    console.log("Good afternoon");
+  } else {
+    console.log("Good evening");
+  }
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Multiple Hours</span>
+      <button onclick="runMultiIfElse()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="multiIfElseOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function runSingleIfElse() {
+      let hour = 14;
+      let greeting;
+      if (hour < 12) {
+        greeting = "Good morning";
+      } else if (hour < 18) {
+        greeting = "Good afternoon";
+      } else {
+        greeting = "Good evening";
+      }
+      document.getElementById("singleIfElseOutput").innerHTML = `Hour: ${hour} → ${greeting}`;
+    }
+
+    function runMultiIfElse() {
+      const hours = [8, 14, 20];
+      const output = [];
+
+      for (let hour of hours) {
+        let greeting;
+        if (hour < 12) {
+          greeting = "Good morning";
+        } else if (hour < 18) {
+          greeting = "Good afternoon";
+        } else {
+          greeting = "Good evening";
+        }
+        output.push(`Hour ${hour}: ${greeting}`);
+      }
+
+      document.getElementById("multiIfElseOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-clock text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>if</code> runs when the condition is true</li>
+    <li><code>else if</code> checks additional conditions</li>
+    <li><code>else</code> runs when no previous condition matched</li>
+    <li>Conditions must evaluate to Boolean values</li>
+    <li>Use <code>===</code> for strict comparisons</li>
+    <li>Use <code>Number()</code> to convert input before comparing</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What will the following code output?<br>
+    <code>
+    let hour = 20;<br>
+    if (hour &lt; 12) { greeting = "Morning"; }<br>
+    else if (hour &lt; 18) { greeting = "Afternoon"; }<br>
+    else { greeting = "Evening"; }
+    </code>
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Morning</label></li>
+    <li><label><input type="radio" name="q1"> Afternoon</label></li>
+    <li><label><input type="radio" name="q1"> Evening</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Overflow</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>overflow</code> property controls how content behaves when it exceeds the bounds of its container. You can hide, scroll, or clip overflow — depending on layout goals.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Overflow Values</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>visible</code> — default; content spills outside</li>
+  <li><code>hidden</code> — excess content is clipped</li>
+  <li><code>scroll</code> — always show scrollbars</li>
+  <li><code>auto</code> — adds scrollbars only if needed</li>
+</ul>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.container {
+  width: 200px;
+  height: 100px;
+  overflow: auto;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="grid grid-cols-2 gap-4 mb-6">
+  <div class="p-2 bg-blue-50 rounded">
+    <div style="width: 200px; height: 100px; overflow: hidden; border: 1px solid #999;">
+      <p>This content is clipped — no scrollbars shown.</p>
+    </div>
+    <p class="text-sm text-gray-600 mt-1 text-center">overflow: hidden</p>
+  </div>
+  <div class="p-2 bg-blue-50 rounded">
+    <div style="width: 200px; height: 100px; overflow: auto; border: 1px solid #999;">
+      <p>This content is scrollable if it exceeds the box dimensions. Try resizing the window!</p>
+    </div>
+    <p class="text-sm text-gray-600 mt-1 text-center">overflow: auto</p>
+  </div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧭 Directional Overflow</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+overflow-x: scroll;
+overflow-y: hidden;
+</pre>
+
+<p class="text-gray-700 mb-4">
+Control horizontal and vertical overflow separately. Useful for long code lines, tables, or horizontal galleries.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Overflow Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Set <code>height</code> or <code>max-height</code> to trigger overflow behavior</li>
+  <li>Use <code>overflow: scroll;</code> to force scrollbars for predictable layout</li>
+  <li>Combine <code>overflow</code> with <code>box-sizing</code> for better clipping control</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which overflow value only shows scrollbars when necessary?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> hidden</label></li>
+  <li><label><input type="radio" name="q1"> auto</label></li>
+  <li><label><input type="radio" name="q1"> scroll</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

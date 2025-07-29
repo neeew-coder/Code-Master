@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript "use strict" | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript "use strict"</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>"use strict"</code> directive enforces stricter parsing and error handling in JavaScript. It helps catch common coding mistakes and improves security.
+  </p>
+
+  <!-- Global strict mode -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🌍 Global Strict Mode</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runGlobalStrict()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+"use strict";
+undeclaredVar = 3.14; // ReferenceError
+    </pre>
+    <div id="globalStrictOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Function strict mode -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔧 Function-Level Strict Mode</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runFunctionStrict()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+function myFunction() {
+  "use strict";
+  undeclaredVar = 3.14; // ReferenceError
+}
+    </pre>
+    <div id="functionStrictOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Duplicate parameter -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🚫 Duplicate Parameters</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runDuplicateParam()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+"use strict";
+function x(p1, p1) {} // SyntaxError
+    </pre>
+    <div id="duplicateOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Octal literal -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧮 Octal Literal Not Allowed</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runOctal()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+"use strict";
+let x = 010; // SyntaxError
+    </pre>
+    <div id="octalOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runGlobalStrict() {
+      try {
+        eval(`"use strict"; undeclaredVar = 3.14;`);
+      } catch (err) {
+        document.getElementById("globalStrictOutput").innerHTML = "Error: " + err.message;
+      }
+    }
+
+    function runFunctionStrict() {
+      try {
+        eval(`function myFunction() { "use strict"; undeclaredVar = 3.14; } myFunction();`);
+      } catch (err) {
+        document.getElementById("functionStrictOutput").innerHTML = "Error: " + err.message;
+      }
+    }
+
+    function runDuplicateParam() {
+      try {
+        eval(`"use strict"; function x(p1, p1) {}`);
+      } catch (err) {
+        document.getElementById("duplicateOutput").innerHTML = "Error: " + err.message;
+      }
+    }
+
+    function runOctal() {
+      try {
+        eval(`"use strict"; let x = 010;`);
+      } catch (err) {
+        document.getElementById("octalOutput").innerHTML = "Error: " + err.message;
+      }
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>"use strict"</code> prevent?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Using declared variables</label></li>
+    <li><label><input type="radio" name="q1"> Using undeclared variables</label></li>
+    <li><label><input type="radio" name="q1"> Using comments</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

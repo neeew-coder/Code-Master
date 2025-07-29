@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Output | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">Java Output / Print</h2>
+
+  <p class="mb-6 text-gray-700">
+    You can use the <code>System.out.println()</code> method to output values or print text in Java.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">☕ Print Text</h3>
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run Java
+      </button>
+    </div>
+
+    <textarea class="bg-black text-red-400 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+    System.out.println("I am learning Java.");
+    System.out.println("It is awesome!");
+  }
+}
+    </textarea>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">🔤 Double Quotes</h3>
+  <p class="text-gray-700 mb-4">
+    Text must be wrapped inside double quotation marks <code>""</code>. If you forget them, an error occurs:
+  </p>
+
+  <pre class="bg-gray-900 text-red-200 p-4 rounded font-mono text-sm overflow-auto mb-6">
+System.out.println("This sentence will work!");
+System.out.println(This sentence will produce an error);
+  </pre>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🖨️ The print() Method</h3>
+  <p class="text-gray-700 mb-4">
+    The <code>print()</code> method is similar to <code>println()</code>, but it does <strong>not</strong> insert a new line:
+  </p>
+
+  <pre class="bg-gray-900 text-red-200 p-4 rounded font-mono text-sm overflow-auto mb-6">
+System.out.print("Hello World! ");
+System.out.print("I will print on the same line.");
+  </pre>
+
+  <p class="text-gray-700 mb-6">
+    Note: We added a space after "Hello World!" for better readability.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🔢 Print Numbers</h3>
+  <p class="text-gray-700 mb-4">
+    You can also use <code>System.out.println()</code> to print numbers. Unlike text, numbers are not wrapped in quotes:
+  </p>
+
+  <pre class="bg-gray-900 text-red-200 p-4 rounded font-mono text-sm overflow-auto mb-6">
+System.out.println(3);
+System.out.println(358);
+System.out.println(50000);
+  </pre>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">➕ Math Inside println()</h3>
+  <p class="text-gray-700 mb-4">
+    You can perform calculations directly inside the <code>println()</code> method:
+  </p>
+
+  <pre class="bg-gray-900 text-red-200 p-4 rounded font-mono text-sm overflow-auto mb-6">
+System.out.println(3 + 3);
+System.out.println(2 * 5);
+  </pre>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Which method adds a new line after printing?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> print()</label></li>
+    <li><label><input type="radio" name="q1"> println()</label></li>
+    <li><label><input type="radio" name="q1"> echo()</label></li>
+    <li><label><input type="radio" name="q1"> write()</label></li>
+  </ul>
+
+  <button onclick="updateProgress('java-output')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+
+</body>
+</html>

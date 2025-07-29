@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript RegExp Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript RegExp Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>RegExp</code> object and string methods provide powerful tools for pattern matching, text extraction, and transformation.
+  </p>
+
+  <!-- exec() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 RegExp exec()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runExec()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const regex = /Code/;
+const result = regex.exec("Welcome to CodeMaster!");
+    </pre>
+    <div id="execOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- test() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">✅ RegExp test()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runTest()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const regex = /Master/;
+regex.test("Welcome to CodeMaster!");
+    </pre>
+    <div id="testOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- flags and source -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📌 RegExp Properties</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runProps()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const regex = /code/gi;
+regex.source; // "code"
+regex.flags;  // "gi"
+    </pre>
+    <div id="propsOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- match() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔎 String match()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runMatch()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "CodeMaster rocks!";
+const result = text.match(/Code/g);
+    </pre>
+    <div id="matchOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- replace() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">♻️ String replace()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runReplace()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "Visit Microsoft!";
+const result = text.replace(/Microsoft/, "CodeMaster");
+    </pre>
+    <div id="replaceOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runExec() {
+      const regex = /Code/;
+      const result = regex.exec("Welcome to CodeMaster!");
+      document.getElementById("execOutput").innerHTML = result ? `Match: ${result[0]}` : "No match";
+    }
+
+    function runTest() {
+      const regex = /Master/;
+      const result = regex.test("Welcome to CodeMaster!");
+      document.getElementById("testOutput").innerHTML = `Result: ${result}`;
+    }
+
+    function runProps() {
+      const regex = /code/gi;
+      const source = regex.source;
+      const flags = regex.flags;
+      document.getElementById("propsOutput").innerHTML = `Source: ${source}, Flags: ${flags}`;
+    }
+
+    function runMatch() {
+      const text = "CodeMaster rocks!";
+      const result = text.match(/Code/g);
+      document.getElementById("matchOutput").innerHTML = result ? result.join(", ") : "No match";
+    }
+
+    function runReplace() {
+      const text = "Visit Microsoft!";
+      const result = text.replace(/Microsoft/, "CodeMaster");
+      document.getElementById("replaceOutput").innerHTML = result;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>RegExp.exec()</code> return when a match is found?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> true</label></li>
+    <li><label><input type="radio" name="q1"> An array with match details</label></li>
+    <li><label><input type="radio" name="q1"> The index of the match</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

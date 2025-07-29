@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Search | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Search</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript arrays offer methods to check for values and find their positions. These are useful for conditionals, filtering, and locating data.
+  </p>
+
+  <!-- .includes() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 .includes()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let colors = ["red", "green", "blue", "green"];
+colors.includes("green");  // true
+colors.includes("yellow"); // false
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .includes()</span>
+      <button onclick="runIncludesDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="includesOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .indexOf() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📍 .indexOf()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+colors.indexOf("green"); // 1
+colors.indexOf("yellow"); // -1
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .indexOf()</span>
+      <button onclick="runIndexOfDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="indexOfOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- .lastIndexOf() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📍 .lastIndexOf()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+colors.lastIndexOf("green"); // 3
+colors.lastIndexOf("yellow"); // -1
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run .lastIndexOf()</span>
+      <button onclick="runLastIndexOfDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="lastIndexOfOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const colors = ["red", "green", "blue", "green"];
+
+    function runIncludesDemo() {
+      const output = [
+        `includes("green"): ${colors.includes("green")}`,
+        `includes("yellow"): ${colors.includes("yellow")}`
+      ];
+      document.getElementById("includesOutput").innerHTML = output.join("<br>");
+    }
+
+    function runIndexOfDemo() {
+      const output = [
+        `indexOf("green"): ${colors.indexOf("green")}`,
+        `indexOf("yellow"): ${colors.indexOf("yellow")}`
+      ];
+      document.getElementById("indexOfOutput").innerHTML = output.join("<br>");
+    }
+
+    function runLastIndexOfDemo() {
+      const output = [
+        `lastIndexOf("green"): ${colors.lastIndexOf("green")}`,
+        `lastIndexOf("yellow"): ${colors.lastIndexOf("yellow")}`
+      ];
+      document.getElementById("lastIndexOfOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>.includes()</code> returns <code>true</code> or <code>false</code></li>
+    <li><code>.indexOf()</code> returns the first match index or <code>-1</code></li>
+    <li><code>.lastIndexOf()</code> returns the last match index or <code>-1</code></li>
+    <li>All methods are case-sensitive</li>
+    <li>Use these for conditionals, filtering, and validation</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>["a", "b", "a"].lastIndexOf("a")</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 0</label></li>
+    <li><label><input type="radio" name="q1"> 2</label></li>
+    <li><label><input type="radio" name="q1"> -1</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

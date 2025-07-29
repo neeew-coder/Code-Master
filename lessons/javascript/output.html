@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Output | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Output</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript can display output in several ways — each suited for different tasks. You can write directly to the HTML, log to the console, show alerts, or update elements dynamically.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Common Output Methods</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>document.write()</code> — writes directly to the page (not recommended for modern use)</li>
+    <li><code>console.log()</code> — logs messages to the browser console (great for debugging)</li>
+    <li><code>alert()</code> — shows a popup message</li>
+    <li><code>innerHTML</code> — updates content of an HTML element</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="space-y-6">
+
+    <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-yellow-500 text-sm">📝 document.write()</span>
+        <button onclick="document.write('This replaces the entire page!')" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+          Run
+        </button>
+      </div>
+      <p class="text-sm text-gray-700">This method replaces the entire document — use only for testing.</p>
+    </div>
+
+    <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-yellow-500 text-sm">🖥️ console.log()</span>
+        <button onclick="console.log('Logged to console')" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+          Log
+        </button>
+      </div>
+      <p class="text-sm text-gray-700">Open your browser’s developer console to see the output.</p>
+    </div>
+
+    <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-yellow-500 text-sm">🔔 alert()</span>
+        <button onclick="alert('This is an alert!')" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+          Alert
+        </button>
+      </div>
+      <p class="text-sm text-gray-700">Displays a popup message — interrupts the user.</p>
+    </div>
+
+    <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+      <div class="flex items-center justify-between">
+        <span class="font-semibold text-yellow-500 text-sm">📦 innerHTML</span>
+        <button onclick="document.getElementById('outputBox').innerHTML = 'Updated via innerHTML!'" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-4 py-2 rounded">
+          Update
+        </button>
+      </div>
+      <p id="outputBox" class="text-sm text-gray-700 mt-2">Click the button to update this text.</p>
+    </div>
+
+  </div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>document.write()</code> is mostly used for testing — it replaces the entire document</li>
+    <li><code>console.log()</code> is invisible to users but essential for developers</li>
+    <li><code>alert()</code> interrupts the user — use sparingly</li>
+    <li><code>innerHTML</code> is ideal for updating content dynamically</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    Which method is best for debugging without affecting the page layout?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> document.write()</label></li>
+    <li><label><input type="radio" name="q1"> console.log()</label></li>
+    <li><label><input type="radio" name="q1"> alert()</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

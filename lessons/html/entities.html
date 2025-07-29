@@ -1,0 +1,115 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Entities & Special Characters</h2>
+
+<p class="mb-6 text-gray-700">
+HTML entities let you display characters that have reserved meaning, don't exist on your keyboard, or serve formatting purposes. They’re crucial for writing clean, readable HTML — especially in multilingual, math-heavy, or code-oriented projects.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📎 Why We Need Entities</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li><strong>Prevent browser misreading:</strong> Using <code>&lt;</code> instead of <code><</code> avoids breaking HTML</li>
+  <li><strong>Display special symbols:</strong> ©, ™, €, ₹ using <code>&amp;copy;</code>, <code>&amp;trade;</code>, etc.</li>
+  <li><strong>Control whitespace:</strong> <code>&amp;nbsp;</code> and <code>&amp;thinsp;</code> allow precise layout control</li>
+  <li><strong>Enable international characters:</strong> á, ñ, ç, Ø with accent or Unicode entities</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔣 Entity Types</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><strong>Named:</strong> <code>&amp;lt;</code>, <code>&amp;euro;</code> (easier to remember)</li>
+  <li><strong>Numeric:</strong> <code>&amp;#60;</code>, <code>&amp;#8364;</code> (universal across encodings)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧾 HTML Entities Table</h3>
+
+<table class="w-full border border-gray-300 text-sm mb-6" style="color: black;">
+  <thead class="bg-orange-100 text-left">
+    <tr>
+      <th class="border px-3 py-2">Character</th>
+      <th class="border px-3 py-2">Description</th>
+      <th class="border px-3 py-2">Entity Name</th>
+      <th class="border px-3 py-2">Entity Number</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">&nbsp;</td><td class="border px-3 py-2">Non-breaking space</td><td class="border px-3 py-2">&amp;nbsp;</td><td class="border px-3 py-2">&#160;</td></tr>
+    <tr><td class="border px-3 py-2">&lt;</td><td class="border px-3 py-2">Less than</td><td class="border px-3 py-2">&amp;lt;</td><td class="border px-3 py-2">&#60;</td></tr>
+    <tr><td class="border px-3 py-2">&gt;</td><td class="border px-3 py-2">Greater than</td><td class="border px-3 py-2">&amp;gt;</td><td class="border px-3 py-2">&#62;</td></tr>
+    <tr><td class="border px-3 py-2">&amp;</td><td class="border px-3 py-2">Ampersand</td><td class="border px-3 py-2">&amp;amp;</td><td class="border px-3 py-2">&#38;</td></tr>
+    <tr><td class="border px-3 py-2">&quot;</td><td class="border px-3 py-2">Double quote</td><td class="border px-3 py-2">&amp;quot;</td><td class="border px-3 py-2">&#34;</td></tr>
+    <tr><td class="border px-3 py-2">&apos;</td><td class="border px-3 py-2">Single quote</td><td class="border px-3 py-2">&amp;apos;</td><td class="border px-3 py-2">&#39;</td></tr>
+    <tr><td class="border px-3 py-2">&cent;</td><td class="border px-3 py-2">Cent</td><td class="border px-3 py-2">&amp;cent;</td><td class="border px-3 py-2">&#162;</td></tr>
+    <tr><td class="border px-3 py-2">&pound;</td><td class="border px-3 py-2">Pound</td><td class="border px-3 py-2">&amp;pound;</td><td class="border px-3 py-2">&#163;</td></tr>
+    <tr><td class="border px-3 py-2">&yen;</td><td class="border px-3 py-2">Yen</td><td class="border px-3 py-2">&amp;yen;</td><td class="border px-3 py-2">&#165;</td></tr>
+    <tr><td class="border px-3 py-2">&euro;</td><td class="border px-3 py-2">Euro</td><td class="border px-3 py-2">&amp;euro;</td><td class="border px-3 py-2">&#8364;</td></tr>
+    <tr><td class="border px-3 py-2">&copy;</td><td class="border px-3 py-2">Copyright</td><td class="border px-3 py-2">&amp;copy;</td><td class="border px-3 py-2">&#169;</td></tr>
+    <tr><td class="border px-3 py-2">&reg;</td><td class="border px-3 py-2">Registered trademark</td><td class="border px-3 py-2">&amp;reg;</td><td class="border px-3 py-2">&#174;</td></tr>
+    <tr><td class="border px-3 py-2">&trade;</td><td class="border px-3 py-2">Trademark</td><td class="border px-3 py-2">&amp;trade;</td><td class="border px-3 py-2">&#8482;</td></tr>
+  </tbody>
+</table>
+
+<p class="text-sm text-gray-500 italic">
+💡 Note: Entity names are case-sensitive. Some may not work in older browsers unless your document uses UTF-8 encoding.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🪙 Currency & Trademark Symbols</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;p&gt;&amp;cent; &amp;pound; &amp;yen; &amp;euro; &amp;copy; &amp;reg; &amp;trade;&lt;/p&gt;
+</pre>
+
+<!-- Visual -->
+<p class="text-gray-700 mb-4">Result: ¢ £ ¥ € © ® ™</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Spacing Control</h3>
+
+<p class="text-gray-700 mb-2">
+Browsers collapse normal spaces — use entities for precision:
+</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+X&amp;nbsp;Y&amp;thinsp;Z
+</pre>
+
+<!-- Visual -->
+<p class="text-gray-700">X Y Z (wide, thin, normal spacing)</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌍 Accented Characters</h3>
+
+<p class="text-gray-700 mb-2">
+Support international letters by combining base characters with accents:
+</p>
+
+<table class="w-full border text-sm mb-6" style="color: black;">
+  <thead class="bg-orange-100">
+    <tr><th class="border px-2 py-1">Entity</th><th class="border px-2 py-1">Character</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-2 py-1">&#193; or &amp;Aacute;</td><td class="border px-2 py-1">Á</td></tr>
+    <tr><td class="border px-2 py-1">&#241; or &amp;ntilde;</td><td class="border px-2 py-1">ñ</td></tr>
+    <tr><td class="border px-2 py-1">&#231; or &amp;ccedil;</td><td class="border px-2 py-1">ç</td></tr>
+    <tr><td class="border px-2 py-1">&#216; or &amp;Oslash;</td><td class="border px-2 py-1">Ø</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">⚠️ Common Pitfalls</h3>
+
+<ul class="list-disc list-inside text-red-600 mb-6">
+  <li><code>&lt;</code> must be escaped to <code>&amp;lt;</code> when inside plain text</li>
+  <li><code>&amp;</code> must be escaped unless starting a valid entity like <code>&amp;amp;</code></li>
+  <li>Accented characters may not render without correct encoding (use <code>&lt;meta charset="UTF-8"&gt;</code>)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">What is the entity name that represents a less-than <code>&lt;</code> sign?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> &lt;lt&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;less&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;nbsp&gt;</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

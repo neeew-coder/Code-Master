@@ -1,0 +1,66 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Syntax</h2>
+
+<p class="mb-6 text-gray-700">
+CSS syntax uses <strong>selectors</strong> to target elements, then applies one or more <strong>declarations</strong> inside curly braces. Each declaration defines a style property and its value, ending with a semicolon.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔹 Structure Overview</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>selector</code> — targets the HTML element</li>
+  <li><code>property</code> — the visual style (e.g. <code>color</code>, <code>font-size</code>)</li>
+  <li><code>value</code> — the setting for that property</li>
+</ul>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+selector {
+  property: value;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Example: Styling Elements</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+h1 {
+  color: navy;
+  font-size: 36px;
+  text-align: center;
+}
+
+p {
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  color: #333;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="border p-4 rounded-lg bg-blue-100">
+  <h1 class="text-3xl text-blue-800 text-center mb-2">Hello, CSS!</h1>
+  <p class="text-lg text-gray-800 font-sans">
+    This is a styled paragraph using CSS declarations — clean, readable, and consistent.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 Notes on Syntax</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Multiple declarations inside one block must be separated by semicolons</li>
+  <li>Selectors can be elements (<code>p</code>), classes (<code>.title</code>), or IDs (<code>#header</code>)</li>
+  <li>Whitespace doesn't affect rendering — it's for readability</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which of the following is a valid CSS declaration?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> color = "blue";</label></li>
+  <li><label><input type="radio" name="q1"> font-size: 16px;</label></li>
+  <li><label><input type="radio" name="q1"> {margin-top: 20}</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

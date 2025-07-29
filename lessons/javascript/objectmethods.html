@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Object Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Object Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    Methods are functions stored as properties inside objects. They define behavior and can interact with the object’s data using <code>this</code>.
+  </p>
+
+  <!-- Defining Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Defining Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let user = {
+  name: "User",
+  greet: function() {
+    return "Hello, " + this.name;
+  },
+  updateName(newName) {
+    this.name = newName;
+  }
+};
+
+user.greet();         // "Hello, User"
+user.updateName("Alex");
+user.greet();         // "Hello, Alex"
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>this</code> to access other properties within the same object. You can define methods using the <code>function</code> keyword or shorthand syntax.
+  </p>
+
+  <!-- greet() Demo -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👋 .greet() Method</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run greet()</span>
+      <button onclick="runGreetDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="greetOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- updateName() Demo -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">✏️ .updateName() Method</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run updateName()</span>
+      <button onclick="runUpdateDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="updateOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    let user = {
+      name: "User",
+      greet: function () {
+        return "Hello, " + this.name;
+      },
+      updateName(newName) {
+        this.name = newName;
+      }
+    };
+
+    function runGreetDemo() {
+      document.getElementById("greetOutput").innerHTML = `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-smile text-yellow-400 text-xs mt-1"></i>
+          <span>${user.greet()}</span>
+        </div>
+      `;
+    }
+
+    function runUpdateDemo() {
+      user.updateName("Alex");
+      document.getElementById("updateOutput").innerHTML = `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-edit text-yellow-400 text-xs mt-1"></i>
+          <span>Name updated. New greeting: ${user.greet()}</span>
+        </div>
+      `;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Methods are functions stored in object properties</li>
+    <li>Use <code>this</code> to refer to the object itself</li>
+    <li>Shorthand syntax: <code>methodName() { ... }</code></li>
+    <li>Methods can update, compute, or return object data</li>
+    <li>Arrow functions don’t bind <code>this</code> — avoid them for methods needing context</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>this</code> refer to inside an object method?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> The global object</label></li>
+    <li><label><input type="radio" name="q1"> The method itself</label></li>
+    <li><label><input type="radio" name="q1"> The object the method belongs to</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

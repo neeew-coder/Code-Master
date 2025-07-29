@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Assignment Operators | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Assignment Operators</h2>
+
+  <p class="mb-6 text-gray-700">
+    Assignment operators store values in variables. The most common is <code>=</code>, but JavaScript also supports compound operators like <code>+=</code>, <code>*=</code>, and <code>%=</code> for shorthand updates.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Common Assignment Operators</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>=</code> — Assigns a value</li>
+    <li><code>+=</code> — Adds and assigns</li>
+    <li><code>-=</code> — Subtracts and assigns</li>
+    <li><code>*=</code> — Multiplies and assigns</li>
+    <li><code>/=</code> — Divides and assigns</li>
+    <li><code>%=</code> — Modulus and assigns</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Syntax Example</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let score = 10;
+
+score += 5;   // score = score + 5 → 15
+score *= 2;   // score = score * 2 → 30
+score %= 7;   // score = score % 7 → 2
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Compound assignment operators simplify repetitive updates. They’re especially useful in loops, counters, and calculations.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🧮 Step-by-Step Assignment</span>
+      <button onclick="updateScore()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Step-by-Step
+      </button>
+    </div>
+    <div id="scoreSteps" class="text-sm text-gray-700 mt-2 space-y-1">
+      Click the button to see how assignment operators update the value.
+    </div>
+  </div>
+
+  <script>
+    let score = 10;
+    function updateScore() {
+      let steps = [];
+      steps.push(`<strong>Initial score:</strong> ${score}`);
+
+      score += 5;
+      steps.push(`<strong>After += 5:</strong> ${score}`);
+
+      score *= 2;
+      steps.push(`<strong>After *= 2:</strong> ${score}`);
+
+      score %= 7;
+      steps.push(`<strong>After %= 7:</strong> ${score}`);
+
+      document.getElementById("scoreSteps").innerHTML = steps.map(step => `
+        <div class="flex items-center gap-2">
+          <i class="fas fa-arrow-right text-yellow-400 text-xs"></i>
+          <span>${step}</span>
+        </div>
+      `).join("");
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Assignment happens from right to left: <code>x = y</code> means x gets y’s value</li>
+    <li>Compound operators reduce repetition and improve readability</li>
+    <li>Use <code>+=</code> for counters, <code>*=</code> for scaling, <code>%=</code> for wrapping values</li>
+    <li>Assignment operators work with numbers, strings, and even booleans</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>let x = 4; x *= 3;</code> evaluate to?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 7</label></li>
+    <li><label><input type="radio" name="q1"> 12</label></li>
+    <li><label><input type="radio" name="q1"> 1.33</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

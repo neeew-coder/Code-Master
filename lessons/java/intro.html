@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Introduction | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">Java Introduction</h2>
+
+  <p class="mb-6 text-gray-700">
+    Java is a popular programming language, created in 1995. It is owned by Oracle, and more than 3 billion devices run Java.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">📱 What is Java Used For?</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li>Mobile applications (especially Android apps)</li>
+    <li>Desktop applications</li>
+    <li>Web applications</li>
+    <li>Web servers and application servers</li>
+    <li>Games</li>
+    <li>Database connection</li>
+    <li>And much, much more!</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🚀 Why Use Java?</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li>Works on multiple platforms (Windows, Mac, Linux, Raspberry Pi)</li>
+    <li>Popular and in high demand</li>
+    <li>Easy to learn and simple to use</li>
+    <li>Open-source and free</li>
+    <li>Secure, fast, and powerful</li>
+    <li>Huge community support</li>
+    <li>Object-oriented structure promotes reusable code</li>
+    <li>Similar to C++ and C#, making transitions easier</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">☕ Java Hello World</h3>
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-red-200 p-3 rounded text-sm overflow-x-auto">
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("Hello, Java!");
+    System.out.println(42);
+  }
+}
+    </pre>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📚 Explanation</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li><code>public class Main</code> defines the class named <code>Main</code>.</li>
+    <li><code>public static void main(String[] args)</code> is the entry point of every Java application.</li>
+    <li><code>System.out.println("Hello, Java!");</code> prints text to the console.</li>
+  </ul>
+  <p class="text-gray-700 mb-6">
+    Java code must be <strong>compiled</strong> before running. You write <code>.java</code> files, compile them with <code>javac</code>, and run them with <code>java</code>.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Why is Java considered platform-independent?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q2"> It runs only on Windows</label></li>
+    <li><label><input type="radio" name="q2"> Java code is compiled into machine-specific binaries</label></li>
+    <li><label><input type="radio" name="q2"> Java uses the JVM to run the same bytecode on any platform</label></li>
+    <li><label><input type="radio" name="q2"> Java is written in C</label></li>
+  </ul>
+
+  <p class="text-gray-700 mb-2">
+    What does <code>System.out.println()</code> do?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q3"> Reads input from the user</label></li>
+    <li><label><input type="radio" name="q3"> Prints output to the console</label></li>
+    <li><label><input type="radio" name="q3"> Compiles the Java code</label></li>
+    <li><label><input type="radio" name="q3"> Terminates the program</label></li>
+  </ul>
+
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-getting-started')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

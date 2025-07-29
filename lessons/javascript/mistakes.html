@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Common Mistakes | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Common Mistakes</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript is flexible, but that flexibility can lead to subtle bugs. This module highlights common mistakes and how to avoid them.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li>❌ Using <code>=</code> instead of <code>==</code> or <code>===</code> in conditionals</li>
+      <li>❌ Confusing addition with string concatenation</li>
+      <li>❌ Breaking return statements across lines</li>
+      <li>❌ Using named indexes in arrays</li>
+      <li>❌ Misplacing semicolons or trailing commas</li>
+      <li>❌ Comparing <code>null</code> before checking for <code>undefined</code></li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Mistake Simulation</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button id="runBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Mistake Demo
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+let x = 0;
+if (x = 10) {
+  console.log("Oops! Assignment instead of comparison.");
+}
+
+let y = 5 + "7"; // "57" not 12
+
+function brokenReturn(a) {
+  return
+  a * 10;
+}
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Syntax Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Syntax Reference</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-sm text-gray-700">
+    <p><strong>Safe Comparison:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+if (x === 10) { ... } // strict comparison
+    </pre>
+
+    <p><strong>Safe Return:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+return a * 10; // never break return across lines
+    </pre>
+
+    <p><strong>Safe Array Access:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+const person = [];
+person[0] = "John"; // ✅
+person["firstName"] = "John"; // ❌ turns array into object
+    </pre>
+
+    <p><strong>Safe Type Check:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+if (typeof myObj !== "undefined" && myObj !== null) { ... }
+    </pre>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What happens if you break a <code>return</code> statement across two lines?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> It returns the correct value</label></li>
+    <li><label><input type="radio" name="q1"> It returns undefined</label></li>
+    <li><label><input type="radio" name="q1"> It throws an error</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("runBtn").addEventListener("click", () => {
+      let output = "";
+
+      let x = 0;
+      if (x = 10) {
+        output += "Assignment used in if: x = " + x + "\n";
+      }
+
+      let y = 5 + "7";
+      output += `Addition vs. Concatenation: 5 + "7" = ${y} (type: ${typeof y})\n`;
+
+      function brokenReturn(a) {
+        return
+        a * 10;
+      }
+
+      const result = brokenReturn(2);
+      output += `Broken return result: ${result}\n`;
+
+      document.getElementById("output").innerText = output;
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

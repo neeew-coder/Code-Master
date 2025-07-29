@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Regular Expressions | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Regular Expressions</h2>
+
+  <p class="mb-6 text-gray-700">
+    Regular expressions (RegExp) are patterns used to match character combinations in strings. They’re powerful tools for search, replace, and validation.
+  </p>
+
+  <!-- match() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 match()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runMatch()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "Visit CodeMaster!";
+const result = text.match(/codemaster/i);
+    </pre>
+    <div id="matchOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- replace() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">♻️ replace()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runReplace()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "Visit Microsoft!";
+const result = text.replace(/Microsoft/i, "CodeMaster");
+    </pre>
+    <div id="replaceOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- search() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔎 search()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runSearch()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "Visit CodeMaster!";
+const index = text.search(/CodeMaster/);
+    </pre>
+    <div id="searchOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Character Class -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔠 Character Class [CM]</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runCharClass()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "CodeMaster";
+const result = text.match(/[CM]/g);
+    </pre>
+    <div id="charClassOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Quantifier o+ -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">➕ Quantifier o+</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runQuantifier()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const text = "Hellooo CodeMaster!";
+const result = text.match(/o+/g);
+    </pre>
+    <div id="quantifierOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runMatch() {
+      const text = "Visit CodeMaster!";
+      const result = text.match(/codemaster/i);
+      document.getElementById("matchOutput").innerHTML = result;
+    }
+
+    function runReplace() {
+      const text = "Visit Microsoft!";
+      const result = text.replace(/Microsoft/i, "CodeMaster");
+      document.getElementById("replaceOutput").innerHTML = result;
+    }
+
+    function runSearch() {
+      const text = "Visit CodeMaster!";
+      const index = text.search(/CodeMaster/);
+      document.getElementById("searchOutput").innerHTML = `Index: ${index}`;
+    }
+
+    function runCharClass() {
+      const text = "CodeMaster";
+      const result = text.match(/[CM]/g);
+      document.getElementById("charClassOutput").innerHTML = result.join(", ");
+    }
+
+    function runQuantifier() {
+      const text = "Hellooo CodeMaster!";
+      const result = text.match(/o+/g);
+      document.getElementById("quantifierOutput").innerHTML = result.join(", ");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does the <code>/g</code> flag do in a regular expression?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Makes the search case-insensitive</label></li>
+    <li><label><input type="radio" name="q1"> Matches only the first occurrence</label></li>
+    <li><label><input type="radio" name="q1"> Matches all occurrences</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

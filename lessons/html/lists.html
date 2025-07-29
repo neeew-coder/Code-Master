@@ -1,0 +1,202 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Lists</h2>
+
+<p class="mb-4 text-gray-700">
+HTML supports three types of lists: unordered, ordered, and description. Each serves a different purpose and helps structure content clearly.
+</p>
+
+<!-- UNORDERED LISTS -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📋 Unordered Lists</h3>
+<p class="mb-2 text-gray-700">
+Use <code>&lt;ul&gt;</code> for unordered lists and <code>&lt;li&gt;</code> for each item. The default marker is a bullet.
+</p>
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+  <pre>
+&lt;ul&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+  </pre>
+</div>
+<ul class="list-disc pl-6 text-gray-800 mb-4">
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ul>
+
+<h4 class="text-md font-semibold text-orange-400 mb-2">🎯 List Item Marker Styles</h4>
+<p class="mb-2 text-gray-700">Customize bullet style using <code>list-style-type</code>:</p>
+<table class="w-full text-left border border-gray-300 mb-4" style="color: black;">
+  <thead class="bg-orange-100"><tr><th class="border px-4 py-2">Value</th><th class="border px-4 py-2">Effect</th></tr></thead>
+  <tbody>
+    <tr><td class="border px-4 py-2">disc</td><td class="border px-4 py-2">Default bullet</td></tr>
+    <tr><td class="border px-4 py-2">circle</td><td class="border px-4 py-2">Hollow circle</td></tr>
+    <tr><td class="border px-4 py-2">square</td><td class="border px-4 py-2">Square bullet</td></tr>
+    <tr><td class="border px-4 py-2">none</td><td class="border px-4 py-2">No marker</td></tr>
+  </tbody>
+</table>
+<ul style="list-style-type:circle;" class="pl-6 text-gray-800 mb-2">
+  <li>Coffee</li><li>Tea</li><li>Milk</li>
+</ul>
+<ul style="list-style-type:square;" class="pl-6 text-gray-800 mb-2">
+  <li>Coffee</li><li>Tea</li><li>Milk</li>
+</ul>
+<ul style="list-style-type:none;" class="pl-6 text-gray-800 mb-4">
+  <li>Coffee</li><li>Tea</li><li>Milk</li>
+</ul>
+
+<h4 class="text-md font-semibold text-orange-400 mb-2">🪆 Nested Lists</h4>
+<pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+&lt;ul&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea
+    &lt;ul&gt;
+      &lt;li&gt;Black tea&lt;/li&gt;
+      &lt;li&gt;Green tea&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;
+</pre>
+<ul class="list-disc pl-6 text-gray-800 mb-4">
+  <li>Coffee</li>
+  <li>Tea
+    <ul class="list-disc pl-6 mt-2">
+      <li>Black tea</li>
+      <li>Green tea</li>
+    </ul>
+  </li>
+  <li>Milk</li>
+</ul>
+
+<h4 class="text-md font-semibold text-orange-400 mb-2">📐 Horizontal List (Navigation)</h4>
+<pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+li { float: left; }
+li a {
+  display: block;
+  color: white;
+  padding: 16px;
+}
+li a:hover {
+  background-color: #111;
+}
+
+&lt;ul&gt;
+  &lt;li&gt;Home&lt;/li&gt;
+  &lt;li&gt;News&lt;/li&gt;
+  &lt;li&gt;Contact&lt;/li&gt;
+  &lt;li&gt;About&lt;/li&gt;
+&lt;/ul&gt;
+
+</pre>
+<ul style="list-style-type:none; margin:0; padding:0; overflow:hidden; background-color:#333;" class="mb-6">
+  <li style="float:left;"><a href="#" style="color:white; padding:16px; display:block;">Home</a></li>
+  <li style="float:left;"><a href="#" style="color:white; padding:16px; display:block;">News</a></li>
+  <li style="float:left;"><a href="#" style="color:white; padding:16px; display:block;">Contact</a></li>
+  <li style="float:left;"><a href="#" style="color:white; padding:16px; display:block;">About</a></li>
+</ul>
+
+<!-- ORDERED LISTS -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔢 Ordered Lists</h3>
+<p class="mb-2 text-gray-700">
+Use <code>&lt;ol&gt;</code> for ordered lists. <code>type</code> controls numbering style:
+</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg">
+&lt;ol type="A"&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+<ol type="A" class="list-upper-alpha pl-6 mb-4 text-gray-800">
+  <li>Coffee</li><li>Tea</li><li>Milk</li>
+</ol>
+
+<pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg">
+&lt;ol start="50"&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea&lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+<ol start="50" class="pl-6 mb-4 text-gray-800">
+  <li>Coffee</li><li>Tea</li><li>Milk</li>
+</ol>
+
+<h4 class="text-md font-semibold text-orange-400 mb-2">🪆 Nested Ordered List</h4>
+<pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg">
+&lt;ol&gt;
+  &lt;li&gt;Coffee&lt;/li&gt;
+  &lt;li&gt;Tea
+    &lt;ol&gt;
+      &lt;li&gt;Black&lt;/li&gt;
+      &lt;li&gt;Green&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ol&gt;
+</pre>
+<ol class="list-decimal pl-6 mb-6 text-gray-800">
+  <li>Coffee</li>
+  <li>Tea
+    <ol class="list-decimal pl-6 mt-2">
+      <li>Black</li>
+      <li>Green</li>
+    </ol>
+  </li>
+  <li>Milk</li>
+</ol>
+
+<!-- Preview: Description List -->
+<dl class="text-gray-800 mb-6">
+  <dt class="font-semibold">Coffee</dt>
+  <dd class="ml-4">– black hot drink</dd>
+  <dt class="font-semibold mt-2">Milk</dt>
+  <dd class="ml-4">– white cold drink</dd>
+</dl>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is the correct tag name for a description list?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>&lt;list&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;definition&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>&lt;dl&gt;</code></strong></label></li>
+</ul>
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 HTML List Tags Reference</h3>
+<table class="w-full text-left border border-gray-300 mb-6">
+  <thead class="bg-orange-100">
+    <tr><th class="border px-4 py-2">Tag</th><th class="border px-4 py-2">Purpose</th></tr>
+  </thead>
+  <tbody class="text-gray-700">
+    <tr><td class="border px-4 py-2">&lt;ul&gt;</td><td class="border px-4 py-2">Unordered list</td></tr>
+    <tr><td class="border px-4 py-2">&lt;ol&gt;</td><td class="border px-4 py-2">Ordered list</td></tr>
+    <tr><td class="border px-4 py-2">&lt;li&gt;</td><td class="border px-4 py-2">List item</td></tr>
+    <tr><td class="border px-4 py-2">&lt;dl&gt;</td><td class="border px-4 py-2">Description list</td></tr>
+    <tr><td class="border px-4 py-2">&lt;dt&gt;</td><td class="border px-4 py-2">Term in description list</td></tr>
+    <tr><td class="border px-4 py-2">&lt;dd&gt;</td><td class="border px-4 py-2">Term description</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Chapter Summary</h3>
+<ul class="list-disc list-inside text-gray-700">
+  <li><code>&lt;ul&gt;</code> creates an unordered bullet list</li>
+  <li><code>&lt;ol&gt;</code> creates a numbered list</li>
+  <li><code>&lt;li&gt;</code> defines a list item</li>
+  <li><code>&lt;dl&gt;</code> creates a description list</li>
+  <li><code>&lt;dt&gt;</code> adds a term, and <code>&lt;dd&gt;</code> defines it</li>
+  <li>Use <code>list-style-type</code> to change unordered markers</li>
+  <li>Use <code>type</code> and <code>start</code> for ordered list control</li>
+  <li>Lists can be nested, styled, or even used for horizontal navigation</li>
+</ul>

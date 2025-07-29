@@ -1,0 +1,94 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Headings</h2>
+
+<p class="mb-4 text-gray-700">
+HTML headings are titles or subtitles that you want to display on a webpage. They help organize content and improve readability.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔠 HTML Heading Tags</h3>
+<p class="mb-2 text-gray-700">
+HTML headings are defined with the <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> tags.
+</p>
+<p class="mb-4 text-gray-700">
+<code>&lt;h1&gt;</code> defines the most important heading. <code>&lt;h6&gt;</code> defines the least important.
+</p>
+
+<!-- Code Example -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;h2&gt;Heading 2&lt;/h2&gt;
+&lt;h3&gt;Heading 3&lt;/h3&gt;
+&lt;h4&gt;Heading 4&lt;/h4&gt;
+&lt;h5&gt;Heading 5&lt;/h5&gt;
+&lt;h6&gt;Heading 6&lt;/h6&gt;
+  </pre>
+</div>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Heading 1&lt;/h1&gt;
+    &lt;h2&gt;Heading 2&lt;/h2&gt;
+    &lt;h3&gt;Heading 3&lt;/h3&gt;
+    &lt;h4&gt;Heading 4&lt;/h4&gt;
+    &lt;h5&gt;Heading 5&lt;/h5&gt;
+    &lt;h6&gt;Heading 6&lt;/h6&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Default Styling</h3>
+<p class="mb-4 text-gray-700">
+Browsers automatically add margin before and after headings. Each heading tag also has a default font size.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔍 Why Headings Matter</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Search engines use headings to index page structure</li>
+  <li>Users skim pages by headings — use them to guide reading</li>
+  <li>Use <code>&lt;h1&gt;</code> for main headings, followed by <code>&lt;h2&gt;</code>, <code>&lt;h3&gt;</code>, etc.</li>
+  <li>Don’t use headings just to make text big or bold — use them semantically</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Custom Font Size</h3>
+<p class="mb-2 text-gray-700">
+You can override the default size using the <code>style</code> attribute and CSS <code>font-size</code>:
+</p>
+
+<!-- Code Example -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;h1 style="font-size:60px;"&gt;Heading 1&lt;/h1&gt;
+  </pre>
+</div>
+
+<!-- Rendered HTML Structure -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;body&gt;
+    &lt;h1 style="font-size:60px;"&gt;Heading 1&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">Which of the following headers is the largest and most important header?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> &lt;h1&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;h2&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;h3&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;h4&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;h5&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;h6&gt;</label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

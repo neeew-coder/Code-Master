@@ -1,0 +1,111 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">Responsive Web Design</h2>
+
+<p class="mb-6 text-gray-700">
+Responsive design ensures websites adapt smoothly across devices. It uses flexible layouts, scalable units, and media queries to create mobile-friendly, accessible experiences.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📱 Key Concepts</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li><code>&lt;meta name="viewport"&gt;</code> tells the browser how to scale the page</li>
+  <li>Use percentages, <code>vw</code>, <code>rem</code>, and <code>em</code> for scalable sizing</li>
+  <li>Use media queries to change styles based on screen size</li>
+  <li>Flexbox and Grid help create adaptable layouts</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔍 Viewport Meta Tag</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</pre>
+
+<p class="text-sm text-gray-500 italic mb-6">This helps the browser render your layout properly on mobile screens.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Visual Example (Responsive Columns)</h3>
+
+<p class="mb-2 text-gray-700">On desktop, content flows in 3 columns. On smaller screens, it stacks vertically.</p>
+
+<!-- Simulated Responsive Preview -->
+<div style="display: flex; gap: 16px; flex-wrap: wrap;">
+  <div style="flex: 1 1 250px; background-color: #f3f3f3; padding: 16px; border-radius: 8px;">
+    <h3>London</h3>
+    <p>Capital of England</p>
+  </div>
+  <div style="flex: 1 1 250px; background-color: #f3f3f3; padding: 16px; border-radius: 8px;">
+    <h3>Paris</h3>
+    <p>Capital of France</p>
+  </div>
+  <div style="flex: 1 1 250px; background-color: #f3f3f3; padding: 16px; border-radius: 8px;">
+    <h3>Tokyo</h3>
+    <p>Capital of Japan</p>
+  </div>
+</div>
+
+<p class="text-sm text-gray-500 italic mt-2">Resize your browser to simulate responsiveness.</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 responsive.html Source Code</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;title&gt;Responsive Layout&lt;/title&gt;
+  &lt;style&gt;
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .item {
+      flex: 1;
+      padding: 20px;
+      background-color: #eee;
+      border-radius: 8px;
+    }
+    @media (max-width: 600px) {
+      .container {
+        flex-direction: column;
+      }
+    }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h1&gt;Responsive Cities&lt;/h1&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;item&quot;&gt;
+      &lt;h2&gt;London&lt;/h2&gt;
+      &lt;p&gt;Capital of England&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;
+      &lt;h2&gt;Paris&lt;/h2&gt;
+      &lt;p&gt;Capital of France&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;
+      &lt;h2&gt;Tokyo&lt;/h2&gt;
+      &lt;p&gt;Capital of Japan&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">What does the viewport meta tag do?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> It adds animation effects.</label></li>
+  <li><label><input type="radio" name="q1"> It resets browser cache.</label></li>
+  <li><label><input type="radio" name="q1"> It sets the page’s width and scale on different devices.</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

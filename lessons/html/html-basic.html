@@ -1,0 +1,98 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Basic Examples</h2>
+
+<p class="mb-4 text-gray-700">
+In this chapter we’ll explore some basic HTML examples. Don’t worry if we use tags you haven’t learned yet — you’ll get there!
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 HTML Documents</h3>
+<p class="mb-2 text-gray-700">
+All HTML documents must start with a document type declaration: <code>&lt;!DOCTYPE html&gt;</code>.
+</p>
+<p class="mb-2 text-gray-700">
+The document begins with <code>&lt;html&gt;</code> and ends with <code>&lt;/html&gt;</code>. The visible part is between <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code>.
+</p>
+
+<div class="simulation-box bg-gray-100 p-6 rounded shadow mb-6">
+  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+    <pre>
+&lt;html&gt;
+  &lt;body&gt;
+
+    &lt;h1&gt;First Heading&lt;/h1&gt;
+    &lt;p&gt;first paragraph.&lt;/p&gt;
+
+  &lt;/body&gt;
+&lt;/html&gt;
+    </pre>
+  </div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📌 The &lt;!DOCTYPE&gt; Declaration</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Represents the document type</li>
+  <li>Helps browsers display pages correctly</li>
+  <li>Must appear once, at the top of the page</li>
+  <li>Not case sensitive</li>
+  <li>HTML5 uses: <code>&lt;!DOCTYPE html&gt;</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔠 HTML Headings</h3>
+<p class="mb-2 text-gray-700">
+Headings are defined with <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>. <code>&lt;h1&gt;</code> is the most important, <code>&lt;h6&gt;</code> the least.
+<img src="image/headings.png" alt="" srcset="">
+</p>
+<div class="bg-gray-100 p-6 rounded shadow mb-4">
+  <pre class="text-sm  font-mono whitespace-pre-wrap">
+<h1 style="color: white;">This is heading 1</h1>
+<h2 style="color: white;">This is heading 2</h2>
+<h3 style="color: white;">This is heading 3</h3>
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 HTML Paragraphs</h3>
+<p class="mb-2 text-gray-700">
+Paragraphs are defined with the <code>&lt;p&gt;</code> tag.
+</p>
+  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+    <pre>
+    &lt;p&gt;this is a paragraph&lt;/p&gt;
+    &lt;p&gt;this is another paragraph.&lt;/p&gt;
+    </pre>
+  </div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔗 HTML Links</h3>
+<p class="mb-2 text-gray-700">
+Links are defined with the <code>&lt;a&gt;</code> tag. The destination is set using the <code>href</code> attribute.
+</p>
+  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+    <pre>
+&lt;a href="https://www.example.com"&gt;This is a link&lt;/a&gt;
+    </pre>
+  </div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🖼️ HTML Images</h3>
+<p class="mb-2 text-gray-700">
+Images are defined with the <code>&lt;img&gt;</code> tag. Attributes like <code>src</code>, <code>alt</code>, <code>width</code>, and <code>height</code> provide details.
+</p>
+  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+    <pre>
+&lt;img src="image.jpg" alt="Description" width="300" height="200"&gt;
+    </pre>
+  </div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔍 How to View HTML Source</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Press <strong>CTRL + U</strong> or right-click and choose “View Page Source”</li>
+  <li>Use “Inspect” to view and edit HTML/CSS live in the browser</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is the correct HTML markup for the document type declaration?</p>
+<ul class="space-y-2 text-gray-700">
+  <li><label><input type="radio" name="q1"> &lt;!DOCTYPE html&gt;</label></li>
+  <li><label><input type="radio" name="q1"> DOCTYPE html;</label></li>
+  <li><label><input type="radio" name="q1"> --DOCTYPE html;</label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

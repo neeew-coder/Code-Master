@@ -1,0 +1,85 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML <code>&lt;head&gt;</code> Element</h2>
+
+<p class="mb-4 text-gray-700">
+The <code>&lt;head&gt;</code> element is a container for metadata and non-visual resources. It sits between the opening <code>&lt;html&gt;</code> and <code>&lt;body&gt;</code> tags. Its contents define how the page is processed by browsers and search engines.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📌 What Can Go Inside <code>&lt;head&gt;</code>?</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>&lt;title&gt;</code> – Required document title</li>
+  <li><code>&lt;style&gt;</code> – Internal CSS styles</li>
+  <li><code>&lt;meta&gt;</code> – Charset, SEO, author, viewport</li>
+  <li><code>&lt;link&gt;</code> – External resources (like CSS)</li>
+  <li><code>&lt;script&gt;</code> – JavaScript references or inline scripts</li>
+  <li><code>&lt;base&gt;</code> – Sets a default URL or target for relative paths</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎯 Sample Head Section</h3>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;head&gt;
+  &lt;title&gt;A Meaningful Page Title&lt;/title&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;description&quot; content=&quot;Free Web tutorials&quot;&gt;
+  &lt;meta name=&quot;keywords&quot; content=&quot;HTML, CSS, JavaScript&quot;&gt;
+  &lt;meta name=&quot;author&quot; content=&quot;John Doe&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;stylesheet&quot; href=&quot;mystyle.css&quot;&gt;
+  &lt;style&gt;
+    body {background-color: powderblue;}
+    h1 {color: red;}
+    p {color: blue;}
+  &lt;/style&gt;
+  &lt;script&gt;
+    function myFunction() {
+      document.getElementById(&quot;demo&quot;).innerHTML = &quot;Hello JavaScript!&quot;;
+    }
+  &lt;/script&gt;
+  &lt;base href=&quot;https://www.codemaster.ph/&quot; target=&quot;_blank&quot;&gt;
+&lt;/head&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌐 What Does Each Element Do?</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6" style="color: black;">
+  <thead class="bg-orange-100">
+    <tr><th class="px-3 py-2 border">Element</th><th class="px-3 py-2 border">Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="px-3 py-2 border">&lt;title&gt;</td><td class="px-3 py-2 border">Defines the page title (SEO, tab label)</td></tr>
+    <tr><td class="px-3 py-2 border">&lt;style&gt;</td><td class="px-3 py-2 border">Internal CSS rules</td></tr>
+    <tr><td class="px-3 py-2 border">&lt;meta&gt;</td><td class="px-3 py-2 border">Charset, SEO metadata, responsiveness</td></tr>
+    <tr><td class="px-3 py-2 border">&lt;link&gt;</td><td class="px-3 py-2 border">Loads external stylesheets or resources</td></tr>
+    <tr><td class="px-3 py-2 border">&lt;script&gt;</td><td class="px-3 py-2 border">Adds client-side JavaScript</td></tr>
+    <tr><td class="px-3 py-2 border">&lt;base&gt;</td><td class="px-3 py-2 border">Defines default URL or target for relative links</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📱 What Is the Viewport Meta Tag?</h3>
+
+<p class="mb-2 text-gray-700">
+The <code>&lt;meta name="viewport"&gt;</code> tag improves mobile responsiveness. It tells the browser to scale the page according to the device screen:
+</p>
+
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+</pre>
+
+<p class="text-sm text-gray-500 italic mb-6">
+This helps your layout adapt across desktops, tablets, and phones.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+
+<p class="mb-2 text-gray-700">Which one of the following elements should NOT be placed in the head section?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> &lt;title&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;link&gt;</label></li>
+  <li><label><input type="radio" name="q1"> &lt;body&gt;</label></li>
+</ul>
+
+<button class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

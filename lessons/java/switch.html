@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Switch Statement | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-red-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-red-500">Java Switch Statement</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>switch</code> statement is a cleaner alternative to multiple <code>if...else if</code> conditions. It compares a single value against multiple cases and executes matching code blocks.
+  </p>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🎯 Example: Day of the Week</h3>
+  <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-between items-center">
+      <p class="text-gray-600">Try editing the code below:</p>
+      <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+
+    <textarea id="codeArea" class="bg-black text-red-400 p-3 rounded text-sm overflow-x-auto font-mono w-full h-[400px] resize-none">
+public class Main {
+  public static void main(String[] args) {
+    int day = 3;
+
+    switch (day) {
+      case 1:
+        System.out.println("Monday");
+        break;
+      case 2:
+        System.out.println("Tuesday");
+        break;
+      case 3:
+        System.out.println("Wednesday");
+        break;
+      case 4:
+        System.out.println("Thursday");
+        break;
+      case 5:
+        System.out.println("Friday");
+        break;
+      case 6:
+        System.out.println("Saturday");
+        break;
+      case 7:
+        System.out.println("Sunday");
+        break;
+      default:
+        System.out.println("Invalid day");
+    }
+  }
+}
+    </textarea>
+
+    <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📚 Explanation</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-6">
+    <li><code>switch(day)</code> checks the value of <code>day</code>.</li>
+    <li><code>case</code> blocks match specific values (e.g., <code>case 3</code>).</li>
+    <li><code>break</code> exits the switch after a match — without it, execution "falls through" to the next case.</li>
+    <li><code>default</code> runs if no case matches — like an <code>else</code>.</li>
+    <li>Switch is ideal for clean, readable branching when comparing one variable to many values.</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What will be printed if <code>day = 5</code>?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Tuesday</label></li>
+    <li><label><input type="radio" name="q1"> Friday</label></li>
+    <li><label><input type="radio" name="q1"> Sunday</label></li>
+    <li><label><input type="radio" name="q1"> Invalid day</label></li>
+  </ul>
+
+  <p class="text-gray-700 mb-2">
+    What happens if you omit the <code>break</code> statement?
+  </p>
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q2"> The switch stops immediately</label></li>
+    <li><label><input type="radio" name="q2"> Only the default case runs</label></li>
+    <li><label><input type="radio" name="q2"> All following cases run until a break is found</label></li>
+    <li><label><input type="radio" name="q2"> It causes a syntax error</label></li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Extra Insight</h3>
+  <p class="text-gray-700 mb-6">
+    Java’s <code>switch</code> works with <code>int</code>, <code>char</code>, <code>String</code>, and <code>enum</code> types. Starting with Java 14+, you can use <strong>switch expressions</strong> for more concise logic:
+  </p>
+
+  <pre class="bg-black text-red-400 p-4 rounded text-sm overflow-auto font-mono">
+String result = switch (day) {
+  case 1 -> "Monday";
+  case 2 -> "Tuesday";
+  case 3 -> "Wednesday";
+  default -> "Unknown";
+};
+System.out.println(result);
+  </pre>
+
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-switch-statement')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

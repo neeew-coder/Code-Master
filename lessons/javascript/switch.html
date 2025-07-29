@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Switch Statement | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Switch Statement</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>switch</code> statement evaluates an expression and executes code based on matching <code>case</code> values. It’s useful for handling multiple conditions cleanly.
+  </p>
+
+  <!-- Syntax Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Syntax</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let day = "Tuesday";
+let message;
+
+switch (day) {
+  case "Monday":
+    message = "Start of the week";
+    break;
+  case "Friday":
+    message = "Almost weekend";
+    break;
+  case "Sunday":
+    message = "Rest day";
+    break;
+  default:
+    message = "Just another day";
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Switch (Single Day)</span>
+      <button onclick="runSingleSwitch()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="singleSwitchOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Multi-Day Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Multi-Day Evaluation</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const days = ["Monday", "Friday", "Sunday", "Wednesday"];
+for (let day of days) {
+  switch (day) {
+    case "Monday": console.log("Start of the week"); break;
+    case "Friday": console.log("Almost weekend"); break;
+    case "Sunday": console.log("Rest day"); break;
+    default: console.log("Just another day");
+  }
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Switch (Multiple Days)</span>
+      <button onclick="runMultiSwitch()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="multiSwitchOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function runSingleSwitch() {
+      let day = "Tuesday";
+      let message;
+      switch (day) {
+        case "Monday":
+          message = "Start of the week";
+          break;
+        case "Friday":
+          message = "Almost weekend";
+          break;
+        case "Sunday":
+          message = "Rest day";
+          break;
+        default:
+          message = "Just another day";
+      }
+      document.getElementById("singleSwitchOutput").innerHTML = `Day: ${day} → ${message}`;
+    }
+
+    function runMultiSwitch() {
+      const days = ["Monday", "Friday", "Sunday", "Wednesday"];
+      const output = [];
+
+      for (let day of days) {
+        let message;
+        switch (day) {
+          case "Monday":
+            message = "Start of the week";
+            break;
+          case "Friday":
+            message = "Almost weekend";
+            break;
+          case "Sunday":
+            message = "Rest day";
+            break;
+          default:
+            message = "Just another day";
+        }
+        output.push(`${day}: ${message}`);
+      }
+
+      document.getElementById("multiSwitchOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-calendar-day text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>switch</code> compares values using strict equality (<code>===</code>)</li>
+    <li><code>break</code> prevents fall-through to the next case</li>
+    <li><code>default</code> runs if no case matches</li>
+    <li>Use <code>toLowerCase()</code> or <code>toUpperCase()</code> to normalize input</li>
+    <li>Switch is ideal for fixed, known values — use <code>if</code> for complex logic</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What will the following code output?<br>
+    <code>
+    let fruit = "Banana";<br>
+    switch (fruit) {<br>
+      case "Apple": text = "Red"; break;<br>
+      case "Banana": text = "Yellow"; break;<br>
+      default: text = "Unknown";<br>
+    }
+    </code>
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Red</label></li>
+    <li><label><input type="radio" name="q1"> Yellow</label></li>
+    <li><label><input type="radio" name="q1"> Unknown</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

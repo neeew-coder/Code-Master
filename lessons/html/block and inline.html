@@ -1,0 +1,117 @@
+
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Block and Inline Elements</h2>
+
+<p class="mb-4 text-gray-700">
+Every HTML element has a default <strong>display value</strong>: <code>block</code> or <code>inline</code>. Understanding these behaviors helps with layout, styling, and composition.
+</p>
+
+<!-- Block Elements -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧱 Block-Level Elements</h3>
+<p class="mb-2 text-gray-700">
+Block elements start on a new line and take up the full width available. Common examples include <code>&lt;p&gt;</code>, <code>&lt;div&gt;</code>, <code>&lt;section&gt;</code>, and all headings.
+</p>
+
+<!-- Block Code -->
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+  <pre>
+&lt;p&gt;This is a paragraph.&lt;/p&gt;
+&lt;div&gt;This is a division block.&lt;/div&gt;
+  </pre>
+</div>
+
+<!-- Block Preview -->
+<div class="bg-white p-4 rounded-lg border mb-6">
+  <p style="color: black;">This is a paragraph.</p>
+  <div style="color: black;">This is a division block.</div>
+</div>
+
+<!-- Inline Elements -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧬 Inline Elements</h3>
+<p class="mb-2 text-gray-700">
+Inline elements do not start on a new line and take up only as much width as needed. Examples include <code>&lt;span&gt;</code>, <code>&lt;a&gt;</code>, <code>&lt;strong&gt;</code>, and <code>&lt;img&gt;</code>.
+</p>
+
+<!-- Inline Code -->
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+  <pre>
+&lt;p&gt;My favorite color is &lt;span&gt;blue&lt;/span&gt;.&lt;/p&gt;
+  </pre>
+</div>
+
+<!-- Inline Preview -->
+<div class="bg-white p-4 rounded-lg border mb-6" style="color: black;">
+  <p>My favorite color is <span>blue</span>.</p>
+</div>
+
+<!-- Styling Block vs Inline -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Styling Containers</h3>
+
+<h4 class="text-md font-semibold text-orange-400 mb-2">📦 Styling <code>&lt;div&gt;</code> Block</h4>
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+  <pre>
+&lt;div style="background-color:black;color:white;padding:20px;"&gt;
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;Capital of England.&lt;/p&gt;
+&lt;/div&gt;
+  </pre>
+</div>
+
+<!-- Div Preview -->
+<div style="background-color:black;color:white;padding:20px;" class="rounded mb-6">
+  <h2>London</h2>
+  <p>Capital of England.</p>
+</div>
+
+<h4 class="text-md font-semibold text-orange-400 mb-2">💫 Styling <code>&lt;span&gt;</code> Inline</h4>
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg overflow-x-auto">
+  <pre>
+&lt;p&gt;My mother has &lt;span style="color:blue;font-weight:bold;"&gt;blue&lt;/span&gt; eyes.&lt;/p&gt;
+  </pre>
+</div>
+
+<!-- Span Preview -->
+<div class="bg-white p-4 rounded-lg border mb-6">
+  <p style="color: black;">My mother has <span style="color:blue;font-weight:bold;">blue</span> eyes.</p>
+</div>
+
+<!-- Converting Display -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔁 Changing Display Type with CSS</h3>
+<p class="mb-2 text-gray-700">
+Using CSS, any element can be styled to behave as <code>block</code>, <code>inline</code>, or <code>inline-block</code>.
+</p>
+
+<table class="w-full border border-gray-300 text-sm text-left mb-6" style="color: black;">
+  <thead class="bg-orange-100"><tr><th class="border px-4 py-2">CSS Value</th><th class="border px-4 py-2">Effect</th></tr></thead>
+  <tbody>
+    <tr><td class="border px-4 py-2">display: block</td><td class="border px-4 py-2">Forces line break and full width</td></tr>
+    <tr><td class="border px-4 py-2">display: inline</td><td class="border px-4 py-2">No break; content flows inline</td></tr>
+    <tr><td class="border px-4 py-2">display: inline-block</td><td class="border px-4 py-2">Inline flow with block box styling</td></tr>
+  </tbody>
+</table>
+
+<!-- Conversion Preview -->
+<div class="bg-white p-4 rounded-lg border mb-6 flex flex-wrap gap-4" style="color: black;">
+  <div style="display:inline; background:#eee; padding:8px;">Inline Div</div>
+  <span style="display:block; background:#ddeeff; padding:8px;">Block Span</span>
+  <div style="display:inline-block; background:#c6f6d5; padding:8px;">Inline-block Div</div>
+</div>
+
+<!-- Exercise -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">Which type of elements takes up the full width available?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Inline elements</label></li>
+  <li><label><input type="radio" name="q1"> Block elements</label></li>
+</ul>
+<button onclick="markComplete()" class="bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<!-- Summary -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<ul class="list-disc list-inside text-gray-700 mb-6">
+  <li><strong>Block elements</strong> start on a new line and take full width</li>
+  <li><strong>Inline elements</strong> sit within line flow and only use necessary space</li>
+  <li><code>&lt;div&gt;</code> = block container; <code>&lt;span&gt;</code> = inline container</li>
+  <li>You can switch display types using <code>display</code> in CSS</li>
+</ul>

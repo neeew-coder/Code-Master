@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Typed Array Reference | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Typed Array Reference</h2>
+
+  <p class="mb-6 text-gray-700">Complete reference of typed array types and methods. Revised July 2025.</p>
+
+  <!-- Typed Array Types Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 Typed Array Types</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Name</th>
+        <th class="px-4 py-2 border">Range</th>
+        <th class="px-4 py-2 border">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">Int8Array</td><td class="px-4 py-2 border">-128 / 127</td><td class="px-4 py-2 border">1 byte signed integer</td></tr>
+      <tr><td class="px-4 py-2 border">Uint8Array</td><td class="px-4 py-2 border">0 / 255</td><td class="px-4 py-2 border">1 byte unsigned integer</td></tr>
+      <tr><td class="px-4 py-2 border">Uint8ClampedArray</td><td class="px-4 py-2 border">0 / 255</td><td class="px-4 py-2 border">1 byte unsigned integer</td></tr>
+      <tr><td class="px-4 py-2 border">Int16Array</td><td class="px-4 py-2 border">-32768 / 32767</td><td class="px-4 py-2 border">2 bytes signed short</td></tr>
+      <tr><td class="px-4 py-2 border">Uint16Array</td><td class="px-4 py-2 border">0 / 65535</td><td class="px-4 py-2 border">2 bytes unsigned short</td></tr>
+      <tr><td class="px-4 py-2 border">Int32Array</td><td class="px-4 py-2 border">-2³¹ / 2³¹ - 1</td><td class="px-4 py-2 border">4 bytes signed long</td></tr>
+      <tr><td class="px-4 py-2 border">Uint32Array</td><td class="px-4 py-2 border">0 / 2³² - 1</td><td class="px-4 py-2 border">4 bytes unsigned long</td></tr>
+      <tr><td class="px-4 py-2 border">BigInt64Array</td><td class="px-4 py-2 border">-2⁶³ / 2⁶³ - 1</td><td class="px-4 py-2 border">8 bytes signed big integer</td></tr>
+      <tr><td class="px-4 py-2 border">BigUint64Array</td><td class="px-4 py-2 border">0 / 2⁶⁴ - 1</td><td class="px-4 py-2 border">8 bytes unsigned big integer</td></tr>
+      <tr><td class="px-4 py-2 border">Float16Array</td><td class="px-4 py-2 border">-65504 / 65504</td><td class="px-4 py-2 border">2 bytes floating point</td></tr>
+      <tr><td class="px-4 py-2 border">Float32Array</td><td class="px-4 py-2 border">±3.4e38</td><td class="px-4 py-2 border">4 bytes floating point</td></tr>
+      <tr><td class="px-4 py-2 border">Float64Array</td><td class="px-4 py-2 border">±1.8e308</td><td class="px-4 py-2 border">8 bytes floating point</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Typed Array Methods Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Typed Array Methods</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Method</th>
+        <th class="px-4 py-2 border">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">at()</td><td class="px-4 py-2 border">Returns one indexed element</td></tr>
+      <tr><td class="px-4 py-2 border">byteLength</td><td class="px-4 py-2 border">Length in bytes</td></tr>
+      <tr><td class="px-4 py-2 border">byteOffset</td><td class="px-4 py-2 border">Offset from ArrayBuffer start</td></tr>
+      <tr><td class="px-4 py-2 border">copyWithin()</td><td class="px-4 py-2 border">Copies elements to another index</td></tr>
+      <tr><td class="px-4 py-2 border">fill()</td><td class="px-4 py-2 border">Fills array with a value</td></tr>
+      <tr><td class="px-4 py-2 border">map()</td><td class="px-4 py-2 border">Creates new array from function</td></tr>
+      <tr><td class="px-4 py-2 border">subarray()</td><td class="px-4 py-2 border">Returns a subarray view</td></tr>
+      <!-- Add more rows as needed -->
+    </tbody>
+  </table>
+
+  <!-- Visual Preview: at() -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 at()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Access Element</span>
+      <button onclick="runAt()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const arr = Uint8Array.of(10, 20, 30, 40);
+arr.at(2); // → 30
+    </pre>
+    <div id="atOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runAt() {
+      const arr = Uint8Array.of(10, 20, 30, 40);
+      document.getElementById("atOutput").innerHTML = `arr.at(2) → ${arr.at(2)}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>Uint16Array.BYTES_PER_ELEMENT</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 1</label></li>
+    <li><label><input type="radio" name="q1"> 2</label></li>
+    <li><label><input type="radio" name="q1"> 4</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

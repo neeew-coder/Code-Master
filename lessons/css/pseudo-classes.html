@@ -1,0 +1,112 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Pseudo-Classes</h2>
+
+<p class="mb-6 text-gray-700">
+Pseudo-classes allow you to style elements based on their <strong>state</strong>, <strong>position</strong>, or <strong>interaction</strong>. They enhance dynamic responsiveness without needing extra HTML or JS.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🖱️ Interaction States</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+button:hover {
+  background-color: steelblue;
+}
+
+input:focus {
+  border-color: blue;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+</pre>
+
+<div class="bg-blue-50 p-4 rounded mb-6 text-center space-y-2">
+  <button class="px-4 py-2 bg-white border hover:bg-blue-100 active:scale-95 focus:outline-blue-500">
+    Hover / Active / Focus Me
+  </button>
+  <input type="text" placeholder="Focus input…" class="px-3 py-2 border rounded focus:outline-blue-500" />
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔍 Structural Positioning</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+li:first-child {
+  font-weight: bold;
+}
+
+li:last-child {
+  color: blue;
+}
+
+li:nth-child(odd) {
+  background-color: #e0f2ff;
+}
+</pre>
+
+<ul class="bg-blue-50 p-4 rounded mb-6 text-gray-800">
+  <li>First item</li>
+  <li>Second item</li>
+  <li>Third item</li>
+  <li>Last item</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📋 Form States</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+input:required {
+  border-left: 4px solid steelblue;
+}
+
+input:valid {
+  background-color: #f0fff4;
+}
+
+input:invalid {
+  background-color: #fff0f0;
+}
+</pre>
+
+<form class="bg-blue-50 p-4 rounded mb-6 space-y-2">
+  <input type="email" required placeholder="Email" class="px-3 py-2 border rounded w-full" />
+  <input type="text" placeholder="Optional Field" class="px-3 py-2 border rounded w-full" />
+</form>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Pseudo-Class Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>:hover</code> and <code>:focus</code> together for better accessibility</li>
+  <li><code>:nth-child(odd/even)</code> is great for table row striping</li>
+  <li><code>:not()</code> helps exclude elements: <code>div:not(.alert)</code></li>
+  <li><code>:root</code> targets <code>&lt;html&gt;</code> for global CSS variables</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎓 Full Reference Snapshot</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Pseudo-Class</th><th class="border px-3 py-2">Meaning</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">:hover</td><td class="border px-3 py-2">Mouse over</td></tr>
+    <tr><td class="border px-3 py-2">:focus</td><td class="border px-3 py-2">Keyboard/input focus</td></tr>
+    <tr><td class="border px-3 py-2">:active</td><td class="border px-3 py-2">Element being clicked</td></tr>
+    <tr><td class="border px-3 py-2">:first-child</td><td class="border px-3 py-2">First of its parent</td></tr>
+    <tr><td class="border px-3 py-2">:nth-child(n)</td><td class="border px-3 py-2">Nth item in parent</td></tr>
+    <tr><td class="border px-3 py-2">:required</td><td class="border px-3 py-2">Mandatory form field</td></tr>
+    <tr><td class="border px-3 py-2">:valid / :invalid</td><td class="border px-3 py-2">Form validation feedback</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which pseudo-class styles an input field while it's being typed into?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> :hover</label></li>
+  <li><label><input type="radio" name="q1"> :focus</label></li>
+  <li><label><input type="radio" name="q1"> :active</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

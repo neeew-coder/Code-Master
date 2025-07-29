@@ -1,0 +1,72 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Attribute Selectors</h2>
+
+<p class="mb-6 text-gray-700">
+Attribute selectors let you apply styles to elements based on their attributes and values — such as <code>type</code>, <code>href</code>, or <code>data-*</code>. This improves specificity and enables dynamic targeting.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax Variants</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* Exact match */
+input[type="text"] {
+  border-color: blue;
+}
+
+/* Starts with */
+a[href^="https"] {
+  color: green;
+}
+
+/* Ends with */
+img[src$=".png"] {
+  border-radius: 8px;
+}
+
+/* Contains */
+button[title*="delete"] {
+  background-color: red;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Sample Markup</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;input type=&quot;text&quot; /&gt;
+&lt;a href=&quot;https://example.com&quot;&gt;External Link&lt;/a&gt;
+&lt;img src=&quot;avatar.png&quot; /&gt;
+&lt;button title=&quot;delete-item&quot;&gt;Delete&lt;/button&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 space-y-3 text-gray-800">
+  <input type="text" placeholder="Text input" style="border: 2px solid blue; padding: 6px;" />
+  <a href="https://example.com" style="color: green; text-decoration: none;">Secure link</a><br />
+  <img src="https://via.placeholder.com/64x64.png" alt="PNG preview" style="border-radius: 8px;" />
+  <button title="delete-item" style="background-color: red; color: white; padding: 6px 12px;">Delete</button>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Attribute Selector Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>[attr]</code> targets any element with that attribute</li>
+  <li><code>[attr="value"]</code> matches exact value</li>
+  <li><code>^=</code>, <code>$=</code>, and <code>*=</code> match start, end, or partial values</li>
+  <li>Combine with tags or classes for more precision: <code>input[type="email"]</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which selector matches any link whose <code>href</code> starts with “https”?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> a[href*="https"]</label></li>
+  <li><label><input type="radio" name="q1"> a[href^="https"]</label></li>
+  <li><label><input type="radio" name="q1"> a[href$="https"]</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

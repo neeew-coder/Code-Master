@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Typed Arrays | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Typed Arrays</h2>
+
+  <p class="mb-6 text-gray-700">
+    Typed arrays are fixed-length, binary-safe views into raw memory buffers. They’re ideal for performance-critical tasks like graphics, media, and file manipulation.
+  </p>
+
+  <!-- Reference Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 Typed Array Types</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Name</th>
+        <th class="px-4 py-2 border">Range</th>
+        <th class="px-4 py-2 border">Bytes</th>
+        <th class="px-4 py-2 border">Type</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">Int8Array</td><td class="px-4 py-2 border">-128 to 127</td><td class="px-4 py-2 border">1</td><td class="px-4 py-2 border">byte</td></tr>
+      <tr><td class="px-4 py-2 border">Uint8Array</td><td class="px-4 py-2 border">0 to 255</td><td class="px-4 py-2 border">1</td><td class="px-4 py-2 border">octet</td></tr>
+      <tr><td class="px-4 py-2 border">Uint8ClampedArray</td><td class="px-4 py-2 border">0 to 255</td><td class="px-4 py-2 border">1</td><td class="px-4 py-2 border">octet (clamped)</td></tr>
+      <tr><td class="px-4 py-2 border">Int16Array</td><td class="px-4 py-2 border">-32,768 to 32,767</td><td class="px-4 py-2 border">2</td><td class="px-4 py-2 border">short</td></tr>
+      <tr><td class="px-4 py-2 border">Uint16Array</td><td class="px-4 py-2 border">0 to 65,535</td><td class="px-4 py-2 border">2</td><td class="px-4 py-2 border">unsigned short</td></tr>
+      <tr><td class="px-4 py-2 border">Int32Array</td><td class="px-4 py-2 border">-2^31 to 2^31-1</td><td class="px-4 py-2 border">4</td><td class="px-4 py-2 border">long</td></tr>
+      <tr><td class="px-4 py-2 border">Uint32Array</td><td class="px-4 py-2 border">0 to 2^32-1</td><td class="px-4 py-2 border">4</td><td class="px-4 py-2 border">unsigned long</td></tr>
+      <tr><td class="px-4 py-2 border">Float32Array</td><td class="px-4 py-2 border">±3.4e38</td><td class="px-4 py-2 border">4</td><td class="px-4 py-2 border">float</td></tr>
+      <tr><td class="px-4 py-2 border">Float64Array</td><td class="px-4 py-2 border">±1.8e308</td><td class="px-4 py-2 border">8</td><td class="px-4 py-2 border">double</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Visual Preview: Int8Array -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔢 Int8Array</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Create Int8Array</span>
+      <button onclick="runInt8()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = new Int8Array(10);
+myArr[0] = 127;
+myArr[1] = -128;
+myArr[2] = 200; // wraps to -56
+    </pre>
+    <div id="int8Output" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Uint8ClampedArray -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚫 Uint8ClampedArray</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Clamp Behavior</span>
+      <button onclick="runClamped()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const myArr = new Uint8ClampedArray(3);
+myArr[0] = 100;
+myArr[1] = 300; // clamped to 255
+myArr[2] = -50; // clamped to 0
+    </pre>
+    <div id="clampedOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runInt8() {
+      const myArr = new Int8Array(10);
+      myArr[0] = 127;
+      myArr[1] = -128;
+      myArr[2] = 200;
+      document.getElementById("int8Output").innerHTML = [...myArr].join(", ");
+    }
+
+    function runClamped() {
+      const myArr = new Uint8ClampedArray(3);
+      myArr[0] = 100;
+      myArr[1] = 300;
+      myArr[2] = -50;
+      document.getElementById("clampedOutput").innerHTML = [...myArr].join(", ");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+    <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What happens when you assign <code>300</code> to a <code>Uint8ClampedArray</code> element?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> It wraps to 44</label></li>
+    <li><label><input type="radio" name="q1"> It clamps to 255</label></li>
+    <li><label><input type="radio" name="q1"> It throws an error</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

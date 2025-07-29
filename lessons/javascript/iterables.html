@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Iterables | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Iterables</h2>
+
+  <p class="mb-6 text-gray-700">
+    Iterables are objects that can be looped over using <code>for..of</code>. They implement the <code>Symbol.iterator</code> method and return an iterator object.
+  </p>
+
+  <!-- String Iteration -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔤 Iterating Over a String</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Loop through characters</span>
+      <button onclick="runString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const name = "W3Schools";
+for (const x of name) {
+  console.log(x);
+}
+    </pre>
+    <div id="stringOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Array Iteration -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 Iterating Over an Array</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Loop through array</span>
+      <button onclick="runArray()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const numbers = [2, 4, 6, 8];
+for (const x of numbers) {
+  console.log(x);
+}
+    </pre>
+    <div id="arrayOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Set Iteration -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧮 Iterating Over a Set</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Loop through set</span>
+      <button onclick="runSet()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const letters = new Set(["a", "b", "c"]);
+for (const x of letters) {
+  console.log(x);
+}
+    </pre>
+    <div id="setOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Map Iteration -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🗺️ Iterating Over a Map</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Loop through map</span>
+      <button onclick="runMap()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+for (const x of fruits) {
+  console.log(x);
+}
+    </pre>
+    <div id="mapOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Custom Iterator -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">⚙️ Custom Iterator with next()</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Manual next()</span>
+      <button onclick="runManualIterator()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+function myNumbers() {
+  let n = 0;
+  return {
+    next: function() {
+      n += 10;
+      return { value: n, done: false };
+    }
+  };
+}
+const n = myNumbers();
+n.next(); // 10
+n.next(); // 20
+    </pre>
+    <div id="manualOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runString() {
+      const name = "W3Schools";
+      document.getElementById("stringOutput").innerHTML = [...name].join(", ");
+    }
+
+    function runArray() {
+      const numbers = [2, 4, 6, 8];
+      document.getElementById("arrayOutput").innerHTML = numbers.join(", ");
+    }
+
+    function runSet() {
+      const letters = new Set(["a", "b", "c"]);
+      document.getElementById("setOutput").innerHTML = [...letters].join(", ");
+    }
+
+    function runMap() {
+      const fruits = new Map([
+        ["apples", 500],
+        ["bananas", 300],
+        ["oranges", 200]
+      ]);
+      let result = "";
+      for (const [key, value] of fruits) {
+        result += `${key}: ${value}<br>`;
+      }
+      document.getElementById("mapOutput").innerHTML = result;
+    }
+
+    function runManualIterator() {
+      function myNumbers() {
+        let n = 0;
+        return {
+          next: function() {
+            n += 10;
+            return { value: n, done: false };
+          }
+        };
+      }
+      const n = myNumbers();
+      const result = [n.next().value, n.next().value, n.next().value].join(", ");
+      document.getElementById("manualOutput").innerHTML = result;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What must an object implement to be iterable?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> A next() method</label></li>
+    <li><label><input type="radio" name="q1"> A Symbol.iterator method</label></li>
+    <li><label><input type="radio" name="q1"> A forEach() method</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

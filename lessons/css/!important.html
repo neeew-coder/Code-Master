@@ -1,0 +1,63 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS !important</h2>
+
+<p class="mb-6 text-gray-700">
+The <code>!important</code> flag forces a CSS rule to override all others — regardless of selector specificity or source order. It’s powerful, but often used as a last resort when the cascade isn’t working as expected.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.element {
+  color: red !important;
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+The `color` will be red — even if another rule with higher specificity tries to assign a different value.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Override Demo</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 space-y-2 text-gray-800">
+  <p style="color: gray;">Normal style (low specificity)</p>
+  <p style="color: blue;">Class override</p>
+  <p style="color: green !important;">Important flag overrides all</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 !important Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use sparingly — it breaks the natural cascade</li>
+  <li>Can override inline styles (rare)</li>
+  <li>Avoid overuse — makes debugging harder</li>
+  <li>Useful for third-party overrides or accessibility fixes</li>
+  <li>If multiple `!important` rules apply, specificity still decides winner</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Conflict Example</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+p {
+  color: black;
+}
+
+.text {
+  color: blue;
+}
+
+p.text {
+  color: green !important;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">What does `!important` do in CSS?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Gives a rule highest priority</label></li>
+  <li><label><input type="radio" name="q1"> Adds extra specificity</label></li>
+  <li><label><input type="radio" name="q1"> Applies rule to child elements</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

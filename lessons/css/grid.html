@@ -1,0 +1,129 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Grid Layout</h2>
+
+<p class="mb-6 text-gray-700">
+CSS Grid is a powerful <strong>two-dimensional layout system</strong> that lets you define rows and columns simultaneously. It enables precise, responsive design patterns — making full-page and component layouts more declarative and manageable.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 Grid Container Setup</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.grid-layout {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto 200px;
+  gap: 16px;
+}
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>display: grid</code> turns container into a grid parent</li>
+  <li><code>grid-template-columns</code> and <code>rows</code> define the track sizes</li>
+  <li><code>gap</code> adds spacing between items (rows & columns)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Track Units</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr>
+      <th class="border px-3 py-2">Unit</th>
+      <th class="border px-3 py-2">Meaning</th>
+      <th class="border px-3 py-2">Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">px</td><td class="border px-3 py-2">Fixed pixels</td><td class="border px-3 py-2">200px</td></tr>
+    <tr><td class="border px-3 py-2">%</td><td class="border px-3 py-2">Relative to grid container</td><td class="border px-3 py-2">50%</td></tr>
+    <tr><td class="border px-3 py-2">fr</td><td class="border px-3 py-2">Fraction of available space</td><td class="border px-3 py-2">1fr 2fr</td></tr>
+    <tr><td class="border px-3 py-2">auto</td><td class="border px-3 py-2">Size based on content</td><td class="border px-3 py-2">auto</td></tr>
+    <tr><td class="border px-3 py-2">minmax()</td><td class="border px-3 py-2">Set min and max bounds</td><td class="border px-3 py-2">minmax(200px, 1fr)</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Item Placement</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.item {
+  grid-column: 1 / span 2;
+  grid-row: 2;
+}
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>grid-column</code> and <code>grid-row</code>: define placement via start/end or span</li>
+  <li>Use <code>grid-area</code> shorthand to place both</li>
+  <li>Default items auto-flow in row direction</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📊 Named Grid Areas</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.grid-layout {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav main"
+    "footer footer";
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
+
+.header { grid-area: header; }
+.nav    { grid-area: nav; }
+.main   { grid-area: main; }
+.footer { grid-area: footer; }
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Named areas improve layout readability and logic</li>
+  <li>Combine with semantic HTML elements for clarity</li>
+  <li>Use consistent naming across templates and components</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Grid Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 text-gray-800" style="display: grid; grid-template-areas: 'header header' 'nav main' 'footer footer'; grid-template-columns: 2fr 1fr; gap: 16px;">
+  <div style="grid-area: header; background: #3b82f6; color: white; padding: 12px; font-weight: bold;">Header</div>
+  <div style="grid-area: nav; background: #60a5fa; color: white; padding: 12px; font-weight: bold;">Sidebar</div>
+  <div style="grid-area: main; background: white; padding: 12px; border: 1px solid #e5e7eb;">Main Content</div>
+  <div style="grid-area: footer; background: #1e3a8a; color: white; padding: 12px; text-align: center; font-weight: bold;">Footer</div>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📱 Responsive Strategy</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.grid-responsive {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>auto-fill</code> or <code>auto-fit</code> fills space fluidly</li>
+  <li><code>minmax()</code> keeps blocks readable and stable</li>
+  <li>Perfect for cards, galleries, flexible content zones</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Grid Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>gap</code> instead of margin for cleaner alignment</li>
+  <li>Named areas + semantic HTML = easier maintenance</li>
+  <li>Inspect grid in browser dev tools → "Layout" panel</li>
+  <li>Don’t forget shorthand like <code>grid</code> and <code>grid-area</code> for brevity</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which property defines named zones inside a grid?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> grid-auto-rows</label></li>
+  <li><label><input type="radio" name="q1"> grid-template-areas</label></li>
+  <li><label><input type="radio" name="q1"> grid-gap</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

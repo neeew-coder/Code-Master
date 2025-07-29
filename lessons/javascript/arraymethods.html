@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Array Methods | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Array Methods</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript arrays come with powerful built-in methods to access, modify, and transform data. These methods help you manage collections efficiently and expressively.
+  </p>
+
+  <!-- Access Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📥 Access Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+arr.length         // number of items
+arr.at(-1)         // last item (ES2022)
+arr.join(" - ")    // join as string
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Access Methods</span>
+      <button onclick="runAccessMethods()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="accessOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Modify Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🛠️ Modify Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+arr.push("item")   // add to end
+arr.pop()          // remove from end
+arr.unshift("item")// add to start
+arr.shift()        // remove from start
+delete arr[1]      // leaves hole
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Modify Methods</span>
+      <button onclick="runModifyMethods()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="modifyOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Transform Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔄 Transform Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+arr.concat(other)   // merge arrays
+arr.slice(1, 3)     // extract portion
+arr.splice(2, 1)    // remove/insert
+arr.toSpliced(2, 1) // non-destructive splice (ES2023)
+arr.copyWithin(2, 0)// overwrite from index
+arr.flat()          // flatten nested arrays
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Transform Methods</span>
+      <button onclick="runTransformMethods()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="transformOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runAccessMethods() {
+      const fruits = ["Banana", "Orange", "Apple", "Mango"];
+      const output = [
+        `Length: ${fruits.length}`,
+        `Last item (at): ${fruits.at(-1)}`,
+        `Joined: ${fruits.join(" - ")}`
+      ];
+      document.getElementById("accessOutput").innerHTML = output.join("<br>");
+    }
+
+    function runModifyMethods() {
+      let fruits = ["Banana", "Orange", "Apple"];
+      fruits.push("Kiwi");
+      fruits.pop();
+      fruits.unshift("Lemon");
+      fruits.shift();
+      delete fruits[1];
+      document.getElementById("modifyOutput").innerHTML = `Modified: [${fruits.join(", ")}]`;
+    }
+
+    function runTransformMethods() {
+      const fruits = ["Banana", "Orange", "Apple", "Mango"];
+      const sliced = fruits.slice(1, 3);
+      const spliced = fruits.toSpliced(2, 1);
+      const copied = fruits.copyWithin(2, 0);
+      const flat = [["a", "b"], ["c", "d"]].flat();
+      const output = [
+        `Slice(1,3): [${sliced.join(", ")}]`,
+        `toSpliced(2,1): [${spliced.join(", ")}]`,
+        `copyWithin(2,0): [${copied.join(", ")}]`,
+        `Flat: [${flat.join(", ")}]`
+      ];
+      document.getElementById("transformOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>.at()</code> supports negative indexing (ES2022)</li>
+    <li><code>.toSpliced()</code> is a safe alternative to <code>.splice()</code> (ES2023)</li>
+    <li><code>.flat()</code> flattens nested arrays</li>
+    <li><code>.join()</code> and <code>.toString()</code> convert arrays to strings</li>
+    <li><code>delete</code> leaves holes — use <code>splice()</code> to remove cleanly</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>["a", "b", "c"].slice(1, 3)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> ["a", "b"]</label></li>
+    <li><label><input type="radio" name="q1"> ["b", "c"]</label></li>
+    <li><label><input type="radio" name="q1"> ["c"]</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

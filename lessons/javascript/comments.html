@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Comments | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Comments</h2>
+
+  <p class="mb-6 text-gray-700">
+    Comments are notes in your code that the browser ignores. They help explain logic, disable code temporarily, and make your scripts easier to read and maintain.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Comment Syntax</h3>
+
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+// This is a single-line comment
+
+/*
+  This is a multi-line comment
+  spanning multiple lines
+*/
+
+let x = 5; // Inline comment
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>//</code> for single-line comments and <code>/* */</code> for multi-line blocks. Comments do not affect code execution.
+  </p>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 text-left">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">🗒️ Commented Code Execution</span>
+      <button onclick="showCommentedCode()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Code with Comments
+      </button>
+    </div>
+    <div id="commentOutput" class="text-sm text-gray-700 mt-2">
+      Click the button to run code with a commented-out line.
+    </div>
+  </div>
+
+  <script>
+    function showCommentedCode() {
+      // let x = 100; // This line is commented out
+      let x = 50;
+      document.getElementById("commentOutput").innerHTML = `
+        <div class="flex items-center gap-2 mt-2">
+          <i class="fas fa-check-circle text-green-500 text-sm"></i>
+          <span>Value of x is: ${x}</span>
+        </div>
+      `;
+    }
+  </script>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Notes</h3>
+
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>Use comments to explain complex logic</li>
+    <li>Disable code temporarily by commenting it out</li>
+    <li>Comments improve collaboration and debugging</li>
+    <li>Never leave sensitive info in comments — they’re visible in source</li>
+  </ul>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+
+  <p class="text-gray-700 mb-2">
+    Which syntax creates a multi-line comment in JavaScript?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> // This is a comment</label></li>
+    <li><label><input type="radio" name="q1"> /* This is a comment */</label></li>
+    <li><label><input type="radio" name="q1"> &lt;!-- This is a comment --&gt;</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Spacer to ensure scrollability -->
+  <div class="min-h-[280px]"></div>
+
+  <!-- Scroll-to-top listener only -->
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>

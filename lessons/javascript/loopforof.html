@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript For Of Loop | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript For Of Loop</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>for...of</code> loop iterates over the values of an iterable object. It works with arrays, strings, maps, sets, NodeLists, and more.
+  </p>
+
+  <!-- Syntax -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Syntax</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+for (variable of iterable) {
+  // code block to be executed
+}
+  </pre>
+
+  <!-- Array Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Array Example</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const cars = ["BMW", "Volvo", "Mini"];
+let text = "";
+
+for (let car of cars) {
+  text += car + " ";
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Array Loop</span>
+      <button onclick="runArrayLoop()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="arrayOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- String Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 String Example</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let language = "JavaScript";
+let text = "";
+
+for (let char of language) {
+  text += char + " ";
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run String Loop</span>
+      <button onclick="runStringLoop()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="stringOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function runArrayLoop() {
+      const cars = ["BMW", "Volvo", "Mini"];
+      let result = "";
+      for (let car of cars) {
+        result += car + " ";
+      }
+      document.getElementById("arrayOutput").innerHTML = result.trim();
+    }
+
+    function runStringLoop() {
+      const language = "JavaScript";
+      let result = "";
+      for (let char of language) {
+        result += char + " ";
+      }
+      document.getElementById("stringOutput").innerHTML = result.trim();
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>for...of</code> loops over values, not keys</li>
+    <li>Works with arrays, strings, maps, sets, NodeLists</li>
+    <li>Use <code>const</code>, <code>let</code>, or <code>var</code> to declare the loop variable</li>
+    <li>Introduced in ES6 (2015); not supported in Internet Explorer</li>
+    <li>Use <code>for...in</code> for object keys, <code>for...of</code> for iterable values</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does the following code output?<br>
+    <code>
+    let word = "Hi";<br>
+    let result = "";<br>
+    for (let char of word) { result += char; }
+    </code>
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> H</label></li>
+    <li><label><input type="radio" name="q1"> Hi</label></li>
+    <li><label><input type="radio" name="q1"> iH</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

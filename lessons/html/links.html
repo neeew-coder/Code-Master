@@ -1,0 +1,127 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Links</h2>
+
+<p class="mb-4 text-gray-700">
+HTML links (or hyperlinks) allow users to navigate between pages, documents, or resources. They’re essential for building connected web experiences.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔗 Basic Syntax</h3>
+<p class="mb-2 text-gray-700">
+Use the <code>&lt;a&gt;</code> tag with the <code>href</code> attribute to define a hyperlink.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="https://codemaster.ph/"&gt;Visit CodeMaster!&lt;/a&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <a href="https://codemaster.ph/">Visit CodeMaster!</a>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎯 The <code>target</code> Attribute</h3>
+<p class="mb-2 text-gray-700">
+Use <code>target="_blank"</code> to open the link in a new tab or window.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="https://codemaster.ph/" target="_blank"&gt;Visit CodeMaster!&lt;/a&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <a href="https://codemaster.ph/" target="_blank">Visit CodeMaster!</a>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🌐 Absolute vs Relative URLs</h3>
+<p class="mb-2 text-gray-700">
+Absolute URLs link to external sites. Relative URLs link within your own site.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;h2&gt;Absolute URLs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="https://codemaster.ph/modules/html"&gt;HTML Module&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://codemaster.ph/modules/css"&gt;CSS Module&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2&gt;Relative URLs&lt;/h2&gt;
+&lt;p&gt;&lt;a href="html_intro.html"&gt;HTML Introduction&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href="/css/styles.html"&gt;CSS Styles&lt;/a&gt;&lt;/p&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <h2>Absolute URLs</h2>
+  <p><a href="https://codemaster.ph/modules/html">HTML Module</a></p>
+  <p><a href="https://codemaster.ph/modules/css">CSS Module</a></p>
+  <h2>Relative URLs</h2>
+  <p><a href="html_intro.html">HTML Introduction</a></p>
+  <p><a href="/css/styles.html">CSS Styles</a></p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🖼️ Image as a Link</h3>
+<p class="mb-2 text-gray-700">
+Wrap an <code>&lt;img&gt;</code> tag inside an <code>&lt;a&gt;</code> tag to make the image clickable.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="course.html"&gt;
+  &lt;img src="icon.png" alt="Course link" style="width:42px;height:42px;"&gt;
+&lt;/a&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <a href="course.html">
+    <img src="icon.png" alt="Course link" style="width:42px;height:42px;">
+  </a>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📧 Email Link</h3>
+<p class="mb-2 text-gray-700">
+Use <code>mailto:</code> in the <code>href</code> to open the user's email client.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="mailto:support@codemaster.ph"&gt;Send email&lt;/a&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <a href="mailto:support@codemaster.ph">Send email</a>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔘 Button as a Link</h3>
+<p class="mb-2 text-gray-700">
+Use JavaScript to make a button behave like a link.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;button onclick="document.location='course.html'"&gt;Go to Course&lt;/button&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <button onclick="document.location='course.html'" style="color: black;">Go to Course</button>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Link Titles</h3>
+<p class="mb-2 text-gray-700">
+Use the <code>title</code> attribute to show extra info on hover.
+</p>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
+  <pre>
+&lt;a href="https://codemaster.ph/html/" title="Explore HTML tutorials"&gt;
+  Visit our HTML section
+&lt;/a&gt;
+  </pre>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-md mb-6">
+  <a href="https://codemaster.ph/html/" title="Explore HTML tutorials">
+    Visit our HTML section
+  </a>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is a correct syntax for an HTML hyperlink?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <strong><code>&lt;a href='/home.htm'&gt;Visit CodeMaster!&lt;/a&gt;</code></strong></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;link href='/home.htm'&gt;Visit CodeMaster!&lt;/link&gt;</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>&lt;alink href='/home.htm'&gt;Visit CodeMaster!&lt;/alink&gt;</code></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

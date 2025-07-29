@@ -1,0 +1,83 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Borders</h2>
+
+<p class="mb-6 text-gray-700">
+Borders add outlines around elements — defining shape, structure, and separation. You can control their width, style, and color to match your design tone.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧱 Border Syntax</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+border: 2px solid blue;
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><code>width</code> — thickness of border (e.g. <code>2px</code>)</li>
+  <li><code>style</code> — line type (e.g. <code>solid</code>, <code>dashed</code>, <code>dotted</code>)</li>
+  <li><code>color</code> — border color (e.g. <code>blue</code>, <code>#333</code>)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Border Styles</h3>
+
+<div class="grid grid-cols-3 gap-4 mb-6">
+
+  <div class="text-center p-4 border border-blue-600">Solid Border</div>
+  <div class="text-center p-4 border-2 border-dashed border-blue-400">Dashed Border</div>
+  <div class="text-center p-4 border-2 border-dotted border-blue-300">Dotted Border</div>
+
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📏 Individual Sides</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+border-top: 4px solid navy;
+border-right: 2px dashed lightblue;
+border-bottom: 3px dotted steelblue;
+border-left: 2px solid skyblue;
+</pre>
+
+<div class="p-4 mb-6" style="border-top: 4px solid navy; border-right: 2px dashed lightblue; border-bottom: 3px dotted steelblue; border-left: 2px solid skyblue;">
+  Borders applied individually on all four sides.
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧃 Rounded Borders</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+border: 2px solid blue;
+border-radius: 10px;
+</pre>
+
+<div class="p-4 border rounded-lg border-blue-600 mb-6">
+  Rounded borders add softness to box edges.
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Border Properties</h3>
+
+<table class="w-full text-sm border border-gray-300 mb-6">
+  <thead class="bg-blue-100">
+    <tr><th class="border px-3 py-2">Property</th><th class="border px-3 py-2">Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="border px-3 py-2">border</td><td class="border px-3 py-2">Sets all border sides at once</td></tr>
+    <tr><td class="border px-3 py-2">border-top / bottom / left / right</td><td class="border px-3 py-2">Targets individual sides</td></tr>
+    <tr><td class="border px-3 py-2">border-style</td><td class="border px-3 py-2">Defines line type</td></tr>
+    <tr><td class="border px-3 py-2">border-width</td><td class="border px-3 py-2">Controls thickness</td></tr>
+    <tr><td class="border px-3 py-2">border-color</td><td class="border px-3 py-2">Sets border color</td></tr>
+    <tr><td class="border px-3 py-2">border-radius</td><td class="border px-3 py-2">Rounds border corners</td></tr>
+  </tbody>
+</table>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which CSS property is used to round the corners of a border?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> border-round</label></li>
+  <li><label><input type="radio" name="q1"> border-radius</label></li>
+  <li><label><input type="radio" name="q1"> border-corner</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Numbers | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Numbers</h2>
+
+  <p class="mb-6 text-gray-700">
+    Numbers in JavaScript include integers, decimals, and special values like <code>NaN</code> and <code>Infinity</code>. You can perform math operations and use built-in methods to format or validate them.
+  </p>
+
+  <!-- Declaring Numbers -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Declaring Numbers</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let x = 42;
+let y = 3.14;
+let z = "100";
+
+Number(z);         // 100
+parseInt("50px");  // 50
+parseFloat("2.5em"); // 2.5
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use <code>Number()</code>, <code>parseInt()</code>, and <code>parseFloat()</code> to convert strings to numbers. JavaScript treats all numbers as floating-point under the hood.
+  </p>
+
+  <!-- Common Methods -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Common Methods</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+let value = 5.6789;
+
+value.toFixed(2);         // "5.68"
+Math.round(value);        // 6
+Math.floor(value);        // 5
+Math.ceil(value);         // 6
+Number.isNaN("hello");    // false
+Number.isFinite(100 / 0); // false
+  </pre>
+
+  <p class="text-gray-700 mb-4">
+    Use these methods to round, format, and validate numbers. <code>Math</code> is a built-in object with many useful utilities.
+  </p>
+
+  <!-- Formatting Demo -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🎯 Formatting Demo</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Format & Round</span>
+      <button onclick="runFormattingDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="formatOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Validation Demo -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 Validation Demo</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Validate Numbers</span>
+      <button onclick="runValidationDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="validateOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runFormattingDemo() {
+      let value = 5.6789;
+      const output = [
+        `Original: ${value}`,
+        `toFixed(2): ${value.toFixed(2)}`,
+        `Math.round(): ${Math.round(value)}`,
+        `Math.floor(): ${Math.floor(value)}`,
+        `Math.ceil(): ${Math.ceil(value)}`
+      ];
+      document.getElementById("formatOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-hashtag text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    function runValidationDemo() {
+      const output = [
+        `isNaN("hello"): ${Number.isNaN("hello")}`,
+        `isFinite(100 / 0): ${Number.isFinite(100 / 0)}`
+      ];
+      document.getElementById("validateOutput").innerHTML = output.map(line => `
+        <div class="flex items-start gap-2">
+          <i class="fas fa-search text-yellow-400 text-xs mt-1"></i>
+          <span>${line}</span>
+        </div>
+      `).join("");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>JavaScript uses 64-bit floating-point numbers</li>
+    <li><code>NaN</code> means “Not a Number” — often from invalid math</li>
+    <li><code>Infinity</code> results from division by zero</li>
+    <li><code>Math</code> provides rounding, random numbers, and more</li>
+    <li>Use <code>Number()</code> to convert strings safely</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>Math.floor(4.9)</code> return?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> 5</label></li>
+    <li><label><input type="radio" name="q1"> 4</label></li>
+    <li><label><input type="radio" name="q1"> 4.9</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

@@ -1,0 +1,164 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Table Sizes</h2>
+
+<p class="mb-4 text-gray-700">
+HTML tables can be sized individually at the <strong>table</strong>, <strong>row</strong>, or <strong>column</strong> level. To control sizing, use the <code>style</code> attribute with CSS properties like <code>width</code> and <code>height</code>.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Table Width</h3>
+<p class="mb-2 text-gray-700">
+Setting the table's width to <code>100%</code> makes it span the full width of its parent element (usually the <code>&lt;body&gt;</code>). This helps the table adapt to different screen sizes.
+</p>
+
+<!-- Table Width Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Firstname&lt;/th&gt;
+    &lt;th&gt;Lastname&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;50&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Eve&lt;/td&gt;
+    &lt;td&gt;Jackson&lt;/td&gt;
+    &lt;td&gt;94&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<!-- Table Width Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
+  <table style="width:100%; color:black;" class="table-auto border border-gray-300">
+    <tr class="bg-orange-100">
+      <th class="border px-4 py-2">Firstname</th>
+      <th class="border px-4 py-2">Lastname</th>
+      <th class="border px-4 py-2">Age</th>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">50</td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Eve</td>
+      <td class="border px-4 py-2">Jackson</td>
+      <td class="border px-4 py-2">94</td>
+    </tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Column Width</h3>
+<p class="mb-2 text-gray-700">
+Here, <code>style="width:70%"</code> is added to the first column header. That column now takes 70% of the entire table width.
+</p>
+
+<!-- Column Width Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;th style="width:70%"&gt;Firstname&lt;/th&gt;
+    &lt;th&gt;Lastname&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;50&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Eve&lt;/td&gt;
+    &lt;td&gt;Jackson&lt;/td&gt;
+    &lt;td&gt;94&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<!-- Column Width Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
+  <table style="width:100%; color:black;" class="table-auto border border-gray-300">
+    <tr class="bg-orange-100">
+      <th style="width:70%" class="border px-4 py-2">Firstname</th>
+      <th class="border px-4 py-2">Lastname</th>
+      <th class="border px-4 py-2">Age</th>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">50</td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Eve</td>
+      <td class="border px-4 py-2">Jackson</td>
+      <td class="border px-4 py-2">94</td>
+    </tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Row Height</h3>
+<p class="mb-2 text-gray-700">
+By adding <code>style="height:200px"</code> to the second row, it becomes visibly taller than others.
+</p>
+
+<!-- Row Height Code -->
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm mb-2 overflow-x-auto">
+  <pre>
+&lt;table style="width:100%"&gt;
+  &lt;tr&gt;
+    &lt;th&gt;Firstname&lt;/th&gt;
+    &lt;th&gt;Lastname&lt;/th&gt;
+    &lt;th&gt;Age&lt;/th&gt;
+  &lt;/tr&gt;
+  &lt;tr style="height:200px"&gt;
+    &lt;td&gt;Jill&lt;/td&gt;
+    &lt;td&gt;Smith&lt;/td&gt;
+    &lt;td&gt;50&lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+    &lt;td&gt;Eve&lt;/td&gt;
+    &lt;td&gt;Jackson&lt;/td&gt;
+    &lt;td&gt;94&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+  </pre>
+</div>
+
+<!-- Row Height Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border border-gray-200">
+  <table style="width:100%; color:black;" class="table-auto border border-gray-300">
+    <tr class="bg-orange-100">
+      <th class="border px-4 py-2">Firstname</th>
+      <th class="border px-4 py-2">Lastname</th>
+      <th class="border px-4 py-2">Age</th>
+    </tr>
+    <tr style="height:200px">
+      <td class="border px-4 py-2">Jill</td>
+      <td class="border px-4 py-2">Smith</td>
+      <td class="border px-4 py-2">50</td>
+    </tr>
+    <tr>
+      <td class="border px-4 py-2">Eve</td>
+      <td class="border px-4 py-2">Jackson</td>
+      <td class="border px-4 py-2">94</td>
+    </tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">What is the correct CSS property for styling the width of a table?</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>size</code></label></li>
+  <li><label><input type="radio" name="q1"> <code>table-size</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>width</code></strong></label></li>
+</ul>
+
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>

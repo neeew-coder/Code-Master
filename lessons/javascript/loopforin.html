@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript For In Loop | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript For In Loop</h2>
+
+  <p class="mb-6 text-gray-700">
+    The <code>for...in</code> loop iterates over the enumerable properties of an object. It can also be used on arrays, but is discouraged when index order matters.
+  </p>
+
+  <!-- Object Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📄 Object Example</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const person = { fname: "John", lname: "Doe", age: 25 };
+let text = "";
+
+for (let key in person) {
+  text += person[key] + " ";
+}
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Object Loop</span>
+      <button onclick="runObjectLoop()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="objectOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Array Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Array Example (Not Recommended)</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const numbers = [45, 4, 9, 16, 25];
+let txt = "";
+
+for (let index in numbers) {
+  txt += numbers[index] + " ";
+}
+  </pre>
+
+  <p class="text-gray-700 mb-2">
+    ⚠️ <strong>Note:</strong> Do not use <code>for...in</code> on arrays if index order matters. Use <code>for</code>, <code>for...of</code>, or <code>forEach()</code> instead.
+  </p>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run Array Loop</span>
+      <button onclick="runArrayLoop()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="arrayOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- forEach Example -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📄 Array.forEach()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+const numbers = [45, 4, 9, 16, 25];
+let txt = "";
+
+numbers.forEach(function(value, index, array) {
+  txt += value + " ";
+});
+  </pre>
+
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="font-semibold text-yellow-500 text-sm">▶️ Run forEach Loop</span>
+      <button onclick="runForEachLoop()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run
+      </button>
+    </div>
+    <div id="forEachOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    function runObjectLoop() {
+      const person = { fname: "John", lname: "Doe", age: 25 };
+      let result = "";
+      for (let key in person) {
+        result += `${key}: ${person[key]} `;
+      }
+      document.getElementById("objectOutput").innerHTML = result.trim();
+    }
+
+    function runArrayLoop() {
+      const numbers = [45, 4, 9, 16, 25];
+      let result = "";
+      for (let index in numbers) {
+        result += numbers[index] + " ";
+      }
+      document.getElementById("arrayOutput").innerHTML = result.trim();
+    }
+
+    function runForEachLoop() {
+      const numbers = [45, 4, 9, 16, 25];
+      let result = "";
+      numbers.forEach((value, index, array) => {
+        result += value + " ";
+      });
+      document.getElementById("forEachOutput").innerHTML = result.trim();
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li><code>for...in</code> loops over keys in objects</li>
+    <li>Use <code>object[key]</code> to access values</li>
+    <li><code>for...in</code> can loop over arrays, but index order is not guaranteed</li>
+    <li><code>forEach()</code> is preferred for ordered array iteration</li>
+    <li><code>forEach()</code> accepts <code>(value, index, array)</code> as arguments</li>
+    <li><code>for...of</code> is better for value-based iteration (next module)</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    True or False.<br>
+    The <code>for...in</code> loop cannot be used on arrays.
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> True</label></li>
+    <li><label><input type="radio" name="q1"> False</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

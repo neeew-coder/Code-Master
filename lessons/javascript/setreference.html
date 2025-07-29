@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Set Reference | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Set Reference</h2>
+
+  <p class="mb-6 text-gray-700">Complete reference of Set methods and properties. Revised July 2025.</p>
+
+  <!-- Method Reference Table -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 Method Reference</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Method</th>
+        <th class="px-4 py-2 border">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">new Set()</td><td class="px-4 py-2 border">Creates a new set</td></tr>
+      <tr><td class="px-4 py-2 border">add()</td><td class="px-4 py-2 border">Adds a new element to a set</td></tr>
+      <tr><td class="px-4 py-2 border">clear()</td><td class="px-4 py-2 border">Removes all elements from a set</td></tr>
+      <tr><td class="px-4 py-2 border">delete()</td><td class="px-4 py-2 border">Removes an element from a set</td></tr>
+      <tr><td class="px-4 py-2 border">difference()</td><td class="px-4 py-2 border">Returns the difference between two sets</td></tr>
+      <tr><td class="px-4 py-2 border">entries()</td><td class="px-4 py-2 border">Returns [value,value] pairs</td></tr>
+      <tr><td class="px-4 py-2 border">forEach()</td><td class="px-4 py-2 border">Invokes a callback for each element</td></tr>
+      <tr><td class="px-4 py-2 border">has()</td><td class="px-4 py-2 border">Returns true if a value exists</td></tr>
+      <tr><td class="px-4 py-2 border">intersection()</td><td class="px-4 py-2 border">Returns common elements</td></tr>
+      <tr><td class="px-4 py-2 border">isDisjointFrom()</td><td class="px-4 py-2 border">Returns true if no shared elements</td></tr>
+      <tr><td class="px-4 py-2 border">isSubsetOf()</td><td class="px-4 py-2 border">Returns true if subset</td></tr>
+      <tr><td class="px-4 py-2 border">isSupersetOf()</td><td class="px-4 py-2 border">Returns true if superset</td></tr>
+      <tr><td class="px-4 py-2 border">keys()</td><td class="px-4 py-2 border">Same as values()</td></tr>
+      <tr><td class="px-4 py-2 border">symmetricDifference()</td><td class="px-4 py-2 border">Returns elements in A or B but not both</td></tr>
+      <tr><td class="px-4 py-2 border">union()</td><td class="px-4 py-2 border">Returns combined elements</td></tr>
+      <tr><td class="px-4 py-2 border">values()</td><td class="px-4 py-2 border">Returns all values</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Property Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📐 Property Reference</h3>
+  <table class="table-auto w-full text-sm text-left text-gray-700 mb-6 border border-yellow-300">
+    <thead class="bg-yellow-100 text-yellow-700 font-semibold">
+      <tr>
+        <th class="px-4 py-2 border">Property</th>
+        <th class="px-4 py-2 border">Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td class="px-4 py-2 border">size</td><td class="px-4 py-2 border">Returns the number of elements</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Visual Preview: add(), delete(), clear(), size -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">👁️ Visual Preview</h3>
+
+  <!-- add() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ add()</span>
+      <button onclick="runAdd()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="addOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+  <!-- delete() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ delete()</span>
+      <button onclick="runDelete()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="deleteOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+  <!-- clear() -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ clear()</span>
+      <button onclick="runClear()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="clearOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+  <!-- size -->
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mb-4">
+    <div class="flex justify-between items-center">
+      <span class="text-sm font-semibold text-yellow-500">▶️ size</span>
+      <button onclick="runSize()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="sizeOutput" class="text-sm text-gray-700 mt-2">Output will appear here.</div>
+  </div>
+
+    <!-- Script -->
+  <script>
+    function runAdd() {
+      const s = new Set();
+      s.add("a");
+      s.add("b");
+      s.add("a");
+      document.getElementById("addOutput").innerHTML = [...s].join(", ");
+    }
+
+    function runDelete() {
+      const s = new Set(["a", "b", "c"]);
+      s.delete("b");
+      document.getElementById("deleteOutput").innerHTML = [...s].join(", ");
+    }
+
+    function runClear() {
+      const s = new Set(["a", "b", "c"]);
+      s.clear();
+      document.getElementById("clearOutput").innerHTML = `Set cleared → size: ${s.size}`;
+    }
+
+    function runSize() {
+      const s = new Set(["a", "b", "c"]);
+      document.getElementById("sizeOutput").innerHTML = `Set size: ${s.size}`;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>Set.prototype.add()</code> do if the value already exists?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> It replaces the existing value</label></li>
+    <li><label><input type="radio" name="q1"> It adds a duplicate</label></li>
+    <li><label><input type="radio" name="q1"> It does nothing</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

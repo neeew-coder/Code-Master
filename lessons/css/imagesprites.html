@@ -1,0 +1,73 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Image Sprites</h2>
+
+<p class="mb-6 text-gray-700">
+Image sprites combine multiple graphics into a single file — like icons, buttons, or state indicators — then use <code>background-position</code> to reveal only the needed section. It improves performance by minimizing image requests.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧩 Sprite Anatomy</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.sprite {
+  background-image: url('sprite.png');
+  background-repeat: no-repeat;
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎯 Positioning Each Icon</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.icon-home {
+  background-position: 0 0;
+}
+
+.icon-user {
+  background-position: -32px 0;
+}
+
+.icon-email {
+  background-position: -64px 0;
+}
+</pre>
+
+<div class="bg-blue-50 p-4 rounded text-center mb-6 space-x-4">
+  <span class="sprite icon-home" style="background-image: url('image/home.png'); background-position: 0 0;"></span>
+  <span class="sprite icon-user" style="background-image: url('image/user.png'); background-position: -32px 0;"></span>
+  <span class="sprite icon-email" style="background-image: url('image/email.png'); background-position: -64px 0;"></span>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔍 Why Use Sprites?</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Reduce number of image requests = faster page loads</li>
+  <li>Precise control over visual positioning</li>
+  <li>Ideal for icon sets, button states, thumbnails</li>
+  <li>Easy to update multiple icons at once — one file</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Sprite Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Ensure sprite file is evenly spaced and consistently sized</li>
+  <li>Use image editors to prep exact coordinates</li>
+  <li>Use <code>display: inline-block</code> and set width/height on each icon</li>
+  <li>Combine sprites with <code>:hover</code> for active states</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which property displays only a section of the sprite image?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> object-fit</label></li>
+  <li><label><input type="radio" name="q1"> background-position</label></li>
+  <li><label><input type="radio" name="q1"> z-index</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

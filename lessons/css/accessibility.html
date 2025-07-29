@@ -1,0 +1,78 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Accessibility</h2>
+
+<p class="mb-6 text-gray-700">
+Accessibility ensures users of all abilities can navigate and understand content. CSS plays a vital role in color contrast, focus indicators, readability, and screen reader compatibility.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Color Contrast</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.text {
+  background-color: #ffffff;
+  color: #1e3a8a; /* Dark blue on white = high contrast */
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+Ensure a contrast ratio of at least **4.5:1** for normal text and **3:1** for large text. Use tools like WCAG Contrast Checker to validate.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧭 Focus Styling</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+button:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+</pre>
+
+<p class="text-gray-700 mb-4">
+Focus indicators help keyboard users see where they are. Never remove <code>outline</code> unless you're replacing it with a visible alternative.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Readability Helpers</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+body {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-family: system-ui, sans-serif;
+}
+</pre>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Avoid very light gray text on white</li>
+  <li>Use clear font sizes and spacing</li>
+  <li>Don’t rely on color alone to convey meaning</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🔊 Screen Reader Support</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>aria-hidden="true"</code> to hide decorative content</li>
+  <li>Use semantic tags: <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code></li>
+  <li>Don’t use <code>display: none</code> for essential content — it’s fully removed</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Preview: Keyboard Navigation</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6 flex gap-4">
+  <button style="padding: 10px; border: 2px solid #1e3a8a; outline-offset: 2px;">Submit</button>
+  <a href="#" style="padding: 10px; background: #2563eb; color: white; text-decoration: none;">Link</a>
+</div>
+
+<p class="text-gray-700 mb-4">
+Try tabbing through controls — ensure focus states are visible and obvious.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which CSS property is commonly used to show focus for keyboard users?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> visibility</label></li>
+  <li><label><input type="radio" name="q1"> z-index</label></li>
+  <li><label><input type="radio" name="q1"> outline</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Mark as Complete</button>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Java Data Types</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-red-50 text-gray-900 p-6">
+
+  <h2 class="text-2xl font-bold mb-4">🧠 Java Data Types</h2>
+
+  <p class="mb-4">
+    Java has two main categories of data types: <strong>primitive</strong> and <strong>non-primitive</strong>. Think of primitives as the basic building blocks, and non-primitives as more complex structures built from them.
+  </p>
+
+  <h3 class="text-lg font-semibold mt-6 mb-2">✅ Primitive Types</h3>
+  <table class="table-auto w-full mb-4 text-sm">
+    <thead>
+      <tr class="bg-red-200">
+        <th class="px-4 py-2 text-left">Type</th>
+        <th class="px-4 py-2 text-left">Description</th>
+        <th class="px-4 py-2 text-left">Example</th>
+        <th class="px-4 py-2 text-left">Real-Life Analogy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="px-4 py-2">int</td>
+        <td class="px-4 py-2">Whole numbers</td>
+        <td class="px-4 py-2">42</td>
+        <td class="px-4 py-2">Number of students in a class</td>
+      </tr>
+      <tr class="bg-red-50">
+        <td class="px-4 py-2">double</td>
+        <td class="px-4 py-2">Decimal numbers</td>
+        <td class="px-4 py-2">3.14</td>
+        <td class="px-4 py-2">Price of a coffee</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-2">boolean</td>
+        <td class="px-4 py-2">True or false</td>
+        <td class="px-4 py-2">true</td>
+        <td class="px-4 py-2">Light switch (on/off)</td>
+      </tr>
+      <tr class="bg-red-50">
+        <td class="px-4 py-2">char</td>
+        <td class="px-4 py-2">Single character</td>
+        <td class="px-4 py-2">'A'</td>
+        <td class="px-4 py-2">Grade on a test</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="text-lg font-semibold mt-6 mb-2">✅ Non-Primitive Types</h3>
+  <table class="table-auto w-full mb-4 text-sm">
+    <thead>
+      <tr class="bg-red-200">
+        <th class="px-4 py-2 text-left">Type</th>
+        <th class="px-4 py-2 text-left">Description</th>
+        <th class="px-4 py-2 text-left">Example</th>
+        <th class="px-4 py-2 text-left">Real-Life Analogy</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="px-4 py-2">String</td>
+        <td class="px-4 py-2">Sequence of characters</td>
+        <td class="px-4 py-2">"Mark"</td>
+        <td class="px-4 py-2">A name or sentence</td>
+      </tr>
+      <tr class="bg-red-50">
+        <td class="px-4 py-2">Array</td>
+        <td class="px-4 py-2">Collection of similar types</td>
+        <td class="px-4 py-2">{1, 2, 3}</td>
+        <td class="px-4 py-2">Row of lockers</td>
+      </tr>
+      <tr>
+        <td class="px-4 py-2">Class</td>
+        <td class="px-4 py-2">Blueprint for objects</td>
+        <td class="px-4 py-2">Student</td>
+        <td class="px-4 py-2">Student profile</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 class="text-lg font-semibold mt-6 mb-2">📦 Code Example</h3>
+  <div data-preview data-lang="java" class="bg-red-100 p-4 rounded space-y-4">
+    <textarea class="bg-black text-red-400 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+public class DataTypeDemo {
+  public static void main(String[] args) {
+    int age = 20;
+    double price = 99.99;
+    boolean isAvailable = true;
+    char grade = 'A';
+    String name = "Mark";
+
+    System.out.println("Age: " + age);
+    System.out.println("Price: " + price);
+    System.out.println("Available: " + isAvailable);
+    System.out.println("Grade: " + grade);
+    System.out.println("Name: " + name);
+  }
+}
+    </textarea>
+
+    <div class="output bg-gray-800 text-red-300 p-3 rounded text-sm whitespace-pre">
+      Output will appear here.
+    </div>
+
+    <div class="text-right">
+      <button class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">Run</button>
+    </div>
+  </div>
+
+  <h3 class="text-lg font-semibold mt-10 mb-2">🧪 Exercise</h3>
+  <div class="bg-white rounded p-4 space-y-4 text-sm">
+    <div>
+      <p class="font-medium mb-2">1. Which of the following is a primitive data type?</p>
+      <label><input type="radio" name="q1"> String</label><br>
+      <label><input type="radio" name="q1"> Array</label><br>
+      <label><input type="radio" name="q1"> int</label><br>
+      <label><input type="radio" name="q1"> Class</label>
+    </div>
+
+    <div>
+      <p class="font-medium mb-2">2. What does a <code>boolean</code> represent?</p>
+      <label><input type="radio" name="q2"> A decimal number</label><br>
+      <label><input type="radio" name="q2"> A single character</label><br>
+      <label><input type="radio" name="q2"> True or false</label><br>
+      <label><input type="radio" name="q2"> A sequence of characters</label>
+    </div>
+  </div>
+
+  <!-- Completion Button -->
+  <div class="mt-8 flex justify-start">
+    <button onclick="updateProgress('java-data-types')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+      Mark as Complete
+    </button>
+  </div>
+
+</body>
+</html>

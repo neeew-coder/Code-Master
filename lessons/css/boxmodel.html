@@ -1,0 +1,62 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Box Model</h2>
+
+<p class="mb-6 text-gray-700">
+Every HTML element is rendered as a rectangular box. The CSS Box Model defines how that box behaves and how space is distributed around and inside it — essential for layout control.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📦 Box Model Layers</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li><strong>Content</strong> — text, image, or media inside the element</li>
+  <li><strong>Padding</strong> — space between content and border</li>
+  <li><strong>Border</strong> — outline surrounding padding and content</li>
+  <li><strong>Margin</strong> — space outside the border, separating elements</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Breakdown</h3>
+
+<div class="bg-blue-50 p-4 mb-6 text-center rounded">
+  <div style="width: 300px; padding: 20px; border: 4px solid blue; margin: 30px auto; background-color: white;">
+    <strong>Content Area</strong>
+    <p class="text-sm text-gray-600">Padding: 20px<br>Border: 4px solid blue<br>Margin: 30px</p>
+  </div>
+  <p class="text-gray-700 text-sm mt-2">This box shows how spacing layers wrap around the content.</p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Default Behavior</h3>
+
+<p class="text-gray-700 mb-2">
+By default, <code>width</code> and <code>height</code> only apply to the content box. Padding and border add extra space <strong>outside</strong> that width — unless you change it using <code>box-sizing</code>.
+</p>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+/* Standard model */
+box-sizing: content-box;
+
+/* Better sizing */
+box-sizing: border-box;
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Layout Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>box-sizing: border-box</code> to include padding & border inside total size</li>
+  <li>Visualize spacing during debugging with DevTools</li>
+  <li>Balance margin for spacing between elements, and padding for internal breathing room</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+Which layer of the box model lies between the content and the border?
+</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Margin</label></li>
+  <li><label><input type="radio" name="q1"> Padding</label></li>
+  <li><label><input type="radio" name="q1"> Width</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

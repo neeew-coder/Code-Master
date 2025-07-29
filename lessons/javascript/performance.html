@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Performance | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Performance</h2>
+
+  <p class="mb-6 text-gray-700">
+    Writing efficient JavaScript improves speed, responsiveness, and user experience. Here are key techniques to optimize your code.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li>✅ Cache values outside loops</li>
+      <li>✅ Minimize DOM access and DOM size</li>
+      <li>✅ Avoid unnecessary variables</li>
+      <li>✅ Load scripts after the page has rendered</li>
+      <li>✅ Avoid <code>with</code> and use strict mode</li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">⚡ Performance Comparison</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button id="runBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Loop Optimization
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+Bad:
+for (let i = 0; i < arr.length; i++) { ... }
+
+Better:
+let l = arr.length;
+for (let i = 0; i < l; i++) { ... }
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Syntax Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Optimization Techniques</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-sm text-gray-700">
+    <p><strong>Loop Optimization:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+const l = arr.length;
+for (let i = 0; i < l; i++) {
+  // use arr[i]
+}
+    </pre>
+
+    <p><strong>DOM Access Optimization:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+const demo = document.getElementById("demo");
+demo.innerHTML = firstName + " " + lastName;
+    </pre>
+
+    <p><strong>Script Loading:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+&lt;script defer src="myscript.js"&gt;&lt;/script&gt;
+
+window.onload = function() {
+  const script = document.createElement("script");
+  script.src = "myscript.js";
+  document.body.appendChild(script);
+};
+    </pre>
+
+    <p><strong>Avoid:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+// ❌ Avoid using 'with'
+with (obj) {
+  console.log(name);
+}
+    </pre>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Why should you cache <code>arr.length</code> outside a loop?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> It makes the loop easier to read</label></li>
+    <li><label><input type="radio" name="q1"> It prevents errors</label></li>
+    <li><label><input type="radio" name="q1"> It improves performance</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("runBtn").addEventListener("click", () => {
+      const arr = Array.from({ length: 10000 }, (_, i) => i);
+      let sumBad = 0;
+      let sumGood = 0;
+
+      console.time("Bad Loop");
+      for (let i = 0; i < arr.length; i++) {
+        sumBad += arr[i];
+      }
+      console.timeEnd("Bad Loop");
+
+      console.time("Optimized Loop");
+      const l = arr.length;
+      for (let i = 0; i < l; i++) {
+        sumGood += arr[i];
+      }
+      console.timeEnd("Optimized Loop");
+
+      document.getElementById("output").innerText =
+        `Bad Loop Sum: ${sumBad}\nOptimized Loop Sum: ${sumGood}\nCheck console for timing comparison.`;
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

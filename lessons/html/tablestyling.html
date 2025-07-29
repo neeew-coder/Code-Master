@@ -1,0 +1,147 @@
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Table Styling</h2>
+
+<p class="mb-4 text-gray-700">
+CSS can be used to style HTML tables with colors, spacing, hover effects, and more — improving clarity and user engagement.
+</p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Zebra Striping (Horizontal)</h3>
+<p class="mb-2 text-gray-700">
+Apply <code>:nth-child(even)</code> to <code>&lt;tr&gt;</code> to style every other row:
+</p>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 font-mono text-sm rounded-lg overflow-x-auto mb-2">
+  <pre>
+tr:nth-child(even) {
+  background-color: #D6EEEE;
+}
+  </pre>
+</div>
+
+<!-- Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr><td class="px-4 py-2 border">1</td><td class="px-4 py-2 border">2</td><td class="px-4 py-2 border">3</td><td class="px-4 py-2 border">4</td></tr>
+    <tr class="bg-[#D6EEEE]"><td class="px-4 py-2 border">5</td><td class="px-4 py-2 border">6</td><td class="px-4 py-2 border">7</td><td class="px-4 py-2 border">8</td></tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📊 Zebra Striping (Vertical)</h3>
+<p class="mb-2 text-gray-700">
+Apply <code>:nth-child(even)</code> to <code>&lt;td&gt;</code> and <code>&lt;th&gt;</code> to stripe columns:
+</p>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 font-mono text-sm rounded-lg overflow-x-auto mb-2">
+  <pre>
+td:nth-child(even),
+th:nth-child(even) {
+  background-color: #D6EEEE;
+}
+  </pre>
+</div>
+
+<!-- Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr>
+      <td class="px-4 py-2 border">1</td>
+      <td class="px-4 py-2 border bg-[#D6EEEE]">2</td>
+      <td class="px-4 py-2 border">3</td>
+      <td class="px-4 py-2 border bg-[#D6EEEE]">4</td>
+    </tr>
+    <tr>
+      <td class="px-4 py-2 border">5</td>
+      <td class="px-4 py-2 border bg-[#D6EEEE]">6</td>
+      <td class="px-4 py-2 border">7</td>
+      <td class="px-4 py-2 border bg-[#D6EEEE]">8</td>
+    </tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🔀 Combined Striping</h3>
+<p class="mb-2 text-gray-700">
+Use <code>rgba()</code> for transparent overlapping striping — vertically and horizontally:
+</p>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 font-mono text-sm rounded-lg overflow-x-auto mb-2">
+  <pre>
+tr:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+
+th:nth-child(even),
+td:nth-child(even) {
+  background-color: rgba(150, 212, 212, 0.4);
+}
+  </pre>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📏 Horizontal Dividers</h3>
+<p class="mb-2 text-gray-700">
+Add <code>border-bottom</code> to <code>&lt;tr&gt;</code> for line separation:
+</p>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 font-mono text-sm rounded-lg overflow-x-auto mb-2">
+  <pre>
+tr {
+  border-bottom: 1px solid #ddd;
+}
+  </pre>
+</div>
+
+<!-- Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100"><th class="border px-4 py-2">First Name</th><th class="border px-4 py-2">Last Name</th><th class="border px-4 py-2">Savings</th></tr>
+    <tr style="border-bottom:1px solid #ddd"><td class="border px-4 py-2">Peter</td><td class="border px-4 py-2">Griffin</td><td class="border px-4 py-2">$100</td></tr>
+    <tr style="border-bottom:1px solid #ddd"><td class="border px-4 py-2">Lois</td><td class="border px-4 py-2">Griffin</td><td class="border px-4 py-2">$150</td></tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🖱️ Hoverable Rows</h3>
+<p class="mb-2 text-gray-700">
+Use <code>tr:hover</code> to highlight rows on mouseover — ideal for interactive tables:
+</p>
+
+<!-- Code -->
+<div class="bg-gray-900 text-green-100 p-6 font-mono text-sm rounded-lg overflow-x-auto mb-2">
+  <pre>
+tr:hover {
+  background-color: #D6EEEE;
+}
+  </pre>
+</div>
+
+<!-- Preview -->
+<div class="bg-white p-6 rounded-lg shadow-md mb-6 border">
+  <table class="table-auto border border-gray-300 w-full" style="color: black;">
+    <tr class="bg-orange-100"><th class="border px-4 py-2">First Name</th><th class="border px-4 py-2">Last Name</th><th class="border px-4 py-2">Savings</th></tr>
+    <tr class="hover:bg-[#D6EEEE]"><td class="border px-4 py-2">Peter</td><td class="border px-4 py-2">Griffin</td><td class="border px-4 py-2">$100</td></tr>
+    <tr class="hover:bg-[#D6EEEE]"><td class="border px-4 py-2">Lois</td><td class="border px-4 py-2">Griffin</td><td class="border px-4 py-2">$150</td></tr>
+    <tr class="hover:bg-[#D6EEEE]"><td class="border px-4 py-2">Joe</td><td class="border px-4 py-2">Swanson</td><td class="border px-4 py-2">$300</td></tr>
+  </table>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Exercise</h3>
+<p class="mb-2 text-gray-700">
+Which CSS selector is used to style every other row of a table?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> <code>tr:nth-row(even)</code></label></li>
+  <li><label><input type="radio" name="q1"> <strong><code>tr:nth-child(even)</code></strong></label></li>
+  <li><label><input type="radio" name="q1"> <code>table-row(even)</code></label></li>
+</ul>
+<button onclick="markComplete()" class="mt-6 bg-orange-600 text-white px-6 py-2 rounded hover:bg-orange-700 transition">
+  Mark as Complete
+</button>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>:nth-child(even)</code> styles alternating rows or columns</li>
+  <li><code>rgba()</code> allows transparent overlapping styles</li>
+  <li><code>border-bottom</code> adds row dividers</li>
+  <li><code>tr:hover</code> adds hover interactivity</li>
+</ul>

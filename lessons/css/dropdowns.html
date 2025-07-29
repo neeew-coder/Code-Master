@@ -1,0 +1,113 @@
+<h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Dropdown Menu</h2>
+
+<p class="mb-6 text-gray-700">
+Dropdowns are menus that reveal more options on hover or click. This module demonstrates a classic hover-based dropdown using only CSS — no JavaScript needed for interaction.
+</p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Markup Structure</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+&lt;nav&gt;
+  &lt;ul class=&quot;menu&quot;&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class=&quot;dropdown&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Services&lt;/a&gt;
+      &lt;ul class=&quot;submenu&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Web Design&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;SEO&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Analytics&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;Contact&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Styling Logic</h3>
+
+<pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
+.menu {
+  list-style: none;
+  display: flex;
+  background: #1e3a8a;
+  padding: 0;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  display: block;
+  padding: 14px 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #3b82f6;
+  list-style: none;
+  padding: 0;
+  min-width: 160px;
+}
+
+.submenu li a {
+  padding: 10px;
+  color: white;
+  display: block;
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+</pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">👁️ Visual Preview</h3>
+
+<div class="bg-blue-50 p-4 rounded mb-6">
+  <nav style="background: #1e3a8a;">
+    <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+      <li style="position: relative;">
+        <a href="#" style="color: white; padding: 14px 20px; display: block;">Home</a>
+      </li>
+      <li style="position: relative;">
+        <a href="#" style="color: white; padding: 14px 20px; display: block;">Services</a>
+        <ul style="position: absolute; top: 100%; left: 0; background: #3b82f6; display: none; list-style: none; margin: 0;">
+          <li><a href="#" style="color: white; padding: 10px; display: block;">Web Design</a></li>
+          <li><a href="#" style="color: white; padding: 10px; display: block;">SEO</a></li>
+          <li><a href="#" style="color: white; padding: 10px; display: block;">Analytics</a></li>
+        </ul>
+      </li>
+      <li style="position: relative;">
+        <a href="#" style="color: white; padding: 14px 20px; display: block;">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Dropdown Tips</h3>
+
+<ul class="list-disc list-inside text-gray-700 mb-4">
+  <li>Use <code>position: relative</code> on parent and <code>absolute</code> on submenu</li>
+  <li><code>:hover</code> controls visibility without JS</li>
+  <li>For accessibility and mobile, dropdowns often use JS toggles instead</li>
+  <li>Add transitions for smoother reveal</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">Which CSS selector activates the dropdown submenu on hover?</p>
+
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> .submenu:hover</label></li>
+  <li><label><input type="radio" name="q1"> .menu:hover .submenu</label></li>
+  <li><label><input type="radio" name="q1"> .dropdown:hover .submenu</label></li>
+</ul>
+
+<button class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">
+  Mark as Complete
+</button>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Best Practices | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Best Practices</h2>
+
+  <p class="mb-6 text-gray-700">
+    Writing clean, safe, and predictable JavaScript helps prevent bugs and improves maintainability. Follow these best practices to avoid common pitfalls.
+  </p>
+
+  <div class="mb-6 text-gray-700">
+    <ul class="list-disc pl-6 space-y-1">
+      <li>✅ Avoid global variables</li>
+      <li>✅ Always declare variables with <code>let</code>, <code>const</code>, or <code>var</code></li>
+      <li>✅ Use <code>===</code> instead of <code>==</code> for comparisons</li>
+      <li>✅ Avoid using <code>eval()</code></li>
+      <li>✅ Declare arrays and objects with <code>const</code></li>
+      <li>✅ Use default parameters to avoid <code>undefined</code></li>
+    </ul>
+  </div>
+
+  <!-- Preview -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Practice Preview</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
+    <div class="flex justify-end">
+      <button id="runBtn" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
+        Run Comparison
+      </button>
+    </div>
+
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+Bad Practice:
+x = 5 + "7"; // Implicit type coercion
+
+Good Practice:
+const x = 5 + Number("7"); // Explicit conversion
+    </pre>
+
+    <div id="output" class="bg-gray-100 border border-yellow-300 rounded p-3 text-sm text-gray-700">
+      Output will appear here.
+    </div>
+  </div>
+
+  <!-- Syntax Reference -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Syntax Reference</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4 text-sm text-gray-700">
+    <p><strong>Use === for comparisons:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+0 == "";        // true
+0 === "";       // false
+1 == "1";       // true
+1 === "1";      // false
+    </pre>
+
+    <p><strong>Declare with const:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+const car = { type: "Fiat", model: "500" };
+const cars = ["Saab", "Volvo", "BMW"];
+    </pre>
+
+    <p><strong>Default Parameters:</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+function myFunction(x = 0, y = 0) {
+  return x + y;
+}
+    </pre>
+
+    <p><strong>Avoid eval():</strong></p>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded overflow-x-auto">
+// ❌ Avoid this
+eval("x = 2 + 2");
+
+// ✅ Use direct expressions
+const x = 2 + 2;
+    </pre>
+  </div>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    Why should you avoid using <code>eval()</code> in JavaScript?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> It slows down performance</label></li>
+    <li><label><input type="radio" name="q1"> It can introduce security risks</label></li>
+    <li><label><input type="radio" name="q1"> It makes code harder to read</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <!-- Script -->
+  <script>
+    document.getElementById("runBtn").addEventListener("click", () => {
+      // Bad practice: implicit coercion
+      let bad = 5 + "7"; // "57"
+
+      // Good practice: explicit conversion
+      let good = 5 + Number("7"); // 12
+
+      const output = `
+Bad Practice Result: ${bad} (type: ${typeof bad})
+Good Practice Result: ${good} (type: ${typeof good})
+      `;
+      document.getElementById("output").innerText = output;
+    });
+  </script>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

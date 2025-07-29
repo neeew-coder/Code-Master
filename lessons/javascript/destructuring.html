@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Destructuring | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Destructuring</h2>
+
+  <p class="mb-6 text-gray-700">
+    Destructuring allows you to unpack values from arrays, objects, strings, and other iterables into distinct variables.
+  </p>
+
+  <!-- Object Destructuring -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Object Destructuring</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runObjectDestructuring()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const person = { firstName: "John", lastName: "Doe", age: 50 };
+const { firstName, lastName } = person;
+    </pre>
+    <div id="objectOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Array Destructuring -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🍎 Array Destructuring</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runArrayDestructuring()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+const [fruit1, fruit2] = fruits;
+    </pre>
+    <div id="arrayOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Rest Property -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📚 Rest Property</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runRestDestructuring()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const numbers = [10, 20, 30, 40, 50];
+const [a, b, ...rest] = numbers;
+    </pre>
+    <div id="restOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- String Destructuring -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔤 String Destructuring</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runStringDestructuring()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const brand = "CodeMaster";
+const [c1, c2, c3] = brand;
+    </pre>
+    <div id="stringOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Map Destructuring -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🗺️ Map Destructuring</h3>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
+    <div class="flex justify-end">
+      <button onclick="runMapDestructuring()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+const fruits = new Map([
+  ["apples", 500],
+  ["bananas", 300],
+  ["oranges", 200]
+]);
+for (const [key, value] of fruits) {
+  console.log(key + " is " + value);
+}
+    </pre>
+    <div id="mapOutput" class="text-sm text-gray-700">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runObjectDestructuring() {
+      const person = { firstName: "John", lastName: "Doe", age: 50 };
+      const { firstName, lastName } = person;
+      document.getElementById("objectOutput").innerHTML = `${firstName} ${lastName}`;
+    }
+
+    function runArrayDestructuring() {
+      const fruits = ["Bananas", "Oranges", "Apples", "Mangos"];
+      const [fruit1, fruit2] = fruits;
+      document.getElementById("arrayOutput").innerHTML = `${fruit1}, ${fruit2}`;
+    }
+
+    function runRestDestructuring() {
+      const numbers = [10, 20, 30, 40, 50];
+      const [a, b, ...rest] = numbers;
+      document.getElementById("restOutput").innerHTML = `a: ${a}, b: ${b}, rest: [${rest.join(", ")}]`;
+    }
+
+    function runStringDestructuring() {
+      const brand = "CodeMaster";
+      const [c1, c2, c3] = brand;
+      document.getElementById("stringOutput").innerHTML = `${c1}, ${c2}, ${c3}`;
+    }
+
+    function runMapDestructuring() {
+      const fruits = new Map([
+        ["apples", 500],
+        ["bananas", 300],
+        ["oranges", 200]
+      ]);
+      let text = "";
+      for (const [key, value] of fruits) {
+        text += `${key} is ${value}<br>`;
+      }
+      document.getElementById("mapOutput").innerHTML = text;
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What does <code>let {lastName: name}</code> do?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> Renames the variable <code>lastName</code> to <code>name</code></label></li>
+    <li><label><input type="radio" name="q1"> Deletes the <code>lastName</code> property</label></li>
+    <li><label><input type="radio" name="q1"> Creates a new object</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+</body>
+</html>

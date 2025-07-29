@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Date Formats | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="../../style.css">
+</head>
+<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
+
+  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Date Formats</h2>
+
+  <p class="mb-6 text-gray-700">
+    JavaScript supports multiple date input formats. The most reliable is ISO 8601. Other formats may vary across browsers and time zones.
+  </p>
+
+  <!-- ISO Format -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📅 ISO Format</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+new Date("2024-03-25");           // March 25, 2024
+new Date("2024-03");              // March 1, 2024 (or Feb 29, depending on TZ)
+new Date("2024");                 // Jan 1 or Dec 31, 2023 (TZ dependent)
+new Date("2024-03-25T12:00:00Z"); // UTC time
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run ISO Format</span>
+      <button onclick="runISOFormat()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="isoOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Short Format -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📆 Short Format</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+new Date("03/25/2024"); // MM/DD/YYYY (browser-dependent)
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Short Format</span>
+      <button onclick="runShortFormat()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="shortOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Long Format -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📆 Long Format</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+new Date("Mar 25 2024");
+new Date("25 Mar 2024");
+new Date("January 25 2024");
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Long Format</span>
+      <button onclick="runLongFormat()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="longOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Year Only -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📆 Year Only</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+new Date("2024"); // Jan 1 or Dec 31, 2023 (TZ dependent)
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Year Only</span>
+      <button onclick="runYearOnlyFormat()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="yearOnlyOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Date.parse -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📊 Date.parse()</h3>
+  <pre class="bg-gray-900 text-yellow-200 p-4 rounded-lg text-sm overflow-x-auto">
+Date.parse("March 21, 2012"); // returns milliseconds
+  </pre>
+  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm mt-2">
+    <div class="flex items-center justify-between">
+      <span class="text-sm font-semibold text-yellow-500">▶️ Run Date.parse</span>
+      <button onclick="runParsedFormat()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+    </div>
+    <div id="parsedOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    function runISOFormat() {
+      const iso = new Date("2024-03-25");
+      const partial = new Date("2024-03");
+      const yearOnly = new Date("2024");
+      const utc = new Date("2024-03-25T12:00:00Z");
+      const output = [
+        `Full ISO: ${iso.toDateString()}`,
+        `Partial ISO: ${partial.toDateString()}`,
+        `Year only: ${yearOnly.toDateString()}`,
+        `UTC ISO: ${utc.toUTCString()}`
+      ];
+      document.getElementById("isoOutput").innerHTML = output.join("<br>");
+    }
+
+    function runShortFormat() {
+      const short = new Date("03/25/2024");
+      document.getElementById("shortOutput").innerHTML = `Short format: ${short.toDateString()}`;
+    }
+
+    function runLongFormat() {
+      const a = new Date("Mar 25 2024");
+      const b = new Date("25 Mar 2024");
+      const c = new Date("January 25 2024");
+      const output = [
+        `Mar 25 2024: ${a.toDateString()}`,
+        `25 Mar 2024: ${b.toDateString()}`,
+        `January 25 2024: ${c.toDateString()}`
+      ];
+      document.getElementById("longOutput").innerHTML = output.join("<br>");
+    }
+
+    function runYearOnlyFormat() {
+      const yearOnly = new Date("2024");
+      document.getElementById("yearOnlyOutput").innerHTML = `Year only: ${yearOnly.toDateString()}`;
+    }
+
+    function runParsedFormat() {
+      const parsed = new Date(Date.parse("March 21, 2012"));
+      const ms = Date.parse("March 21, 2012");
+      const output = [
+        `Parsed date: ${parsed.toDateString()}`,
+        `Milliseconds: ${ms}`
+      ];
+      document.getElementById("parsedOutput").innerHTML = output.join("<br>");
+    }
+
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+    <!-- Notes -->
+  <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🧠 Notes</h3>
+  <ul class="list-disc list-inside text-gray-700 mb-4">
+    <li>ISO format (<code>YYYY-MM-DD</code>) is safest and most consistent</li>
+    <li>Short and long formats may vary across browsers</li>
+    <li>Month names are case-insensitive and commas are ignored</li>
+    <li><code>Date.parse()</code> returns milliseconds since Jan 1, 1970</li>
+    <li>Time zones affect interpretation of partial dates</li>
+  </ul>
+
+  <!-- Quiz -->
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
+  <p class="text-gray-700 mb-2">
+    What date is created with <code>new Date("2024")</code>?
+  </p>
+
+  <ul class="space-y-2 text-gray-700 mb-6">
+    <li><label><input type="radio" name="q1"> A random date in 2024</label></li>
+    <li><label><input type="radio" name="q1"> January 1, 2024</label></li>
+    <li><label><input type="radio" name="q1"> December 31, 2023</label></li>
+  </ul>
+
+  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
+    Mark as Complete
+  </button>
+
+  <div class="min-h-[280px]"></div>
+
+  <script>
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "scroll-top") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+  </script>
+
+</body>
+</html>
