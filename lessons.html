@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CodeMaster | Lessons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Navigation -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
+        <a href="lessons.html" class="text-white font-semibold border-b-2 border-white">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-200 transition">Exercises</a>
+        <a href="about.html" class="hover:text-gray-200 transition">About</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold mb-4">Explore Programming Lessons</h1>
+      <p class="text-xl mb-6">Choose a topic and start mastering the fundamentals of web and software development.</p>
+      <button class="bg-white text-purple-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">Start Learning</button>
+    </div>
+  </section>
+
+  <!-- Lessons Section -->
+    <main class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- HTML -->
+        <a href="lesson-html.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
+            <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-orange-100 text-orange-500 flex items-center justify-center text-xl">
+                <i class="fab fa-html5"></i>
+            </div>
+            <span class="ml-3 text-sm font-semibold text-orange-500">HTML Basics</span>
+            </div>
+            <p class="text-gray-600">Learn HTML structure, tags, and build your first webpage.</p>
+        </a>
+
+        <!-- CSS -->
+        <a href="lesson-css.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
+            <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-blue-100 text-blue-500 flex items-center justify-center text-xl">
+                <i class="fab fa-css3-alt"></i>
+            </div>
+            <span class="ml-3 text-sm font-semibold text-blue-500">CSS & Layouts</span>
+            </div>
+            <p class="text-gray-600">Master Flexbox, Grid, and animations to style your projects.</p>
+        </a>
+
+        <!-- JavaScript -->
+        <a href="lesson-js.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
+            <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-yellow-100 text-yellow-500 flex items-center justify-center text-xl">
+                <i class="fab fa-js-square"></i>
+            </div>
+            <span class="ml-3 text-sm font-semibold text-yellow-500">JavaScript Essentials</span>
+            </div>
+            <p class="text-gray-600">Add interactivity with JS events, DOM manipulation, and logic.</p>
+        </a>
+
+        <!-- Java -->
+        <a href="lesson-java.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
+            <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-red-100 text-red-500 flex items-center justify-center text-xl">
+                <i class="fab fa-java"></i>
+            </div>
+            <span class="ml-3 text-sm font-semibold text-red-500">Java Fundamentals</span>
+            </div>
+            <p class="text-gray-600">Understand Java syntax, data types, and build CLI apps.</p>
+        </a>
+
+        <!-- C# -->
+        <a href="lesson-csharp.html" class="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
+            <div class="flex items-center mb-4">
+            <div class="w-12 h-12 rounded-full bg-green-100 text-green-500 flex items-center justify-center text-xl">
+                <i class="fas fa-code"></i>
+            </div>
+            <span class="ml-3 text-sm font-semibold text-green-500">C# with .NET</span>
+            </div>
+            <p class="text-gray-600">Build console apps and explore .NET fundamentals with hands-on tutorials.</p>
+        </a>
+
+        </div>
+    </div>
+    </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <i class="fas fa-code text-2xl"></i>
+            <span class="text-xl font-bold">CodeMaster</span>
+          </div>
+          <p class="text-gray-400">Interactive learning platform for full-stack development.</p>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Courses</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Frontend</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Backend</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Full-Stack</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Projects</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Resources</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Community</a></li>
+            <li><a href="#" class="text-gray-400 hover:text-white transition">Support</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-lg font-bold mb-4">Connect</h3>
+          <div class="flex space-x-4 mb-4">
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition"><i class="fab fa-github"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition"><i class="fab fa-discord"></i></a>
+            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center hover:bg-purple-600 transition"><i class="fab fa-youtube"></i></a>
+          </div>
+          <p class="text-gray-400">Subscribe to our newsletter</p>
+          <div class="mt-2 flex">
+            <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-purple-600">
+            <button class="bg-purple-600 px-4 py-2 rounded-r hover:bg-purple-700 transition">Join</button>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 mb-4 md:mb-0">© 2025 CodeMaster. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-400 hover:text-white transition">Terms</a>
+          <a href="#" class="text-gray-400 hover:text-white transition">Privacy</a>
+          <a href="#" class="text-gray-400 hover:text-white transition">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
