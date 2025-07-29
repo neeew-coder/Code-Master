@@ -242,10 +242,10 @@ function bindAllPreviews() {
         runBtn.disabled = true;
         runBtn.innerText = "Running...";
 
-        fetch(`http://127.0.0.1:3000/run-${lang}`, {
+        fetch("https://code-master-kk2m.onrender.com/run-java", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ script: code })
+          body: JSON.stringify({ code })
         })
         .then(res => res.text())
         .then(text => {
