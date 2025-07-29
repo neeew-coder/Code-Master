@@ -147,478 +147,145 @@ public class HelloWorld {
 
   </main>
 
-  <script src="Script/java/bindAllPreview.js"></script>
-  <script src="Script/progress.js"></script>
-  <script src="Script/java/simulateLine.js"></script>
-  <script src="Script/java/simulator-java.js"></script>
-  <script src="Script/java/java-loader.js"></script>
 
+<script>
+function loadModule(lessonId) {
+  const container = document.getElementById("moduleContent");
+  if (!container) return;
 
-  <script>
-    
-    function preprocessVars(lines, vars) {
-      lines.forEach(line => {
-        let match;
-        if (match = line.match(/int\s+(\w+)\s*=\s*(.+);/)) {
-          vars[match[1]] = parseInt(evalExpr(match[2].trim(), vars));
-        } else if (match = line.match(/int\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
-          vars[match[1]] = match[2].split(",").map(v => parseInt(v.trim()));
+  // Reset sidebar button styles
+  document.querySelectorAll("aside button").forEach(btn => {
+    btn.classList.remove("bg-red-100", "font-semibold", "text-red-700");
+    btn.classList.add("text-red-600");
+  });
+
+  // Highlight active button
+  const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+  if (activeBtn) {
+    activeBtn.classList.add("bg-red-100", "font-semibold", "text-red-700");
+    activeBtn.classList.remove("text-red-600");
+  }
+
+  // Show loading spinner
+  container.innerHTML = `
+    <div class="text-center py-10 text-gray-500 animate-pulse">
+      <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+      <p>Loading module...</p>
+    </div>
+  `;
+
+  // Fetch and safely inject module content
+  fetch(`lessons/java/${lessonId}.html`)
+    .then(res => {
+      if (!res.ok) throw new Error("Module not found");
+      return res.text();
+    })
+    .then(html => {
+      const wrapper = document.createElement("div");
+      wrapper.innerHTML = html;
+
+      const styledWrapper = document.createElement("div");
+      styledWrapper.className = "bg-white p-6 rounded-lg shadow-md prose max-w-none text-gray-800";
+      styledWrapper.append(...wrapper.childNodes);
+
+      container.innerHTML = "";
+      container.appendChild(styledWrapper);
+
+      bindAllPreviews();        // Attach run logic
+      updateProgress(lessonId); // Track progress
+      scrollToTop();            // UX polish
+    })
+    .catch(() => {
+      container.innerHTML = `
+        <div class="text-center py-10 text-red-500">
+          <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+          <p>⚠️ Unable to load module: ${lessonId}</p>
+        </div>
+      `;
+    });
+}
+
+function bindAllPreviews() {
+  document.querySelectorAll("[data-preview]").forEach(block => {
+    const mode = block.getAttribute("data-mode") || "inline";
+    const lang = block.getAttribute("data-lang") || "java";
+
+    if (mode === "jdoodle") {
+      const form = block.querySelector("form");
+      const codeInput = form?.querySelector(".code-input");
+      const hiddenField = form?.querySelector('textarea[name="initScript"]');
+
+      if (form && codeInput && hiddenField) {
+        form.addEventListener("submit", () => {
+          hiddenField.value = codeInput.value;
+        });
+
+        const runBtn = form.querySelector("button[type='submit']");
+        if (runBtn) {
+          runBtn.addEventListener("click", () => {
+            hiddenField.value = codeInput.value;
+          });
         }
-        // You can add support for other types here too
+      }
+    } else {
+      const runBtn = block.querySelector("button");
+      const outputDiv = block.querySelector(".output");
+      const codeBlock = block.querySelector("textarea, pre");
+
+      if (!runBtn || !codeBlock || !outputDiv) return;
+
+      runBtn.addEventListener("click", () => {
+        const code = codeBlock.tagName === "TEXTAREA"
+          ? codeBlock.value.trim()
+          : codeBlock.textContent.trim();
+
+        runBtn.disabled = true;
+        runBtn.innerText = "Running...";
+
+        fetch(`http://127.0.0.1:3000/run-${lang}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ script: code })
+        })
+        .then(res => res.text())
+        .then(text => {
+          let output = "";
+          try {
+            const data = JSON.parse(text);
+            output = data.output?.trim();
+          } catch {
+            output = null;
+          }
+          outputDiv.innerText = output || simulateOutput(code, lang);
+        })
+        .catch(() => {
+          outputDiv.innerText = simulateOutput(code, lang);
+        })
+        .finally(() => {
+          runBtn.disabled = false;
+          runBtn.innerText = "Run";
+        });
       });
     }
-    
-    function simulateOutput(code, lang) {
-      if (lang === "java") return simulateJavaOutput(code);
-      if (lang === "js") return simulateJSOutput(code);
-      if (lang === "html") return "🖼️ HTML preview not simulated here.";
-      if (lang === "css") return "🎨 CSS preview not simulated here.";
-      return "❌ Unknown language.";
-    }
+  });
+}
 
-    // Simulate loop
-    vars[varName] = start;
-    let loopGuard = 0;
-    while (loopGuard < 100) {
-      const conditionExpr = `${vars[condVar]} ${operator} ${end}`;
-      if (!evalExpr(conditionExpr)) break;
+  // Optional fallback output simulator
+  function simulateOutput(code, lang) {
+    return `⚠️ Simulation not available for ${lang}.`;
+  }
 
-      let control = null;
+  // Optional scroll helper
+  function scrollToTop() {
+    const container = document.getElementById("moduleContent");
+    if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
-      for (let j = 0; j < loopBody.length; j++) {
-        const result = simulateLine(loopBody[j], vars);
-        if (result.output) output.push(result.output);
-        if (result.control === "break") {
-          control = "break";
-          break;
-        }
-        if (result.control === "continue") {
-          control = "continue";
-          break;
-        }
-      }
-
-      if (control === "break") break;
-      if (control === "continue") {
-        if (updateOp === "++") vars[updateVar]++;
-        else if (updateOp === "--") vars[updateVar]--;
-        loopGuard++;
-        continue;
-      }
-
-      if (updateOp === "++") vars[updateVar]++;
-      else if (updateOp === "--") vars[updateVar]--;
-
-      loopGuard++;
-    }
-    function evalExpr(expr, vars) {
-      try {
-        const scope = Object.assign({}, vars);
-        console.log("Evaluating:", expr);
-        return eval(expr);
-      } catch (error) {
-        console.error("Error evaluating expression:", expr, error);
-        throw error;
-      }
-    }
-
-    function parseJavaVariableDeclaration(line, vars) {
-      const match = line.match(/(int|double|boolean|char|String)\s+(\w+)\s*=\s*(.+);/);
-      if (match) {
-        const type = match[1];
-        const name = match[2];
-        const expr = match[3].trim();
-
-        let value;
-        switch (type) {
-          case 'int': value = parseInt(evalExpr(expr, vars)); break;
-          case 'double': value = parseFloat(evalExpr(expr, vars)); break;
-          case 'boolean': value = evalExpr(expr, vars) === true; break;
-          case 'char': value = expr.replace(/^'|'$/g, ''); break;
-          case 'String':
-            try {
-              value = evalExpr(expr, vars).replace(/^"|"$/g, '');
-            } catch {
-              value = `[${expr}]`;
-            }
-            break;
-          default: return false;
-        }
-
-        vars[name] = value;
-        return true;
-      }
-      return false;
-    }
-    
-    function simulateJavaOutput(code) {
-      code = code
-      .replace(/public\s+class\s+\w+\s*{/, "")
-      .replace(/public\s+static\s+void\s+main\s*\(.*?\)\s*{/, "")
-      .replace(/}/g, "")
-      .trim();
-
-      const lines = code.split("\n");
-      const vars = {};
-      const output = [];
-      const methods = {};
-
-      function evalExpr(expr, localVars = {}) {
-      try {
-        const scope = Object.assign({}, vars, localVars);
-        for (let key in scope) {
-        if (Array.isArray(scope[key])) {
-          scope[key] = new Proxy(scope[key], {
-          get(target, prop) {
-            const index = Number(prop);
-            if (isNaN(index) || index < 0 || index >= target.length) {
-            throw new Error(`Index ${index} out of bounds for array '${key}'`);
-            }
-            return target[index];
-          }
-          });
-        }
-        }
-        return Function(...Object.keys(scope), `return ${expr};`)(...Object.values(scope));
-      } catch (err) {
-        return "Error evaluating expression: " + expr + " → " + err.message;
-      }
-      }
-
-      function registerMethod(lines, i, methods) {
-      const line = lines[i];
-      const match = line.match(/public\s+static\s+void\s+(\w+)\s*\((.*?)\)\s*{/);
-      if (!match) return i;
-      const [, methodName, paramList] = match;
-      const params = paramList.trim() === "" ? [] : paramList.split(',').map(p => p.trim().split(' ')[1]);
-      const body = [];
-      i++;
-      let braceDepth = 1;
-      while (i < lines.length && braceDepth > 0) {
-        const currentLine = lines[i].trim();
-        if (currentLine.includes("{")) braceDepth++;
-        if (currentLine.includes("}")) {
-          braceDepth--;
-          if (braceDepth === 0) break;
-        }
-        if (braceDepth > 0) body.push(currentLine);
-        i++;
-      }
-      methods[methodName] = { params, body };
-      return i + 1;
-      }
-
-      let i = 0;
-      while (i < lines.length) {
-      const line = lines[i].trim();
-
-      // Register method
-      if (line.match(/^public\s+static\s+void\s+\w+\s*\(.*\)\s*{/)) {
-        i = registerMethod(lines, i, methods);
-        continue;
-      }
-
-      // Simulate method call
-      if (line.match(/^(\w+)\((.*?)\);$/)) {
-        const [, methodName, argList] = line.match(/^(\w+)\((.*?)\);$/);
-        let args = [];
-        if (argList.trim() !== "") {
-          args = argList.match(/("[^"]*"|'[^']*'|[^,]+)/g).map(a => {
-            a = a.trim();
-            if ((a.startsWith('"') && a.endsWith('"')) || (a.startsWith("'") && a.endsWith("'"))) {
-              return a.slice(1, -1);
-            }
-            if (!isNaN(a)) return Number(a);
-            return a;
-          });
-        }
-        if (methods[methodName]) {
-          const method = methods[methodName];
-          const localVars = Object.assign({}, vars);
-          method.params.forEach((param, idx) => {
-            localVars[param] = args[idx];
-          });
-          method.body.forEach(bodyLine => {
-            const printMatch = bodyLine.match(/System\.out\.println\((.+?)\);/);
-            if (printMatch) {
-              output.push(evalExpr(printMatch[1], localVars));
-            }
-            // Support assignments inside method
-            const assignMatch = bodyLine.match(/^(\w+)\s*=\s*(.+);$/);
-            if (assignMatch) {
-              const v = assignMatch[1];
-              const expr = assignMatch[2];
-              localVars[v] = evalExpr(expr.trim(), localVars);
-            }
-          });
-        }
-        i++;
-        continue;
-      }
-
-      // switch-case block
-      const switchMatch = line.match(/switch\s*\((\w+)\)/);
-      if (switchMatch) {
-        const switchVar = switchMatch[1];
-        const switchVal = vars[switchVar];
-        i++;
-        let matched = false, fallThrough = false, broke = false;
-        while (i < lines.length && !lines[i].includes("}")) {
-        const caseLine = lines[i].trim();
-        if (caseLine.startsWith("case ")) {
-          const caseVal = parseInt(caseLine.match(/case\s+(\d+):/)[1]);
-          matched = (caseVal === switchVal);
-          fallThrough = matched;
-          i++;
-          continue;
-        }
-        if (caseLine.startsWith("default:")) {
-          if (!matched && !broke) fallThrough = true;
-          else fallThrough = false;
-          i++;
-          continue;
-        }
-        if (caseLine.includes("break;")) {
-          broke = true;
-          fallThrough = false;
-          i++;
-          continue;
-        }
-        if (fallThrough) {
-          const printMatch = caseLine.match(/System\.out\.println\((.+?)\);/);
-          if (printMatch) output.push(evalExpr(printMatch[1].trim()));
-        }
-        i++;
-        }
-        i++;
-        continue;
-      }
-
-      // if/else if/else block
-      if (line.startsWith("if")) {
-        let matched = false;
-        while (i < lines.length) {
-        const current = lines[i].trim();
-        const ifMatch = current.match(/^if\s*\((.+)\)/);
-        const elseIfMatch = current.match(/^else\s+if\s*\((.+)\)/);
-        const elseMatch = current.match(/^else\b/);
-        let condition = ifMatch ? ifMatch[1] : elseIfMatch ? elseIfMatch[1] : null;
-        let shouldRun = false;
-        if (!matched) {
-          if (condition) {
-          try { shouldRun = !!evalExpr(condition); } catch { shouldRun = false; }
-          } else if (elseMatch) {
-          shouldRun = true;
-          }
-        }
-        if (shouldRun) matched = true;
-        i++;
-        let blockLine = lines[i]?.trim();
-        if (blockLine && !blockLine.includes("{")) {
-          const printMatch = blockLine.match(/System\.out\.println\((.+?)\);/);
-          if (printMatch && shouldRun) output.push(evalExpr(printMatch[1].trim()));
-          i++;
-        } else {
-          let braceDepth = 0;
-          while (i < lines.length) {
-          const innerLine = lines[i].trim();
-          if (innerLine.includes("{")) braceDepth++;
-          if (innerLine.includes("}")) {
-            if (braceDepth === 0) break;
-            braceDepth--;
-            i++;
-            continue;
-          }
-          const printMatch = innerLine.match(/System\.out\.println\((.+?)\);/);
-          if (printMatch && shouldRun) output.push(evalExpr(printMatch[1].trim()));
-          i++;
-          }
-          i++;
-        }
-        const nextLine = lines[i]?.trim();
-        if (!nextLine || (!nextLine.startsWith("else if") && !nextLine.startsWith("else"))) break;
-        }
-        continue;
-      }
-
-      // while loop simulation
-      if (line.startsWith("while")) {
-        const whileMatch = line.match(/^while\s*\((.+)\)/);
-        if (whileMatch) {
-        const condition = whileMatch[1].trim();
-        i++;
-        const loopBody = [];
-        let braceDepth = 0;
-        while (i < lines.length) {
-          const innerLine = lines[i].trim();
-          if (innerLine.includes("{")) braceDepth++;
-          if (innerLine.includes("}")) {
-          braceDepth--;
-          if (braceDepth <= 0) break;
-          i++;
-          continue;
-          }
-          loopBody.push(innerLine);
-          i++;
-        }
-        let loopGuard = 0;
-        while (evalExpr(condition) && loopGuard < 100) {
-          loopBody.forEach(bodyLine => {
-          const printMatch = bodyLine.match(/System\.out\.println\((.+?)\);/);
-          if (printMatch) output.push(evalExpr(printMatch[1].trim()));
-          const incMatch = bodyLine.match(/(\w+)\s*\+\+/);
-          if (incMatch) {
-            const varName = incMatch[1];
-            if (vars[varName] !== undefined) vars[varName]++;
-          }
-          const decMatch = bodyLine.match(/(\w+)\s*--/);
-          if (decMatch) {
-            const varName = decMatch[1];
-            if (vars[varName] !== undefined) vars[varName]--;
-          }
-          const assignMatch = bodyLine.match(/(\w+)\s*=\s*(.+);/);
-          if (assignMatch) {
-            const varName = assignMatch[1];
-            const expr = assignMatch[2];
-            vars[varName] = evalExpr(expr.trim());
-          }
-          });
-          loopGuard++;
-        }
-        i++;
-        continue;
-        }
-      }
-
-      // for loop simulation
-      if (line.startsWith("for")) {
-        const forMatch = line.match(/^for\s*\(\s*int\s+(\w+)\s*=\s*(-?\d+);\s*(\w+)\s*([<>=!]+)\s*(-?\d+);\s*(\w+)(\+\+|--)\s*\)/);
-        if (forMatch) {
-        const varName = forMatch[1];
-        let start = parseInt(forMatch[2]);
-        const condVar = forMatch[3];
-        const operator = forMatch[4];
-        const end = parseInt(forMatch[5]);
-        const updateVar = forMatch[6];
-        const updateOp = forMatch[7];
-        i++;
-        const loopBody = [];
-        let braceDepth = 0;
-        while (i < lines.length) {
-          const innerLine = lines[i].trim();
-          if (innerLine.includes("{")) braceDepth++;
-          if (innerLine.includes("}")) {
-          braceDepth--;
-          if (braceDepth <= 0) break;
-          i++;
-          continue;
-          }
-          loopBody.push(innerLine);
-          i++;
-        }
-        vars[varName] = start;
-        let loopGuard = 0;
-        outer: while (loopGuard < 100) {
-          const conditionExpr = `${vars[condVar]} ${operator} ${end}`;
-          if (!evalExpr(conditionExpr)) break;
-          for (let j = 0; j < loopBody.length; j++) {
-          const bodyLine = loopBody[j].trim();
-          const continueMatch = bodyLine.match(/^if\s*\((.+)\)\s*continue;$/);
-          if (continueMatch) {
-            if (evalExpr(continueMatch[1])) {
-            if (updateOp === "++") vars[updateVar]++;
-            else if (updateOp === "--") vars[updateVar]--;
-            loopGuard++;
-            continue outer;
-            }
-          }
-          const breakMatch = bodyLine.match(/^if\s*\((.+)\)\s*break;$/);
-          if (breakMatch) {
-            if (evalExpr(breakMatch[1])) {
-            break outer;
-            }
-          }
-          const printMatch = bodyLine.match(/System\.out\.println\((.+?)\);/);
-          if (printMatch) {
-            output.push(evalExpr(printMatch[1].trim()));
-            continue;
-          }
-          const assignMatch = bodyLine.match(/^(\w+)\s*=\s*(.+);$/);
-          if (assignMatch) {
-            const v = assignMatch[1];
-            const expr = assignMatch[2];
-            vars[v] = evalExpr(expr.trim());
-          }
-          }
-          if (updateOp === "++") vars[updateVar]++;
-          else if (updateOp === "--") vars[updateVar]--;
-          loopGuard++;
-        }
-        if (lines[i] && lines[i].trim() === "}") i++;
-        }
-      }
-
-      // Array declarations
-      let match;
-      if (match = line.match(/int\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
-        vars[match[1]] = match[2].split(",").map(v => parseInt(v.trim()));
-      } else if (match = line.match(/double\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
-        vars[match[1]] = match[2].split(",").map(v => parseFloat(v.trim()));
-      } else if (match = line.match(/String\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
-        vars[match[1]] = match[2].split(",").map(v => v.trim().replace(/^"|"$/g, ""));
-      } else if (match = line.match(/boolean\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
-        vars[match[1]] = match[2].split(",").map(v => v.trim() === "true");
-      } else if (match = line.match(/char\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
-        vars[match[1]] = match[2].split(",").map(v => v.trim().replace(/^'|'$/g, ""));
-      } else if (match = line.match(/int\s+(\w+)\s*=\s*(.+);/)) {
-        vars[match[1]] = parseInt(evalExpr(match[2].trim()));
-      } else if (match = line.match(/double\s+(\w+)\s*=\s*(.+);/)) {
-        vars[match[1]] = parseFloat(evalExpr(match[2].trim()));
-      } else if (match = line.match(/boolean\s+(\w+)\s*=\s*(.+);/)) {
-        vars[match[1]] = evalExpr(match[2].trim()) === true;
-      } else if (match = line.match(/char\s+(\w+)\s*=\s*'(.+)';/)) {
-        vars[match[1]] = match[2];
-      } else if (match = line.match(/String\s+(\w+)\s*=\s*(.+);/)) {
-        try {
-        const val = evalExpr(match[2].trim());
-        vars[match[1]] = val.replace(/^"|"$/g, "");
-        } catch {
-        vars[match[1]] = `[${match[2]}]`;
-        }
-      }
-
-      // Regular println
-      const printMatch = line.match(/System\.out\.println\((.+?)\);/);
-      if (printMatch) {
-        output.push(evalExpr(printMatch[1].trim()));
-      }
-
-      i++;
-      }
-
-      return output.length
-      ? "🔄 Simulated Output:\n" + output.join("\n")
-      : "❌ Error: Unable to simulate output.";
-    }
-
-    function simulateOutput(code, lang) {
-      if (lang === "java") return simulateJavaOutput(code);
-      if (lang === "js") return simulateJSOutput(code);
-      if (lang === "html") return "🖼️ HTML preview not simulated here.";
-      if (lang === "css") return "🎨 CSS preview not simulated here.";
-      return "❌ Unknown language.";
-    }
-
-    function scrollToTop() {
-      const container = document.getElementById("moduleContent");
-      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    
-    function showJavaArrayOutput() {
-      document.getElementById("java-array-output").classList.remove("hidden");
-      document.getElementById("java-array-output-placeholder").classList.add("hidden");
-    }
-  </script>
+  // Stub for progress tracking
+  function updateProgress(lessonId) {
+    console.log(`Progress updated for: ${lessonId}`);
+  }
+</script>
 
 
 
