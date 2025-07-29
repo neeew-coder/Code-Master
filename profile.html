@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CodeMaster | Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Navigation -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-code text-2xl"></i>
+          <span class="text-xl font-bold">CodeMaster</span>
+        </div>
+        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+          <span id="navAvatar" class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+          <span id="navName"></span>
+        </div>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
+        <a href="dashboard.html" class="hover:text-gray-200 transition">Dashboard</a>
+        <a href="profile.html" class="hover:text-gray-200 transition font-bold underline">Profile</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile -->
+  <main class="py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Profile</h1>
+
+      <!-- Name Section -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Your Name</h2>
+        <div class="flex space-x-4 items-center">
+          <input type="text" id="nameInput" placeholder="Enter your name" class="border rounded px-4 py-2 w-full max-w-xs">
+          <button onclick="saveName()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">Save</button>
+        </div>
+        <p id="nameDisplay" class="mt-4 text-lg font-medium text-purple-700"></p>
+      </section>
+
+      <!-- Lesson History -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson History</h2>
+        <ul id="historyList" class="space-y-2 text-gray-700"></ul>
+      </section>
+
+      <!-- Earned Badges -->
+      <section>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
+        <div id="badgeContainer" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12 mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-400">&copy; 2025 CodeMaster. Built by Mark.</p>
+    </div>
+  </footer>
+
+  <!-- Script -->
+  <script>
+    const lessons = [
+      { key: "htmlLessonProgress", name: "HTML Basics", icon: "fa-html5", color: "text-orange-500" },
+      { key: "cssLessonProgress", name: "CSS & Layouts", icon: "fa-css3-alt", color: "text-blue-500" },
+      { key: "jsLessonProgress", name: "JavaScript Interactivity", icon: "fa-js", color: "text-yellow-500" },
+      { key: "javaLessonProgress", name: "Java Fundamentals", icon: "fa-java", color: "text-red-500" },
+      { key: "csharpLessonProgress", name: "C# with .NET", icon: "fa-code", color: "text-green-500" }
+    ];
+
+    function saveName() {
+      const name = document.getElementById("nameInput").value.trim();
+      if (name) {
+        localStorage.setItem("codemasterUserName", name);
+        displayName();
+        updateNavProfile();
+      }
+    }
+
+    function displayName() {
+      const name = localStorage.getItem("codemasterUserName");
+      if (name) {
+        document.getElementById("nameDisplay").textContent = `Welcome, ${name}!`;
+        document.getElementById("nameInput").value = name;
+      }
+    }
+
+    function updateNavProfile() {
+      const name = localStorage.getItem("codemasterUserName");
+      if (name) {
+        document.getElementById("navProfile").classList.remove("hidden");
+        document.getElementById("navName").textContent = name;
+        document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
+      }
+    }
+
+    function loadProgressData() {
+      lessons.forEach(lesson => {
+        const progress = parseInt(localStorage.getItem(lesson.key)) || 0;
+        const completedAt = localStorage.getItem(lesson.key.replace("Progress", "CompletedAt"));
+
+        if (completedAt) {
+          const li = document.createElement("li");
+          li.textContent = `${lesson.name} completed on ${completedAt}`;
+          document.getElementById("historyList").appendChild(li);
+        }
+
+        if (progress === 100) {
+          const badge = document.createElement("div");
+          badge.className = "bg-white shadow-md rounded-lg p-4 text-center";
+          badge.innerHTML = `
+            <i class="fab ${lesson.icon} text-3xl ${lesson.color} mb-2"></i>
+            <p class="font-semibold">${lesson.name}</p>
+            <span class="text-sm text-gray-500">Completed</span>
+          `;
+          document.getElementById("badgeContainer").appendChild(badge);
+        }
+      });
+    }
+
+    window.addEventListener("load", () => {
+      displayName();
+      updateNavProfile();
+      loadProgressData();
+    });
+  </script>
+
+</body>
+</html>

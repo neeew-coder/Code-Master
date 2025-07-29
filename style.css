@@ -1,0 +1,70 @@
+
+.gradient-bg {
+  background: linear-gradient(to right, #7e5bef, #5a3ea1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+#progress-bar {
+  min-width: 14px;
+}
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.5s;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.progress-ring__circle {
+    transition: stroke-dashoffset 0.5s;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+.module-card:hover .module-icon {
+    transform: scale(1.1);
+}
+
+
+
+
+
+
+/* Simulation Box Styles */
+
+.simulation-box h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.simulation-box h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.simulation-box p {
+  font-size: 1rem;
+  margin-bottom: 1em;
+}
+
+.simulation-box ul {
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+.simulation-box li {
+  margin-bottom: 0.25em;
+}
+
+.simulation-box {
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  padding: 1rem;
+}

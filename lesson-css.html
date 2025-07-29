@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Basics | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-100 to-indigo-100 font-sans text-gray-800">
+
+  <!-- Header -->
+  <nav class="bg-blue-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
+        <a href="#" class="hover:text-gray-200 transition">Projects</a>
+        <a href="#" class="hover:text-gray-200 transition">Community</a>
+      </div>
+      <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-blue-600 px-3 py-1 rounded-full font-semibold">
+        <span id="navAvatar" class="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+        <span id="navName"></span>
+      </div>
+    </div>
+    <div class="md:hidden hidden bg-blue-700" id="mobile-menu">
+      <div class="px-4 py-2 flex flex-col space-y-3">
+        <a href="index.html" class="block py-2 hover:bg-blue-600 px-2 rounded">Home</a>
+        <a href="lesson.html" class="block py-2 hover:bg-blue-600 px-2 rounded">Lessons</a>
+        <a href="#" class="block py-2 hover:bg-blue-600 px-2 rounded">Projects</a>
+        <a href="#" class="block py-2 hover:bg-blue-600 px-2 rounded">Community</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
+      <h2 class="text-xl font-bold text-blue-600 mb-4 flex items-center space-x-2">
+        <i class="fab fa-css3-alt text-blue-500"></i>
+        <span>CSS Modules</span>
+      </h2>
+      <ul class="space-y-3 text-sm">
+        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-blue-700 font-semibold bg-blue-100 hover:bg-blue-200 transition">Introduction to CSS</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">CSS Syntax</button></li>
+        <li><button onclick="loadModule('selectors')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Selectors</button></li>
+        <li><button onclick="loadModule('howto')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">How to Add CSS</button></li>
+        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">CSS Comments</button></li>
+        <li><button onclick="loadModule('errors')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">CSS Errors</button></li>
+        <li><button onclick="loadModule('colors')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Colors</button></li>
+        <li><button onclick="loadModule('backgrounds')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Backgrounds</button></li>
+        <li><button onclick="loadModule('borders')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Borders</button></li>
+        <li><button onclick="loadModule('margins')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Margins</button></li>
+        <li><button onclick="loadModule('paddings')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Paddings</button></li>
+        <li><button onclick="loadModule('heightandwidth')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Height and Width</button></li>
+        <li><button onclick="loadModule('boxmodel')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Box Model</button></li>
+        <li><button onclick="loadModule('outline')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Outline</button></li>
+        <li><button onclick="loadModule('text')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Text</button></li>
+        <li><button onclick="loadModule('fonts')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Fonts</button></li>
+        <li><button onclick="loadModule('icons')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Icons</button></li>
+        <li><button onclick="loadModule('links')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Links</button></li>
+        <li><button onclick="loadModule('lists')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Lists</button></li>
+        <li><button onclick="loadModule('tables')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Tables</button></li>
+        <li><button onclick="loadModule('display')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Display</button></li>
+        <li><button onclick="loadModule('max-width')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Max Width</button></li>
+        <li><button onclick="loadModule('positioning')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Positioning</button></li>
+        <li><button onclick="loadModule('z-index')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Z-Index</button></li>
+        <li><button onclick="loadModule('overflow')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Overflow</button></li>
+        <li><button onclick="loadModule('float')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Float</button></li>
+        <li><button onclick="loadModule('inline-block')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Inline Block</button></li>
+        <li><button onclick="loadModule('align')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Align</button></li>
+        <li><button onclick="loadModule('combinators')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Combinators</button></li>
+        <li><button onclick="loadModule('pseudo-classes')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Pseudo-Classes</button></li>
+        <li><button onclick="loadModule('pseudo-elements')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Pseudo-Elements</button></li>
+        <li><button onclick="loadModule('opacity')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Opacity</button></li>
+        <li><button onclick="loadModule('navigationbar')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Navigation Bar</button></li>
+        <li><button onclick="loadModule('dropdowns')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Dropdowns</button></li>
+        <li><button onclick="loadModule('imagegallery')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Image Gallery</button></li>
+        <li><button onclick="loadModule('imagesprites')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Image Sprites</button></li>
+        <li><button onclick="loadModule('attributeselectors')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Attribute Selectors</button></li>
+        <li><button onclick="loadModule('forms')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Forms</button></li>
+        <li><button onclick="loadModule('counters')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Counters</button></li>
+        <li><button onclick="loadModule('websitelayout')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Website Layout</button></li>
+        <li><button onclick="loadModule('units')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Units</button></li>
+        <li><button onclick="loadModule('specificity')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Specificity</button></li>
+        <li><button onclick="loadModule('!important')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">!important</button></li>
+        <li><button onclick="loadModule('mathfunctions')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Math Functions</button></li>
+        <li><button onclick="loadModule('performance')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Performance</button></li>
+        <li><button onclick="loadModule('accessibility')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Accessibility</button></li>
+        <li><button onclick="loadModule('flexbox')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Flexbox</button></li>
+        <li><button onclick="loadModule('grid')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Grid</button></li>
+        <li><button onclick="loadModule('responsive')" class="block w-full text-left px-3 py-2 rounded-md text-blue-600 hover:bg-blue-50 transition">Responsive Design</button></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="md:w-3/4 p-10 flex flex-col justify-between font-sans">
+      <div class="overflow-y-auto max-h-[75vh] pr-2" id="moduleContent">
+        <!-- Default Content -->
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="bg-white text-blue-600 rounded-full p-3 text-xl shadow-md">
+            <i class="fab fa-css3-alt"></i>
+          </div>
+          <h1 class="text-4xl font-bold tracking-wide">CSS Basics</h1>
+        </div>
+
+        <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-blue-500 text-white text-sm whitespace-pre-wrap font-mono">
+          <pre class="whitespace-pre-wrap text-sm">
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
+          </pre>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-6 flex gap-4">
+        <button onclick="loadModule('intro')" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition shadow-md">Start Styling</button>
+        <a href="dashboard.html" class="bg-indigo-700 text-white px-6 py-2 rounded-full font-bold hover:bg-indigo-800 transition shadow-md">View Dashboard</a>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-10">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
+          <span class="text-sm text-blue-700 progress-label">0% Completed</span>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition z-50">↑</button>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-blue-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Dynamic Module Loader -->
+  <script>
+    function loadModule(lessonId) {
+      const container = document.getElementById("moduleContent");
+      if (!container) return;
+
+      // Highlight active button
+      document.querySelectorAll("aside button").forEach(btn => {
+        btn.classList.remove("bg-blue-100", "font-semibold", "text-blue-700");
+        btn.classList.add("text-blue-600");
+      });
+      const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+      if (activeBtn) {
+        activeBtn.classList.add("bg-blue-100", "font-semibold", "text-blue-700");
+        activeBtn.classList.remove("text-blue-600");
+      }
+
+      // Show loading spinner
+      container.innerHTML = `
+        <div class="text-center py-10 text-gray-500 animate-pulse">
+          <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+          <p>Loading module...</p>
+        </div>
+      `;
+
+      // Fetch lesson content
+      fetch(`lessons/css/${lessonId}.html`)
+        .then(res => {
+          if (!res.ok) throw new Error("Module not found");
+          return res.text();
+        })
+        .then(html => {
+          container.innerHTML = `
+            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-gray-800">
+              ${html}
+            </div>
+          `;
+          updateProgress(lessonId);
+        })
+        .catch(() => {
+          container.innerHTML = `
+            <div class="text-center py-10 text-red-500">
+              <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+              <p>⚠️ Unable to load module: ${lessonId}</p>
+            </div>
+          `;
+        });
+    }
+
+    function updateProgress(lessonId) {
+      const progressBar = document.getElementById("progress-bar");
+      const label = document.querySelector(".progress-label");
+      const completedModules = JSON.parse(localStorage.getItem("cssCompleted") || "[]");
+
+      if (!completedModules.includes(lessonId)) {
+        completedModules.push(lessonId);
+        localStorage.setItem("cssCompleted", JSON.stringify(completedModules));
+      }
+
+      const total = 5;
+      const percent = Math.round((completedModules.length / total) * 100);
+      progressBar.style.width = `${percent}%`;
+      if (label) label.textContent = `${percent}% Completed`;
+    }
+
+    function scrollToTop() {
+      const container = document.getElementById("moduleContent");
+      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>

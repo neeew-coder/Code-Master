@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HTML Basics | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans text-gray-800">
+
+  <!-- Header -->
+  <nav class="bg-orange-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
+        <a href="#" class="hover:text-gray-200 transition">Projects</a>
+        <a href="#" class="hover:text-gray-200 transition">Community</a>
+      </div>
+      <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-orange-600 px-3 py-1 rounded-full font-semibold">
+        <span id="navAvatar" class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+        <span id="navName"></span>
+      </div>
+    </div>
+    <div class="md:hidden hidden bg-orange-700" id="mobile-menu">
+      <div class="px-4 py-2 flex flex-col space-y-3">
+        <a href="index.html" class="block py-2 hover:bg-orange-600 px-2 rounded">Home</a>
+        <a href="lesson.html" class="block py-2 hover:bg-orange-600 px-2 rounded">Lessons</a>
+        <a href="#" class="block py-2 hover:bg-orange-600 px-2 rounded">Projects</a>
+        <a href="#" class="block py-2 hover:bg-orange-600 px-2 rounded">Community</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
+      <h2 class="text-xl font-bold text-orange-700 mb-4 flex items-center space-x-2">
+        <i class="fas fa-list-ul text-orange-500"></i>
+        <span>HTML Modules</span>
+      </h2>
+      <ul class="space-y-3 text-sm" id="htmlSidebar">
+        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-orange-700 font-semibold bg-orange-100 hover:bg-orange-200 transition">Introduction to HTML</button></li>
+        <li><button onclick="loadModule('html-basic')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Basics</button></li>
+        <li><button onclick="loadModule('elements')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Elements</button></li>
+        <li><button onclick="loadModule('attributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Attributes</button></li>
+        <li><button onclick="loadModule('headings')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Headings</button></li>
+        <li><button onclick="loadModule('paragraph')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Paragraphs</button></li>
+        <li><button onclick="loadModule('styles')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Styles</button></li>
+        <li><button onclick="loadModule('text')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Text Formatting</button></li>
+        <li><button onclick="loadModule('quotation')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Quotations</button></li>
+        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Comments</button></li>
+        <li><button onclick="loadModule('lists')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Lists</button></li>
+        <li><button onclick="loadModule('links')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Links</button></li>
+        <li><button onclick="loadModule('image')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Images</button></li>
+        <li><button onclick="loadModule('pagetitle')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Page Title</button></li>
+        <li><button onclick="loadModule('table')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Tables</button></li>
+        <li><button onclick="loadModule('tableborders')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Borders</button></li>
+        <li><button onclick="loadModule('tablesizes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Sizes</button></li>
+        <li><button onclick="loadModule('tableheaders')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Headers</button></li>
+        <li><button onclick="loadModule('padding and spacing')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Padding and Spacing</button></li>
+        <li><button onclick="loadModule('colspan and rowspan')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Colspan and Rowspan</button></li>
+        <li><button onclick="loadModule('tablestyling')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Styling</button></li>
+        <li><button onclick="loadModule('tablecolgroup')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Colgroup</button></li>
+        <li><button onclick="loadModule('block and inline')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Block and Inline</button></li>
+        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Classes</button></li>
+        <li><button onclick="loadModule('Id')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">ID Attribute</button></li>
+        <li><button onclick="loadModule('iframe')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Iframes</button></li>
+        <li><button onclick="loadModule('javascript')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">JavaScript</button></li>
+        <li><button onclick="loadModule('filepath')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">File Paths</button></li>
+        <li><button onclick="loadModule('head')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Head</button></li>
+        <li><button onclick="loadModule('layout')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Layout</button></li>
+        <li><button onclick="loadModule('responsive')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Responsive Design</button></li>
+        <li><button onclick="loadModule('computercode')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Computer Code</button></li>
+        <li><button onclick="loadModule('semantic')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Semantic Elements</button></li>
+        <li><button onclick="loadModule('entities')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">HTML Entities</button></li>
+        <li><button onclick="loadModule('form')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Forms</button></li>
+        <li><button onclick="loadModule('formattributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Form Attributes</button></li>
+        <li><button onclick="loadModule('formelements')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Form Elements</button></li>
+        <li><button onclick="loadModule('inputtypes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Input Types</button></li>
+        <li><button onclick="loadModule('inputattributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Input Attributes</button></li>
+        <li><button onclick="loadModule('inputformattributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Input Form Attributes</button></li>
+        <li><button onclick="loadModule('bestpractices')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Best Practices</button></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="md:w-3/4 p-10 bg-orange-300 flex flex-col justify-between font-sans">
+      <div id="moduleContent" class="overflow-y-auto max-h-[75vh] pr-2">
+        <!-- Default Content -->
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="bg-white text-orange-700 rounded-full p-3 text-xl shadow-md">
+            <i class="fab fa-html5"></i>
+          </div>
+          <h1 class="text-4xl font-bold tracking-wide">HTML Basics</h1>
+        </div>
+
+<pre class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm ">
+  &lt;!DOCTYPE html&gt;
+  &lt;html&gt;
+    &lt;head&gt;
+      &lt;title&gt;My Portfolio&lt;/title&gt;
+      &lt;link rel="stylesheet" href="styles.css"&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+      &lt;h1 class="text-4xl"&gt;Welcome!&lt;/h1&gt;
+    &lt;/body&gt;
+  &lt;/html&gt;
+</pre>
+
+        <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">↑</button>
+      </div>
+
+      <!-- Progress Actions -->
+      <div class="flex flex-wrap gap-4 mt-6">
+        <button onclick="loadModule('intro')" class="bg-white text-orange-700 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-md">Start Coding</button>
+        <a href="dashboard.html" class="bg-orange-900 text-white px-6 py-2 rounded-full font-bold hover:bg-orange-800 transition shadow-md">View Dashboard</a>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-4">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-orange-600 font-medium progress-label">0% Completed</span>
+          <span class="text-sm text-orange-600 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-orange-300 bg-opacity-30 h-2 rounded-full overflow-hidden">
+          <div class="bg-orange-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <!-- Dynamic Module Loader -->
+  <script>
+    function loadModule(lessonId) {
+      const container = document.getElementById("moduleContent");
+      if (!container) return;
+
+      // Highlight active button
+      document.querySelectorAll("#htmlSidebar button").forEach(btn => {
+        btn.classList.remove("bg-orange-100", "font-semibold", "text-orange-700");
+        btn.classList.add("text-orange-600");
+      });
+      const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+      if (activeBtn) {
+        activeBtn.classList.add("bg-orange-100", "font-semibold", "text-orange-700");
+        activeBtn.classList.remove("text-orange-600");
+      }
+
+      // Load content
+      container.innerHTML = `
+        <div class="text-center py-10 text-gray-300 animate-pulse">
+          <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+          <p>Loading module...</p>
+        </div>
+      `;
+
+      fetch(`lessons/html/${lessonId}.html`)
+        .then(res => {
+          if (!res.ok) throw new Error("Module not found");
+          return res.text();
+        })
+        .then(html => {
+          container.innerHTML = `
+            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white">
+              ${html}
+            </div>
+            <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
+              ↑
+            </button>
+          `;
+          updateProgress(lessonId);
+        })
+        .catch(() => {
+          container.innerHTML = `
+            <div class="text-center py-10 text-red-500">
+              <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+              <p>⚠️ Unable to load module: ${lessonId}</p>
+            </div>
+          `;
+        });
+    }
+
+    function updateProgress(lessonId) {
+      const progressBar = document.getElementById("progress-bar");
+      const labels = document.querySelectorAll(".progress-label");
+      const completedModules = JSON.parse(localStorage.getItem("htmlCompleted") || "[]");
+
+      if (!completedModules.includes(lessonId)) {
+        completedModules.push(lessonId);
+        localStorage.setItem("htmlCompleted", JSON.stringify(completedModules));
+      }
+
+      const total = 10; // total HTML modules
+      const percent = Math.round((completedModules.length / total) * 100);
+      progressBar.style.width = `${percent}%`;
+      labels.forEach(label => label.textContent = `${percent}% Completed`);
+    }
+
+    function scrollToTop() {
+      const container = document.getElementById("moduleContent");
+      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // Initial progress update
+    updateProgress("intro");
+  </script>
+</body>
+</html>

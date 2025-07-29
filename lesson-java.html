@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Java Fundamentals | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-purple-100 to-blue-100 font-sans text-gray-800">
+
+  <!-- Header -->
+  <nav class="bg-red-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
+        <a href="#" class="hover:text-gray-200 transition">Projects</a>
+        <a href="#" class="hover:text-gray-200 transition">Community</a>
+      </div>
+      <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-red-600 px-3 py-1 rounded-full font-semibold">
+        <span id="navAvatar" class="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+        <span id="navName"></span>
+      </div>
+    </div>
+    <div class="md:hidden hidden bg-red-700" id="mobile-menu">
+      <div class="px-4 py-2 flex flex-col space-y-3">
+        <a href="index.html" class="block py-2 hover:bg-red-600 px-2 rounded">Home</a>
+        <a href="lesson.html" class="block py-2 hover:bg-red-600 px-2 rounded">Lessons</a>
+        <a href="#" class="block py-2 hover:bg-red-600 px-2 rounded">Projects</a>
+        <a href="#" class="block py-2 hover:bg-red-600 px-2 rounded">Community</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
+      <h2 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">
+        <i class="fab fa-java text-red-500"></i>
+        <span>Java Modules</span>
+      </h2>
+      <ul class="space-y-3 text-sm">
+        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-red-700 font-semibold bg-red-100 hover:bg-red-200 transition">Introduction to Java</button></li>
+        <li><button onclick="loadModule('getstarted')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Get Started</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Java Syntax</button></li>
+        <li><button onclick="loadModule('output')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Output</button></li>
+        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Comments</button></li>
+        <li><button onclick="loadModule('variables')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Variables</button></li>
+        <li><button onclick="loadModule('datatypes')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Data Types</button></li>
+        <li><button onclick="loadModule('typecasting')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Type Casting</button></li>
+        <li><button onclick="loadModule('operators')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Operators</button></li>
+        <li><button onclick="loadModule('strings')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Strings</button></li>
+        <li><button onclick="loadModule('math')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Math</button></li>
+        <li><button onclick="loadModule('booleans')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Booleans</button></li>
+        <li><button onclick="loadModule('ifelse')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">If Else</button></li>
+        <li><button onclick="loadModule('switch')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Switch</button></li>
+        <li><button onclick="loadModule('whileloop')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">While Loop</button></li>
+        <li><button onclick="loadModule('forloop')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">For Loop</button></li>
+        <li><button onclick="loadModule('breakorcontinue')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Break/Continue</button></li>
+        <li><button onclick="loadModule('arrays')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Arrays</button></li>
+        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Method</h3>
+        <li><button onclick="loadModule('methods')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Methods</button></li>
+        <li><button onclick="loadModule('methodparameters')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Method Parameters</button></li>
+        <li><button onclick="loadModule('methodoverloading')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Method Overloading</button></li>
+        <li><button onclick="loadModule('scope')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Scope</button></li>
+        <li><button onclick="loadModule('recursion')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Recursion</button></li>
+        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Classes</h3>
+        <li><button onclick="loadModule('oop')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Object Oriented Programming</button></li>
+        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Classes/Objects</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Class Attributes</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Class Methods</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Constructors</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">This Keyword</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Modifiers</button></li>
+        <li><button onclick="loadModule('encapsulation')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Encapsulation</button></li>
+        <li><button onclick="loadModule('package')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Package/API</button></li>
+        <li><button onclick="loadModule('inheritance')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Inheritance</button></li>
+        <li><button onclick="loadModule('polymorphism')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Polymorphism</button></li>
+        <li><button onclick="loadModule('superkeyword')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Super Keyword</button></li>
+        <li><button onclick="loadModule('innerclasses')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Inner Classes</button></li>
+        <li><button onclick="loadModule('abstraction')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Abstraction</button></li>
+        <li><button onclick="loadModule('interface')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Interface</button></li>
+        <li><button onclick="loadModule('enums')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Enums</button></li>
+        <li><button onclick="loadModule('userinput')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">User Input</button></li>
+        <li><button onclick="loadModule('date')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Date</button></li>
+        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Errors</h3>
+        <li><button onclick="loadModule('errors')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Errors</button></li>
+        <li><button onclick="loadModule('debugging')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Debugging</button></li>
+        <li><button onclick="loadModule('exceptions')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Exceptions</button></li>
+        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java File Handling</h3>
+        <li><button onclick="loadModule('files')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Files</button></li>
+        <li><button onclick="loadModule('createwritefiles')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Create/Write Files</button></li>
+        <li><button onclick="loadModule('readfiles')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Read Files</button></li>
+        <li><button onclick="loadModule('deletefiles')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Delete Files</button></li>
+        <li><button onclick="loadModule('inheritance')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Inheritance</button></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="md:w-3/4 p-10 flex bg-red-300 flex-col justify-between font-sans">
+      <div class="overflow-y-auto max-h-[75vh] pr-2" id="moduleContent">
+        <!-- Default Content -->
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="bg-white text-red-600 rounded-full p-3 text-xl shadow-md">
+            <i class="fab fa-java"></i>
+          </div>
+          <h1 class="text-4xl font-bold tracking-wide">Java Fundamentals</h1>
+        </div>
+
+        <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-red-500 text-white text-sm whitespace-pre-wrap font-mono">
+          <pre class="whitespace-pre-wrap text-sm text-white-8">
+public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, Mark!");
+  }
+}
+          </pre>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-6 flex gap-4">
+        <button onclick="loadModule('intro')" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Start Coding</button>
+        <a href="dashboard.html" class="bg-red-800 text-white px-6 py-2 rounded-full font-bold hover:bg-red-900 transition shadow-md">View Dashboard</a>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-10">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
+          <span class="text-sm text-red-700 progress-label">0% Completed</span>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-red-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-red-700 transition z-50">↑</button>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-red-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="Script/java/bindAllPreview.js"></script>
+  <script src="Script/progress.js"></script>
+  <script src="Script/java/simulateLine.js"></script>
+  <script src="Script/java/simulator-java.js"></script>
+  <script src="Script/java/java-loader.js"></script>
+
+
+  <script>
+    
+    function preprocessVars(lines, vars) {
+      lines.forEach(line => {
+        let match;
+        if (match = line.match(/int\s+(\w+)\s*=\s*(.+);/)) {
+          vars[match[1]] = parseInt(evalExpr(match[2].trim(), vars));
+        } else if (match = line.match(/int\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
+          vars[match[1]] = match[2].split(",").map(v => parseInt(v.trim()));
+        }
+        // You can add support for other types here too
+      });
+    }
+    
+    function simulateOutput(code, lang) {
+      if (lang === "java") return simulateJavaOutput(code);
+      if (lang === "js") return simulateJSOutput(code);
+      if (lang === "html") return "🖼️ HTML preview not simulated here.";
+      if (lang === "css") return "🎨 CSS preview not simulated here.";
+      return "❌ Unknown language.";
+    }
+
+    // Simulate loop
+    vars[varName] = start;
+    let loopGuard = 0;
+    while (loopGuard < 100) {
+      const conditionExpr = `${vars[condVar]} ${operator} ${end}`;
+      if (!evalExpr(conditionExpr)) break;
+
+      let control = null;
+
+      for (let j = 0; j < loopBody.length; j++) {
+        const result = simulateLine(loopBody[j], vars);
+        if (result.output) output.push(result.output);
+        if (result.control === "break") {
+          control = "break";
+          break;
+        }
+        if (result.control === "continue") {
+          control = "continue";
+          break;
+        }
+      }
+
+      if (control === "break") break;
+      if (control === "continue") {
+        if (updateOp === "++") vars[updateVar]++;
+        else if (updateOp === "--") vars[updateVar]--;
+        loopGuard++;
+        continue;
+      }
+
+      if (updateOp === "++") vars[updateVar]++;
+      else if (updateOp === "--") vars[updateVar]--;
+
+      loopGuard++;
+    }
+    function evalExpr(expr, vars) {
+      try {
+        const scope = Object.assign({}, vars);
+        console.log("Evaluating:", expr);
+        return eval(expr);
+      } catch (error) {
+        console.error("Error evaluating expression:", expr, error);
+        throw error;
+      }
+    }
+
+    function parseJavaVariableDeclaration(line, vars) {
+      const match = line.match(/(int|double|boolean|char|String)\s+(\w+)\s*=\s*(.+);/);
+      if (match) {
+        const type = match[1];
+        const name = match[2];
+        const expr = match[3].trim();
+
+        let value;
+        switch (type) {
+          case 'int': value = parseInt(evalExpr(expr, vars)); break;
+          case 'double': value = parseFloat(evalExpr(expr, vars)); break;
+          case 'boolean': value = evalExpr(expr, vars) === true; break;
+          case 'char': value = expr.replace(/^'|'$/g, ''); break;
+          case 'String':
+            try {
+              value = evalExpr(expr, vars).replace(/^"|"$/g, '');
+            } catch {
+              value = `[${expr}]`;
+            }
+            break;
+          default: return false;
+        }
+
+        vars[name] = value;
+        return true;
+      }
+      return false;
+    }
+    
+    function simulateJavaOutput(code) {
+      code = code
+      .replace(/public\s+class\s+\w+\s*{/, "")
+      .replace(/public\s+static\s+void\s+main\s*\(.*?\)\s*{/, "")
+      .replace(/}/g, "")
+      .trim();
+
+      const lines = code.split("\n");
+      const vars = {};
+      const output = [];
+      const methods = {};
+
+      function evalExpr(expr, localVars = {}) {
+      try {
+        const scope = Object.assign({}, vars, localVars);
+        for (let key in scope) {
+        if (Array.isArray(scope[key])) {
+          scope[key] = new Proxy(scope[key], {
+          get(target, prop) {
+            const index = Number(prop);
+            if (isNaN(index) || index < 0 || index >= target.length) {
+            throw new Error(`Index ${index} out of bounds for array '${key}'`);
+            }
+            return target[index];
+          }
+          });
+        }
+        }
+        return Function(...Object.keys(scope), `return ${expr};`)(...Object.values(scope));
+      } catch (err) {
+        return "Error evaluating expression: " + expr + " → " + err.message;
+      }
+      }
+
+      function registerMethod(lines, i, methods) {
+      const line = lines[i];
+      const match = line.match(/public\s+static\s+void\s+(\w+)\s*\((.*?)\)\s*{/);
+      if (!match) return i;
+      const [, methodName, paramList] = match;
+      const params = paramList.trim() === "" ? [] : paramList.split(',').map(p => p.trim().split(' ')[1]);
+      const body = [];
+      i++;
+      let braceDepth = 1;
+      while (i < lines.length && braceDepth > 0) {
+        const currentLine = lines[i].trim();
+        if (currentLine.includes("{")) braceDepth++;
+        if (currentLine.includes("}")) {
+          braceDepth--;
+          if (braceDepth === 0) break;
+        }
+        if (braceDepth > 0) body.push(currentLine);
+        i++;
+      }
+      methods[methodName] = { params, body };
+      return i + 1;
+      }
+
+      let i = 0;
+      while (i < lines.length) {
+      const line = lines[i].trim();
+
+      // Register method
+      if (line.match(/^public\s+static\s+void\s+\w+\s*\(.*\)\s*{/)) {
+        i = registerMethod(lines, i, methods);
+        continue;
+      }
+
+      // Simulate method call
+      if (line.match(/^(\w+)\((.*?)\);$/)) {
+        const [, methodName, argList] = line.match(/^(\w+)\((.*?)\);$/);
+        let args = [];
+        if (argList.trim() !== "") {
+          args = argList.match(/("[^"]*"|'[^']*'|[^,]+)/g).map(a => {
+            a = a.trim();
+            if ((a.startsWith('"') && a.endsWith('"')) || (a.startsWith("'") && a.endsWith("'"))) {
+              return a.slice(1, -1);
+            }
+            if (!isNaN(a)) return Number(a);
+            return a;
+          });
+        }
+        if (methods[methodName]) {
+          const method = methods[methodName];
+          const localVars = Object.assign({}, vars);
+          method.params.forEach((param, idx) => {
+            localVars[param] = args[idx];
+          });
+          method.body.forEach(bodyLine => {
+            const printMatch = bodyLine.match(/System\.out\.println\((.+?)\);/);
+            if (printMatch) {
+              output.push(evalExpr(printMatch[1], localVars));
+            }
+            // Support assignments inside method
+            const assignMatch = bodyLine.match(/^(\w+)\s*=\s*(.+);$/);
+            if (assignMatch) {
+              const v = assignMatch[1];
+              const expr = assignMatch[2];
+              localVars[v] = evalExpr(expr.trim(), localVars);
+            }
+          });
+        }
+        i++;
+        continue;
+      }
+
+      // switch-case block
+      const switchMatch = line.match(/switch\s*\((\w+)\)/);
+      if (switchMatch) {
+        const switchVar = switchMatch[1];
+        const switchVal = vars[switchVar];
+        i++;
+        let matched = false, fallThrough = false, broke = false;
+        while (i < lines.length && !lines[i].includes("}")) {
+        const caseLine = lines[i].trim();
+        if (caseLine.startsWith("case ")) {
+          const caseVal = parseInt(caseLine.match(/case\s+(\d+):/)[1]);
+          matched = (caseVal === switchVal);
+          fallThrough = matched;
+          i++;
+          continue;
+        }
+        if (caseLine.startsWith("default:")) {
+          if (!matched && !broke) fallThrough = true;
+          else fallThrough = false;
+          i++;
+          continue;
+        }
+        if (caseLine.includes("break;")) {
+          broke = true;
+          fallThrough = false;
+          i++;
+          continue;
+        }
+        if (fallThrough) {
+          const printMatch = caseLine.match(/System\.out\.println\((.+?)\);/);
+          if (printMatch) output.push(evalExpr(printMatch[1].trim()));
+        }
+        i++;
+        }
+        i++;
+        continue;
+      }
+
+      // if/else if/else block
+      if (line.startsWith("if")) {
+        let matched = false;
+        while (i < lines.length) {
+        const current = lines[i].trim();
+        const ifMatch = current.match(/^if\s*\((.+)\)/);
+        const elseIfMatch = current.match(/^else\s+if\s*\((.+)\)/);
+        const elseMatch = current.match(/^else\b/);
+        let condition = ifMatch ? ifMatch[1] : elseIfMatch ? elseIfMatch[1] : null;
+        let shouldRun = false;
+        if (!matched) {
+          if (condition) {
+          try { shouldRun = !!evalExpr(condition); } catch { shouldRun = false; }
+          } else if (elseMatch) {
+          shouldRun = true;
+          }
+        }
+        if (shouldRun) matched = true;
+        i++;
+        let blockLine = lines[i]?.trim();
+        if (blockLine && !blockLine.includes("{")) {
+          const printMatch = blockLine.match(/System\.out\.println\((.+?)\);/);
+          if (printMatch && shouldRun) output.push(evalExpr(printMatch[1].trim()));
+          i++;
+        } else {
+          let braceDepth = 0;
+          while (i < lines.length) {
+          const innerLine = lines[i].trim();
+          if (innerLine.includes("{")) braceDepth++;
+          if (innerLine.includes("}")) {
+            if (braceDepth === 0) break;
+            braceDepth--;
+            i++;
+            continue;
+          }
+          const printMatch = innerLine.match(/System\.out\.println\((.+?)\);/);
+          if (printMatch && shouldRun) output.push(evalExpr(printMatch[1].trim()));
+          i++;
+          }
+          i++;
+        }
+        const nextLine = lines[i]?.trim();
+        if (!nextLine || (!nextLine.startsWith("else if") && !nextLine.startsWith("else"))) break;
+        }
+        continue;
+      }
+
+      // while loop simulation
+      if (line.startsWith("while")) {
+        const whileMatch = line.match(/^while\s*\((.+)\)/);
+        if (whileMatch) {
+        const condition = whileMatch[1].trim();
+        i++;
+        const loopBody = [];
+        let braceDepth = 0;
+        while (i < lines.length) {
+          const innerLine = lines[i].trim();
+          if (innerLine.includes("{")) braceDepth++;
+          if (innerLine.includes("}")) {
+          braceDepth--;
+          if (braceDepth <= 0) break;
+          i++;
+          continue;
+          }
+          loopBody.push(innerLine);
+          i++;
+        }
+        let loopGuard = 0;
+        while (evalExpr(condition) && loopGuard < 100) {
+          loopBody.forEach(bodyLine => {
+          const printMatch = bodyLine.match(/System\.out\.println\((.+?)\);/);
+          if (printMatch) output.push(evalExpr(printMatch[1].trim()));
+          const incMatch = bodyLine.match(/(\w+)\s*\+\+/);
+          if (incMatch) {
+            const varName = incMatch[1];
+            if (vars[varName] !== undefined) vars[varName]++;
+          }
+          const decMatch = bodyLine.match(/(\w+)\s*--/);
+          if (decMatch) {
+            const varName = decMatch[1];
+            if (vars[varName] !== undefined) vars[varName]--;
+          }
+          const assignMatch = bodyLine.match(/(\w+)\s*=\s*(.+);/);
+          if (assignMatch) {
+            const varName = assignMatch[1];
+            const expr = assignMatch[2];
+            vars[varName] = evalExpr(expr.trim());
+          }
+          });
+          loopGuard++;
+        }
+        i++;
+        continue;
+        }
+      }
+
+      // for loop simulation
+      if (line.startsWith("for")) {
+        const forMatch = line.match(/^for\s*\(\s*int\s+(\w+)\s*=\s*(-?\d+);\s*(\w+)\s*([<>=!]+)\s*(-?\d+);\s*(\w+)(\+\+|--)\s*\)/);
+        if (forMatch) {
+        const varName = forMatch[1];
+        let start = parseInt(forMatch[2]);
+        const condVar = forMatch[3];
+        const operator = forMatch[4];
+        const end = parseInt(forMatch[5]);
+        const updateVar = forMatch[6];
+        const updateOp = forMatch[7];
+        i++;
+        const loopBody = [];
+        let braceDepth = 0;
+        while (i < lines.length) {
+          const innerLine = lines[i].trim();
+          if (innerLine.includes("{")) braceDepth++;
+          if (innerLine.includes("}")) {
+          braceDepth--;
+          if (braceDepth <= 0) break;
+          i++;
+          continue;
+          }
+          loopBody.push(innerLine);
+          i++;
+        }
+        vars[varName] = start;
+        let loopGuard = 0;
+        outer: while (loopGuard < 100) {
+          const conditionExpr = `${vars[condVar]} ${operator} ${end}`;
+          if (!evalExpr(conditionExpr)) break;
+          for (let j = 0; j < loopBody.length; j++) {
+          const bodyLine = loopBody[j].trim();
+          const continueMatch = bodyLine.match(/^if\s*\((.+)\)\s*continue;$/);
+          if (continueMatch) {
+            if (evalExpr(continueMatch[1])) {
+            if (updateOp === "++") vars[updateVar]++;
+            else if (updateOp === "--") vars[updateVar]--;
+            loopGuard++;
+            continue outer;
+            }
+          }
+          const breakMatch = bodyLine.match(/^if\s*\((.+)\)\s*break;$/);
+          if (breakMatch) {
+            if (evalExpr(breakMatch[1])) {
+            break outer;
+            }
+          }
+          const printMatch = bodyLine.match(/System\.out\.println\((.+?)\);/);
+          if (printMatch) {
+            output.push(evalExpr(printMatch[1].trim()));
+            continue;
+          }
+          const assignMatch = bodyLine.match(/^(\w+)\s*=\s*(.+);$/);
+          if (assignMatch) {
+            const v = assignMatch[1];
+            const expr = assignMatch[2];
+            vars[v] = evalExpr(expr.trim());
+          }
+          }
+          if (updateOp === "++") vars[updateVar]++;
+          else if (updateOp === "--") vars[updateVar]--;
+          loopGuard++;
+        }
+        if (lines[i] && lines[i].trim() === "}") i++;
+        }
+      }
+
+      // Array declarations
+      let match;
+      if (match = line.match(/int\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
+        vars[match[1]] = match[2].split(",").map(v => parseInt(v.trim()));
+      } else if (match = line.match(/double\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
+        vars[match[1]] = match[2].split(",").map(v => parseFloat(v.trim()));
+      } else if (match = line.match(/String\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
+        vars[match[1]] = match[2].split(",").map(v => v.trim().replace(/^"|"$/g, ""));
+      } else if (match = line.match(/boolean\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
+        vars[match[1]] = match[2].split(",").map(v => v.trim() === "true");
+      } else if (match = line.match(/char\[\]\s+(\w+)\s*=\s*\{(.+?)\};/)) {
+        vars[match[1]] = match[2].split(",").map(v => v.trim().replace(/^'|'$/g, ""));
+      } else if (match = line.match(/int\s+(\w+)\s*=\s*(.+);/)) {
+        vars[match[1]] = parseInt(evalExpr(match[2].trim()));
+      } else if (match = line.match(/double\s+(\w+)\s*=\s*(.+);/)) {
+        vars[match[1]] = parseFloat(evalExpr(match[2].trim()));
+      } else if (match = line.match(/boolean\s+(\w+)\s*=\s*(.+);/)) {
+        vars[match[1]] = evalExpr(match[2].trim()) === true;
+      } else if (match = line.match(/char\s+(\w+)\s*=\s*'(.+)';/)) {
+        vars[match[1]] = match[2];
+      } else if (match = line.match(/String\s+(\w+)\s*=\s*(.+);/)) {
+        try {
+        const val = evalExpr(match[2].trim());
+        vars[match[1]] = val.replace(/^"|"$/g, "");
+        } catch {
+        vars[match[1]] = `[${match[2]}]`;
+        }
+      }
+
+      // Regular println
+      const printMatch = line.match(/System\.out\.println\((.+?)\);/);
+      if (printMatch) {
+        output.push(evalExpr(printMatch[1].trim()));
+      }
+
+      i++;
+      }
+
+      return output.length
+      ? "🔄 Simulated Output:\n" + output.join("\n")
+      : "❌ Error: Unable to simulate output.";
+    }
+
+    function simulateOutput(code, lang) {
+      if (lang === "java") return simulateJavaOutput(code);
+      if (lang === "js") return simulateJSOutput(code);
+      if (lang === "html") return "🖼️ HTML preview not simulated here.";
+      if (lang === "css") return "🎨 CSS preview not simulated here.";
+      return "❌ Unknown language.";
+    }
+
+    function scrollToTop() {
+      const container = document.getElementById("moduleContent");
+      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    
+    function showJavaArrayOutput() {
+      document.getElementById("java-array-output").classList.remove("hidden");
+      document.getElementById("java-array-output-placeholder").classList.add("hidden");
+    }
+  </script>
+
+
+
+</body>
+</html>
