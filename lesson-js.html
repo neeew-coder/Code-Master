@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Essentials | CodeMaster</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Header -->
+  <nav class="bg-yellow-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
+        <a href="#" class="hover:text-gray-200 transition">Projects</a>
+        <a href="#" class="hover:text-gray-200 transition">Community</a>
+      </div>
+      <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-yellow-600 px-3 py-1 rounded-full font-semibold">
+        <span id="navAvatar" class="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+        <span id="navName"></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Layout -->
+  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-auto">
+
+    <!-- Sidebar -->
+    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
+      <h2 class="text-xl font-bold text-yellow-600 mb-4 flex items-center space-x-2">
+        <i class="fab fa-js-square text-yellow-500"></i>
+        <span>JavaScript Modules</span>
+      </h2>
+      <ul class="space-y-3 text-sm">
+        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-700 font-semibold bg-yellow-100 hover:bg-yellow-200 transition">Introduction to JavaScript</button></li>
+        <li><button onclick="loadModule('wheretoadd')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Where to Add Scripts</button></li>
+        <li><button onclick="loadModule('output')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Output</button></li>
+        <li><button onclick="loadModule('statements')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Statements</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Syntax</button></li>
+        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Comments</button></li>
+        <li><button onclick="loadModule('variables')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Variables</button></li>
+        <li><button onclick="loadModule('let')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Lets</button></li>
+        <li><button onclick="loadModule('const')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Constants</button></li>
+        <li><button onclick="loadModule('operators')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Operators</button></li>
+        <li><button onclick="loadModule('arithmetic')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Arithmetic</button></li>
+        <li><button onclick="loadModule('assignments')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Assignments</button></li>
+        <li><button onclick="loadModule('datatypes')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Data Types</button></li>
+        <li><button onclick="loadModule('functions')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Functions</button></li>
+        <li><button onclick="loadModule('objects')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Objects</button></li>
+        <li><button onclick="loadModule('objectproperties')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Properties</button></li>
+        <li><button onclick="loadModule('objectmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Methods</button></li>
+        <li><button onclick="loadModule('objectdisplay')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Display</button></li>
+        <li><button onclick="loadModule('objectconstruction')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Construction</button></li>
+        <li><button onclick="loadModule('events')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">DOM Events</button></li>
+        <li><button onclick="loadModule('strings')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Strings</button></li>
+        <li><button onclick="loadModule('stringmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Methods</button></li>
+        <li><button onclick="loadModule('stringsearch')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Search</button></li>
+        <li><button onclick="loadModule('stringreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Reference</button></li>
+        <li><button onclick="loadModule('stringtemplate')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Template</button></li>
+        <li><button onclick="loadModule('numbers')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Numbers</button></li>
+        <li><button onclick="loadModule('bigint')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">BigInt</button></li>
+        <li><button onclick="loadModule('numbermethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Number Methods</button></li>
+        <li><button onclick="loadModule('numberproperties')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Number Properties</button></li>
+        <li><button onclick="loadModule('numberreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Number Reference</button></li>
+        <li><button onclick="loadModule('arrays')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Arrays</button></li>
+        <li><button onclick="loadModule('arrayaccess')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Access</button></li>
+        <li><button onclick="loadModule('arraymutations')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Mutations</button></li>
+        <li><button onclick="loadModule('arraytransform')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Transform</button></li>
+        <li><button onclick="loadModule('arraycopy')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Copy</button></li>
+        <li><button onclick="loadModule('arraymethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Methods</button></li>
+        <li><button onclick="loadModule('arraysearch')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Search</button></li>
+        <li><button onclick="loadModule('arraysort')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Sort</button></li>
+        <li><button onclick="loadModule('arrayiteration')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Iteration</button></li>
+        <li><button onclick="loadModule('arrayreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Reference</button></li>
+        <li><button onclick="loadModule('arrayconst')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Const</button></li>
+        <li><button onclick="loadModule('dates')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date</button></li>
+        <li><button onclick="loadModule('dateformat')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date Format</button></li>
+        <li><button onclick="loadModule('dategetmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date Get Methods</button></li>
+        <li><button onclick="loadModule('datesetmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date Set Methods</button></li>
+        <li><button onclick="loadModule('math')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Math</button></li>
+        <li><button onclick="loadModule('mathreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Math Reference</button></li>
+        <li><button onclick="loadModule('random')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Random</button></li>
+        <li><button onclick="loadModule('booleans')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Booleans</button></li>
+        <li><button onclick="loadModule('comparisons')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Comparisons</button></li>
+        <li><button onclick="loadModule('ifelse')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">If Else</button></li>
+        <li><button onclick="loadModule('switch')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Switch</button></li>
+        <li><button onclick="loadModule('loopfor')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">For Loop</button></li>
+        <li><button onclick="loadModule('loopforin')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Loop For In</button></li>
+        <li><button onclick="loadModule('loopforof')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Loop For Of</button></li>
+        <li><button onclick="loadModule('loopwhile')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">While Loop</button></li>
+        <li><button onclick="loadModule('break')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Break</button></li>
+        <li><button onclick="loadModule('sets')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Sets</button></li>
+        <li><button onclick="loadModule('setmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Set Methods</button></li>
+        <li><button onclick="loadModule('setlogic')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Set Logic</button></li>
+        <li><button onclick="loadModule('setreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Set Reference</button></li>
+        <li><button onclick="loadModule('maps')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Maps</button></li>
+        <li><button onclick="loadModule('mapmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Map Methods</button></li>
+        <li><button onclick="loadModule('maplogic')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Map Logic</button></li>
+        <li><button onclick="loadModule('mapreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Map Reference</button></li>
+        <li><button onclick="loadModule('typedarrays')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Typed Arrays</button></li>
+        <li><button onclick="loadModule('typedmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Typed Methods</button></li>
+        <li><button onclick="loadModule('typedreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Typed Reference</button></li>
+        <li><button onclick="loadModule('iterables')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Iterables</button></li>
+        <li><button onclick="loadModule('iterators')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Iterators</button></li>
+        <li><button onclick="loadModule('typeof')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Type Of</button></li>
+        <li><button onclick="loadModule('tostring')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">To String</button></li>
+        <li><button onclick="loadModule('typeconversion')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Type Conversion</button></li>
+        <li><button onclick="loadModule('destructuring')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Destructuring</button></li>
+        <li><button onclick="loadModule('bitwise')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Bitwise Operators</button></li>
+        <li><button onclick="loadModule('regexp')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Regular Expressions</button></li>
+        <li><button onclick="loadModule('regexpobjects')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">RegExp Objects</button></li>
+        <li><button onclick="loadModule('regexppatterns')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">RegExp Patterns</button></li>
+        <li><button onclick="loadModule('regexpmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">RegExp Methods</button></li>
+        <li><button onclick="loadModule('precedence')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Precedence</button></li>
+        <li><button onclick="loadModule('errors')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Errors</button></li>
+        <li><button onclick="loadModule('scope')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Scope</button></li>
+        <li><button onclick="loadModule('hoisting')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Hoisting</button></li>
+        <li><button onclick="loadModule('strictmode')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Strict Mode</button></li>
+        <li><button onclick="loadModule('thiskeyword')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">This Keyword</button></li>
+        <li><button onclick="loadModule('arrowfunctions')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Arrow Functions</button></li>
+        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Classes</button></li>
+        <li><button onclick="loadModule('modules')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Modules</button></li>
+        <li><button onclick="loadModule('json')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">JSON</button></li>
+        <li><button onclick="loadModule('debugging')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Debugging</button></li>
+        <li><button onclick="loadModule('styles')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Styles</button></li>
+        <li><button onclick="loadModule('bestpractices')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Best Practices</button></li>
+        <li><button onclick="loadModule('mistakes')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Mistakes</button></li>
+        <li><button onclick="loadModule('performance')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Performance</button></li>
+        <li><button onclick="loadModule('reservedwords')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Reserved Words</button></li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <section class="md:w-3/4 p-10 bg-yellow-200 flex flex-col justify-between font-sans relative">
+      <div class="overflow-hidden rounded-lg shadow-md border border-yellow-500 bg-white" id="moduleContent">
+        <!-- Default Intro Block -->
+        <div id="jsIntro" class="p-6">
+          <div class="flex items-center space-x-3 mb-6">
+            <div class="bg-white text-yellow-600 rounded-full p-3 text-xl shadow-md">
+              <i class="fab fa-js-square"></i>
+            </div>
+            <h1 class="text-4xl font-bold tracking-wide">JavaScript Essentials</h1>
+          </div>
+          <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-yellow-500 text-white text-sm whitespace-pre-wrap font-mono mb-6">
+            <pre>
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet("User"));
+            </pre>
+          </div>
+        </div>
+
+        <!-- Hidden iframe for modules -->
+        <iframe id="moduleFrame" src="" class="w-full border-none rounded-lg hidden" style="min-height: 100vh;"></iframe>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4 mt-6">
+        <button onclick="loadModule('intro')" class="bg-yellow-600 text-white px-6 py-2 rounded-full font-bold hover:bg-yellow-700 transition shadow-md">
+          Start Coding
+        </button>
+        <a href="dashboard.html" class="bg-yellow-900 text-white px-6 py-2 rounded-full font-bold hover:bg-yellow-800 transition shadow-md">
+          View Dashboard
+        </a>
+      </div>
+
+      <!-- Progress Bar -->
+      <div class="mt-10">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
+          <span class="text-sm text-yellow-700 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-yellow-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Scroll to Top Button -->
+      <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-yellow-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-yellow-700 transition z-50">
+        ↑
+      </button>
+    </section>
+  </main>
+
+  <script>
+    function loadModule(lessonId) {
+      const iframe = document.getElementById("moduleFrame");
+      const intro = document.getElementById("jsIntro");
+      if (!iframe || !intro) return;
+
+      // Hide intro block and show iframe
+      intro.style.display = "none";
+      iframe.classList.remove("hidden");
+
+      // Highlight active button
+      document.querySelectorAll("aside button").forEach(btn => {
+        btn.classList.remove("bg-yellow-100", "font-semibold", "text-yellow-700");
+        btn.classList.add("text-yellow-600");
+      });
+      const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+      if (activeBtn) {
+        activeBtn.classList.add("bg-yellow-100", "font-semibold", "text-yellow-700");
+        activeBtn.classList.remove("text-yellow-600");
+      }
+
+      // Load module into iframe
+      iframe.src = `lessons/javascript/${lessonId}.html`;
+
+      // Update progress
+      updateProgress(lessonId);
+    }
+
+    function updateProgress(lessonId) {
+      const progressBar = document.getElementById("progress-bar");
+      const completedModules = JSON.parse(localStorage.getItem("JSCompleted") || "[]");
+
+      if (!completedModules.includes(lessonId)) {
+        completedModules.push(lessonId);
+        localStorage.setItem("JSCompleted", JSON.stringify(completedModules));
+      }
+
+      const total = 96; // total JavaScript modules
+      const percent = Math.round((completedModules.length / total) * 100);
+      progressBar.style.width = `${percent}%`;
+
+      const label = document.querySelector(".progress-label");
+      if (label) label.textContent = `${percent}% Completed`;
+    }
+
+    function scrollToTop() {
+  const iframe = document.getElementById("moduleFrame");
+  if (iframe) {
+    iframe.contentWindow.postMessage({ type: "scroll-top" }, "*");
+  }
+}
+    window.addEventListener("message", (event) => {
+    if (event.data.type === "resize-iframe") {
+      const iframe = document.getElementById("moduleFrame");
+      if (iframe) {
+        iframe.style.height = event.data.height + "px";
+      }
+    }
+  });
+
+  </script>
+</body>
+</html>
