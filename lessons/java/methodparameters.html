@@ -1,0 +1,120 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🔧 Java Methods & Parameters</h2>
+
+<p class="mb-6 text-gray-700">
+  A <strong>method</strong> in Java is a reusable block of code that performs a specific task. Methods can accept <strong>parameters</strong> (inputs) and optionally return values. This makes your code more flexible, organized, and reusable.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 What Are Parameters?</summary>
+  <p class="text-gray-700 mt-2">
+    Parameters are like ingredients you pass into a method. They allow the method to work with different data each time it's called. You define them inside the parentheses when declaring the method, and provide actual values (called <em>arguments</em>) when calling it.
+  </p>
+</details>
+
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 Method Syntax</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm text-gray-800 mb-6">
+static ReturnType methodName(Type param1, Type param2) {
+  // method body
+  return value; // if not void
+}
+</pre>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Method with One Parameter</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+public class Main {
+  static void greet(String name) {
+    System.out.println("Hello, " + name + "!");
+  }
+
+  public static void main(String[] args) {
+    greet("Mark");
+    greet("CodeMaster");
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      The method <code>greet</code> takes a <code>String</code> parameter called <code>name</code>. When you call <code>greet("Mark")</code>, it prints a personalized message. This shows how parameters make methods dynamic.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧮 Method with Multiple Parameters and Return Value</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+public class Main {
+  static int add(int a, int b) {
+    return a + b;
+  }
+
+  public static void main(String[] args) {
+    System.out.println("Sum of 5 and 3: " + add(5, 3));
+    System.out.println("Sum of 10 and 7: " + add(10, 7));
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      The method <code>add</code> takes two <code>int</code> parameters and returns their sum. This shows how methods can process multiple inputs and return a result.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A method is like a blender. You put in ingredients (parameters), press a button (call the method), and get a smoothie (return value).
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What is the purpose of parameters in a method?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> To define the method’s name</label></li>
+  <li><label><input type="radio" name="q1"> To pass input values into the method</label></li>
+  <li><label><input type="radio" name="q1"> To return a value from the method</label></li>
+  <li><label><input type="radio" name="q1"> To create a loop inside the method</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does this method return? <code>int multiply(int x, int y) { return x * y; }</code>
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> The sum of x and y</label></li>
+  <li><label><input type="radio" name="q2"> The product of x and y</label></li>
+  <li><label><input type="radio" name="q2"> A string</label></li>
+  <li><label><input type="radio" name="q2"> Nothing</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('method-parameters')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

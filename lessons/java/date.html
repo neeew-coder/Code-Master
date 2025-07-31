@@ -1,0 +1,121 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">📅 Java Date and Time</h2>
+
+<p class="mb-6 text-gray-700">
+  Java provides the <code>java.time</code> package to handle dates and times in a modern, immutable, and thread-safe way. Key classes include <code>LocalDate</code>, <code>LocalTime</code>, and <code>LocalDateTime</code>.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use java.time?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Immutable and thread-safe design</li>
+    <li>Clear separation of date, time, and datetime</li>
+    <li>Built-in formatting and parsing</li>
+    <li>Easy arithmetic and comparison</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Getting Current Date and Time</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.LocalDateTime;
+
+public class Main {
+  public static void main(String[] args) {
+    LocalDate date = LocalDate.now();
+    LocalTime time = LocalTime.now();
+    LocalDateTime dateTime = LocalDateTime.now();
+
+    System.out.println("Date: " + date);
+    System.out.println("Time: " + time);
+    System.out.println("DateTime: " + dateTime);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>LocalDate.now()</code>, <code>LocalTime.now()</code>, and <code>LocalDateTime.now()</code> fetch the current system date and time. These classes are immutable and safe for concurrent use.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">📆 Formatting and Parsing</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+public class Main {
+  public static void main(String[] args) {
+    LocalDate date = LocalDate.of(2025, 7, 31);
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy");
+    String formatted = date.format(formatter);
+    System.out.println("Formatted date: " + formatted);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>DateTimeFormatter</code> lets you format dates into human-readable strings. You can also use it to parse strings back into <code>LocalDate</code> objects.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of date objects like calendar entries. You can view them, format them for display, or calculate how many days until your next deadline.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which class is used to represent a date without time?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Date</label></li>
+  <li><label><input type="radio" name="q1"> LocalDate</label></li>
+  <li><label><input type="radio" name="q1"> Calendar</label></li>
+  <li><label><input type="radio" name="q1"> TimeStamp</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does <code>DateTimeFormatter.ofPattern("dd MMM yyyy")</code> do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Parses a time zone</label></li>
+  <li><label><input type="radio" name="q2"> Formats a date into a custom string</label></li>
+  <li><label><input type="radio" name="q2"> Converts a date to milliseconds</label></li>
+  <li><label><input type="radio" name="q2"> Sets the system clock</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('date-time')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

@@ -1,0 +1,123 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🔁 Java Set Interface</h2>
+
+<p class="mb-6 text-gray-700">
+  A <code>Set</code> is a collection that does not allow duplicate elements. It models mathematical sets and is useful for filtering, uniqueness, and membership checks.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use Set?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Automatically removes duplicates</li>
+    <li>Efficient membership testing with <code>contains()</code></li>
+    <li>Useful for tags, filters, and unique values</li>
+    <li>Common implementations: <code>HashSet</code>, <code>LinkedHashSet</code>, <code>TreeSet</code></li>
+  </ul>
+</details>
+
+<!-- Example 1: HashSet -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔁 HashSet Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.HashSet;
+
+public class Main {
+  public static void main(String[] args) {
+    HashSet<String> fruits = new HashSet<>();
+    fruits.add("Apple");
+    fruits.add("Banana");
+    fruits.add("Apple"); // Duplicate
+
+    for (String fruit : fruits) {
+      System.out.println(fruit);
+    }
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>HashSet</code> stores unique elements with no guaranteed order. Duplicate entries are ignored.
+    </p>
+  </details>
+</div>
+
+<!-- Example 2: TreeSet -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🌲 TreeSet Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.TreeSet;
+
+public class Main {
+  public static void main(String[] args) {
+    TreeSet<Integer> scores = new TreeSet<>();
+    scores.add(88);
+    scores.add(72);
+    scores.add(95);
+
+    for (int score : scores) {
+      System.out.println(score);
+    }
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>TreeSet</code> stores unique elements in sorted order. Great for ordered sets.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A <code>Set</code> is like a guest list — no one gets invited twice, and you can quickly check if someone’s on it.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which Set implementation maintains sorted order?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> HashSet</label></li>
+  <li><label><input type="radio" name="q1"> TreeSet</label></li>
+  <li><label><input type="radio" name="q1"> LinkedHashSet</label></li>
+  <li><label><input type="radio" name="q1"> ArrayList</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What happens when you add a duplicate to a Set?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> It throws an error</label></li>
+  <li><label><input type="radio" name="q2"> It replaces the old value</label></li>
+  <li><label><input type="radio" name="q2"> It ignores the duplicate</label></li>
+  <li><label><input type="radio" name="q2"> It adds both values</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('set')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

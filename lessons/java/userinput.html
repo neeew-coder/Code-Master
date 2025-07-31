@@ -1,0 +1,133 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🎤 Java User Input</h2>
+
+<p class="mb-6 text-gray-700">
+  Java uses the <code>Scanner</code> class to read user input from the console. It supports various data types and is part of the <code>java.util</code> package.
+</p>
+
+<!-- Input Limitations Notice -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">⚠️ Input Limitations</summary>
+  <p class="text-gray-700 mt-2">
+    Some online compilers or preview tools may not support interactive input via <code>System.in</code>. If you encounter errors like <code>NoSuchElementException</code>, try running the code in a local IDE or terminal.
+  </p>
+</details>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Learn User Input?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Make programs interactive</li>
+    <li>Accept dynamic data from users</li>
+    <li>Enable real-time decision-making</li>
+    <li>Build CLI tools and games</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Reading a String (Safe Version)</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter your name: ");
+    String name = sc.hasNextLine() ? sc.nextLine() : "Guest";
+
+    System.out.println("Hello, " + name + "!");
+    sc.close();
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>Scanner.nextLine()</code> reads a full line of text. Using <code>hasNextLine()</code> prevents runtime errors when input is unavailable.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔢 Reading Numbers</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.Scanner;
+
+public class Main {
+  public static void main(String[] args) {
+    Scanner sc = new Scanner(System.in);
+
+    System.out.print("Enter your age: ");
+    if (sc.hasNextInt()) {
+      int age = sc.nextInt();
+      System.out.println("You are " + age + " years old.");
+    } else {
+      System.out.println("Invalid input. Please enter a number.");
+    }
+
+    sc.close();
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>Scanner.nextInt()</code> reads an integer. <code>hasNextInt()</code> checks if the input is valid before reading, preventing crashes.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of user input like a conversation. Your program asks a question, the user responds, and your program reacts — just like a chatbot or a form.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which class is used to read input from the console in Java?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> InputReader</label></li>
+  <li><label><input type="radio" name="q1"> Console</label></li>
+  <li><label><input type="radio" name="q1"> Scanner</label></li>
+  <li><label><input type="radio" name="q1"> Reader</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does <code>nextLine()</code> do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Reads a single word</label></li>
+  <li><label><input type="radio" name="q2"> Reads an entire line of text</label></li>
+  <li><label><input type="radio" name="q2"> Reads an integer</label></li>
+  <li><label><input type="radio" name="q2"> Reads a boolean value</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('user-input')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

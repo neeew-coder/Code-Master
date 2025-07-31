@@ -1,0 +1,122 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🌲 Java TreeSet</h2>
+
+<p class="mb-6 text-gray-700">
+  <code>TreeSet</code> is a Set implementation that stores elements in sorted order. It uses a Red-Black tree under the hood and ensures uniqueness and ordering.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use TreeSet?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Automatically sorts elements in natural or custom order</li>
+    <li>Prevents duplicates like all sets</li>
+    <li>Efficient for range queries and ordered iteration</li>
+    <li>Supports methods like <code>first()</code>, <code>last()</code>, <code>higher()</code>, <code>lower()</code></li>
+  </ul>
+</details>
+
+<!-- Example 1: Natural Order -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔢 Natural Order Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.TreeSet;
+
+public class Main {
+  public static void main(String[] args) {
+    TreeSet<String> names = new TreeSet<>();
+    names.add("Zara");
+    names.add("Mike");
+    names.add("Anna");
+
+    for (String name : names) {
+      System.out.println(name);
+    }
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>TreeSet</code> stores elements in ascending order by default. Duplicates are ignored.
+    </p>
+  </details>
+</div>
+
+<!-- Example 2: Numeric TreeSet -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">📊 Numeric TreeSet</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.TreeSet;
+
+public class Main {
+  public static void main(String[] args) {
+    TreeSet<Integer> scores = new TreeSet<>();
+    scores.add(88);
+    scores.add(72);
+    scores.add(95);
+
+    System.out.println("Lowest: " + scores.first());
+    System.out.println("Highest: " + scores.last());
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>first()</code> and <code>last()</code> return the smallest and largest elements in the sorted set.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A <code>TreeSet</code> is like a sorted guest list — names are automatically arranged alphabetically, and duplicates are silently ignored.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which method returns the smallest element in a TreeSet?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> min()</label></li>
+  <li><label><input type="radio" name="q1"> first()</label></li>
+  <li><label><input type="radio" name="q1"> lowest()</label></li>
+  <li><label><input type="radio" name="q1"> getMin()</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What happens when you add a duplicate to a TreeSet?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> It throws an error</label></li>
+  <li><label><input type="radio" name="q2"> It replaces the old value</label></li>
+  <li><label><input type="radio" name="q2"> It ignores the duplicate</label></li>
+  <li><label><input type="radio" name="q2"> It adds both values</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('treeset')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

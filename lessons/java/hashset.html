@@ -1,0 +1,126 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🧠 Java HashSet</h2>
+
+<p class="mb-6 text-gray-700">
+  <code>HashSet</code> is a Set implementation backed by a hash table. It stores unique elements with fast access and no guaranteed order.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use HashSet?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Prevents duplicates automatically</li>
+    <li>Provides constant-time performance for basic operations</li>
+    <li>Ideal for membership testing and filtering</li>
+    <li>Does not maintain insertion order</li>
+  </ul>
+</details>
+
+<!-- Example 1: Basic Usage -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 HashSet Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.HashSet;
+
+public class Main {
+  public static void main(String[] args) {
+    HashSet<String> emails = new HashSet<>();
+    emails.add("mark@example.com");
+    emails.add("anna@example.com");
+    emails.add("mark@example.com"); // Duplicate
+
+    for (String email : emails) {
+      System.out.println(email);
+    }
+
+    System.out.println("Contains anna@example.com? " + emails.contains("anna@example.com"));
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>HashSet</code> uses hashing to store elements. Duplicate entries are ignored, and <code>contains()</code> checks for membership efficiently.
+    </p>
+  </details>
+</div>
+
+<!-- Example 2: Removing and Checking -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧹 Removing and Checking</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.HashSet;
+
+public class Main {
+  public static void main(String[] args) {
+    HashSet<Integer> ids = new HashSet<>();
+    ids.add(101);
+    ids.add(102);
+    ids.add(103);
+
+    ids.remove(102);
+
+    System.out.println("Contains 102? " + ids.contains(102));
+    System.out.println("Size: " + ids.size());
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>remove()</code> deletes an element, <code>contains()</code> checks for existence, and <code>size()</code> returns the number of elements.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A <code>HashSet</code> is like a guest list with a fingerprint scanner — each name is hashed, and duplicates are blocked instantly.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What happens when you add a duplicate to a HashSet?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> It throws an error</label></li>
+  <li><label><input type="radio" name="q1"> It replaces the old value</label></li>
+  <li><label><input type="radio" name="q1"> It ignores the duplicate</label></li>
+  <li><label><input type="radio" name="q1"> It adds both values</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which method checks if a HashSet contains an element?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> has()</label></li>
+  <li><label><input type="radio" name="q2"> contains()</label></li>
+  <li><label><input type="radio" name="q2"> includes()</label></li>
+  <li><label><input type="radio" name="q2"> exists()</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('hashset')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

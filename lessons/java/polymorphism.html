@@ -1,0 +1,147 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🌀 Java Polymorphism</h2>
+
+<p class="mb-6 text-gray-700">
+  <strong>Polymorphism</strong> allows objects of different classes to be treated as objects of a common superclass. It enables dynamic method dispatch, where the method that gets called is determined at runtime based on the object's actual type.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use Polymorphism?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Write flexible and reusable code</li>
+    <li>Enable dynamic behavior at runtime</li>
+    <li>Simplify code using common interfaces or base classes</li>
+    <li>Support plug-and-play architecture</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Runtime Polymorphism</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+class Animal {
+  void speak() {
+    System.out.println("Animal speaks");
+  }
+}
+
+class Dog extends Animal {
+  @Override
+  void speak() {
+    System.out.println("Dog barks");
+  }
+}
+
+class Cat extends Animal {
+  @Override
+  void speak() {
+    System.out.println("Cat meows");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Animal a1 = new Dog();
+    Animal a2 = new Cat();
+    a1.speak(); // Dog's speak()
+    a2.speak(); // Cat's speak()
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      Even though <code>a1</code> and <code>a2</code> are declared as <code>Animal</code>, the actual method called depends on the runtime type — <code>Dog</code> and <code>Cat</code>. This is dynamic dispatch.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔌 Interface-Based Polymorphism</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+interface Shape {
+  void draw();
+}
+
+class Circle implements Shape {
+  public void draw() {
+    System.out.println("Drawing Circle");
+  }
+}
+
+class Square implements Shape {
+  public void draw() {
+    System.out.println("Drawing Square");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Shape s1 = new Circle();
+    Shape s2 = new Square();
+    s1.draw(); // Circle's draw()
+    s2.draw(); // Square's draw()
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      Both <code>Circle</code> and <code>Square</code> implement the <code>Shape</code> interface. The <code>draw()</code> method is called based on the actual object type, not the reference type.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of a remote control (reference type) that can operate different devices — TV, AC, or fan (actual types). The button you press behaves differently depending on the device.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What determines which method is called in runtime polymorphism?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> The reference type</label></li>
+  <li><label><input type="radio" name="q1"> The method name</label></li>
+  <li><label><input type="radio" name="q1"> The actual object type</label></li>
+  <li><label><input type="radio" name="q1"> The package name</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which of the following supports polymorphism?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Constructors</label></li>
+  <li><label><input type="radio" name="q2"> Interfaces</label></li>
+  <li><label><input type="radio" name="q2"> Static methods</label></li>
+  <li><label><input type="radio" name="q2"> Private methods</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('polymorphism')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

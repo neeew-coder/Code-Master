@@ -75,11 +75,11 @@
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Classes</h3>
         <li><button onclick="loadModule('oop')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Object Oriented Programming</button></li>
         <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Classes/Objects</button></li>
-        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Class Attributes</button></li>
-        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Class Methods</button></li>
-        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Constructors</button></li>
-        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">This Keyword</button></li>
-        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Modifiers</button></li>
+        <li><button onclick="loadModule('classattributes')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Class Attributes</button></li>
+        <li><button onclick="loadModule('classmethods')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Class Methods</button></li>
+        <li><button onclick="loadModule('constructors')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Constructors</button></li>
+        <li><button onclick="loadModule('thiskeyword')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">This Keyword</button></li>
+        <li><button onclick="loadModule('modifiers')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Modifiers</button></li>
         <li><button onclick="loadModule('encapsulation')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Encapsulation</button></li>
         <li><button onclick="loadModule('package')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Package/API</button></li>
         <li><button onclick="loadModule('inheritance')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Inheritance</button></li>
@@ -97,10 +97,25 @@
         <li><button onclick="loadModule('exceptions')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Exceptions</button></li>
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java File Handling</h3>
         <li><button onclick="loadModule('files')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Files</button></li>
-        <li><button onclick="loadModule('createwritefiles')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Create/Write Files</button></li>
+        <li><button onclick="loadModule('create')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Create/Write Files</button></li>
         <li><button onclick="loadModule('readfiles')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Read Files</button></li>
-        <li><button onclick="loadModule('deletefiles')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Delete Files</button></li>
-        <li><button onclick="loadModule('inheritance')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Inheritance</button></li>
+        <li><button onclick="loadModule('delete')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Delete Files</button></li>
+        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Data Structures</h3>
+        <li><button onclick="loadModule('datastructures')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Data Structures</button></li>
+        <li><button onclick="loadModule('collections')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Collections</button></li>
+        <li><button onclick="loadModule('lists')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">List</button></li>
+        <li><button onclick="loadModule('arraylist')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Array List</button></li>
+        <li><button onclick="loadModule('linkedlist')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Linked List</button></li>
+        <li><button onclick="loadModule('listsorting')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">List Sorting</button></li>
+        <li><button onclick="loadModule('set')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Set</button></li>
+        <li><button onclick="loadModule('hashset')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Hash Set</button></li>
+        <li><button onclick="loadModule('treeset')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Tree Set</button></li>
+        <li><button onclick="loadModule('linkedhashset')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Linked HashSet</button></li>
+        <li><button onclick="loadModule('map')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Map</button></li>
+        <li><button onclick="loadModule('hashmap')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">HashMap</button></li>
+        <li><button onclick="loadModule('treemap')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">TreeMap</button></li>
+        <li><button onclick="loadModule('linkedhashmap')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">LinkedHashMap</button></li>
+        <li><button onclick="loadModule('iterator')" class="block w-full text-left px-3 py-2 rounded-md text-red-600 hover:bg-red-50 transition">Iterator</button></li>
       </ul>
     </aside>
 

@@ -1,24 +1,134 @@
-<div class="simulation-box bg-gray-100 p-6 rounded shadow">
-  <pre>
-class Person {
-  String name;
+<h2 class="text-2xl font-bold mb-4 text-red-500">🧱 Java Object-Oriented Programming (OOP)</h2>
 
-  Person(String name) {
-    this.name = name;
+<p class="mb-6 text-gray-700">
+  <strong>OOP</strong> is a programming paradigm based on the concept of "objects" — containers that hold data and behavior. Java is built around OOP, making it easier to model real-world systems.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Four Pillars of OOP</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li><strong>Encapsulation:</strong> Bundling data and methods together, hiding internal details.</li>
+    <li><strong>Inheritance:</strong> Reusing code by creating new classes from existing ones.</li>
+    <li><strong>Polymorphism:</strong> Using one interface to represent different underlying forms.</li>
+    <li><strong>Abstraction:</strong> Hiding complex implementation and showing only essential features.</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Encapsulation Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+class Person {
+  private String name;
+
+  public void setName(String newName) {
+    name = newName;
   }
 
-  void greet() {
-    System.out.println("Hello, " + name + "!");
+  public String getName() {
+    return name;
   }
 }
 
 public class Main {
   public static void main(String[] args) {
-    Person p = new Person("Mark");
-    p.greet();
+    Person p = new Person();
+    p.setName("Mark");
+    System.out.println("Name: " + p.getName());
   }
 }
-  </pre>
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      The <code>name</code> field is private, so it can’t be accessed directly. Instead, we use <code>setName</code> and <code>getName</code> — this is encapsulation.
+    </p>
+  </details>
 </div>
 
-<button onclick="markComplete()" class="mt-6 bg-red-600 text-white px-6 py-2 rounded hover:bg-red-700 transition">Mark as Complete</button>
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Inheritance Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+class Animal {
+  void speak() {
+    System.out.println("Animal speaks");
+  }
+}
+
+class Dog extends Animal {
+  void speak() {
+    System.out.println("Dog barks");
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Animal a = new Animal();
+    Dog d = new Dog();
+    a.speak();
+    d.speak();
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>Dog</code> inherits from <code>Animal</code> and overrides the <code>speak</code> method. This shows inheritance and polymorphism in action.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of a car. The steering wheel, pedals, and dashboard are the interface (abstraction). You don’t need to know how the engine works (encapsulation). Different cars may drive differently (polymorphism), and electric cars may inherit features from traditional ones (inheritance).
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which OOP principle hides internal details and exposes only necessary parts?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Inheritance</label></li>
+  <li><label><input type="radio" name="q1"> Encapsulation</label></li>
+  <li><label><input type="radio" name="q1"> Polymorphism</label></li>
+  <li><label><input type="radio" name="q1"> Abstraction</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does the <code>extends</code> keyword do in Java?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> It creates a new method</label></li>
+  <li><label><input type="radio" name="q2"> It hides a variable</label></li>
+  <li><label><input type="radio" name="q2"> It inherits from a parent class</label></li>
+  <li><label><input type="radio" name="q2"> It defines an interface</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('oop')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

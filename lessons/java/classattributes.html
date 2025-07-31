@@ -1,0 +1,94 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🧬 Java Class Attributes</h2>
+
+<p class="mb-6 text-gray-700">
+  <strong>Attributes</strong> (also called fields or member variables) define the state of a class. They can be <strong>instance</strong> (unique to each object) or <strong>static</strong> (shared across all objects). Access modifiers like <code>private</code>, <code>public</code>, and <code>protected</code> control visibility.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Types of Attributes</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li><strong>Instance Attributes:</strong> Each object has its own copy.</li>
+    <li><strong>Static Attributes:</strong> Shared across all instances of the class.</li>
+    <li><strong>Access Modifiers:</strong> Control visibility (<code>private</code>, <code>public</code>, <code>protected</code>).</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Instance vs Static Attributes</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+class Student {
+  String name; // instance attribute
+  static String school = "Code Academy"; // static attribute
+
+  void display() {
+    System.out.println("Name: " + name + ", School: " + school);
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Student s1 = new Student();
+    s1.name = "Mark";
+
+    Student s2 = new Student();
+    s2.name = "Luna";
+
+    s1.display();
+    s2.display();
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>name</code> is unique to each student, while <code>school</code> is shared across all students. Changing <code>school</code> affects all instances.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of a passport. Your name and birthdate are unique (instance attributes), but the issuing country is the same for all citizens (static attribute).
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which attribute is shared across all objects?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Instance attribute</label></li>
+  <li><label><input type="radio" name="q1"> Static attribute</label></li>
+  <li><label><input type="radio" name="q1"> Private attribute</label></li>
+  <li><label><input type="radio" name="q1"> Protected attribute</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does the <code>private</code> modifier do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Makes the attribute accessible from anywhere</label></li>
+  <li><label><input type="radio" name="q2"> Hides the attribute from other classes</label></li>
+  <li><label><input type="radio" name="q2"> Shares the attribute across all objects</label></li>
+  <li><label><input type="radio" name="q2"> Makes the attribute static</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('class-attributes')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

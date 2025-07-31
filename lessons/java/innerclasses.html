@@ -1,0 +1,122 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🏗️ Java Inner Classes</h2>
+
+<p class="mb-6 text-gray-700">
+  An <strong>inner class</strong> is a class defined within another class. It helps logically group classes that are only used in one place, and can access members of the outer class directly.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Types of Inner Classes</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li><strong>Member Inner Class</strong>: Non-static, tied to an instance of the outer class</li>
+    <li><strong>Static Nested Class</strong>: Static, does not require outer class instance</li>
+    <li><strong>Local Inner Class</strong>: Defined inside a method</li>
+    <li><strong>Anonymous Inner Class</strong>: No name, used for one-time implementation</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Member Inner Class</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+class Outer {
+  private String message = "Hello from Outer";
+
+  class Inner {
+    void showMessage() {
+      System.out.println(message); // access outer class member
+    }
+  }
+
+  public static void main(String[] args) {
+    Outer outer = new Outer();
+    Outer.Inner inner = outer.new Inner();
+    inner.showMessage();
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      The <code>Inner</code> class is tied to an instance of <code>Outer</code>. It can directly access private members like <code>message</code>.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔌 Static Nested Class</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+class Outer {
+  static class StaticInner {
+    void greet() {
+      System.out.println("Hello from Static Inner");
+    }
+  }
+
+  public static void main(String[] args) {
+    Outer.StaticInner inner = new Outer.StaticInner();
+    inner.greet();
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      A <code>StaticInner</code> class does not need an instance of <code>Outer</code>. It behaves like a regular static class nested inside another.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of inner classes like departments inside a company. They’re part of the company (outer class) and can access its resources, but some (static) operate independently.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which inner class type requires an instance of the outer class?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Static nested class</label></li>
+  <li><label><input type="radio" name="q1"> Member inner class</label></li>
+  <li><label><input type="radio" name="q1"> Anonymous inner class</label></li>
+  <li><label><input type="radio" name="q1"> Local inner class</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which inner class type is defined inside a method?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Member inner class</label></li>
+  <li><label><input type="radio" name="q2"> Static nested class</label></li>
+  <li><label><input type="radio" name="q2"> Local inner class</label></li>
+  <li><label><input type="radio" name="q2"> Interface inner class</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('inner-classes')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

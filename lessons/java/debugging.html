@@ -1,0 +1,119 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🐞 Java Debugging</h2>
+
+<p class="mb-6 text-gray-700">
+  <strong>Debugging</strong> is the process of identifying and fixing errors in your code. It helps you understand how your program behaves and why it might not be working as expected.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Learn Debugging?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Find and fix logic errors</li>
+    <li>Understand program flow</li>
+    <li>Improve code reliability</li>
+    <li>Build confidence in troubleshooting</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Debugging with Print Statements</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+public class Main {
+  public static void main(String[] args) {
+    int x = 5;
+    int y = 0;
+
+    System.out.println("Before division: x = " + x + ", y = " + y);
+
+    int result = x / y; // Bug: division by zero
+
+    System.out.println("Result: " + result);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      Print statements help trace the values of variables before and after operations. Here, printing <code>y</code> reveals it's zero, which causes an <code>ArithmeticException</code>.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔍 Debugging a Logic Error</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+public class Main {
+  public static void main(String[] args) {
+    int[] scores = {90, 85, 70};
+    int total = 0;
+
+    for (int i = 1; i < scores.length; i++) { // Bug: starts at index 1
+      total += scores[i];
+    }
+
+    System.out.println("Total score: " + total);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      The loop skips index 0, so <code>scores[0]</code> (90) is never added. Changing <code>i = 1</code> to <code>i = 0</code> fixes the logic error.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Debugging is like detective work. You gather clues (print statements, breakpoints), follow the trail (code flow), and solve the mystery (fix the bug).
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What does a breakpoint do in an IDE?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Stops the program from compiling</label></li>
+  <li><label><input type="radio" name="q1"> Pauses execution at a specific line</label></li>
+  <li><label><input type="radio" name="q1"> Deletes a variable</label></li>
+  <li><label><input type="radio" name="q1"> Runs the program faster</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which of these is a logic error?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Dividing by zero</label></li>
+  <li><label><input type="radio" name="q2"> Skipping the first element in a loop</label></li>
+  <li><label><input type="radio" name="q2"> Using an undefined variable</label></li>
+  <li><label><input type="radio" name="q2"> Forgetting a semicolon</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('debugging')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

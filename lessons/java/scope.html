@@ -1,0 +1,112 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🔍 Java Scope</h2>
+
+<p class="mb-6 text-gray-700">
+  <strong>Scope</strong> in Java defines where a variable can be accessed or modified. Understanding scope helps prevent bugs and makes your code more predictable and secure.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Types of Scope</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li><strong>Local Scope:</strong> Variables declared inside a method or block. Only accessible within that block.</li>
+    <li><strong>Class Scope (Field):</strong> Variables declared inside a class but outside methods. Accessible by all methods in the class.</li>
+    <li><strong>Block Scope:</strong> Variables declared inside loops, if-statements, etc. Exist only within that block.</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Local vs Class Scope</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+public class ScopeDemo {
+  static int classLevel = 10; // Class scope
+
+  public static void main(String[] args) {
+    int localLevel = 5; // Local scope
+    System.out.println("Class level: " + classLevel);
+    System.out.println("Local level: " + localLevel);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>classLevel</code> is accessible throughout the class, while <code>localLevel</code> only exists inside <code>main</code>. Trying to access <code>localLevel</code> outside <code>main</code> would cause an error.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Block Scope Example</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+public class BlockScope {
+  public static void main(String[] args) {
+    if (true) {
+      int insideIf = 99;
+      System.out.println("Inside block: " + insideIf);
+    }
+    // System.out.println(insideIf); // Error: outside scope
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>insideIf</code> is only accessible inside the <code>if</code> block. Uncommenting the second print statement would cause a compile error.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of scope like access cards in a building. A local card only opens one room, a class-level card opens all rooms on a floor, and a block-level card works only inside a specific meeting room.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which variable has class scope?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Variable declared inside a method</label></li>
+  <li><label><input type="radio" name="q1"> Variable declared inside a loop</label></li>
+  <li><label><input type="radio" name="q1"> Variable declared outside all methods but inside the class</label></li>
+  <li><label><input type="radio" name="q1"> Variable declared inside an if block</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What happens if you try to access a block-scoped variable outside its block?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> It prints null</label></li>
+  <li><label><input type="radio" name="q2"> It throws a runtime error</label></li>
+  <li><label><input type="radio" name="q2"> It causes a compile-time error</label></li>
+  <li><label><input type="radio" name="q2"> It returns zero</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('scope')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

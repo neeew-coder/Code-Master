@@ -1,0 +1,125 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🎯 Java Enums</h2>
+
+<p class="mb-6 text-gray-700">
+  An <strong>enum</strong> (short for "enumeration") is a special Java type used to define a collection of constants. Enums are type-safe and can include fields, methods, and constructors.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use Enums?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Group related constants under one type</li>
+    <li>Improve type safety and readability</li>
+    <li>Support custom behavior per constant</li>
+    <li>Work seamlessly with switch statements</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block 1 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Basic Enum Usage</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+enum Day {
+  MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Day today = Day.WEDNESDAY;
+    System.out.println("Today is " + today);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      The <code>Day</code> enum defines a fixed set of constants. The variable <code>today</code> can only hold one of those values, ensuring type safety.
+    </p>
+  </details>
+</div>
+
+<!-- Inline Execution Block 2 -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">⚙️ Enum with Fields and Methods</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+enum Level {
+  LOW(1), MEDIUM(2), HIGH(3);
+
+  private int priority;
+
+  Level(int priority) {
+    this.priority = priority;
+  }
+
+  public int getPriority() {
+    return priority;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    Level l = Level.HIGH;
+    System.out.println("Priority: " + l.getPriority());
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      Each enum constant in <code>Level</code> has a priority value. The constructor sets it, and <code>getPriority()</code> retrieves it. Enums can behave like full-fledged classes.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of enums like traffic lights. You only have three valid states — RED, YELLOW, GREEN — and each can have its own behavior or timing.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which keyword is used to define an enum in Java?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> class</label></li>
+  <li><label><input type="radio" name="q1"> enum</label></li>
+  <li><label><input type="radio" name="q1"> interface</label></li>
+  <li><label><input type="radio" name="q1"> constant</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What can enums contain in Java?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Only constants</label></li>
+  <li><label><input type="radio" name="q2"> Fields, methods, and constructors</label></li>
+  <li><label><input type="radio" name="q2"> Only static methods</label></li>
+  <li><label><input type="radio" name="q2"> Only public fields</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('enums')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

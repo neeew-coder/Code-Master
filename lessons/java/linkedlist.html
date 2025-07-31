@@ -1,0 +1,126 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🔗 Java LinkedList</h2>
+
+<p class="mb-6 text-gray-700">
+  <code>LinkedList</code> is a doubly-linked list implementation of the <code>List</code> and <code>Deque</code> interfaces. It excels at insertions and deletions.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use LinkedList?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Efficient insertions and deletions at both ends</li>
+    <li>Implements <code>List</code> and <code>Deque</code> for flexible usage</li>
+    <li>Slower indexed access compared to <code>ArrayList</code></li>
+    <li>Ideal for queue-like or frequently modified data</li>
+  </ul>
+</details>
+
+<!-- Example 1: Basic Usage -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🔗 Basic LinkedList Operations</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    LinkedList<String> queue = new LinkedList<>();
+    queue.add("Mark");
+    queue.add("Anna");
+    queue.addFirst("Zara"); // Add to front
+    queue.addLast("Leo");   // Add to end
+
+    queue.removeFirst();    // Remove Zara
+
+    for (String name : queue) {
+      System.out.println(name);
+    }
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>LinkedList</code> supports queue-like operations with <code>addFirst()</code>, <code>addLast()</code>, and <code>removeFirst()</code>.
+    </p>
+  </details>
+</div>
+
+<!-- Example 2: Peek and Poll -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">👀 Peek and Poll</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.util.LinkedList;
+
+public class Main {
+  public static void main(String[] args) {
+    LinkedList<String> tasks = new LinkedList<>();
+    tasks.add("Code");
+    tasks.add("Test");
+    tasks.add("Deploy");
+
+    System.out.println("Next task: " + tasks.peek()); // View first
+    System.out.println("Processing: " + tasks.poll()); // Remove first
+    System.out.println("Remaining: " + tasks);
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>peek()</code> retrieves the first element without removing it. <code>poll()</code> retrieves and removes it.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A <code>LinkedList</code> is like a conga line — each person knows who’s in front and behind, making it easy to insert or remove someone without shifting the whole line.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which method adds an element to the front of a LinkedList?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> add()</label></li>
+  <li><label><input type="radio" name="q1"> addFirst()</label></li>
+  <li><label><input type="radio" name="q1"> insert()</label></li>
+  <li><label><input type="radio" name="q1"> push()</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does <code>poll()</code> do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Adds an element</label></li>
+  <li><label><input type="radio" name="q2"> Retrieves and removes the first element</label></li>
+  <li><label><input type="radio" name="q2"> Retrieves the last element</label></li>
+  <li><label><input type="radio" name="q2"> Clears the list</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('linkedlist')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>

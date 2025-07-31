@@ -1,0 +1,91 @@
+<h2 class="text-2xl font-bold mb-4 text-red-500">🗑️ Deleting Files in Java</h2>
+
+<p class="mb-6 text-gray-700">
+  Java allows you to delete files using the <code>File</code> class. Always check if the file exists before attempting deletion to avoid errors.
+</p>
+
+<!-- Collapsible Explanation -->
+<details class="mb-6">
+  <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Learn File Deletion?</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Clean up temporary or outdated files</li>
+    <li>Manage storage efficiently</li>
+    <li>Support user actions like "delete" or "reset"</li>
+    <li>Prevent clutter in file-based applications</li>
+  </ul>
+</details>
+
+<!-- Inline Execution Block -->
+<div data-preview data-lang="java" data-mode="inline" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-red-500">🧪 Deleting a File</h3>
+  <textarea class="bg-black text-red-300 p-3 rounded text-sm font-mono w-full h-48 resize-none overflow-auto">
+// Java code here
+import java.io.File;
+
+public class Main {
+  public static void main(String[] args) {
+    File file = new File("newfile.txt");
+
+    if (file.exists()) {
+      if (file.delete()) {
+        System.out.println("✅ File deleted successfully.");
+      } else {
+        System.out.println("⚠️ Failed to delete the file.");
+      }
+    } else {
+      System.out.println("ℹ️ File does not exist.");
+    }
+  }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-red-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-red-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <p class="text-gray-700 mt-2">
+      <code>File.delete()</code> returns <code>true</code> if the file was successfully deleted. Always check <code>file.exists()</code> first to avoid unnecessary operations.
+    </p>
+  </details>
+</div>
+
+<!-- Real-World Analogy -->
+<div class="bg-red-50 border-l-4 border-red-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Deleting a file is like throwing away a document. You check if it’s there, then toss it — but sometimes the trash bin might be locked!
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-red-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What does <code>File.delete()</code> return if deletion is successful?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> true</label></li>
+  <li><label><input type="radio" name="q1"> false</label></li>
+  <li><label><input type="radio" name="q1"> null</label></li>
+  <li><label><input type="radio" name="q1"> throws an exception</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What should you check before deleting a file?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> file.length()</label></li>
+  <li><label><input type="radio" name="q2"> file.exists()</label></li>
+  <li><label><input type="radio" name="q2"> file.isHidden()</label></li>
+  <li><label><input type="radio" name="q2"> file.canWrite()</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('delete_files')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
+    Mark as Complete
+  </button>
+</div>
