@@ -48,16 +48,51 @@
         <span>C# Modules</span>
       </h2>
       <ul class="space-y-3 text-sm">
-        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold bg-green-100 hover:bg-green-200 transition">Introduction to C#</button></li>
-        <li><button onclick="loadModule('variables')" class="block w-full text-left px-3 py-2 rounded-md text-green-600 hover:bg-green-50 transition">Variables & Types</button></li>
-        <li><button onclick="loadModule('methods')" class="block w-full text-left px-3 py-2 rounded-md text-green-600 hover:bg-green-50 transition">Methods</button></li>
-        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-green-600 hover:bg-green-50 transition">Classes & Objects</button></li>
-        <li><button onclick="loadModule('dotnet')" class="block w-full text-left px-3 py-2 rounded-md text-green-600 hover:bg-green-50 transition">.NET Basics</button></li>
+        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Introduction to C#</button></li>
+        <li><button onclick="loadModule('getstarted')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Getting Started</button></li>
+        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Syntax</button></li>
+        <li><button onclick="loadModule('output')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Output</button></li>
+        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Comments</button></li>
+        <li><button onclick="loadModule('variables')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Variables & Types</button></li>
+        <li><button onclick="loadModule('datatypes')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Data Types</button></li>
+        <li><button onclick="loadModule('typecasting')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Type Casting</button></li>
+        <li><button onclick="loadModule('userinput')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">User Input</button></li>
+        <li><button onclick="loadModule('operators')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Operators</button></li>
+        <li><button onclick="loadModule('math')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Math</button></li>
+        <li><button onclick="loadModule('strings')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Strings</button></li>
+        <li><button onclick="loadModule('booleans')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Booleans</button></li>
+        <li><button onclick="loadModule('ifelse')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">If-Else Statements</button></li>
+        <li><button onclick="loadModule('switch')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Switch Statements</button></li>
+        <li><button onclick="loadModule('whileloop')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">While Loops</button></li>
+        <li><button onclick="loadModule('forloop')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">For Loops</button></li>
+        <li><button onclick="loadModule('break')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Break/Continue</button></li>
+        <li><button onclick="loadModule('arrays')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Arrays</button></li>
+        <h3 class="text-lg font-semibold text-green-700 mt-6">Methods</h3>
+        <li><button onclick="loadModule('methods')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Methods</button></li>
+        <li><button onclick="loadModule('methodparameters')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Method Parameters</button></li>
+        <li><button onclick="loadModule('methodoverloading')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Method Overloading</button></li>
+        <h3 class="text-lg font-semibold text-green-700 mt-6">Classes</h3>
+        <li><button onclick="loadModule('oop')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Object Oriented Programming</button></li>
+        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Classes/Objects</button></li>
+        <li><button onclick="loadModule('classmembers')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Class Members</button></li>
+        <li><button onclick="loadModule('constructors')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Constructors</button></li>
+        <li><button onclick="loadModule('accessmodifiers')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Access Modifiers</button></li>
+        <li><button onclick="loadModule('properties')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Properties</button></li>
+        <li><button onclick="loadModule('inheritance')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Inheritance</button></li>
+        <li><button onclick="loadModule('polymorphism')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Polymorphism</button></li>
+        <li><button onclick="loadModule('abstraction')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Abstraction</button></li>
+        <li><button onclick="loadModule('encapsulation')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Encapsulation</button></li>
+        <li><button onclick="loadModule('interfaces')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Interfaces</button></li>
+        <li><button onclick="loadModule('enums')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Enums</button></li>
+        <li><button onclick="loadModule('files')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Files</button></li>
+        <li><button onclick="loadModule('exceptions')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Exception Handling</button></li>
+        <h3 class="text-lg font-semibold text-green-700 mt-6">How To</h3>
+        <li><button onclick="loadModule('debugging')" class="block w-full text-left px-3 py-2 rounded-md text-green-700 font-semibold hover:bg-green-200 transition">Debugging</button></li>
       </ul>
     </aside>
 
     <!-- Main Content -->
-    <section class="md:w-3/4 bg-green-200 p-10 flex flex-col justify-between font-mono relative">
+    <section class="md:w-3/4 bg-green-300 p-10 flex flex-col justify-between font-mono relative">
       <!-- Dynamic Lesson Container -->
       <div id="moduleContent" class="overflow-y-auto max-h-[75vh] pr-2 mb-6">
         <div class="flex items-center space-x-3 mb-6">
@@ -67,13 +102,13 @@
           <h1 class="text-4xl font-bold tracking-wide text-green-700">C# with .NET</h1>
         </div>
 
-        <div class="bg-green-50 p-6 rounded-lg shadow-inner border border-green-300 text-green-800 text-sm whitespace-pre-wrap font-mono mb-6">
-          <pre>
+        <div class="bg-black opacity-90 p-6 rounded-lg shadow-inner border border-green-300 text-green-600 text-sm whitespace-pre-wrap font-mono mb-6">
+          <pre class="whitespace-pre-wrap text-sm text-white-8">
 using System;
 
 class Program {
   static void Main() {
-    Console.WriteLine("Hello, Mark!");
+    Console.WriteLine("Hello, User!");
   }
 }
           </pre>
@@ -115,18 +150,20 @@ class Program {
       const container = document.getElementById("moduleContent");
       if (!container) return;
 
-      // Highlight active button
+      // Reset sidebar button styles
       document.querySelectorAll("aside button").forEach(btn => {
         btn.classList.remove("bg-green-100", "font-semibold", "text-green-700");
         btn.classList.add("text-green-600");
       });
+
+      // Highlight active button
       const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
       if (activeBtn) {
         activeBtn.classList.add("bg-green-100", "font-semibold", "text-green-700");
         activeBtn.classList.remove("text-green-600");
       }
 
-      // Loading animation
+      // Show loading spinner
       container.innerHTML = `
         <div class="text-center py-10 text-green-500 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -134,50 +171,113 @@ class Program {
         </div>
       `;
 
-      fetch(`lessons/csharp/${lessonId}.html`)
+      // Fetch and safely inject module content
+      fetch(`lessons/csharp/${encodeURIComponent(lessonId)}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
           return res.text();
         })
         .then(html => {
-          container.innerHTML = `
-            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-gray-800">
-              ${html}
-            </div>
-          `;
+          const wrapper = document.createElement("div");
+          wrapper.innerHTML = html;
+
+          const styledWrapper = document.createElement("div");
+          styledWrapper.className = "bg-white p-6 rounded-lg shadow-md prose max-w-none text-gray-800";
+          styledWrapper.append(...wrapper.childNodes);
+
+          container.innerHTML = "";
+          container.appendChild(styledWrapper);
+
+          bindAllPreviews("csharp");
           updateProgress(lessonId);
           scrollToTop();
         })
-        .catch(() => {
+        .catch(err => {
+          console.error("Failed to load module:", err);
           container.innerHTML = `
-            <div class="text-center py-10 text-red-500">
-              <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
-              <p>⚠️ Unable to load module: ${lessonId}</p>
+            <div class="text-center py-10 text-green-700">
+              <i class="fas fa-exclamation-circle text-2xl mb-2"></i>
+              <p>⚠️ Unable to load C# module: ${lessonId}</p>
             </div>
           `;
         });
     }
 
-    function updateProgress(lessonId) {
-      const progressBar = document.getElementById("progress-bar");
-      const completedModules = JSON.parse(localStorage.getItem("csharpCompleted") || "[]");
+    function bindAllPreviews(lang = "csharp") {
+      document.querySelectorAll("[data-preview]").forEach(block => {
+        const mode = block.getAttribute("data-mode") || "inline";
 
-      if (!completedModules.includes(lessonId)) {
-        completedModules.push(lessonId);
-        localStorage.setItem("csharpCompleted", JSON.stringify(completedModules));
-      }
+        if (mode === "jdoodle") {
+          const form = block.querySelector("form");
+          const codeInput = form?.querySelector(".code-input");
+          const hiddenField = form?.querySelector('textarea[name="initScript"]');
 
-      const total = 5;
-      const percent = Math.round((completedModules.length / total) * 100);
-      if (progressBar) progressBar.style.width = `${percent}%`;
+          if (form && codeInput && hiddenField) {
+            form.addEventListener("submit", () => {
+              hiddenField.value = codeInput.value;
+            });
 
-      const label = document.querySelector(".progress-label");
-      if (label) label.textContent = `${percent}% Completed`;
+            const runBtn = form.querySelector("button[type='submit']");
+            if (runBtn) {
+              runBtn.addEventListener("click", () => {
+                hiddenField.value = codeInput.value;
+              });
+            }
+          }
+        } else {
+          const runBtn = block.querySelector("button");
+          const outputDiv = block.querySelector(".output");
+          const codeBlock = block.querySelector("textarea, pre");
+
+          if (!runBtn || !codeBlock || !outputDiv) return;
+
+          runBtn.addEventListener("click", () => {
+            const code = codeBlock.tagName === "TEXTAREA"
+              ? codeBlock.value.trim()
+              : codeBlock.textContent.trim();
+
+            runBtn.disabled = true;
+            runBtn.innerText = "Running...";
+
+            fetch("http://localhost:3001/run-csharp", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ code })
+            })
+            .then(res => res.text())
+            .then(text => {
+              let output = "";
+              try {
+                const data = JSON.parse(text);
+                output = data.output?.trim();
+              } catch {
+                output = null;
+              }
+              outputDiv.innerText = output || simulateOutput(code, lang);
+            })
+            .catch(() => {
+              outputDiv.innerHTML = `<span class="text-green-600">ℹ️ Simulation not available for ${lang}.</span>`;
+            })
+            .finally(() => {
+              runBtn.disabled = false;
+              runBtn.innerText = "Run";
+            });
+          });
+        }
+      });
+    }
+
+    function simulateOutput(code, lang) {
+      return `ℹ️ Simulation not available for ${lang}.`;
     }
 
     function scrollToTop() {
       const container = document.getElementById("moduleContent");
       if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function updateProgress(lessonId) {
+      console.log(`Progress updated for: ${lessonId}`);
     }
   </script>
 
