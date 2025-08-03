@@ -239,10 +239,10 @@ class Program {
             runBtn.disabled = true;
             runBtn.innerText = "Running...";
 
-            fetch("http://localhost:3001/run-csharp", {
+            fetch("https://code-master-kk2m.onrender.com/run", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ code })
+              body: JSON.stringify({ language: lang, code })
             })
             .then(res => res.text())
             .then(text => {

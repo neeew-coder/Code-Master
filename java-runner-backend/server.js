@@ -12,14 +12,25 @@ const JDoodleConfig = {
   endpoint: 'https://api.jdoodle.com/v1/execute'
 };
 
-app.post('/run-java', async (req, res) => {
-  const { code } = req.body;
+// 🧠 Unified route for multiple languages
+app.post('/run', async (req, res) => {
+  const { code, language } = req.body;
+
+  // Map language to JDoodle versionIndex
+  const languageConfig = {
+    java: '4',
+    csharp: '4'
+  };
+
+  if (!languageConfig[language]) {
+    return res.status(400).json({ error: 'Unsupported language' });
+  }
 
   try {
     const response = await axios.post(JDoodleConfig.endpoint, {
       script: code,
-      language: 'java',
-      versionIndex: '4',
+      language: language,
+      versionIndex: languageConfig[language],
       clientId: JDoodleConfig.clientId,
       clientSecret: JDoodleConfig.clientSecret
     });
@@ -31,9 +42,9 @@ app.post('/run-java', async (req, res) => {
   }
 });
 
-// ✅ Health check route
+// ✅ Health check
 app.get("/", (req, res) => {
-  res.send("✅ Java Runner Backend is live.");
+  res.send("✅ Multi-language Runner Backend is live.");
 });
 
 const PORT = process.env.PORT || 3000;
