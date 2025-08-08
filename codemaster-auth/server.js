@@ -5,14 +5,15 @@ require('dotenv').config();
 
 const app = express();
 
-// ✅ CORS configuration for GitHub Pages
-app.use(cors({
+// ✅ Unified CORS config
+const corsOptions = {
   origin: 'https://neeew-coder.github.io',
+  methods: ['GET', 'POST', 'OPTIONS'],
   credentials: true
-}));
+};
 
-// ✅ Handle preflight requests
-app.options('*', cors());
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // ✅ Preflight support
 
 app.use(express.json());
 
@@ -26,7 +27,6 @@ app.use('/api/profile', profileRoutes);
 // Dynamic port for Railway
 const PORT = process.env.PORT || 3000;
 
-// MongoDB + Server startup
 mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, '0.0.0.0', () => {
