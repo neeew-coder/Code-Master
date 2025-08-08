@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const cors = require("cors");
-const corsOptions = require("../../backend/config/corsOptions");
+const corsOptions = require("../config/corsOptions");
 const authController = require("../controllers/authController");
 
 // Preflight (OPTIONS) handlers

@@ -5,8 +5,8 @@ const helmet = require("helmet");
 require("dotenv").config();
 
 const corsOptions = require("../backend/config/corsOptions");
-const authRoutes = require("./routes/auth");
-const profileRoutes = require("./routes/profile");
+const authRoutes = require("../backend/routes/auth");
+const profileRoutes = require("../backend/routes/profile");
 
 const app = express();
 
