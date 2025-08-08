@@ -39,7 +39,6 @@
       <section class="mb-12">
         <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
         <div class="space-y-6">
-          <!-- Progress Bars -->
           <div id="progressBars"></div>
         </div>
       </section>
@@ -62,7 +61,7 @@
             <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
           </div>
         </div>
-        <button onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
+        <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
       </div>
     </section>
   </main>
@@ -76,6 +75,7 @@
 
   <!-- Script -->
   <script>
+    const BASE_URL = "https://code-master.up.railway.app";
     const allLessons = {
       html: ["htmlLessonProgress", "htmlHeadingsProgress", "htmlTextProgress", "htmlListsProgress", "htmlLinksProgress"],
       css: ["cssLessonProgress", "cssSelectorsProgress", "cssBoxModelProgress", "cssFlexboxProgress", "cssGridProgress"],
@@ -143,13 +143,44 @@
     function loadProfile() {
       const name = localStorage.getItem("codemasterUserName") || "";
       const tagline = localStorage.getItem("codemasterTagline") || "";
-      const colors = ["bg-purple-600", "bg-indigo-600", "bg-blue-600", "bg-green-600"];
-      const color = colors[name.length % colors.length];
+
+      const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
+        const key = `${subject}LessonProgress`;
+        return sum + (parseInt(localStorage.getItem(key)) || 0);
+      }, 0) / Object.keys(allLessons).length;
+
+      const color = avgProgress >= 80 ? "bg-green-600"
+                  : avgProgress >= 50 ? "bg-blue-600"
+                  : "bg-purple-600";
+
       document.getElementById("profileName").value = name;
       document.getElementById("profileTagline").value = tagline;
       const avatar = document.getElementById("profileAvatar");
       avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
       avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+
+      // Future: Load from backend
+      const token = localStorage.getItem("codemasterToken");
+      if (token) {
+        fetch(`${BASE_URL}/api/profile/me`, {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        })
+          .then(res => res.json())
+          .then(data => {
+            if (data.username) {
+              localStorage.setItem("codemasterUserName", data.username);
+              localStorage.setItem("codemasterTagline", data.tagline || "");
+              // Optionally sync progress and badges later
+              updateNavProfile();
+              loadProfile(); // Refresh UI with backend data
+            }
+          })
+          .catch(err => {
+            console.warn("⚠️ Failed to load profile from backend:", err);
+          });
+      }
     }
 
     function saveProfile() {
@@ -157,7 +188,12 @@
       const tagline = document.getElementById("profileTagline").value.trim();
       const token = localStorage.getItem("codemasterToken");
 
-           localStorage.setItem("codemasterUserName", name);
+      if (!name || name.length < 2) {
+        alert("Please enter a valid name.");
+        return;
+      }
+
+      localStorage.setItem("codemasterUserName", name);
       localStorage.setItem("codemasterTagline", tagline);
       document.getElementById("profileAvatar").textContent = name.charAt(0).toUpperCase();
       updateNavProfile();
@@ -176,7 +212,11 @@
         }
       });
 
-      fetch("http://localhost:3000/api/profile", {
+      const button = document.getElementById("saveBtn");
+      button.disabled = true;
+      button.textContent = "Saving...";
+
+      fetch(`${BASE_URL}/api/profile`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -192,6 +232,10 @@
         .catch(err => {
           console.error("❌ Profile sync failed:", err);
           alert("Failed to sync profile with server.");
+        })
+        .finally(() => {
+          button.disabled = false;
+          button.textContent = "Save Profile";
         });
     }
 
@@ -209,3 +253,4 @@
   </script>
 </body>
 </html>
+

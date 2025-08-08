@@ -7,12 +7,23 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Routes
 const authRoutes = require('./routes/auth');
 const profileRoutes = require('./routes/profile');
 
 app.use('/api/auth', authRoutes);
 app.use('/api/profile', profileRoutes);
 
+// Dynamic port for Railway
+const PORT = process.env.PORT || 3000;
+
+// MongoDB + Server startup
 mongoose.connect(process.env.MONGO_URI)
-  .then(() => app.listen(3000, () => console.log('🚀 Server running')))
-  .catch(err => console.error('❌ MongoDB error:', err));
+  .then(() => {
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`🚀 Server running on port ${PORT}`);
+    });
+  })
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err);
+  });

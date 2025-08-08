@@ -27,4 +27,11 @@ router.put('/', verifyToken, async (req, res) => {
   res.json({ message: 'Profile updated', user });
 });
 
+// Future: Get minimal profile info
+router.get('/me', verifyToken, async (req, res) => {
+  const user = await User.findById(req.user.id).select('username tagline progress badges');
+  if (!user) return res.status(404).json({ error: 'User not found' });
+  res.json(user);
+});
+
 module.exports = router;
