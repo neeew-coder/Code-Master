@@ -12,8 +12,8 @@ app.use(helmet());
 // ✅ Dynamic CORS configuration
 const allowedOrigins = [
   'https://neeew-coder.github.io',
-  'https://your-custom-domain.com',
-  'https://neeew-coder.github.io/Code-Master/auth.html' // Optional for local testing
+  'https://code-master-production.up.railway.app',
+  'http://localhost:5500'
 ];
 
 const corsOptions = {
@@ -28,6 +28,7 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
+
 
 app.use(cors(corsOptions));
 app.options('/api/*', cors(corsOptions)); // ✅ Preflight for API routes
