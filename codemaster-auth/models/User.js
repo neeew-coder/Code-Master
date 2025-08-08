@@ -1,4 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
+
+const progressSchema = new mongoose.Schema({
+  javascript: { type: Number, default: 0, min: 0, max: 100 },
+  csharp: { type: Number, default: 0, min: 0, max: 100 },
+  python: { type: Number, default: 0, min: 0, max: 100 }
+}, { _id: false });
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -15,29 +21,13 @@ const userSchema = new mongoose.Schema({
 
   tagline: {
     type: String,
-    default: '',
+    default: "",
     trim: true
   },
 
   progress: {
-    javascript: {
-      type: Number,
-      default: 0,
-      min: 0,
-      max: 100
-    },
-    csharp: {
-      type: Number,
-      default: 0,
-      min: 0,
-      max: 100
-    },
-    python: {
-      type: Number,
-      default: 0,
-      min: 0,
-      max: 100
-    }
+    type: progressSchema,
+    default: () => ({})
   },
 
   badges: [
@@ -53,14 +43,14 @@ const userSchema = new mongoose.Schema({
   }
 });
 
-// Optional: Virtuals for dashboard logic
-userSchema.virtual('badgeCount').get(function () {
+// Virtuals
+userSchema.virtual("badgeCount").get(function () {
   return this.badges.length;
 });
 
-userSchema.virtual('totalProgress').get(function () {
-  const { javascript, csharp, python } = this.progress;
+userSchema.virtual("totalProgress").get(function () {
+  const { javascript = 0, csharp = 0, python = 0 } = this.progress || {};
   return Math.round((javascript + csharp + python) / 3);
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.model("User", userSchema);
