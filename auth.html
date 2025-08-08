@@ -23,67 +23,72 @@
       <div id="authMessage" class="text-sm text-center text-red-600 font-medium"></div>
     </div>
   </main>
+  
+<script>
+  const BASE_URL = location.hostname.includes("github.io")
+    ? "https://code-master.up.railway.app/api/auth"
+    : "http://localhost:3000/api/auth";
 
-  <script>
-    const BASE_URL = "https://code-master.up.railway.app/auth";
+  function saveAuth(token, username) {
+    localStorage.setItem("codemasterToken", token);
+    localStorage.setItem("codemasterUserName", username);
+  }
 
-    function saveAuth(token, username) {
-      localStorage.setItem("codemasterToken", token);
-      localStorage.setItem("codemasterUserName", username);
-    }
+  function showAuthMessage(msg, isError = true) {
+    const el = document.getElementById("authMessage");
+    el.textContent = msg;
+    el.className = `text-sm text-center font-medium ${isError ? "text-red-600" : "text-green-600"}`;
+  }
 
-    function showAuthMessage(msg, isError = true) {
-      const el = document.getElementById("authMessage");
-      el.textContent = msg;
-      el.className = `text-sm text-center font-medium ${isError ? "text-red-600" : "text-green-600"}`;
-    }
+  async function loginUser() {
+    const username = document.getElementById("authUsername").value.trim();
+    const password = document.getElementById("authPassword").value.trim();
+    if (!username || !password) return showAuthMessage("Please enter both username and password");
 
-    async function loginUser() {
-      const username = document.getElementById("authUsername").value.trim();
-      const password = document.getElementById("authPassword").value.trim();
+    try {
+      const res = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
 
-      try {
-        const res = await fetch(`${BASE_URL}/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password })
-        });
-
-        const data = await res.json();
-        if (res.ok) {
-          saveAuth(data.token, data.username);
-          window.location.href = "userprofile/profile.html";
-        } else {
-          showAuthMessage(data.error || "Login failed");
-        }
-      } catch (err) {
-        showAuthMessage("Server unreachable");
+      const data = await res.json();
+      if (res.ok) {
+        saveAuth(data.token, data.username);
+        window.location.href = "userprofile/profile.html";
+      } else {
+        showAuthMessage(data.error || "Login failed");
       }
+    } catch (err) {
+      showAuthMessage("Server unreachable");
     }
+  }
 
-    async function registerUser() {
-      const username = document.getElementById("authUsername").value.trim();
-      const password = document.getElementById("authPassword").value.trim();
+  async function registerUser() {
+    const username = document.getElementById("authUsername").value.trim();
+    const password = document.getElementById("authPassword").value.trim();
+    if (!username || !password) return showAuthMessage("Please enter both username and password");
 
-      try {
-        const res = await fetch(`${BASE_URL}/register`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ username, password })
-        });
+    try {
+      const res = await fetch(`${BASE_URL}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
 
-        const data = await res.json();
-        if (res.ok) {
-          saveAuth(data.token, data.username);
-          window.location.href = "userprofile/profile.html";
-        } else {
-          showAuthMessage(data.error || "Registration failed");
-        }
-      } catch (err) {
-        showAuthMessage("Server unreachable");
+      const data = await res.json();
+      if (res.ok) {
+        saveAuth(data.token, data.username);
+        window.location.href = "userprofile/profile.html";
+      } else {
+        showAuthMessage(data.error || "Registration failed");
       }
+    } catch (err) {
+      showAuthMessage("Server unreachable");
     }
-  </script>
+  }
+</script>
+
 
 </body>
 </html>

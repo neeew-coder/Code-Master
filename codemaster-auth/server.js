@@ -9,18 +9,28 @@ const app = express();
 // ✅ Security headers
 app.use(helmet());
 
-// ✅ CORS configuration
+// ✅ Dynamic CORS configuration
+const allowedOrigins = [
+  'https://neeew-coder.github.io',
+  'https://your-custom-domain.com',
+  'http://localhost:5500' // Optional for local testing
+];
+
 const corsOptions = {
-  origin: ['https://neeew-coder.github.io', 'https://your-custom-domain.com'],
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 
-
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Handles preflight
-
+app.options('/api/*', cors(corsOptions)); // ✅ Preflight for API routes
 
 app.use(express.json());
 

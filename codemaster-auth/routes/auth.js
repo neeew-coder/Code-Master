@@ -1,15 +1,15 @@
 const express = require('express');
 const router = express.Router();
+const cors = require('cors');
+const corsOptions = require('../config/corsOptions');
 const authController = require('../controllers/authController');
 
-// ✅ Preflight handlers for CORS
-router.options('/register', (req, res) => res.sendStatus(200));
-router.options('/login', (req, res) => res.sendStatus(200));
+// ✅ Preflight handlers
+router.options('/register', cors(corsOptions));
+router.options('/login', cors(corsOptions));
 
-// Register
-router.post('/register', authController.register);
-
-// Login
-router.post('/login', authController.login);
+// ✅ Auth routes
+router.post('/register', cors(corsOptions), authController.register);
+router.post('/login', cors(corsOptions), authController.login);
 
 module.exports = router;
