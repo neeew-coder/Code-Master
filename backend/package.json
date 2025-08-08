@@ -18,6 +18,9 @@
   "devDependencies": {
     "nodemon": "^3.0.1"
   },
+  "resolutions": {
+  "path-to-regexp": "^6.2.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neeew-coder/Code-Master.git"
