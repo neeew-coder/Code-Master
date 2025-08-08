@@ -1,0 +1,6 @@
+exclude:
+  - codemaster-auth
+  - node_modules
+  - README.md
+  - package-lock.json
+  - .gitignore
