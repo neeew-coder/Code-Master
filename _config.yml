@@ -4,3 +4,4 @@ exclude:
   - README.md
   - package-lock.json
   - .gitignore
+  - backend/node_modules
