@@ -13,7 +13,7 @@ app.use(helmet());
 const allowedOrigins = [
   'https://neeew-coder.github.io',
   'https://your-custom-domain.com',
-  'http://localhost:5500' // Optional for local testing
+  'https://neeew-coder.github.io/Code-Master/auth.html' // Optional for local testing
 ];
 
 const corsOptions = {
