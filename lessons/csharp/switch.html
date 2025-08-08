@@ -1,0 +1,143 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🔁 C# Switch Statement</h2>
+
+<p class="mb-6 text-gray-700">
+  The <code>switch</code> statement provides a streamlined way to handle multiple conditions based on a single variable. It’s ideal when comparing discrete values like enums, integers, or strings.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>How to use <code>switch</code> for multi-branch logic</li>
+    <li>How <code>case</code> and <code>default</code> work</li>
+    <li>Why <code>break</code> is essential</li>
+    <li>Best practices for readable switch blocks</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Switch Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-64 resize-none overflow-auto">
+using System;
+
+namespace SwitchDemo {
+    class Program {
+        static void Main(string[] args) {
+            string day = "Wednesday";
+
+            switch (day) {
+                case "Monday":
+                    Console.WriteLine("Start of the week.");
+                    break;
+                case "Wednesday":
+                    Console.WriteLine("Midweek check-in.");
+                    break;
+                case "Friday":
+                    Console.WriteLine("Weekend is near!");
+                    break;
+                default:
+                    Console.WriteLine("Just another day.");
+                    break;
+            }
+
+            // Integer example
+            int code = 404;
+            switch (code) {
+                case 200:
+                    Console.WriteLine("OK");
+                    break;
+                case 404:
+                    Console.WriteLine("Not Found");
+                    break;
+                case 500:
+                    Console.WriteLine("Server Error");
+                    break;
+                default:
+                    Console.WriteLine("Unknown status");
+                    break;
+            }
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong><code>switch</code></strong>: Evaluates a variable once</li>
+      <li><strong><code>case</code></strong>: Matches specific values</li>
+      <li><strong><code>break</code></strong>: Prevents fall-through to next case</li>
+      <li><strong><code>default</code></strong>: Handles unmatched values</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of <code>switch</code> like a menu — you choose one item, and the program serves the matching response. If your choice isn’t listed, you get the default dish.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Enum switch:</strong><br>
+    enum Status { Ready, Waiting, Error }<br>
+    Status current = Status.Waiting;<br>
+    switch (current) { ... }
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Fall-through prevention:</strong><br>
+    Always use <code>break</code> unless intentional fall-through is needed.
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use <code>switch</code> when comparing a single variable to multiple discrete values. Avoid complex conditions — use <code>if</code> for those.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What does <code>default</code> do in a switch block?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Matches the first case</label></li>
+  <li><label><input type="radio" name="q1"> Handles unmatched values</label></li>
+  <li><label><input type="radio" name="q1"> Skips the switch block</label></li>
+  <li><label><input type="radio" name="q1"> Ends the program</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Why is <code>break</code> important in switch cases?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> It starts the next case</label></li>
+  <li><label><input type="radio" name="q2"> It prevents fall-through</label></li>
+  <li><label><input type="radio" name="q2"> It ends the program</label></li>
+  <li><label><input type="radio" name="q2"> It skips the default case</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('switch-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

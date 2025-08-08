@@ -1,0 +1,119 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">⚠️ C# Exceptions</h2>
+
+<p class="mb-6 text-gray-700">
+  Exceptions are runtime errors that disrupt normal program flow. C# provides structured handling using <code>try</code>, <code>catch</code>, <code>finally</code>, and <code>throw</code> to manage and recover from failures.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Common exception types</li>
+    <li>Using <code>try-catch-finally</code></li>
+    <li>Throwing custom exceptions</li>
+    <li>Best practices for error handling</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Exception Handling Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-80 resize-none overflow-auto">
+using System;
+
+namespace ExceptionDemo {
+    class Program {
+        static void Main(string[] args) {
+            try {
+                int x = 10;
+                int y = 0;
+                int result = x / y; // ❌ DivideByZeroException
+            } catch (DivideByZeroException ex) {
+                Console.WriteLine("⚠️ Cannot divide by zero.");
+            } catch (Exception ex) {
+                Console.WriteLine("❌ General error: " + ex.Message);
+            } finally {
+                Console.WriteLine("✅ Cleanup complete.");
+            }
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong>try:</strong> Wraps risky code</li>
+      <li><strong>catch:</strong> Handles specific or general exceptions</li>
+      <li><strong>finally:</strong> Runs cleanup code regardless of outcome</li>
+      <li><strong>throw:</strong> Raises an exception manually</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Exception handling is like a safety net — it catches errors so your program doesn’t crash unexpectedly.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Throwing custom exception:</strong><br>
+    throw new ArgumentException("Invalid input");
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Nested try-catch:</strong><br>
+    try { ... } catch { try { ... } catch { ... } }
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Catch specific exceptions first. Avoid empty catch blocks. Use <code>finally</code> for cleanup. Log errors for diagnostics.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What does the <code>finally</code> block do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Handles exceptions</label></li>
+  <li><label><input type="radio" name="q1"> Executes cleanup code</label></li>
+  <li><label><input type="radio" name="q1"> Declares variables</label></li>
+  <li><label><input type="radio" name="q1"> Logs output</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which exception is thrown when dividing by zero?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> NullReferenceException</label></li>
+  <li><label><input type="radio" name="q2"> IndexOutOfRangeException</label></li>
+  <li><label><input type="radio" name="q2"> DivideByZeroException</label></li>
+  <li><label><input type="radio" name="q2"> FormatException</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('exceptions-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

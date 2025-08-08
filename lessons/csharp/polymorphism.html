@@ -1,0 +1,127 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🌀 C# Polymorphism</h2>
+
+<p class="mb-6 text-gray-700">
+  Polymorphism allows objects to be treated as instances of their base type while executing behavior specific to their actual type. It enables flexible and extensible code through method overriding and interfaces.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Runtime polymorphism via <code>virtual</code> and <code>override</code></li>
+    <li>Interface-based polymorphism</li>
+    <li>Base class references to derived objects</li>
+    <li>Benefits of polymorphic design</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Polymorphism Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-80 resize-none overflow-auto">
+using System;
+
+namespace PolymorphismDemo {
+    class Program {
+        static void Main(string[] args) {
+            Animal a1 = new Dog();
+            Animal a2 = new Cat();
+
+            a1.Speak(); // Dog barks
+            a2.Speak(); // Cat meows
+        }
+    }
+
+    class Animal {
+        public virtual void Speak() {
+            Console.WriteLine("Animal sound");
+        }
+    }
+
+    class Dog : Animal {
+        public override void Speak() {
+            Console.WriteLine("Dog barks");
+        }
+    }
+
+    class Cat : Animal {
+        public override void Speak() {
+            Console.WriteLine("Cat meows");
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong>virtual:</strong> Enables method overriding</li>
+      <li><strong>override:</strong> Provides specialized behavior</li>
+      <li><strong>Base reference:</strong> Calls overridden method at runtime</li>
+      <li>Polymorphism allows flexible substitution of derived types</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Polymorphism is like a remote control — the same button triggers different actions depending on the device.
+  </p>
+</div>
+
+<!-- Interface Example -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 Interface-Based Polymorphism</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    interface IShape { void Draw(); }<br>
+    class Circle : IShape { public void Draw() { Console.WriteLine("Circle"); } }<br>
+    class Square : IShape { public void Draw() { Console.WriteLine("Square"); } }<br><br>
+    IShape s = new Circle();<br>
+    s.Draw(); // Circle
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use polymorphism to decouple logic. Prefer interfaces for flexibility. Avoid tight coupling between base and derived classes.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What enables runtime polymorphism in C#?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> static methods</label></li>
+  <li><label><input type="radio" name="q1"> virtual and override</label></li>
+  <li><label><input type="radio" name="q1"> sealed classes</label></li>
+  <li><label><input type="radio" name="q1"> private fields</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which design principle does polymorphism support?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> DRY (Don't Repeat Yourself)</label></li>
+  <li><label><input type="radio" name="q2"> Open/Closed Principle</label></li>
+  <li><label><input type="radio" name="q2"> KISS (Keep It Simple)</label></li>
+  <li><label><input type="radio" name="q2"> YAGNI (You Aren’t Gonna Need It)</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('polymorphism-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

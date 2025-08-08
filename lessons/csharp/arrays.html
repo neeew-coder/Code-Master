@@ -1,0 +1,125 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🧮 C# Arrays</h2>
+
+<p class="mb-6 text-gray-700">
+  Arrays are fixed-size collections of elements of the same type. They're indexed starting at 0 and allow fast access and iteration.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>How to declare and initialize arrays</li>
+    <li>Accessing and modifying array elements</li>
+    <li>Iterating through arrays</li>
+    <li>Common array operations</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Array Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-64 resize-none overflow-auto">
+using System;
+
+namespace ArrayDemo {
+    class Program {
+        static void Main(string[] args) {
+            // Declare and initialize
+            int[] numbers = { 10, 20, 30, 40, 50 };
+
+            // Access and modify
+            Console.WriteLine("First element: " + numbers[0]);
+            numbers[2] = 35;
+
+            // Iterate
+            for (int i = 0; i < numbers.Length; i++) {
+                Console.WriteLine($"Element {i}: {numbers[i]}");
+            }
+
+            // Length
+            Console.WriteLine("Array length: " + numbers.Length);
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><code>int[] numbers = { 10, 20, 30 }</code>: Declares and initializes</li>
+      <li><code>numbers[2] = 35</code>: Modifies the third element</li>
+      <li><code>numbers.Length</code>: Gets array size</li>
+      <li>Use <code>for</code> or <code>foreach</code> to iterate</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Think of an array like a row of mailboxes — each with a number and a fixed slot for one item.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Empty array:</strong><br>
+    string[] names = new string[3];<br>
+    names[0] = "Alice";
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Foreach loop:</strong><br>
+    foreach (int num in numbers) {<br>
+    &nbsp;&nbsp;Console.WriteLine(num);<br>
+    }
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Arrays are fixed in size. For dynamic collections, use <code>List&lt;T&gt;</code>. Always check bounds to avoid <code>IndexOutOfRangeException</code>.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What is the index of the first element in a C# array?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> 1</label></li>
+  <li><label><input type="radio" name="q1"> 0</label></li>
+  <li><label><input type="radio" name="q1"> -1</label></li>
+  <li><label><input type="radio" name="q1"> Depends on array type</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which property gives the number of elements in an array?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Count</label></li>
+  <li><label><input type="radio" name="q2"> Size</label></li>
+  <li><label><input type="radio" name="q2"> Length</label></li>
+  <li><label><input type="radio" name="q2"> Capacity</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('arrays-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

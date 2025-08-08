@@ -1,0 +1,122 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🔢 C# Data Types</h2>
+
+<p class="mb-6 text-gray-700">
+  Data types define the kind of data a variable can store. C# is a statically typed language, so you must specify the type when declaring a variable. Choosing the right type helps your program run efficiently and correctly.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Common built-in data types in C#</li>
+    <li>How to choose the right type for your data</li>
+    <li>Difference between value types and reference types</li>
+    <li>How data types affect memory and performance</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Data Type Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-64 resize-none overflow-auto">
+using System;
+
+namespace DataTypeDemo {
+    class Program {
+        static void Main(string[] args) {
+            int age = 30;               // Integer
+            float temperature = 36.6f;  // Float (note the 'f' suffix)
+            double pi = 3.14159;        // Double precision
+            char grade = 'A';           // Single character
+            string name = "Mark";       // Text
+            bool isActive = true;       // True/false
+
+            Console.WriteLine("Name: " + name);
+            Console.WriteLine("Age: " + age);
+            Console.WriteLine("Temperature: " + temperature);
+            Console.WriteLine("Grade: " + grade);
+            Console.WriteLine("Active: " + isActive);
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><code>int</code>: Whole numbers (e.g., 1, 42)</li>
+      <li><code>float</code>: Decimal numbers with less precision</li>
+      <li><code>double</code>: Decimal numbers with higher precision</li>
+      <li><code>char</code>: A single character (e.g., 'A')</li>
+      <li><code>string</code>: A sequence of characters (e.g., "Hello")</li>
+      <li><code>bool</code>: Boolean values (<code>true</code> or <code>false</code>)</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧪 <strong>Analogy:</strong> Think of data types like different kinds of containers: a cup for water (<code>float</code>), a jar for cookies (<code>int</code>), a box for letters (<code>string</code>). You choose the container based on what you're storing.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Boolean Example:</strong><br>
+    bool isLoggedIn = false;
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Character Example:</strong><br>
+    char symbol = '#';
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use <code>float</code> for small decimals, <code>double</code> for precise calculations, and <code>string</code> for text. Always match the type to the data you're working with.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which data type is best for storing a person's name?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> int</label></li>
+  <li><label><input type="radio" name="q1"> string</label></li>
+  <li><label><input type="radio" name="q1"> bool</label></li>
+  <li><label><input type="radio" name="q1"> char</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What suffix must be added to a <code>float</code> literal?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> d</label></li>
+  <li><label><input type="radio" name="q2"> f</label></li>
+  <li><label><input type="radio" name="q2"> m</label></li>
+  <li><label><input type="radio" name="q2"> x</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('datatypes-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

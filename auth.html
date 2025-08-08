@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodeMaster | Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <main class="min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+      <h1 class="text-2xl font-bold mb-6 text-indigo-700 text-center">Welcome to CodeMaster</h1>
+
+      <input id="authUsername" type="text" placeholder="Username" class="border px-3 py-2 rounded w-full mb-3" />
+      <input id="authPassword" type="password" placeholder="Password" class="border px-3 py-2 rounded w-full mb-4" />
+
+      <div class="flex justify-between mb-4">
+        <button onclick="registerUser()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Register</button>
+        <button onclick="loginUser()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Login</button>
+      </div>
+
+      <div id="authMessage" class="text-sm text-center text-red-600 font-medium"></div>
+    </div>
+  </main>
+
+  <script>
+    const BASE_URL = "http://localhost:3000/api/auth";
+
+    function saveAuth(token, username) {
+      localStorage.setItem("codemasterToken", token);
+      localStorage.setItem("codemasterUserName", username);
+    }
+
+    function showAuthMessage(msg, isError = true) {
+      const el = document.getElementById("authMessage");
+      el.textContent = msg;
+      el.className = `text-sm text-center font-medium ${isError ? "text-red-600" : "text-green-600"}`;
+    }
+
+    async function loginUser() {
+      const username = document.getElementById("authUsername").value.trim();
+      const password = document.getElementById("authPassword").value.trim();
+
+      try {
+        const res = await fetch(`${BASE_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          saveAuth(data.token, data.username);
+          window.location.href = "profile.html";
+        } else {
+          showAuthMessage(data.error || "Login failed");
+        }
+      } catch (err) {
+        showAuthMessage("Server unreachable");
+      }
+    }
+
+    async function registerUser() {
+      const username = document.getElementById("authUsername").value.trim();
+      const password = document.getElementById("authPassword").value.trim();
+
+      try {
+        const res = await fetch(`${BASE_URL}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          saveAuth(data.token, data.username);
+          window.location.href = "profile.html";
+        } else {
+          showAuthMessage(data.error || "Registration failed");
+        }
+      } catch (err) {
+        showAuthMessage("Server unreachable");
+      }
+    }
+  </script>
+
+</body>
+</html>

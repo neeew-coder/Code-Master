@@ -1,0 +1,140 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🏗️ C# Constructors</h2>
+
+<p class="mb-6 text-gray-700">
+  Constructors are special methods used to initialize objects when they’re created. They can accept parameters, set default values, and even call other constructors using chaining.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Default and parameterized constructors</li>
+    <li>Constructor overloading</li>
+    <li>Using <code>this</code> for chaining</li>
+    <li>Best practices for initialization</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Constructor Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-80 resize-none overflow-auto">
+using System;
+
+namespace ConstructorDemo {
+    class Program {
+        static void Main(string[] args) {
+            Book b1 = new Book(); // Default
+            Book b2 = new Book("1984", "George Orwell"); // Parameterized
+            Book b3 = new Book("Untitled"); // Chained
+
+            b1.PrintInfo();
+            b2.PrintInfo();
+            b3.PrintInfo();
+        }
+    }
+
+    class Book {
+        public string Title { get; set; }
+        public string Author { get; set; }
+
+        // Default constructor
+        public Book() {
+            Title = "Unknown";
+            Author = "Anonymous";
+        }
+
+        // Parameterized constructor
+        public Book(string title, string author) {
+            Title = title;
+            Author = author;
+        }
+
+        // Chained constructor
+        public Book(string title) : this(title, "Anonymous") {}
+
+        public void PrintInfo() {
+            Console.WriteLine($"Title: {Title}, Author: {Author}");
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong>Default constructor:</strong> No parameters, sets defaults</li>
+      <li><strong>Parameterized constructor:</strong> Accepts values</li>
+      <li><strong>Chained constructor:</strong> Uses <code>this(...)</code> to reuse logic</li>
+      <li>Constructors run automatically when <code>new</code> is used</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A constructor is like a setup wizard — it configures your object before you start using it.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Overloaded constructors:</strong><br>
+    public User(string name);<br>
+    public User(string name, int age);
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Constructor chaining:</strong><br>
+    public User(string name) : this(name, 0) {}
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use constructor chaining to avoid duplication. Always ensure required fields are initialized. Avoid heavy logic inside constructors.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What does a constructor do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Defines behavior</label></li>
+  <li><label><input type="radio" name="q1"> Initializes object state</label></li>
+  <li><label><input type="radio" name="q1"> Stores static data</label></li>
+  <li><label><input type="radio" name="q1"> Creates a namespace</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which keyword is used to chain constructors?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> base</label></li>
+  <li><label><input type="radio" name="q2"> this</label></li>
+  <li><label><input type="radio" name="q2"> new</label></li>
+  <li><label><input type="radio" name="q2"> ref</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('constructors-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

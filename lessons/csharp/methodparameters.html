@@ -1,0 +1,132 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🎯 C# Method Parameters</h2>
+
+<p class="mb-6 text-gray-700">
+  Parameters allow methods to receive input values. C# supports value parameters, reference parameters, optional parameters, and named arguments.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Value vs reference parameters</li>
+    <li>Using <code>ref</code> and <code>out</code></li>
+    <li>Optional and named parameters</li>
+    <li>Best practices for parameter design</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Parameter Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-72 resize-none overflow-auto">
+using System;
+
+namespace ParameterDemo {
+    class Program {
+        static void Main(string[] args) {
+            int a = 5;
+            int b;
+            UpdateValue(ref a);
+            GetResult(out b);
+            Greet("Mark", "evening");
+            Greet("Mark"); // Uses default
+
+            Console.WriteLine("Updated a: " + a);
+            Console.WriteLine("Result b: " + b);
+        }
+
+        // ref parameter
+        static void UpdateValue(ref int x) {
+            x += 10;
+        }
+
+        // out parameter
+        static void GetResult(out int y) {
+            y = 42;
+        }
+
+        // Optional parameter
+        static void Greet(string name, string timeOfDay = "morning") {
+            Console.WriteLine($"Good {timeOfDay}, {name}!");
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><code>ref</code>: Passes by reference, must be initialized</li>
+      <li><code>out</code>: Passes by reference, must be assigned inside method</li>
+      <li><code>Optional</code>: Uses default value if not provided</li>
+      <li><code>Named</code>: Allows calling with parameter names</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> <code>ref</code> is like handing someone your notebook to edit. <code>out</code> is like giving them a blank page to fill. Optional parameters are like RSVP defaults.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Named arguments:</strong><br>
+    Greet(name: "Mark", timeOfDay: "afternoon");
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Mixing optional and named:</strong><br>
+    Greet(timeOfDay: "night", name: "Mark");
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use <code>ref</code> and <code>out</code> sparingly — they can reduce clarity. Prefer optional parameters for flexibility. Named arguments improve readability.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What is required when using <code>ref</code> parameters?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> The variable must be assigned inside the method</label></li>
+  <li><label><input type="radio" name="q1"> The variable must be initialized before calling</label></li>
+  <li><label><input type="radio" name="q1"> The method must return a value</label></li>
+  <li><label><input type="radio" name="q1"> The parameter must be optional</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which keyword allows a method to assign a value to a parameter that wasn’t initialized?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> ref</label></li>
+  <li><label><input type="radio" name="q2"> out</label></li>
+  <li><label><input type="radio" name="q2"> var</label></li>
+  <li><label><input type="radio" name="q2"> param</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('method-parameters-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

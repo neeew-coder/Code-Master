@@ -1,0 +1,125 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">📐 C# Math Operations</h2>
+
+<p class="mb-6 text-gray-700">
+  C# provides built-in mathematical operators and functions through the <code>Math</code> class. You can perform basic arithmetic, rounding, powers, roots, and trigonometric calculations. This module introduces the most common math operations used in programming.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Basic arithmetic operations</li>
+    <li>Using the <code>Math</code> class for advanced calculations</li>
+    <li>Rounding and absolute value functions</li>
+    <li>Working with powers and square roots</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Math Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-64 resize-none overflow-auto">
+using System;
+
+namespace MathDemo {
+    class Program {
+        static void Main(string[] args) {
+            // Basic arithmetic
+            int a = 10;
+            int b = 3;
+            Console.WriteLine("Add: " + (a + b));
+            Console.WriteLine("Divide: " + (a / b));
+
+            // Math class functions
+            Console.WriteLine("Power: " + Math.Pow(2, 3));       // 2^3 = 8
+            Console.WriteLine("Square root: " + Math.Sqrt(16));  // √16 = 4
+            Console.WriteLine("Absolute: " + Math.Abs(-5));       // 5
+            Console.WriteLine("Round: " + Math.Round(3.75));      // 4
+            Console.WriteLine("Ceiling: " + Math.Ceiling(2.3));   // 3
+            Console.WriteLine("Floor: " + Math.Floor(2.9));       // 2
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong><code>Math.Pow(x, y)</code></strong>: Raises x to the power of y</li>
+      <li><strong><code>Math.Sqrt(x)</code></strong>: Returns the square root of x</li>
+      <li><strong><code>Math.Abs(x)</code></strong>: Returns the absolute value of x</li>
+      <li><strong><code>Math.Round(x)</code></strong>: Rounds x to the nearest whole number</li>
+      <li><strong><code>Math.Ceiling(x)</code></strong>: Rounds x up</li>
+      <li><strong><code>Math.Floor(x)</code></strong>: Rounds x down</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧪 <strong>Analogy:</strong> The <code>Math</code> class is like a scientific calculator — it gives you tools to go beyond basic arithmetic and solve more complex problems with precision.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Trigonometry:</strong><br>
+    double angle = Math.PI / 2;<br>
+    double sine = Math.Sin(angle); // Result: 1
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Min and Max:</strong><br>
+    int min = Math.Min(5, 10); // Result: 5<br>
+    int max = Math.Max(5, 10); // Result: 10
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use <code>Math.Round()</code> with a second argument to control decimal precision. For example: <code>Math.Round(3.14159, 2)</code> returns <code>3.14</code>.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which method returns the square root of a number?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Math.Pow()</label></li>
+  <li><label><input type="radio" name="q1"> Math.Sqrt()</label></li>
+  <li><label><input type="radio" name="q1"> Math.Round()</label></li>
+  <li><label><input type="radio" name="q1"> Math.Abs()</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does <code>Math.Floor(4.9)</code> return?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> 5</label></li>
+  <li><label><input type="radio" name="q2"> 4</label></li>
+  <li><label><input type="radio" name="q2"> 4.9</label></li>
+  <li><label><input type="radio" name="q2"> 0</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('math-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

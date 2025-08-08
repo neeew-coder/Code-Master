@@ -1,0 +1,128 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">📁 C# File Handling</h2>
+
+<p class="mb-6 text-gray-700">
+  File handling in C# allows you to read from, write to, and manage files using the <code>System.IO</code> namespace. It’s essential for data persistence, logging, and configuration.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Reading and writing text files</li>
+    <li>Appending content</li>
+    <li>Checking file existence</li>
+    <li>Using <code>File</code>, <code>StreamReader</code>, and <code>StreamWriter</code></li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 File Handling Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-80 resize-none overflow-auto">
+using System;
+using System.IO;
+
+namespace FileDemo {
+    class Program {
+        static void Main(string[] args) {
+            string path = "data.txt";
+
+            // Write to file
+            File.WriteAllText(path, "Hello, Mark!");
+
+            // Append to file
+            File.AppendAllText(path, "\nWelcome to C# file handling.");
+
+            // Read from file
+            string content = File.ReadAllText(path);
+            Console.WriteLine("📄 File Content:\n" + content);
+
+            // Check existence
+            if (File.Exists(path))
+                Console.WriteLine("✅ File exists.");
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong>File.WriteAllText:</strong> Overwrites file with new content</li>
+      <li><strong>File.AppendAllText:</strong> Adds content to the end</li>
+      <li><strong>File.ReadAllText:</strong> Reads entire file as string</li>
+      <li><strong>File.Exists:</strong> Checks if file is present</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> File handling is like writing in a notebook — you can start fresh, add notes, or read what’s already written.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Using StreamWriter:</strong><br>
+    using (StreamWriter sw = new StreamWriter("log.txt")) {<br>
+    &nbsp;&nbsp;sw.WriteLine("Log entry");<br>
+    }
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Using StreamReader:</strong><br>
+    using (StreamReader sr = new StreamReader("log.txt")) {<br>
+    &nbsp;&nbsp;string line = sr.ReadToEnd();<br>
+    }
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Always check file existence before reading. Use <code>using</code> blocks for stream safety. Avoid hardcoded paths in production.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which method appends content to a file?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> File.WriteAllText</label></li>
+  <li><label><input type="radio" name="q1"> File.AppendAllText</label></li>
+  <li><label><input type="radio" name="q1"> File.ReadAllText</label></li>
+  <li><label><input type="radio" name="q1"> File.Delete</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does <code>File.Exists(path)</code> return?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> The file content</label></li>
+  <li><label><input type="radio" name="q2"> A boolean</label></li>
+  <li><label><input type="radio" name="q2"> The file size</label></li>
+  <li><label><input type="radio" name="q2"> The file name</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('files-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

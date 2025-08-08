@@ -1,0 +1,123 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🧬 C# Inheritance</h2>
+
+<p class="mb-6 text-gray-700">
+  Inheritance allows one class to acquire the properties and behaviors of another. It promotes code reuse, logical hierarchy, and polymorphic behavior.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Base and derived class relationships</li>
+    <li>Using <code>: base</code> syntax</li>
+    <li>Method overriding with <code>virtual</code> and <code>override</code></li>
+    <li>Accessing base class members</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Inheritance Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-80 resize-none overflow-auto">
+using System;
+
+namespace InheritanceDemo {
+    class Program {
+        static void Main(string[] args) {
+            Dog d = new Dog();
+            d.Speak(); // Overridden
+        }
+    }
+
+    class Animal {
+        public virtual void Speak() {
+            Console.WriteLine("Animal makes a sound");
+        }
+    }
+
+    class Dog : Animal {
+        public override void Speak() {
+            Console.WriteLine("Dog barks");
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><strong>virtual:</strong> Marks a method as overridable</li>
+      <li><strong>override:</strong> Replaces base method behavior</li>
+      <li><strong>base:</strong> Refers to the parent class</li>
+      <li>Inheritance uses <code>:</code> to link classes</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Inheritance is like a family tree — children inherit traits from parents but can also develop their own.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Calling base method:</strong><br>
+    public override void Speak() { base.Speak(); Console.WriteLine("Dog barks"); }
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Multi-level inheritance:</strong><br>
+    class Mammal : Animal {}<br>
+    class Cat : Mammal {}
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use inheritance for shared behavior. Prefer composition when relationships are not hierarchical. Avoid deep inheritance chains.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which keyword allows a method to be overridden?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> override</label></li>
+  <li><label><input type="radio" name="q1"> virtual</label></li>
+  <li><label><input type="radio" name="q1"> base</label></li>
+  <li><label><input type="radio" name="q1"> abstract</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  What does the <code>base</code> keyword do?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Creates a new class</label></li>
+  <li><label><input type="radio" name="q2"> Refers to the current object</label></li>
+  <li><label><input type="radio" name="q2"> Refers to the parent class</label></li>
+  <li><label><input type="radio" name="q2"> Declares a method</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('inheritance-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

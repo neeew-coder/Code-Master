@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>CodeMaster | Profile</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>CodeMaster | Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body class="bg-gray-50 font-sans">
 
   <!-- Navigation -->
-  <nav class="gradient-bg text-white shadow-lg">
+  <nav class="gradient-bg text-white shadow-lg fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-4">
         <div class="flex items-center space-x-2">
@@ -23,41 +22,49 @@
           <span id="navName"></span>
         </div>
       </div>
-      <div class="hidden md:flex space-x-6">
+      <div class="hidden md:flex space-x-6">    
         <a href="index.html" class="hover:text-gray-200 transition">Home</a>
-        <a href="dashboard.html" class="hover:text-gray-200 transition">Dashboard</a>
-        <a href="profile.html" class="hover:text-gray-200 transition font-bold underline">Profile</a>
+        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
+        <a href="#profile" class="hover:text-gray-200 transition">Profile</a>
+        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
       </div>
     </div>
   </nav>
 
-  <!-- Profile -->
-  <main class="py-16">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Profile</h1>
+  <!-- Main Content -->
+  <main class="pt-24 pb-16 container mx-auto px-4 max-w-4xl">
 
-      <!-- Name Section -->
-      <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Your Name</h2>
-        <div class="flex space-x-4 items-center">
-          <input type="text" id="nameInput" placeholder="Enter your name" class="border rounded px-4 py-2 w-full max-w-xs">
-          <button onclick="saveName()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">Save</button>
+    <!-- Dashboard -->
+    <section class="mb-16">
+      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Learning Dashboard</h1>
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
+      <div class="space-y-6">
+        <!-- Progress Bars -->
+        <div id="progressBars"></div>
+      </div>
+    </section>
+
+    <!-- Badges -->
+    <section class="mb-16">
+      <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
+      <div id="badgeContainer" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- Profile -->
+    <section id="profile">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
+      <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
+        <div class="flex items-center space-x-4">
+          <div id="profileAvatar" class="bg-purple-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
+          <div>
+            <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
+            <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+          </div>
         </div>
-        <p id="nameDisplay" class="mt-4 text-lg font-medium text-purple-700"></p>
-      </section>
+        <button onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
+      </div>
+    </section>
 
-      <!-- Lesson History -->
-      <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson History</h2>
-        <ul id="historyList" class="space-y-2 text-gray-700"></ul>
-      </section>
-
-      <!-- Earned Badges -->
-      <section>
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
-        <div id="badgeContainer" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
-      </section>
-    </div>
   </main>
 
   <!-- Footer -->
@@ -69,68 +76,103 @@
 
   <!-- Script -->
   <script>
-    const lessons = [
-      { key: "htmlLessonProgress", name: "HTML Basics", icon: "fa-html5", color: "text-orange-500" },
-      { key: "cssLessonProgress", name: "CSS & Layouts", icon: "fa-css3-alt", color: "text-blue-500" },
-      { key: "jsLessonProgress", name: "JavaScript Interactivity", icon: "fa-js", color: "text-yellow-500" },
-      { key: "javaLessonProgress", name: "Java Fundamentals", icon: "fa-java", color: "text-red-500" },
-      { key: "csharpLessonProgress", name: "C# with .NET", icon: "fa-code", color: "text-green-500" }
-    ];
+    const allLessons = {
+      html: ["htmlLessonProgress", "htmlHeadingsProgress", "htmlTextProgress", "htmlListsProgress", "htmlLinksProgress"],
+      css: ["cssLessonProgress", "cssSelectorsProgress", "cssBoxModelProgress", "cssFlexboxProgress", "cssGridProgress"],
+      js: ["jsLessonProgress", "jsVariablesProgress", "jsFunctionsProgress", "jsEventsProgress", "jsLoopsProgress"],
+      java: ["javaLessonProgress", "javaSyntaxProgress", "javaDatatypesProgress", "javaMethodsProgress", "javaOOPProgress"],
+      csharp: ["csharpLessonProgress", "csharpVariablesProgress", "csharpMethodsProgress", "csharpClassesProgress", "csharpDotnetProgress"]
+    };
 
-    function saveName() {
-      const name = document.getElementById("nameInput").value.trim();
-      if (name) {
-        localStorage.setItem("codemasterUserName", name);
-        displayName();
-        updateNavProfile();
-      }
+    const lessonsMeta = {
+      html: { name: "HTML Basics", color: "purple", icon: "fa-html5", badgeColor: "text-orange-500" },
+      css: { name: "CSS & Layouts", color: "blue", icon: "fa-css3-alt", badgeColor: "text-blue-500" },
+      js: { name: "JavaScript Interactivity", color: "yellow", icon: "fa-js", badgeColor: "text-yellow-500" },
+      java: { name: "Java Fundamentals", color: "red", icon: "fa-java", badgeColor: "text-red-500" },
+      csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
+    };
+
+    function calculateSubjectProgress(subject) {
+      const lessons = allLessons[subject];
+      let completed = lessons.filter(key => parseInt(localStorage.getItem(key)) >= 100).length;
+      return Math.round((completed / lessons.length) * 100);
     }
 
-    function displayName() {
-      const name = localStorage.getItem("codemasterUserName");
-      if (name) {
-        document.getElementById("nameDisplay").textContent = `Welcome, ${name}!`;
-        document.getElementById("nameInput").value = name;
-      }
+    function renderProgressBars() {
+      const container = document.getElementById("progressBars");
+      Object.keys(allLessons).forEach(subject => {
+        const percent = calculateSubjectProgress(subject);
+        const meta = lessonsMeta[subject];
+        container.innerHTML += `
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <span>${meta.name}</span>
+              <span>${percent}% Completed</span>
+            </div>
+            <div class="w-full bg-${meta.color}-200 h-2 rounded-full overflow-hidden">
+              <div class="bg-${meta.color}-600 h-2 w-[${percent}%] transition-all duration-500"></div>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function renderBadges() {
+      const container = document.getElementById("badgeContainer");
+      Object.keys(lessonsMeta).forEach(subject => {
+        const key = `${subject}LessonProgress`;
+        const progress = parseInt(localStorage.getItem(key)) || 0;
+        const completedAt = localStorage.getItem(key.replace("Progress", "CompletedAt"));
+        const meta = lessonsMeta[subject];
+        if (progress === 100 && completedAt) {
+          container.innerHTML += `
+            <div class="bg-white shadow-md rounded-lg p-4 text-center">
+              <i class="fab ${meta.icon} text-3xl ${meta.badgeColor} mb-2"></i>
+              <p class="font-semibold">${meta.name}</p>
+              <span class="text-sm text-gray-500">Completed on ${completedAt}</span>
+            </div>
+          `;
+        }
+      });
     }
 
     function updateNavProfile() {
       const name = localStorage.getItem("codemasterUserName");
       if (name) {
-        document.getElementById("navProfile").classList.remove("hidden");
+        document.getElementById("navProfile")?.classList.remove("hidden");
         document.getElementById("navName").textContent = name;
         document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
       }
     }
 
-    function loadProgressData() {
-      lessons.forEach(lesson => {
-        const progress = parseInt(localStorage.getItem(lesson.key)) || 0;
-        const completedAt = localStorage.getItem(lesson.key.replace("Progress", "CompletedAt"));
-
-        if (completedAt) {
-          const li = document.createElement("li");
-          li.textContent = `${lesson.name} completed on ${completedAt}`;
-          document.getElementById("historyList").appendChild(li);
-        }
-
-        if (progress === 100) {
-          const badge = document.createElement("div");
-          badge.className = "bg-white shadow-md rounded-lg p-4 text-center";
-          badge.innerHTML = `
-            <i class="fab ${lesson.icon} text-3xl ${lesson.color} mb-2"></i>
-            <p class="font-semibold">${lesson.name}</p>
-            <span class="text-sm text-gray-500">Completed</span>
-          `;
-          document.getElementById("badgeContainer").appendChild(badge);
-        }
-      });
+    function loadProfile() {
+      const name = localStorage.getItem("codemasterUserName") || "";
+      const tagline = localStorage.getItem("codemasterTagline") || "";
+      document.getElementById("profileName").value = name;
+      document.getElementById("profileTagline").value = tagline;
+      document.getElementById("profileAvatar").textContent = name ? name.charAt(0).toUpperCase() : "?";
     }
 
-    window.addEventListener("load", () => {
-      displayName();
+    function saveProfile() {
+      const name = document.getElementById("profileName").value.trim();
+      const tagline = document.getElementById("profileTagline").value.trim();
+      localStorage.setItem("codemasterUserName", name);
+      localStorage.setItem("codemasterTagline", tagline);
+      document.getElementById("profileAvatar").textContent = name.charAt(0).toUpperCase();
       updateNavProfile();
-      loadProgressData();
+      alert("Profile saved!");
+    }
+
+    function signOut() {
+      localStorage.clear();
+      location.reload();
+    }
+
+      window.addEventListener("load", () => {
+      updateNavProfile();
+      loadProfile();
+      renderProgressBars();
+      renderBadges();
     });
   </script>
 

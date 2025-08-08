@@ -1,35 +1,60 @@
-// Run on page load
-window.addEventListener("load", () => {
-  updateNavProfile();
-  calculateOverallProgress();
-  updateLearningJourneyProgress();
-});
+// 🌐 API base configuration
+const API_BASE = 'http://localhost:3000';
 
-// Mobile menu toggle
-document.getElementById('mobile-menu-button').addEventListener('click', function () {
+// 🔄 Async: Fetch user from MongoDB via API
+async function getCurrentUser() {
+  try {
+    const token = localStorage.getItem('codemasterToken');
+    if (!token) return null;
+
+    const response = await fetch(`${API_BASE}/api/profile`, {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+
+    if (!response.ok) throw new Error("Failed to fetch user");
+
+    const data = await response.json();
+    return {
+      Token: token,
+      Username: data.name || "User",
+      Tagline: data.tagline || "",
+      Avatar: data.avatar || data.name?.charAt(0).toUpperCase() || "U",
+      LessonProgress: data.lessonProgress || {}
+    };
+  } catch (err) {
+    console.error("Error fetching user:", err);
+    return null;
+  }
+}
+
+// 📱 Mobile menu toggle
+document.getElementById('mobile-menu-button')?.addEventListener('click', function () {
   const menu = document.getElementById('mobile-menu');
-  menu.classList.toggle('hidden');
+  menu?.classList.toggle('hidden');
 });
 
-// Personalized navigation
-function updateNavProfile() {
-  const name = localStorage.getItem("codemasterUserName");
-  if (name) {
+// 👤 Personalized navigation
+async function updateNavProfile() {
+  const user = await getCurrentUser();
+  if (user) {
     const navProfile = document.getElementById("navProfile");
     if (navProfile) {
       navProfile.classList.remove("hidden");
-      document.getElementById("navName").textContent = name;
-      document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
+      document.getElementById("navName").textContent = user.Username;
+      document.getElementById("navAvatar").textContent = user.Avatar;
     }
   }
 }
 
-// Dynamic overall progress bar
-function calculateOverallProgress() {
-  const keys = ["htmlLessonProgress", "cssLessonProgress", "javaLessonProgress", "csharpLessonProgress"];
+// 📊 Dynamic overall progress bar
+async function calculateOverallProgress() {
+  const user = await getCurrentUser();
+  if (!user || !user.LessonProgress) return;
+
+  const keys = ["lesson-html", "lesson-css", "lesson-java", "lesson-csharp", "lesson-js"];
   let total = 0;
   keys.forEach(key => {
-    total += parseInt(localStorage.getItem(key)) || 0;
+    total += parseInt(user.LessonProgress[key]) || 0;
   });
   const average = Math.round(total / keys.length);
   const progressBar = document.querySelector(".bg-purple-600");
@@ -40,19 +65,15 @@ function calculateOverallProgress() {
   }
 }
 
-// Learning Journey progress tracker
-function updateLearningJourneyProgress() {
-  const modules = [
-    "htmlLessonProgress",
-    "cssLessonProgress",
-    "jsLessonProgress",
-    "javaLessonProgress",
-    "csharpLessonProgress"
-  ];
-  
+// 🧭 Learning Journey progress tracker
+async function updateLearningJourneyProgress() {
+  const user = await getCurrentUser();
+  if (!user || !user.LessonProgress) return;
+
+  const modules = ["lesson-html", "lesson-css", "lesson-js", "lesson-java", "lesson-csharp"];
   let completedModules = 0;
   modules.forEach(key => {
-    const progress = parseInt(localStorage.getItem(key)) || 0;
+    const progress = parseInt(user.LessonProgress[key]) || 0;
     if (progress === 100) completedModules++;
   });
 
@@ -62,58 +83,36 @@ function updateLearningJourneyProgress() {
   document.getElementById("module-label").textContent = `Module ${completedModules} of ${modules.length}`;
 }
 
-// Tab switching logic
-const tabButtons = document.querySelectorAll('.tab-button');
-tabButtons.forEach(button => {
-  button.addEventListener('click', function () {
-    tabButtons.forEach(btn => {
-      btn.classList.remove('text-purple-600', 'border-purple-600');
-      btn.classList.add('text-gray-500');
-    });
-
-    this.classList.add('text-purple-600', 'border-purple-600');
-    this.classList.remove('text-gray-500');
-
-    const tabId = this.getAttribute('data-tab') + '-tab';
-    document.querySelectorAll('.tab-content').forEach(tab => {
-      tab.classList.remove('active');
-      tab.classList.add('hidden');
-    });
-    const activeTab = document.getElementById(tabId);
-    if (activeTab) {
-      activeTab.classList.add('active');
-      activeTab.classList.remove('hidden');
-    }
-  });
-});
-
-// Interactive IDE simulation
-document.getElementById('demoButton').addEventListener('click', function () {
-  const output = document.createElement('p');
-  output.textContent = '✅ Button clicked! Code executed.';
-  output.className = 'mt-4 text-green-600 font-semibold';
-  this.parentElement.appendChild(output);
-});
-
-// Progress ring animation (if used)
+// 🌀 Progress ring helper
 function animateProgressRing(circle, circumference, percent) {
   const offset = circumference - (percent / 100) * circumference;
   circle.style.strokeDashoffset = offset;
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const progressRings = document.querySelectorAll('.progress-ring');
-  if (progressRings.length > 0) {
-    progressRings.forEach(ring => {
-      const circle = ring.querySelector('.progress-ring__circle');
-      const radius = circle.r.baseVal.value;
-      const circumference = 2 * Math.PI * radius;
-      const percent = parseInt(ring.getAttribute('data-percent'));
+// 📌 Optional: Show progress summary in nav
+async function showLessonProgressSummary() {
+  const user = await getCurrentUser();
+  if (!user || !user.LessonProgress) return;
 
-      circle.style.strokeDasharray = circumference + ' ' + circumference;
-      circle.style.strokeDashoffset = circumference;
-
-      animateProgressRing(circle, circumference, percent);
-    });
+  const completed = Object.values(user.LessonProgress).filter(v => v === 100).length;
+  const total = Object.keys(user.LessonProgress).length;
+  const summary = document.getElementById("navProgress");
+  if (summary) {
+    summary.textContent = `${completed}/${total} lessons completed`;
   }
+}
+
+// 🐞 Debug log
+getCurrentUser().then(user => {
+  if (user) console.log("Welcome,", user.Username);
 });
+
+// 🚀 Initialize dashboard components
+async function initializeDashboard() {
+  await updateNavProfile();
+  await calculateOverallProgress();
+  await updateLearningJourneyProgress();
+  await showLessonProgressSummary();
+}
+
+initializeDashboard();

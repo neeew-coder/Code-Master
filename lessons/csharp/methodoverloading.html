@@ -1,0 +1,125 @@
+<h2 class="text-2xl font-bold mb-4 text-green-500">🔁 C# Method Overloading</h2>
+
+<p class="mb-6 text-gray-700">
+  Method overloading allows multiple methods with the same name but different parameter lists. It improves flexibility and readability by tailoring behavior to different inputs.
+</p>
+
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>How to overload methods</li>
+    <li>Rules for valid overloads</li>
+    <li>Use cases for overloading</li>
+    <li>Best practices for overload clarity</li>
+  </ul>
+</details>
+
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Overloading Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-72 resize-none overflow-auto">
+using System;
+
+namespace OverloadDemo {
+    class Program {
+        static void Main(string[] args) {
+            Greet();                     // No parameters
+            Greet("Mark");              // One parameter
+            Greet("Mark", "evening");   // Two parameters
+        }
+
+        static void Greet() {
+            Console.WriteLine("Hello!");
+        }
+
+        static void Greet(string name) {
+            Console.WriteLine("Hello, " + name + "!");
+        }
+
+        static void Greet(string name, string timeOfDay) {
+            Console.WriteLine($"Good {timeOfDay}, {name}!");
+        }
+    }
+}
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
+
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li>All methods are named <code>Greet</code></li>
+      <li>Each has a different parameter signature</li>
+      <li>The compiler selects the correct method based on arguments</li>
+      <li>Return type alone is not enough to overload</li>
+    </ul>
+  </details>
+</div>
+
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> Overloading is like having one contact name in your phone but choosing how to message them — text, call, or email — based on context.
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Overload by type:</strong><br>
+    static int Multiply(int a, int b) => a * b;<br>
+    static double Multiply(double a, double b) => a * b;
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Overload by parameter count:</strong><br>
+    static void Log(string message);<br>
+    static void Log(string message, int level);
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Keep overloads intuitive. Avoid excessive overloads that confuse intent. Use optional parameters when appropriate.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  Which of the following is a valid method overload?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> Same name, same parameters, different return type</label></li>
+  <li><label><input type="radio" name="q1"> Same name, different parameter types</label></li>
+  <li><label><input type="radio" name="q1"> Same name, same parameters, same return type</label></li>
+  <li><label><input type="radio" name="q1"> Different name, same parameters</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Why can't return type alone distinguish overloads?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> Because return types are ignored</label></li>
+  <li><label><input type="radio" name="q2"> Because it causes ambiguity at compile time</label></li>
+  <li><label><input type="radio" name="q2"> Because methods must return void</label></li>
+  <li><label><input type="radio" name="q2"> Because overloads must use <code>ref</code></label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('method-overloading-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>

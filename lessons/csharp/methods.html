@@ -1,39 +1,124 @@
-<h2 class="text-2xl font-bold mb-4 text-green-600">Methods</h2>
+<h2 class="text-2xl font-bold mb-4 text-green-500">🧩 C# Methods</h2>
 
-<p class="mb-4 text-gray-700">
-Methods are reusable blocks of code that perform specific tasks. They help organize logic and reduce repetition in C# programs.
+<p class="mb-6 text-gray-700">
+  Methods are reusable blocks of code that perform specific tasks. They help organize logic, reduce repetition, and improve readability.
 </p>
 
-<h3 class="text-lg font-semibold text-green-500 mb-2">🎯 Learning Objectives</h3>
-<ul class="list-disc list-inside mb-4 text-gray-700">
-  <li>Define and call methods</li>
-  <li>Use parameters and return values</li>
-</ul>
+<!-- Collapsible Overview -->
+<details class="mb-6">
+  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
+  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+    <li>Declaring and calling methods</li>
+    <li>Using parameters and return values</li>
+    <li>Understanding method scope</li>
+    <li>Best practices for modular design</li>
+  </ul>
+</details>
 
-<h3 class="text-lg font-semibold text-green-500 mb-2">🧩 Key Concepts</h3>
-<ul class="list-disc list-inside mb-4 text-gray-700">
-  <li>Method signatures and scope</li>
-  <li>Return types and void methods</li>
-</ul>
+<!-- Syntax Example -->
+<div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
+  <h3 class="text-lg font-semibold text-green-500">📄 Method Syntax</h3>
+  <textarea class="bg-black text-green-300 p-3 rounded text-sm font-mono w-full h-64 resize-none overflow-auto">
+using System;
 
-<h3 class="text-lg font-semibold text-green-500 mb-2">🛠️ Real-world Application</h3>
-<p class="mb-4 text-gray-700">
-Methods are used for calculations, event handling, and modular programming.
-</p>
+namespace MethodDemo {
+    class Program {
+        static void Main(string[] args) {
+            GreetUser("Mark");
+            int result = Add(5, 7);
+            Console.WriteLine("Sum: " + result);
+        }
 
-<h3 class="text-lg font-semibold text-green-500 mb-2">✅ Expected Outcome</h3>
-<p class="mb-4 text-gray-700">
-You’ll be able to write and use methods to structure your C# programs.
-</p>
+        // Method with no return
+        static void GreetUser(string name) {
+            Console.WriteLine("Hello, " + name + "!");
+        }
 
-<div class="simulation-box bg-gray-100 p-6 rounded shadow">
-  <pre>
-static string Greet(string name) {
-  return $"Hello, {name}!";
+        // Method with return
+        static int Add(int a, int b) {
+            return a + b;
+        }
+    }
 }
+  </textarea>
+  <div class="output bg-gray-100 border border-green-300 rounded p-3 text-sm text-gray-700">
+    Output will appear here.
+  </div>
+  <div class="text-right mt-2">
+    <button class="bg-green-400 hover:bg-green-500 text-white font-semibold px-4 py-2 rounded">Run</button>
+  </div>
 
-Console.WriteLine(Greet("Mark"));
-  </pre>
+  <details>
+    <summary class="text-green-500 font-semibold cursor-pointer">🔍 Explanation</summary>
+    <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
+      <li><code>static void GreetUser(string name)</code>: Declares a method with a parameter</li>
+      <li><code>static int Add(int a, int b)</code>: Returns an integer result</li>
+      <li>Methods can be reused and composed for modular logic</li>
+    </ul>
+  </details>
 </div>
 
-<button onclick="markComplete()" class="mt-6 bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Mark as Complete</button>
+<!-- Analogy -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    🧠 <strong>Analogy:</strong> A method is like a recipe — you give it ingredients (parameters), follow steps (logic), and get a result (return value).
+  </p>
+</div>
+
+<!-- More Examples -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📚 More Examples</h3>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Method with multiple parameters:</strong><br>
+    static double Multiply(double x, double y) {<br>
+    &nbsp;&nbsp;return x * y;<br>
+    }
+  </p>
+</div>
+
+<div class="bg-gray-50 border-l-4 border-green-400 p-4 mb-4">
+  <p class="text-gray-800 font-mono text-sm">
+    <strong>Void method:</strong><br>
+    static void ShowMessage() {<br>
+    &nbsp;&nbsp;Console.WriteLine("Welcome!");<br>
+    }
+  </p>
+</div>
+
+<!-- Tips -->
+<div class="bg-green-50 border-l-4 border-green-400 p-4 mb-6">
+  <p class="text-gray-800">
+    💡 <strong>Tips:</strong> Use descriptive names. Keep methods focused on one task. Avoid long methods — break them into smaller ones.
+  </p>
+</div>
+
+<!-- Quiz Section -->
+<h3 class="text-lg font-semibold text-green-500 mt-6 mb-2">📝 Exercise</h3>
+
+<p class="text-gray-700 mb-2">
+  What does a method return if its return type is <code>void</code>?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q1"> A string</label></li>
+  <li><label><input type="radio" name="q1"> Nothing</label></li>
+  <li><label><input type="radio" name="q1"> An object</label></li>
+  <li><label><input type="radio" name="q1"> A boolean</label></li>
+</ul>
+
+<p class="text-gray-700 mb-2">
+  Which keyword is used to return a value from a method?
+</p>
+<ul class="space-y-2 text-gray-700 mb-6">
+  <li><label><input type="radio" name="q2"> yield</label></li>
+  <li><label><input type="radio" name="q2"> return</label></li>
+  <li><label><input type="radio" name="q2"> output</label></li>
+  <li><label><input type="radio" name="q2"> send</label></li>
+</ul>
+
+<!-- Completion Button -->
+<div class="mt-8 flex justify-start">
+  <button onclick="updateProgress('methods-csharp')" class="bg-green-500 text-white px-6 py-2 rounded hover:bg-green-600 transition">
+    Mark as Complete
+  </button>
+</div>
