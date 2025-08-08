@@ -4,7 +4,13 @@ const cors = require('cors');
 require('dotenv').config();
 
 const app = express();
-app.use(cors());
+
+// ✅ CORS configuration for GitHub Pages
+app.use(cors({
+  origin: 'https://neeew-coder.github.io',
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Routes
