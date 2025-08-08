@@ -16,23 +16,23 @@ app.use(helmet());
 
 // 🌐 CORS configuration
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Preflight support
+app.options("/*", cors(corsOptions)); // ✅ Fixed wildcard for preflight
 
 // 🧾 JSON parsing
 app.use(express.json());
 
-// 🧪 Optional: Request logging for debugging
+// 🧪 Request logging
 app.use((req, res, next) => {
   console.log(`[${req.method}] ${req.url}`);
   next();
 });
 
-// ✅ Health check route
+// ✅ Health check
 app.get("/api/ping", (req, res) => {
   res.status(200).json({ message: "pong" });
 });
 
-// 🧠 JDoodle Runner Route
+// 🧠 JDoodle Runner
 const JDoodleConfig = {
   clientId: "461d5a8e0c5a6d8a871647efb4751f9",
   clientSecret: "e0d02f45ddc5d2ae6be7d66c87331cbf154d5fe90daea1571f05cebef5962984",
