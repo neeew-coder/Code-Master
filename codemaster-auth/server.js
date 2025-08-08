@@ -4,7 +4,7 @@ const cors = require("cors");
 const helmet = require("helmet");
 require("dotenv").config();
 
-const corsOptions = require("./config/corsOptions");
+const corsOptions = require("../backend/config/corsOptions");
 const authRoutes = require("./routes/auth");
 const profileRoutes = require("./routes/profile");
 
