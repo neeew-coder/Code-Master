@@ -20,7 +20,7 @@
         <button id="loginBtn" onclick="loginUser()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Login</button>
       </div>
 
-      <div id="authMessage" class="text-sm text-center text-red-600 font-medium"></div>
+      <div id="authMessage" class="text-sm text-center font-medium"></div>
     </div>
   </main>
 
@@ -32,10 +32,16 @@
     localStorage.setItem("codemasterUserName", username);
   }
 
-  function showAuthMessage(msg, isError = true) {
+  function showAuthMessage(msg, isError = true, autoClear = true) {
     const el = document.getElementById("authMessage");
     el.textContent = msg;
     el.className = `text-sm text-center font-medium ${isError ? "text-red-600" : "text-green-600"}`;
+    if (autoClear) {
+      setTimeout(() => {
+        el.textContent = "";
+        el.className = "text-sm text-center font-medium";
+      }, 5000);
+    }
   }
 
   function toggleButtons(disabled) {
@@ -44,6 +50,7 @@
   }
 
   function isTokenExpired(token) {
+    if (!token || token.split('.').length !== 3) return true;
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload.exp * 1000 < Date.now();
