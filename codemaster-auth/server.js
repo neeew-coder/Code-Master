@@ -11,9 +11,7 @@ app.use(helmet());
 
 // ✅ Dynamic CORS configuration
 const allowedOrigins = [
-  'https://neeew-coder.github.io',
   'https://code-master-production.up.railway.app',
-  'http://localhost:5500'
 ];
 
 const corsOptions = {
