@@ -5,6 +5,7 @@ const User = require('../models/User');
 const SECRET_KEY = process.env.JWT_SECRET || 'your-secret-key';
 
 exports.register = async (req, res) => {
+  console.log('📥 POST /register hit');
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).json({ error: 'Missing credentials' });
 
@@ -20,6 +21,7 @@ exports.register = async (req, res) => {
 };
 
 exports.login = async (req, res) => {
+  console.log('📥 POST /login hit');
   const { username, password } = req.body;
   const user = await User.findOne({ username });
   if (!user || !(await bcrypt.compare(password, user.password))) {
@@ -29,3 +31,4 @@ exports.login = async (req, res) => {
   const token = jwt.sign({ id: user._id }, SECRET_KEY, { expiresIn: '1h' });
   res.json({ token, username: user.username });
 };
+
