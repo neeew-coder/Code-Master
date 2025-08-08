@@ -9,15 +9,17 @@ const app = express();
 // ✅ Security headers
 app.use(helmet());
 
-// ✅ Unified CORS config
+// ✅ CORS configuration
 const corsOptions = {
   origin: 'https://neeew-coder.github.io',
   methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
 
 app.use(cors(corsOptions));
-app.options('*', cors(corsOptions)); // Preflight support
+app.options('*', cors(corsOptions)); // Handles preflight
+
 
 app.use(express.json());
 
