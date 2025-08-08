@@ -34,8 +34,8 @@ app.get("/api/ping", (req, res) => {
 
 // 🧠 JDoodle Runner Route
 const JDoodleConfig = {
-  clientId: process.env.JDOODLE_CLIENT_ID,
-  clientSecret: process.env.JDOODLE_CLIENT_SECRET,
+  clientId: "461d5a8e0c5a6d8a871647efb4751f9",
+  clientSecret: "e0d02f45ddc5d2ae6be7d66c87331cbf154d5fe90daea1571f05cebef5962984",
   endpoint: "https://api.jdoodle.com/v1/execute"
 };
 
