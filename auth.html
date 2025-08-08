@@ -52,7 +52,7 @@
         const data = await res.json();
         if (res.ok) {
           saveAuth(data.token, data.username);
-          window.location.href = "profile.html";
+          window.location.href = "userprofile/profile.html";
         } else {
           showAuthMessage(data.error || "Login failed");
         }
@@ -75,7 +75,7 @@
         const data = await res.json();
         if (res.ok) {
           saveAuth(data.token, data.username);
-          window.location.href = "profile.html";
+          window.location.href = "userprofile/profile.html";
         } else {
           showAuthMessage(data.error || "Registration failed");
         }
