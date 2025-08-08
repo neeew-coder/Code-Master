@@ -10,8 +10,10 @@ const app = express();
 app.use(helmet());
 
 // ✅ Dynamic CORS configuration
+
 const allowedOrigins = [
-  'https://code-master-production.up.railway.app',
+  'https://neeew-coder.github.io',
+  'http://localhost:5500' // for local dev
 ];
 
 const corsOptions = {
@@ -27,9 +29,9 @@ const corsOptions = {
   credentials: true
 };
 
-
 app.use(cors(corsOptions));
-app.options('/api/*', cors(corsOptions)); // ✅ Preflight for API routes
+app.options('*', cors(corsOptions)); // handle preflight
+
 
 app.use(express.json());
 
