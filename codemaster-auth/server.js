@@ -11,11 +11,12 @@ app.use(helmet());
 
 // ✅ CORS configuration
 const corsOptions = {
-  origin: 'https://neeew-coder.github.io',
+  origin: ['https://neeew-coder.github.io', 'https://your-custom-domain.com'],
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
 };
+
 
 app.use(cors(corsOptions));
 app.options('*', cors(corsOptions)); // Handles preflight
