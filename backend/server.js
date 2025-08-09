@@ -31,6 +31,19 @@ app.get("/", (req, res) => {
   res.send("Welcome to CodeMaster API. Use /api/ping to check health.");
 });
 
+app.get("/docs", (req, res) => {
+  res.json({
+    endpoints: {
+      "/api/ping": "Health check",
+      "/api/runner/run": "Run code using JDoodle",
+      "/api/auth": "Authentication routes",
+      "/api/profile": "User profile routes"
+    },
+    note: "Use POST for /api/runner/run with { code, language }"
+  });
+});
+
+
 // ✅ Health check
 app.get("/api/ping", (req, res) => {
   res.status(200).json({ message: "pong" });
