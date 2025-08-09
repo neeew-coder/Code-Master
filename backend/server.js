@@ -17,11 +17,6 @@ app.disable("x-powered-by"); // Optional: hide Express fingerprint
 
 // 🌍 CORS config
 app.use(cors(corsOptions));
-// ✅ Safe preflight handling
-app.options("/", cors(corsOptions));
-app.options(["/", "/api/ping", "/api/auth", "/api/profile", "/api/runner/run"], cors(corsOptions)); // ✅ Explicit routes
-
-
 
 // 🧾 JSON parsing
 app.use(express.json());

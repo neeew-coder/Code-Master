@@ -1,37 +1,19 @@
-const dotenv = require("dotenv");
-dotenv.config();
-
-const defaultOrigins = [
-  "https://neeew-coder.github.io",
-  "http://localhost:5500"
+const allowedOrigins = [
+  "https://neeew-coder.github.io", // ✅ Your frontend
+  "http://localhost:3000",         // Optional for local dev
 ];
 
-// 🌍 Load from environment or fallback to defaults
-const allowedOrigins = process.env.ALLOWED_ORIGINS
-  ? process.env.ALLOWED_ORIGINS.split(",").map(origin => origin.trim())
-  : defaultOrigins;
-
-// 🧠 Optional: Match subdomains like *.neeew-coder.github.io
-const isAllowedOrigin = (origin) => {
-  if (!origin) return true; // Allow non-browser requests
-  return allowedOrigins.some(allowed => {
-    return origin === allowed || origin.endsWith("." + allowed.replace(/^https?:\/\//, ""));
-  });
-};
-
 const corsOptions = {
-  origin: (origin, callback) => {
-    if (isAllowedOrigin(origin)) {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      console.warn(`❌ CORS blocked for origin: ${origin}`);
       callback(new Error("Not allowed by CORS"));
     }
   },
+  credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  exposedHeaders: ["Authorization"], // Optional: allow frontend to read auth headers
-  credentials: true
+  allowedHeaders: ["Content-Type", "Authorization"]
 };
 
 module.exports = corsOptions;
