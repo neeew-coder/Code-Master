@@ -1,10 +1,10 @@
 const allowedOrigins = [
-  "https://neeew-coder.github.io", // ✅ Your frontend
-  "http://localhost:3000",         // Optional for local dev
+  "https://neeew-coder.github.io", // ✅ GitHub Pages
+  "http://localhost:5500"          // ✅ Local dev
 ];
 
 const corsOptions = {
-  origin: function (origin, callback) {
+  origin: (origin, callback) => {
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
@@ -12,7 +12,7 @@ const corsOptions = {
     }
   },
   credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  methods: ["GET", "POST", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"]
 };
 
