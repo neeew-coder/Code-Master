@@ -14,13 +14,15 @@ const app = express();
 // 🛡️ Security headers
 app.use(helmet());
 
+// 🌍 CORS config
+app.use(cors(corsOptions));
 
 // 🧾 JSON parsing
 app.use(express.json());
 
 // 🧪 Request logging
 app.use((req, res, next) => {
-  console.log(`[${req.method}] ${req.url}`);
+  console.log(`[${req.method}] ${req.url} from ${req.headers.origin || "unknown origin"}`);
   next();
 });
 
@@ -35,8 +37,6 @@ const JDoodleConfig = {
   clientSecret: process.env.JDOODLE_CLIENT_SECRET || process.env.JDoodle_ClientSecret,
   endpoint: "https://api.jdoodle.com/v1/execute"
 };
-
-
 
 const languageConfig = {
   java: "4",
