@@ -26,6 +26,11 @@ app.use((req, res, next) => {
   next();
 });
 
+// 🌐 Root route for browser access
+app.get("/", (req, res) => {
+  res.send("Welcome to CodeMaster API. Use /api/ping to check health.");
+});
+
 // ✅ Health check
 app.get("/api/ping", (req, res) => {
   res.status(200).json({ message: "pong" });
