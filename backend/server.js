@@ -13,7 +13,7 @@ const app = express();
 
 // 🛡️ Security headers
 app.use(helmet());
-app.disable("x-powered-by"); // Optional: hide Express fingerprint
+app.disable("x-powered-by");
 
 // 🌍 CORS config
 app.use(cors(corsOptions));
@@ -28,7 +28,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// 🌐 Root route for browser access
+// 🌐 Root route
 app.get("/", (req, res) => {
   res.send("Welcome to CodeMaster API. Use /api/ping to check health.");
 });
@@ -50,9 +50,19 @@ app.get("/api/ping", (req, res) => {
   res.status(200).json({ message: "pong" });
 });
 
-// 🧪 CORS test route (optional)
+// 🧪 CORS test route
 app.get("/api/test-cors", (req, res) => {
   res.json({ message: "CORS is working!" });
+});
+
+// 🧪 Debug route for login troubleshooting
+app.post("/api/debug-cors", (req, res) => {
+  res.json({
+    origin: req.headers.origin,
+    method: req.method,
+    headers: req.headers,
+    body: req.body
+  });
 });
 
 // 🧠 JDoodle Runner
@@ -63,12 +73,16 @@ const JDoodleConfig = {
 };
 
 const languageConfig = {
-  java: "4",
-  csharp: "4"
+  java: "4",    // JDoodle Java version index
+  csharp: "4"   // JDoodle C# version index
 };
 
 app.post("/api/runner/run", async (req, res) => {
   const { code, language } = req.body;
+
+  if (!code || !language) {
+    return res.status(400).json({ error: "Missing code or language" });
+  }
 
   if (!languageConfig[language]) {
     return res.status(400).json({ error: "Unsupported language" });
