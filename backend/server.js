@@ -11,25 +11,64 @@ const profileRoutes = require("./routes/profile");
 
 const app = express();
 
-// Security headers
+// 🛡️ Security headers
 app.use(helmet());
+app.disable("x-powered-by");
 
-// CORS
+// 🌍 CORS config
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // Preflight
+app.options("/api/*", cors(corsOptions)); // ✅ Safe wildcard for Node 22+
 
-// JSON parsing
+// 🧾 JSON parsing
 app.use(express.json());
+
+// 🧪 Request logging
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url} from ${req.headers.origin || "unknown origin"}`);
+  next();
+});
+
+// 🌐 Root route
+app.get("/", (req, res) => {
+  res.send("Welcome to CodeMaster API. Use /api/ping to check health.");
+});
+
+app.get("/docs", (req, res) => {
+  res.json({
+    endpoints: {
+      "/api/ping": "Health check",
+      "/api/runner/run": "Run code using JDoodle",
+      "/api/auth": "Authentication routes",
+      "/api/profile": "User profile routes"
+    },
+    note: "Use POST for /api/runner/run with { code, language }"
+  });
+});
 
 // ✅ Health check
 app.get("/api/ping", (req, res) => {
   res.status(200).json({ message: "pong" });
 });
 
-// 🧠 JDoodle Runner Route
+// 🧪 CORS test route
+app.get("/api/test-cors", (req, res) => {
+  res.json({ message: "CORS is working!" });
+});
+
+// 🧪 Debug route for login troubleshooting
+app.post("/api/debug-cors", (req, res) => {
+  res.json({
+    origin: req.headers.origin,
+    method: req.method,
+    headers: req.headers,
+    body: req.body
+  });
+});
+
+// 🧠 JDoodle Runner
 const JDoodleConfig = {
-  clientId: process.env.JDOODLE_CLIENT_ID || "461d5a8e0c5a6d8a871647efb4751f9",
-  clientSecret: process.env.JDOODLE_CLIENT_SECRET || "e0d02f45ddc5d2ae6be7d66c87331cbf154d5fe90daea1571f05cebef5962984",
+  clientId: process.env.JDOODLE_CLIENT_ID || process.env.JDoodle_ClientID,
+  clientSecret: process.env.JDOODLE_CLIENT_SECRET || process.env.JDoodle_ClientSecret,
   endpoint: "https://api.jdoodle.com/v1/execute"
 };
 
@@ -40,6 +79,10 @@ const languageConfig = {
 
 app.post("/api/runner/run", async (req, res) => {
   const { code, language } = req.body;
+
+  if (!code || !language) {
+    return res.status(400).json({ error: "Missing code or language" });
+  }
 
   if (!languageConfig[language]) {
     return res.status(400).json({ error: "Unsupported language" });
@@ -64,6 +107,12 @@ app.post("/api/runner/run", async (req, res) => {
 // 🔐 Auth & Profile Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/profile", profileRoutes);
+
+// ❗ Global error handler
+app.use((err, req, res, next) => {
+  console.error("Unhandled error:", err.message);
+  res.status(500).json({ error: "Internal server error" });
+});
 
 // 🌐 MongoDB + Server
 const PORT = process.env.PORT || 3000;
