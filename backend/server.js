@@ -16,6 +16,7 @@ app.use(helmet());
 
 // 🌍 CORS config
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // ✅ Handle preflight requests
 
 // 🧾 JSON parsing
 app.use(express.json());
@@ -43,10 +44,14 @@ app.get("/docs", (req, res) => {
   });
 });
 
-
 // ✅ Health check
 app.get("/api/ping", (req, res) => {
   res.status(200).json({ message: "pong" });
+});
+
+// 🧪 CORS test route (optional)
+app.get("/api/test-cors", (req, res) => {
+  res.json({ message: "CORS is working!" });
 });
 
 // 🧠 JDoodle Runner
