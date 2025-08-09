@@ -5,7 +5,12 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin) {
+      console.warn("⚠️ No origin provided — allowing request (likely server-side or mobile)");
+      return callback(null, true);
+    }
+
+    if (allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       console.warn(`❌ CORS blocked for origin: ${origin}`);
