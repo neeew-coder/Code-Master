@@ -13,10 +13,13 @@ const app = express();
 
 // 🛡️ Security headers
 app.use(helmet());
+app.disable("x-powered-by"); // Optional: hide Express fingerprint
 
 // 🌍 CORS config
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // ✅ Handle preflight requests
+// ✅ Safe preflight handling
+app.options("/", cors(corsOptions));
+app.options("/api/*", cors(corsOptions));
 
 // 🧾 JSON parsing
 app.use(express.json());

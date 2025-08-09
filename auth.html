@@ -20,7 +20,7 @@
         <button id="loginBtn" onclick="loginUser()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Login</button>
       </div>
 
-      <div id="authMessage" class="text-sm text-center text-red-600 font-medium"></div>
+      <div id="authMessage" class="text-sm text-center font-medium"></div>
     </div>
   </main>
 
@@ -44,6 +44,7 @@
   }
 
   function isTokenExpired(token) {
+    if (!token || token.split(".").length !== 3) return true;
     try {
       const payload = JSON.parse(atob(token.split('.')[1]));
       return payload.exp * 1000 < Date.now();
@@ -64,7 +65,7 @@
       const res = await fetch(`${BASE_URL}/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include", // ✅ Added for CORS
+        credentials: "include",
         body: JSON.stringify({ username, password })
       });
 
@@ -79,6 +80,7 @@
         showAuthMessage(data.error || "Login failed");
       }
     } catch (err) {
+      console.error("Login error:", err);
       showAuthMessage("Server unreachable");
     } finally {
       toggleButtons(false);
@@ -97,7 +99,7 @@
       const res = await fetch(`${BASE_URL}/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include", // ✅ Added for CORS
+        credentials: "include",
         body: JSON.stringify({ username, password })
       });
 
@@ -112,6 +114,7 @@
         showAuthMessage(data.error || "Registration failed");
       }
     } catch (err) {
+      console.error("Registration error:", err);
       showAuthMessage("Server unreachable");
     } finally {
       toggleButtons(false);
