@@ -13,14 +13,10 @@ const app = express();
 
 // 🛡️ Security headers
 app.use(helmet());
-app.disable("x-powered-by"); // 🔒 Hide Express fingerprint
 
 // 🌍 CORS config
 app.use(cors(corsOptions));
-// ✅ Removed: app.options("*", cors(corsOptions));
-// Optional: Explicit preflight handling
-app.options("/", cors(corsOptions));
-app.options("/api/*", cors(corsOptions));
+app.options("*", cors(corsOptions)); // ✅ Handle preflight requests
 
 // 🧾 JSON parsing
 app.use(express.json());
