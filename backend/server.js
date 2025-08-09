@@ -14,9 +14,9 @@ const app = express();
 // 🛡️ Security headers
 app.use(helmet());
 
-// 🌐 CORS configuration
-app.use(cors(corsOptions));
-app.options("/*", cors(corsOptions)); // ✅ Fixed wildcard for preflight
+// // 🌐 CORS configuration
+// app.use(cors(corsOptions));
+// app.options("/*", cors(corsOptions)); // ✅ Fixed wildcard for preflight
 
 // 🧾 JSON parsing
 app.use(express.json());
