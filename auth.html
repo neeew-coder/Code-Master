@@ -24,38 +24,107 @@
     </div>
   </main>
 
-<script>
-  // Show feedback messages
-  function showAuthMessage(message, isError = true) {
-    const msgBox = document.getElementById("authMessage");
-    msgBox.textContent = message;
-    msgBox.style.color = isError ? "red" : "green";
-    msgBox.style.display = "block";
-  }
+  <script>
+    const BASE_URL = "https://code-master.onrender.com/api/auth";
 
-  // Disable/enable buttons during async calls
-  function toggleButtons(disabled) {
-    document.getElementById("loginBtn").disabled = disabled;
-    document.getElementById("registerBtn").disabled = disabled;
-  }
-
-  // Save token and username to localStorage
-  function saveAuth(token, username) {
-    localStorage.setItem("codemaster_token", token);
-    localStorage.setItem("codemaster_user", username);
-  }
-
-  // Basic token expiration check (optional enhancement)
-  function isTokenExpired(token) {
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]));
-      return Date.now() >= payload.exp * 1000;
-    } catch {
-      return true;
+    // Show feedback messages
+    function showAuthMessage(message, isError = true) {
+      const msgBox = document.getElementById("authMessage");
+      msgBox.textContent = message;
+      msgBox.style.color = isError ? "red" : "green";
+      msgBox.style.display = "block";
     }
-  }
-</script>
 
+    // Disable/enable buttons during async calls
+    function toggleButtons(disabled) {
+      document.getElementById("loginBtn").disabled = disabled;
+      document.getElementById("registerBtn").disabled = disabled;
+    }
+
+    // Save token and username to localStorage
+    function saveAuth(token, username) {
+      localStorage.setItem("codemaster_token", token);
+      localStorage.setItem("codemaster_user", username);
+    }
+
+    // Basic token expiration check
+    function isTokenExpired(token) {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        return Date.now() >= payload.exp * 1000;
+      } catch {
+        return true;
+      }
+    }
+
+    // ✅ Login function
+    async function loginUser() {
+      const username = document.getElementById("authUsername").value.trim();
+      const password = document.getElementById("authPassword").value.trim();
+
+      if (!username || !password) return showAuthMessage("Please enter both username and password");
+      if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
+
+      toggleButtons(true);
+      try {
+        const res = await fetch(`${BASE_URL}/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          if (isTokenExpired(data.token)) {
+            return showAuthMessage("Token expired. Please login again.");
+          }
+          saveAuth(data.token, data.username);
+          window.location.href = "userprofile/profile.html";
+        } else {
+          showAuthMessage(data.error || "Login failed");
+        }
+      } catch (err) {
+        showAuthMessage("Server unreachable");
+      } finally {
+        toggleButtons(false);
+      }
+    }
+
+    // ✅ Register function
+    async function registerUser() {
+      const username = document.getElementById("authUsername").value.trim();
+      const password = document.getElementById("authPassword").value.trim();
+
+      if (!username || !password) return showAuthMessage("Please enter both username and password");
+      if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
+
+      toggleButtons(true);
+      try {
+        const res = await fetch(`${BASE_URL}/register`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({ username, password })
+        });
+
+        const data = await res.json();
+        if (res.ok) {
+          if (isTokenExpired(data.token)) {
+            return showAuthMessage("Token expired. Please register again.");
+          }
+          saveAuth(data.token, data.username);
+          window.location.href = "userprofile/profile.html";
+        } else {
+          showAuthMessage(data.error || "Registration failed");
+        }
+      } catch (err) {
+        showAuthMessage("Server unreachable");
+      } finally {
+        toggleButtons(false);
+      }
+    }
+  </script>
 
 </body>
 </html>
