@@ -1,41 +1,50 @@
 const express = require("express");
-const axios = require("axios");
-const router = express.Router();
+const cors = require("cors");
+const helmet = require("helmet");
+const connectDB = require("./config/db");
 
-const JDoodleEndpoint = "https://api.jdoodle.com/v1/execute";
-const clientId = process.env.JDoodle_ClientID;
-const clientSecret = process.env.JDoodle_ClientSecret;
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-const languageConfig = {
-  java: "4",    // JDoodle Java version index
-  csharp: "3"   // JDoodle C# version index
-};
+// ✅ Connect to MongoDB
+connectDB();
 
-router.post("/run", async (req, res) => {
-  const { code, language } = req.body;
-
-  if (!code || !language) {
-    return res.status(400).json({ error: "Missing code or language" });
-  }
-
-  if (!languageConfig[language]) {
-    return res.status(400).json({ error: "Unsupported language" });
-  }
-
-  try {
-    const response = await axios.post(JDoodleEndpoint, {
-      script: code,
-      language,
-      versionIndex: languageConfig[language],
-      clientId,
-      clientSecret
-    });
-
-    res.json({ output: response.data.output });
-  } catch (error) {
-    console.error("JDoodle error:", error.message);
-    res.status(500).json({ error: "Execution failed" });
-  }
+// ✅ Log incoming origin (for debugging)
+app.use((req, res, next) => {
+  console.log("Incoming Origin:", req.headers.origin);
+  next();
 });
 
-module.exports = router;
+// ✅ CORS setup — simplified for production
+const corsOptions = {
+  origin: "https://neeew-coder.github.io", // ✅ Explicitly allow frontend
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // ✅ Handle preflight requests
+
+// ✅ Helmet after CORS — allow cross-origin resources
+app.use(helmet({
+  crossOriginResourcePolicy: false
+}));
+
+// ✅ Parse JSON bodies
+app.use(express.json());
+
+// ✅ Routes
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/profile", require("./routes/profile"));
+app.use("/api", require("./routes/api")); // JDoodle route
+
+// ✅ Root route
+app.get("/", (req, res) => {
+  res.send("CodeMaster backend is running.");
+});
+
+// ✅ Start server
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
+});
