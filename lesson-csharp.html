@@ -239,7 +239,7 @@ class Program {
             runBtn.disabled = true;
             runBtn.innerText = "Running...";
 
-            fetch("https://code-master-kk2m.onrender.com/run", {
+            fetch("https://code-master-kk2m.onrender.com/api/run", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({ language: lang, code })
