@@ -1,56 +1,23 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
-const progressSchema = new mongoose.Schema({
-  javascript: { type: Number, default: 0, min: 0, max: 100 },
-  csharp: { type: Number, default: 0, min: 0, max: 100 },
-  python: { type: Number, default: 0, min: 0, max: 100 }
-}, { _id: false });
-
-const userSchema = new mongoose.Schema({
-  username: {
-    type: String,
-    required: true,
-    unique: true,
-    trim: true
-  },
-
-  password: {
-    type: String,
-    required: true
-  },
-
-  tagline: {
-    type: String,
-    default: "",
-    trim: true
-  },
-
-  progress: {
-    type: progressSchema,
-    default: () => ({})
-  },
-
-  badges: [
-    {
-      type: String,
-      trim: true
-    }
-  ],
-
-  createdAt: {
-    type: Date,
-    default: Date.now
-  }
+const UserSchema = new mongoose.Schema({
+  username: { type: String, required: true, unique: true },
+  email:    { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  createdAt:{ type: Date, default: Date.now }
 });
 
-// Virtuals
-userSchema.virtual("badgeCount").get(function () {
-  return this.badges.length;
+// Hash password before saving
+UserSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 10);
+  next();
 });
 
-userSchema.virtual("totalProgress").get(function () {
-  const { javascript = 0, csharp = 0, python = 0 } = this.progress || {};
-  return Math.round((javascript + csharp + python) / 3);
-});
+// Compare password method
+UserSchema.methods.comparePassword = function(candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.password);
+};
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model('User', UserSchema);
