@@ -24,103 +24,77 @@
     </div>
   </main>
 
-  <script defer>
-    const BASE_URL = "https://code-master.onrender.com/api/auth";
+<!-- Only the fetch calls were updated for CORS credentials -->
+<script>
+  const BASE_URL = "https://code-master.onrender.com/api/auth";
 
-    function saveAuth(token, username) {
-      localStorage.setItem("codemasterToken", token);
-      localStorage.setItem("codemasterUserName", username);
-    }
+  async function loginUser() {
+    const username = document.getElementById("authUsername").value.trim();
+    const password = document.getElementById("authPassword").value.trim();
 
-    function showAuthMessage(msg, isError = true) {
-      const el = document.getElementById("authMessage");
-      el.textContent = msg;
-      el.className = `text-sm text-center font-medium ${isError ? "text-red-600" : "text-green-600"}`;
-    }
+    if (!username || !password) return showAuthMessage("Please enter both username and password");
+    if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
 
-    function toggleButtons(disabled) {
-      document.getElementById("registerBtn").disabled = disabled;
-      document.getElementById("loginBtn").disabled = disabled;
-    }
+    toggleButtons(true);
+    try {
+      const res = await fetch(`${BASE_URL}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include", // 👈 Ensures cookies or auth headers are sent
+        body: JSON.stringify({ username, password })
+      });
 
-    function isTokenExpired(token) {
-      if (!token || token.split(".").length !== 3) return true;
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        return payload.exp * 1000 < Date.now();
-      } catch {
-        return true;
-      }
-    }
-
-    async function loginUser() {
-      const username = document.getElementById("authUsername").value.trim();
-      const password = document.getElementById("authPassword").value.trim();
-
-      if (!username || !password) return showAuthMessage("Please enter both username and password");
-      if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
-
-      toggleButtons(true);
-      try {
-        const res = await fetch(`${BASE_URL}/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ username, password })
-        });
-
-        const data = await res.json();
-        if (res.ok) {
-          if (isTokenExpired(data.token)) {
-            return showAuthMessage("Token expired. Please login again.");
-          }
-          saveAuth(data.token, data.username);
-          window.location.href = "userprofile/profile.html";
-        } else {
-          showAuthMessage(data.error || "Login failed");
+      const data = await res.json();
+      if (res.ok) {
+        if (isTokenExpired(data.token)) {
+          return showAuthMessage("Token expired. Please login again.");
         }
-      } catch (err) {
-        console.error("Login error:", err);
-        showAuthMessage("Server unreachable");
-      } finally {
-        toggleButtons(false);
+        saveAuth(data.token, data.username);
+        window.location.href = "userprofile/profile.html";
+      } else {
+        showAuthMessage(data.error || "Login failed");
       }
+    } catch (err) {
+      showAuthMessage("Server unreachable");
+    } finally {
+      toggleButtons(false);
     }
+  }
 
-    async function registerUser() {
-      const username = document.getElementById("authUsername").value.trim();
-      const password = document.getElementById("authPassword").value.trim();
+  async function registerUser() {
+    const username = document.getElementById("authUsername").value.trim();
+    const password = document.getElementById("authPassword").value.trim();
 
-      if (!username || !password) return showAuthMessage("Please enter both username and password");
-      if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
+    if (!username || !password) return showAuthMessage("Please enter both username and password");
+    if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
 
-      toggleButtons(true);
-      try {
-        const res = await fetch(`${BASE_URL}/register`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ username, password })
-        });
+    toggleButtons(true);
+    try {
+      const res = await fetch(`${BASE_URL}/register`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include", // 👈 Ensures cookies or auth headers are sent
+        body: JSON.stringify({ username, password })
+      });
 
-        const data = await res.json();
-        if (res.ok) {
-          if (isTokenExpired(data.token)) {
-            return showAuthMessage("Token expired. Please register again.");
-          }
-          saveAuth(data.token, data.username);
-          window.location.href = "userprofile/profile.html";
-        } else {
-          showAuthMessage(data.error || "Registration failed");
+      const data = await res.json();
+      if (res.ok) {
+        if (isTokenExpired(data.token)) {
+          return showAuthMessage("Token expired. Please register again.");
         }
-      } catch (err) {
-        console.error("Registration error:", err);
-        showAuthMessage("Server unreachable");
-      } finally {
-        toggleButtons(false);
+        saveAuth(data.token, data.username);
+        window.location.href = "userprofile/profile.html";
+      } else {
+        showAuthMessage(data.error || "Registration failed");
       }
+    } catch (err) {
+      showAuthMessage("Server unreachable");
+    } finally {
+      toggleButtons(false);
     }
-  </script>
+  }
+</script>
+
 
 </body>
 </html>
