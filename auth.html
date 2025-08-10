@@ -27,7 +27,6 @@
   <script>
     const BASE_URL = "https://code-master.onrender.com/api/auth";
 
-    // Show feedback messages
     function showAuthMessage(message, isError = true) {
       const msgBox = document.getElementById("authMessage");
       msgBox.textContent = message;
@@ -35,19 +34,16 @@
       msgBox.style.display = "block";
     }
 
-    // Disable/enable buttons during async calls
     function toggleButtons(disabled) {
       document.getElementById("loginBtn").disabled = disabled;
       document.getElementById("registerBtn").disabled = disabled;
     }
 
-    // Save token and username to localStorage
     function saveAuth(token, username) {
       localStorage.setItem("codemaster_token", token);
       localStorage.setItem("codemaster_user", username);
     }
 
-    // Basic token expiration check
     function isTokenExpired(token) {
       try {
         const payload = JSON.parse(atob(token.split('.')[1]));
@@ -57,7 +53,6 @@
       }
     }
 
-    // ✅ Login function
     async function loginUser() {
       const username = document.getElementById("authUsername").value.trim();
       const password = document.getElementById("authPassword").value.trim();
@@ -70,7 +65,7 @@
         const res = await fetch(`${BASE_URL}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include",
+          credentials: "include", // ✅ Required for cookies/auth headers
           body: JSON.stringify({ username, password })
         });
 
@@ -91,7 +86,6 @@
       }
     }
 
-    // ✅ Register function
     async function registerUser() {
       const username = document.getElementById("authUsername").value.trim();
       const password = document.getElementById("authPassword").value.trim();
@@ -104,7 +98,7 @@
         const res = await fetch(`${BASE_URL}/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include",
+          credentials: "include", // ✅ Required for cookies/auth headers
           body: JSON.stringify({ username, password })
         });
 
