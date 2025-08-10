@@ -4,7 +4,7 @@ const helmet = require("helmet");
 const connectDB = require("./config/db");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 
 // ✅ Connect to MongoDB
 connectDB();
