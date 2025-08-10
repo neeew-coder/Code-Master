@@ -6,9 +6,10 @@ const connectDB = require("./config/db");
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// ✅ Connect to MongoDB
 connectDB();
-app.use(helmet());
 
+// ✅ CORS setup — must come before helmet
 const allowedOrigins = [
   "http://localhost:3000",
   "https://neeew-coder.github.io"
@@ -28,20 +29,27 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // ✅ Handle preflight requests
 
-// ✅ Handle preflight requests manually (optional but helpful)
-app.options("*", cors(corsOptions));
+// ✅ Helmet after CORS — allow cross-origin resources
+app.use(helmet({
+  crossOriginResourcePolicy: false
+}));
 
+// ✅ Parse JSON bodies
 app.use(express.json());
 
+// ✅ Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/profile", require("./routes/profile"));
 app.use("/api", require("./routes/api")); // JDoodle route
 
+// ✅ Root route
 app.get("/", (req, res) => {
   res.send("CodeMaster backend is running.");
 });
 
+// ✅ Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running on port ${PORT}`);
 });
