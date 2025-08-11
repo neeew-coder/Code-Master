@@ -1,18 +1,25 @@
+// backend/server.js
+
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const connectDB = require("./config/db");
 
+const apiRoutes = require("./routes/api");       // JDoodle
+const authRoutes = require("./routes/auth");     // Login/logout
+const profileRoutes = require("./routes/profile");
+
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 // ✅ Connect to MongoDB
 connectDB();
 
-// ✅ CORS setup — must come before helmet
+// ✅ CORS setup
 const allowedOrigins = [
   "http://localhost:3000",
-  "https://neeew-coder.github.io"
+  "https://neeew-coder.github.io",
+  "https://codemaster-client.onrender.com" // Add your deployed frontend
 ];
 
 const corsOptions = {
@@ -29,22 +36,20 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // ✅ Handle preflight requests
+app.options("*", cors(corsOptions)); // Preflight
 
-// ✅ Helmet after CORS — allow cross-origin resources
-app.use(helmet({
-  crossOriginResourcePolicy: false
-}));
+// ✅ Helmet after CORS
+app.use(helmet({ crossOriginResourcePolicy: false }));
 
 // ✅ Parse JSON bodies
 app.use(express.json());
 
-// ✅ Routes
-app.use("/api/auth", require("./routes/auth"));
-app.use("/api/profile", require("./routes/profile"));
-app.use("/api", require("./routes/api")); // JDoodle route
+// ✅ Mount routes
+app.use("/api", apiRoutes);         // JDoodle
+app.use("/api/auth", authRoutes);   // Login/logout
+app.use("/api/profile", profileRoutes);
 
-// ✅ Root route
+// ✅ Health check
 app.get("/", (req, res) => {
   res.send("CodeMaster backend is running.");
 });
