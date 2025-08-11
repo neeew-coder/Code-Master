@@ -13,13 +13,14 @@ const PORT = process.env.PORT || 3000;
 // ✅ Connect to MongoDB
 connectDB();
 
-// ✅ CORS setup
+// ✅ Define allowed origins
 const allowedOrigins = [
   "http://localhost:3000",
   "https://neeew-coder.github.io",
   "https://codemaster-client.onrender.com"
 ];
 
+// ✅ CORS configuration
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -33,9 +34,11 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"]
 };
 
-app.use(cors(corsOptions)); // ✅ Handles preflight internally
+// ✅ Apply CORS middleware
+app.use(cors(corsOptions));                  // Handles normal requests
+app.options("*", cors(corsOptions));         // ✅ Handles preflight OPTIONS requests
 
-// ✅ Helmet after CORS
+// ✅ Security headers
 app.use(helmet({ crossOriginResourcePolicy: false }));
 
 // ✅ Parse JSON bodies
