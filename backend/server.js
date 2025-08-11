@@ -1,5 +1,3 @@
-// backend/server.js
-
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
@@ -52,6 +50,11 @@ app.use("/api/profile", profileRoutes);
 // ✅ Health check
 app.get("/", (req, res) => {
   res.send("CodeMaster backend is running.");
+});
+
+// ✅ Catch-all route (Express v5 compatible)
+app.all("/*", (req, res) => {
+  res.status(404).send("Route not found.");
 });
 
 // ✅ Start server
