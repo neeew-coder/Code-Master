@@ -16,7 +16,14 @@ router.get("/me", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user._id).select("-password -__v");
     if (!user) return res.status(404).json({ error: "User not found" });
-    res.json(user);
+
+    res.json({
+      username: user.username,
+      bio: user.bio,
+      progress: Object.fromEntries(user.progress || []),
+      badges: user.badges || [],
+      createdAt: user.createdAt
+    });
   } catch (err) {
     console.error("Profile fetch error:", err);
     res.status(500).json({ error: "Failed to load profile" });
@@ -40,8 +47,14 @@ router.put("/me", auth, async (req, res) => {
     }
 
     if (bio !== undefined) updates.bio = bio;
-    if (progress !== undefined) updates.progress = progress;
-    if (badges !== undefined) updates.badges = badges;
+
+    if (progress !== undefined && typeof progress === "object") {
+      updates.progress = new Map(Object.entries(progress));
+    }
+
+    if (Array.isArray(badges)) {
+      updates.badges = badges;
+    }
 
     const updatedUser = await User.findByIdAndUpdate(
       req.user._id,
@@ -55,7 +68,13 @@ router.put("/me", auth, async (req, res) => {
 
     res.json({
       message: "Profile updated",
-      user: updatedUser.toObject({ versionKey: false })
+      user: {
+        username: updatedUser.username,
+        bio: updatedUser.bio,
+        progress: Object.fromEntries(updatedUser.progress || []),
+        badges: updatedUser.badges || [],
+        createdAt: updatedUser.createdAt
+      }
     });
   } catch (err) {
     console.error("Profile update error:", err);
@@ -69,10 +88,13 @@ router.get("/:id", async (req, res) => {
     const user = await User.findById(req.params.id).select("username bio badges");
     if (!user) return res.status(404).json({ error: "User not found" });
 
-    // ✅ Optional CORS header for public access
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
 
-    res.json(user);
+    res.json({
+      username: user.username,
+      bio: user.bio,
+      badges: user.badges || []
+    });
   } catch (err) {
     console.error("Public profile fetch error:", err);
     res.status(500).json({ error: "Failed to load profile" });
