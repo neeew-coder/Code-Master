@@ -22,9 +22,13 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, password, bio });
     await newUser.save();
 
-    const token = jwt.sign({ user: { id: newUser._id } }, JWT_SECRET, { expiresIn: "30d" });
+    const token = jwt.sign({ _id: newUser._id }, JWT_SECRET, { expiresIn: "30d" });
 
-    res.status(201).json({ message: "User registered", token, username: newUser.username });
+    res.status(201).json({
+      message: "User registered",
+      token,
+      username: newUser.username,
+    });
   } catch (err) {
     console.error("Registration error:", err);
     res.status(500).json({ error: "Registration failed" });
@@ -45,9 +49,13 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ user: { id: user._id } }, JWT_SECRET, { expiresIn: "30d" });
+    const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "30d" });
 
-    res.json({ message: "Login successful", token, username: user.username });
+    res.json({
+      message: "Login successful",
+      token,
+      username: user.username,
+    });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ error: "Login failed" });
