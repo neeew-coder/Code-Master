@@ -1,8 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
-const connectDB = require("./config/db");
+const mongoose = require("mongoose");
 
+// ✅ Route imports
 const apiRoutes = require("./routes/api");       // JDoodle
 const authRoutes = require("./routes/auth");     // Login/logout
 const profileRoutes = require("./routes/profile");
@@ -11,7 +12,16 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // ✅ Connect to MongoDB
-connectDB();
+mongoose
+  .connect(process.env.MONGO_URI || "mongodb://localhost:27017/codemaster", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
+  .then(() => console.log("✅ MongoDB connected"))
+  .catch((err) => {
+    console.error("❌ MongoDB connection error:", err);
+    process.exit(1);
+  });
 
 // ✅ Define allowed origins
 const allowedOrigins = [
@@ -34,25 +44,24 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"]
 };
 
-// ✅ Apply CORS middleware
-app.use(cors(corsOptions)); // Handles all requests including preflight
+// ✅ Middleware
+app.use(cors(corsOptions));
+app.use(helmet({ crossOriginResourcePolicy: false }));
+app.use(express.json());
 
-// ✅ Optional: Log incoming requests
+// ✅ Log requests and preflight
 app.use((req, res, next) => {
+  if (req.method === "OPTIONS") {
+    console.log("🔄 Preflight request received:", req.url);
+  }
   console.log(`📥 ${req.method} ${req.url}`);
   next();
 });
 
-// ✅ Security headers
-app.use(helmet({ crossOriginResourcePolicy: false }));
-
-// ✅ Parse JSON bodies
-app.use(express.json());
-
 // ✅ Mount routes
 app.use("/api", apiRoutes);         // JDoodle
 app.use("/api/auth", authRoutes);   // Login/logout
-app.use("/api/profile", profileRoutes);
+app.use("/api/profile", profileRoutes); // Profile sync
 
 // ✅ Health check
 app.get("/", (req, res) => {
@@ -62,6 +71,13 @@ app.get("/", (req, res) => {
 // ✅ Catch-all route with CORS headers
 app.all("/*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+
+  if (req.method === "OPTIONS") {
+    return res.sendStatus(204); // ✅ Preflight success
+  }
+
   res.status(404).json({ error: "Route not found." });
 });
 
