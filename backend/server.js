@@ -35,8 +35,13 @@ const corsOptions = {
 };
 
 // ✅ Apply CORS middleware
-app.use(cors(corsOptions));                  // Handles normal requests
-app.options("*", cors(corsOptions));         // ✅ Handles preflight OPTIONS requests
+app.use(cors(corsOptions)); // Handles all requests including preflight
+
+// ✅ Optional: Log incoming requests
+app.use((req, res, next) => {
+  console.log(`📥 ${req.method} ${req.url}`);
+  next();
+});
 
 // ✅ Security headers
 app.use(helmet({ crossOriginResourcePolicy: false }));
@@ -54,9 +59,10 @@ app.get("/", (req, res) => {
   res.send("CodeMaster backend is running.");
 });
 
-// ✅ Catch-all route
+// ✅ Catch-all route with CORS headers
 app.all("/*", (req, res) => {
-  res.status(404).send("Route not found.");
+  res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.status(404).json({ error: "Route not found." });
 });
 
 // ✅ Start server
