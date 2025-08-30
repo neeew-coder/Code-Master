@@ -2,8 +2,18 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
+const auth = require("../middleware/auth");
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+
+// 🔐 Utility: Create JWT
+const createToken = (user) => {
+  return jwt.sign(
+    { _id: user._id, username: user.username, bio: user.bio || "" },
+    JWT_SECRET,
+    { expiresIn: "30d" }
+  );
+};
 
 // 📝 Register
 router.post("/register", async (req, res) => {
@@ -21,17 +31,13 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, password, bio });
     await newUser.save();
 
-    const token = jwt.sign(
-      { _id: newUser._id, username: newUser.username },
-      JWT_SECRET,
-      { expiresIn: "30d" }
-    );
+    const token = createToken(newUser);
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production", // ✅ HTTPS only in production
-      sameSite: "None", // ✅ Enables cross-origin cookie sharing
-      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
+      maxAge: 30 * 24 * 60 * 60 * 1000
     });
 
     res.status(201).json({ success: true, message: "User registered", username: newUser.username });
@@ -54,11 +60,7 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ success: false, error: "Invalid credentials" });
     }
 
-    const token = jwt.sign(
-      { _id: user._id, username: user.username },
-      JWT_SECRET,
-      { expiresIn: "30d" }
-    );
+    const token = createToken(user);
 
     res.cookie("token", token, {
       httpOnly: true,
@@ -82,6 +84,19 @@ router.post("/logout", (req, res) => {
     sameSite: "None"
   });
   res.json({ success: true, message: "Logged out" });
+});
+
+// 🙋‍♂️ Me (Session Check)
+router.get("/me", auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).select("-password");
+    if (!user) return res.status(404).json({ success: false, error: "User not found" });
+
+    res.json({ success: true, user });
+  } catch (err) {
+    console.error("❌ Me route error:", err);
+    res.status(500).json({ success: false, error: "Failed to fetch user" });
+  }
 });
 
 module.exports = router;
