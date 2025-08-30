@@ -15,6 +15,25 @@
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    .lesson-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      color: #ea580c; /* orange-600 */
+      background-color: white;
+      transition: background-color 0.2s ease;
+    }
+    .lesson-btn:hover {
+      background-color: #fff7ed; /* orange-50 */
+    }
+    .lesson-btn.active {
+      background-color: #ffedd5; /* orange-100 */
+      font-weight: 600;
+      color: #c2410c; /* orange-700 */
+    }
+
   </style>
 </head>
 <body class="bg-gray-100 font-sans text-gray-800">
@@ -57,47 +76,47 @@
         <span>HTML Modules</span>
       </h2>
       <ul class="space-y-3 text-sm" id="htmlSidebar">
-        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-orange-700 font-semibold bg-orange-100 hover:bg-orange-200 transition">Introduction to HTML</button></li>
-        <li><button onclick="loadModule('html-basic')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Basics</button></li>
-        <li><button onclick="loadModule('elements')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Elements</button></li>
-        <li><button onclick="loadModule('attributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Attributes</button></li>
-        <li><button onclick="loadModule('headings')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Headings</button></li>
-        <li><button onclick="loadModule('paragraph')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Paragraphs</button></li>
-        <li><button onclick="loadModule('styles')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Styles</button></li>
-        <li><button onclick="loadModule('text')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Text Formatting</button></li>
-        <li><button onclick="loadModule('quotation')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Quotations</button></li>
-        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Comments</button></li>
-        <li><button onclick="loadModule('lists')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Lists</button></li>
-        <li><button onclick="loadModule('links')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Links</button></li>
-        <li><button onclick="loadModule('image')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Images</button></li>
-        <li><button onclick="loadModule('pagetitle')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Page Title</button></li>
-        <li><button onclick="loadModule('table')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Tables</button></li>
-        <li><button onclick="loadModule('tableborders')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Borders</button></li>
-        <li><button onclick="loadModule('tablesizes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Sizes</button></li>
-        <li><button onclick="loadModule('tableheaders')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Headers</button></li>
-        <li><button onclick="loadModule('padding and spacing')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Padding and Spacing</button></li>
-        <li><button onclick="loadModule('colspan and rowspan')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Colspan and Rowspan</button></li>
-        <li><button onclick="loadModule('tablestyling')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Styling</button></li>
-        <li><button onclick="loadModule('tablecolgroup')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Table Colgroup</button></li>
-        <li><button onclick="loadModule('block and inline')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Block and Inline</button></li>
-        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Classes</button></li>
-        <li><button onclick="loadModule('Id')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">ID Attribute</button></li>
-        <li><button onclick="loadModule('iframe')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Iframes</button></li>
-        <li><button onclick="loadModule('javascript')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">JavaScript</button></li>
-        <li><button onclick="loadModule('filepath')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">File Paths</button></li>
-        <li><button onclick="loadModule('head')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Head</button></li>
-        <li><button onclick="loadModule('layout')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Layout</button></li>
-        <li><button onclick="loadModule('responsive')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Responsive Design</button></li>
-        <li><button onclick="loadModule('computercode')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Computer Code</button></li>
-        <li><button onclick="loadModule('semantic')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Semantic Elements</button></li>
-        <li><button onclick="loadModule('entities')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">HTML Entities</button></li>
-        <li><button onclick="loadModule('form')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Forms</button></li>
-        <li><button onclick="loadModule('formattributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Form Attributes</button></li>
-        <li><button onclick="loadModule('formelements')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Form Elements</button></li>
-        <li><button onclick="loadModule('inputtypes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Input Types</button></li>
-        <li><button onclick="loadModule('inputattributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Input Attributes</button></li>
-        <li><button onclick="loadModule('inputformattributes')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Input Form Attributes</button></li>
-        <li><button onclick="loadModule('bestpractices')" class="block w-full text-left px-3 py-2 rounded-md text-orange-600 hover:bg-orange-50 transition">Best Practices</button></li>
+        <li><button data-lesson="intro" class="lesson-btn active">Introduction to HTML</button></li>
+        <li><button data-lesson="html-basic" class="lesson-btn">Basics</button></li>
+        <li><button data-lesson="elements" class="lesson-btn">Elements</button></li>
+        <li><button data-lesson="attributes" class="lesson-btn">Attributes</button></li>
+        <li><button data-lesson="headings" class="lesson-btn">Headings</button></li>
+        <li><button data-lesson="paragraph" class="lesson-btn">Paragraphs</button></li>
+        <li><button data-lesson="styles" class="lesson-btn">Styles</button></li>
+        <li><button data-lesson="text" class="lesson-btn">Text Formatting</button></li>
+        <li><button data-lesson="quotation" class="lesson-btn">Quotations</button></li>
+        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
+        <li><button data-lesson="lists" class="lesson-btn">Lists</button></li>
+        <li><button data-lesson="links" class="lesson-btn">Links</button></li>
+        <li><button data-lesson="image" class="lesson-btn">Images</button></li>
+        <li><button data-lesson="pagetitle" class="lesson-btn">Page Title</button></li>
+        <li><button data-lesson="table" class="lesson-btn">Tables</button></li>
+        <li><button data-lesson="tableborders" class="lesson-btn">Table Borders</button></li>
+        <li><button data-lesson="tablesizes" class="lesson-btn">Table Sizes</button></li>
+        <li><button data-lesson="tableheaders" class="lesson-btn">Table Headers</button></li>
+        <li><button data-lesson="padding-and-spacing" class="lesson-btn">Padding and Spacing</button></li>
+        <li><button data-lesson="colspan-and-rowspan" class="lesson-btn">Colspan and Rowspan</button></li>
+        <li><button data-lesson="tablestyling" class="lesson-btn">Table Styling</button></li>
+        <li><button data-lesson="tablecolgroup" class="lesson-btn">Table Colgroup</button></li>
+        <li><button data-lesson="block-and-inline" class="lesson-btn">Block and Inline</button></li>
+        <li><button data-lesson="classes" class="lesson-btn">Classes</button></li>
+        <li><button data-lesson="id" class="lesson-btn">ID Attribute</button></li>
+        <li><button data-lesson="iframe" class="lesson-btn">Iframes</button></li>
+        <li><button data-lesson="javascript" class="lesson-btn">JavaScript</button></li>
+        <li><button data-lesson="filepath" class="lesson-btn">File Paths</button></li>
+        <li><button data-lesson="head" class="lesson-btn">Head</button></li>
+        <li><button data-lesson="layout" class="lesson-btn">Layout</button></li>
+        <li><button data-lesson="responsive" class="lesson-btn">Responsive Design</button></li>
+        <li><button data-lesson="computercode" class="lesson-btn">Computer Code</button></li>
+        <li><button data-lesson="semantic" class="lesson-btn">Semantic Elements</button></li>
+        <li><button data-lesson="entities" class="lesson-btn">HTML Entities</button></li>
+        <li><button data-lesson="form" class="lesson-btn">Forms</button></li>
+        <li><button data-lesson="formattributes" class="lesson-btn">Form Attributes</button></li>
+        <li><button data-lesson="formelements" class="lesson-btn">Form Elements</button></li>
+        <li><button data-lesson="inputtypes" class="lesson-btn">Input Types</button></li>
+        <li><button data-lesson="inputattributes" class="lesson-btn">Input Attributes</button></li>
+        <li><button data-lesson="inputformattributes" class="lesson-btn">Input Form Attributes</button></li>
+        <li><button data-lesson="bestpractices" class="lesson-btn">Best Practices</button></li>
       </ul>
     </aside>
 
@@ -157,12 +176,13 @@
 
       // Highlight active button
       document.querySelectorAll(`#${subject}Sidebar button`).forEach(btn => {
-        btn.classList.remove("bg-orange-100", "font-semibold", "text-orange-700");
+        btn.classList.remove("active", "bg-orange-100", "font-semibold", "text-orange-700");
         btn.classList.add("text-orange-600");
       });
-      const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+
+      const activeBtn = document.querySelector(`#${subject}Sidebar button[data-lesson="${lessonId}"]`);
       if (activeBtn) {
-        activeBtn.classList.add("bg-orange-100", "font-semibold", "text-orange-700");
+        activeBtn.classList.add("active", "bg-orange-100", "font-semibold", "text-orange-700");
         activeBtn.classList.remove("text-orange-600");
       }
 
@@ -245,7 +265,7 @@
         });
 
         completedModules.forEach(id => {
-          const btn = document.querySelector(`button[onclick="loadModule('${id}')"]`);
+          const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
           if (btn) btn.classList.add("opacity-50", "cursor-default");
         });
       })
@@ -260,6 +280,14 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+      // Attach click listeners to all lesson buttons
+      document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lessonId = btn.dataset.lesson;
+          loadModule(lessonId);
+        });
+      });
+
       loadProgress();
     });
   </script>
