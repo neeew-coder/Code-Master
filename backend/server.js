@@ -2,6 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
+const cookieParser = require("cookie-parser"); // ✅ Added for cookie-based auth
 
 // ✅ Route imports
 const apiRoutes = require("./routes/api");       // JDoodle
@@ -48,6 +49,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(express.json());
+app.use(cookieParser()); // ✅ Enables reading cookies from requests
 
 // ✅ Log requests and preflight
 app.use((req, res, next) => {
