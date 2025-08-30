@@ -150,14 +150,15 @@
 
   <!-- Dynamic Module Loader -->
 <script>
-  const subject = "html"; // You can make this dynamic later
+  // Dynamically detect subject from <body data-subject="html">
+  const subject = document.body.dataset.subject || "html";
 
   function loadModule(lessonId) {
     const container = document.getElementById("moduleContent");
     if (!container) return;
 
     // Highlight active button
-    document.querySelectorAll("#htmlSidebar button").forEach(btn => {
+    document.querySelectorAll(`#${subject}Sidebar button`).forEach(btn => {
       btn.classList.remove("bg-orange-100", "font-semibold", "text-orange-700");
       btn.classList.add("text-orange-600");
     });
@@ -175,14 +176,14 @@
       </div>
     `;
 
-    fetch(`lessons/html/${lessonId}.html`)
+    fetch(`lessons/${subject}/${lessonId}.html`)
       .then(res => {
         if (!res.ok) throw new Error("Module not found");
         return res.text();
       })
       .then(html => {
         container.innerHTML = `
-          <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white">
+          <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
             ${html}
           </div>
           <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
@@ -202,15 +203,24 @@
   }
 
   function updateProgress(lessonId) {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.warn("No token found. Progress tracking skipped.");
+      return;
+    }
+
     fetch("/api/progress", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${localStorage.getItem("token")}` // Adjust if using cookies
+        "Authorization": `Bearer ${token}`
       },
       body: JSON.stringify({ subject, lessonId })
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error("Progress update failed");
+      return res.json();
+    })
     .then(data => {
       const { completedModules, totalModules } = data;
       const percent = Math.round((completedModules.length / totalModules) * 100);
@@ -220,17 +230,26 @@
       });
     })
     .catch(err => {
-      console.warn("Progress update failed:", err.message);
+      console.warn("Progress update error:", err.message);
     });
   }
 
   function loadProgress() {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.warn("No token found. Progress fetch skipped.");
+      return;
+    }
+
     fetch(`/api/progress/${subject}`, {
       headers: {
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
+        "Authorization": `Bearer ${token}`
       }
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) throw new Error("Progress fetch failed");
+      return res.json();
+    })
     .then(data => {
       const { completedModules, totalModules } = data;
       const percent = Math.round((completedModules.length / totalModules) * 100);
@@ -239,14 +258,13 @@
         label.textContent = `${percent}% Completed`;
       });
 
-      // Optional: visually mark completed lessons
       completedModules.forEach(id => {
         const btn = document.querySelector(`button[onclick="loadModule('${id}')"]`);
         if (btn) btn.classList.add("opacity-50", "cursor-default");
       });
     })
     .catch(err => {
-      console.warn("Failed to load progress:", err.message);
+      console.warn("Progress fetch error:", err.message);
     });
   }
 
@@ -255,7 +273,6 @@
     if (container) container.scrollTo({ top: 0, behavior: "smooth" });
   }
 
-  // Initial progress load
   document.addEventListener("DOMContentLoaded", () => {
     loadProgress();
   });
