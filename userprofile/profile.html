@@ -91,7 +91,7 @@
     java: { name: "Java Fundamentals", color: "red", icon: "fa-java", badgeColor: "text-red-500" },
     csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
   };
-  
+
   function renderProgressBars() {
     const container = document.getElementById("progressBars");
     container.innerHTML = "";
@@ -156,7 +156,8 @@
                 : "bg-purple-600";
 
     document.getElementById("profileName").value = name;
-    document.getElementById("profileTagline").value = tagline;
+        document.getElementById("profileTagline").value = tagline;
+
     const avatar = document.getElementById("profileAvatar");
     avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
     avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
@@ -164,12 +165,12 @@
 
   function loadProfileFromBackend() {
     fetch(`${API_BASE}/profile/me`, {
-      credentials: "include" // ✅ Send cookies
+      credentials: "include"
     })
       .then(res => {
         if (res.status === 401) {
-          alert("Session expired. Please sign in again.");
-          signOut();
+          alert("Session expired. Redirecting to login...");
+          window.location.href = "/auth/login"; // Adjust path if needed
           return;
         }
         if (!res.ok) throw new Error(`Server responded with ${res.status}`);
@@ -183,67 +184,76 @@
           renderProfileUI();
         }
       })
-      .catch(err => console.warn("⚠️ Failed to load profile from backend:", err));
-  }
-
-  function saveProfile() {
-    const name = document.getElementById("profileName").value.trim();
-    const tagline = document.getElementById("profileTagline").value.trim();
-
-    if (!name || name.length < 2) {
-      alert("Please enter a valid name.");
-      return;
+      .catch(err => {
+        console.warn("⚠️ Failed to load profile from backend:", err);
+        alert("Unable to load profile. Please sign in again.");
+        window.location.href = "/auth/login";
+      });
     }
 
-    localStorage.setItem("codemasterUserName", name);
-    localStorage.setItem("codemasterTagline", tagline);
-    document.getElementById("profileAvatar").textContent = name.charAt(0).toUpperCase();
-    updateNavProfile();
+    function saveProfile() {
+      const name = document.getElementById("profileName").value.trim();
+      const tagline = document.getElementById("profileTagline").value.trim();
 
-    const button = document.getElementById("saveBtn");
-    button.disabled = true;
-    button.textContent = "Saving...";
+      if (!name || name.length < 2) {
+        alert("Please enter a valid name.");
+        return;
+      }
 
-    fetch(`${API_BASE}/profile/me`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include", // ✅ Send cookies
-      body: JSON.stringify({ username: name, bio: tagline })
-    })
-      .then(res => {
-        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-        return res.json();
+      localStorage.setItem("codemasterUserName", name);
+      localStorage.setItem("codemasterTagline", tagline);
+      updateNavProfile();
+      renderProfileUI();
+
+      const button = document.getElementById("saveBtn");
+      button.disabled = true;
+      button.textContent = "Saving...";
+
+      fetch(`${API_BASE}/profile/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ username: name, bio: tagline })
       })
-      .then(data => {
-        console.log("✅ Profile synced with backend:", data);
-        alert("Profile saved and synced!");
-      })
-      .catch(err => {
-        console.error("❌ Profile sync failed:", err);
-        alert("Failed to sync profile with server.");
-      })
-      .finally(() => {
-        button.disabled = false;
-        button.textContent = "Save Profile";
-      });
-  }
+        .then(res => {
+          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          console.log("✅ Profile synced with backend:", data);
+          alert("Profile saved and synced!");
+        })
+        .catch(err => {
+          console.error("❌ Profile sync failed:", err);
+          alert("Failed to sync profile with server.");
+        })
+        .finally(() => {
+          button.disabled = false;
+          button.textContent = "Save Profile";
+        });
+    }
 
-  function signOut() {
-    localStorage.clear();
-    location.reload();
-  }
+    function signOut() {
+      fetch(`${API_BASE}/auth/logout`, {
+        method: "POST",
+        credentials: "include"
+      })
+        .then(() => {
+          localStorage.clear();
+          window.location.href = "/auth/login"; // Adjust path if needed
+        })
+        .catch(err => {
+          console.error("❌ Logout failed:", err);
+          alert("Could not log out. Try again.");
+        });
+    }
 
-  window.addEventListener("load", () => {
-    updateNavProfile();
-    renderProfileUI();
-    loadProfileFromBackend();
-    renderProgressBars();
-    renderBadges();
-  });
+    window.addEventListener("load", () => {
+      loadProfileFromBackend();
+      renderProgressBars();
+      renderBadges();
+    });
 </script>
-
 </body>
-</html>
-
