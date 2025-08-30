@@ -10,7 +10,7 @@
 </head>
 <body class="bg-gray-50 font-sans">
     <!-- Navigation -->
-    <nav class="gradient-bg text-white shadow-lg">
+   <nav class="gradient-bg text-white shadow-lg">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             
             <!-- Logo -->
@@ -30,12 +30,11 @@
 
             <!-- Auth Controls -->
             <div class="flex items-center space-x-4">
+            
             <!-- Sign In Button -->
-            <button id="signInBtn" class="bg-white text-purple-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
-                <a id="signInBtn" href="auth.html" class="bg-white text-purple-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
-                  Sign In
-                </a>
-            </button>
+            <a id="signInBtn" href="auth.html" class="bg-white text-purple-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+                Sign In
+            </a>
 
             <!-- Profile Dropdown -->
             <div class="relative hidden" id="profileDropdownWrapper">
@@ -43,8 +42,8 @@
                 Profile
                 </button>
                 <div id="profileDropdown" class="absolute right-0 mt-2 w-40 bg-white text-gray-800 rounded shadow-lg hidden z-50">
-                    <a href="userprofile/profile.html" id="viewProfileLink" class="block px-4 py-2 hover:bg-gray-100">View Profile</a>
-                    <a href="#" id="signOutLink" class="block px-4 py-2 hover:bg-gray-100 text-red-500">Sign Out</a>
+                <a href="userprofile/profile.html" id="viewProfileLink" class="block px-4 py-2 hover:bg-gray-100">View Profile</a>
+                <a href="#" id="signOutLink" class="block px-4 py-2 hover:bg-gray-100 text-red-500">Sign Out</a>
                 </div>
             </div>
 
@@ -64,6 +63,7 @@
             </div>
         </div>
     </nav>
+
 
     <!-- Hero Section -->
     <section class="gradient-bg text-white py-16">
