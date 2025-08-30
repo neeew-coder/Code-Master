@@ -1,54 +1,25 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/User");
-const auth = require("../middleware/auth");
+const { verifyToken } = require("../config/middleware/auth");
+const Progress = require("../models/progress");
 
-const totalModules = {
-  html: 10,
-  css: 8,
-  js: 12
-};
-
-// Save progress
-router.post("/", auth, async (req, res) => {
-  const { subject, lessonId } = req.body;
-  const user = req.user;
-
-  if (!subject || !lessonId) {
-    return res.status(400).json({ error: "Missing subject or lessonId" });
-  }
-
+// GET /api/progress
+router.get("/", verifyToken, async (req, res) => {
   try {
-    const currentProgress = user.progress.get(subject) || [];
+    const userId = req.user.id;
+    const progress = await Progress.findOne({ user: userId });
 
-    if (!currentProgress.includes(lessonId)) {
-      currentProgress.push(lessonId);
-      user.progress.set(subject, currentProgress);
-      await user.save();
+    if (!progress) {
+      return res.status(200).json({ percent: 0, mastered: 0 });
     }
 
-    res.json({
-      completedModules: currentProgress,
-      totalModules: totalModules[subject] || 10
+    res.status(200).json({
+      percent: progress.percent || 0,
+      mastered: progress.mastered || 0
     });
   } catch (err) {
-    res.status(500).json({ error: "Failed to update progress" });
-  }
-});
-
-// Get progress
-router.get("/:subject", auth, async (req, res) => {
-  const subject = req.params.subject;
-  const user = req.user;
-
-  try {
-    const completedModules = user.progress.get(subject) || [];
-    res.json({
-      completedModules,
-      totalModules: totalModules[subject] || 10
-    });
-  } catch (err) {
-    res.status(500).json({ error: "Failed to fetch progress" });
+    console.error("Progress fetch error:", err);
+    res.status(500).json({ error: "Server error" });
   }
 });
 
