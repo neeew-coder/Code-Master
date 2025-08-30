@@ -21,18 +21,22 @@ router.post("/register", async (req, res) => {
     const newUser = new User({ username, password, bio });
     await newUser.save();
 
-    const token = jwt.sign({ _id: newUser._id, username: newUser.username }, JWT_SECRET, { expiresIn: "30d" });
+    const token = jwt.sign(
+      { _id: newUser._id, username: newUser.username },
+      JWT_SECRET,
+      { expiresIn: "30d" }
+    );
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production" ? true : false, // 🔐 fallback for dev
-      sameSite: "Strict",
-      maxAge: 30 * 24 * 60 * 60 * 1000
+      secure: process.env.NODE_ENV === "production", // ✅ HTTPS only in production
+      sameSite: "None", // ✅ Enables cross-origin cookie sharing
+      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
     });
 
     res.status(201).json({ success: true, message: "User registered", username: newUser.username });
   } catch (err) {
-    console.error("Registration error:", err);
+    console.error("❌ Registration error:", err);
     res.status(500).json({ success: false, error: "Registration failed" });
   }
 });
@@ -50,20 +54,34 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ success: false, error: "Invalid credentials" });
     }
 
-    const token = jwt.sign({ _id: user._id, username: user.username }, JWT_SECRET, { expiresIn: "30d" });
+    const token = jwt.sign(
+      { _id: user._id, username: user.username },
+      JWT_SECRET,
+      { expiresIn: "30d" }
+    );
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === "production" ? true : false,
-      sameSite: "Strict",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
       maxAge: 30 * 24 * 60 * 60 * 1000
     });
 
     res.json({ success: true, message: "Login successful", username: user.username });
   } catch (err) {
-    console.error("Login error:", err);
+    console.error("❌ Login error:", err);
     res.status(500).json({ success: false, error: "Login failed" });
   }
+});
+
+// 🚪 Logout
+router.post("/logout", (req, res) => {
+  res.clearCookie("token", {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "None"
+  });
+  res.json({ success: true, message: "Logged out" });
 });
 
 module.exports = router;
