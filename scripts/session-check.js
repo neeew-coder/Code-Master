@@ -1,3 +1,5 @@
+console.log("Session check script loaded");
+
 const authStatus = document.getElementById('authStatus');
 
 fetch("https://code-master-kk2m.onrender.com/api/profile/me", {
