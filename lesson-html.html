@@ -167,130 +167,133 @@
   </main>
 
   <!-- Dynamic Module Loader -->
-  <script>
-    const subject = document.body.dataset.subject || "html";
+<script>
+  const subject = document.body.dataset.subject || "html";
 
-    function loadModule(lessonId) {
-      const container = document.getElementById("moduleContent");
-      if (!container) return;
+  function loadModule(lessonId) {
+    const container = document.getElementById("moduleContent");
+    if (!container) return;
 
-      // Highlight active button
-      document.querySelectorAll(`#${subject}Sidebar button`).forEach(btn => {
-        btn.classList.remove("active", "bg-orange-100", "font-semibold", "text-orange-700");
-        btn.classList.add("text-orange-600");
-      });
-
-      const activeBtn = document.querySelector(`#${subject}Sidebar button[data-lesson="${lessonId}"]`);
-      if (activeBtn) {
-        activeBtn.classList.add("active", "bg-orange-100", "font-semibold", "text-orange-700");
-        activeBtn.classList.remove("text-orange-600");
-      }
-
-      // Show loading state
-      container.innerHTML = `
-        <div class="text-center py-10 text-gray-300 animate-pulse">
-          <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
-          <p>Loading module...</p>
-        </div>
-      `;
-
-      // Fetch lesson content
-      fetch(`lessons/${subject}/${lessonId}.html`)
-        .then(res => {
-          if (!res.ok) throw new Error("Module not found");
-          return res.text();
-        })
-        .then(html => {
-          container.innerHTML = `
-            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
-              ${html}
-            </div>
-            <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
-              ↑
-            </button>
-          `;
-          updateProgress(lessonId);
-        })
-        .catch(() => {
-          container.innerHTML = `
-            <div class="text-center py-10 text-red-500">
-              <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
-              <p>⚠️ Unable to load module: ${lessonId}</p>
-            </div>
-          `;
-        });
-    }
-
-    function updateProgress(lessonId) {
-      fetch("/api/progress/update", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ subject, lessonId })
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Progress update failed");
-        return res.json();
-      })
-      .then(data => {
-        const { completedModules, totalModules } = data;
-        const percent = Math.round((completedModules.length / totalModules) * 100);
-        document.getElementById("progress-bar").style.width = `${percent}%`;
-        document.querySelectorAll(".progress-label").forEach(label => {
-          label.textContent = `${percent}% Completed`;
-        });
-      })
-      .catch(err => {
-        console.warn("Progress update error:", err.message);
-      });
-    }
-
-    function loadProgress() {
-      fetch(`/api/progress/${subject}`, {
-        method: "GET",
-        credentials: "include"
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Progress fetch failed");
-        return res.json();
-      })
-      .then(data => {
-        const { completedModules, totalModules } = data;
-        const percent = Math.round((completedModules.length / totalModules) * 100);
-        document.getElementById("progress-bar").style.width = `${percent}%`;
-        document.querySelectorAll(".progress-label").forEach(label => {
-          label.textContent = `${percent}% Completed`;
-        });
-
-        completedModules.forEach(id => {
-          const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
-          if (btn) btn.classList.add("opacity-50", "cursor-default");
-        });
-      })
-      .catch(err => {
-        console.warn("Progress fetch error:", err.message);
-      });
-    }
-
-    function scrollToTop() {
-      const container = document.getElementById("moduleContent");
-      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      // Attach click listeners to all lesson buttons
-      document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
-        btn.addEventListener("click", () => {
-          const lessonId = btn.dataset.lesson;
-          loadModule(lessonId);
-        });
-      });
-
-      loadProgress();
+    // Highlight active button
+    document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
+      btn.classList.remove("active", "bg-orange-100", "font-semibold", "text-orange-700");
+      btn.classList.add("text-orange-600");
     });
-  </script>
+
+    const activeBtn = document.querySelector(`#${subject}Sidebar button[data-lesson="${lessonId}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add("active", "bg-orange-100", "font-semibold", "text-orange-700");
+      activeBtn.classList.remove("text-orange-600");
+    }
+
+    // Show loading state
+    container.innerHTML = `
+      <div class="text-center py-10 text-gray-300 animate-pulse">
+        <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+        <p>Loading module...</p>
+      </div>
+    `;
+
+    // Fetch lesson content
+    fetch(`lessons/${subject}/${lessonId}.html`)
+      .then(res => {
+        if (!res.ok) throw new Error("Module not found");
+        return res.text();
+      })
+      .then(html => {
+        container.innerHTML = `
+          <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
+            ${html}
+          </div>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
+            ↑
+          </button>
+        `;
+        updateProgress(lessonId);
+      })
+      .catch(() => {
+        container.innerHTML = `
+          <div class="text-center py-10 text-red-500">
+            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+            <p>⚠️ Unable to load module: ${lessonId}</p>
+          </div>
+        `;
+      });
+  }
+
+  function updateProgress(lessonId) {
+    fetch("/api/progress/update", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ subject, lessonId })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Progress update failed");
+      return res.json();
+    })
+    .then(data => {
+      const { completedModules, totalModules } = data;
+      const percent = Math.round((completedModules.length / totalModules) * 100);
+
+      document.getElementById("progress-bar").style.width = `${percent}%`;
+      document.querySelectorAll(".progress-label").forEach(label => {
+        label.textContent = `${percent}% Completed`;
+      });
+    })
+    .catch(err => {
+      console.warn("Progress update error:", err.message);
+    });
+  }
+
+  function loadProgress() {
+    fetch(`/api/progress/${subject}`, {
+      method: "GET",
+      credentials: "include"
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Progress fetch failed");
+      return res.json();
+    })
+    .then(data => {
+      const { completedModules, totalModules } = data;
+      const percent = Math.round((completedModules.length / totalModules) * 100);
+
+      document.getElementById("progress-bar").style.width = `${percent}%`;
+      document.querySelectorAll(".progress-label").forEach(label => {
+        label.textContent = `${percent}% Completed`;
+      });
+
+      completedModules.forEach(id => {
+        const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
+        if (btn) btn.classList.add("opacity-50", "cursor-default");
+      });
+    })
+    .catch(err => {
+      console.warn("Progress fetch error:", err.message);
+    });
+  }
+
+  function scrollToTop() {
+    const container = document.getElementById("moduleContent");
+    if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Attach click listeners to all lesson buttons
+    document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lessonId = btn.dataset.lesson;
+        loadModule(lessonId);
+      });
+    });
+
+    loadProgress();
+  });
+</script>
+
 
 </body>
 </html>
