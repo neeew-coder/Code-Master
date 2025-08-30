@@ -481,8 +481,8 @@
         const cancelEdit = document.getElementById('cancelEdit');
         const form = document.getElementById('editProfileForm');
 
-        editButton?.addEventListener('click', () => modal.classList.remove('hidden'));
-        cancelEdit?.addEventListener('click', () => modal.classList.add('hidden'));
+        editButton?.addEventListener('click', () => modal?.classList.remove('hidden'));
+        cancelEdit?.addEventListener('click', () => modal?.classList.add('hidden'));
 
         form?.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -532,7 +532,6 @@
         loadProfile(); // fallback only
         });
     </script>
-
 
 </body>
 </html>
