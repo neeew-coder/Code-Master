@@ -34,7 +34,6 @@ router.get("/me", auth, async (req, res) => {
 router.put("/me", auth, async (req, res) => {
   try {
     const { username, bio, progress, badges } = req.body;
-
     const updates = {};
 
     // ✅ Check for duplicate username
@@ -48,8 +47,12 @@ router.put("/me", auth, async (req, res) => {
 
     if (bio !== undefined) updates.bio = bio;
 
+    // 🔄 Modular progress update
     if (progress !== undefined && typeof progress === "object") {
-      updates.progress = new Map(Object.entries(progress));
+      const validProgress = Object.entries(progress).filter(([key, val]) =>
+        typeof key === "string" && typeof val === "number"
+      );
+      updates.progress = new Map(validProgress);
     }
 
     if (Array.isArray(badges)) {
