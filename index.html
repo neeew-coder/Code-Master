@@ -346,9 +346,9 @@
                 <p class="text-gray-400 mb-4 md:mb-0">© 2025 CodeMaster. All rights reserved.</p>
             </div>
         </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // DOM Elements
             const signInBtn = document.getElementById('signInBtn');
             const profileDropdownWrapper = document.getElementById('profileDropdownWrapper');
             const profileBtn = document.getElementById('profileBtn');
@@ -357,7 +357,14 @@
             const mobileMenuBtn = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            // ✅ Check session via backend
+            const profileNameEl = document.querySelector('#profile-tab h2');
+            const profileTaglineEl = document.querySelector('#profile-tab p');
+            const profileAvatarEl = document.querySelector('#profile-tab img');
+            const nameInput = document.getElementById('profileName');
+            const taglineInput = document.getElementById('profileTagline');
+            const avatarInput = document.getElementById('profileAvatar');
+
+            // ✅ Session Check via Backend
             fetch("https://code-master-k2n.onrender.com/api/profile/me", {
             method: "GET",
             credentials: "include"
@@ -367,23 +374,27 @@
                 return res.json();
             })
             .then(data => {
-                // ✅ Authenticated: show profile
                 signInBtn?.classList.add("hidden");
                 profileDropdownWrapper?.classList.remove("hidden");
                 profileBtn.textContent = data.username || "Profile";
+
+                // Sync profile UI from backend
+                profileNameEl.textContent = data.username;
+                profileTaglineEl.textContent = data.bio || "";
+                nameInput.value = data.username;
+                taglineInput.value = data.bio || "";
             })
             .catch(() => {
-                // ❌ Not authenticated: show sign-in
                 signInBtn?.classList.remove("hidden");
                 profileDropdownWrapper?.classList.add("hidden");
             });
 
-            // ✅ Toggle profile dropdown
+            // ✅ Dropdown toggle
             profileBtn?.addEventListener('click', () => {
             profileDropdown?.classList.toggle('hidden');
             });
 
-            // ✅ Sign out: clear cookie via backend
+            // ✅ Sign out
             signOutLink?.addEventListener('click', () => {
             fetch("https://code-master-k2n.onrender.com/api/auth/logout", {
                 method: "POST",
@@ -397,43 +408,29 @@
             mobileMenuBtn?.addEventListener('click', () => {
             mobileMenu?.classList.toggle('hidden');
             });
-        });
-    </script>
 
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        // ✅ Tab Switching Logic
-        const tabButtons = document.querySelectorAll('.tab-button');
-        const tabContents = document.querySelectorAll('.tab-content');
-
-        tabButtons.forEach(button => {
+            // ✅ Tab Switching
+            document.querySelectorAll('.tab-button').forEach(button => {
             button.addEventListener('click', function () {
-            tabButtons.forEach(btn => {
+                document.querySelectorAll('.tab-button').forEach(btn => {
                 btn.classList.remove('text-purple-600', 'border-purple-600');
                 btn.classList.add('text-gray-500');
-            });
+                });
+                this.classList.add('text-purple-600', 'border-purple-600');
+                this.classList.remove('text-gray-500');
 
-            this.classList.add('text-purple-600', 'border-purple-600');
-            this.classList.remove('text-gray-500');
-
-            const tabId = this.getAttribute('data-tab') + '-tab';
-            tabContents.forEach(tab => {
+                const tabId = this.getAttribute('data-tab') + '-tab';
+                document.querySelectorAll('.tab-content').forEach(tab => {
                 tab.classList.add('hidden');
                 tab.classList.remove('active');
+                });
+                document.getElementById(tabId)?.classList.remove('hidden');
+                document.getElementById(tabId)?.classList.add('active');
+            });
             });
 
-            const activeTab = document.getElementById(tabId);
-            if (activeTab) {
-                activeTab.classList.remove('hidden');
-                activeTab.classList.add('active');
-            }
-            });
-        });
-
-        // ✅ Progress Ring Animation
-        const progressRings = document.querySelectorAll('.progress-ring');
-        progressRings.forEach(ring => {
+            // ✅ Progress Ring Animation
+            document.querySelectorAll('.progress-ring').forEach(ring => {
             const circle = ring.querySelector('.progress-ring__circle');
             const radius = circle.r.baseVal.value;
             const circumference = 2 * Math.PI * radius;
@@ -442,91 +439,45 @@
             circle.style.strokeDasharray = `${circumference} ${circumference}`;
             circle.style.strokeDashoffset = circumference;
 
-            animateProgressRing(circle, circumference, percent);
-        });
-
-        function animateProgressRing(circle, circumference, percent) {
             const offset = circumference - (percent / 100) * circumference;
             circle.style.strokeDashoffset = offset;
-        }
+            });
 
-        // ✅ Interactive IDE Simulation
-        document.getElementById('demoButton')?.addEventListener('click', function () {
+            // ✅ IDE Simulation
+            document.getElementById('demoButton')?.addEventListener('click', function () {
             const output = document.createElement('p');
             output.textContent = '✅ Button clicked! Code executed.';
             output.className = 'mt-4 text-green-600 font-semibold';
             this.parentElement.appendChild(output);
-        });
-
-        // ✅ Dynamic Lesson Progress Update
-        document.querySelectorAll('.mark-complete-button').forEach(button => {
-            button.addEventListener('click', () => {
-            const lessonId = button.getAttribute('data-lesson-id');
-            updateLessonProgress(lessonId);
-            calculateOverallProgress();
-            updateLearningJourneyProgress();
-            showLessonProgressSummary();
             });
-        });
 
-        // ✅ View Profile Button Logic
-        document.getElementById('viewProfileButton')?.addEventListener('click', () => {
-            const profileTabButton = document.querySelector('.tab-button[data-tab="profile"]');
-            profileTabButton?.click();
-        });
+            // ✅ Lesson Progress Update
+            document.querySelectorAll('.mark-complete-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const lessonId = button.getAttribute('data-lesson-id');
+                updateLessonProgress(lessonId);
+                calculateOverallProgress();
+                updateLearningJourneyProgress();
+                showLessonProgressSummary();
+            });
+            });
 
-        // ✅ Edit Profile Modal with localStorage
-        const editButton = document.querySelector('#profile-tab .bg-purple-600');
-        const modal = document.getElementById('editProfileModal');
-        const cancelEdit = document.getElementById('cancelEdit');
-        const form = document.getElementById('editProfileForm');
+            // ✅ View Profile Tab
+            document.getElementById('viewProfileButton')?.addEventListener('click', () => {
+            document.querySelector('.tab-button[data-tab="profile"]')?.click();
+            });
 
-        // Profile Elements
-        const profileNameEl = document.querySelector('#profile-tab h2');
-        const profileTaglineEl = document.querySelector('#profile-tab p');
-        const profileAvatarEl = document.querySelector('#profile-tab img');
+            // ✅ Edit Profile Modal
+            const editButton = document.querySelector('#profile-tab .bg-purple-600');
+            const modal = document.getElementById('editProfileModal');
+            const cancelEdit = document.getElementById('cancelEdit');
+            const form = document.getElementById('editProfileForm');
 
-        // Form Inputs
-        const nameInput = document.getElementById('profileName');
-        const taglineInput = document.getElementById('profileTagline');
-        const avatarInput = document.getElementById('profileAvatar');
+            editButton?.addEventListener('click', () => modal.classList.remove('hidden'));
+            cancelEdit?.addEventListener('click', () => modal.classList.add('hidden'));
 
-        // Load saved profile from localStorage
-        function loadProfile() {
-            const savedName = localStorage.getItem('profileName');
-            const savedTagline = localStorage.getItem('profileTagline');
-            const savedAvatar = localStorage.getItem('profileAvatar');
-
-            if (savedName) {
-            profileNameEl.textContent = savedName;
-            nameInput.value = savedName;
-            }
-
-            if (savedTagline) {
-            profileTaglineEl.textContent = savedTagline;
-            taglineInput.value = savedTagline;
-            }
-
-            if (savedAvatar) {
-            profileAvatarEl.src = savedAvatar;
-            avatarInput.value = savedAvatar;
-            }
-        }
-
-        // Show modal
-        editButton?.addEventListener('click', () => {
-            modal.classList.remove('hidden');
-        });
-
-        // Hide modal
-        cancelEdit?.addEventListener('click', () => {
-            modal.classList.add('hidden');
-        });
-
-        // Save profile and persist to localStorage
-        form?.addEventListener('submit', (e) => {
+            form?.addEventListener('submit', (e) => {
             e.preventDefault();
-
             const name = nameInput.value;
             const tagline = taglineInput.value;
             const avatar = avatarInput.value;
@@ -540,19 +491,39 @@
             localStorage.setItem('profileAvatar', avatar);
 
             modal.classList.add('hidden');
-        });
+            });
 
-        // ✅ Optional: Reset Profile Button
-        document.getElementById('resetProfile')?.addEventListener('click', () => {
+            // ✅ Reset Profile
+            document.getElementById('resetProfile')?.addEventListener('click', () => {
             localStorage.removeItem('profileName');
             localStorage.removeItem('profileTagline');
             localStorage.removeItem('profileAvatar');
             loadProfile();
-        });
+            });
 
-        // Load profile on page load
-        loadProfile();
+            // ✅ Load Profile from localStorage (fallback only)
+            function loadProfile() {
+            const savedName = localStorage.getItem('profileName');
+            const savedTagline = localStorage.getItem('profileTagline');
+            const savedAvatar = localStorage.getItem('profileAvatar');
+
+            if (savedName) {
+                profileNameEl.textContent = savedName;
+                nameInput.value = savedName;
+            }
+            if (savedTagline) {
+                profileTaglineEl.textContent = savedTagline;
+                taglineInput.value = savedTagline;
+            }
+            if (savedAvatar) {
+                profileAvatarEl.src = savedAvatar;
+                avatarInput.value = savedAvatar;
+            }
+            }
+
+            loadProfile(); // fallback only
         });
     </script>
+
 </body>
 </html>
