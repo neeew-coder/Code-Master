@@ -346,31 +346,7 @@
                 <p class="text-gray-400 mb-4 md:mb-0">© 2025 CodeMaster. All rights reserved.</p>
             </div>
         </div>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch("https://codemaster-server.onrender.com/api/profile/me", {
-            method: "GET",
-            credentials: "include"
-            })
-            .then(res => {
-            if (!res.ok) throw new Error("Not authenticated");
-            return res.json();
-            })
-            .then(data => {
-            // ✅ Hide sign-in button
-            document.querySelector(".auth__hint")?.classList.add("hidden");
-
-            // ✅ Show profile dropdown
-            document.getElementById("profileDropdownWrapper")?.classList.remove("hidden");
-            })
-            .catch(err => {
-            console.log("User not logged in:", err.message);
-            });
-        });    
-    </script>
-
-
+        
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // DOM Elements
