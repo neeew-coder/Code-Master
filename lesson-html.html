@@ -147,10 +147,8 @@
     </section>
   </main>
 
-
-  <!-- Dynamic Module Loader -->
+    <!-- Dynamic Module Loader -->
   <script>
-    // Dynamically detect subject from <body data-subject="html">
     const subject = document.body.dataset.subject || "html";
 
     function loadModule(lessonId) {
@@ -168,7 +166,7 @@
         activeBtn.classList.remove("text-orange-600");
       }
 
-      // Load content
+      // Show loading state
       container.innerHTML = `
         <div class="text-center py-10 text-gray-300 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -176,6 +174,7 @@
         </div>
       `;
 
+      // Fetch lesson content
       fetch(`lessons/${subject}/${lessonId}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
@@ -203,9 +202,9 @@
     }
 
     function updateProgress(lessonId) {
-      fetch("/api/progress", {
+      fetch("/api/progress/update", {
         method: "POST",
-        credentials: "include", // ✅ Send cookies
+        credentials: "include",
         headers: {
           "Content-Type": "application/json"
         },
@@ -231,7 +230,7 @@
     function loadProgress() {
       fetch(`/api/progress/${subject}`, {
         method: "GET",
-        credentials: "include" // ✅ Send cookies
+        credentials: "include"
       })
       .then(res => {
         if (!res.ok) throw new Error("Progress fetch failed");
