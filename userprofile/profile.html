@@ -91,16 +91,7 @@
     java: { name: "Java Fundamentals", color: "red", icon: "fa-java", badgeColor: "text-red-500" },
     csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
   };
-
-  function cleanToken() {
-    let token = localStorage.getItem("codemasterToken");
-    if (token?.startsWith("Bearer ")) {
-      token = token.replace("Bearer ", "");
-      localStorage.setItem("codemasterToken", token);
-    }
-    return token;
-  }
-
+  
   function renderProgressBars() {
     const container = document.getElementById("progressBars");
     container.innerHTML = "";
@@ -172,11 +163,8 @@
   }
 
   function loadProfileFromBackend() {
-    const token = cleanToken();
-    if (!token) return;
-
     fetch(`${API_BASE}/profile/me`, {
-      headers: { Authorization: `Bearer ${token}` }
+      credentials: "include" // ✅ Send cookies
     })
       .then(res => {
         if (res.status === 401) {
@@ -201,7 +189,6 @@
   function saveProfile() {
     const name = document.getElementById("profileName").value.trim();
     const tagline = document.getElementById("profileTagline").value.trim();
-    const token = cleanToken();
 
     if (!name || name.length < 2) {
       alert("Please enter a valid name.");
@@ -220,9 +207,9 @@
     fetch(`${API_BASE}/profile/me`, {
       method: "PUT",
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`
+        "Content-Type": "application/json"
       },
+      credentials: "include", // ✅ Send cookies
       body: JSON.stringify({ username: name, bio: tagline })
     })
       .then(res => {
