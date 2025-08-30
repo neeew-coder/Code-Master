@@ -24,14 +24,11 @@ router.post("/register", async (req, res) => {
 
     const token = jwt.sign({ _id: newUser._id }, JWT_SECRET, { expiresIn: "30d" });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      maxAge: 30 * 24 * 60 * 60 * 1000 // 30 days
+    res.status(201).json({
+      message: "User registered",
+      token,
+      username: newUser.username,
     });
-
-    res.status(201).json({ message: "User registered", username: newUser.username });
   } catch (err) {
     console.error("Registration error:", err);
     res.status(500).json({ error: "Registration failed" });
@@ -54,14 +51,11 @@ router.post("/login", async (req, res) => {
 
     const token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: "30d" });
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "Strict",
-      maxAge: 30 * 24 * 60 * 60 * 1000
+    res.json({
+      message: "Login successful",
+      token,
+      username: user.username,
     });
-
-    res.json({ message: "Login successful", username: user.username });
   } catch (err) {
     console.error("Login error:", err);
     res.status(500).json({ error: "Login failed" });
