@@ -346,7 +346,6 @@
                 <p class="text-gray-400 mb-4 md:mb-0">© 2025 CodeMaster. All rights reserved.</p>
             </div>
         </div>
-    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -358,44 +357,46 @@
             const mobileMenuBtn = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
-            const token = localStorage.getItem('codemasterToken');
-            const profileName = localStorage.getItem('codemasterUserName') || 'Profile';
-
-            console.log("🔐 Auth token:", token);
-
-            // ✅ Check if elements exist before modifying
-            if (signInBtn && profileDropdownWrapper && profileBtn) {
-            if (token) {
-                signInBtn.classList.add('hidden');
-                profileDropdownWrapper.classList.remove('hidden');
-                profileBtn.textContent = profileName;
-            } else {
-                signInBtn.classList.remove('hidden');
-                profileDropdownWrapper.classList.add('hidden');
-            }
-            }
-
-            // ✅ Toggle dropdown
-            if (profileBtn && profileDropdown) {
-            profileBtn.addEventListener('click', () => {
-                profileDropdown.classList.toggle('hidden');
+            // ✅ Check session via backend
+            fetch("https://code-master-k2n.onrender.com/api/profile/me", {
+            method: "GET",
+            credentials: "include"
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Not authenticated");
+                return res.json();
+            })
+            .then(data => {
+                // ✅ Authenticated: show profile
+                signInBtn?.classList.add("hidden");
+                profileDropdownWrapper?.classList.remove("hidden");
+                profileBtn.textContent = data.username || "Profile";
+            })
+            .catch(() => {
+                // ❌ Not authenticated: show sign-in
+                signInBtn?.classList.remove("hidden");
+                profileDropdownWrapper?.classList.add("hidden");
             });
-            }
 
-            // ✅ Sign Out
-            if (signOutLink) {
-            signOutLink.addEventListener('click', () => {
-                localStorage.clear();
-                window.location.href = 'index.html';
+            // ✅ Toggle profile dropdown
+            profileBtn?.addEventListener('click', () => {
+            profileDropdown?.classList.toggle('hidden');
             });
-            }
+
+            // ✅ Sign out: clear cookie via backend
+            signOutLink?.addEventListener('click', () => {
+            fetch("https://code-master-k2n.onrender.com/api/auth/logout", {
+                method: "POST",
+                credentials: "include"
+            }).finally(() => {
+                window.location.href = "index.html";
+            });
+            });
 
             // ✅ Mobile menu toggle
-            if (mobileMenuBtn && mobileMenu) {
-            mobileMenuBtn.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
+            mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
             });
-            }
         });
     </script>
 
