@@ -355,86 +355,52 @@
             const profileBtn = document.getElementById('profileBtn');
             const profileDropdown = document.getElementById('profileDropdown');
             const signOutLink = document.getElementById('signOutLink');
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
             const token = localStorage.getItem('codemasterToken');
             const profileName = localStorage.getItem('codemasterUserName') || 'Profile';
 
-            // Auth state
+            console.log("🔐 Auth token:", token);
+
+            // ✅ Check if elements exist before modifying
+            if (signInBtn && profileDropdownWrapper && profileBtn) {
             if (token) {
-            signInBtn.classList.add('hidden');
-            profileDropdownWrapper.classList.remove('hidden');
-            profileBtn.textContent = profileName;
+                signInBtn.classList.add('hidden');
+                profileDropdownWrapper.classList.remove('hidden');
+                profileBtn.textContent = profileName;
             } else {
-            signInBtn.classList.remove('hidden');
-            profileDropdownWrapper.classList.add('hidden');
+                signInBtn.classList.remove('hidden');
+                profileDropdownWrapper.classList.add('hidden');
+            }
             }
 
-            // Toggle dropdown
+            // ✅ Toggle dropdown
+            if (profileBtn && profileDropdown) {
             profileBtn.addEventListener('click', () => {
-            profileDropdown.classList.toggle('hidden');
+                profileDropdown.classList.toggle('hidden');
             });
+            }
 
-            // Sign Out
+            // ✅ Sign Out
+            if (signOutLink) {
             signOutLink.addEventListener('click', () => {
-            localStorage.clear();
-            window.location.href = 'index.html';
+                localStorage.clear();
+                window.location.href = 'index.html';
             });
+            }
 
-            // Mobile menu toggle
-            const mobileMenuBtn = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
+            // ✅ Mobile menu toggle
+            if (mobileMenuBtn && mobileMenu) {
             mobileMenuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('hidden');
             });
+            }
         });
     </script>
 
+
     <script>
-        // document.addEventListener('DOMContentLoaded', () => {
-        //     const signInBtn = document.getElementById('signInBtn');
-        //     const profileBtn = document.getElementById('profileBtn');
-        //     const signOutBtn = document.getElementById('signOutBtn'); // Optional
-
-        //     const token = localStorage.getItem('codemasterToken');
-        //     const profileName = localStorage.getItem('profileName');
-
-        //     if (token) {
-        //         // ✅ User is signed in
-        //         signInBtn.classList.add('hidden');
-        //         profileBtn.classList.remove('hidden');
-        //         signOutBtn?.classList.remove('hidden');
-
-        //         // Personalize the Profile button
-        //         profileBtn.textContent = profileName || 'Profile';
-        //     } else {
-        //         // ❌ Not signed in
-        //         signInBtn.classList.remove('hidden');
-        //         profileBtn.classList.add('hidden');
-        //         signOutBtn?.classList.add('hidden');
-        //     }
-
-        //     // 🔗 Sign In button → auth.html
-        //     signInBtn?.addEventListener('click', () => {
-        //         window.location.href = 'auth.html';
-        //     });
-
-        //     // 🔗 Profile button → userprofile.html
-        //     profileBtn?.addEventListener('click', () => {
-        //         window.location.href = 'userprofile/userprofile.html';
-        //     });
-
-        //     // 🔓 Optional: Sign Out button logic
-        //     signOutBtn?.addEventListener('click', () => {
-        //         localStorage.removeItem('codemasterToken');
-        //         localStorage.removeItem('profileName');
-        //         localStorage.removeItem('profileTagline');
-        //         localStorage.removeItem('profileAvatar');
-        //         localStorage.removeItem('codemasterProgress');
-        //         window.location.href = 'index.html';
-        //     });
-        //     });
-
-
         document.addEventListener("DOMContentLoaded", function () {
         // ✅ Tab Switching Logic
         const tabButtons = document.querySelectorAll('.tab-button');
