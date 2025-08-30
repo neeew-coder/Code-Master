@@ -381,15 +381,15 @@
             })
             .then(data => {
             console.log("✅ Session data:", data);
+
             signInBtn?.classList.add("hidden");
             profileDropdownWrapper?.classList.remove("hidden");
-            profileBtn.textContent = data.username || "Profile";
 
-            // Sync profile UI from backend
-            profileNameEl.textContent = data.username;
-            profileTaglineEl.textContent = data.bio || "";
-            nameInput.value = data.username;
-            taglineInput.value = data.bio || "";
+            if (profileBtn) profileBtn.textContent = data.username || "Profile";
+            if (profileNameEl) profileNameEl.textContent = data.username;
+            if (profileTaglineEl) profileTaglineEl.textContent = data.bio || "";
+            if (nameInput) nameInput.value = data.username;
+            if (taglineInput) taglineInput.value = data.bio || "";
             })
             .catch(err => {
             console.warn("❌ Session check failed:", err.message);
@@ -486,19 +486,19 @@
 
         form?.addEventListener('submit', (e) => {
             e.preventDefault();
-            const name = nameInput.value;
-            const tagline = taglineInput.value;
-            const avatar = avatarInput.value;
+            const name = nameInput?.value;
+            const tagline = taglineInput?.value;
+            const avatar = avatarInput?.value;
 
-            profileNameEl.textContent = name;
-            profileTaglineEl.textContent = tagline;
-            profileAvatarEl.src = avatar;
+            if (profileNameEl) profileNameEl.textContent = name;
+            if (profileTaglineEl) profileTaglineEl.textContent = tagline;
+            if (profileAvatarEl) profileAvatarEl.src = avatar;
 
             localStorage.setItem('profileName', name);
             localStorage.setItem('profileTagline', tagline);
             localStorage.setItem('profileAvatar', avatar);
 
-            modal.classList.add('hidden');
+            modal?.classList.add('hidden');
         });
 
         // ✅ Reset Profile
@@ -515,15 +515,15 @@
             const savedTagline = localStorage.getItem('profileTagline');
             const savedAvatar = localStorage.getItem('profileAvatar');
 
-            if (savedName) {
+            if (savedName && profileNameEl && nameInput) {
             profileNameEl.textContent = savedName;
             nameInput.value = savedName;
             }
-            if (savedTagline) {
+            if (savedTagline && profileTaglineEl && taglineInput) {
             profileTaglineEl.textContent = savedTagline;
             taglineInput.value = savedTagline;
             }
-            if (savedAvatar) {
+            if (savedAvatar && profileAvatarEl && avatarInput) {
             profileAvatarEl.src = savedAvatar;
             avatarInput.value = savedAvatar;
             }
@@ -532,6 +532,7 @@
         loadProfile(); // fallback only
         });
     </script>
+
 
 </body>
 </html>
