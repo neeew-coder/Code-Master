@@ -65,16 +65,13 @@
         const res = await fetch(`${BASE_URL}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include", // ✅ Required for cookies/auth headers
+          credentials: "include", // ✅ Comma added here
           body: JSON.stringify({ username, password })
         });
 
         const data = await res.json();
         if (res.ok) {
-          if (isTokenExpired(data.token)) {
-            return showAuthMessage("Token expired. Please login again.");
-          }
-          saveAuth(data.token, data.username);
+          showAuthMessage("Login successful", false);
           window.location.href = "userprofile/profile.html";
         } else {
           showAuthMessage(data.error || "Login failed");
@@ -98,16 +95,13 @@
         const res = await fetch(`${BASE_URL}/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include", // ✅ Required for cookies/auth headers
+          credentials: "include", // ✅ Comma added here
           body: JSON.stringify({ username, password })
         });
 
         const data = await res.json();
         if (res.ok) {
-          if (isTokenExpired(data.token)) {
-            return showAuthMessage("Token expired. Please register again.");
-          }
-          saveAuth(data.token, data.username);
+          showAuthMessage("Registration successful", false);
           window.location.href = "userprofile/profile.html";
         } else {
           showAuthMessage(data.error || "Registration failed");
@@ -118,6 +112,7 @@
         toggleButtons(false);
       }
     }
+
   </script>
 
 </body>
