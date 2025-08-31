@@ -22,13 +22,13 @@ router.get("/:subject", auth, async (req, res) => {
   try {
     const progress = await Progress.findOne({ userId });
 
-    const completed = progress?.completed?.get(subject) || [];
+    const completedLessons = progress?.completed?.get(subject) || [];
 
     res.json({
       success: true,
       progress: {
         userId,
-        completed: { [subject]: completed },
+        completed: { [subject]: completedLessons },
         totalModules: getTotalModulesFor(subject)
       }
     });
@@ -44,20 +44,22 @@ router.post("/update", auth, async (req, res) => {
   const userId = req.user._id;
 
   try {
+    // Push lesson into completed[subject] array using dynamic key
     await Progress.updateOne(
       { userId },
       { $addToSet: { [`completed.${subject}`]: lesson } },
       { upsert: true }
     );
 
+    // Fetch updated progress
     const updated = await Progress.findOne({ userId });
-    const completed = updated?.completed?.get(subject) || [];
+    const completedLessons = updated?.completed?.get(subject) || [];
 
     res.json({
       success: true,
       progress: {
         userId,
-        completed: { [subject]: completed },
+        completed: { [subject]: completedLessons },
         totalModules: getTotalModulesFor(subject)
       }
     });
