@@ -45,21 +45,32 @@ router.get("/:subject", auth, async (req, res) => {
   }
 });
 
-// POST /api/progress/update
 router.post("/update", auth, async (req, res) => {
-  const { lesson, completed } = req.body;
+  const { subject, lesson } = req.body;
   const userId = req.user._id;
 
   try {
-    const updated = await Progress.findOneAndUpdate(
-      { userId, lesson },
-      { $set: { completed } },
-      { upsert: true, new: true }
-    );
+    let progress = await Progress.findOne({ userId, lesson: subject });
+
+    if (!progress) {
+      // Create new progress doc
+      progress = await Progress.create({
+        userId,
+        lesson: subject,
+        completed: [lesson],
+        totalModules: getTotalModulesFor(subject)
+      });
+    } else {
+      // Avoid duplicates
+      if (!progress.completed.includes(lesson)) {
+        progress.completed.push(lesson);
+        await progress.save();
+      }
+    }
 
     const progressWithMeta = {
-      ...updated.toObject(),
-      totalModules: getTotalModulesFor(lesson)
+      ...progress.toObject(),
+      totalModules: getTotalModulesFor(subject)
     };
 
     res.json({ success: true, progress: progressWithMeta });
@@ -68,5 +79,6 @@ router.post("/update", auth, async (req, res) => {
     res.status(500).json({ success: false, error: "Progress update failed" });
   }
 });
+
 
 module.exports = router;
