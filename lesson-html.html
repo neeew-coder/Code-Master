@@ -166,139 +166,142 @@
     </section>
   </main>
 
-  <script>
-    const subject = document.body.dataset.subject || "html";
-    const API_BASE = "https://code-master-kk2m.onrender.com";
+<script>
+  const subject = document.body.dataset.subject || "html";
+  const API_BASE = "https://code-master-kk2m.onrender.com";
 
-    function loadModule(lessonId) {
-      const container = document.getElementById("moduleContent");
-      if (!container) return;
+  function loadModule(lessonId) {
+    const container = document.getElementById("moduleContent");
+    if (!container) return;
 
-      // Highlight active button
-      document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
-        btn.classList.remove("active", "bg-orange-100", "font-semibold", "text-orange-700");
-        btn.classList.add("text-orange-600");
-      });
-
-      const activeBtn = document.querySelector(`#${subject}Sidebar button[data-lesson="${lessonId}"]`);
-      if (activeBtn) {
-        activeBtn.classList.add("active", "bg-orange-100", "font-semibold", "text-orange-700");
-        activeBtn.classList.remove("text-orange-600");
-      }
-
-      // Show loading state
-      container.innerHTML = `
-        <div class="text-center py-10 text-gray-300 animate-pulse">
-          <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
-          <p>Loading module...</p>
-        </div>
-      `;
-
-      // Fetch lesson content
-      fetch(`lessons/${subject}/${lessonId}.html`)
-        .then(res => {
-          if (!res.ok) throw new Error("Module not found");
-          return res.text();
-        })
-        .then(html => {
-          container.innerHTML = `
-            <div class="lesson-container" data-lesson-id="${lessonId}">
-              <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
-                ${html}
-              </div>
-            </div>
-            <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
-              ↑
-            </button>
-          `;
-          updateProgress(lessonId);
-        })
-        .catch(() => {
-          container.innerHTML = `
-            <div class="text-center py-10 text-red-500">
-              <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
-              <p>⚠️ Unable to load module: ${lessonId}</p>
-            </div>
-          `;
-        });
-    }
-
-    function updateProgress(lessonId) {
-      fetch(`${API_BASE}/api/progress/update`, {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ subject, lesson: lessonId })
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Progress update failed");
-        return res.json();
-      })
-      .then(() => {
-        loadProgress(); // Refresh UI after update
-      })
-      .catch(err => {
-        console.warn("Progress update error:", err.message);
-      });
-    }
-
-    function loadProgress() {
-      fetch(`${API_BASE}/api/progress/${subject}`, {
-        method: "GET",
-        credentials: "include"
-      })
-      .then(res => {
-        if (!res.ok) throw new Error("Progress fetch failed");
-        return res.json();
-      })
-      .then(data => {
-        console.log("Progress response:", data);
-
-        const raw = data?.progress ?? {};
-        const completed = Array.isArray(raw.completed) ? raw.completed : [];
-        const totalModules = typeof raw.totalModules === "number" ? raw.totalModules : 1;
-
-        updateUIWithProgress({ completed, totalModules });
-
-        completed.forEach(id => {
-          const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
-          if (btn) btn.classList.add("opacity-50", "cursor-default");
-        });
-      })
-      .catch(err => {
-        console.warn("Progress fetch error:", err.message);
-      });
-    }
-
-    function updateUIWithProgress(data) {
-      const completed = Array.isArray(data.completed) ? data.completed : [];
-      const totalModules = typeof data.totalModules === "number" && data.totalModules > 0 ? data.totalModules : 1;
-
-      const percent = Math.round((completed.length / totalModules) * 100);
-      document.getElementById("progress-bar").style.width = `${percent}%`;
-      document.querySelectorAll(".progress-label").forEach(label => {
-        label.textContent = `${percent}% Completed`;
-      });
-    }
-
-    function scrollToTop() {
-      const container = document.getElementById("moduleContent");
-      if (container) container.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
-        btn.addEventListener("click", () => {
-          const lessonId = btn.dataset.lesson;
-          loadModule(lessonId);
-        });
-      });
-
-      loadProgress();
+    // Highlight active button
+    document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
+      btn.classList.remove("active", "bg-orange-100", "font-semibold", "text-orange-700");
+      btn.classList.add("text-orange-600");
     });
-  </script>
+
+    const activeBtn = document.querySelector(`#${subject}Sidebar button[data-lesson="${lessonId}"]`);
+    if (activeBtn) {
+      activeBtn.classList.add("active", "bg-orange-100", "font-semibold", "text-orange-700");
+      activeBtn.classList.remove("text-orange-600");
+    }
+
+    // Show loading state
+    container.innerHTML = `
+      <div class="text-center py-10 text-gray-300 animate-pulse">
+        <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
+        <p>Loading module...</p>
+      </div>
+    `;
+
+    // Fetch lesson content
+    fetch(`lessons/${subject}/${lessonId}.html`)
+      .then(res => {
+        if (!res.ok) throw new Error("Module not found");
+        return res.text();
+      })
+      .then(html => {
+        container.innerHTML = `
+          <div class="lesson-container" data-lesson-id="${lessonId}">
+            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
+              ${html}
+            </div>
+          </div>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
+            ↑
+          </button>
+        `;
+        updateProgress(subject, lessonId);
+      })
+      .catch(() => {
+        container.innerHTML = `
+          <div class="text-center py-10 text-red-500">
+            <i class="fas fa-exclamation-triangle text-2xl mb-2"></i>
+            <p>⚠️ Unable to load module: ${lessonId}</p>
+          </div>
+        `;
+      });
+  }
+
+  function updateProgress(subject, lessonId) {
+    fetch(`${API_BASE}/api/progress/update`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ subject, lesson: lessonId })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Progress update failed");
+      return res.json();
+    })
+    .then(() => {
+      loadProgress(); // Refresh UI after update
+    })
+    .catch(err => {
+      console.warn("Progress update error:", err.message);
+    });
+  }
+
+  function loadProgress() {
+    fetch(`${API_BASE}/api/progress/${subject}`, {
+      method: "GET",
+      credentials: "include"
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Progress fetch failed");
+      return res.json();
+    })
+    .then(data => {
+      console.log("Progress response:", data);
+
+      const completed = Array.isArray(data?.progress?.completed?.[subject])
+        ? data.progress.completed[subject]
+        : [];
+
+      const totalModules = typeof data.totalModules === "number" ? data.totalModules : 1;
+
+      updateUIWithProgress({ completed, totalModules });
+
+      completed.forEach(id => {
+        const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
+        if (btn) btn.classList.add("opacity-50", "cursor-default");
+      });
+    })
+    .catch(err => {
+      console.warn("Progress fetch error:", err.message);
+    });
+  }
+
+  function updateUIWithProgress(data) {
+    const completed = Array.isArray(data.completed) ? data.completed : [];
+    const totalModules = typeof data.totalModules === "number" && data.totalModules > 0 ? data.totalModules : 1;
+
+    const percent = Math.round((completed.length / totalModules) * 100);
+    document.getElementById("progress-bar").style.width = `${percent}%`;
+    document.querySelectorAll(".progress-label").forEach(label => {
+      label.textContent = `${percent}% Completed`;
+    });
+  }
+
+  function scrollToTop() {
+    const container = document.getElementById("moduleContent");
+    if (container) container.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const lessonId = btn.dataset.lesson;
+        loadModule(lessonId);
+      });
+    });
+
+    loadProgress();
+  });
+</script>
+
 
 </body>
 </html>
