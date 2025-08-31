@@ -230,7 +230,7 @@
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ subject, lessonId })
+        body: JSON.stringify({ subject, lesson: lessonId })
       })
       .then(res => {
         if (!res.ok) throw new Error("Progress update failed");
@@ -255,11 +255,19 @@
       })
       .then(data => {
         console.log("Progress response:", data);
-        const progressData = data?.progress ?? { completedModules: [], totalModules: 1 };
 
-        updateUIWithProgress(progressData);
+        const raw = data?.progress ?? {};
+        const completedModules = Array.isArray(raw.completedModules)
+          ? raw.completedModules
+          : Array.isArray(raw.completed)
+            ? raw.completed
+            : [];
 
-        progressData.completedModules.forEach(id => {
+        const totalModules = typeof raw.totalModules === "number" ? raw.totalModules : 1;
+
+        updateUIWithProgress({ completedModules, totalModules });
+
+        completedModules.forEach(id => {
           const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
           if (btn) btn.classList.add("opacity-50", "cursor-default");
         });
