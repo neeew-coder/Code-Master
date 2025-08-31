@@ -255,9 +255,11 @@
       })
       .then(data => {
         console.log("Progress response:", data);
-        const progressData = data.progress || data; // fallback if wrapped
+        const progressData = data?.progress ?? { completedModules: [], totalModules: 1 };
+
         updateUIWithProgress(progressData);
-        (progressData.completedModules || []).forEach(id => {
+
+        progressData.completedModules.forEach(id => {
           const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
           if (btn) btn.classList.add("opacity-50", "cursor-default");
         });
@@ -269,7 +271,7 @@
 
     function updateUIWithProgress(data) {
       const completedModules = Array.isArray(data.completedModules) ? data.completedModules : [];
-      const totalModules = typeof data.totalModules === "number" ? data.totalModules : 1;
+      const totalModules = typeof data.totalModules === "number" && data.totalModules > 0 ? data.totalModules : 1;
 
       const percent = Math.round((completedModules.length / totalModules) * 100);
       document.getElementById("progress-bar").style.width = `${percent}%`;
