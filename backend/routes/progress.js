@@ -20,65 +20,51 @@ router.get("/:subject", auth, async (req, res) => {
   const userId = req.user._id;
 
   try {
-    let progress = await Progress.findOne({ userId, lesson: subject });
+    const progress = await Progress.findOne({ userId });
 
-    // Return default if none found
-    if (!progress) {
-      progress = {
+    const completed = progress?.completed?.get(subject) || [];
+
+    res.json({
+      success: true,
+      progress: {
         userId,
-        lesson: subject,
-        completed: [],
+        completed: { [subject]: completed },
         totalModules: getTotalModulesFor(subject)
-      };
-    } else {
-      // Inject totalModules if missing
-      progress = {
-        ...progress.toObject(),
-        totalModules: getTotalModulesFor(subject)
-      };
-    }
-
-    res.json({ success: true, progress });
+      }
+    });
   } catch (err) {
     console.error("❌ Progress fetch error:", err);
     res.status(500).json({ success: false, error: "Progress fetch failed" });
   }
 });
 
+// POST /api/progress/update
 router.post("/update", auth, async (req, res) => {
   const { subject, lesson } = req.body;
   const userId = req.user._id;
 
   try {
-    let progress = await Progress.findOne({ userId, lesson: subject });
+    await Progress.updateOne(
+      { userId },
+      { $addToSet: { [`completed.${subject}`]: lesson } },
+      { upsert: true }
+    );
 
-    if (!progress) {
-      // Create new progress doc
-      progress = await Progress.create({
+    const updated = await Progress.findOne({ userId });
+    const completed = updated?.completed?.get(subject) || [];
+
+    res.json({
+      success: true,
+      progress: {
         userId,
-        lesson: subject,
-        completed: [lesson],
+        completed: { [subject]: completed },
         totalModules: getTotalModulesFor(subject)
-      });
-    } else {
-      // Avoid duplicates
-      if (!progress.completed.includes(lesson)) {
-        progress.completed.push(lesson);
-        await progress.save();
       }
-    }
-
-    const progressWithMeta = {
-      ...progress.toObject(),
-      totalModules: getTotalModulesFor(subject)
-    };
-
-    res.json({ success: true, progress: progressWithMeta });
+    });
   } catch (err) {
     console.error("❌ Progress update error:", err);
     res.status(500).json({ success: false, error: "Progress update failed" });
   }
 });
-
 
 module.exports = router;
