@@ -1,18 +1,17 @@
+// ✅ Core dependencies
 const express = require("express");
 const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
-const cookieParser = require("cookie-parser"); // ✅ Added for cookie-based auth
+const cookieParser = require("cookie-parser");
 
 // ✅ Route imports
 const apiRoutes = require("./routes/api");       // JDoodle
 const authRoutes = require("./routes/auth");     // Login/logout
 const profileRoutes = require("./routes/profile");
-const progressRoutes = require("./routes/progress");
+const progressRoutes = require("./routes/progress"); // Progress tracking
 
-
-app.use("/api/progress", progressRoutes);
-
+// ✅ Initialize Express app
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -49,11 +48,11 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization"]
 };
 
-// ✅ Middleware
+// ✅ Middleware setup
 app.use(cors(corsOptions));
 app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(express.json());
-app.use(cookieParser()); // ✅ Enables reading cookies from requests
+app.use(cookieParser());
 
 // ✅ Log requests and preflight
 app.use((req, res, next) => {
@@ -65,9 +64,10 @@ app.use((req, res, next) => {
 });
 
 // ✅ Mount routes
-app.use("/api", apiRoutes);         // JDoodle
-app.use("/api/auth", authRoutes);   // Login/logout
-app.use("/api/profile", profileRoutes); // Profile sync
+app.use("/api", apiRoutes);               // JDoodle
+app.use("/api/auth", authRoutes);         // Login/logout
+app.use("/api/profile", profileRoutes);   // Profile sync
+app.use("/api/progress", progressRoutes); // Progress tracking
 
 // ✅ Health check
 app.get("/", (req, res) => {
@@ -79,10 +79,10 @@ app.all("/*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
-  res.setHeader("Access-Control-Allow-Credentials", "true"); // ✅ This line is essential
+  res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.method === "OPTIONS") {
-    return res.sendStatus(204); // ✅ Preflight success
+    return res.sendStatus(204);
   }
 
   res.status(404).json({ error: "Route not found." });
