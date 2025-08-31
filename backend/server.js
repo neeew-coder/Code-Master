@@ -8,6 +8,10 @@ const cookieParser = require("cookie-parser"); // ✅ Added for cookie-based aut
 const apiRoutes = require("./routes/api");       // JDoodle
 const authRoutes = require("./routes/auth");     // Login/logout
 const profileRoutes = require("./routes/profile");
+const progressRoutes = require("./routes/progress");
+
+
+app.use("/api/progress", progressRoutes);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
