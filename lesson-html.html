@@ -168,7 +168,7 @@
 
   <script>
     const subject = document.body.dataset.subject || "html";
-    const API_BASE = "https://code-master-kk2m.onrender.com"; // Replace with your actual backend URL
+    const API_BASE = "https://code-master-kk2m.onrender.com";
 
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
@@ -202,8 +202,10 @@
         })
         .then(html => {
           container.innerHTML = `
-            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
-              ${html}
+            <div class="lesson-container" data-lesson-id="${lessonId}">
+              <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-white fade-in">
+                ${html}
+              </div>
             </div>
             <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">
               ↑
@@ -234,7 +236,9 @@
         if (!res.ok) throw new Error("Progress update failed");
         return res.json();
       })
-      .then(updateUIWithProgress)
+      .then(() => {
+        loadProgress(); // Refresh UI after update
+      })
       .catch(err => {
         console.warn("Progress update error:", err.message);
       });
