@@ -3,10 +3,41 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 const Progress = require("../models/progress");
 
-// GET /api/progress/html
-router.get("/html", auth, async (req, res) => {
+// Utility: total modules per subject
+const totalModulesMap = {
+  html: 5,
+  css: 6,
+  js: 8,
+  java: 7,
+  csharp: 4
+};
+
+const getTotalModulesFor = (subject) => totalModulesMap[subject] || 1;
+
+// GET /api/progress/:subject
+router.get("/:subject", auth, async (req, res) => {
+  const { subject } = req.params;
+  const userId = req.user._id;
+
   try {
-    const progress = await Progress.findOne({ userId: req.user._id, lesson: "html" });
+    let progress = await Progress.findOne({ userId, lesson: subject });
+
+    // Return default if none found
+    if (!progress) {
+      progress = {
+        userId,
+        lesson: subject,
+        completed: [],
+        totalModules: getTotalModulesFor(subject)
+      };
+    } else {
+      // Inject totalModules if missing
+      progress = {
+        ...progress.toObject(),
+        totalModules: getTotalModulesFor(subject)
+      };
+    }
+
     res.json({ success: true, progress });
   } catch (err) {
     console.error("❌ Progress fetch error:", err);
@@ -16,14 +47,22 @@ router.get("/html", auth, async (req, res) => {
 
 // POST /api/progress/update
 router.post("/update", auth, async (req, res) => {
+  const { lesson, completed } = req.body;
+  const userId = req.user._id;
+
   try {
-    const { lesson, completed } = req.body;
     const updated = await Progress.findOneAndUpdate(
-      { userId: req.user._id, lesson },
+      { userId, lesson },
       { $set: { completed } },
       { upsert: true, new: true }
     );
-    res.json({ success: true, progress: updated });
+
+    const progressWithMeta = {
+      ...updated.toObject(),
+      totalModules: getTotalModulesFor(lesson)
+    };
+
+    res.json({ success: true, progress: progressWithMeta });
   } catch (err) {
     console.error("❌ Progress update error:", err);
     res.status(500).json({ success: false, error: "Progress update failed" });
