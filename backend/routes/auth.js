@@ -87,16 +87,10 @@ router.post("/logout", (req, res) => {
 });
 
 // 🙋‍♂️ Me (Session Check)
-router.get("/me", auth, async (req, res) => {
-  try {
-    const user = await User.findById(req.user._id).select("-password");
-    if (!user) return res.status(404).json({ success: false, error: "User not found" });
-
-    res.json({ success: true, user });
-  } catch (err) {
-    console.error("❌ Me route error:", err);
-    res.status(500).json({ success: false, error: "Failed to fetch user" });
-  }
+router.get("/me", auth, (req, res) => {
+  const user = { ...req.user.toObject() };
+  delete user.password;
+  res.json({ success: true, user });
 });
 
 module.exports = router;
