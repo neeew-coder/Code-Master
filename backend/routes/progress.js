@@ -19,6 +19,8 @@ router.get("/:subject", auth, async (req, res) => {
   const { subject } = req.params;
   const userId = req.user._id;
 
+  console.log("Updating progress for:", userId, subject, lesson);
+
   try {
     const progress = await Progress.findOne({ userId });
 
