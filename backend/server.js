@@ -63,6 +63,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// ✅ Handle preflight for matched routes (especially progress update)
+app.options("/api/progress/update", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  return res.sendStatus(204);
+});
+
 // ✅ Mount routes
 app.use("/api", apiRoutes);               // JDoodle
 app.use("/api/auth", authRoutes);         // Login/logout
