@@ -223,26 +223,29 @@
       });
   }
 
-  function updateProgress(subject, lessonId) {
-    fetch(`${API_BASE}/api/progress/update`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ subject, lesson: lessonId })
-    })
-    .then(res => {
-      if (!res.ok) throw new Error("Progress update failed");
-      return res.json();
-    })
-    .then(() => {
-      loadProgress(); // Refresh UI after update
-    })
-    .catch(err => {
-      console.warn("Progress update error:", err.message);
-    });
-  }
+function updateProgress(subject, lessonId) {
+  console.log("Sending progress update:", { subject, lessonId }); // ✅ Log before sending
+
+  fetch(`${API_BASE}/api/progress/update`, {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ subject, lesson: lessonId })
+  })
+  .then(res => {
+    if (!res.ok) throw new Error("Progress update failed");
+    return res.json();
+  })
+  .then(() => {
+    loadProgress(); // Refresh UI after update
+  })
+  .catch(err => {
+    console.warn("Progress update error:", err.message);
+  });
+}
+
 
   function loadProgress() {
     fetch(`${API_BASE}/api/progress/${subject}`, {
