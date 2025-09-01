@@ -238,8 +238,22 @@
         if (!res.ok) throw new Error("Progress update failed");
         return res.json();
       })
-      .then(() => {
-        loadProgress(); // Refresh UI after update
+      .then(data => {
+        console.log("Progress response:", data);
+
+        const subjectProgress = data?.progress?.completed?.[subject] || {};
+        const completed = Object.entries(subjectProgress)
+          .filter(([_, isDone]) => isDone)
+          .map(([lessonId]) => lessonId);
+
+        const totalModules = document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).length || 1;
+
+        updateUIWithProgress({ completed, totalModules });
+
+        completed.forEach(id => {
+          const btn = document.querySelector(`#${subject}Sidebar button[data-lesson="${id}"]`);
+          if (btn) btn.classList.add("opacity-50", "cursor-default");
+        });
       })
       .catch(err => {
         console.warn("Progress update error:", err.message);
