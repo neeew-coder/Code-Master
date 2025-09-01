@@ -40,9 +40,9 @@ router.get("/:subject", auth, async (req, res) => {
     const progress = await Progress.findOne({ userId });
 
     const completedLessons =
-      progress?.completed?.[subject] && Array.isArray(progress.completed[subject])
+      progress?.completed?.[subject] && typeof progress.completed[subject] === "object"
         ? progress.completed[subject]
-        : [];
+        : {};
 
     res.json({
       success: true,
@@ -75,25 +75,23 @@ router.post("/update", auth, async (req, res) => {
     if (!progress) {
       progress = new Progress({
         userId,
-        completed: { [subject]: [lesson] }
+        completed: { [subject]: { [lesson]: true } }
       });
     } else {
       if (!progress.completed || typeof progress.completed !== "object") {
         progress.completed = {};
       }
 
-      if (!Array.isArray(progress.completed[subject])) {
-        progress.completed[subject] = [];
+      if (!progress.completed[subject] || typeof progress.completed[subject] !== "object") {
+        progress.completed[subject] = {};
       }
 
-      if (!progress.completed[subject].includes(lesson)) {
-        progress.completed[subject].push(lesson);
-      }
+      progress.completed[subject][lesson] = true;
     }
 
     await progress.save();
 
-    const completedLessons = progress.completed[subject] || [];
+    const completedLessons = progress.completed[subject] || {};
 
     res.json({
       success: true,
