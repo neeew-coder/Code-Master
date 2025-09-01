@@ -22,7 +22,11 @@ router.get("/:subject", auth, async (req, res) => {
   try {
     const progress = await Progress.findOne({ userId });
 
-    const completedLessons = progress?.completed?.get(subject) || [];
+    // Defensive fallback if progress or completed is malformed
+    const completedLessons =
+      progress?.completed instanceof Map
+        ? progress.completed.get(subject) || []
+        : [];
 
     res.json({
       success: true,
@@ -48,14 +52,20 @@ router.post("/update", auth, async (req, res) => {
   }
 
   try {
-    // Ensure progress document exists
     let progress = await Progress.findOne({ userId });
+
+    // If progress doesn't exist, create a new one with a Map
     if (!progress) {
       progress = new Progress({
         userId,
         completed: new Map([[subject, [lesson]]])
       });
     } else {
+      // Defensive fallback if completed is not a Map
+      if (!(progress.completed instanceof Map)) {
+        progress.completed = new Map();
+      }
+
       const current = progress.completed.get(subject) || [];
       if (!current.includes(lesson)) {
         current.push(lesson);
