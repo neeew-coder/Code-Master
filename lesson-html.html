@@ -165,7 +165,6 @@
       </div>
     </section>
   </main>
-
 <script>
   const subject = document.body.dataset.subject || "html";
   const API_BASE = "https://code-master-kk2m.onrender.com";
@@ -223,29 +222,28 @@
       });
   }
 
-function updateProgress(subject, lessonId) {
-  console.log("Sending progress update:", { subject, lessonId }); // ✅ Log before sending
+  function updateProgress(subject, lessonId) {
+    console.log("Sending progress update:", { subject, lessonId });
 
-  fetch(`${API_BASE}/api/progress/update`, {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ subject, lesson: lessonId })
-  })
-  .then(res => {
-    if (!res.ok) throw new Error("Progress update failed");
-    return res.json();
-  })
-  .then(() => {
-    loadProgress(); // Refresh UI after update
-  })
-  .catch(err => {
-    console.warn("Progress update error:", err.message);
-  });
-}
-
+    fetch(`${API_BASE}/api/progress/update`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ subject, lesson: lessonId })
+    })
+    .then(res => {
+      if (!res.ok) throw new Error("Progress update failed");
+      return res.json();
+    })
+    .then(() => {
+      loadProgress(); // Refresh UI after update
+    })
+    .catch(err => {
+      console.warn("Progress update error:", err.message);
+    });
+  }
 
   function loadProgress() {
     fetch(`${API_BASE}/api/progress/${subject}`, {
@@ -259,11 +257,12 @@ function updateProgress(subject, lessonId) {
     .then(data => {
       console.log("Progress response:", data);
 
-      const completed = Array.isArray(data?.progress?.completed?.[subject])
-        ? data.progress.completed[subject]
-        : [];
+      const subjectProgress = data?.progress?.[subject] || {};
+      const completed = Object.entries(subjectProgress)
+        .filter(([_, isDone]) => isDone)
+        .map(([lessonId]) => lessonId);
 
-      const totalModules = typeof data.totalModules === "number" ? data.totalModules : 1;
+      const totalModules = Object.keys(subjectProgress).length || 1;
 
       updateUIWithProgress({ completed, totalModules });
 
