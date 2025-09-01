@@ -165,6 +165,7 @@
       </div>
     </section>
   </main>
+
   <script>
     const subject = document.body.dataset.subject || "html";
     const API_BASE = "https://code-master-kk2m.onrender.com";
@@ -257,12 +258,12 @@
       .then(data => {
         console.log("Progress response:", data);
 
-        const subjectProgress = data?.progress?.[subject] || {};
+        const subjectProgress = data?.progress?.completed?.[subject] || {};
         const completed = Object.entries(subjectProgress)
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = Object.keys(subjectProgress).length || 1;
+        const totalModules = document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).length || 1;
 
         updateUIWithProgress({ completed, totalModules });
 
