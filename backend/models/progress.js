@@ -12,12 +12,12 @@ const progressSchema = new mongoose.Schema({
   completed: {
     type: Object,
     default: () => ({})
-    // Structure: { math: ["lesson1", "lesson2"], science: ["lesson3"] }
+    // Structure: { html: { "intro": true, "elements": true }, css: { ... } }
   },
   badges: {
     type: Object,
     default: () => ({})
-    // Structure: { math: ["starter", "mastery"], science: ["explorer"] }
+    // Structure: { html: ["starter", "mastery"], css: ["explorer"] }
   },
   lastUpdated: {
     type: Date,
@@ -25,6 +25,7 @@ const progressSchema = new mongoose.Schema({
   }
 }, { timestamps: true });
 
+// ✅ Ensure lastUpdated stays fresh on every save
 progressSchema.pre("save", function (next) {
   this.lastUpdated = Date.now();
   next();

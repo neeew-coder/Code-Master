@@ -63,7 +63,7 @@ router.post("/update", auth, async (req, res) => {
   const { subject, lesson } = req.body;
   const userId = req.user._id;
 
-  console.log("Updating progress for:", userId, subject, lesson);
+  console.log("📘 Updating progress for:", { userId, subject, lesson });
 
   if (!subject || !lesson) {
     return res.status(400).json({ success: false, error: "Missing subject or lesson" });
@@ -73,11 +73,13 @@ router.post("/update", auth, async (req, res) => {
     let progress = await Progress.findOne({ userId });
 
     if (!progress) {
+      // First-time progress creation
       progress = new Progress({
         userId,
         completed: { [subject]: { [lesson]: true } }
       });
     } else {
+      // Ensure structure exists
       if (!progress.completed || typeof progress.completed !== "object") {
         progress.completed = {};
       }
@@ -86,10 +88,16 @@ router.post("/update", auth, async (req, res) => {
         progress.completed[subject] = {};
       }
 
+      // ✅ Mark lesson as completed
       progress.completed[subject][lesson] = true;
+
+      // ✅ Ensure Mongoose tracks nested changes
+      progress.markModified("completed");
     }
 
     await progress.save();
+
+    console.log("✅ Final saved progress:", JSON.stringify(progress.completed, null, 2));
 
     const completedLessons = progress.completed[subject] || {};
 
