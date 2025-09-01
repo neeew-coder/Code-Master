@@ -33,7 +33,7 @@ router.get("/:subject", auth, async (req, res) => {
       }
     });
   } catch (err) {
-    console.error("❌ Progress fetch error:", err);
+    console.error("❌ Progress fetch error:", err.message);
     res.status(500).json({ success: false, error: "Progress fetch failed" });
   }
 });
@@ -43,17 +43,29 @@ router.post("/update", auth, async (req, res) => {
   const { subject, lesson } = req.body;
   const userId = req.user._id;
 
-  try {
-    // Push lesson into completed[subject] array using dynamic key
-    await Progress.updateOne(
-      { userId },
-      { $addToSet: { [`completed.${subject}`]: lesson } },
-      { upsert: true }
-    );
+  if (!subject || !lesson) {
+    return res.status(400).json({ success: false, error: "Missing subject or lesson" });
+  }
 
-    // Fetch updated progress
-    const updated = await Progress.findOne({ userId });
-    const completedLessons = updated?.completed?.get(subject) || [];
+  try {
+    // Ensure progress document exists
+    let progress = await Progress.findOne({ userId });
+    if (!progress) {
+      progress = new Progress({
+        userId,
+        completed: new Map([[subject, [lesson]]])
+      });
+    } else {
+      const current = progress.completed.get(subject) || [];
+      if (!current.includes(lesson)) {
+        current.push(lesson);
+        progress.completed.set(subject, current);
+      }
+    }
+
+    await progress.save();
+
+    const completedLessons = progress.completed.get(subject) || [];
 
     res.json({
       success: true,
@@ -64,7 +76,7 @@ router.post("/update", auth, async (req, res) => {
       }
     });
   } catch (err) {
-    console.error("❌ Progress update error:", err);
+    console.error("❌ Progress update error:", err.message);
     res.status(500).json({ success: false, error: "Progress update failed" });
   }
 });
