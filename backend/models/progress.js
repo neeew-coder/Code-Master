@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const progressSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  userId: { type: mongoose.Schema.Types.ObjectId, required: true, unique: true },
   completed: {
     type: Map,
-    of: [String], // Tracks completed lessons per subject
-    default: {}
+    of: [String],
+    default: () => new Map()
   }
 });
 
