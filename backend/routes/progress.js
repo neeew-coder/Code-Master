@@ -22,10 +22,9 @@ router.get("/:subject", auth, async (req, res) => {
   try {
     const progress = await Progress.findOne({ userId });
 
-    // Defensive fallback if progress or completed is malformed
     const completedLessons =
-      progress?.completed instanceof Map
-        ? progress.completed.get(subject) || []
+      progress?.completed?.[subject] && Array.isArray(progress.completed[subject])
+        ? progress.completed[subject]
         : [];
 
     res.json({
@@ -54,28 +53,31 @@ router.post("/update", auth, async (req, res) => {
   try {
     let progress = await Progress.findOne({ userId });
 
-    // If progress doesn't exist, create a new one with a Map
     if (!progress) {
       progress = new Progress({
         userId,
-        completed: new Map([[subject, [lesson]]])
+        completed: { [subject]: [lesson] }
       });
     } else {
-      // Defensive fallback if completed is not a Map
-      if (!(progress.completed instanceof Map)) {
-        progress.completed = new Map();
+      // Ensure completed is a plain object
+      if (!progress.completed || typeof progress.completed !== "object") {
+        progress.completed = {};
       }
 
-      const current = progress.completed.get(subject) || [];
-      if (!current.includes(lesson)) {
-        current.push(lesson);
-        progress.completed.set(subject, current);
+      // Ensure subject array exists
+      if (!Array.isArray(progress.completed[subject])) {
+        progress.completed[subject] = [];
+      }
+
+      // Add lesson if not already present
+      if (!progress.completed[subject].includes(lesson)) {
+        progress.completed[subject].push(lesson);
       }
     }
 
     await progress.save();
 
-    const completedLessons = progress.completed.get(subject) || [];
+    const completedLessons = progress.completed[subject] || [];
 
     res.json({
       success: true,
