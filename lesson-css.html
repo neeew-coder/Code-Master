@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-gradient-to-br from-blue-100 to-indigo-100 font-sans text-gray-800">
+<body data-subject="css" class="bg-gradient-to-br from-blue-100 to-indigo-100 font-sans text-gray-800">
 
   <!-- Header -->
   <nav class="bg-blue-600 text-white shadow-lg">
@@ -143,24 +143,27 @@ body {
     </section>
   </main>
 
-  <!-- Dynamic Module Loader -->
   <script>
+    const subject = document.body.dataset.subject || "css";
+    const API_BASE = "https://code-master-kk2m.onrender.com";
+
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
       if (!container) return;
 
       // Highlight active button
-      document.querySelectorAll("aside button").forEach(btn => {
+      document.querySelectorAll(`aside button[data-lesson]`).forEach(btn => {
         btn.classList.remove("bg-blue-100", "font-semibold", "text-blue-700");
         btn.classList.add("text-blue-600");
       });
-      const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+
+      const activeBtn = document.querySelector(`aside button[data-lesson="${lessonId}"]`);
       if (activeBtn) {
         activeBtn.classList.add("bg-blue-100", "font-semibold", "text-blue-700");
         activeBtn.classList.remove("text-blue-600");
       }
 
-      // Show loading spinner
+      // Show loading state
       container.innerHTML = `
         <div class="text-center py-10 text-gray-500 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -169,18 +172,21 @@ body {
       `;
 
       // Fetch lesson content
-      fetch(`lessons/css/${lessonId}.html`)
+      fetch(`lessons/${subject}/${lessonId}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
           return res.text();
         })
         .then(html => {
           container.innerHTML = `
-            <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-gray-800">
-              ${html}
+            <div class="lesson-container" data-lesson-id="${lessonId}">
+              <div class="bg-white p-6 rounded-lg shadow-md prose max-w-none text-gray-800 fade-in">
+                ${html}
+              </div>
             </div>
+            <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-blue-700 transition z-50">↑</button>
           `;
-          updateProgress(lessonId);
+          updateProgress(subject, lessonId);
         })
         .catch(() => {
           container.innerHTML = `
@@ -192,26 +198,91 @@ body {
         });
     }
 
-    function updateProgress(lessonId) {
-      const progressBar = document.getElementById("progress-bar");
-      const label = document.querySelector(".progress-label");
-      const completedModules = JSON.parse(localStorage.getItem("cssCompleted") || "[]");
+    function updateProgress(subject, lessonId) {
+      fetch(`${API_BASE}/api/progress/update`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, lesson: lessonId })
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Progress update failed");
+        return res.json();
+      })
+      .then(data => {
+        const subjectProgress = data?.progress?.completed?.[subject] || {};
+        const completed = Object.entries(subjectProgress)
+          .filter(([_, isDone]) => isDone)
+          .map(([lessonId]) => lessonId);
 
-      if (!completedModules.includes(lessonId)) {
-        completedModules.push(lessonId);
-        localStorage.setItem("cssCompleted", JSON.stringify(completedModules));
-      }
+        const totalModules = document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+        updateUIWithProgress({ completed, totalModules });
 
-      const total = 5;
-      const percent = Math.round((completedModules.length / total) * 100);
-      progressBar.style.width = `${percent}%`;
-      if (label) label.textContent = `${percent}% Completed`;
+        completed.forEach(id => {
+          const btn = document.querySelector(`aside button[data-lesson="${id}"]`);
+          if (btn) btn.classList.add("opacity-50", "cursor-default");
+        });
+      })
+      .catch(err => {
+        console.warn("Progress update error:", err.message);
+      });
+    }
+
+    function loadProgress() {
+      fetch(`${API_BASE}/api/progress/${subject}`, {
+        method: "GET",
+        credentials: "include"
+      })
+      .then(res => {
+        if (!res.ok) throw new Error("Progress fetch failed");
+        return res.json();
+      })
+      .then(data => {
+        const subjectProgress = data?.progress?.completed?.[subject] || {};
+        const completed = Object.entries(subjectProgress)
+          .filter(([_, isDone]) => isDone)
+          .map(([lessonId]) => lessonId);
+
+        const totalModules = document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+        updateUIWithProgress({ completed, totalModules });
+
+        completed.forEach(id => {
+          const btn = document.querySelector(`aside button[data-lesson="${id}"]`);
+          if (btn) btn.classList.add("opacity-50", "cursor-default");
+        });
+      })
+      .catch(err => {
+        console.warn("Progress fetch error:", err.message);
+      });
+    }
+
+    function updateUIWithProgress(data) {
+      const completed = Array.isArray(data.completed) ? data.completed : [];
+      const totalModules = typeof data.totalModules === "number" && data.totalModules > 0 ? data.totalModules : 1;
+
+      const percent = Math.round((completed.length / totalModules) * 100);
+      document.getElementById("progress-bar").style.width = `${percent}%`;
+      document.querySelectorAll(".progress-label").forEach(label => {
+        label.textContent = `${percent}% Completed`;
+      });
     }
 
     function scrollToTop() {
       const container = document.getElementById("moduleContent");
       if (container) container.scrollTo({ top: 0, behavior: "smooth" });
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelectorAll(`aside button[data-lesson]`).forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lessonId = btn.dataset.lesson;
+          loadModule(lessonId);
+        });
+      });
+
+      loadProgress();
+    });
   </script>
+
 </body>
 </html>
