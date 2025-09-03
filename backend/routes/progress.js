@@ -73,39 +73,44 @@ router.post("/update", auth, async (req, res) => {
     let progress = await Progress.findOne({ userId });
 
     if (!progress) {
-      // First-time progress creation
-      progress = new Progress({
-        userId,
-        completed: { [subject]: { [lesson]: true } }
-      });
-    } else {
-      // Ensure structure exists
-      if (!progress.completed || typeof progress.completed !== "object") {
-        progress.completed = {};
-      }
-
-      if (!progress.completed[subject] || typeof progress.completed[subject] !== "object") {
-        progress.completed[subject] = {};
-      }
-
-      // ✅ Mark lesson as completed
-      progress.completed[subject][lesson] = true;
-
-      // ✅ Ensure Mongoose tracks nested changes
-      progress.markModified("completed");
+      // First-time progress creation with empty structure
+      progress = new Progress({ userId, completed: {} });
     }
+
+    // Ensure structure exists
+    if (!progress.completed || typeof progress.completed !== "object") {
+      progress.completed = {};
+    }
+
+    if (!progress.completed[subject] || typeof progress.completed[subject] !== "object") {
+      progress.completed[subject] = {};
+    }
+
+    // ✅ Idempotency: skip if already completed
+    if (progress.completed[subject][lesson]) {
+      return res.json({
+        success: true,
+        progress: {
+          userId,
+          completed: { [subject]: progress.completed[subject] },
+          totalModules: getTotalModulesFor(subject)
+        }
+      });
+    }
+
+    // ✅ Mark lesson as completed
+    progress.completed[subject][lesson] = true;
+    progress.markModified("completed");
 
     await progress.save();
 
     console.log("✅ Final saved progress:", JSON.stringify(progress.completed, null, 2));
 
-    const completedLessons = progress.completed[subject] || {};
-
     res.json({
       success: true,
       progress: {
         userId,
-        completed: { [subject]: completedLessons },
+        completed: { [subject]: progress.completed[subject] },
         totalModules: getTotalModulesFor(subject)
       }
     });
