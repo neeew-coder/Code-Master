@@ -6,7 +6,7 @@ const Progress = require("../models/progress");
 // ✅ Utility: total modules per subject
 const totalModulesMap = {
   html: 42,
-  css: 6,
+  css: 48,
   js: 8,
   java: 7,
   csharp: 4
