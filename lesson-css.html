@@ -217,7 +217,7 @@ body {
             .map(([lessonId]) => lessonId)
         ));
 
-        const totalModules = document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+        const totalModules = data?.totalModules || 1;
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
@@ -247,7 +247,7 @@ body {
             .map(([lessonId]) => lessonId)
         ));
 
-        const totalModules = document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+        const totalModules = data?.totalModules || 1;
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
