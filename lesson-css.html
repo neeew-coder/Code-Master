@@ -217,7 +217,10 @@ body {
             .map(([lessonId]) => lessonId)
         ));
 
-        const totalModules = data?.totalModules || 1;
+        const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
+          ? data.totalModules
+          : document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
@@ -247,7 +250,10 @@ body {
             .map(([lessonId]) => lessonId)
         ));
 
-        const totalModules = data?.totalModules || 1;
+        const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
+          ? data.totalModules
+          : document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
@@ -262,7 +268,9 @@ body {
 
     function updateUIWithProgress(data) {
       const completed = Array.isArray(data.completed) ? data.completed : [];
-      const totalModules = typeof data.totalModules === "number" && data.totalModules > 0 ? data.totalModules : 1;
+      const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
+        ? data.totalModules
+        : document.querySelectorAll(`aside button[data-lesson]`).length || 1;
 
       const percent = Math.min(100, Math.round((completed.length / totalModules) * 100));
       document.getElementById("progress-bar").style.width = `${percent}%`;
