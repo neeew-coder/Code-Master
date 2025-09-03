@@ -146,6 +146,7 @@ body {
   <script>
     const subject = document.body.dataset.subject || "css";
     const API_BASE = "https://code-master-kk2m.onrender.com";
+    let cachedTotalModules = 0;
 
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
@@ -211,15 +212,13 @@ body {
       })
       .then(data => {
         const subjectProgress = data?.progress?.completed?.[subject] || {};
-        const completed = Array.from(new Set(
-          Object.entries(subjectProgress)
-            .filter(([_, isDone]) => isDone)
-            .map(([lessonId]) => lessonId)
-        ));
+        const completed = Object.entries(subjectProgress)
+          .filter(([_, isDone]) => isDone)
+          .map(([lessonId]) => lessonId);
 
         const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
           ? data.totalModules
-          : document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+          : cachedTotalModules;
 
         updateUIWithProgress({ completed, totalModules });
 
@@ -244,15 +243,13 @@ body {
       })
       .then(data => {
         const subjectProgress = data?.progress?.completed?.[subject] || {};
-        const completed = Array.from(new Set(
-          Object.entries(subjectProgress)
-            .filter(([_, isDone]) => isDone)
-            .map(([lessonId]) => lessonId)
-        ));
+        const completed = Object.entries(subjectProgress)
+          .filter(([_, isDone]) => isDone)
+          .map(([lessonId]) => lessonId);
 
         const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
           ? data.totalModules
-          : document.querySelectorAll(`aside button[data-lesson]`).length || 1;
+          : cachedTotalModules;
 
         updateUIWithProgress({ completed, totalModules });
 
@@ -266,12 +263,7 @@ body {
       });
     }
 
-    function updateUIWithProgress(data) {
-      const completed = Array.isArray(data.completed) ? data.completed : [];
-      const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
-        ? data.totalModules
-        : document.querySelectorAll(`aside button[data-lesson]`).length || 1;
-
+    function updateUIWithProgress({ completed, totalModules }) {
       const percent = Math.min(100, Math.round((completed.length / totalModules) * 100));
       document.getElementById("progress-bar").style.width = `${percent}%`;
       document.querySelectorAll(".progress-label").forEach(label => {
@@ -285,7 +277,10 @@ body {
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      document.querySelectorAll(`aside button[data-lesson]`).forEach(btn => {
+      const lessonButtons = document.querySelectorAll(`aside button[data-lesson]`);
+      cachedTotalModules = lessonButtons.length || 1;
+
+      lessonButtons.forEach(btn => {
         btn.addEventListener("click", () => {
           const lessonId = btn.dataset.lesson;
           loadModule(lessonId);
@@ -295,6 +290,7 @@ body {
       loadProgress();
     });
   </script>
+
 
 </body>
 </html>
