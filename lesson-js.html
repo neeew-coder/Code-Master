@@ -7,6 +7,32 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .lesson-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.375rem;
+      color: #ca8a04; /* yellow-600 */
+      transition: background-color 0.2s ease;
+    }
+
+    .lesson-btn:hover {
+      background-color: #fefce8; /* yellow-50 */
+    }
+
+    .lesson-btn.active {
+      background-color: #fef9c3; /* yellow-100 */
+      color: #a16207; /* yellow-700 */
+      font-weight: 600;
+    }
+
+    .lesson-btn.completed {
+      opacity: 0.5;
+      cursor: default;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 font-sans">
 
@@ -39,102 +65,102 @@
         <i class="fab fa-js-square text-yellow-500"></i>
         <span>JavaScript Modules</span>
       </h2>
-      <ul class="space-y-3 text-sm">
-        <li><button onclick="loadModule('intro')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-700 font-semibold bg-yellow-100 hover:bg-yellow-200 transition">Introduction to JavaScript</button></li>
-        <li><button onclick="loadModule('wheretoadd')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Where to Add Scripts</button></li>
-        <li><button onclick="loadModule('output')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Output</button></li>
-        <li><button onclick="loadModule('statements')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Statements</button></li>
-        <li><button onclick="loadModule('syntax')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Syntax</button></li>
-        <li><button onclick="loadModule('comments')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Comments</button></li>
-        <li><button onclick="loadModule('variables')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Variables</button></li>
-        <li><button onclick="loadModule('let')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Lets</button></li>
-        <li><button onclick="loadModule('const')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Constants</button></li>
-        <li><button onclick="loadModule('operators')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Operators</button></li>
-        <li><button onclick="loadModule('arithmetic')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Arithmetic</button></li>
-        <li><button onclick="loadModule('assignments')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Assignments</button></li>
-        <li><button onclick="loadModule('datatypes')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Data Types</button></li>
-        <li><button onclick="loadModule('functions')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Functions</button></li>
-        <li><button onclick="loadModule('objects')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Objects</button></li>
-        <li><button onclick="loadModule('objectproperties')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Properties</button></li>
-        <li><button onclick="loadModule('objectmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Methods</button></li>
-        <li><button onclick="loadModule('objectdisplay')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Display</button></li>
-        <li><button onclick="loadModule('objectconstruction')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Object Construction</button></li>
-        <li><button onclick="loadModule('events')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">DOM Events</button></li>
-        <li><button onclick="loadModule('strings')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Strings</button></li>
-        <li><button onclick="loadModule('stringmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Methods</button></li>
-        <li><button onclick="loadModule('stringsearch')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Search</button></li>
-        <li><button onclick="loadModule('stringreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Reference</button></li>
-        <li><button onclick="loadModule('stringtemplate')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">String Template</button></li>
-        <li><button onclick="loadModule('numbers')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Numbers</button></li>
-        <li><button onclick="loadModule('bigint')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">BigInt</button></li>
-        <li><button onclick="loadModule('numbermethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Number Methods</button></li>
-        <li><button onclick="loadModule('numberproperties')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Number Properties</button></li>
-        <li><button onclick="loadModule('numberreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Number Reference</button></li>
-        <li><button onclick="loadModule('arrays')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Arrays</button></li>
-        <li><button onclick="loadModule('arrayaccess')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Access</button></li>
-        <li><button onclick="loadModule('arraymutations')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Mutations</button></li>
-        <li><button onclick="loadModule('arraytransform')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Transform</button></li>
-        <li><button onclick="loadModule('arraycopy')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Copy</button></li>
-        <li><button onclick="loadModule('arraymethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Methods</button></li>
-        <li><button onclick="loadModule('arraysearch')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Search</button></li>
-        <li><button onclick="loadModule('arraysort')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Sort</button></li>
-        <li><button onclick="loadModule('arrayiteration')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Iteration</button></li>
-        <li><button onclick="loadModule('arrayreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Reference</button></li>
-        <li><button onclick="loadModule('arrayconst')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Array Const</button></li>
-        <li><button onclick="loadModule('dates')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date</button></li>
-        <li><button onclick="loadModule('dateformat')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date Format</button></li>
-        <li><button onclick="loadModule('dategetmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date Get Methods</button></li>
-        <li><button onclick="loadModule('datesetmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Date Set Methods</button></li>
-        <li><button onclick="loadModule('math')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Math</button></li>
-        <li><button onclick="loadModule('mathreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Math Reference</button></li>
-        <li><button onclick="loadModule('random')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Random</button></li>
-        <li><button onclick="loadModule('booleans')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Booleans</button></li>
-        <li><button onclick="loadModule('comparisons')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Comparisons</button></li>
-        <li><button onclick="loadModule('ifelse')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">If Else</button></li>
-        <li><button onclick="loadModule('switch')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Switch</button></li>
-        <li><button onclick="loadModule('loopfor')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">For Loop</button></li>
-        <li><button onclick="loadModule('loopforin')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Loop For In</button></li>
-        <li><button onclick="loadModule('loopforof')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Loop For Of</button></li>
-        <li><button onclick="loadModule('loopwhile')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">While Loop</button></li>
-        <li><button onclick="loadModule('break')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Break</button></li>
-        <li><button onclick="loadModule('sets')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Sets</button></li>
-        <li><button onclick="loadModule('setmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Set Methods</button></li>
-        <li><button onclick="loadModule('setlogic')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Set Logic</button></li>
-        <li><button onclick="loadModule('setreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Set Reference</button></li>
-        <li><button onclick="loadModule('maps')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Maps</button></li>
-        <li><button onclick="loadModule('mapmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Map Methods</button></li>
-        <li><button onclick="loadModule('maplogic')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Map Logic</button></li>
-        <li><button onclick="loadModule('mapreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Map Reference</button></li>
-        <li><button onclick="loadModule('typedarrays')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Typed Arrays</button></li>
-        <li><button onclick="loadModule('typedmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Typed Methods</button></li>
-        <li><button onclick="loadModule('typedreference')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Typed Reference</button></li>
-        <li><button onclick="loadModule('iterables')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Iterables</button></li>
-        <li><button onclick="loadModule('iterators')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Iterators</button></li>
-        <li><button onclick="loadModule('typeof')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Type Of</button></li>
-        <li><button onclick="loadModule('tostring')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">To String</button></li>
-        <li><button onclick="loadModule('typeconversion')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Type Conversion</button></li>
-        <li><button onclick="loadModule('destructuring')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Destructuring</button></li>
-        <li><button onclick="loadModule('bitwise')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Bitwise Operators</button></li>
-        <li><button onclick="loadModule('regexp')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Regular Expressions</button></li>
-        <li><button onclick="loadModule('regexpobjects')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">RegExp Objects</button></li>
-        <li><button onclick="loadModule('regexppatterns')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">RegExp Patterns</button></li>
-        <li><button onclick="loadModule('regexpmethods')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">RegExp Methods</button></li>
-        <li><button onclick="loadModule('precedence')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Precedence</button></li>
-        <li><button onclick="loadModule('errors')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Errors</button></li>
-        <li><button onclick="loadModule('scope')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Scope</button></li>
-        <li><button onclick="loadModule('hoisting')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Hoisting</button></li>
-        <li><button onclick="loadModule('strictmode')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Strict Mode</button></li>
-        <li><button onclick="loadModule('thiskeyword')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">This Keyword</button></li>
-        <li><button onclick="loadModule('arrowfunctions')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Arrow Functions</button></li>
-        <li><button onclick="loadModule('classes')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Classes</button></li>
-        <li><button onclick="loadModule('modules')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Modules</button></li>
-        <li><button onclick="loadModule('json')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">JSON</button></li>
-        <li><button onclick="loadModule('debugging')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Debugging</button></li>
-        <li><button onclick="loadModule('styles')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Styles</button></li>
-        <li><button onclick="loadModule('bestpractices')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Best Practices</button></li>
-        <li><button onclick="loadModule('mistakes')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Mistakes</button></li>
-        <li><button onclick="loadModule('performance')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Performance</button></li>
-        <li><button onclick="loadModule('reservedwords')" class="block w-full text-left px-3 py-2 rounded-md text-yellow-600 hover:bg-yellow-50 transition">Reserved Words</button></li>
+      <ul class="space-y-3 text-sm" id="jsSidebar">
+        <li><button data-lesson="intro" class="lesson-btn">Introduction to JavaScript</button></li>
+        <li><button data-lesson="wheretoadd" class="lesson-btn">Where to Add Scripts</button></li>
+        <li><button data-lesson="output" class="lesson-btn">Output</button></li>
+        <li><button data-lesson="statements" class="lesson-btn">Statements</button></li>
+        <li><button data-lesson="syntax" class="lesson-btn">Syntax</button></li>
+        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
+        <li><button data-lesson="variables" class="lesson-btn">Variables</button></li>
+        <li><button data-lesson="let" class="lesson-btn">Lets</button></li>
+        <li><button data-lesson="const" class="lesson-btn">Constants</button></li>
+        <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
+        <li><button data-lesson="arithmetic" class="lesson-btn">Arithmetic</button></li>
+        <li><button data-lesson="assignments" class="lesson-btn">Assignments</button></li>
+        <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
+        <li><button data-lesson="functions" class="lesson-btn">Functions</button></li>
+        <li><button data-lesson="objects" class="lesson-btn">Objects</button></li>
+        <li><button data-lesson="objectproperties" class="lesson-btn">Object Properties</button></li>
+        <li><button data-lesson="objectmethods" class="lesson-btn">Object Methods</button></li>
+        <li><button data-lesson="objectdisplay" class="lesson-btn">Object Display</button></li>
+        <li><button data-lesson="objectconstruction" class="lesson-btn">Object Construction</button></li>
+        <li><button data-lesson="events" class="lesson-btn">DOM Events</button></li>
+        <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
+        <li><button data-lesson="stringmethods" class="lesson-btn">String Methods</button></li>
+        <li><button data-lesson="stringsearch" class="lesson-btn">String Search</button></li>
+        <li><button data-lesson="stringreference" class="lesson-btn">String Reference</button></li>
+        <li><button data-lesson="stringtemplate" class="lesson-btn">String Template</button></li>
+        <li><button data-lesson="numbers" class="lesson-btn">Numbers</button></li>
+        <li><button data-lesson="bigint" class="lesson-btn">BigInt</button></li>
+        <li><button data-lesson="numbermethods" class="lesson-btn">Number Methods</button></li>
+        <li><button data-lesson="numberproperties" class="lesson-btn">Number Properties</button></li>
+        <li><button data-lesson="numberreference" class="lesson-btn">Number Reference</button></li>
+        <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
+        <li><button data-lesson="arrayaccess" class="lesson-btn">Array Access</button></li>
+        <li><button data-lesson="arraymutations" class="lesson-btn">Array Mutations</button></li>
+        <li><button data-lesson="arraytransform" class="lesson-btn">Array Transform</button></li>
+        <li><button data-lesson="arraycopy" class="lesson-btn">Array Copy</button></li>
+        <li><button data-lesson="arraymethods" class="lesson-btn">Array Methods</button></li>
+        <li><button data-lesson="arraysearch" class="lesson-btn">Array Search</button></li>
+        <li><button data-lesson="arraysort" class="lesson-btn">Array Sort</button></li>
+        <li><button data-lesson="arrayiteration" class="lesson-btn">Array Iteration</button></li>
+        <li><button data-lesson="arrayreference" class="lesson-btn">Array Reference</button></li>
+        <li><button data-lesson="arrayconst" class="lesson-btn">Array Const</button></li>
+        <li><button data-lesson="dates" class="lesson-btn">Date</button></li>
+        <li><button data-lesson="dateformat" class="lesson-btn">Date Format</button></li>
+        <li><button data-lesson="dategetmethods" class="lesson-btn">Date Get Methods</button></li>
+        <li><button data-lesson="datesetmethods" class="lesson-btn">Date Set Methods</button></li>
+        <li><button data-lesson="math" class="lesson-btn">Math</button></li>
+        <li><button data-lesson="mathreference" class="lesson-btn">Math Reference</button></li>
+        <li><button data-lesson="random" class="lesson-btn">Random</button></li>
+        <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
+        <li><button data-lesson="comparisons" class="lesson-btn">Comparisons</button></li>
+        <li><button data-lesson="ifelse" class="lesson-btn">If Else</button></li>
+        <li><button data-lesson="switch" class="lesson-btn">Switch</button></li>
+        <li><button data-lesson="loopfor" class="lesson-btn">For Loop</button></li>
+        <li><button data-lesson="loopforin" class="lesson-btn">Loop For In</button></li>
+        <li><button data-lesson="loopforof" class="lesson-btn">Loop For Of</button></li>
+        <li><button data-lesson="loopwhile" class="lesson-btn">While Loop</button></li>
+        <li><button data-lesson="break" class="lesson-btn">Break</button></li>
+        <li><button data-lesson="sets" class="lesson-btn">Sets</button></li>
+        <li><button data-lesson="setmethods" class="lesson-btn">Set Methods</button></li>
+        <li><button data-lesson="setlogic" class="lesson-btn">Set Logic</button></li>
+        <li><button data-lesson="setreference" class="lesson-btn">Set Reference</button></li>
+        <li><button data-lesson="maps" class="lesson-btn">Maps</button></li>
+        <li><button data-lesson="mapmethods" class="lesson-btn">Map Methods</button></li>
+        <li><button data-lesson="maplogic" class="lesson-btn">Map Logic</button></li>
+        <li><button data-lesson="mapreference" class="lesson-btn">Map Reference</button></li>
+        <li><button data-lesson="typedarrays" class="lesson-btn">Typed Arrays</button></li>
+        <li><button data-lesson="typedmethods" class="lesson-btn">Typed Methods</button></li>
+        <li><button data-lesson="typedreference" class="lesson-btn">Typed Reference</button></li>
+        <li><button data-lesson="iterables" class="lesson-btn">Iterables</button></li>
+        <li><button data-lesson="iterators" class="lesson-btn">Iterators</button></li>
+        <li><button data-lesson="typeof" class="lesson-btn">Type Of</button></li>
+        <li><button data-lesson="tostring" class="lesson-btn">To String</button></li>
+        <li><button data-lesson="typeconversion" class="lesson-btn">Type Conversion</button></li>
+        <li><button data-lesson="destructuring" class="lesson-btn">Destructuring</button></li>
+        <li><button data-lesson="bitwise" class="lesson-btn">Bitwise Operators</button></li>
+        <li><button data-lesson="regexp" class="lesson-btn">Regular Expressions</button></li>
+        <li><button data-lesson="regexpobjects" class="lesson-btn">RegExp Objects</button></li>
+        <li><button data-lesson="regexppatterns" class="lesson-btn">RegExp Patterns</button></li>
+        <li><button data-lesson="regexpmethods" class="lesson-btn">RegExp Methods</button></li>
+        <li><button data-lesson="precedence" class="lesson-btn">Precedence</button></li>
+        <li><button data-lesson="errors" class="lesson-btn">Errors</button></li>
+        <li><button data-lesson="scope" class="lesson-btn">Scope</button></li>
+        <li><button data-lesson="hoisting" class="lesson-btn">Hoisting</button></li>
+        <li><button data-lesson="strictmode" class="lesson-btn">Strict Mode</button></li>
+        <li><button data-lesson="thiskeyword" class="lesson-btn">This Keyword</button></li>
+        <li><button data-lesson="arrowfunctions" class="lesson-btn">Arrow Functions</button></li>
+        <li><button data-lesson="classes" class="lesson-btn">Classes</button></li>
+        <li><button data-lesson="modules" class="lesson-btn">Modules</button></li>
+        <li><button data-lesson="json" class="lesson-btn">JSON</button></li>
+        <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
+        <li><button data-lesson="styles" class="lesson-btn">Styles</button></li>
+        <li><button data-lesson="bestpractices" class="lesson-btn">Best Practices</button></li>
+        <li><button data-lesson="mistakes" class="lesson-btn">Mistakes</button></li>
+        <li><button data-lesson="performance" class="lesson-btn">Performance</button></li>
+        <li><button data-lesson="reservedwords" class="lesson-btn">Reserved Words</button></li>
       </ul>
     </aside>
 
@@ -193,6 +219,10 @@ console.log(greet("User"));
   </main>
 
   <script>
+    const API_BASE = "https://code-master-kk2m.onrender.com";
+    const subject = document.querySelector("section[data-subject]")?.dataset.subject || "js";
+    let cachedTotalModules = 0;
+
     function loadModule(lessonId) {
       const iframe = document.getElementById("moduleFrame");
       const intro = document.getElementById("jsIntro");
@@ -203,55 +233,104 @@ console.log(greet("User"));
       iframe.classList.remove("hidden");
 
       // Highlight active button
-      document.querySelectorAll("aside button").forEach(btn => {
+      document.querySelectorAll("aside button[data-lesson]").forEach(btn => {
         btn.classList.remove("bg-yellow-100", "font-semibold", "text-yellow-700");
         btn.classList.add("text-yellow-600");
       });
-      const activeBtn = document.querySelector(`button[onclick="loadModule('${lessonId}')"]`);
+
+      const activeBtn = document.querySelector(`aside button[data-lesson="${lessonId}"]`);
       if (activeBtn) {
         activeBtn.classList.add("bg-yellow-100", "font-semibold", "text-yellow-700");
         activeBtn.classList.remove("text-yellow-600");
       }
 
       // Load module into iframe
-      iframe.src = `lessons/javascript/${lessonId}.html`;
+      iframe.src = `lessons/${subject}/${lessonId}.html`;
 
-      // Update progress
-      updateProgress(lessonId);
+      // Update progress via API
+      updateProgress({ lessonId, isUpdate: true });
     }
 
-    function updateProgress(lessonId) {
-      const progressBar = document.getElementById("progress-bar");
-      const completedModules = JSON.parse(localStorage.getItem("JSCompleted") || "[]");
+    function updateProgress({ lessonId = null, isUpdate = false } = {}) {
+      const endpoint = isUpdate
+        ? `${API_BASE}/api/progress/update`
+        : `${API_BASE}/api/progress/${subject}`;
 
-      if (!completedModules.includes(lessonId)) {
-        completedModules.push(lessonId);
-        localStorage.setItem("JSCompleted", JSON.stringify(completedModules));
-      }
+      const options = {
+        method: isUpdate ? "POST" : "GET",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: isUpdate ? JSON.stringify({ subject, lesson: lessonId }) : undefined
+      };
 
-      const total = 96; // total JavaScript modules
-      const percent = Math.round((completedModules.length / total) * 100);
-      progressBar.style.width = `${percent}%`;
+      fetch(endpoint, options)
+        .then(res => {
+          if (!res.ok) throw new Error("Progress request failed");
+          return res.json();
+        })
+        .then(data => {
+          const subjectProgress = data?.progress?.completed?.[subject] || {};
+          const completed = Object.entries(subjectProgress)
+            .filter(([_, isDone]) => isDone)
+            .map(([id]) => id);
 
-      const label = document.querySelector(".progress-label");
-      if (label) label.textContent = `${percent}% Completed`;
+          const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
+            ? data.totalModules
+            : cachedTotalModules;
+
+          updateUIWithProgress({ completed, totalModules });
+          markCompletedButtons(completed);
+        })
+        .catch(err => {
+          console.warn("Progress error:", err.message);
+        });
+    }
+
+    function updateUIWithProgress({ completed, totalModules }) {
+      const percent = Math.min(100, Math.round((completed.length / totalModules) * 100));
+      document.getElementById("progress-bar").style.width = `${percent}%`;
+      document.querySelectorAll(".progress-label").forEach(label => {
+        label.textContent = `${percent}% Completed`;
+      });
+    }
+
+    function markCompletedButtons(completed) {
+      completed.forEach(id => {
+        const btn = document.querySelector(`aside button[data-lesson="${id}"]`);
+        if (btn) btn.classList.add("opacity-50", "cursor-default");
+      });
     }
 
     function scrollToTop() {
-  const iframe = document.getElementById("moduleFrame");
-  if (iframe) {
-    iframe.contentWindow.postMessage({ type: "scroll-top" }, "*");
-  }
-}
-    window.addEventListener("message", (event) => {
-    if (event.data.type === "resize-iframe") {
       const iframe = document.getElementById("moduleFrame");
       if (iframe) {
-        iframe.style.height = event.data.height + "px";
+        iframe.contentWindow.postMessage({ type: "scroll-top" }, "*");
       }
     }
-  });
 
+    window.addEventListener("message", (event) => {
+      if (event.data.type === "resize-iframe") {
+        const iframe = document.getElementById("moduleFrame");
+        if (iframe) {
+          iframe.style.height = event.data.height + "px";
+        }
+      }
+    });
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const lessonButtons = document.querySelectorAll("aside button[data-lesson]");
+      cachedTotalModules = lessonButtons.length || 1;
+
+      lessonButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const lessonId = btn.dataset.lesson;
+          loadModule(lessonId);
+        });
+      });
+
+      updateProgress(); // Initial load
+    });
   </script>
+
 </body>
 </html>
