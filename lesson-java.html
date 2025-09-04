@@ -77,84 +77,84 @@
       </h2>
       <ul class="space-y-3 text-sm">
         <!-- Java Basics -->
-        <li><button onclick="loadModule('intro')" class="lesson-btn">Introduction to Java</button></li>
-        <li><button onclick="loadModule('getstarted')" class="lesson-btn">Get Started</button></li>
-        <li><button onclick="loadModule('syntax')" class="lesson-btn">Java Syntax</button></li>
-        <li><button onclick="loadModule('output')" class="lesson-btn">Output</button></li>
-        <li><button onclick="loadModule('comments')" class="lesson-btn">Comments</button></li>
-        <li><button onclick="loadModule('variables')" class="lesson-btn">Variables</button></li>
-        <li><button onclick="loadModule('datatypes')" class="lesson-btn">Data Types</button></li>
-        <li><button onclick="loadModule('typecasting')" class="lesson-btn">Type Casting</button></li>
-        <li><button onclick="loadModule('operators')" class="lesson-btn">Operators</button></li>
-        <li><button onclick="loadModule('strings')" class="lesson-btn">Strings</button></li>
-        <li><button onclick="loadModule('math')" class="lesson-btn">Math</button></li>
-        <li><button onclick="loadModule('booleans')" class="lesson-btn">Booleans</button></li>
-        <li><button onclick="loadModule('ifelse')" class="lesson-btn">If Else</button></li>
-        <li><button onclick="loadModule('switch')" class="lesson-btn">Switch</button></li>
-        <li><button onclick="loadModule('whileloop')" class="lesson-btn">While Loop</button></li>
-        <li><button onclick="loadModule('forloop')" class="lesson-btn">For Loop</button></li>
-        <li><button onclick="loadModule('breakorcontinue')" class="lesson-btn">Break/Continue</button></li>
-        <li><button onclick="loadModule('arrays')" class="lesson-btn">Arrays</button></li>
+        <li><button data-lesson="intro" class="lesson-btn">Introduction to Java</button></li>
+        <li><button data-lesson="getstarted" class="lesson-btn">Get Started</button></li>
+        <li><button data-lesson="syntax" class="lesson-btn">Java Syntax</button></li>
+        <li><button data-lesson="output" class="lesson-btn">Output</button></li>
+        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
+        <li><button data-lesson="variables" class="lesson-btn">Variables</button></li>
+        <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
+        <li><button data-lesson="typecasting" class="lesson-btn">Type Casting</button></li>
+        <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
+        <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
+        <li><button data-lesson="math" class="lesson-btn">Math</button></li>
+        <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
+        <li><button data-lesson="ifelse" class="lesson-btn">If Else</button></li>
+        <li><button data-lesson="switch" class="lesson-btn">Switch</button></li>
+        <li><button data-lesson="whileloop" class="lesson-btn">While Loop</button></li>
+        <li><button data-lesson="forloop" class="lesson-btn">For Loop</button></li>
+        <li><button data-lesson="breakorcontinue" class="lesson-btn">Break/Continue</button></li>
+        <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
 
         <!-- Java Methods -->
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Method</h3>
-        <li><button onclick="loadModule('methods')" class="lesson-btn">Methods</button></li>
-        <li><button onclick="loadModule('methodparameters')" class="lesson-btn">Method Parameters</button></li>
-        <li><button onclick="loadModule('methodoverloading')" class="lesson-btn">Method Overloading</button></li>
-        <li><button onclick="loadModule('scope')" class="lesson-btn">Scope</button></li>
-        <li><button onclick="loadModule('recursion')" class="lesson-btn">Recursion</button></li>
+        <li><button data-lesson="methods" class="lesson-btn">Methods</button></li>
+        <li><button data-lesson="methodparameters" class="lesson-btn">Method Parameters</button></li>
+        <li><button data-lesson="methodoverloading" class="lesson-btn">Method Overloading</button></li>
+        <li><button data-lesson="scope" class="lesson-btn">Scope</button></li>
+        <li><button data-lesson="recursion" class="lesson-btn">Recursion</button></li>
 
         <!-- Java Classes -->
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Classes</h3>
-        <li><button onclick="loadModule('oop')" class="lesson-btn">Object Oriented Programming</button></li>
-        <li><button onclick="loadModule('classes')" class="lesson-btn">Classes/Objects</button></li>
-        <li><button onclick="loadModule('classattributes')" class="lesson-btn">Class Attributes</button></li>
-        <li><button onclick="loadModule('classmethods')" class="lesson-btn">Class Methods</button></li>
-        <li><button onclick="loadModule('constructors')" class="lesson-btn">Constructors</button></li>
-        <li><button onclick="loadModule('thiskeyword')" class="lesson-btn">This Keyword</button></li>
-        <li><button onclick="loadModule('modifiers')" class="lesson-btn">Modifiers</button></li>
-        <li><button onclick="loadModule('encapsulation')" class="lesson-btn">Encapsulation</button></li>
-        <li><button onclick="loadModule('package')" class="lesson-btn">Package/API</button></li>
-        <li><button onclick="loadModule('inheritance')" class="lesson-btn">Inheritance</button></li>
-        <li><button onclick="loadModule('polymorphism')" class="lesson-btn">Polymorphism</button></li>
-        <li><button onclick="loadModule('superkeyword')" class="lesson-btn">Super Keyword</button></li>
-        <li><button onclick="loadModule('innerclasses')" class="lesson-btn">Inner Classes</button></li>
-        <li><button onclick="loadModule('abstraction')" class="lesson-btn">Abstraction</button></li>
-        <li><button onclick="loadModule('interface')" class="lesson-btn">Interface</button></li>
-        <li><button onclick="loadModule('enums')" class="lesson-btn">Enums</button></li>
-        <li><button onclick="loadModule('userinput')" class="lesson-btn">User Input</button></li>
-        <li><button onclick="loadModule('date')" class="lesson-btn">Date</button></li>
+        <li><button data-lesson="oop" class="lesson-btn">Object Oriented Programming</button></li>
+        <li><button data-lesson="classes" class="lesson-btn">Classes/Objects</button></li>
+        <li><button data-lesson="classattributes" class="lesson-btn">Class Attributes</button></li>
+        <li><button data-lesson="classmethods" class="lesson-btn">Class Methods</button></li>
+        <li><button data-lesson="constructors" class="lesson-btn">Constructors</button></li>
+        <li><button data-lesson="thiskeyword" class="lesson-btn">This Keyword</button></li>
+        <li><button data-lesson="modifiers" class="lesson-btn">Modifiers</button></li>
+        <li><button data-lesson="encapsulation" class="lesson-btn">Encapsulation</button></li>
+        <li><button data-lesson="package" class="lesson-btn">Package/API</button></li>
+        <li><button data-lesson="inheritance" class="lesson-btn">Inheritance</button></li>
+        <li><button data-lesson="polymorphism" class="lesson-btn">Polymorphism</button></li>
+        <li><button data-lesson="superkeyword" class="lesson-btn">Super Keyword</button></li>
+        <li><button data-lesson="innerclasses" class="lesson-btn">Inner Classes</button></li>
+        <li><button data-lesson="abstraction" class="lesson-btn">Abstraction</button></li>
+        <li><button data-lesson="interface" class="lesson-btn">Interface</button></li>
+        <li><button data-lesson="enums" class="lesson-btn">Enums</button></li>
+        <li><button data-lesson="userinput" class="lesson-btn">User Input</button></li>
+        <li><button data-lesson="date" class="lesson-btn">Date</button></li>
 
         <!-- Java Errors -->
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Errors</h3>
-        <li><button onclick="loadModule('errors')" class="lesson-btn">Errors</button></li>
-        <li><button onclick="loadModule('debugging')" class="lesson-btn">Debugging</button></li>
-        <li><button onclick="loadModule('exceptions')" class="lesson-btn">Exceptions</button></li>
+        <li><button data-lesson="errors" class="lesson-btn">Errors</button></li>
+        <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
+        <li><button data-lesson="exceptions" class="lesson-btn">Exceptions</button></li>
 
         <!-- Java File Handling -->
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java File Handling</h3>
-        <li><button onclick="loadModule('files')" class="lesson-btn">Files</button></li>
-        <li><button onclick="loadModule('create')" class="lesson-btn">Create/Write Files</button></li>
-        <li><button onclick="loadModule('readfiles')" class="lesson-btn">Read Files</button></li>
-        <li><button onclick="loadModule('delete')" class="lesson-btn">Delete Files</button></li>
+        <li><button data-lesson="files" class="lesson-btn">Files</button></li>
+        <li><button data-lesson="create" class="lesson-btn">Create/Write Files</button></li>
+        <li><button data-lesson="readfiles" class="lesson-btn">Read Files</button></li>
+        <li><button data-lesson="delete" class="lesson-btn">Delete Files</button></li>
 
         <!-- Java Data Structures -->
         <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Data Structures</h3>
-        <li><button onclick="loadModule('datastructures')" class="lesson-btn">Data Structures</button></li>
-        <li><button onclick="loadModule('collections')" class="lesson-btn">Collections</button></li>
-        <li><button onclick="loadModule('lists')" class="lesson-btn">List</button></li>
-        <li><button onclick="loadModule('arraylist')" class="lesson-btn">Array List</button></li>
-        <li><button onclick="loadModule('linkedlist')" class="lesson-btn">Linked List</button></li>
-        <li><button onclick="loadModule('listsorting')" class="lesson-btn">List Sorting</button></li>
-        <li><button onclick="loadModule('set')" class="lesson-btn">Set</button></li>
-        <li><button onclick="loadModule('hashset')" class="lesson-btn">Hash Set</button></li>
-        <li><button onclick="loadModule('treeset')" class="lesson-btn">Tree Set</button></li>
-        <li><button onclick="loadModule('linkedhashset')" class="lesson-btn">Linked HashSet</button></li>
-        <li><button onclick="loadModule('map')" class="lesson-btn">Map</button></li>
-        <li><button onclick="loadModule('hashmap')" class="lesson-btn">HashMap</button></li>
-        <li><button onclick="loadModule('treemap')" class="lesson-btn">TreeMap</button></li>
-        <li><button onclick="loadModule('linkedhashmap')" class="lesson-btn">LinkedHashMap</button></li>
-        <li><button onclick="loadModule('iterator')" class="lesson-btn">Iterator</button></li>
+        <li><button data-lesson="datastructures" class="lesson-btn">Data Structures</button></li>
+        <li><button data-lesson="collections" class="lesson-btn">Collections</button></li>
+        <li><button data-lesson="lists" class="lesson-btn">List</button></li>
+        <li><button data-lesson="arraylist" class="lesson-btn">Array List</button></li>
+        <li><button data-lesson="linkedlist" class="lesson-btn">Linked List</button></li>
+        <li><button data-lesson="listsorting" class="lesson-btn">List Sorting</button></li>
+        <li><button data-lesson="set" class="lesson-btn">Set</button></li>
+        <li><button data-lesson="hashset" class="lesson-btn">Hash Set</button></li>
+        <li><button data-lesson="treeset" class="lesson-btn">Tree Set</button></li>
+        <li><button data-lesson="linkedhashset" class="lesson-btn">Linked HashSet</button></li>
+        <li><button data-lesson="map" class="lesson-btn">Map</button></li>
+        <li><button data-lesson="hashmap" class="lesson-btn">HashMap</button></li>
+        <li><button data-lesson="treemap" class="lesson-btn">TreeMap</button></li>
+        <li><button data-lesson="linkedhashmap" class="lesson-btn">LinkedHashMap</button></li>
+        <li><button data-lesson="iterator" class="lesson-btn">Iterator</button></li>
       </ul>
     </aside>
 
@@ -412,11 +412,11 @@ public class HelloWorld {
       return `⚠️ Simulation not available for ${lang}.`;
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    function bindSidebar() {
       const lessonButtons = document.querySelectorAll(`aside button[data-lesson]`);
-
       if (lessonButtons.length === 0) {
         console.warn("⚠️ No lesson buttons found on DOMContentLoaded.");
+        return;
       }
 
       cachedTotalModules = lessonButtons.length;
@@ -427,7 +427,10 @@ public class HelloWorld {
           loadModule(lessonId);
         });
       });
+    }
 
+    document.addEventListener("DOMContentLoaded", () => {
+      bindSidebar();
       loadProgress();
     });
   </script>
