@@ -7,61 +7,108 @@
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .fade-in {
-      animation: fadeIn 0.4s ease-in-out;
+<style>
+  /* Animation */
+  .fade-in {
+    animation: fadeIn 0.4s ease-in-out;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Lesson Button Styling */
+  .lesson-btn {
+    display: inline-block;
+    min-width: 160px; /* consistent card width */
+    max-width: 160px;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    color: #ea580c; /* orange-600 */
+    background-color: #ffeed8; /* orange-50 */
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+  }
+
+  .lesson-btn:hover {
+    background-color: #ffedd5; /* orange-100 */
+    transform: translateY(-1px);
+  }
+
+  .lesson-btn.active {
+    background-color: #fed7aa; /* orange-200 */
+    font-weight: 600;
+    color: #c2410c; /* orange-700 */
+  }
+
+  /* Horizontal scroll container */
+  #htmlSidebar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  /* Desktop override */
+  @media (min-width: 768px) {
+    #htmlSidebar {
+      display: block;
+      overflow-x: unset;
+      padding-bottom: 0;
     }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+
     .lesson-btn {
       display: block;
       width: 100%;
+      max-width: none;
+      min-width: unset;
       text-align: left;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
-      color: #ea580c; /* orange-600 */
-      background-color: white;
-      transition: background-color 0.2s ease;
     }
-    .lesson-btn:hover {
-      background-color: #fff7ed; /* orange-50 */
-    }
-    .lesson-btn.active {
-      background-color: #ffedd5; /* orange-100 */
-      font-weight: 600;
-      color: #c2410c; /* orange-700 */
-    }
+  }
+</style>
 
-  </style>
 </head>
 <body data-subject="html" class="bg-gray-100 font-sans text-gray-800">
 
   <!-- Header -->
   <nav class="bg-orange-600 text-white shadow-lg">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Logo -->
       <div class="flex items-center space-x-2">
         <i class="fas fa-code text-2xl"></i>
         <span class="text-xl font-bold">CodeMaster</span>
       </div>
+
+      <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-6">
-        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
-        <a href="#" class="hover:text-gray-200 transition">Projects</a>
-        <a href="#" class="hover:text-gray-200 transition">Community</a>
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
       </div>
+
+      <!-- Profile (Desktop Only) -->
       <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-orange-600 px-3 py-1 rounded-full font-semibold">
         <span id="navAvatar" class="bg-orange-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
         <span id="navName"></span>
       </div>
+
+      <!-- Mobile Toggle Button -->
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+      </button>
     </div>
-    <div class="md:hidden hidden bg-orange-700" id="mobile-menu">
-      <div class="px-4 py-2 flex flex-col space-y-3">
-        <a href="index.html" class="block py-2 hover:bg-orange-600 px-2 rounded">Home</a>
-        <a href="lesson.html" class="block py-2 hover:bg-orange-600 px-2 rounded">Lessons</a>
-        <a href="#" class="block py-2 hover:bg-orange-600 px-2 rounded">Projects</a>
-        <a href="#" class="block py-2 hover:bg-orange-600 px-2 rounded">Community</a>
+
+    <!-- Mobile Menu (Outside Flex Container) -->
+    <div class="md:hidden hidden bg-orange-600" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-3">
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
       </div>
     </div>
   </nav>
@@ -70,101 +117,117 @@
   <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
+    <aside class="md:w-1/4 bg-white p-6 shadow-md border-r border-gray-200">
       <h2 class="text-xl font-bold text-orange-700 mb-4 flex items-center space-x-2">
         <i class="fas fa-list-ul text-orange-500"></i>
         <span>HTML Modules</span>
       </h2>
-      <ul class="space-y-3 text-sm" id="htmlSidebar">
-        <li><button data-lesson="intro" class="lesson-btn">Introduction to HTML</button></li>
-        <li><button data-lesson="html-basic" class="lesson-btn">Basics</button></li>
-        <li><button data-lesson="elements" class="lesson-btn">Elements</button></li>
-        <li><button data-lesson="attributes" class="lesson-btn">Attributes</button></li>
-        <li><button data-lesson="headings" class="lesson-btn">Headings</button></li>
-        <li><button data-lesson="paragraph" class="lesson-btn">Paragraphs</button></li>
-        <li><button data-lesson="styles" class="lesson-btn">Styles</button></li>
-        <li><button data-lesson="text" class="lesson-btn">Text Formatting</button></li>
-        <li><button data-lesson="quotation" class="lesson-btn">Quotations</button></li>
-        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
-        <li><button data-lesson="lists" class="lesson-btn">Lists</button></li>
-        <li><button data-lesson="links" class="lesson-btn">Links</button></li>
-        <li><button data-lesson="image" class="lesson-btn">Images</button></li>
-        <li><button data-lesson="pagetitle" class="lesson-btn">Page Title</button></li>
-        <li><button data-lesson="table" class="lesson-btn">Tables</button></li>
-        <li><button data-lesson="tableborders" class="lesson-btn">Table Borders</button></li>
-        <li><button data-lesson="tablesizes" class="lesson-btn">Table Sizes</button></li>
-        <li><button data-lesson="tableheaders" class="lesson-btn">Table Headers</button></li>
-        <li><button data-lesson="padding-and-spacing" class="lesson-btn">Padding and Spacing</button></li>
-        <li><button data-lesson="colspan-and-rowspan" class="lesson-btn">Colspan and Rowspan</button></li>
-        <li><button data-lesson="tablestyling" class="lesson-btn">Table Styling</button></li>
-        <li><button data-lesson="tablecolgroup" class="lesson-btn">Table Colgroup</button></li>
-        <li><button data-lesson="block-and-inline" class="lesson-btn">Block and Inline</button></li>
-        <li><button data-lesson="classes" class="lesson-btn">Classes</button></li>
-        <li><button data-lesson="id" class="lesson-btn">ID Attribute</button></li>
-        <li><button data-lesson="iframe" class="lesson-btn">Iframes</button></li>
-        <li><button data-lesson="javascript" class="lesson-btn">JavaScript</button></li>
-        <li><button data-lesson="filepath" class="lesson-btn">File Paths</button></li>
-        <li><button data-lesson="head" class="lesson-btn">Head</button></li>
-        <li><button data-lesson="layout" class="lesson-btn">Layout</button></li>
-        <li><button data-lesson="responsive" class="lesson-btn">Responsive Design</button></li>
-        <li><button data-lesson="computercode" class="lesson-btn">Computer Code</button></li>
-        <li><button data-lesson="semantic" class="lesson-btn">Semantic Elements</button></li>
-        <li><button data-lesson="entities" class="lesson-btn">HTML Entities</button></li>
-        <li><button data-lesson="form" class="lesson-btn">Forms</button></li>
-        <li><button data-lesson="formattributes" class="lesson-btn">Form Attributes</button></li>
-        <li><button data-lesson="formelements" class="lesson-btn">Form Elements</button></li>
-        <li><button data-lesson="inputtypes" class="lesson-btn">Input Types</button></li>
-        <li><button data-lesson="inputattributes" class="lesson-btn">Input Attributes</button></li>
-        <li><button data-lesson="inputformattributes" class="lesson-btn">Input Form Attributes</button></li>
-        <li><button data-lesson="bestpractices" class="lesson-btn">Best Practices</button></li>
-      </ul>
+      <!-- Scrollable container -->
+      <div class="overflow-x-auto md:overflow-y-auto md:h-[calc(100vh-8rem)]">
+        <ul class="flex md:block space-x-4 md:space-x-0 md:space-y-3 text-sm px-1" id="htmlSidebar">
+          <li><button data-lesson="intro" class="lesson-btn fade-in">Introduction to HTML</button></li>
+          <li><button data-lesson="html-basic" class="lesson-btn fade-in">Basics</button></li>
+          <li><button data-lesson="elements" class="lesson-btn fade-in">Elements</button></li>
+          <li><button data-lesson="attributes" class="lesson-btn fade-in">Attributes</button></li>
+          <li><button data-lesson="headings" class="lesson-btn fade-in">Headings</button></li>
+          <li><button data-lesson="paragraph" class="lesson-btn fade-in">Paragraphs</button></li>
+          <li><button data-lesson="styles" class="lesson-btn fade-in">Styles</button></li>
+          <li><button data-lesson="text" class="lesson-btn fade-in">Text Formatting</button></li>
+          <li><button data-lesson="quotation" class="lesson-btn fade-in">Quotations</button></li>
+          <li><button data-lesson="comments" class="lesson-btn fade-in">Comments</button></li>
+          <li><button data-lesson="lists" class="lesson-btn fade-in">Lists</button></li>
+          <li><button data-lesson="links" class="lesson-btn fade-in">Links</button></li>
+          <li><button data-lesson="image" class="lesson-btn fade-in">Images</button></li>
+          <li><button data-lesson="pagetitle" class="lesson-btn fade-in">Page Title</button></li>
+          <li><button data-lesson="table" class="lesson-btn fade-in">Tables</button></li>
+          <li><button data-lesson="tableborders" class="lesson-btn fade-in">Table Borders</button></li>
+          <li><button data-lesson="tablesizes" class="lesson-btn fade-in">Table Sizes</button></li>
+          <li><button data-lesson="tableheaders" class="lesson-btn fade-in">Table Headers</button></li>
+          <li><button data-lesson="padding-and-spacing" class="lesson-btn fade-in">Padding and Spacing</button></li>
+          <li><button data-lesson="colspan-and-rowspan" class="lesson-btn fade-in">Colspan and Rowspan</button></li>
+          <li><button data-lesson="tablestyling" class="lesson-btn fade-in">Table Styling</button></li>
+          <li><button data-lesson="tablecolgroup" class="lesson-btn fade-in">Table Colgroup</button></li>
+          <li><button data-lesson="block-and-inline" class="lesson-btn fade-in">Block and Inline</button></li>
+          <li><button data-lesson="classes" class="lesson-btn fade-in">Classes</button></li>
+          <li><button data-lesson="id" class="lesson-btn fade-in">ID Attribute</button></li>
+          <li><button data-lesson="iframe" class="lesson-btn fade-in">Iframes</button></li>
+          <li><button data-lesson="javascript" class="lesson-btn fade-in">JavaScript</button></li>
+          <li><button data-lesson="filepath" class="lesson-btn fade-in">File Paths</button></li>
+          <li><button data-lesson="head" class="lesson-btn fade-in">Head</button></li>
+          <li><button data-lesson="layout" class="lesson-btn fade-in">Layout</button></li>
+          <li><button data-lesson="responsive" class="lesson-btn fade-in">Responsive Design</button></li>
+          <li><button data-lesson="computercode" class="lesson-btn fade-in">Computer Code</button></li>
+          <li><button data-lesson="semantic" class="lesson-btn fade-in">Semantic Elements</button></li>
+          <li><button data-lesson="entities" class="lesson-btn fade-in">HTML Entities</button></li>
+          <li><button data-lesson="form" class="lesson-btn fade-in">Forms</button></li>
+          <li><button data-lesson="formattributes" class="lesson-btn fade-in">Form Attributes</button></li>
+          <li><button data-lesson="formelements" class="lesson-btn fade-in">Form Elements</button></li>
+          <li><button data-lesson="inputtypes" class="lesson-btn fade-in">Input Types</button></li>
+          <li><button data-lesson="inputattributes" class="lesson-btn fade-in">Input Attributes</button></li>
+          <li><button data-lesson="inputformattributes" class="lesson-btn fade-in">Input Form Attributes</button></li>
+          <li><button data-lesson="bestpractices" class="lesson-btn fade-in">Best Practices</button></li>
+        </ul>
+      </div>
     </aside>
 
     <!-- Main Content -->
-    <section class="md:w-3/4 p-10 bg-orange-300 flex flex-col justify-between font-sans">
-      <div id="moduleContent" class="overflow-y-auto max-h-[75vh] pr-2">
-        <!-- Default Content -->
+    <section class="md:w-3/4 px-6 md:px-10 py-6 md:py-10 bg-orange-300 flex flex-col gap-8 font-sans min-h-[calc(100vh-8rem)]">
+      <div class="overflow-y-auto max-h-[70vh] pr-2" id="moduleContent">
+        <!-- Header -->
         <div class="flex items-center space-x-3 mb-6">
-          <div class="bg-white text-orange-700 rounded-full p-3 text-xl shadow-md">
-            <i class="fab fa-html5"></i>
+          <div class="bg-white text-orange-600 rounded-full p-3 text-xl shadow-md">
+            <i class="fab fa-css3-alt"></i>
           </div>
-          <h1 class="text-4xl font-bold tracking-wide">HTML Basics</h1>
+          <h1 class="text-4xl font-bold tracking-wide">CSS Basics</h1>
         </div>
 
-<pre class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm ">
-  &lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-    &lt;head&gt;
-      &lt;title&gt;My Portfolio&lt;/title&gt;
-      &lt;link rel="stylesheet" href="styles.css"&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-      &lt;h1 class="text-4xl"&gt;Welcome!&lt;/h1&gt;
-    &lt;/body&gt;
-  &lt;/html&gt;
-</pre>
-
-        <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">↑</button>
+        <!-- Code Block -->
+        <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-orange-500 text-white text-sm whitespace-pre-wrap font-mono">
+          <pre class="whitespace-pre-wrap text-sm">
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
+          </pre>
+        </div>
       </div>
 
-      <!-- Progress Actions -->
-      <div class="flex flex-wrap gap-4 mt-6">
-        <button onclick="loadModule('intro')" class="bg-white text-orange-700 px-6 py-2 rounded-full font-bold hover:bg-gray-100 transition shadow-md">Start Coding</button>
+      <!-- Action Buttons -->
+      <div class="flex flex-wrap gap-4">
+        <button onclick="loadModule('intro')" class="bg-orange-600 text-white px-6 py-2 rounded-full font-bold hover:bg-orange-700 transition shadow-md">Start Styling</button>
         <a href="userprofile/profile.html" class="bg-orange-900 text-white px-6 py-2 rounded-full font-bold hover:bg-orange-800 transition shadow-md">View Dashboard</a>
       </div>
 
       <!-- Progress Bar -->
       <div class="mt-4">
         <div class="flex justify-between items-center mb-2">
-          <span class="text-sm text-orange-600 font-medium progress-label">0% Completed</span>
-          <span class="text-sm text-orange-600 progress-label">0% Completed</span>
+          <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
+          <span class="text-sm text-orange-700 progress-label">0% Completed</span>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-orange-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-orange-700 transition z-50">↑</button>
         </div>
-        <div class="w-full bg-orange-300 bg-opacity-30 h-2 rounded-full overflow-hidden">
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
           <div class="bg-orange-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
         </div>
       </div>
     </section>
+
   </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
+    });
+  </script>
 
   <script>
     const subject = document.body.dataset.subject || "html";

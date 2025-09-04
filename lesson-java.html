@@ -41,27 +41,39 @@
   <!-- Header -->
   <nav class="bg-red-600 text-white shadow-lg">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Logo -->
       <div class="flex items-center space-x-2">
         <i class="fas fa-code text-2xl"></i>
         <span class="text-xl font-bold">CodeMaster</span>
       </div>
+
+      <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-6">
-        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
-        <a href="#" class="hover:text-gray-200 transition">Projects</a>
-        <a href="#" class="hover:text-gray-200 transition">Community</a>
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
       </div>
+
+      <!-- Profile (Desktop Only) -->
       <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-red-600 px-3 py-1 rounded-full font-semibold">
         <span id="navAvatar" class="bg-red-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
         <span id="navName"></span>
       </div>
+
+      <!-- Mobile Toggle Button -->
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+      </button>
     </div>
-    <div class="md:hidden hidden bg-red-700" id="mobile-menu">
-      <div class="px-4 py-2 flex flex-col space-y-3">
-        <a href="index.html" class="block py-2 hover:bg-red-600 px-2 rounded">Home</a>
-        <a href="lesson.html" class="block py-2 hover:bg-red-600 px-2 rounded">Lessons</a>
-        <a href="#" class="block py-2 hover:bg-red-600 px-2 rounded">Projects</a>
-        <a href="#" class="block py-2 hover:bg-red-600 px-2 rounded">Community</a>
+
+    <!-- Mobile Menu (Outside Flex Container) -->
+    <div class="md:hidden hidden bg-red-600" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-3">
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
       </div>
     </div>
   </nav>
@@ -198,8 +210,21 @@ public class HelloWorld {
         </div>
       </div>
     </section>
-
   </main>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
+    });
+  </script>
 
   <script>
     const subject = document.body.dataset.subject || "java";

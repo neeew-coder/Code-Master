@@ -8,190 +8,266 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Fade-in animation */
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lesson Button Styling */
     .lesson-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
+      display: inline-block;
+      min-width: 160px;
+      max-width: 160px;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
       color: #ca8a04; /* yellow-600 */
-      transition: background-color 0.2s ease;
+      background-color: #f5fcb7;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      white-space: nowrap;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
     .lesson-btn:hover {
       background-color: #fefce8; /* yellow-50 */
+      transform: translateY(-1px);
     }
 
     .lesson-btn.active {
       background-color: #fef9c3; /* yellow-100 */
-      color: #a16207; /* yellow-700 */
       font-weight: 600;
+      color: #a16207; /* yellow-700 */
     }
 
     .lesson-btn.completed {
       opacity: 0.5;
       cursor: default;
     }
+
+    /* Horizontal scroll container for mobile */
+    #jsSidebar {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    /* Desktop override */
+    @media (min-width: 768px) {
+      #jsSidebar {
+        display: block;
+        overflow-x: unset;
+        padding-bottom: 0;
+      }
+
+      .lesson-btn {
+        display: block;
+        width: 100%;
+        max-width: none;
+        min-width: unset;
+        text-align: left;
+      }
+    }
   </style>
+
 </head>
 <body data-subject="javascript" class="bg-gray-50 font-sans">
 
   <!-- Header -->
   <nav class="bg-yellow-600 text-white shadow-lg">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <!-- Logo -->
       <div class="flex items-center space-x-2">
         <i class="fas fa-code text-2xl"></i>
         <span class="text-xl font-bold">CodeMaster</span>
       </div>
+
+      <!-- Desktop Navigation -->
       <div class="hidden md:flex space-x-6">
-        <a href="index.html" class="hover:text-gray-200 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-200 transition">Lessons</a>
-        <a href="#" class="hover:text-gray-200 transition">Projects</a>
-        <a href="#" class="hover:text-gray-200 transition">Community</a>
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
       </div>
+
+      <!-- Profile (Desktop Only) -->
       <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-yellow-600 px-3 py-1 rounded-full font-semibold">
         <span id="navAvatar" class="bg-yellow-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
         <span id="navName"></span>
+      </div>
+
+      <!-- Mobile Toggle Button -->
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu (Outside Flex Container) -->
+    <div class="md:hidden hidden bg-yellow-600" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-3">
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
       </div>
     </div>
   </nav>
 
   <!-- Main Layout -->
-  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-auto">
+  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden bg-orange-300">
 
     <!-- Sidebar -->
-    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
+    <aside class="md:w-1/4 bg-white p-6 shadow-md border-r border-gray-200">
       <h2 class="text-xl font-bold text-yellow-600 mb-4 flex items-center space-x-2">
         <i class="fab fa-js-square text-yellow-500"></i>
         <span>JavaScript Modules</span>
       </h2>
-      <ul class="space-y-3 text-sm" id="jsSidebar">
-        <li><button data-lesson="intro" class="lesson-btn">Introduction to JavaScript</button></li>
-        <li><button data-lesson="wheretoadd" class="lesson-btn">Where to Add Scripts</button></li>
-        <li><button data-lesson="output" class="lesson-btn">Output</button></li>
-        <li><button data-lesson="statements" class="lesson-btn">Statements</button></li>
-        <li><button data-lesson="syntax" class="lesson-btn">Syntax</button></li>
-        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
-        <li><button data-lesson="variables" class="lesson-btn">Variables</button></li>
-        <li><button data-lesson="let" class="lesson-btn">Lets</button></li>
-        <li><button data-lesson="const" class="lesson-btn">Constants</button></li>
-        <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
-        <li><button data-lesson="arithmetic" class="lesson-btn">Arithmetic</button></li>
-        <li><button data-lesson="assignments" class="lesson-btn">Assignments</button></li>
-        <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
-        <li><button data-lesson="functions" class="lesson-btn">Functions</button></li>
-        <li><button data-lesson="objects" class="lesson-btn">Objects</button></li>
-        <li><button data-lesson="objectproperties" class="lesson-btn">Object Properties</button></li>
-        <li><button data-lesson="objectmethods" class="lesson-btn">Object Methods</button></li>
-        <li><button data-lesson="objectdisplay" class="lesson-btn">Object Display</button></li>
-        <li><button data-lesson="objectconstruction" class="lesson-btn">Object Construction</button></li>
-        <li><button data-lesson="events" class="lesson-btn">DOM Events</button></li>
-        <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
-        <li><button data-lesson="stringmethods" class="lesson-btn">String Methods</button></li>
-        <li><button data-lesson="stringsearch" class="lesson-btn">String Search</button></li>
-        <li><button data-lesson="stringreference" class="lesson-btn">String Reference</button></li>
-        <li><button data-lesson="stringtemplate" class="lesson-btn">String Template</button></li>
-        <li><button data-lesson="numbers" class="lesson-btn">Numbers</button></li>
-        <li><button data-lesson="bigint" class="lesson-btn">BigInt</button></li>
-        <li><button data-lesson="numbermethods" class="lesson-btn">Number Methods</button></li>
-        <li><button data-lesson="numberproperties" class="lesson-btn">Number Properties</button></li>
-        <li><button data-lesson="numberreference" class="lesson-btn">Number Reference</button></li>
-        <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
-        <li><button data-lesson="arrayaccess" class="lesson-btn">Array Access</button></li>
-        <li><button data-lesson="arraymutations" class="lesson-btn">Array Mutations</button></li>
-        <li><button data-lesson="arraytransform" class="lesson-btn">Array Transform</button></li>
-        <li><button data-lesson="arraycopy" class="lesson-btn">Array Copy</button></li>
-        <li><button data-lesson="arraymethods" class="lesson-btn">Array Methods</button></li>
-        <li><button data-lesson="arraysearch" class="lesson-btn">Array Search</button></li>
-        <li><button data-lesson="arraysort" class="lesson-btn">Array Sort</button></li>
-        <li><button data-lesson="arrayiteration" class="lesson-btn">Array Iteration</button></li>
-        <li><button data-lesson="arrayreference" class="lesson-btn">Array Reference</button></li>
-        <li><button data-lesson="arrayconst" class="lesson-btn">Array Const</button></li>
-        <li><button data-lesson="dates" class="lesson-btn">Date</button></li>
-        <li><button data-lesson="dateformat" class="lesson-btn">Date Format</button></li>
-        <li><button data-lesson="dategetmethods" class="lesson-btn">Date Get Methods</button></li>
-        <li><button data-lesson="datesetmethods" class="lesson-btn">Date Set Methods</button></li>
-        <li><button data-lesson="math" class="lesson-btn">Math</button></li>
-        <li><button data-lesson="mathreference" class="lesson-btn">Math Reference</button></li>
-        <li><button data-lesson="random" class="lesson-btn">Random</button></li>
-        <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
-        <li><button data-lesson="comparisons" class="lesson-btn">Comparisons</button></li>
-        <li><button data-lesson="ifelse" class="lesson-btn">If Else</button></li>
-        <li><button data-lesson="switch" class="lesson-btn">Switch</button></li>
-        <li><button data-lesson="loopfor" class="lesson-btn">For Loop</button></li>
-        <li><button data-lesson="loopforin" class="lesson-btn">Loop For In</button></li>
-        <li><button data-lesson="loopforof" class="lesson-btn">Loop For Of</button></li>
-        <li><button data-lesson="loopwhile" class="lesson-btn">While Loop</button></li>
-        <li><button data-lesson="break" class="lesson-btn">Break</button></li>
-        <li><button data-lesson="sets" class="lesson-btn">Sets</button></li>
-        <li><button data-lesson="setmethods" class="lesson-btn">Set Methods</button></li>
-        <li><button data-lesson="setlogic" class="lesson-btn">Set Logic</button></li>
-        <li><button data-lesson="setreference" class="lesson-btn">Set Reference</button></li>
-        <li><button data-lesson="maps" class="lesson-btn">Maps</button></li>
-        <li><button data-lesson="mapmethods" class="lesson-btn">Map Methods</button></li>
-        <li><button data-lesson="maplogic" class="lesson-btn">Map Logic</button></li>
-        <li><button data-lesson="mapreference" class="lesson-btn">Map Reference</button></li>
-        <li><button data-lesson="typedarrays" class="lesson-btn">Typed Arrays</button></li>
-        <li><button data-lesson="typedmethods" class="lesson-btn">Typed Methods</button></li>
-        <li><button data-lesson="typedreference" class="lesson-btn">Typed Reference</button></li>
-        <li><button data-lesson="iterables" class="lesson-btn">Iterables</button></li>
-        <li><button data-lesson="iterators" class="lesson-btn">Iterators</button></li>
-        <li><button data-lesson="typeof" class="lesson-btn">Type Of</button></li>
-        <li><button data-lesson="tostring" class="lesson-btn">To String</button></li>
-        <li><button data-lesson="typeconversion" class="lesson-btn">Type Conversion</button></li>
-        <li><button data-lesson="destructuring" class="lesson-btn">Destructuring</button></li>
-        <li><button data-lesson="bitwise" class="lesson-btn">Bitwise Operators</button></li>
-        <li><button data-lesson="regexp" class="lesson-btn">Regular Expressions</button></li>
-        <li><button data-lesson="regexpobjects" class="lesson-btn">RegExp Objects</button></li>
-        <li><button data-lesson="regexppatterns" class="lesson-btn">RegExp Patterns</button></li>
-        <li><button data-lesson="regexpmethods" class="lesson-btn">RegExp Methods</button></li>
-        <li><button data-lesson="precedence" class="lesson-btn">Precedence</button></li>
-        <li><button data-lesson="errors" class="lesson-btn">Errors</button></li>
-        <li><button data-lesson="scope" class="lesson-btn">Scope</button></li>
-        <li><button data-lesson="hoisting" class="lesson-btn">Hoisting</button></li>
-        <li><button data-lesson="strictmode" class="lesson-btn">Strict Mode</button></li>
-        <li><button data-lesson="thiskeyword" class="lesson-btn">This Keyword</button></li>
-        <li><button data-lesson="arrowfunctions" class="lesson-btn">Arrow Functions</button></li>
-        <li><button data-lesson="classes" class="lesson-btn">Classes</button></li>
-        <li><button data-lesson="modules" class="lesson-btn">Modules</button></li>
-        <li><button data-lesson="json" class="lesson-btn">JSON</button></li>
-        <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
-        <li><button data-lesson="styles" class="lesson-btn">Styles</button></li>
-        <li><button data-lesson="bestpractices" class="lesson-btn">Best Practices</button></li>
-        <li><button data-lesson="mistakes" class="lesson-btn">Mistakes</button></li>
-        <li><button data-lesson="performance" class="lesson-btn">Performance</button></li>
-        <li><button data-lesson="reservedwords" class="lesson-btn">Reserved Words</button></li>
-      </ul>
+
+      <!-- Scrollable container -->
+      <div class="overflow-x-auto md:overflow-y-auto md:h-[calc(100vh-8rem)]">
+        <ul class="flex md:block space-x-4 md:space-x-0 md:space-y-3 text-sm px-1" id="jsSidebar">
+          <li><button data-lesson="intro" class="lesson-btn">Introduction to JS</button></li>
+          <li><button data-lesson="wheretoadd" class="lesson-btn">Where to Add Scripts</button></li>
+          <li><button data-lesson="output" class="lesson-btn">Output</button></li>
+          <li><button data-lesson="statements" class="lesson-btn">Statements</button></li>
+          <li><button data-lesson="syntax" class="lesson-btn">Syntax</button></li>
+          <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
+          <li><button data-lesson="variables" class="lesson-btn">Variables</button></li>
+          <li><button data-lesson="let" class="lesson-btn">Lets</button></li>
+          <li><button data-lesson="const" class="lesson-btn">Constants</button></li>
+          <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
+          <li><button data-lesson="arithmetic" class="lesson-btn">Arithmetic</button></li>
+          <li><button data-lesson="assignments" class="lesson-btn">Assignments</button></li>
+          <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
+          <li><button data-lesson="functions" class="lesson-btn">Functions</button></li>
+          <li><button data-lesson="objects" class="lesson-btn">Objects</button></li>
+          <li><button data-lesson="objectproperties" class="lesson-btn">Object Properties</button></li>
+          <li><button data-lesson="objectmethods" class="lesson-btn">Object Methods</button></li>
+          <li><button data-lesson="objectdisplay" class="lesson-btn">Object Display</button></li>
+          <li><button data-lesson="objectconstruction" class="lesson-btn">Object Construction</button></li>
+          <li><button data-lesson="events" class="lesson-btn">DOM Events</button></li>
+          <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
+          <li><button data-lesson="stringmethods" class="lesson-btn">String Methods</button></li>
+          <li><button data-lesson="stringsearch" class="lesson-btn">String Search</button></li>
+          <li><button data-lesson="stringreference" class="lesson-btn">String Reference</button></li>
+          <li><button data-lesson="stringtemplate" class="lesson-btn">String Template</button></li>
+          <li><button data-lesson="numbers" class="lesson-btn">Numbers</button></li>
+          <li><button data-lesson="bigint" class="lesson-btn">BigInt</button></li>
+          <li><button data-lesson="numbermethods" class="lesson-btn">Number Methods</button></li>
+          <li><button data-lesson="numberproperties" class="lesson-btn">Number Properties</button></li>
+          <li><button data-lesson="numberreference" class="lesson-btn">Number Reference</button></li>
+          <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
+          <li><button data-lesson="arrayaccess" class="lesson-btn">Array Access</button></li>
+          <li><button data-lesson="arraymutations" class="lesson-btn">Array Mutations</button></li>
+          <li><button data-lesson="arraytransform" class="lesson-btn">Array Transform</button></li>
+          <li><button data-lesson="arraycopy" class="lesson-btn">Array Copy</button></li>
+          <li><button data-lesson="arraymethods" class="lesson-btn">Array Methods</button></li>
+          <li><button data-lesson="arraysearch" class="lesson-btn">Array Search</button></li>
+          <li><button data-lesson="arraysort" class="lesson-btn">Array Sort</button></li>
+          <li><button data-lesson="arrayiteration" class="lesson-btn">Array Iteration</button></li>
+          <li><button data-lesson="arrayreference" class="lesson-btn">Array Reference</button></li>
+          <li><button data-lesson="arrayconst" class="lesson-btn">Array Const</button></li>
+          <li><button data-lesson="dates" class="lesson-btn">Date</button></li>
+          <li><button data-lesson="dateformat" class="lesson-btn">Date Format</button></li>
+          <li><button data-lesson="dategetmethods" class="lesson-btn">Date Get Methods</button></li>
+          <li><button data-lesson="datesetmethods" class="lesson-btn">Date Set Methods</button></li>
+          <li><button data-lesson="math" class="lesson-btn">Math</button></li>
+          <li><button data-lesson="mathreference" class="lesson-btn">Math Reference</button></li>
+          <li><button data-lesson="random" class="lesson-btn">Random</button></li>
+          <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
+          <li><button data-lesson="comparisons" class="lesson-btn">Comparisons</button></li>
+          <li><button data-lesson="ifelse" class="lesson-btn">If Else</button></li>
+          <li><button data-lesson="switch" class="lesson-btn">Switch</button></li>
+          <li><button data-lesson="loopfor" class="lesson-btn">For Loop</button></li>
+          <li><button data-lesson="loopforin" class="lesson-btn">Loop For In</button></li>
+          <li><button data-lesson="loopforof" class="lesson-btn">Loop For Of</button></li>
+          <li><button data-lesson="loopwhile" class="lesson-btn">While Loop</button></li>
+          <li><button data-lesson="break" class="lesson-btn">Break</button></li>
+          <li><button data-lesson="sets" class="lesson-btn">Sets</button></li>
+          <li><button data-lesson="setmethods" class="lesson-btn">Set Methods</button></li>
+          <li><button data-lesson="setlogic" class="lesson-btn">Set Logic</button></li>
+          <li><button data-lesson="setreference" class="lesson-btn">Set Reference</button></li>
+          <li><button data-lesson="maps" class="lesson-btn">Maps</button></li>
+          <li><button data-lesson="mapmethods" class="lesson-btn">Map Methods</button></li>
+          <li><button data-lesson="maplogic" class="lesson-btn">Map Logic</button></li>
+          <li><button data-lesson="mapreference" class="lesson-btn">Map Reference</button></li>
+          <li><button data-lesson="typedarrays" class="lesson-btn">Typed Arrays</button></li>
+          <li><button data-lesson="typedmethods" class="lesson-btn">Typed Methods</button></li>
+          <li><button data-lesson="typedreference" class="lesson-btn">Typed Reference</button></li>
+          <li><button data-lesson="iterables" class="lesson-btn">Iterables</button></li>
+          <li><button data-lesson="iterators" class="lesson-btn">Iterators</button></li>
+          <li><button data-lesson="typeof" class="lesson-btn">Type Of</button></li>
+          <li><button data-lesson="tostring" class="lesson-btn">To String</button></li>
+          <li><button data-lesson="typeconversion" class="lesson-btn">Type Conversion</button></li>
+          <li><button data-lesson="destructuring" class="lesson-btn">Destructuring</button></li>
+          <li><button data-lesson="bitwise" class="lesson-btn">Bitwise Operators</button></li>
+          <li><button data-lesson="regexp" class="lesson-btn">Regular Expressions</button></li>
+          <li><button data-lesson="regexpobjects" class="lesson-btn">RegExp Objects</button></li>
+          <li><button data-lesson="regexppatterns" class="lesson-btn">RegExp Patterns</button></li>
+          <li><button data-lesson="regexpmethods" class="lesson-btn">RegExp Methods</button></li>
+          <li><button data-lesson="precedence" class="lesson-btn">Precedence</button></li>
+          <li><button data-lesson="errors" class="lesson-btn">Errors</button></li>
+          <li><button data-lesson="scope" class="lesson-btn">Scope</button></li>
+          <li><button data-lesson="hoisting" class="lesson-btn">Hoisting</button></li>
+          <li><button data-lesson="strictmode" class="lesson-btn">Strict Mode</button></li>
+          <li><button data-lesson="thiskeyword" class="lesson-btn">This Keyword</button></li>
+          <li><button data-lesson="arrowfunctions" class="lesson-btn">Arrow Functions</button></li>
+          <li><button data-lesson="classes" class="lesson-btn">Classes</button></li>
+          <li><button data-lesson="modules" class="lesson-btn">Modules</button></li>
+          <li><button data-lesson="json" class="lesson-btn">JSON</button></li>
+          <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
+          <li><button data-lesson="styles" class="lesson-btn">Styles</button></li>
+          <li><button data-lesson="bestpractices" class="lesson-btn">Best Practices</button></li>
+          <li><button data-lesson="mistakes" class="lesson-btn">Mistakes</button></li>
+          <li><button data-lesson="performance" class="lesson-btn">Performance</button></li>
+          <li><button data-lesson="reservedwords" class="lesson-btn">Reserved Words</button></li>
+        </ul>
+      </div>
     </aside>
 
-    <!-- Main Content -->
-    <section class="md:w-3/4 p-10 bg-yellow-200 flex flex-col justify-between font-sans relative">
-      <div class="overflow-hidden rounded-lg shadow-md border border-yellow-500 bg-white" id="moduleContent">
-        <!-- Default Intro Block -->
-        <div id="jsIntro" class="p-6">
-          <div class="flex items-center space-x-3 mb-6">
-            <div class="bg-white text-yellow-600 rounded-full p-3 text-xl shadow-md">
-              <i class="fab fa-js-square"></i>
-            </div>
-            <h1 class="text-4xl font-bold tracking-wide">JavaScript Essentials</h1>
-          </div>
-          <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-yellow-500 text-white text-sm whitespace-pre-wrap font-mono mb-6">
-            <pre>
-function greet(name) {
-  return `Hello, ${name}!`;
-}
+    <!-- Main Content Area -->
+    <section id="jsIntro" data-subject="javascript" class="md:w-3/4 px-6 md:px-10 py-6 md:py-10 flex flex-col gap-8 font-sans overflow-hidden min-h-[calc(100vh-8rem)]">
 
-console.log(greet("User"));
-            </pre>
+      <!-- Lesson Container -->
+      <div id="lessonContainer" class="transition-all duration-300 max-h-[70vh] pr-2">
+
+        <!-- Default Header -->
+        <div id="defaultHeader" class="flex items-center space-x-3 mb-6">
+          <div class="bg-white text-yellow-600 rounded-full p-3 text-xl shadow-md">
+            <i class="fab fa-js-square"></i>
           </div>
+          <h1 class="text-4xl font-bold tracking-wide">JavaScript Essentials</h1>
         </div>
 
-        <!-- Hidden iframe for modules -->
-        <iframe id="moduleFrame" src="" class="w-full border-none rounded-lg hidden" style="min-height: 100vh;"></iframe>
+        <!-- Default Code Block -->
+        <div id="defaultCode" class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-yellow-500 text-white text-sm whitespace-pre-wrap font-mono mb-6">
+          <pre>
+    function greet(name) {
+      return `Hello, ${name}!`;
+    }
+
+    console.log(greet("User"));
+          </pre>
+        </div>
+
+        <!-- Dynamic iframe (initially hidden) -->
+        <iframe
+          id="moduleFrame"
+          class="hidden w-full h-[55vh] rounded-lg border border-yellow-500 shadow-md"
+          src=""
+          style="background-color: white;"
+        ></iframe>
+
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex flex-wrap gap-4 mt-6">
+      <div class="flex flex-wrap gap-2">
         <button onclick="loadModule('intro')" class="bg-yellow-600 text-white px-6 py-2 rounded-full font-bold hover:bg-yellow-700 transition shadow-md">
           Start Coding
         </button>
@@ -201,51 +277,67 @@ console.log(greet("User"));
       </div>
 
       <!-- Progress Bar -->
-      <div class="mt-10">
+      <div class="mt-4">
         <div class="flex justify-between items-center mb-2">
           <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
           <span class="text-sm text-yellow-700 progress-label">0% Completed</span>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-yellow-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-yellow-700 transition z-50">
+            ↑
+          </button>
         </div>
         <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
           <div class="bg-yellow-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
         </div>
       </div>
 
-      <!-- Scroll to Top Button -->
-      <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-yellow-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-yellow-700 transition z-50">
-        ↑
-      </button>
     </section>
+
   </main>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
+    });
+  </script>
+
+  <script>
     const API_BASE = "https://code-master-kk2m.onrender.com";
-    const subject = document.querySelector("section[data-subject]")?.dataset.subject || "javascript";
+    const subject = document.body.dataset.subject || "javascript";
     let cachedTotalModules = 0;
 
     function loadModule(lessonId) {
       const iframe = document.getElementById("moduleFrame");
-      const intro = document.getElementById("jsIntro");
-      if (!iframe || !intro) return;
+      const header = document.getElementById("defaultHeader");
+      const code = document.getElementById("defaultCode");
+      if (!iframe || !header || !code) return;
 
-      // Hide intro block and show iframe
-      intro.style.display = "none";
+      // Hide default header and code block
+      header.classList.add("hidden");
+      code.classList.add("hidden");
+
+      // Show iframe and load module
+      iframe.src = `lessons/${subject}/${lessonId}.html`;
       iframe.classList.remove("hidden");
 
       // Highlight active button
-      document.querySelectorAll("aside button[data-lesson]").forEach(btn => {
-        btn.classList.remove("bg-yellow-100", "font-semibold", "text-yellow-700");
+      document.querySelectorAll("aside button.lesson-btn[data-lesson]").forEach(btn => {
+        btn.classList.remove("bg-yellow-100", "font-semibold", "text-yellow-700", "active");
         btn.classList.add("text-yellow-600");
       });
 
-      const activeBtn = document.querySelector(`aside button[data-lesson="${lessonId}"]`);
+      const activeBtn = document.querySelector(`aside button.lesson-btn[data-lesson="${lessonId}"]`);
       if (activeBtn) {
-        activeBtn.classList.add("bg-yellow-100", "font-semibold", "text-yellow-700");
+        activeBtn.classList.add("bg-yellow-100", "font-semibold", "text-yellow-700", "active");
         activeBtn.classList.remove("text-yellow-600");
       }
-
-      // Load module into iframe
-      iframe.src = `lessons/${subject}/${lessonId}.html`;
 
       // Update progress via API
       updateProgress({ lessonId, isUpdate: true });
@@ -296,8 +388,8 @@ console.log(greet("User"));
 
     function markCompletedButtons(completed) {
       completed.forEach(id => {
-        const btn = document.querySelector(`aside button[data-lesson="${id}"]`);
-        if (btn) btn.classList.add("opacity-50", "cursor-default");
+        const btn = document.querySelector(`aside button.lesson-btn[data-lesson="${id}"]`);
+        if (btn) btn.classList.add("completed");
       });
     }
 
@@ -318,7 +410,7 @@ console.log(greet("User"));
     });
 
     document.addEventListener("DOMContentLoaded", () => {
-      const lessonButtons = document.querySelectorAll("aside button[data-lesson]");
+      const lessonButtons = document.querySelectorAll("aside button.lesson-btn[data-lesson]");
       cachedTotalModules = lessonButtons.length || 1;
 
       lessonButtons.forEach(btn => {

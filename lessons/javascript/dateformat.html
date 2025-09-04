@@ -151,24 +151,6 @@ Date.parse("March 21, 2012"); // returns milliseconds
     <li>Time zones affect interpretation of partial dates</li>
   </ul>
 
-  <!-- Quiz -->
-  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📝 Exercise</h3>
-  <p class="text-gray-700 mb-2">
-    What date is created with <code>new Date("2024")</code>?
-  </p>
-
-  <ul class="space-y-2 text-gray-700 mb-6">
-    <li><label><input type="radio" name="q1"> A random date in 2024</label></li>
-    <li><label><input type="radio" name="q1"> January 1, 2024</label></li>
-    <li><label><input type="radio" name="q1"> December 31, 2023</label></li>
-  </ul>
-
-  <button class="bg-yellow-500 text-white px-6 py-2 rounded hover:bg-yellow-600 transition">
-    Mark as Complete
-  </button>
-
-  <div class="min-h-[280px]"></div>
-
   <script>
     window.addEventListener("message", (event) => {
       if (event.data.type === "scroll-top") {
