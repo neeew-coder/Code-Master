@@ -77,7 +77,7 @@
       </h2>
       <ul class="space-y-3 text-sm">
         <!-- Java Basics -->
-        <li><button onclick="loadModule('intro')" class="lesson-btn active">Introduction to Java</button></li>
+        <li><button onclick="loadModule('intro')" class="lesson-btn">Introduction to Java</button></li>
         <li><button onclick="loadModule('getstarted')" class="lesson-btn">Get Started</button></li>
         <li><button onclick="loadModule('syntax')" class="lesson-btn">Java Syntax</button></li>
         <li><button onclick="loadModule('output')" class="lesson-btn">Output</button></li>
@@ -275,10 +275,7 @@ public class HelloWorld {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
-          ? data.totalModules
-          : cachedTotalModules;
-
+        const totalModules = getTotalModules(data.totalModules);
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
@@ -306,10 +303,7 @@ public class HelloWorld {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
-          ? data.totalModules
-          : cachedTotalModules;
-
+        const totalModules = getTotalModules(data.totalModules);
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
@@ -322,8 +316,23 @@ public class HelloWorld {
       });
     }
 
+    function getTotalModules(apiCount) {
+      if (typeof apiCount === "number" && apiCount > 0) return apiCount;
+      if (cachedTotalModules > 0) return cachedTotalModules;
+
+      const buttons = document.querySelectorAll(`aside button[data-lesson]`);
+      if (buttons.length === 0) {
+        console.warn("⚠️ No lesson buttons found. Progress bar may be inaccurate.");
+      }
+      cachedTotalModules = buttons.length;
+      return cachedTotalModules;
+    }
+
     function updateUIWithProgress({ completed, totalModules }) {
-      const percent = Math.min(100, Math.round((completed.length / totalModules) * 100));
+      const percent = totalModules > 0
+        ? Math.min(100, Math.round((completed.length / totalModules) * 100))
+        : 0;
+
       document.getElementById("progress-bar").style.width = `${percent}%`;
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
@@ -405,7 +414,12 @@ public class HelloWorld {
 
     document.addEventListener("DOMContentLoaded", () => {
       const lessonButtons = document.querySelectorAll(`aside button[data-lesson]`);
-      cachedTotalModules = lessonButtons.length || 1;
+
+      if (lessonButtons.length === 0) {
+        console.warn("⚠️ No lesson buttons found on DOMContentLoaded.");
+      }
+
+      cachedTotalModules = lessonButtons.length;
 
       lessonButtons.forEach(btn => {
         btn.addEventListener("click", () => {
