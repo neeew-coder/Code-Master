@@ -18,6 +18,8 @@
           <span class="text-xl font-bold">CodeMaster</span>
         </div>
         <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+          <span id="navName"></span>
         </div>
       </div>
       <div class="hidden md:flex space-x-6">
@@ -151,7 +153,7 @@
   function updateNavProfile() {
     const name = localStorage.getItem("codemasterUserName");
     if (name) {
-      document.getElementById("navProfile")?.classList.remove("hidden");
+      document.getElementById("navProfile")?.classList;
       document.getElementById("navName").textContent = name;
       document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
     }
