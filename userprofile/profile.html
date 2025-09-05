@@ -95,16 +95,22 @@
     async function loadProfile() {
       try {
         const res = await fetch("/api/user/me", { credentials: "include" });
-        const { username, bio, badges } = await res.json();
 
+        if (!res.ok) {
+          throw new Error(`Status ${res.status}: ${res.statusText}`);
+        }
+
+        const { username, bio, badges } = await res.json();
         document.getElementById("profileName").value = username || "";
         document.getElementById("profileTagline").value = bio || "";
         updateAvatar(username);
         renderBadges(badges);
       } catch (err) {
-        console.error("Failed to load profile:", err);
+        console.error("⚠️ Failed to load profile from backend:", err);
+        alert("Unable to load profile. Please sign in again.");
       }
     }
+
 
     async function saveProfile() {
       const username = document.getElementById("profileName").value.trim();
