@@ -71,47 +71,5 @@ public class Main {
     <li>Switch is ideal for clean, readable branching when comparing one variable to many values.</li>
   </ul>
 
-  <h3 class="text-lg font-semibold text-red-500 mb-2">📝 Exercise</h3>
-  <p class="text-gray-700 mb-2">
-    What will be printed if <code>day = 5</code>?
-  </p>
-  <ul class="space-y-2 text-gray-700 mb-6">
-    <li><label><input type="radio" name="q1"> Tuesday</label></li>
-    <li><label><input type="radio" name="q1"> Friday</label></li>
-    <li><label><input type="radio" name="q1"> Sunday</label></li>
-    <li><label><input type="radio" name="q1"> Invalid day</label></li>
-  </ul>
-
-  <p class="text-gray-700 mb-2">
-    What happens if you omit the <code>break</code> statement?
-  </p>
-  <ul class="space-y-2 text-gray-700 mb-6">
-    <li><label><input type="radio" name="q2"> The switch stops immediately</label></li>
-    <li><label><input type="radio" name="q2"> Only the default case runs</label></li>
-    <li><label><input type="radio" name="q2"> All following cases run until a break is found</label></li>
-    <li><label><input type="radio" name="q2"> It causes a syntax error</label></li>
-  </ul>
-
-  <h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Extra Insight</h3>
-  <p class="text-gray-700 mb-6">
-    Java’s <code>switch</code> works with <code>int</code>, <code>char</code>, <code>String</code>, and <code>enum</code> types. Starting with Java 14+, you can use <strong>switch expressions</strong> for more concise logic:
-  </p>
-
-  <pre class="bg-black text-red-400 p-4 rounded text-sm overflow-auto font-mono">
-String result = switch (day) {
-  case 1 -> "Monday";
-  case 2 -> "Tuesday";
-  case 3 -> "Wednesday";
-  default -> "Unknown";
-};
-System.out.println(result);
-  </pre>
-
-  <div class="mt-8 flex justify-start">
-    <button onclick="updateProgress('java-switch-statement')" class="bg-red-500 text-white px-6 py-2 rounded hover:bg-red-600 transition">
-      Mark as Complete
-    </button>
-  </div>
-
 </body>
 </html>
