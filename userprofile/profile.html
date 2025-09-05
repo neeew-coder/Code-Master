@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-50 font-sans">
 
@@ -17,7 +18,7 @@
           <i class="fas fa-code text-2xl"></i>
           <span class="text-xl font-bold">CodeMaster</span>
         </div>
-        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+        <div id="navProfile" id="hide" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
           <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
           <span id="navName"></span>
         </div>
@@ -36,12 +37,16 @@
 
         <!-- Mobile menu placed outside the flex container -->
     <div class="md:hidden hidden gradient-bg" id="mobile-menu">
-      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
+      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">        
         <a href="index.html" class="hover:text-gray-300 transition">Home</a>
         <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
         <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
         <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
         <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
+        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+          <span id="navName"></span>
+        </div>
       </div>
       <hr>
     </div>
@@ -153,6 +158,7 @@
   function updateNavProfile() {
     const name = localStorage.getItem("codemasterUserName");
     if (name) {
+      document.getElementById("navProfile")?.classList.remove("hidden");
       document.getElementById("navName").textContent = name;
       document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
     }
