@@ -83,7 +83,7 @@ img {
 }
 
 @media (min-width: 768px) {
-  #hide{
+  .hide{
     display: none;
   }
 }
