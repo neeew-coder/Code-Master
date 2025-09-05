@@ -8,27 +8,71 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Animation */
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lesson Button Styling */
     .lesson-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
-      color: #15803d; /* green-700 */
-      font-weight: 600;
-      background-color: transparent;
-      transition: background-color 0.2s ease;
+      display: inline-block;
+      min-width: 160px; /* consistent card width */
+      max-width: 160px;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      color: #1fd108; /* green-600 */
+      background-color: #deffd8; /* green-50 */
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      white-space: nowrap;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
     .lesson-btn:hover {
-      background-color: #bbf7d0; /* green-200 */
+      background-color: #d5ffd7; /* green-100 */
+      transform: translateY(-1px);
     }
 
-    .lesson-group {
-      font-size: 1.125rem;
+    .lesson-btn.active {
+      background-color: #aafeaa; /* green-200 */
       font-weight: 600;
-      color: #15803d;
-      margin-top: 1.5rem;
+      color: #0cc215; /* green-700 */
+    }
+
+    /* Horizontal scroll container */
+    #csharpSidebar {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+    #module-title {
+      display: none;
+    }
+    /* Desktop override */
+    @media (min-width: 768px) {
+      #csharpSidebar {
+        display: block;
+        overflow-x: unset;
+        padding-bottom: 0;
+      }
+
+      #module-title {
+        display: block;
+      }
+
+      .lesson-btn {
+        display: block;
+        width: 100%;
+        max-width: none;
+        min-width: unset;
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -78,70 +122,72 @@
   <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
-      <h2 class="text-xl font-bold text-green-600 mb-4 flex items-center space-x-2">
+    <aside class="md:w-1/4 bg-white p-6 shadow-md border-r border-gray-200">
+      <h2 class="text-xl font-bold text-green-700 mb-4 flex items-center space-x-2">
         <i class="fas fa-code text-green-500"></i>
         <span>C# Modules</span>
       </h2>
-      <ul class="lesson-list space-y-3 text-sm">
-        <li><button data-lesson="intro" class="lesson-btn">Introduction to C#</button></li>
-        <li><button data-lesson="getstarted" class="lesson-btn">Getting Started</button></li>
-        <li><button data-lesson="syntax" class="lesson-btn">Syntax</button></li>
-        <li><button data-lesson="output" class="lesson-btn">Output</button></li>
-        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
-        <li><button data-lesson="variables" class="lesson-btn">Variables & Types</button></li>
-        <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
-        <li><button data-lesson="typecasting" class="lesson-btn">Type Casting</button></li>
-        <li><button data-lesson="userinput" class="lesson-btn">User Input</button></li>
-        <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
-        <li><button data-lesson="math" class="lesson-btn">Math</button></li>
-        <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
-        <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
-        <li><button data-lesson="ifelse" class="lesson-btn">If-Else Statements</button></li>
-        <li><button data-lesson="switch" class="lesson-btn">Switch Statements</button></li>
-        <li><button data-lesson="whileloop" class="lesson-btn">While Loops</button></li>
-        <li><button data-lesson="forloop" class="lesson-btn">For Loops</button></li>
-        <li><button data-lesson="break" class="lesson-btn">Break/Continue</button></li>
-        <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
+      <div class="overflow-x-auto md:overflow-y-auto md:h-[calc(100vh-8rem)]">
+        <ul class="flex md:block space-x-4 md:space-x-0 md:space-y-3 text-sm px-1" id="csharpSidebar">
+          <li><button data-lesson="intro" class="lesson-btn">Introduction to C#</button></li>
+          <li><button data-lesson="getstarted" class="lesson-btn">Getting Started</button></li>
+          <li><button data-lesson="syntax" class="lesson-btn">Syntax</button></li>
+          <li><button data-lesson="output" class="lesson-btn">Output</button></li>
+          <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
+          <li><button data-lesson="variables" class="lesson-btn">Variables & Types</button></li>
+          <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
+          <li><button data-lesson="typecasting" class="lesson-btn">Type Casting</button></li>
+          <li><button data-lesson="userinput" class="lesson-btn">User Input</button></li>
+          <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
+          <li><button data-lesson="math" class="lesson-btn">Math</button></li>
+          <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
+          <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
+          <li><button data-lesson="ifelse" class="lesson-btn">If-Else Statements</button></li>
+          <li><button data-lesson="switch" class="lesson-btn">Switch Statements</button></li>
+          <li><button data-lesson="whileloop" class="lesson-btn">While Loops</button></li>
+          <li><button data-lesson="forloop" class="lesson-btn">For Loops</button></li>
+          <li><button data-lesson="break" class="lesson-btn">Break/Continue</button></li>
+          <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
 
-        <li><h3 class="lesson-group">Methods</h3></li>
-        <li><button data-lesson="methods" class="lesson-btn">Methods</button></li>
-        <li><button data-lesson="methodparameters" class="lesson-btn">Method Parameters</button></li>
-        <li><button data-lesson="methodoverloading" class="lesson-btn">Method Overloading</button></li>
+          <li><h3 class="text-xl font-bold text-green-600 mb-4 flex items-center space-x-2" id="module-title">Methods</h3></li>
+          <li><button data-lesson="methods" class="lesson-btn">Methods</button></li>
+          <li><button data-lesson="methodparameters" class="lesson-btn">Method Parameters</button></li>
+          <li><button data-lesson="methodoverloading" class="lesson-btn">Method Overloading</button></li>
 
-        <li><h3 class="lesson-group">Classes</h3></li>
-        <li><button data-lesson="oop" class="lesson-btn">Object Oriented Programming</button></li>
-        <li><button data-lesson="classes" class="lesson-btn">Classes/Objects</button></li>
-        <li><button data-lesson="classmembers" class="lesson-btn">Class Members</button></li>
-        <li><button data-lesson="constructors" class="lesson-btn">Constructors</button></li>
-        <li><button data-lesson="accessmodifiers" class="lesson-btn">Access Modifiers</button></li>
-        <li><button data-lesson="properties" class="lesson-btn">Properties</button></li>
-        <li><button data-lesson="inheritance" class="lesson-btn">Inheritance</button></li>
-        <li><button data-lesson="polymorphism" class="lesson-btn">Polymorphism</button></li>
-        <li><button data-lesson="abstraction" class="lesson-btn">Abstraction</button></li>
-        <li><button data-lesson="encapsulation" class="lesson-btn">Encapsulation</button></li>
-        <li><button data-lesson="interfaces" class="lesson-btn">Interfaces</button></li>
-        <li><button data-lesson="enums" class="lesson-btn">Enums</button></li>
-        <li><button data-lesson="files" class="lesson-btn">Files</button></li>
-        <li><button data-lesson="exceptions" class="lesson-btn">Exception Handling</button></li>
+          <li><h3 class="text-xl font-bold text-green-600 mb-4 flex items-center space-x-2" id="module-title">Classes</h3></li>
+          <li><button data-lesson="oop" class="lesson-btn">Object Oriented Programming</button></li>
+          <li><button data-lesson="classes" class="lesson-btn">Classes/Objects</button></li>
+          <li><button data-lesson="classmembers" class="lesson-btn">Class Members</button></li>
+          <li><button data-lesson="constructors" class="lesson-btn">Constructors</button></li>
+          <li><button data-lesson="accessmodifiers" class="lesson-btn">Access Modifiers</button></li>
+          <li><button data-lesson="properties" class="lesson-btn">Properties</button></li>
+          <li><button data-lesson="inheritance" class="lesson-btn">Inheritance</button></li>
+          <li><button data-lesson="polymorphism" class="lesson-btn">Polymorphism</button></li>
+          <li><button data-lesson="abstraction" class="lesson-btn">Abstraction</button></li>
+          <li><button data-lesson="encapsulation" class="lesson-btn">Encapsulation</button></li>
+          <li><button data-lesson="interfaces" class="lesson-btn">Interfaces</button></li>
+          <li><button data-lesson="enums" class="lesson-btn">Enums</button></li>
+          <li><button data-lesson="files" class="lesson-btn">Files</button></li>
+          <li><button data-lesson="exceptions" class="lesson-btn">Exception Handling</button></li>
 
-        <li><h3 class="lesson-group">How To</h3></li>
-        <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
-      </ul>
+          <li><h3 class="text-xl font-bold text-green-600 mb-4 flex items-center space-x-2" id="module-title">How To</h3></li>
+          <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
+        </ul>
+      </div>
     </aside>
 
     <!-- Main Content -->
-    <section class="md:w-3/4 bg-green-300 p-10 flex flex-col justify-between font-mono relative">
-      <!-- Dynamic Lesson Container -->
-      <div id="moduleContent" class="overflow-y-auto max-h-[75vh] pr-2 mb-6">
+    <section class="md:w-3/4 px-6 md:px-10 py-6 md:py-10 bg-green-300 flex flex-col gap-8 font-sans overflow-hidden">
+      <div class="overflow-y-auto max-h-[70vh] pr-2" id="moduleContent">
+        <!-- Header -->
         <div class="flex items-center space-x-3 mb-6">
-          <div class="bg-green-100 text-green-700 rounded-full p-3 text-xl shadow-md">
-            <i class="fas fa-code"></i>
+          <div class="bg-white text-green-600 rounded-full p-3 text-xl shadow-md">
+            <i class="fab fa-css3-alt"></i>
           </div>
-          <h1 class="text-4xl font-bold tracking-wide text-green-700">C# with .NET</h1>
+          <h1 class="text-4xl font-bold tracking-wide">CSS Basics</h1>
         </div>
 
-        <div class="bg-black opacity-90 p-6 rounded-lg shadow-inner border border-green-300 text-green-600 text-sm whitespace-pre-wrap font-mono mb-6">
+        <div class="bg-black opacity-90 p-6 rounded-lg shadow-inner border border-green-300 text-green-600 text-sm whitespace-pre-wrap font-mono h-[35vh] mb-6">
           <pre class="whitespace-pre-wrap text-sm text-white-8">
 using System;
 
@@ -155,30 +201,22 @@ class Program {
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex flex-wrap gap-4 mt-6">
-        <button onclick="loadModule('csharp-intro')" class="bg-green-600 text-white px-6 py-2 rounded-full font-bold hover:bg-green-700 transition shadow-md">
-          Start Coding
-        </button>
-        <a href="dashboard.html" class="bg-green-900 text-white px-6 py-2 rounded-full font-bold hover:bg-green-800 transition shadow-md">
-          View Dashboard
-        </a>
+      <div class="flex flex-wrap gap-4">
+        <button onclick="loadModule('intro')" class="bg-green-600 text-white px-6 py-2 rounded-full font-bold hover:bg-green-700 transition shadow-md">Start Styling</button>
+        <a href="userprofile/profile.html" class="bg-green-900 text-white px-6 py-2 rounded-full font-bold hover:bg-green-800 transition shadow-md">View Dashboard</a>
       </div>
 
       <!-- Progress Bar -->
-      <div class="mt-10">
+      <div class="mt-4">
         <div class="flex justify-between items-center mb-2">
-          <span class="text-sm text-green-600 font-medium">Lesson Progress</span>
-          <span class="text-sm text-green-600 progress-label">0% Completed</span>
+          <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
+          <span class="text-sm text-green-700 progress-label">0% Completed</span>
+          <button onclick="scrollToTop()" class="fixed bottom-1 right-6 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition z-50">↑</button>
         </div>
-        <div class="w-full bg-green-200 h-2 rounded-full overflow-hidden">
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
           <div class="bg-green-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
         </div>
       </div>
-
-      <!-- Scroll to Top Button -->
-      <button onclick="scrollToTop()" class="fixed bottom-4 right-6 bg-green-600 text-white px-4 py-2 rounded-full shadow-lg hover:bg-green-700 transition z-50">
-        ↑
-      </button>
     </section>
   </main>
 

@@ -8,31 +8,73 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
   <style>
+    /* Animation */
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Lesson Button Styling */
     .lesson-btn {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 0.5rem 0.75rem;
-      border-radius: 0.375rem;
-      color: #b91c1c; /* red-700 */
-      background-color: transparent;
-      transition: background-color 0.2s ease;
-      font-size: 0.875rem; /* text-sm */
+      display: inline-block;
+      min-width: 160px; /* consistent card width */
+      max-width: 160px;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+      color: #d10808; /* green-600 */
+      background-color: #ffd8d8; /* green-50 */
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      white-space: nowrap;
+      transition: background-color 0.2s ease, transform 0.2s ease;
     }
 
     .lesson-btn:hover {
-      background-color: #fef2f2; /* red-50 */
+      background-color: #ffd5d5; /* green-100 */
+      transform: translateY(-1px);
     }
 
     .lesson-btn.active {
-      background-color: #fee2e2; /* red-100 */
-      color: #991b1b; /* red-800 */
+      background-color: #feaaaa; /* green-200 */
       font-weight: 600;
+      color: #c20c0c; /* green-700 */
     }
 
-    .lesson-btn.completed {
-      opacity: 0.5;
-      cursor: default;
+    /* Horizontal scroll container */
+    #javaSidebar {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    #module-title {
+      display: none;
+    }
+
+    /* Desktop override */
+    @media (min-width: 768px) {
+      #javaSidebar {
+        display: block;
+        overflow-x: unset;
+        padding-bottom: 0;
+      }
+
+      #module-title {
+        display: block;
+      }
+
+      .lesson-btn {
+        display: block;
+        width: 100%;
+        max-width: none;
+        min-width: unset;
+        text-align: left;
+      }
     }
   </style>
 </head>
@@ -82,98 +124,100 @@
   <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden">
 
     <!-- Sidebar -->
-    <aside class="md:w-1/4 bg-white p-6 shadow-md overflow-y-auto border-r border-gray-200">
-      <h2 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">
+    <aside class="md:w-1/4 bg-white p-6 shadow-md border-r border-gray-200">
+      <h2 class="text-xl font-bold text-red-700 mb-4 flex items-center space-x-2">
         <i class="fab fa-java text-red-500"></i>
         <span>Java Modules</span>
       </h2>
-      <ul class="space-y-3 text-sm">
-        <!-- Java Basics -->
-        <li><button data-lesson="intro" class="lesson-btn">Introduction to Java</button></li>
-        <li><button data-lesson="getstarted" class="lesson-btn">Get Started</button></li>
-        <li><button data-lesson="syntax" class="lesson-btn">Java Syntax</button></li>
-        <li><button data-lesson="output" class="lesson-btn">Output</button></li>
-        <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
-        <li><button data-lesson="variables" class="lesson-btn">Variables</button></li>
-        <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
-        <li><button data-lesson="typecasting" class="lesson-btn">Type Casting</button></li>
-        <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
-        <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
-        <li><button data-lesson="math" class="lesson-btn">Math</button></li>
-        <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
-        <li><button data-lesson="ifelse" class="lesson-btn">If Else</button></li>
-        <li><button data-lesson="switch" class="lesson-btn">Switch</button></li>
-        <li><button data-lesson="whileloop" class="lesson-btn">While Loop</button></li>
-        <li><button data-lesson="forloop" class="lesson-btn">For Loop</button></li>
-        <li><button data-lesson="breakorcontinue" class="lesson-btn">Break/Continue</button></li>
-        <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
+      <div class="overflow-x-auto md:overflow-y-auto md:h-[calc(100vh-8rem)]">
+        <ul class="flex md:block space-x-4 md:space-x-0 md:space-y-3 text-sm px-1" id="javaSidebar">
+          <!-- Java Basics -->
+          <li><button data-lesson="intro" class="lesson-btn">Introduction to Java</button></li>
+          <li><button data-lesson="getstarted" class="lesson-btn">Get Started</button></li>
+          <li><button data-lesson="syntax" class="lesson-btn">Java Syntax</button></li>
+          <li><button data-lesson="output" class="lesson-btn">Output</button></li>
+          <li><button data-lesson="comments" class="lesson-btn">Comments</button></li>
+          <li><button data-lesson="variables" class="lesson-btn">Variables</button></li>
+          <li><button data-lesson="datatypes" class="lesson-btn">Data Types</button></li>
+          <li><button data-lesson="typecasting" class="lesson-btn">Type Casting</button></li>
+          <li><button data-lesson="operators" class="lesson-btn">Operators</button></li>
+          <li><button data-lesson="strings" class="lesson-btn">Strings</button></li>
+          <li><button data-lesson="math" class="lesson-btn">Math</button></li>
+          <li><button data-lesson="booleans" class="lesson-btn">Booleans</button></li>
+          <li><button data-lesson="ifelse" class="lesson-btn">If Else</button></li>
+          <li><button data-lesson="switch" class="lesson-btn">Switch</button></li>
+          <li><button data-lesson="whileloop" class="lesson-btn">While Loop</button></li>
+          <li><button data-lesson="forloop" class="lesson-btn">For Loop</button></li>
+          <li><button data-lesson="breakorcontinue" class="lesson-btn">Break/Continue</button></li>
+          <li><button data-lesson="arrays" class="lesson-btn">Arrays</button></li>
 
-        <!-- Java Methods -->
-        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Method</h3>
-        <li><button data-lesson="methods" class="lesson-btn">Methods</button></li>
-        <li><button data-lesson="methodparameters" class="lesson-btn">Method Parameters</button></li>
-        <li><button data-lesson="methodoverloading" class="lesson-btn">Method Overloading</button></li>
-        <li><button data-lesson="scope" class="lesson-btn">Scope</button></li>
-        <li><button data-lesson="recursion" class="lesson-btn">Recursion</button></li>
+          <!-- Java Methods -->
+          <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2" id="module-title">Java Methods</h3>
+          <li><button data-lesson="methods" class="lesson-btn">Methods</button></li>
+          <li><button data-lesson="methodparameters" class="lesson-btn">Method Parameters</button></li>
+          <li><button data-lesson="methodoverloading" class="lesson-btn">Method Overloading</button></li>
+          <li><button data-lesson="scope" class="lesson-btn">Scope</button></li>
+          <li><button data-lesson="recursion" class="lesson-btn">Recursion</button></li>
 
-        <!-- Java Classes -->
-        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Classes</h3>
-        <li><button data-lesson="oop" class="lesson-btn">Object Oriented Programming</button></li>
-        <li><button data-lesson="classes" class="lesson-btn">Classes/Objects</button></li>
-        <li><button data-lesson="classattributes" class="lesson-btn">Class Attributes</button></li>
-        <li><button data-lesson="classmethods" class="lesson-btn">Class Methods</button></li>
-        <li><button data-lesson="constructors" class="lesson-btn">Constructors</button></li>
-        <li><button data-lesson="thiskeyword" class="lesson-btn">This Keyword</button></li>
-        <li><button data-lesson="modifiers" class="lesson-btn">Modifiers</button></li>
-        <li><button data-lesson="encapsulation" class="lesson-btn">Encapsulation</button></li>
-        <li><button data-lesson="package" class="lesson-btn">Package/API</button></li>
-        <li><button data-lesson="inheritance" class="lesson-btn">Inheritance</button></li>
-        <li><button data-lesson="polymorphism" class="lesson-btn">Polymorphism</button></li>
-        <li><button data-lesson="superkeyword" class="lesson-btn">Super Keyword</button></li>
-        <li><button data-lesson="innerclasses" class="lesson-btn">Inner Classes</button></li>
-        <li><button data-lesson="abstraction" class="lesson-btn">Abstraction</button></li>
-        <li><button data-lesson="interface" class="lesson-btn">Interface</button></li>
-        <li><button data-lesson="enums" class="lesson-btn">Enums</button></li>
-        <li><button data-lesson="userinput" class="lesson-btn">User Input</button></li>
-        <li><button data-lesson="date" class="lesson-btn">Date</button></li>
+          <!-- Java Classes -->
+          <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2" id="module-title">Java Classes</h3>
+          <li><button data-lesson="oop" class="lesson-btn">OOP</button></li>
+          <li><button data-lesson="classes" class="lesson-btn">Classes/Objects</button></li>
+          <li><button data-lesson="classattributes" class="lesson-btn">Class Attributes</button></li>
+          <li><button data-lesson="classmethods" class="lesson-btn">Class Methods</button></li>
+          <li><button data-lesson="constructors" class="lesson-btn">Constructors</button></li>
+          <li><button data-lesson="thiskeyword" class="lesson-btn">This Keyword</button></li>
+          <li><button data-lesson="modifiers" class="lesson-btn">Modifiers</button></li>
+          <li><button data-lesson="encapsulation" class="lesson-btn">Encapsulation</button></li>
+          <li><button data-lesson="package" class="lesson-btn">Package/API</button></li>
+          <li><button data-lesson="inheritance" class="lesson-btn">Inheritance</button></li>
+          <li><button data-lesson="polymorphism" class="lesson-btn">Polymorphism</button></li>
+          <li><button data-lesson="superkeyword" class="lesson-btn">Super Keyword</button></li>
+          <li><button data-lesson="innerclasses" class="lesson-btn">Inner Classes</button></li>
+          <li><button data-lesson="abstraction" class="lesson-btn">Abstraction</button></li>
+          <li><button data-lesson="interface" class="lesson-btn">Interface</button></li>
+          <li><button data-lesson="enums" class="lesson-btn">Enums</button></li>
+          <li><button data-lesson="userinput" class="lesson-btn">User Input</button></li>
+          <li><button data-lesson="date" class="lesson-btn">Date</button></li>
 
-        <!-- Java Errors -->
-        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Errors</h3>
-        <li><button data-lesson="errors" class="lesson-btn">Errors</button></li>
-        <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
-        <li><button data-lesson="exceptions" class="lesson-btn">Exceptions</button></li>
+          <!-- Java Errors -->
+          <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2" id="module-title">Java Errors</h3>
+          <li><button data-lesson="errors" class="lesson-btn">Errors</button></li>
+          <li><button data-lesson="debugging" class="lesson-btn">Debugging</button></li>
+          <li><button data-lesson="exceptions" class="lesson-btn">Exceptions</button></li>
 
-        <!-- Java File Handling -->
-        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java File Handling</h3>
-        <li><button data-lesson="files" class="lesson-btn">Files</button></li>
-        <li><button data-lesson="create" class="lesson-btn">Create/Write Files</button></li>
-        <li><button data-lesson="readfiles" class="lesson-btn">Read Files</button></li>
-        <li><button data-lesson="delete" class="lesson-btn">Delete Files</button></li>
+          <!-- Java File Handling -->
+          <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2" id="module-title">Java File Handling</h3>
+          <li><button data-lesson="files" class="lesson-btn">Files</button></li>
+          <li><button data-lesson="create" class="lesson-btn">Create/Write Files</button></li>
+          <li><button data-lesson="readfiles" class="lesson-btn">Read Files</button></li>
+          <li><button data-lesson="delete" class="lesson-btn">Delete Files</button></li>
 
-        <!-- Java Data Structures -->
-        <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2">Java Data Structures</h3>
-        <li><button data-lesson="datastructures" class="lesson-btn">Data Structures</button></li>
-        <li><button data-lesson="collections" class="lesson-btn">Collections</button></li>
-        <li><button data-lesson="lists" class="lesson-btn">List</button></li>
-        <li><button data-lesson="arraylist" class="lesson-btn">Array List</button></li>
-        <li><button data-lesson="linkedlist" class="lesson-btn">Linked List</button></li>
-        <li><button data-lesson="listsorting" class="lesson-btn">List Sorting</button></li>
-        <li><button data-lesson="set" class="lesson-btn">Set</button></li>
-        <li><button data-lesson="hashset" class="lesson-btn">Hash Set</button></li>
-        <li><button data-lesson="treeset" class="lesson-btn">Tree Set</button></li>
-        <li><button data-lesson="linkedhashset" class="lesson-btn">Linked HashSet</button></li>
-        <li><button data-lesson="map" class="lesson-btn">Map</button></li>
-        <li><button data-lesson="hashmap" class="lesson-btn">HashMap</button></li>
-        <li><button data-lesson="treemap" class="lesson-btn">TreeMap</button></li>
-        <li><button data-lesson="linkedhashmap" class="lesson-btn">LinkedHashMap</button></li>
-        <li><button data-lesson="iterator" class="lesson-btn">Iterator</button></li>
-      </ul>
+          <!-- Java Data Structures -->
+          <h3 class="text-xl font-bold text-red-600 mb-4 flex items-center space-x-2" id="module-title">Java Data Structures</h3>
+          <li><button data-lesson="datastructures" class="lesson-btn">Data Structures</button></li>
+          <li><button data-lesson="collections" class="lesson-btn">Collections</button></li>
+          <li><button data-lesson="lists" class="lesson-btn">List</button></li>
+          <li><button data-lesson="arraylist" class="lesson-btn">Array List</button></li>
+          <li><button data-lesson="linkedlist" class="lesson-btn">Linked List</button></li>
+          <li><button data-lesson="listsorting" class="lesson-btn">List Sorting</button></li>
+          <li><button data-lesson="set" class="lesson-btn">Set</button></li>
+          <li><button data-lesson="hashset" class="lesson-btn">Hash Set</button></li>
+          <li><button data-lesson="treeset" class="lesson-btn">Tree Set</button></li>
+          <li><button data-lesson="linkedhashset" class="lesson-btn">Linked HashSet</button></li>
+          <li><button data-lesson="map" class="lesson-btn">Map</button></li>
+          <li><button data-lesson="hashmap" class="lesson-btn">HashMap</button></li>
+          <li><button data-lesson="treemap" class="lesson-btn">TreeMap</button></li>
+          <li><button data-lesson="linkedhashmap" class="lesson-btn">LinkedHashMap</button></li>
+          <li><button data-lesson="iterator" class="lesson-btn">Iterator</button></li>
+        </ul>
+      </div>
     </aside>
 
     <!-- Main Content -->
-    <section class="md:w-3/4 p-10 flex bg-red-300 flex-col justify-between font-sans">
-      <div class="overflow-y-auto max-h-[75vh] pr-2" id="moduleContent">
-        <!-- Default Content -->
+    <section class="md:w-3/4 px-6 md:px-10 py-6 md:py-10 bg-red-300 flex flex-col gap-8 font-sans overflow-hidden">
+      <div class="overflow-y-auto max-h-[70vh] pr-2" id="moduleContent">
+        <!-- Header -->
         <div class="flex items-center space-x-3 mb-6">
           <div class="bg-white text-red-600 rounded-full p-3 text-xl shadow-md">
             <i class="fab fa-java"></i>
@@ -181,7 +225,7 @@
           <h1 class="text-4xl font-bold tracking-wide">Java Fundamentals</h1>
         </div>
 
-        <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-red-500 text-white text-sm whitespace-pre-wrap font-mono">
+        <div class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-red-500 text-white text-sm whitespace-pre-wrap h-[30vh] font-mono">
           <pre class="whitespace-pre-wrap text-sm text-white-8">
 public class HelloWorld {
   public static void main(String[] args) {
@@ -193,13 +237,13 @@ public class HelloWorld {
       </div>
 
       <!-- Action Buttons -->
-      <div class="mt-6 flex gap-4">
-        <button onclick="loadModule('intro')" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Start Coding</button>
-        <a href="dashboard.html" class="bg-red-800 text-white px-6 py-2 rounded-full font-bold hover:bg-red-900 transition shadow-md">View Dashboard</a>
+      <div class="flex flex-wrap gap-4">
+        <button onclick="loadModule('intro')" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Start Styling</button>
+        <a href="userprofile/profile.html" class="bg-red-900 text-white px-6 py-2 rounded-full font-bold hover:bg-red-800 transition shadow-md">View Dashboard</a>
       </div>
 
       <!-- Progress Bar -->
-      <div class="mt-10">
+      <div class="mt-4">
         <div class="flex justify-between items-center mb-2">
           <span class="text-sm text-gray-600 font-medium">Lesson Progress</span>
           <span class="text-sm text-red-700 progress-label">0% Completed</span>
