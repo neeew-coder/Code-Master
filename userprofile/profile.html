@@ -25,7 +25,7 @@
       </div>
       <div class="hidden md:flex space-x-6">
         <a href="../index.html">Home</a>        
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
         <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
         <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
         <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
@@ -39,7 +39,7 @@
     <div class="md:hidden hidden gradient-bg" id="mobile-menu">
       <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">        
         <a href="index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
         <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
         <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
         <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
@@ -271,6 +271,18 @@
           alert("Could not log out. Try again.");
         });
     }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
+    });
 
     window.addEventListener("load", () => {
       loadProfileFromBackend();
