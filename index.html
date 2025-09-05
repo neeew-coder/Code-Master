@@ -56,12 +56,13 @@
 
         <!-- Mobile Menu -->
         <div class="md:hidden hidden gradient-bg" id="mobile-menu">
-            <div class="px-4 py-2 flex flex-col space-y-3">
-            <a href="#" class="hover:text-gray-300 transition">Home</a>
-            <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
-            <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-            <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
+            <div class="container mx-auto px-4 py-4 flex flex-row space-x-6 justify-center">
+                <a href="index.html" class="hover:text-gray-300 transition underline">Home</a>
+                <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+                <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+                <a href="code-playground.html" class="hover:text-gray-300 transition">Play Ground</a>
             </div>
+            <hr>
         </div>
     </nav>
 
@@ -123,9 +124,9 @@
         <!-- Tabs -->
         <div class="max-w-5xl mx-auto">
             <div class="flex flex-wrap border-b border-gray-200 mb-8">
-                <button class="tab-button px-6 py-3 font-medium text-purple-600 border-b-2 border-purple-600" data-tab="frontend">Frontend</button>
-                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-purple-600" data-tab="backend">Backend</button>
-                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-purple-600" data-tab="resources">Resources</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-purple-600 active:text-purple-600" data-tab="frontend">Frontend</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-purple-600 active:text-purple-600" data-tab="backend">Backend</button>
+                <button class="tab-button px-6 py-3 font-medium text-gray-500 hover:text-purple-600 active:text-purple-600" data-tab="resources">Resources</button>
             </div>
                 <!-- Tab Contents -->
                 <div class="tab-content active" id="frontend-tab">

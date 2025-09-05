@@ -102,7 +102,6 @@
         <span id="navName"></span>
       </div>
 
-      <!-- Mobile Toggle Button -->
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
         <i id="menu-icon" class="fas fa-bars text-2xl"></i>
       </button>
@@ -110,17 +109,18 @@
 
     <!-- Mobile Menu (Outside Flex Container) -->
     <div class="md:hidden hidden bg-yellow-600" id="mobile-menu">
-      <div class="container mx-auto px-4 py-4 flex flex-col space-y-3">
+      <div class="container mx-auto px-4 py-4 flex flex-row space-x-6 justify-center">
         <a href="index.html" class="hover:text-gray-300 transition">Home</a>
         <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
         <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Play Ground</a>
       </div>
+      <hr>
     </div>
   </nav>
 
   <!-- Main Layout -->
-  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden bg-orange-300">
+  <main class="flex flex-col md:flex-row h-[calc(100vh-4rem)] overflow-hidden bg-yellow-300">
 
     <!-- Sidebar -->
     <aside class="md:w-1/4 bg-white p-6 shadow-md border-r border-gray-200">
@@ -231,23 +231,28 @@
       </div>
     </aside>
 
-    <!-- Main Content Area -->
-    <section id="jsIntro" data-subject="javascript" class="md:w-3/4 px-6 md:px-10 py-6 md:py-10 flex flex-col gap-8 font-sans overflow-hidden min-h-[calc(100vh-8rem)]">
+    <!-- Main Content -->
+    <section class="md:w-3/4 px-6 md:px-10 py-6 md:py-10 bg-yellow-300 flex flex-col gap-8 font-sans overflow-hidden">
+      <!-- Dynamic iframe -->
+      <iframe
+          id="moduleFrame"
+          class="hidden w-full h-[70vh] rounded-lg border border-yellow-500 shadow-md"
+          src=""
+          style="background-color: white;"
+        ></iframe>
 
-      <!-- Lesson Container -->
-      <div id="lessonContainer" class="transition-all duration-300 max-h-[70vh] pr-2">
-
-        <!-- Default Header -->
-        <div id="defaultHeader" class="flex items-center space-x-3 mb-6">
+      <div class="overflow-y-auto max-h-[70vh] pr-2" id="moduleContent">
+        <!-- Header -->
+        <div class="flex items-center space-x-3 mb-6">
           <div class="bg-white text-yellow-600 rounded-full p-3 text-xl shadow-md">
             <i class="fab fa-js-square"></i>
           </div>
           <h1 class="text-4xl font-bold tracking-wide">JavaScript Essentials</h1>
         </div>
 
-        <!-- Default Code Block -->
-        <div id="defaultCode" class="bg-black bg-opacity-90 p-6 rounded-lg shadow-inner border border-yellow-500 text-white text-sm whitespace-pre-wrap font-mono mb-6">
-          <pre>
+        <!-- Code Block -->
+        <div class="bg-black bg-opacity-90  rounded-lg shadow-inner border border-yellow-500 text-white text-sm whitespace-pre-wrap font-mono overflow-hidden">
+          <pre class="whitespace-pre-wrap text-sm">
     function greet(name) {
       return `Hello, ${name}!`;
     }
@@ -255,19 +260,10 @@
     console.log(greet("User"));
           </pre>
         </div>
-
-        <!-- Dynamic iframe (initially hidden) -->
-        <iframe
-          id="moduleFrame"
-          class="hidden w-full h-[55vh] rounded-lg border border-yellow-500 shadow-md"
-          src=""
-          style="background-color: white;"
-        ></iframe>
-
       </div>
 
       <!-- Action Buttons -->
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-4">
         <button onclick="loadModule('intro')" class="bg-yellow-600 text-white px-6 py-2 rounded-full font-bold hover:bg-yellow-700 transition shadow-md">
           Start Coding
         </button>
@@ -289,24 +285,9 @@
           <div class="bg-yellow-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
         </div>
       </div>
-
     </section>
 
   </main>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.getElementById("menu-toggle");
-      const menuIcon = document.getElementById("menu-icon");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        menuIcon.classList.toggle("fa-bars");
-        menuIcon.classList.toggle("fa-times");
-      });
-    });
-  </script>
 
   <script>
     const API_BASE = "https://code-master-kk2m.onrender.com";
@@ -315,16 +296,14 @@
 
     function loadModule(lessonId) {
       const iframe = document.getElementById("moduleFrame");
-      const header = document.getElementById("defaultHeader");
-      const code = document.getElementById("defaultCode");
-      if (!iframe || !header || !code) return;
+      const moduleContent = document.getElementById("moduleContent");
+      if (!iframe || !moduleContent) return;
 
-      // Hide default header and code block
-      header.classList.add("hidden");
-      code.classList.add("hidden");
+      // Hide static content
+      moduleContent.classList.add("hidden");
 
       // Show iframe and load module
-      iframe.src = `lessons/${subject}/${lessonId}.html`;
+      iframe.src = `/lessons/${subject}/${lessonId}.html`; // ✅ Use root-relative path
       iframe.classList.remove("hidden");
 
       // Highlight active button
@@ -409,7 +388,22 @@
       }
     });
 
+    // ✅ Consolidated DOMContentLoaded to avoid multiple listeners
     document.addEventListener("DOMContentLoaded", () => {
+      // Mobile menu toggle
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (toggleBtn && menuIcon && mobileMenu) {
+        toggleBtn.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+          menuIcon.classList.toggle("fa-bars");
+          menuIcon.classList.toggle("fa-times");
+        });
+      }
+
+      // Lesson button binding
       const lessonButtons = document.querySelectorAll("aside button.lesson-btn[data-lesson]");
       cachedTotalModules = lessonButtons.length || 1;
 
