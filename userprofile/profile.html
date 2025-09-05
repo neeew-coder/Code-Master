@@ -13,29 +13,20 @@
   <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg">
     <div class="container mx-auto px-4 py-3 flex justify-between items-center">
       <div class="flex items-center space-x-4">
-        <i class="fas fa-code text-2xl"></i>
-        <span class="text-xl font-bold">CodeMaster</span>
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-code text-2xl"></i>
+          <span class="text-xl font-bold">CodeMaster</span>
+        </div>
+        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+          <span id="navName"></span>
+        </div>
       </div>
       <div class="hidden md:flex space-x-6">
-        <a href="../index.html">Home</a>        
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
-        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
+        <a href="../index.html">Home</a>
+        <a href="#profile" class="hover:text-gray-200 transition">Profile</a>
         <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
       </div>
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
-      </button>
-    </div>
-    <div class="md:hidden hidden gradient-bg" id="mobile-menu">
-      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
-        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
-        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
-        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
-      </div>
-      <hr>
     </div>
   </nav>
 
@@ -47,7 +38,9 @@
       <!-- Progress Overview -->
       <section class="mb-12">
         <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
-        <div class="space-y-6" id="progressBars"></div>
+        <div class="space-y-6">
+          <div id="progressBars"></div>
+        </div>
       </section>
 
       <!-- Badges -->
@@ -80,139 +73,187 @@
     </div>
   </footer>
 
-  <!-- Script -->
-  <script>
-    const subjects = ["HTML", "CSS", "JS", "Java", "CSharp"];
-    const subjectMap = { HTML: "html", CSS: "css", JS: "js", Java: "java", CSharp: "csharp" };
-    const progressBars = document.getElementById("progressBars");
-    const badgeContainer = document.getElementById("badgeContainer");
+<script>
+  const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
-    window.addEventListener("DOMContentLoaded", () => {
-      loadProfile();
-      loadProgress();
+  const allLessons = {
+    html: ["htmlLessonProgress", "htmlHeadingsProgress", "htmlTextProgress", "htmlListsProgress", "htmlLinksProgress"],
+    css: ["cssLessonProgress", "cssSelectorsProgress", "cssBoxModelProgress", "cssFlexboxProgress", "cssGridProgress"],
+    js: ["jsLessonProgress", "jsVariablesProgress", "jsFunctionsProgress", "jsEventsProgress", "jsLoopsProgress"],
+    java: ["javaLessonProgress", "javaSyntaxProgress", "javaDatatypesProgress", "javaMethodsProgress", "javaOOPProgress"],
+    csharp: ["csharpLessonProgress", "csharpVariablesProgress", "csharpMethodsProgress", "csharpClassesProgress", "csharpDotnetProgress"]
+  };
+
+  const lessonsMeta = {
+    html: { name: "HTML Basics", color: "purple", icon: "fa-html5", badgeColor: "text-orange-500" },
+    css: { name: "CSS & Layouts", color: "blue", icon: "fa-css3-alt", badgeColor: "text-blue-500" },
+    js: { name: "JavaScript Interactivity", color: "yellow", icon: "fa-js", badgeColor: "text-yellow-500" },
+    java: { name: "Java Fundamentals", color: "red", icon: "fa-java", badgeColor: "text-red-500" },
+    csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
+  };
+
+  function renderProgressBars() {
+    const container = document.getElementById("progressBars");
+    container.innerHTML = "";
+    Object.keys(lessonsMeta).forEach(subject => {
+      const key = `${subject}LessonProgress`;
+      const progress = parseInt(localStorage.getItem(key)) || 0;
+      const meta = lessonsMeta[subject];
+      container.innerHTML += `
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <span>${meta.name}</span>
+            <span>${progress}% Completed</span>
+          </div>
+          <div class="w-full bg-${meta.color}-200 h-2 rounded-full overflow-hidden">
+            <div class="bg-${meta.color}-600 h-2 w-[${progress}%] transition-all duration-500"></div>
+          </div>
+        </div>
+      `;
     });
+  }
 
-    async function loadProfile() {
-      try {
-        const res = await fetch("/api/user/me", { credentials: "include" });
+  function renderBadges() {
+    const container = document.getElementById("badgeContainer");
+    container.innerHTML = "";
+    Object.keys(lessonsMeta).forEach(subject => {
+      const key = `${subject}LessonProgress`;
+      const progress = parseInt(localStorage.getItem(key)) || 0;
+      const completedAt = localStorage.getItem(key.replace("Progress", "CompletedAt"));
+      const meta = lessonsMeta[subject];
+      if (progress === 100 && completedAt) {
+        container.innerHTML += `
+          <div class="bg-white shadow-md rounded-lg p-4 text-center transform hover:scale-105 transition duration-300">
+            <i class="fab ${meta.icon} text-3xl ${meta.badgeColor} mb-2"></i>
+            <p class="font-semibold">${meta.name}</p>
+            <span class="text-sm text-gray-500">Completed on ${completedAt}</span>
+          </div>
+        `;
+      }
+    });
+  }
 
-        if (!res.ok) {
-          throw new Error(`Status ${res.status}: ${res.statusText}`);
+  function updateNavProfile() {
+    const name = localStorage.getItem("codemasterUserName");
+    if (name) {
+      document.getElementById("navProfile")?.classList.remove("hidden");
+      document.getElementById("navName").textContent = name;
+      document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
+    }
+  }
+
+  function renderProfileUI() {
+    const name = localStorage.getItem("codemasterUserName") || "";
+    const tagline = localStorage.getItem("codemasterTagline") || "";
+
+    const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
+      const key = `${subject}LessonProgress`;
+      return sum + (parseInt(localStorage.getItem(key)) || 0);
+    }, 0) / Object.keys(allLessons).length;
+
+    const color = avgProgress >= 80 ? "bg-green-600"
+                : avgProgress >= 50 ? "bg-blue-600"
+                : "bg-purple-600";
+
+    document.getElementById("profileName").value = name;
+        document.getElementById("profileTagline").value = tagline;
+
+    const avatar = document.getElementById("profileAvatar");
+    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+    avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+  }
+
+  function loadProfileFromBackend() {
+    fetch(`${API_BASE}/profile/me`, {
+      credentials: "include"
+    })
+      .then(res => {
+        if (res.status === 401) {
+          alert("Session expired. Redirecting to login...");
+          window.location.href = "/auth/login"; // Adjust path if needed
+          return;
         }
-
-        const { username, bio, badges } = await res.json();
-        document.getElementById("profileName").value = username || "";
-        document.getElementById("profileTagline").value = bio || "";
-        updateAvatar(username);
-        renderBadges(badges);
-      } catch (err) {
-        console.error("⚠️ Failed to load profile from backend:", err);
+        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (data?.username) {
+          localStorage.setItem("codemasterUserName", data.username);
+          localStorage.setItem("codemasterTagline", data.bio || "");
+          updateNavProfile();
+          renderProfileUI();
+        }
+      })
+      .catch(err => {
+        console.warn("⚠️ Failed to load profile from backend:", err);
         alert("Unable to load profile. Please sign in again.");
-      }
-    }
-
-
-    async function saveProfile() {
-      const username = document.getElementById("profileName").value.trim();
-      const bio = document.getElementById("profileTagline").value.trim();
-
-      try {
-        const res = await fetch("/api/user/me", {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ username, bio })
-        });
-
-        const result = await res.json();
-        if (res.ok) {
-          updateAvatar(username);
-          alert("Profile saved!");
-        } else {
-          alert(result.error || "Failed to save profile.");
-        }
-      } catch (err) {
-        console.error("Save error:", err);
-        alert("Error saving profile.");
-      }
-    }
-
-    function updateAvatar(name) {
-      const initials = name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2);
-      const avatar = document.getElementById("profileAvatar");
-      avatar.textContent = initials || "👤";
-      avatar.style.backgroundColor = "#6366F1";
-    }
-
-    function renderBadges(badges) {
-      badgeContainer.innerHTML = "";
-      badges.forEach(badge => {
-        const badgeEl = document.createElement("div");
-        badgeEl.className = "bg-yellow-300 text-center p-4 rounded shadow font-semibold";
-        badgeEl.innerHTML = `<i class="fas fa-trophy text-xl mb-2 block"></i>${badge}`;
-        badgeContainer.appendChild(badgeEl);
+        window.location.href = "/auth/login";
       });
     }
 
-    async function loadProgress() {
-      for (const subject of subjects) {
-        const key = subjectMap[subject];
-        try {
-          const res = await fetch(`/api/progress/${key}`, { credentials: "include" });
-          const { progress } = await res.json();
+    function saveProfile() {
+      const name = document.getElementById("profileName").value.trim();
+      const tagline = document.getElementById("profileTagline").value.trim();
 
-          const completedMap = progress.completed?.[key] || {};
-          const completedCount = Object.keys(completedMap).length;
-          const total = progress.totalModules || 1;
-
-          renderProgressBar(subject, completedCount, total);
-          checkBadgeUnlock(subject, completedCount, total);
-        } catch (err) {
-          console.error(`Progress load error for ${subject}:`, err);
-        }
+      if (!name || name.length < 2) {
+        alert("Please enter a valid name.");
+        return;
       }
-    }
 
-    function renderProgressBar(subject, completed, total) {
-      const percent = total ? Math.round((completed / total) * 100) : 0;
-      const bar = document.createElement("div");
-      bar.innerHTML = `
-        <div class="mb-2 text-gray-600 font-medium">${subject} (${completed}/${total})</div>
-        <div class="w-full bg-gray-200 rounded-full h-4">
-          <div class="bg-indigo-500 h-4 rounded-full transition-all" style="width: ${percent}%"></div>
-        </div>
-      `;
-      progressBars.appendChild(bar);
-    }
+      localStorage.setItem("codemasterUserName", name);
+      localStorage.setItem("codemasterTagline", tagline);
+      updateNavProfile();
+      renderProfileUI();
 
-    function checkBadgeUnlock(subject, completed, total) {
-      const badgeName = `${subject} Mastery`;
-      const alreadyEarned = Array.from(badgeContainer.children).some(b => b.textContent.includes(badgeName));
+      const button = document.getElementById("saveBtn");
+      button.disabled = true;
+      button.textContent = "Saving...";
 
-      if (completed === total && total > 0 && !alreadyEarned) {
-        const badge = document.createElement("div");
-        badge.className = "bg-yellow-300 text-center p-4 rounded shadow font-semibold";
-        badge.innerHTML = `
-          <i class="fas fa-trophy text-xl mb-2 block"></i>
-          ${badgeName}
-        `;
-        badgeContainer.appendChild(badge);
-      }
+      fetch(`${API_BASE}/profile/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ username: name, bio: tagline })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          console.log("✅ Profile synced with backend:", data);
+          alert("Profile saved and synced!");
+        })
+        .catch(err => {
+          console.error("❌ Profile sync failed:", err);
+          alert("Failed to sync profile with server.");
+        })
+        .finally(() => {
+          button.disabled = false;
+          button.textContent = "Save Profile";
+        });
     }
 
     function signOut() {
-      fetch("/api/user/signout", {
+      fetch(`${API_BASE}/auth/logout`, {
         method: "POST",
         credentials: "include"
       })
-      .then(() => window.location.href = "../index.html")
-      .catch(err => console.error("Sign out failed:", err));
+        .then(() => {
+          localStorage.clear();
+          window.location.href = "/auth/login"; // Adjust path if needed
+        })
+        .catch(err => {
+          console.error("❌ Logout failed:", err);
+          alert("Could not log out. Try again.");
+        });
     }
 
-    document.getElementById("menu-toggle").addEventListener("click", () => {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
+    window.addEventListener("load", () => {
+      loadProfileFromBackend();
+      renderProgressBars();
+      renderBadges();
     });
-  </script>
-
+</script>
 </body>
-</html>
