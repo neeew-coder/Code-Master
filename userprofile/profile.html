@@ -6,8 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-50 font-sans">
 
   <!-- Navigation -->
   <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg">
@@ -47,72 +48,66 @@
     </div>
   </nav>
 
-  <!-- Main Content -->
-  <main class="pt-24 pb-12">
-    <div class="max-w-4xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-      
+  <main class="dashboard pt-24">
+    <div class="mainContainer max-w-3xl mx-auto px-4">
       <!-- Profile Section -->
-      <section id="profile" class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-bold mb-4">Your Profile</h2>
-        <div id="profileAvatar" class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4">?</div>
-        <input id="profileName" type="text" placeholder="Your Name" class="w-full mb-3 p-2 border border-gray-300 rounded" />
-        <input id="profileTagline" type="text" placeholder="Your Tagline" class="w-full mb-3 p-2 border border-gray-300 rounded" />
-        <button id="saveBtn" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
+      <section class="profile mb-10" id="profile">
+        <h2 class="text-2xl font-bold mb-4">Your Profile</h2>
+        <div id="profileAvatar" class="avatar bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-4">?</div>
+        <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 p-2 border rounded" />
+        <input id="profileTagline" type="text" placeholder="Your Tagline" class="input w-full mb-3 p-2 border rounded" />
+        <button id="saveBtn" class="save-btn bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
       </section>
 
       <!-- Progress Section -->
-      <section class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-xl font-bold mb-4">Your Progress</h2>
+      <section class="progress">
+        <h2 class="text-2xl font-bold mb-4">Your Progress</h2>
 
-        <!-- Progress Item Template -->
-        <div class="space-y-4 text-sm">
-          <div class="progress-item" data-subject="html">
-            <label class="font-semibold">HTML Progress</label>
-            <span class="block text-gray-600">0% Completed</span>
-            <div class="w-full bg-gray-200 h-4 rounded">
-              <div class="bg-purple-500 h-4 rounded" style="width: 0%"></div>
-            </div>
+        <div class="progress-item mb-4" data-subject="html">
+          <label class="block font-semibold">HTML Progress</label>
+          <span class="progress-label html text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill html bg-indigo-600 h-4 rounded" style="width: 0%"></div>
           </div>
+        </div>
 
-          <div class="progress-item" data-subject="css">
-            <label class="font-semibold">CSS Progress</label>
-            <span class="block text-gray-600">0% Completed</span>
-            <div class="w-full bg-gray-200 h-4 rounded">
-              <div class="bg-purple-500 h-4 rounded" style="width: 0%"></div>
-            </div>
+        <div class="progress-item mb-4" data-subject="css">
+          <label class="block font-semibold">CSS Progress</label>
+          <span class="progress-label css text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill css bg-indigo-600 h-4 rounded" style="width: 0%"></div>
           </div>
+        </div>
 
-          <div class="progress-item" data-subject="javascript">
-            <label class="font-semibold">JavaScript Progress</label>
-            <span class="block text-gray-600">0% Completed</span>
-            <div class="w-full bg-gray-200 h-4 rounded">
-              <div class="bg-purple-500 h-4 rounded" style="width: 0%"></div>
-            </div>
+        <div class="progress-item mb-4" data-subject="javascript">
+          <label class="block font-semibold">JavaScript Progress</label>
+          <span class="progress-label js text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill js bg-indigo-600 h-4 rounded" style="width: 0%"></div>
           </div>
+        </div>
 
-          <div class="progress-item" data-subject="java">
-            <label class="font-semibold">Java Progress</label>
-            <span class="block text-gray-600">0% Completed</span>
-            <div class="w-full bg-gray-200 h-4 rounded">
-              <div class="bg-purple-500 h-4 rounded" style="width: 0%"></div>
-            </div>
+        <div class="progress-item mb-4" data-subject="java">
+          <label class="block font-semibold">Java Progress</label>
+          <span class="progress-label java text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill java bg-indigo-600 h-4 rounded" style="width: 0%"></div>
           </div>
+        </div>
 
-          <div class="progress-item" data-subject="csharp">
-            <label class="font-semibold">C# Progress</label>
-            <span class="block text-gray-600">0% Completed</span>
-            <div class="w-full bg-gray-200 h-4 rounded">
-              <div class="bg-purple-500 h-4 rounded" style="width: 0%"></div>
-            </div>
+        <div class="progress-item mb-4" data-subject="csharp">
+          <label class="block font-semibold">C# Progress</label>
+          <span class="progress-label csharp text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill csharp bg-indigo-600 h-4 rounded" style="width: 0%"></div>
           </div>
         </div>
       </section>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-6 text-center text-sm">
-    &copy; 2025 CodeMaster. All rights reserved.
+  <footer class="bg-gray-900 text-white py-10 mt-6 text-center">
+    <p>&copy; 2025 CodeMaster. All rights reserved.</p>
   </footer>
 
   <script src="script.js"></script>
