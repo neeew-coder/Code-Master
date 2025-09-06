@@ -56,10 +56,7 @@
         <h1 class="text-3xl font-bold mb-8 text-purple-700 text-center">Your Learning Dashboard</h1>
 
         <!-- Progress Overview -->
-        <section class="mb-12">
-          <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
-          <div id="progressBars" class="space-y-6"></div>
-        </section>
+
 
         <!-- Badges -->
         <section>
@@ -94,62 +91,6 @@
 <script>
   const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
-  const allLessons = {
-    html: ["htmlLessonProgress", "htmlHeadingsProgress", "htmlTextProgress", "htmlListsProgress", "htmlLinksProgress"],
-    css: ["cssLessonProgress", "cssSelectorsProgress", "cssBoxModelProgress", "cssFlexboxProgress", "cssGridProgress"],
-    js: ["jsLessonProgress", "jsVariablesProgress", "jsFunctionsProgress", "jsEventsProgress", "jsLoopsProgress"],
-    java: ["javaLessonProgress", "javaSyntaxProgress", "javaDatatypesProgress", "javaMethodsProgress", "javaOOPProgress"],
-    csharp: ["csharpLessonProgress", "csharpVariablesProgress", "csharpMethodsProgress", "csharpClassesProgress", "csharpDotnetProgress"]
-  };
-
-  const lessonsMeta = {
-    html: { name: "HTML Basics", color: "purple", icon: "fa-html5", badgeColor: "text-orange-500" },
-    css: { name: "CSS & Layouts", color: "blue", icon: "fa-css3-alt", badgeColor: "text-blue-500" },
-    js: { name: "JavaScript Interactivity", color: "yellow", icon: "fa-js", badgeColor: "text-yellow-500" },
-    java: { name: "Java Fundamentals", color: "red", icon: "fa-java", badgeColor: "text-red-500" },
-    csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
-  };
-
-  function renderProgressBars() {
-    const container = document.getElementById("progressBars");
-    container.innerHTML = "";
-    Object.keys(lessonsMeta).forEach(subject => {
-      const key = `${subject}LessonProgress`;
-      const progress = parseInt(localStorage.getItem(key)) || 0;
-      const meta = lessonsMeta[subject];
-      container.innerHTML += `
-        <div>
-          <div class="flex justify-between items-center mb-1">
-            <span>${meta.name}</span>
-            <span>${progress}% Completed</span>
-          </div>
-          <div class="w-full bg-${meta.color}-200 h-2 rounded-full overflow-hidden">
-            <div class="bg-${meta.color}-600 h-2 w-[${progress}%] transition-all duration-500"></div>
-          </div>
-        </div>
-      `;
-    });
-  }
-
-  function renderBadges() {
-    const container = document.getElementById("badgeContainer");
-    container.innerHTML = "";
-    Object.keys(lessonsMeta).forEach(subject => {
-      const key = `${subject}LessonProgress`;
-      const progress = parseInt(localStorage.getItem(key)) || 0;
-      const completedAt = localStorage.getItem(key.replace("Progress", "CompletedAt"));
-      const meta = lessonsMeta[subject];
-      if (progress === 100 && completedAt) {
-        container.innerHTML += `
-          <div class="bg-white shadow-md rounded-lg p-4 text-center transform hover:scale-105 transition duration-300">
-            <i class="fab ${meta.icon} text-3xl ${meta.badgeColor} mb-2"></i>
-            <p class="font-semibold">${meta.name}</p>
-            <span class="text-sm text-gray-500">Completed on ${completedAt}</span>
-          </div>
-        `;
-      }
-    });
-  }
 
   function updateNavProfile() {
     const name = localStorage.getItem("codemasterUserName");
