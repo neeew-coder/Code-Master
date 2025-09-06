@@ -43,6 +43,13 @@ body {
   padding-inline: 1.5rem;
 }
 
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  color: #bfc1c5;
+}
+
 /* Responsive Behavior */
 @media (min-width: 768px) {
   .dashboard {
@@ -66,7 +73,7 @@ body {
 }
 
 /* Card Styling */
-.profile, .progress {
+.profile, .progressContainer {
   background: var(--card-bg);
   padding: 2rem;
   border-radius: var(--radius);
@@ -140,14 +147,16 @@ body {
   font-weight: bold;
 }
 
-.progress-item {
-  margin-bottom: 1.5rem;
-}
-
 .progress-item label {
   display: block;
   font-weight: 500;
   margin-bottom: 0.3rem;
+  margin-top: 0.5rem;
+}
+
+.progress-item span {
+  display: block;
+  text-align: right;
 }
 
 .percent {

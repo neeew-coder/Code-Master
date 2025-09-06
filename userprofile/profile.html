@@ -48,10 +48,10 @@
     </div>
   </nav>
 
-  <main class="dashboard pt-24">
-    <div class="mainContainer max-w-3xl mx-auto px-4">
+  <main class="dashboard">
+    <div class="mainContainer">
       <!-- Profile Section -->
-      <section class="profile mb-10" id="profile">
+      <section class="profile" id="profile">
         <h2 class="text-2xl font-bold mb-4">Your Profile</h2>
         <div id="profileAvatar" class="avatar bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-4">?</div>
         <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 p-2 border rounded" />
@@ -60,56 +60,58 @@
       </section>
 
       <!-- Progress Section -->
-      <section class="progress">
-        <h2 class="text-2xl font-bold mb-4">Your Progress</h2>
+      <div class="progressContainer">
+        <section class="progress">
+          <h2 class="text-2xl font-bold mb-4">Your Progress</h2>
 
-        <div class="progress-item mb-4" data-subject="html">
-          <label class="block font-semibold">HTML Progress</label>
-          <span class="progress-label html text-sm text-gray-600">0% Completed</span>
-          <div class="bar bg-gray-200 h-4 rounded mt-1">
-            <div class="progress-bar fill html bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          <div class="progress-item" data-subject="html">
+            <label class="block font-semibold">HTML Progress</label>
+            <span class="progress-label html text-sm text-gray-600">0% Completed</span>
+            <div class="bar bg-gray-200 h-4 rounded mt-1">
+              <div class="progress-bar fill html bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="progress-item mb-4" data-subject="css">
-          <label class="block font-semibold">CSS Progress</label>
-          <span class="progress-label css text-sm text-gray-600">0% Completed</span>
-          <div class="bar bg-gray-200 h-4 rounded mt-1">
-            <div class="progress-bar fill css bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          <div class="progress-item" data-subject="css">
+            <label class="block font-semibold">CSS Progress</label>
+            <span class="progress-label css text-sm text-gray-600">0% Completed</span>
+            <div class="bar bg-gray-200 h-4 rounded mt-1">
+              <div class="progress-bar fill css bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="progress-item mb-4" data-subject="javascript">
-          <label class="block font-semibold">JavaScript Progress</label>
-          <span class="progress-label js text-sm text-gray-600">0% Completed</span>
-          <div class="bar bg-gray-200 h-4 rounded mt-1">
-            <div class="progress-bar fill js bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          <div class="progress-item" data-subject="javascript">
+            <label class="block font-semibold">JavaScript Progress</label>
+            <span class="progress-label js text-sm text-gray-600">0% Completed</span>
+            <div class="bar bg-gray-200 h-4 rounded mt-1">
+              <div class="progress-bar fill js bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="progress-item mb-4" data-subject="java">
-          <label class="block font-semibold">Java Progress</label>
-          <span class="progress-label java text-sm text-gray-600">0% Completed</span>
-          <div class="bar bg-gray-200 h-4 rounded mt-1">
-            <div class="progress-bar fill java bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          <div class="progress-item" data-subject="java">
+            <label class="block font-semibold">Java Progress</label>
+            <span class="progress-label java text-sm text-gray-600">0% Completed</span>
+            <div class="bar bg-gray-200 h-4 rounded mt-1">
+              <div class="progress-bar fill java bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+            </div>
           </div>
-        </div>
 
-        <div class="progress-item mb-4" data-subject="csharp">
-          <label class="block font-semibold">C# Progress</label>
-          <span class="progress-label csharp text-sm text-gray-600">0% Completed</span>
-          <div class="bar bg-gray-200 h-4 rounded mt-1">
-            <div class="progress-bar fill csharp bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          <div class="progress-item" data-subject="csharp">
+            <label class="block font-semibold">C# Progress</label>
+            <span class="progress-label csharp text-sm text-gray-600">0% Completed</span>
+            <div class="bar bg-gray-200 h-4 rounded mt-1">
+              <div class="progress-bar fill csharp bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
     </div>
   </main>
 
-  <footer class="bg-gray-900 text-white py-10 mt-6 text-center">
+  <footer class="bg-gray-900">
     <p>&copy; 2025 CodeMaster. All rights reserved.</p>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>
