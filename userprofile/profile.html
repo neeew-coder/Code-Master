@@ -49,20 +49,79 @@
   </nav>
 
   <!-- Main Content -->
-  <main class="py-20">
+  <main class="min-h-screen flex items-center justify-center pt-24 pb-16">
     <div class="container mx-auto px-4 max-w-4xl">
+
+    <!-- Progress Bars -->
+    <section class="mt-8 space-y-6">
+      <div class="text-center text-lg font-semibold text-gray-700">Your Progress</div>
+
+      <!-- HTML -->
+      <div data-subject="html">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">HTML Progress</span>
+          <span class="text-sm text-orange-700 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-orange-600 h-2 w-[0%] rounded-full transition-all duration-500 progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- CSS -->
+      <div data-subject="css">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">CSS Progress</span>
+          <span class="text-sm text-blue-700 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-blue-600 h-2 w-[0%] rounded-full transition-all duration-500 progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- JavaScript -->
+      <div data-subject="javascript">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">JavaScript Progress</span>
+          <span class="text-sm text-yellow-700 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-yellow-600 h-2 w-[0%] rounded-full transition-all duration-500 progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- Java -->
+      <div data-subject="java">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">Java Progress</span>
+          <span class="text-sm text-red-700 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-red-600 h-2 w-[0%] rounded-full transition-all duration-500 progress-bar"></div>
+        </div>
+      </div>
+
+      <!-- C# -->
+      <div data-subject="csharp">
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-sm text-gray-600 font-medium">C# Progress</span>
+          <span class="text-sm text-green-700 progress-label">0% Completed</span>
+        </div>
+        <div class="w-full bg-gray-300 h-2 rounded-full overflow-hidden">
+          <div class="bg-green-600 h-2 w-[0%] rounded-full transition-all duration-500 progress-bar"></div>
+        </div>
+      </div>
+    </section>
+
       <!-- Profile -->
-      <section id="profile" class="mt-12 max-w-4xl mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
-        <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
-          <div class="flex items-center space-x-4">
-            <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
-            <div class="flex-1">
-              <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
-              <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
-            </div>
+      <section id="profile" class="max-w-md mx-auto mt-24 px-4">
+        <h2 class="text-3xl font-bold mb-6 text-indigo-700 text-center">Your Profile</h2>
+        <div class="bg-white shadow-lg rounded-xl p-6 space-y-6">
+          <div class="flex flex-col items-center space-y-4">
+            <div id="profileAvatar" class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold"></div>
+            <input id="profileName" type="text" placeholder="Your Name" class="border border-gray-300 px-4 py-2 rounded w-full text-center" />
+            <input id="profileTagline" type="text" placeholder="Your Tagline" class="border border-gray-300 px-4 py-2 rounded w-full text-center" />
           </div>
-          <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
+          <button id="saveBtn" onclick="saveProfile()" class="w-full bg-indigo-600 text-white py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
         </div>
       </section>
     </div>
@@ -166,6 +225,49 @@
           button.textContent = "Save Profile";
         });
     }
+
+    function updateUIWithProgress({ completed, totalModules, subject }) {
+      const percent = totalModules > 0
+        ? Math.min(100, Math.round((completed.length / totalModules) * 100))
+        : 0;
+
+      const container = document.querySelector(`[data-subject="${subject}"]`);
+      if (!container) return;
+
+      const bar = container.querySelector(".progress-bar");
+      const label = container.querySelector(".progress-label");
+
+      if (bar) bar.style.width = `${percent}%`;
+      if (label) label.textContent = `${percent}% Completed`;
+    }
+
+    function loadProgressFor(subject) {
+      fetch(`${API_BASE}/progress/${subject}`, {
+        method: "GET",
+        credentials: "include"
+      })
+        .then(res => res.json())
+        .then(data => {
+          const subjectProgress = data?.progress?.completed?.[subject] || {};
+          const completed = Object.entries(subjectProgress)
+            .filter(([_, isDone]) => isDone)
+            .map(([lessonId]) => lessonId);
+
+          const totalModules = document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).length || 1;
+          updateUIWithProgress({ completed, totalModules, subject });
+        })
+        .catch(err => {
+          console.warn(`Progress fetch error for ${subject}:`, err.message);
+        });
+    }
+
+    window.addEventListener("load", () => {
+      loadProfileFromBackend();
+      updateNavProfile();
+      renderProfileUI();
+
+      ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
+    });
 
     function signOut() {
       fetch(`${API_BASE}/auth/logout`, {
