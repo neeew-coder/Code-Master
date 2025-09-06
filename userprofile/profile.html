@@ -151,7 +151,7 @@
       const name = localStorage.getItem("codemasterUserName") || "";
       const tagline = localStorage.getItem("codemasterTagline") || "";
 
-      const color = "bg-indigo-600"; // Static color now that progress is removed
+      const color = "bg-indigo-600";
 
       document.getElementById("profileName").value = name;
       document.getElementById("profileTagline").value = tagline;
@@ -253,7 +253,8 @@
             .filter(([_, isDone]) => isDone)
             .map(([lessonId]) => lessonId);
 
-          const totalModules = document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).length || 1;
+          const totalModules = data?.progress?.totalModules || 1;
+
           updateUIWithProgress({ completed, totalModules, subject });
         })
         .catch(err => {
@@ -261,13 +262,28 @@
         });
     }
 
-    window.addEventListener("load", () => {
-      loadProfileFromBackend();
-      updateNavProfile();
-      renderProfileUI();
+    function updateProgress(subject, lessonId) {
+      fetch(`${API_BASE}/progress/update`, {
+        method: "POST",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ subject, lesson: lessonId })
+      })
+        .then(res => res.json())
+        .then(data => {
+          const subjectProgress = data?.progress?.completed?.[subject] || {};
+          const completed = Object.entries(subjectProgress)
+            .filter(([_, isDone]) => isDone)
+            .map(([lessonId]) => lessonId);
 
-      ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
-    });
+          const totalModules = data?.progress?.totalModules || 1;
+
+          updateUIWithProgress({ completed, totalModules, subject });
+        })
+        .catch(err => {
+          console.warn("Progress update error:", err.message);
+        });
+    }
 
     function signOut() {
       fetch(`${API_BASE}/auth/logout`, {
@@ -300,7 +316,10 @@
       loadProfileFromBackend();
       updateNavProfile();
       renderProfileUI();
+
+      ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
     });
   </script>
+
 </body>
 </html>
