@@ -7,7 +7,7 @@ const Progress = require("../models/progress");
 const totalModulesMap = {
   html: 42,
   css: 48,
-  js: 94,
+  javascript: 94,
   java: 62,
   csharp: 36
 };
