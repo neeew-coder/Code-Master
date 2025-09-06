@@ -88,9 +88,16 @@
 
   <!-- Optional: JS for menu toggle -->
   <script>
-    document.getElementById('menu-toggle').addEventListener('click', () => {
-      const menu = document.getElementById('mobile-menu');
-      menu.classList.toggle('hidden');
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
     });
   </script>
 
@@ -271,18 +278,6 @@
           alert("Could not log out. Try again.");
         });
     }
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.getElementById("menu-toggle");
-      const menuIcon = document.getElementById("menu-icon");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        menuIcon.classList.toggle("fa-bars");
-        menuIcon.classList.toggle("fa-times");
-      });
-    });
 
     window.addEventListener("load", () => {
       loadProfileFromBackend();
