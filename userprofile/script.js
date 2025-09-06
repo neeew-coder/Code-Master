@@ -18,7 +18,7 @@ function renderProfileUI() {
   document.getElementById("profileTagline").value = tagline;
 
   const avatar = document.getElementById("profileAvatar");
-  avatar.textContent = name ? name.charAt(0).toUpperCase().center() : "?";
+  avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
   avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
 }
 
