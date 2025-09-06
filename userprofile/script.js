@@ -1,106 +1,113 @@
-const subjects = ["Java", "CSharp", "HTML"];
-const progressBars = document.getElementById("progressBars");
-const badgeContainer = document.getElementById("badgeContainer");
+// 🔄 Mobile Menu Toggle
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("menu-toggle");
+  const menuIcon = document.getElementById("menu-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
 
-window.addEventListener("DOMContentLoaded", () => {
-  loadProfile();
-  loadProgress();
+  toggleBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("fa-bars");
+    menuIcon?.classList.toggle("fa-times");
+  });
 });
 
+// 🚀 Dashboard Initialization
+window.addEventListener("load", async () => {
+  await checkSession();
+  await loadProfile();
+  await loadProgress();
+  renderBadges();
+});
+
+// 🧠 Load Profile from Backend
 async function loadProfile() {
   try {
-    const res = await fetch("/api/user/me", { credentials: "include" });
-    const { username, bio, badges, progress } = await res.json();
+    const res = await fetch("/profile/me");
+    const data = await res.json();
 
-    document.getElementById("profileName").value = username || "";
-    document.getElementById("profileTagline").value = bio || "";
-    updateAvatar(username);
-    renderBadges(badges);
+    document.getElementById("username").value = data.username || "";
+    document.getElementById("tagline").value = data.tagline || "";
+
+    updateNavProfile(data.username);
   } catch (err) {
     console.error("Failed to load profile:", err);
   }
 }
 
-async function saveProfile() {
-  const username = document.getElementById("profileName").value.trim();
-  const bio = document.getElementById("profileTagline").value.trim();
+// 💾 Save Profile
+document.getElementById("saveBtn")?.addEventListener("click", async () => {
+  const username = document.getElementById("username").value;
+  const tagline = document.getElementById("tagline").value;
 
   try {
-    const res = await fetch("/api/user/me", {
-      method: "PUT",
+    await fetch("/profile/update", {
+      method: "POST",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ username, bio })
+      body: JSON.stringify({ username, tagline })
     });
-
-    const result = await res.json();
-    if (res.ok) {
-      updateAvatar(username);
-      alert("Profile saved!");
-    } else {
-      alert(result.error || "Failed to save profile.");
-    }
+    updateNavProfile(username);
   } catch (err) {
-    console.error("Save error:", err);
-    alert("Error saving profile.");
+    console.error("Failed to save profile:", err);
   }
+});
+
+// 🧩 Update Nav Profile UI
+function updateNavProfile(name = "User") {
+  const initial = name.charAt(0).toUpperCase();
+  document.getElementById("navAvatar").textContent = initial;
+  document.getElementById("navName").textContent = name;
+  document.getElementById("navAvatarMobile").textContent = initial;
+  document.getElementById("navNameMobile").textContent = name;
 }
 
-function updateAvatar(name) {
-  const initials = name.split(" ").map(n => n[0]).join("").toUpperCase().slice(0, 2);
-  const avatar = document.getElementById("profileAvatar");
-  avatar.textContent = initials || "👤";
-  avatar.style.backgroundColor = "#6366F1";
-}
-
-function renderBadges(badges) {
-  badgeContainer.innerHTML = "";
-  badges.forEach(badge => {
-    const badgeEl = document.createElement("div");
-    badgeEl.className = "bg-yellow-300 text-center p-4 rounded shadow font-semibold";
-    badgeEl.innerHTML = `<i class="fas fa-trophy text-xl mb-2 block"></i>${badge}`;
-    badgeContainer.appendChild(badgeEl);
-  });
-}
-
+// 📊 Load Progress
 async function loadProgress() {
   try {
-    const res = await fetch("/api/user/me", { credentials: "include" });
-    const { progress } = await res.json();
+    const res = await fetch("/progress/me");
+    const progress = await res.json();
 
-    subjects.forEach(subject => {
-      const completed = progress?.[subject] || 0;
-      const total = getTotalLessons(subject);
-      renderProgressBar(subject, completed, total);
+    document.querySelectorAll("[data-lesson]").forEach(card => {
+      const lesson = card.dataset.lesson;
+      const percent = progress[lesson] || 0;
+
+      const bar = card.querySelector(".progress-bar");
+      const text = card.querySelector(".progress-text");
+
+      if (bar) bar.style.width = `${percent}%`;
+      if (text) text.textContent = `${percent}% Completed`;
     });
   } catch (err) {
-    console.error("Progress load error:", err);
+    console.error("Failed to load progress:", err);
   }
 }
 
-function renderProgressBar(subject, completed, total) {
-  const percent = total ? Math.round((completed / total) * 100) : 0;
-  const bar = document.createElement("div");
-  bar.innerHTML = `
-    <div class="mb-2 text-gray-600 font-medium">${subject} (${completed}/${total})</div>
-    <div class="w-full bg-gray-200 rounded-full h-4">
-      <div class="bg-indigo-500 h-4 rounded-full transition-all" style="width: ${percent}%"></div>
+// 🏅 Render Badges
+function renderBadges() {
+  const badgeContainer = document.querySelector(".badges");
+  if (!badgeContainer) return;
+
+  // Example: Replace with real badge logic
+  badgeContainer.innerHTML = `
+    <div class="flex gap-4 flex-wrap justify-center">
+      <div class="bg-yellow-400 text-white px-4 py-2 rounded-full font-semibold shadow">HTML Novice</div>
+      <div class="bg-green-500 text-white px-4 py-2 rounded-full font-semibold shadow">CSS Explorer</div>
     </div>
   `;
-  progressBars.appendChild(bar);
 }
 
-function getTotalLessons(subject) {
-  const totals = { Java: 12, CSharp: 8, HTML: 10 }; // Update as needed
-  return totals[subject] || 0;
-}
-
+// 🚪 Sign Out
 function signOut() {
-  fetch("/api/user/signout", { method: "POST", credentials: "include" })
-    .then(() => window.location.href = "../index.html")
-    .catch(err => console.error("Sign out failed:", err));
+  fetch("/auth/logout", { method: "POST" })
+    .then(() => window.location.href = "/auth.html")
+    .catch(err => console.error("Logout failed:", err));
 }
 
-document.getElementById("menu-toggle").addEventListener("click", () => {
-  document.getElementById("mobile-menu").classList.toggle("hidden");
-});
+// 🔐 Session Check
+async function checkSession() {
+  try {
+    const res = await fetch("/auth/me");
+    if (!res.ok) throw new Error("Session invalid");
+  } catch (err) {
+    window.location.href = "/auth.html";
+  }
+}
