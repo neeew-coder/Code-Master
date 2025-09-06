@@ -120,7 +120,7 @@
           <div class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4 lg:mb-0">M</div>
           <div class="flex-1">
             <label class="text-sm text-gray-600 mb-1 block">Username</label>
-            <input type="text" placeholder="Username" disabled class="border px-3 py-2 rounded w-full mb-4 bg-gray-100 text-gray-700" />
+            <input type="text" placeholder="Username" class="border px-3 py-2 rounded w-full mb-4 bg-gray-100 text-gray-700" />
             <label class="text-sm text-gray-600 mb-1 block">Tagline</label>
             <input type="text" placeholder="Add a tagline..." class="border px-3 py-2 rounded w-full" />
           </div>
@@ -130,7 +130,7 @@
         </div>
       </section>
     </main>
-  <!-- Optional: JS for menu toggle -->
+<!-- Menu Toggle -->
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.getElementById("menu-toggle");
@@ -145,6 +145,7 @@
   });
 </script>
 
+<!-- Profile & Progress Logic -->
 <script>
   const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
@@ -153,9 +154,7 @@
     tagline: "codemasterTagline"
   };
 
-  const allLessons = {
-    html: [], css: [], js: [], java: [], csharp: []
-  };
+  const SUBJECTS = ["html", "css", "js", "java", "csharp"];
 
   const lessonsMeta = {
     html: { name: "HTML Basics", color: "purple", icon: "fa-html5", badgeColor: "text-orange-500" },
@@ -165,15 +164,22 @@
     csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
   };
 
+  function getProgress(subject) {
+    return parseInt(localStorage.getItem(`${subject}LessonProgress`)) || 0;
+  }
+
+  function getCompletionDate(subject) {
+    return localStorage.getItem(`${subject}LessonCompletedAt`);
+  }
+
   function renderProgressBars() {
     const container = document.getElementById("progressBars");
     if (!container) return;
     container.innerHTML = "";
 
-    Object.keys(lessonsMeta).forEach(subject => {
-      const key = `${subject}LessonProgress`;
-      const progress = parseInt(localStorage.getItem(key)) || 0;
+    SUBJECTS.forEach(subject => {
       const meta = lessonsMeta[subject];
+      const progress = getProgress(subject);
 
       container.innerHTML += `
         <div>
@@ -194,11 +200,10 @@
     if (!container) return;
     container.innerHTML = "";
 
-    Object.keys(lessonsMeta).forEach(subject => {
-      const key = `${subject}LessonProgress`;
-      const progress = parseInt(localStorage.getItem(key)) || 0;
-      const completedAt = localStorage.getItem(key.replace("Progress", "CompletedAt"));
+    SUBJECTS.forEach(subject => {
       const meta = lessonsMeta[subject];
+      const progress = getProgress(subject);
+      const completedAt = getCompletionDate(subject);
 
       if (progress === 100 && completedAt) {
         container.innerHTML += `
@@ -225,11 +230,7 @@
     const name = localStorage.getItem(STORAGE_KEYS.userName) || "";
     const tagline = localStorage.getItem(STORAGE_KEYS.tagline) || "";
 
-    const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
-      const key = `${subject}LessonProgress`;
-      return sum + (parseInt(localStorage.getItem(key)) || 0);
-    }, 0) / Object.keys(allLessons).length;
-
+    const avgProgress = SUBJECTS.reduce((sum, subject) => sum + getProgress(subject), 0) / SUBJECTS.length;
     const color = avgProgress >= 80 ? "bg-green-600"
                 : avgProgress >= 50 ? "bg-blue-600"
                 : "bg-purple-600";
