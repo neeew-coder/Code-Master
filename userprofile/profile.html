@@ -9,83 +9,127 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-50 font-sans">
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-4">
+    <!-- Navbar -->
+    <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md">
+      <div class="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
+        <!-- Branding -->
         <div class="flex items-center space-x-2">
           <i class="fas fa-code text-2xl"></i>
-          <span class="text-xl font-bold">CodeMaster</span>
+          <span class="text-xl font-bold tracking-tight">CodeMaster</span>
         </div>
-        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
-          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
-          <span id="navName"></span>
+
+        <!-- Desktop Nav -->
+        <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
+          <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
+          <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+          <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+          <a href="#profile" class="text-white underline">Profile</a>
+          <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
+          <div id="navProfile" class="flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+            <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">M</span>
+            <span id="navName">markstein</span>
+          </div>
+        </div>
+
+        <!-- Mobile Toggle -->
+        <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden transition-all duration-300 ease-in-out transform bg-indigo-700" id="mobile-menu">
+        <div class="px-4 py-4 flex flex-col space-y-2 items-center text-sm font-medium">
+          <a href="../index.html" class="hover:text-gray-300">Home</a>
+          <a href="../lessons.html" class="hover:text-gray-300">Lessons</a>
+          <a href="../exercises.html" class="hover:text-gray-300">Exercises</a>
+          <a href="#profile" class="text-white underline">Profile</a>
+          <a href="#" onclick="signOut()" class="hover:text-red-300">Sign Out</a>
+          <div id="navProfileMobile" class="flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold mt-2">
+            <span id="navAvatarMobile" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">M</span>
+            <span id="navNameMobile">markstein</span>
+          </div>
         </div>
       </div>
-      <div class="hidden md:flex space-x-6">
-        <a href="../index.html">Home</a>        
-        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
-        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
-        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
-      </div>
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
-      </button>
-    </div>
+    </nav>
 
-    <!-- Mobile Menu -->
-    <div class="md:hidden hidden gradient-bg" id="mobile-menu">
-      <div class="container mx-auto px-4 py-4 flex flex-col space-y-2 items-center text-center">
-        <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="../lessons.html" class="hover:text-gray-300 transition">Lessons</a>
-        <a href="../exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
-        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
-        <div id="navProfileMobile" class="flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold mt-2">
-          <span id="navAvatarMobile" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
-          <span id="navNameMobile"></span>
-        </div>
-      </div>
-      <hr>
-    </div>
-  </nav>
+    <!-- Dashboard -->
+    <main class="pt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-10 flex items-center space-x-2">
+        <i class="fas fa-tachometer-alt text-indigo-600"></i>
+        <span>Your Learning Dashboard</span>
+      </h1>
 
-  <!-- Main Content -->
-  <main class="pt-24 px-4 sm:px-6 lg:px-8">
-    <div class="max-w-4xl mx-auto">
-      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Learning Dashboard</h1>
-
-      <!-- Progress Overview -->
+      <!-- Progress -->
       <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
-        <div class="space-y-6 overflow-x-auto" id="progressBars"></div>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700 flex items-center space-x-2">
+          <i class="fas fa-chart-line text-indigo-500"></i>
+          <span>Lesson Progress</span>
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Card Template -->
+          <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500">
+            <p class="font-semibold text-gray-800 mb-2">HTML Basics</p>
+            <div class="h-2 bg-gray-200 rounded-full">
+              <div class="w-0 bg-indigo-500 h-2 rounded-full transition-all duration-500"></div>
+            </div>
+            <p class="text-sm mt-2 text-gray-500">0% Completed</p>
+          </div>
+          <!-- Repeat for other subjects -->
+          <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500">
+            <p class="font-semibold text-gray-800 mb-2">CSS & Layouts</p>
+            <div class="h-2 bg-gray-200 rounded-full"><div class="w-0 bg-indigo-500 h-2 rounded-full"></div></div>
+            <p class="text-sm mt-2 text-gray-500">0% Completed</p>
+          </div>
+          <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500">
+            <p class="font-semibold text-gray-800 mb-2">JavaScript Interactivity</p>
+            <div class="h-2 bg-gray-200 rounded-full"><div class="w-0 bg-indigo-500 h-2 rounded-full"></div></div>
+            <p class="text-sm mt-2 text-gray-500">0% Completed</p>
+          </div>
+          <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500">
+            <p class="font-semibold text-gray-800 mb-2">Java Fundamentals</p>
+            <div class="h-2 bg-gray-200 rounded-full"><div class="w-0 bg-indigo-500 h-2 rounded-full"></div></div>
+            <p class="text-sm mt-2 text-gray-500">0% Completed</p>
+          </div>
+          <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500">
+            <p class="font-semibold text-gray-800 mb-2">C# with .NET</p>
+            <div class="h-2 bg-gray-200 rounded-full"><div class="w-0 bg-indigo-500 h-2 rounded-full"></div></div>
+            <p class="text-sm mt-2 text-gray-500">0% Completed</p>
+          </div>
+        </div>
       </section>
 
       <!-- Badges -->
-      <section>
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
-        <div id="badgeContainer" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"></div>
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-gray-700 flex items-center space-x-2">
+          <i class="fas fa-award text-yellow-500"></i>
+          <span>Earned Badges</span>
+        </h2>
+        <div class="bg-white rounded-lg shadow p-6 text-center text-gray-500 italic">
+          No badges earned yet.
+        </div>
       </section>
-    </div>
 
-    <!-- Profile -->
-    <section id="profile" class="mt-12 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
-      <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
-        <div class="flex flex-wrap items-center space-x-4 space-y-4 sm:space-y-0">
-          <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold bg-indigo-600"></div>
-          <div class="flex-1 min-w-[200px]">
-            <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
-            <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+      <!-- Profile -->
+      <section>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700 flex items-center space-x-2">
+          <i class="fas fa-user-circle text-indigo-500"></i>
+          <span>Your Profile</span>
+        </h2>
+        <div class="bg-white rounded-lg shadow p-6 lg:flex lg:items-center lg:space-x-6">
+          <div class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4 lg:mb-0">M</div>
+          <div class="flex-1">
+            <label class="text-sm text-gray-600 mb-1 block">Username</label>
+            <input type="text" value="markstein" disabled class="border px-3 py-2 rounded w-full mb-4 bg-gray-100 text-gray-700" />
+            <label class="text-sm text-gray-600 mb-1 block">Tagline</label>
+            <input type="text" placeholder="Add a tagline..." class="border px-3 py-2 rounded w-full" />
           </div>
         </div>
-        <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
-      </div>
-    </section>
-  </main>
-
+        <div class="mt-4 text-right">
+          <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
+        </div>
+      </section>
+    </main>
   <!-- Optional: JS for menu toggle -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
@@ -101,7 +145,7 @@
     });
   </script>
 
-
+<!-- 
 <script>
   const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
@@ -284,5 +328,5 @@
       renderProgressBars();
       renderBadges();
     });
-</script>
+</script> -->
 </body>
