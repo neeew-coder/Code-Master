@@ -1,89 +1,205 @@
+:root {
+  --primary: #4e11c0;
+  --primary-dark: #2a0a85;
+  --bg-light: #f3f4f6;
+  --text-dark: #333;
+  --card-bg: #fff;
+  --shadow: 0 4px 8px rgba(0,0,0,0.05);
+  --radius: 1rem;
+  --transition: 0.3s ease;
+}
+
+/* Base Reset */
 body {
-  font-family: Arial, sans-serif;
-  background: #f4f4f4;
-  padding: 2rem;
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+/* Layout Containers */
+.dashboard {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 100vw;
+  margin: auto;
 }
 
-.card {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  width: 300px;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
-input {
-  display: block;
+.mainContainer {
+  display: flex;
+  gap: 2rem;
+  margin-top: 10vh;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
-  margin: 0.5rem 0;
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
-button {
-  background: #6c63ff;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  cursor: pointer;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 1.5rem;
 }
 
-button:hover {
-  background: #574fd6;
+/* Responsive Behavior */
+@media (min-width: 768px) {
+  .dashboard {
+    flex-direction: row;
+    align-items: flex-start;
+  }
 }
 
-.hidden {
-  display: none;
+@media (max-width: 767px) {
+  .profile, .progress {
+    width: 100%;
+    max-width: none;
+  }
+
+  .percent {
+    float: none;
+    display: block;
+    margin-top: 0.3rem;
+    text-align: right;
+  }
 }
 
-img {
+/* Card Styling */
+.profile, .progress {
+  background: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  flex: 1;
+}
+
+/* Profile Section */
+.profile {
+  max-width: 300px;
+}
+
+.profile h2 {
+  color: #4c1d95;
+  text-align: center;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.avatar {
   width: 80px;
   height: 80px;
+  background-color: #4509cfbb;
   border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
 }
 
-/* Progress Bar */
-.progress-bar {
+.input {
   width: 100%;
-  background: #ddd;
-  border-radius: 6px;
-  height: 20px;
-  margin: 10px 0;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  text-align: center;
+  transition: all var(--transition);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px #4e11c033;
+}
+
+.save-btn {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+
+.save-btn:hover {
+  background-color: var(--primary-dark);
+}
+
+.save-btn:focus {
+  outline: 2px solid var(--primary-dark);
+  outline-offset: 2px;
+}
+
+/* Progress Section */
+.progress h2 {
+  margin-bottom: 1rem;
+  color: #374151;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.progress-item {
+  margin-bottom: 1.5rem;
+}
+
+.progress-item label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+}
+
+.percent {
+  float: right;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.percent.html { color: #ea580c; }
+.percent.css { color: #2563eb; }
+.percent.js { color: #f59e0b; }
+.percent.java { color: #dc2626; }
+.percent.csharp { color: #16a34a; }
+
+.bar {
+  background-color: #e5e7eb;
+  height: 8px;
+  border-radius: 4px;
   overflow: hidden;
 }
-#progressFill {
+
+.fill {
   height: 100%;
-  background: #4caf50;
   width: 0%;
-  transition: width 0.4s ease;
+  transition: width 0.5s ease;
 }
 
-/* Badges */
-#badgeList {
+.fill.html { background-color: #ea580c; }
+.fill.css { background-color: #2563eb; }
+.fill.js { background-color: #f59e0b; }
+.fill.java { background-color: #dc2626; }
+.fill.csharp { background-color: #16a34a; }
+
+.progress-item:hover .fill {
+  opacity: 0.85;
+}
+
+/* Utility Classes */
+.flex-center {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 10px;
-}
-.badge {
-  background: #2196f3;
-  color: white;
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-size: 0.8em;
+  align-items: center;
+  justify-content: center;
 }
 
-@media (min-width: 768px) {
-  .hide{
-    display: none;
-  }
+.rounded {
+  border-radius: var(--radius);
+}
+
+.shadow {
+  box-shadow: var(--shadow);
+}
+
+.text-primary {
+  color: var(--primary);
 }
