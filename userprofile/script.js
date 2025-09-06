@@ -177,6 +177,12 @@ document.addEventListener("DOMContentLoaded", () => {
     menuIcon.classList.toggle("fa-bars");
     menuIcon.classList.toggle("fa-times");
   });
+
+  // 🔧 Add this to wire up the Save button
+  const saveBtn = document.getElementById("saveBtn");
+  if (saveBtn) {
+    saveBtn.addEventListener("click", saveProfile);
+  }
 });
 
 window.addEventListener("load", () => {
