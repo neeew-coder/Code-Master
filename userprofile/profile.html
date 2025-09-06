@@ -9,142 +9,285 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-50 font-sans">
-  <!-- Navbar -->
-  <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-md">
-    <div class="max-w-screen-xl mx-auto px-4 py-3 flex justify-between items-center">
-      <!-- Branding -->
-      <div class="flex items-center space-x-2">
-        <i class="fas fa-code text-2xl"></i>
-        <span class="text-xl font-bold tracking-tight">CodeMaster</span>
-      </div>
 
-      <!-- Desktop Nav -->
-      <div class="hidden md:flex items-center space-x-6 text-sm font-medium">
-        <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
-        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="text-white underline">Profile</a>
-        <a href="#" id="signOutBtn" class="hover:text-red-300 transition">Sign Out</a>
-        <div id="navProfile" class="flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
-          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">M</span>
-          <span id="navName">markstein</span>
+  <!-- Navigation -->
+  <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-2">
+          <i class="fas fa-code text-2xl"></i>
+          <span class="text-xl font-bold">CodeMaster</span>
+        </div>
+        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+          <span id="navName"></span>
         </div>
       </div>
-
-      <!-- Mobile Toggle -->
+      <div class="hidden md:flex space-x-6">
+        <a href="../index.html">Home</a>        
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
+        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
+      </div>
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
         <i id="menu-icon" class="fas fa-bars text-2xl"></i>
       </button>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="md:hidden hidden transition-all duration-300 ease-in-out transform bg-indigo-700" id="mobile-menu">
-      <div class="px-4 py-4 flex flex-col space-y-2 items-center text-sm font-medium">
-        <a href="../index.html" class="hover:text-gray-300">Home</a>
-        <a href="../lessons.html" class="hover:text-gray-300">Lessons</a>
-        <a href="../exercises.html" class="hover:text-gray-300">Exercises</a>
-        <a href="#profile" class="text-white underline">Profile</a>
-        <a href="#" id="signOutBtnMobile" class="hover:text-red-300">Sign Out</a>
-        <div id="navProfileMobile" class="flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold mt-2">
-          <span id="navAvatarMobile" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">M</span>
-          <span id="navNameMobile">markstein</span>
+        <!-- Mobile menu placed outside the flex container -->
+    <div class="md:hidden hidden gradient-bg" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">        
+        <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="../lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="../exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
+        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
+        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+          <span id="navName"></span>
         </div>
       </div>
+      <hr>
     </div>
   </nav>
 
-  <!-- Dashboard -->
-  <main class="pt-24 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-    <h1 class="text-3xl font-bold text-gray-900 mb-10 flex items-center space-x-2">
-      <i class="fas fa-tachometer-alt text-indigo-600"></i>
-      <span>Your Learning Dashboard</span>
-    </h1>
+  <!-- Main Content -->
+  <main class="py-20">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Learning Dashboard</h1>
 
-    <!-- Progress -->
-    <section class="mb-12">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 flex items-center space-x-2">
-        <i class="fas fa-chart-line text-indigo-500"></i>
-        <span>Lesson Progress</span>
-      </h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Card Template -->
-        <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500" data-lesson="html">
-          <p class="font-semibold text-gray-800 mb-2">HTML Basics</p>
-          <div class="h-2 bg-gray-200 rounded-full">
-            <div class="progress-bar w-0 bg-indigo-500 h-2 rounded-full transition-all duration-500"></div>
-          </div>
-          <p class="progress-text text-sm mt-2 text-gray-500">0% Completed</p>
+      <!-- Progress Overview -->
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
+        <div class="space-y-6">
+          <div id="progressBars"></div>
         </div>
-        <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500" data-lesson="css">
-          <p class="font-semibold text-gray-800 mb-2">CSS & Layouts</p>
-          <div class="h-2 bg-gray-200 rounded-full">
-            <div class="progress-bar w-0 bg-indigo-500 h-2 rounded-full"></div>
-          </div>
-          <p class="progress-text text-sm mt-2 text-gray-500">0% Completed</p>
-        </div>
-        <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500" data-lesson="javascript">
-          <p class="font-semibold text-gray-800 mb-2">JavaScript Interactivity</p>
-          <div class="h-2 bg-gray-200 rounded-full">
-            <div class="progress-bar w-0 bg-indigo-500 h-2 rounded-full"></div>
-          </div>
-          <p class="progress-text text-sm mt-2 text-gray-500">0% Completed</p>
-        </div>
-        <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500" data-lesson="java">
-          <p class="font-semibold text-gray-800 mb-2">Java Fundamentals</p>
-          <div class="h-2 bg-gray-200 rounded-full">
-            <div class="progress-bar w-0 bg-indigo-500 h-2 rounded-full"></div>
-          </div>
-          <p class="progress-text text-sm mt-2 text-gray-500">0% Completed</p>
-        </div>
-        <div class="bg-white rounded-lg shadow p-5 border-l-4 border-indigo-500" data-lesson="csharp">
-          <p class="font-semibold text-gray-800 mb-2">C# with .NET</p>
-          <div class="h-2 bg-gray-200 rounded-full">
-            <div class="progress-bar w-0 bg-indigo-500 h-2 rounded-full"></div>
-          </div>
-          <p class="progress-text text-sm mt-2 text-gray-500">0% Completed</p>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Badges -->
-    <section class="mb-12">
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 flex items-center space-x-2">
-        <i class="fas fa-award text-yellow-500"></i>
-        <span>Earned Badges</span>
-      </h2>
-      <div class="badges bg-white rounded-lg shadow p-6 text-center text-gray-500 italic">
-        No badges earned yet.
-      </div>
-    </section>
+      <!-- Badges -->
+      <section>
+        <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
+        <div id="badgeContainer" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+      </section>
+    </div>
 
     <!-- Profile -->
-    <section>
-      <h2 class="text-xl font-semibold mb-4 text-gray-700 flex items-center space-x-2">
-        <i class="fas fa-user-circle text-indigo-500"></i>
-        <span>Your Profile</span>
-      </h2>
-      <div class="bg-white rounded-lg shadow p-6 lg:flex lg:items-center lg:space-x-6">
-        <div id="profileAvatar" class="bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-2xl font-bold mb-4 lg:mb-0">M</div>
-        <div class="flex-1">
-          <label for="username" class="text-sm text-gray-600 mb-1 block">Username</label>
-          <input id="username" type="text" placeholder="Username" class="border px-3 py-2 rounded w-full mb-4 bg-gray-100 text-gray-700" />
-
-          <label for="tagline" class="text-sm text-gray-600 mb-1 block">Tagline</label>
-          <input id="tagline" type="text" placeholder="Add a tagline..." class="border px-3 py-2 rounded w-full" />
+    <section id="profile" class="mt-12 max-w-4xl mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
+      <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
+        <div class="flex items-center space-x-4">
+          <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
+          <div class="flex-1">
+            <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
+            <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+          </div>
         </div>
-      </div>
-      <div class="mt-4 text-right">
-        <button id="saveBtn" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
+        <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
       </div>
     </section>
-    </main>
+  </main>
 
-    <!-- Optional Footer -->
-    <footer class="mt-16 text-center text-sm text-gray-500">
-      <p>&copy; 2025 CodeMaster. All rights reserved.</p>
-    </footer>
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-12 mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-400">&copy; 2025 CodeMaster. Built by Mark.</p>
+    </div>
+  </footer>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-  </body>
-</html>
+<script>
+  const API_BASE = "https://code-master-kk2m.onrender.com/api";
+
+  const allLessons = {
+    html: ["htmlLessonProgress", "htmlHeadingsProgress", "htmlTextProgress", "htmlListsProgress", "htmlLinksProgress"],
+    css: ["cssLessonProgress", "cssSelectorsProgress", "cssBoxModelProgress", "cssFlexboxProgress", "cssGridProgress"],
+    js: ["jsLessonProgress", "jsVariablesProgress", "jsFunctionsProgress", "jsEventsProgress", "jsLoopsProgress"],
+    java: ["javaLessonProgress", "javaSyntaxProgress", "javaDatatypesProgress", "javaMethodsProgress", "javaOOPProgress"],
+    csharp: ["csharpLessonProgress", "csharpVariablesProgress", "csharpMethodsProgress", "csharpClassesProgress", "csharpDotnetProgress"]
+  };
+
+  const lessonsMeta = {
+    html: { name: "HTML Basics", color: "purple", icon: "fa-html5", badgeColor: "text-orange-500" },
+    css: { name: "CSS & Layouts", color: "blue", icon: "fa-css3-alt", badgeColor: "text-blue-500" },
+    js: { name: "JavaScript Interactivity", color: "yellow", icon: "fa-js", badgeColor: "text-yellow-500" },
+    java: { name: "Java Fundamentals", color: "red", icon: "fa-java", badgeColor: "text-red-500" },
+    csharp: { name: "C# with .NET", color: "green", icon: "fa-code", badgeColor: "text-green-500" }
+  };
+
+  function renderProgressBars() {
+    const container = document.getElementById("progressBars");
+    container.innerHTML = "";
+    Object.keys(lessonsMeta).forEach(subject => {
+      const key = `${subject}LessonProgress`;
+      const progress = parseInt(localStorage.getItem(key)) || 0;
+      const meta = lessonsMeta[subject];
+      container.innerHTML += `
+        <div>
+          <div class="flex justify-between items-center mb-1">
+            <span>${meta.name}</span>
+            <span>${progress}% Completed</span>
+          </div>
+          <div class="w-full bg-${meta.color}-200 h-2 rounded-full overflow-hidden">
+            <div class="bg-${meta.color}-600 h-2 w-[${progress}%] transition-all duration-500"></div>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function renderBadges() {
+    const container = document.getElementById("badgeContainer");
+    container.innerHTML = "";
+    Object.keys(lessonsMeta).forEach(subject => {
+      const key = `${subject}LessonProgress`;
+      const progress = parseInt(localStorage.getItem(key)) || 0;
+      const completedAt = localStorage.getItem(key.replace("Progress", "CompletedAt"));
+      const meta = lessonsMeta[subject];
+      if (progress === 100 && completedAt) {
+        container.innerHTML += `
+          <div class="bg-white shadow-md rounded-lg p-4 text-center transform hover:scale-105 transition duration-300">
+            <i class="fab ${meta.icon} text-3xl ${meta.badgeColor} mb-2"></i>
+            <p class="font-semibold">${meta.name}</p>
+            <span class="text-sm text-gray-500">Completed on ${completedAt}</span>
+          </div>
+        `;
+      }
+    });
+  }
+
+  function updateNavProfile() {
+    const name = localStorage.getItem("codemasterUserName");
+    if (name) {
+      document.getElementById("navProfile")?.classList.remove("hidden");
+      document.getElementById("navName").textContent = name;
+      document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
+    }
+  }
+
+  function renderProfileUI() {
+    const name = localStorage.getItem("codemasterUserName") || "";
+    const tagline = localStorage.getItem("codemasterTagline") || "";
+
+    const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
+      const key = `${subject}LessonProgress`;
+      return sum + (parseInt(localStorage.getItem(key)) || 0);
+    }, 0) / Object.keys(allLessons).length;
+
+    const color = avgProgress >= 80 ? "bg-green-600"
+                : avgProgress >= 50 ? "bg-blue-600"
+                : "bg-purple-600";
+
+    document.getElementById("profileName").value = name;
+        document.getElementById("profileTagline").value = tagline;
+
+    const avatar = document.getElementById("profileAvatar");
+    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+    avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+  }
+
+  function loadProfileFromBackend() {
+    fetch(`${API_BASE}/profile/me`, {
+      credentials: "include"
+    })
+      .then(res => {
+        if (res.status === 401) {
+          alert("Session expired. Redirecting to login...");
+          window.location.href = "/auth/login"; // Adjust path if needed
+          return;
+        }
+        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+        return res.json();
+      })
+      .then(data => {
+        if (data?.username) {
+          localStorage.setItem("codemasterUserName", data.username);
+          localStorage.setItem("codemasterTagline", data.bio || "");
+          updateNavProfile();
+          renderProfileUI();
+        }
+      })
+      .catch(err => {
+        console.warn("⚠️ Failed to load profile from backend:", err);
+        alert("Unable to load profile. Please sign in again.");
+        window.location.href = "/auth/login";
+      });
+    }
+
+    function saveProfile() {
+      const name = document.getElementById("profileName").value.trim();
+      const tagline = document.getElementById("profileTagline").value.trim();
+
+      if (!name || name.length < 2) {
+        alert("Please enter a valid name.");
+        return;
+      }
+
+      localStorage.setItem("codemasterUserName", name);
+      localStorage.setItem("codemasterTagline", tagline);
+      updateNavProfile();
+      renderProfileUI();
+
+      const button = document.getElementById("saveBtn");
+      button.disabled = true;
+      button.textContent = "Saving...";
+
+      fetch(`${API_BASE}/profile/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ username: name, bio: tagline })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          console.log("✅ Profile synced with backend:", data);
+          alert("Profile saved and synced!");
+        })
+        .catch(err => {
+          console.error("❌ Profile sync failed:", err);
+          alert("Failed to sync profile with server.");
+        })
+        .finally(() => {
+          button.disabled = false;
+          button.textContent = "Save Profile";
+        });
+    }
+
+    function signOut() {
+      fetch(`${API_BASE}/auth/logout`, {
+        method: "POST",
+        credentials: "include"
+      })
+        .then(() => {
+          localStorage.clear();
+          window.location.href = "/auth/login"; // Adjust path if needed
+        })
+        .catch(err => {
+          console.error("❌ Logout failed:", err);
+          alert("Could not log out. Try again.");
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
+    });
+
+    window.addEventListener("load", () => {
+      loadProfileFromBackend();
+      renderProgressBars();
+      renderBadges();
+    });
+</script>
+</body>
