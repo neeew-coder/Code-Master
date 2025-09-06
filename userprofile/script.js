@@ -1,5 +1,7 @@
 const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
+// ─── Profile UI ────────────────────────────────────────────────────────────────
+
 function updateNavProfile() {
   const name = localStorage.getItem("codemasterUserName");
   if (name) {
@@ -12,18 +14,17 @@ function updateNavProfile() {
 function renderProfileUI() {
   const name = localStorage.getItem("codemasterUserName") || "";
   const tagline = localStorage.getItem("codemasterTagline") || "";
-  const color = "bg-indigo-600";
+  const avatar = document.getElementById("profileAvatar");
 
   document.getElementById("profileName").value = name;
   document.getElementById("profileTagline").value = tagline;
 
-  const avatar = document.getElementById("profileAvatar");
   avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-  avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+  avatar.className = `bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
 }
 
 function loadProfileFromBackend() {
-  fetch(`${API_BASE}/profile/me`, { credentials: "include" })
+  return fetch(`${API_BASE}/profile/me`, { credentials: "include" })
     .then(res => {
       if (res.status === 401) {
         alert("Session expired. Redirecting to login...");
@@ -51,13 +52,13 @@ function loadProfileFromBackend() {
 function saveProfile() {
   const name = document.getElementById("profileName").value.trim();
   const tagline = document.getElementById("profileTagline").value.trim();
+  const button = document.getElementById("saveBtn");
 
   localStorage.setItem("codemasterUserName", name);
   localStorage.setItem("codemasterTagline", tagline);
   updateNavProfile();
   renderProfileUI();
 
-  const button = document.getElementById("saveBtn");
   button.disabled = true;
   button.textContent = "Saving...";
 
@@ -84,6 +85,19 @@ function saveProfile() {
       button.textContent = "Save Profile";
     });
 }
+
+function initProfileUI() {
+  const saveBtn = document.getElementById("saveBtn");
+  if (saveBtn) {
+    saveBtn.addEventListener("click", saveProfile);
+  }
+
+  loadProfileFromBackend();
+  updateNavProfile();
+  renderProfileUI();
+}
+
+// ─── Progress UI ───────────────────────────────────────────────────────────────
 
 function updateUIWithProgress({ completed, totalModules, subject }) {
   const percent = totalModules > 0
@@ -152,6 +166,24 @@ function updateProgress(subject, lessonId) {
     });
 }
 
+// ─── Navigation ────────────────────────────────────────────────────────────────
+
+function initNavigation() {
+  const toggleBtn = document.getElementById("menu-toggle");
+  const menuIcon = document.getElementById("menu-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (toggleBtn && menuIcon && mobileMenu) {
+    toggleBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuIcon.classList.toggle("fa-bars");
+      menuIcon.classList.toggle("fa-times");
+    });
+  }
+}
+
+// ─── Auth ──────────────────────────────────────────────────────────────────────
+
 function signOut() {
   fetch(`${API_BASE}/auth/logout`, {
     method: "POST",
@@ -159,7 +191,7 @@ function signOut() {
   })
     .then(() => {
       localStorage.clear();
-      window.location.href = "/index.html";
+      window.location.href = "index.html";
     })
     .catch(err => {
       console.error("❌ Logout failed:", err);
@@ -167,28 +199,10 @@ function signOut() {
     });
 }
 
+// ─── Init ──────────────────────────────────────────────────────────────────────
+
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("menu-toggle");
-  const menuIcon = document.getElementById("menu-icon");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  toggleBtn.addEventListener("click", () => {
-    mobileMenu.classList.toggle("hidden");
-    menuIcon.classList.toggle("fa-bars");
-    menuIcon.classList.toggle("fa-times");
-  });
-
-  // 🔧 Add this to wire up the Save button
-  const saveBtn = document.getElementById("saveBtn");
-  if (saveBtn) {
-    saveBtn.addEventListener("click", saveProfile);
-  }
-});
-
-window.addEventListener("load", () => {
-  loadProfileFromBackend();
-  updateNavProfile();
-  renderProfileUI();
-
+  initNavigation();
+  initProfileUI();
   ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
 });
