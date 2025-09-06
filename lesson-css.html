@@ -225,20 +225,6 @@ body {
   </main>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.getElementById("menu-toggle");
-      const menuIcon = document.getElementById("menu-icon");
-      const mobileMenu = document.getElementById("mobile-menu");
-
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        menuIcon.classList.toggle("fa-bars");
-        menuIcon.classList.toggle("fa-times");
-      });
-    });
-  </script>
-
-  <script>
     const subject = document.body.dataset.subject || "css";
     const API_BASE = "https://code-master-kk2m.onrender.com";
     let cachedTotalModules = 0;
@@ -247,7 +233,6 @@ body {
       const container = document.getElementById("moduleContent");
       if (!container) return;
 
-      // Highlight active button
       document.querySelectorAll(`aside button[data-lesson]`).forEach(btn => {
         btn.classList.remove("bg-blue-100", "font-semibold", "text-blue-700");
         btn.classList.add("text-blue-600");
@@ -259,7 +244,6 @@ body {
         activeBtn.classList.remove("text-blue-600");
       }
 
-      // Show loading state
       container.innerHTML = `
         <div class="text-center py-10 text-gray-500 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -267,7 +251,6 @@ body {
         </div>
       `;
 
-      // Fetch lesson content
       fetch(`lessons/${subject}/${lessonId}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
@@ -311,9 +294,11 @@ body {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
-          ? data.totalModules
-          : cachedTotalModules;
+        const totalModules = data?.progress?.totalModules;
+        if (typeof totalModules !== "number" || totalModules <= 0) {
+          console.warn(`⚠️ Invalid totalModules for ${subject}.`);
+          return;
+        }
 
         updateUIWithProgress({ completed, totalModules });
 
@@ -342,9 +327,11 @@ body {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
-          ? data.totalModules
-          : cachedTotalModules;
+        const totalModules = data?.progress?.totalModules;
+        if (typeof totalModules !== "number" || totalModules <= 0) {
+          console.warn(`⚠️ Invalid totalModules for ${subject}.`);
+          return;
+        }
 
         updateUIWithProgress({ completed, totalModules });
 
