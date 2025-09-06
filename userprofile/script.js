@@ -191,7 +191,7 @@ function signOut() {
   })
     .then(() => {
       localStorage.clear();
-      window.location.href = "Code-Master/index.html";
+      window.location.href = "/Code-Master/index.html";
     })
     .catch(err => {
       console.error("❌ Logout failed:", err);
