@@ -131,29 +131,30 @@
       </section>
     </main>
   <!-- Optional: JS for menu toggle -->
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const toggleBtn = document.getElementById("menu-toggle");
-      const menuIcon = document.getElementById("menu-icon");
-      const mobileMenu = document.getElementById("mobile-menu");
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("menu-toggle");
+    const menuIcon = document.getElementById("menu-icon");
+    const mobileMenu = document.getElementById("mobile-menu");
 
-      toggleBtn.addEventListener("click", () => {
-        mobileMenu.classList.toggle("hidden");
-        menuIcon.classList.toggle("fa-bars");
-        menuIcon.classList.toggle("fa-times");
-      });
+    toggleBtn?.addEventListener("click", () => {
+      mobileMenu?.classList.toggle("hidden");
+      menuIcon?.classList.toggle("fa-bars");
+      menuIcon?.classList.toggle("fa-times");
     });
-  </script>
+  });
+</script>
 
 <script>
   const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
+  const STORAGE_KEYS = {
+    userName: "codemasterUserName",
+    tagline: "codemasterTagline"
+  };
+
   const allLessons = {
-    html: ["htmlLessonProgress", "htmlHeadingsProgress", "htmlTextProgress", "htmlListsProgress", "htmlLinksProgress"],
-    css: ["cssLessonProgress", "cssSelectorsProgress", "cssBoxModelProgress", "cssFlexboxProgress", "cssGridProgress"],
-    js: ["jsLessonProgress", "jsVariablesProgress", "jsFunctionsProgress", "jsEventsProgress", "jsLoopsProgress"],
-    java: ["javaLessonProgress", "javaSyntaxProgress", "javaDatatypesProgress", "javaMethodsProgress", "javaOOPProgress"],
-    csharp: ["csharpLessonProgress", "csharpVariablesProgress", "csharpMethodsProgress", "csharpClassesProgress", "csharpDotnetProgress"]
+    html: [], css: [], js: [], java: [], csharp: []
   };
 
   const lessonsMeta = {
@@ -166,11 +167,14 @@
 
   function renderProgressBars() {
     const container = document.getElementById("progressBars");
+    if (!container) return;
     container.innerHTML = "";
+
     Object.keys(lessonsMeta).forEach(subject => {
       const key = `${subject}LessonProgress`;
       const progress = parseInt(localStorage.getItem(key)) || 0;
       const meta = lessonsMeta[subject];
+
       container.innerHTML += `
         <div>
           <div class="flex justify-between items-center mb-1">
@@ -187,12 +191,15 @@
 
   function renderBadges() {
     const container = document.getElementById("badgeContainer");
+    if (!container) return;
     container.innerHTML = "";
+
     Object.keys(lessonsMeta).forEach(subject => {
       const key = `${subject}LessonProgress`;
       const progress = parseInt(localStorage.getItem(key)) || 0;
       const completedAt = localStorage.getItem(key.replace("Progress", "CompletedAt"));
       const meta = lessonsMeta[subject];
+
       if (progress === 100 && completedAt) {
         container.innerHTML += `
           <div class="bg-white shadow-md rounded-lg p-4 text-center transform hover:scale-105 transition duration-300">
@@ -206,17 +213,17 @@
   }
 
   function updateNavProfile() {
-    const name = localStorage.getItem("codemasterUserName");
-    if (name) {
-      document.getElementById("navProfile")?.classList.remove("hidden");
-      document.getElementById("navName").textContent = name;
-      document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
-    }
+    const name = localStorage.getItem(STORAGE_KEYS.userName);
+    if (!name) return;
+
+    document.getElementById("navProfile")?.classList.remove("hidden");
+    document.getElementById("navName")?.textContent = name;
+    document.getElementById("navAvatar")?.textContent = name.charAt(0).toUpperCase();
   }
 
   function renderProfileUI() {
-    const name = localStorage.getItem("codemasterUserName") || "";
-    const tagline = localStorage.getItem("codemasterTagline") || "";
+    const name = localStorage.getItem(STORAGE_KEYS.userName) || "";
+    const tagline = localStorage.getItem(STORAGE_KEYS.tagline) || "";
 
     const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
       const key = `${subject}LessonProgress`;
@@ -227,22 +234,22 @@
                 : avgProgress >= 50 ? "bg-blue-600"
                 : "bg-purple-600";
 
-    document.getElementById("profileName").value = name;
-        document.getElementById("profileTagline").value = tagline;
+    document.getElementById("profileName")?.value = name;
+    document.getElementById("profileTagline")?.value = tagline;
 
     const avatar = document.getElementById("profileAvatar");
-    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-    avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+    if (avatar) {
+      avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+      avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+    }
   }
 
   function loadProfileFromBackend() {
-    fetch(`${API_BASE}/profile/me`, {
-      credentials: "include"
-    })
+    fetch(`${API_BASE}/profile/me`, { credentials: "include" })
       .then(res => {
         if (res.status === 401) {
           alert("Session expired. Redirecting to login...");
-          window.location.href = "/auth/login"; // Adjust path if needed
+          window.location.href = "/auth/login";
           return;
         }
         if (!res.ok) throw new Error(`Server responded with ${res.status}`);
@@ -250,82 +257,85 @@
       })
       .then(data => {
         if (data?.username) {
-          localStorage.setItem("codemasterUserName", data.username);
-          localStorage.setItem("codemasterTagline", data.bio || "");
+          localStorage.setItem(STORAGE_KEYS.userName, data.username);
+          localStorage.setItem(STORAGE_KEYS.tagline, data.bio || "");
           updateNavProfile();
           renderProfileUI();
         }
       })
       .catch(err => {
-        console.warn("⚠️ Failed to load profile from backend:", err);
+        console.warn("⚠️ Failed to load profile:", err);
         alert("Unable to load profile. Please sign in again.");
         window.location.href = "/auth/login";
       });
+  }
+
+  function saveProfile() {
+    const name = document.getElementById("profileName")?.value.trim();
+    const tagline = document.getElementById("profileTagline")?.value.trim();
+    const button = document.getElementById("saveBtn");
+
+    if (!name || name.length < 2) {
+      alert("Please enter a valid name.");
+      return;
     }
 
-    function saveProfile() {
-      const name = document.getElementById("profileName").value.trim();
-      const tagline = document.getElementById("profileTagline").value.trim();
+    localStorage.setItem(STORAGE_KEYS.userName, name);
+    localStorage.setItem(STORAGE_KEYS.tagline, tagline);
+    updateNavProfile();
+    renderProfileUI();
 
-      if (!name || name.length < 2) {
-        alert("Please enter a valid name.");
-        return;
-      }
-
-      localStorage.setItem("codemasterUserName", name);
-      localStorage.setItem("codemasterTagline", tagline);
-      updateNavProfile();
-      renderProfileUI();
-
-      const button = document.getElementById("saveBtn");
+    if (button) {
       button.disabled = true;
       button.textContent = "Saving...";
+    }
 
-      fetch(`${API_BASE}/profile/me`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        credentials: "include",
-        body: JSON.stringify({ username: name, bio: tagline })
+    fetch(`${API_BASE}/profile/me`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ username: name, bio: tagline })
+    })
+      .then(res => {
+        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+        return res.json();
       })
-        .then(res => {
-          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-          return res.json();
-        })
-        .then(data => {
-          console.log("✅ Profile synced with backend:", data);
-          alert("Profile saved and synced!");
-        })
-        .catch(err => {
-          console.error("❌ Profile sync failed:", err);
-          alert("Failed to sync profile with server.");
-        })
-        .finally(() => {
+      .then(data => {
+        console.log("✅ Profile synced:", data);
+        alert("Profile saved and synced!");
+      })
+      .catch(err => {
+        console.error("❌ Sync failed:", err);
+        alert("Failed to sync profile.");
+      })
+      .finally(() => {
+        if (button) {
           button.disabled = false;
           button.textContent = "Save Profile";
-        });
-    }
+        }
+      });
+  }
 
-    function signOut() {
-      fetch(`${API_BASE}/auth/logout`, {
-        method: "POST",
-        credentials: "include"
+  function signOut() {
+    fetch(`${API_BASE}/auth/logout`, {
+      method: "POST",
+      credentials: "include"
+    })
+      .then(() => {
+        localStorage.clear();
+        window.location.href = "/auth/login";
       })
-        .then(() => {
-          localStorage.clear();
-          window.location.href = "/auth/login"; // Adjust path if needed
-        })
-        .catch(err => {
-          console.error("❌ Logout failed:", err);
-          alert("Could not log out. Try again.");
-        });
-    }
+      .catch(err => {
+        console.error("❌ Logout failed:", err);
+        alert("Could not log out. Try again.");
+      });
+  }
 
-    window.addEventListener("load", () => {
-      loadProfileFromBackend();
-      renderProgressBars();
-      renderBadges();
-    });
+  window.addEventListener("load", () => {
+    loadProfileFromBackend();
+    renderProgressBars();
+    renderBadges();
+  });
 </script>
+
 </body>
