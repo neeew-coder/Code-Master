@@ -35,7 +35,7 @@
       </button>
     </div>
 
-        <!-- Mobile menu placed outside the flex container -->
+    <!-- Mobile menu -->
     <div class="md:hidden hidden gradient-bg" id="mobile-menu">
       <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">        
         <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
@@ -43,10 +43,6 @@
         <a href="../exercises.html" class="hover:text-gray-300 transition">Exercises</a>
         <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
         <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
-        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
-          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
-          <span id="navName"></span>
-        </div>
       </div>
       <hr>
     </div>
@@ -55,26 +51,21 @@
   <!-- Main Content -->
   <main class="py-20">
     <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Learning Dashboard</h1>
-
-      <!-- Progress Bars -->
-
-      <!-- Badges -->
-
-    <!-- Profile -->
-    <section id="profile" class="mt-12 max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
-      <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
-        <div class="flex items-center space-x-4">
-          <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
-          <div class="flex-1">
-            <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
-            <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+      <!-- Profile -->
+      <section id="profile" class="mt-12 max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
+        <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
+          <div class="flex items-center space-x-4">
+            <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
+            <div class="flex-1">
+              <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
+              <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+            </div>
           </div>
+          <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
         </div>
-        <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
-      </div>
-    </section>
+      </section>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -84,44 +75,33 @@
     </div>
   </footer>
 
+  <!-- Script -->
   <script>
     const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
-    // 🧠 Update navbar profile info
     function updateNavProfile() {
       const name = localStorage.getItem("codemasterUserName");
       if (name) {
         document.getElementById("navProfile")?.classList.remove("hidden");
-        document.getElementById("navName")?.textContent = name;
-        document.getElementById("navAvatar")?.textContent = name.charAt(0).toUpperCase();
+        document.getElementById("navName").textContent = name;
+        document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
       }
     }
 
-    // 🎨 Render profile UI
     function renderProfileUI() {
       const name = localStorage.getItem("codemasterUserName") || "";
       const tagline = localStorage.getItem("codemasterTagline") || "";
 
-      const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
-        const key = `${subject}LessonProgress`;
-        return sum + (parseInt(localStorage.getItem(key)) || 0);
-      }, 0) / Object.keys(allLessons).length;
+      const color = "bg-indigo-600"; // Static color now that progress is removed
 
-      const color = avgProgress >= 80 ? "bg-green-600"
-                  : avgProgress >= 50 ? "bg-blue-600"
-                  : "bg-purple-600";
-
-      document.getElementById("profileName")?.value = name;
-      document.getElementById("profileTagline")?.value = tagline;
+      document.getElementById("profileName").value = name;
+      document.getElementById("profileTagline").value = tagline;
 
       const avatar = document.getElementById("profileAvatar");
-      if (avatar) {
-        avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-        avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
-      }
+      avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+      avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
     }
 
-    // 📡 Load profile from backend
     function loadProfileFromBackend() {
       fetch(`${API_BASE}/profile/me`, {
         credentials: "include"
@@ -129,14 +109,13 @@
         .then(res => {
           if (res.status === 401) {
             alert("Session expired. Redirecting to login...");
-            window.location.href = "/auth.html";
+            window.location.href = "/auth/login";
             return;
           }
           if (!res.ok) throw new Error(`Server responded with ${res.status}`);
           return res.json();
         })
         .then(data => {
-          console.log("✅ Profile data received:", data);
           if (data?.username) {
             localStorage.setItem("codemasterUserName", data.username);
             localStorage.setItem("codemasterTagline", data.bio || "");
@@ -145,21 +124,15 @@
           }
         })
         .catch(err => {
-          console.warn("⚠️ Failed to load profile from backend:", err.message || err);
+          console.warn("⚠️ Failed to load profile:", err);
           alert("Unable to load profile. Please sign in again.");
-          window.location.href = "/auth.html";
+          window.location.href = "/auth/login";
         });
     }
 
-    // 💾 Save profile to backend
     function saveProfile() {
-      const name = document.getElementById("profileName")?.value.trim();
-      const tagline = document.getElementById("profileTagline")?.value.trim();
-
-      if (!name || name.length < 2) {
-        alert("Please enter a valid name.");
-        return;
-      }
+      const name = document.getElementById("profileName").value.trim();
+      const tagline = document.getElementById("profileTagline").value.trim();
 
       localStorage.setItem("codemasterUserName", name);
       localStorage.setItem("codemasterTagline", tagline);
@@ -167,16 +140,12 @@
       renderProfileUI();
 
       const button = document.getElementById("saveBtn");
-      if (button) {
-        button.disabled = true;
-        button.textContent = "Saving...";
-      }
+      button.disabled = true;
+      button.textContent = "Saving...";
 
       fetch(`${API_BASE}/profile/me`, {
         method: "PUT",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({ username: name, bio: tagline })
       })
@@ -185,22 +154,19 @@
           return res.json();
         })
         .then(data => {
-          console.log("✅ Profile synced with backend:", data);
+          console.log("✅ Profile synced:", data);
           alert("Profile saved and synced!");
         })
         .catch(err => {
-          console.error("❌ Profile sync failed:", err.message || err);
-          alert("Failed to sync profile with server.");
+          console.error("❌ Sync failed:", err);
+          alert("Failed to sync profile.");
         })
         .finally(() => {
-          if (button) {
-            button.disabled = false;
-            button.textContent = "Save Profile";
-          }
+          button.disabled = false;
+          button.textContent = "Save Profile";
         });
     }
 
-    // 🚪 Logout
     function signOut() {
       fetch(`${API_BASE}/auth/logout`, {
         method: "POST",
@@ -208,72 +174,31 @@
       })
         .then(() => {
           localStorage.clear();
-          window.location.href = "/auth.html";
+          window.location.href = "/auth/login";
         })
         .catch(err => {
-          console.error("❌ Logout failed:", err.message || err);
+          console.error("❌ Logout failed:", err);
           alert("Could not log out. Try again.");
         });
     }
 
-    // 📊 Render progress bars
-    function renderProgressBars() {
-      Object.keys(allLessons).forEach(subject => {
-        const key = `${subject}LessonProgress`;
-        const progress = parseInt(localStorage.getItem(key)) || 0;
-        const bar = document.getElementById(`${subject}-progress-bar`);
-        const label = document.getElementById(`${subject}-progress-label`);
-
-        if (bar) bar.style.width = `${progress}%`;
-        if (label) label.textContent = `${progress}%`;
-      });
-    }
-
-    // 🏅 Render badges
-    function renderBadges() {
-      const badgeContainer = document.getElementById("badgeContainer");
-      const badges = JSON.parse(localStorage.getItem("codemasterBadges") || "[]");
-
-      if (!badgeContainer) return;
-
-      badgeContainer.innerHTML = "";
-
-      if (badges.length === 0) {
-        badgeContainer.textContent = "No badges earned yet.";
-        return;
-      }
-
-      badges.forEach(badge => {
-        const badgeEl = document.createElement("div");
-        badgeEl.className = "badge-item bg-yellow-300 text-black px-2 py-1 rounded-full m-1 text-sm font-semibold";
-        badgeEl.textContent = badge;
-        badgeContainer.appendChild(badgeEl);
-      });
-    }
-
-    // 📱 Mobile menu toggle
     document.addEventListener("DOMContentLoaded", () => {
       const toggleBtn = document.getElementById("menu-toggle");
       const menuIcon = document.getElementById("menu-icon");
       const mobileMenu = document.getElementById("mobile-menu");
 
-      toggleBtn?.addEventListener("click", () => {
-        mobileMenu?.classList.toggle("hidden");
-        menuIcon?.classList.toggle("fa-bars");
-        menuIcon?.classList.toggle("fa-times");
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
       });
     });
 
-    // 🚀 Init on page load
     window.addEventListener("load", () => {
       loadProfileFromBackend();
-      setTimeout(() => {
-        updateNavProfile();
-        renderProfileUI();
-        renderProgressBars();
-        renderBadges();
-      }, 100);
+      updateNavProfile();
+      renderProfileUI();
     });
-  </script> 
+  </script>
 </body>
 </html>
