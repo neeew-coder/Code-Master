@@ -48,57 +48,68 @@
     </div>
   </nav>
 
-  <main class="dashboard">
-    <div class="mainContainer">
+  <main class="dashboard pt-24">
+    <div class="mainContainer max-w-3xl mx-auto px-4">
       <!-- Profile Section -->
-      <section class="profile">
-        <h2>Your Profile</h2>
-        <div class="avatar"></div>
-        <input type="text" placeholder="Your Name" class="input" />
-        <input type="text" placeholder="Your Tagline" class="input" />
-        <button class="save-btn">Save Profile</button>
+      <section class="profile mb-10" id="profile">
+        <h2 class="text-2xl font-bold mb-4">Your Profile</h2>
+        <div id="profileAvatar" class="avatar bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold mb-4">?</div>
+        <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 p-2 border rounded" />
+        <input id="profileTagline" type="text" placeholder="Your Tagline" class="input w-full mb-3 p-2 border rounded" />
+        <button id="saveBtn" class="save-btn bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
       </section>
 
       <!-- Progress Section -->
       <section class="progress">
-        <h2>Your Progress</h2>
+        <h2 class="text-2xl font-bold mb-4">Your Progress</h2>
 
-        <div class="progress-item">
-          <label>HTML Progress</label>
-          <span class="percent html">0% Completed</span>
-          <div class="bar"><div class="fill html"></div></div>
+        <div class="progress-item mb-4" data-subject="html">
+          <label class="block font-semibold">HTML Progress</label>
+          <span class="progress-label html text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill html bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          </div>
         </div>
 
-        <div class="progress-item">
-          <label>CSS Progress</label>
-          <span class="percent css">0% Completed</span>
-          <div class="bar"><div class="fill css"></div></div>
+        <div class="progress-item mb-4" data-subject="css">
+          <label class="block font-semibold">CSS Progress</label>
+          <span class="progress-label css text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill css bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          </div>
         </div>
 
-        <div class="progress-item">
-          <label>JavaScript Progress</label>
-          <span class="percent js">0% Completed</span>
-          <div class="bar"><div class="fill js"></div></div>
+        <div class="progress-item mb-4" data-subject="javascript">
+          <label class="block font-semibold">JavaScript Progress</label>
+          <span class="progress-label js text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill js bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          </div>
         </div>
 
-        <div class="progress-item">
-          <label>Java Progress</label>
-          <span class="percent java">0% Completed</span>
-          <div class="bar"><div class="fill java"></div></div>
+        <div class="progress-item mb-4" data-subject="java">
+          <label class="block font-semibold">Java Progress</label>
+          <span class="progress-label java text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill java bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          </div>
         </div>
 
-        <div class="progress-item">
-          <label>C# Progress</label>
-          <span class="percent csharp">0% Completed</span>
-          <div class="bar"><div class="fill csharp"></div></div>
+        <div class="progress-item mb-4" data-subject="csharp">
+          <label class="block font-semibold">C# Progress</label>
+          <span class="progress-label csharp text-sm text-gray-600">0% Completed</span>
+          <div class="bar bg-gray-200 h-4 rounded mt-1">
+            <div class="progress-bar fill csharp bg-indigo-600 h-4 rounded" style="width: 0%"></div>
+          </div>
         </div>
       </section>
     </div>
   </main>
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-10 mt-6"></footer>
+
+  <footer class="bg-gray-900 text-white py-10 mt-6 text-center">
+    <p>&copy; 2025 CodeMaster. All rights reserved.</p>
+  </footer>
 
   <script src="script.js"></script>
-
 </body>
 </html>
