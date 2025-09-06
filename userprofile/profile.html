@@ -9,91 +9,87 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-50 font-sans">
-
-  <!-- Navigation -->
-  <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg">
-    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-      <div class="flex items-center space-x-4">
-        <div class="flex items-center space-x-2">
-          <i class="fas fa-code text-2xl"></i>
-          <span class="text-xl font-bold">CodeMaster</span>
-        </div>
-        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
-          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
-          <span id="navName"></span>
-        </div>
-      </div>
-      <div class="hidden md:flex space-x-6">
-        <a href="../index.html">Home</a>        
-        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
-        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
-        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
-      </div>
-      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
-        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
-      </button>
-    </div>
-
-        <!-- Mobile menu placed outside the flex container -->
-    <div class="md:hidden hidden gradient-bg" id="mobile-menu">
-      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">        
-        <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="../lessons.html" class="hover:text-gray-300 transition">Lessons</a>
-        <a href="../exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
-        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
-        <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
-          <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
-          <span id="navName"></span>
-        </div>
-      </div>
-      <hr>
-    </div>
-  </nav>
-
-  <!-- Main Content -->
-  <main class="py-20">
-    <div class="container mx-auto px-4 max-w-4xl">
-      <h1 class="text-3xl font-bold mb-8 text-purple-700">Your Learning Dashboard</h1>
-
-      <!-- Progress Overview -->
-      <section class="mb-12">
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
-        <div class="space-y-6">
-          <div id="progressBars"></div>
-        </div>
-      </section>
-
-      <!-- Badges -->
-      <section>
-        <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
-        <div id="badgeContainer" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
-      </section>
-    </div>
-
-    <!-- Profile -->
-    <section id="profile" class="mt-12 max-w-4xl mx-auto px-4">
-      <h2 class="text-3xl font-bold mb-6 text-indigo-700">Your Profile</h2>
-      <div class="bg-white shadow-md rounded-lg p-6 space-y-4">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-600 to-indigo-600 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center space-x-4">
-          <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
-          <div class="flex-1">
-            <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
-            <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+          <div class="flex items-center space-x-2">
+            <i class="fas fa-code text-2xl"></i>
+            <span class="text-xl font-bold">CodeMaster</span>
+          </div>
+          <div id="navProfile" class="hidden md:flex items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold">
+            <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+            <span id="navName"></span>
           </div>
         </div>
-        <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Save Profile</button>
+        <div class="hidden md:flex space-x-6 items-center">
+          <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
+          <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+          <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+          <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
+          <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
+        </div>
+        <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+          <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+        </button>
       </div>
-    </section>
-  </main>
 
-  <!-- Footer -->
-  <footer class="bg-gray-900 text-white py-12 mt-16">
-    <div class="container mx-auto px-4 text-center">
-      <p class="text-gray-400">&copy; 2025 CodeMaster. Built by Mark.</p>
-    </div>
-  </footer>
+      <!-- Mobile Menu -->
+      <div class="md:hidden hidden bg-gradient-to-b from-purple-600 to-indigo-600" id="mobile-menu">
+        <div class="px-4 py-4 space-y-4 text-center">
+          <a href="../index.html" class="block hover:text-gray-300 transition">Home</a>
+          <a href="../lessons.html" class="block hover:text-gray-300 transition">Lessons</a>
+          <a href="../exercises.html" class="block hover:text-gray-300 transition">Exercises</a>
+          <a href="#profile" class="block hover:text-gray-200 transition underline">Profile</a>
+          <a href="#" onclick="signOut()" class="block hover:text-red-300 transition">Sign Out</a>
+          <div id="navProfile" class="flex justify-center items-center space-x-2 bg-white text-purple-600 px-3 py-1 rounded-full font-semibold mx-auto w-fit">
+            <span id="navAvatar" class="rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+            <span id="navName"></span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-24 pb-16">
+      <div class="container mx-auto px-4 max-w-4xl">
+        <h1 class="text-3xl font-bold mb-8 text-purple-700 text-center">Your Learning Dashboard</h1>
+
+        <!-- Progress Overview -->
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold mb-4 text-gray-700">Lesson Progress</h2>
+          <div id="progressBars" class="space-y-6"></div>
+        </section>
+
+        <!-- Badges -->
+        <section>
+          <h2 class="text-xl font-semibold mb-4 text-gray-700">Earned Badges</h2>
+          <div id="badgeContainer" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6"></div>
+        </section>
+      </div>
+
+      <!-- Profile -->
+      <section id="profile" class="mt-16 max-w-4xl mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-6 text-indigo-700 text-center">Your Profile</h2>
+        <div class="bg-white shadow-md rounded-lg p-6 space-y-6">
+          <div class="flex items-center space-x-4">
+            <div id="profileAvatar" class="text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold"></div>
+            <div class="flex-1">
+              <input id="profileName" type="text" placeholder="Your Name" class="border px-3 py-2 rounded w-full" />
+              <input id="profileTagline" type="text" placeholder="Your Tagline" class="border px-3 py-2 rounded w-full mt-2" />
+            </div>
+          </div>
+          <button id="saveBtn" onclick="saveProfile()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 w-full sm:w-auto">Save Profile</button>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 mt-16">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-gray-400">&copy; 2025 CodeMaster. Built by Mark.</p>
+      </div>
+    </footer>
 
 <script>
   const API_BASE = "https://code-master-kk2m.onrender.com/api";
@@ -291,3 +287,4 @@
     });
 </script>
 </body>
+</html>
