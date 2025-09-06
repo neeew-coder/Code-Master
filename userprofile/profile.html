@@ -84,156 +84,196 @@
     </div>
   </footer>
 
-<script>
-  const API_BASE = "https://code-master-kk2m.onrender.com/api";
+  <script>
+    const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
-  function updateNavProfile() {
-    const name = localStorage.getItem("codemasterUserName");
-    if (name) {
-      document.getElementById("navProfile")?.classList.remove("hidden");
-      document.getElementById("navName")?.textContent = name;
-      document.getElementById("navAvatar")?.textContent = name.charAt(0).toUpperCase();
+    // 🧠 Update navbar profile info
+    function updateNavProfile() {
+      const name = localStorage.getItem("codemasterUserName");
+      if (name) {
+        document.getElementById("navProfile")?.classList.remove("hidden");
+        document.getElementById("navName")?.textContent = name;
+        document.getElementById("navAvatar")?.textContent = name.charAt(0).toUpperCase();
+      }
     }
-  }
 
-  function renderProfileUI() {
-    const name = localStorage.getItem("codemasterUserName") || "";
-    const tagline = localStorage.getItem("codemasterTagline") || "";
+    // 🎨 Render profile UI
+    function renderProfileUI() {
+      const name = localStorage.getItem("codemasterUserName") || "";
+      const tagline = localStorage.getItem("codemasterTagline") || "";
 
-    const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
-      const key = `${subject}LessonProgress`;
-      return sum + (parseInt(localStorage.getItem(key)) || 0);
-    }, 0) / Object.keys(allLessons).length;
+      const avgProgress = Object.keys(allLessons).reduce((sum, subject) => {
+        const key = `${subject}LessonProgress`;
+        return sum + (parseInt(localStorage.getItem(key)) || 0);
+      }, 0) / Object.keys(allLessons).length;
 
-    const color = avgProgress >= 80 ? "bg-green-600"
-                : avgProgress >= 50 ? "bg-blue-600"
-                : "bg-purple-600";
+      const color = avgProgress >= 80 ? "bg-green-600"
+                  : avgProgress >= 50 ? "bg-blue-600"
+                  : "bg-purple-600";
 
-    const nameInput = document.getElementById("profileName");
-    const taglineInput = document.getElementById("profileTagline");
-    const avatar = document.getElementById("profileAvatar");
+      document.getElementById("profileName")?.value = name;
+      document.getElementById("profileTagline")?.value = tagline;
 
-    if (nameInput) nameInput.value = name;
-    if (taglineInput) taglineInput.value = tagline;
-    if (avatar) {
-      avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-      avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+      const avatar = document.getElementById("profileAvatar");
+      if (avatar) {
+        avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+        avatar.className = `${color} text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+      }
     }
-  }
 
-  function loadProfileFromBackend() {
-    fetch(`${API_BASE}/profile/me`, {
-      credentials: "include"
-    })
-      .then(res => {
-        if (res.status === 401) {
-          alert("Session expired. Redirecting to login...");
+    // 📡 Load profile from backend
+    function loadProfileFromBackend() {
+      fetch(`${API_BASE}/profile/me`, {
+        credentials: "include"
+      })
+        .then(res => {
+          if (res.status === 401) {
+            alert("Session expired. Redirecting to login...");
+            window.location.href = "/auth.html";
+            return;
+          }
+          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          console.log("✅ Profile data received:", data);
+          if (data?.username) {
+            localStorage.setItem("codemasterUserName", data.username);
+            localStorage.setItem("codemasterTagline", data.bio || "");
+            updateNavProfile();
+            renderProfileUI();
+          }
+        })
+        .catch(err => {
+          console.warn("⚠️ Failed to load profile from backend:", err.message || err);
+          alert("Unable to load profile. Please sign in again.");
           window.location.href = "/auth.html";
-          return;
-        }
-        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        console.log("✅ Profile data received:", data);
-        if (data?.username) {
-          localStorage.setItem("codemasterUserName", data.username);
-          localStorage.setItem("codemasterTagline", data.bio || "");
-          updateNavProfile();
-          renderProfileUI();
-        }
-      })
-      .catch(err => {
-        console.warn("⚠️ Failed to load profile from backend:", err.message || err);
-        alert("Unable to load profile. Please sign in again.");
-        window.location.href = "/auth.html";
-      });
-  }
-
-  function saveProfile() {
-    const name = document.getElementById("profileName")?.value.trim();
-    const tagline = document.getElementById("profileTagline")?.value.trim();
-
-    if (!name || name.length < 2) {
-      alert("Please enter a valid name.");
-      return;
+        });
     }
 
-    localStorage.setItem("codemasterUserName", name);
-    localStorage.setItem("codemasterTagline", tagline);
-    updateNavProfile();
-    renderProfileUI();
+    // 💾 Save profile to backend
+    function saveProfile() {
+      const name = document.getElementById("profileName")?.value.trim();
+      const tagline = document.getElementById("profileTagline")?.value.trim();
 
-    const button = document.getElementById("saveBtn");
-    if (button) {
-      button.disabled = true;
-      button.textContent = "Saving...";
-    }
+      if (!name || name.length < 2) {
+        alert("Please enter a valid name.");
+        return;
+      }
 
-    fetch(`${API_BASE}/profile/me`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      credentials: "include",
-      body: JSON.stringify({ username: name, bio: tagline })
-    })
-      .then(res => {
-        if (!res.ok) throw new Error(`Server responded with ${res.status}`);
-        return res.json();
-      })
-      .then(data => {
-        console.log("✅ Profile synced with backend:", data);
-        alert("Profile saved and synced!");
-      })
-      .catch(err => {
-        console.error("❌ Profile sync failed:", err.message || err);
-        alert("Failed to sync profile with server.");
-      })
-      .finally(() => {
-        if (button) {
-          button.disabled = false;
-          button.textContent = "Save Profile";
-        }
-      });
-  }
-
-  function signOut() {
-    fetch(`${API_BASE}/auth/logout`, {
-      method: "POST",
-      credentials: "include"
-    })
-      .then(() => {
-        localStorage.clear();
-        window.location.href = "/auth.html";
-      })
-      .catch(err => {
-        console.error("❌ Logout failed:", err.message || err);
-        alert("Could not log out. Try again.");
-      });
-  }
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.getElementById("menu-toggle");
-    const menuIcon = document.getElementById("menu-icon");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    toggleBtn?.addEventListener("click", () => {
-      mobileMenu?.classList.toggle("hidden");
-      menuIcon?.classList.toggle("fa-bars");
-      menuIcon?.classList.toggle("fa-times");
-    });
-  });
-
-  window.addEventListener("load", () => {
-    loadProfileFromBackend();
-    setTimeout(() => {
+      localStorage.setItem("codemasterUserName", name);
+      localStorage.setItem("codemasterTagline", tagline);
       updateNavProfile();
       renderProfileUI();
-    }, 100);
-    renderProgressBars();
-    renderBadges();
-  });
-</script> 
+
+      const button = document.getElementById("saveBtn");
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Saving...";
+      }
+
+      fetch(`${API_BASE}/profile/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        credentials: "include",
+        body: JSON.stringify({ username: name, bio: tagline })
+      })
+        .then(res => {
+          if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          console.log("✅ Profile synced with backend:", data);
+          alert("Profile saved and synced!");
+        })
+        .catch(err => {
+          console.error("❌ Profile sync failed:", err.message || err);
+          alert("Failed to sync profile with server.");
+        })
+        .finally(() => {
+          if (button) {
+            button.disabled = false;
+            button.textContent = "Save Profile";
+          }
+        });
+    }
+
+    // 🚪 Logout
+    function signOut() {
+      fetch(`${API_BASE}/auth/logout`, {
+        method: "POST",
+        credentials: "include"
+      })
+        .then(() => {
+          localStorage.clear();
+          window.location.href = "/auth.html";
+        })
+        .catch(err => {
+          console.error("❌ Logout failed:", err.message || err);
+          alert("Could not log out. Try again.");
+        });
+    }
+
+    // 📊 Render progress bars
+    function renderProgressBars() {
+      Object.keys(allLessons).forEach(subject => {
+        const key = `${subject}LessonProgress`;
+        const progress = parseInt(localStorage.getItem(key)) || 0;
+        const bar = document.getElementById(`${subject}-progress-bar`);
+        const label = document.getElementById(`${subject}-progress-label`);
+
+        if (bar) bar.style.width = `${progress}%`;
+        if (label) label.textContent = `${progress}%`;
+      });
+    }
+
+    // 🏅 Render badges
+    function renderBadges() {
+      const badgeContainer = document.getElementById("badgeContainer");
+      const badges = JSON.parse(localStorage.getItem("codemasterBadges") || "[]");
+
+      if (!badgeContainer) return;
+
+      badgeContainer.innerHTML = "";
+
+      if (badges.length === 0) {
+        badgeContainer.textContent = "No badges earned yet.";
+        return;
+      }
+
+      badges.forEach(badge => {
+        const badgeEl = document.createElement("div");
+        badgeEl.className = "badge-item bg-yellow-300 text-black px-2 py-1 rounded-full m-1 text-sm font-semibold";
+        badgeEl.textContent = badge;
+        badgeContainer.appendChild(badgeEl);
+      });
+    }
+
+    // 📱 Mobile menu toggle
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("hidden");
+        menuIcon?.classList.toggle("fa-bars");
+        menuIcon?.classList.toggle("fa-times");
+      });
+    });
+
+    // 🚀 Init on page load
+    window.addEventListener("load", () => {
+      loadProfileFromBackend();
+      setTimeout(() => {
+        updateNavProfile();
+        renderProfileUI();
+        renderProgressBars();
+        renderBadges();
+      }, 100);
+    });
+  </script> 
 </body>
 </html>
