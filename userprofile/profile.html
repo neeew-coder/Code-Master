@@ -240,7 +240,7 @@
       if (bar) bar.style.width = `${percent}%`;
       if (label) label.textContent = `${percent}% Completed`;
     }
-
+        
     function loadProgressFor(subject) {
       fetch(`${API_BASE}/progress/${subject}`, {
         method: "GET",
@@ -253,7 +253,12 @@
             .filter(([_, isDone]) => isDone)
             .map(([lessonId]) => lessonId);
 
-          const totalModules = data?.progress?.totalModules || 1;
+          const totalModules = data?.progress?.totalModules;
+
+          if (typeof totalModules !== "number" || totalModules <= 0) {
+            console.warn(`⚠️ Invalid totalModules for ${subject}.`);
+            return;
+          }
 
           updateUIWithProgress({ completed, totalModules, subject });
         })
