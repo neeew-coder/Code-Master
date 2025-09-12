@@ -211,6 +211,7 @@ body {
           <div class="bg-orange-600 h-2 w-[0%] rounded-full transition-all duration-500" id="progress-bar"></div>
         </div>
       </div>
+      <div class="badge mt-2 inline-block px-3 py-1 text-xs font-semibold text-white rounded-full bg-gray-300">Rookie</div>
     </section>
 
   </main>
@@ -233,11 +234,18 @@ body {
     const subject = document.body.dataset.subject || "html";
     const API_BASE = "https://code-master-kk2m.onrender.com";
 
+    function getBadgeInfo(percent) {
+      if (percent === 100) return { label: "Master", class: "bg-green-600" };
+      if (percent >= 75) return { label: "Expert", class: "bg-purple-600" };
+      if (percent >= 50) return { label: "Achiever", class: "bg-blue-500" };
+      if (percent >= 25) return { label: "Learner", class: "bg-yellow-400" };
+      return { label: "Rookie", class: "bg-gray-300" };
+    }
+
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
       if (!container) return;
 
-      // Highlight active button
       document.querySelectorAll(`#${subject}Sidebar button[data-lesson]`).forEach(btn => {
         btn.classList.remove("active", "bg-orange-100", "font-semibold", "text-orange-700");
         btn.classList.add("text-orange-600");
@@ -249,7 +257,6 @@ body {
         activeBtn.classList.remove("text-orange-600");
       }
 
-      // Show loading state
       container.innerHTML = `
         <div class="text-center py-10 text-gray-300 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -257,7 +264,6 @@ body {
         </div>
       `;
 
-      // Fetch lesson content
       fetch(`lessons/${subject}/${lessonId}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
@@ -287,14 +293,10 @@ body {
     }
 
     function updateProgress(subject, lessonId) {
-      console.log("Sending progress update:", { subject, lessonId });
-
       fetch(`${API_BASE}/api/progress/update`, {
         method: "POST",
         credentials: "include",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ subject, lesson: lessonId })
       })
       .then(res => {
@@ -302,8 +304,6 @@ body {
         return res.json();
       })
       .then(data => {
-        console.log("Progress response:", data);
-
         const subjectProgress = data?.progress?.completed?.[subject] || {};
         const completed = Object.entries(subjectProgress)
           .filter(([_, isDone]) => isDone)
@@ -333,8 +333,6 @@ body {
         return res.json();
       })
       .then(data => {
-        console.log("Progress response:", data);
-
         const subjectProgress = data?.progress?.completed?.[subject] || {};
         const completed = Object.entries(subjectProgress)
           .filter(([_, isDone]) => isDone)
@@ -363,6 +361,13 @@ body {
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
       });
+
+      const badge = document.querySelector(".progress-badge");
+      if (badge) {
+        const { label: badgeLabel, class: badgeClass } = getBadgeInfo(percent);
+        badge.textContent = badgeLabel;
+        badge.className = `progress-badge inline-block px-3 py-1 text-xs font-semibold text-white rounded-full ${badgeClass}`;
+      }
     }
 
     function scrollToTop() {
