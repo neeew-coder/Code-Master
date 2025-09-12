@@ -376,8 +376,12 @@ body {
       const badge = document.querySelector(".progress-badge");
       if (badge) {
         const { label: badgeLabel, class: badgeClass } = getBadgeInfo(percent);
-        badge.textContent = badgeLabel;
-        badge.className = `progress-badge inline-block px-3 py-1 text-xs font-mono font-semibold text-white rounded-full ${badgeClass}`;
+        badge.innerHTML = `
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current HTML mastery level">
+            <i class="fas fa-code text-white opacity-80"></i>
+            ${badgeLabel}
+          </span>
+        `;
       }
     }
 
