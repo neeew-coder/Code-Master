@@ -208,6 +208,7 @@ body {
         <button onclick="loadModule('intro')" class="bg-blue-600 text-white px-6 py-2 rounded-full font-bold hover:bg-blue-700 transition shadow-md">Start Styling</button>
         <a href="userprofile/profile.html" class="bg-indigo-700 text-white px-6 py-2 rounded-full font-bold hover:bg-indigo-800 transition shadow-md">View Dashboard</a>
         <span class="progress-badge inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 bg-gray-400">
+         <div class="progress-badge mt-2"></div>         
           <i class="fas fa-code text-white opacity-80"></i>
           &lt;div dabbler&gt;
         </span>
@@ -357,6 +358,17 @@ body {
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
       });
+
+      const badge = document.querySelector(".progress-badge");
+      if (badge) {
+        const { label: badgeLabel, class: badgeClass } = getBadgeInfo(percent);
+        badge.innerHTML = `
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current CSS mastery level">
+            <i class="fas fa-paint-brush text-white opacity-80"></i>
+            ${badgeLabel}
+          </span>
+        `;
+      }
     }
 
     function scrollToTop() {
