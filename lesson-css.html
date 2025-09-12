@@ -297,7 +297,7 @@ body {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = data?.progress?.totalModules;
+        const totalModules = data?.progress?.totalModules || 1;
         if (typeof totalModules !== "number" || totalModules <= 0) {
           console.warn(`⚠️ Invalid totalModules for ${subject}.`);
           return;
@@ -330,7 +330,7 @@ body {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = data?.progress?.totalModules;
+        const totalModules = data?.progress?.totalModules || 1;
         if (typeof totalModules !== "number" || totalModules <= 0) {
           console.warn(`⚠️ Invalid totalModules for ${subject}.`);
           return;

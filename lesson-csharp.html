@@ -308,7 +308,7 @@ class Program {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = getTotalModules(data.totalModules);
+        const totalModules = data?.progress?.totalModules || 1;
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {
@@ -336,7 +336,7 @@ class Program {
           .filter(([_, isDone]) => isDone)
           .map(([lessonId]) => lessonId);
 
-        const totalModules = getTotalModules(data.totalModules);
+        const totalModules = data?.progress?.totalModules || 1;
         updateUIWithProgress({ completed, totalModules });
 
         completed.forEach(id => {

@@ -343,8 +343,8 @@
             .filter(([_, isDone]) => isDone)
             .map(([id]) => id);
 
-          const totalModules = typeof data.totalModules === "number" && data.totalModules > 0
-            ? data.totalModules
+          const totalModules = typeof data.progress?.totalModules === "number" && data.progress.totalModules > 0
+            ? data.progress.totalModules
             : cachedTotalModules;
 
           updateUIWithProgress({ completed, totalModules });
