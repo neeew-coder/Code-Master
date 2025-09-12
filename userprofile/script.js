@@ -194,7 +194,7 @@ function renderBadgeGallery(allProgress) {
 
     const badgeHTML = `
       <div>
-        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery">
+        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery level">
           <i class="fas ${icon} text-white opacity-80"></i>
           ${escapedLabel}
         </span>
