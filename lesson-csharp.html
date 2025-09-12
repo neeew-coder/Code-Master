@@ -242,18 +242,6 @@ class Program {
     const API_BASE = "https://code-master-kk2m.onrender.com";
     let cachedTotalModules = 0;
 
-    function getBadgeInfo(percent) {
-      if (subject === "csharp") {
-        if (percent === 100) return { label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" };
-        if (percent >= 75) return { label: "LINQ luminary", class: "bg-purple-600", icon: "fa-filter" };
-        if (percent >= 50) return { label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" };
-        if (percent >= 25) return { label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" };
-        return { label: "namespace newbie", class: "bg-gray-400", icon: "fa-cube" };
-      }
-
-      return { label: "Learner", class: "bg-gray-300", icon: "fa-user" };
-    }
-
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
       if (!container) return;
