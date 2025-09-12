@@ -270,10 +270,7 @@
         <a href="userprofile/profile.html" class="bg-yellow-900 text-white px-6 py-2 rounded-full font-bold hover:bg-yellow-800 transition shadow-md">
           View Dashboard
         </a>
-        <span class="progress-badge inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 bg-gray-400">
-          <i class="fas fa-bolt text-white opacity-80"></i>
-          function fledgling
-        </span>
+        <div class="progress-badge mt-2"></div>
       </div>
 
       <!-- Progress Bar -->
@@ -359,7 +356,10 @@
     }
 
     function updateUIWithProgress({ completed, totalModules }) {
-      const percent = Math.min(100, Math.round((completed.length / totalModules) * 100));
+      const percent = totalModules > 0
+        ? Math.min(100, Math.round((completed.length / totalModules) * 100))
+        : 0;
+
       document.getElementById("progress-bar").style.width = `${percent}%`;
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
@@ -367,9 +367,9 @@
 
       const badge = document.querySelector(".progress-badge");
       if (badge) {
-        const { label: badgeLabel, class: badgeClass, icon } = getBadgeInfo(percent);
+        const { label: badgeLabel, class: badgeClass, icon = "fa-user" } = getBadgeInfo(percent);
         badge.innerHTML = `
-          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current JavaScript mastery level">
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current ${subject.toUpperCase()} mastery level">
             <i class="fas ${icon} text-white opacity-80"></i>
             ${badgeLabel}
           </span>

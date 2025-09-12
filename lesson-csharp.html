@@ -376,9 +376,9 @@ class Program {
 
       const badge = document.querySelector(".progress-badge");
       if (badge) {
-        const { label: badgeLabel, class: badgeClass, icon } = getBadgeInfo(percent);
+        const { label: badgeLabel, class: badgeClass, icon = "fa-user" } = getBadgeInfo(percent);
         badge.innerHTML = `
-          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current C# mastery level">
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current ${subject.toUpperCase()} mastery level">
             <i class="fas ${icon} text-white opacity-80"></i>
             ${badgeLabel}
           </span>
