@@ -2,38 +2,49 @@ const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
 // ─── Badge Definitions ─────────────────────────────────────────────────────────
 
-const badgeMap = {
-  html: {
-    intro: { label: "<div dabbler>", class: "bg-gray-400", icon: "fa-code" },
-    forms: { label: "<form fluent>", class: "bg-purple-600", icon: "fa-code" },
-    layout: { label: "<section starter>", class: "bg-yellow-400", icon: "fa-code" },
-    media: { label: "<figure friend>", class: "bg-blue-500", icon: "fa-image" },
-    entities: { label: "&amp; artist", class: "bg-pink-500", icon: "fa-font" },
-    responsive: { label: "<meta master>", class: "bg-indigo-600", icon: "fa-mobile-screen" }
-  },
-  css: {
-    selectors: { label: ".selector scout", class: "bg-gray-400", icon: "fa-paint-brush" },
-    grid: { label: ".grid guru", class: "bg-purple-600", icon: "fa-border-style" },
-    flexbox: { label: ".flexbox fighter", class: "bg-blue-500", icon: "fa-layer-group" },
-    colors: { label: ".palette pro", class: "bg-pink-500", icon: "fa-droplet" },
-    backgrounds: { label: ".canvas crafter", class: "bg-green-600", icon: "fa-image" }
-  },
-  javascript: {
-    events: { label: "event wrangler", class: "bg-yellow-400", icon: "fa-mouse-pointer" },
-    promises: { label: "promise pilot", class: "bg-purple-600", icon: "fa-rocket" },
-    callbacks: { label: "callback captain", class: "bg-blue-500", icon: "fa-sync-alt" }
-  },
-  java: {
-    classes: { label: "class crawler", class: "bg-gray-400", icon: "fa-cube" },
-    inheritance: { label: "inheritance initiator", class: "bg-purple-600", icon: "fa-project-diagram" },
-    methods: { label: "method mapper", class: "bg-yellow-400", icon: "fa-code-branch" }
-  },
-  csharp: {
-    interfaces: { label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" },
-    delegates: { label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" },
-    runtime: { label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" }
+function getBadgeInfo(subject, percent) {
+  if (subject === "html") {
+    if (percent === 100) return { label: "<html hero>", class: "bg-green-600", icon: "fa-code" };
+    if (percent >= 75) return { label: "<form fluent>", class: "bg-purple-600", icon: "fa-code" };
+    if (percent >= 50) return { label: "<article author>", class: "bg-blue-500", icon: "fa-code" };
+    if (percent >= 25) return { label: "<section starter>", class: "bg-yellow-400", icon: "fa-code" };
+    return { label: "<div dabbler>", class: "bg-gray-400", icon: "fa-code" };
   }
-};
+
+  if (subject === "css") {
+    if (percent === 100) return { label: ".style sorcerer", class: "bg-green-600", icon: "fa-paint-brush" };
+    if (percent >= 75) return { label: ".grid guru", class: "bg-purple-600", icon: "fa-border-style" };
+    if (percent >= 50) return { label: ".flexbox fighter", class: "bg-blue-500", icon: "fa-layer-group" };
+    if (percent >= 25) return { label: ".box-model builder", class: "bg-yellow-400", icon: "fa-ruler-combined" };
+    return { label: ".selector scout", class: "bg-gray-400", icon: "fa-paint-brush" };
+  }
+
+  if (subject === "javascript") {
+    if (percent === 100) return { label: "async overlord", class: "bg-green-600", icon: "fa-infinity" };
+    if (percent >= 75) return { label: "promise pilot", class: "bg-purple-600", icon: "fa-rocket" };
+    if (percent >= 50) return { label: "callback captain", class: "bg-blue-500", icon: "fa-sync-alt" };
+    if (percent >= 25) return { label: "event wrangler", class: "bg-yellow-400", icon: "fa-mouse-pointer" };
+    return { label: "function fledgling", class: "bg-gray-400", icon: "fa-bolt" };
+  }
+
+  if (subject === "java") {
+    if (percent === 100) return { label: "runtime ruler", class: "bg-green-600", icon: "fa-cogs" };
+    if (percent >= 75) return { label: "inheritance initiator", class: "bg-purple-600", icon: "fa-project-diagram" };
+    if (percent >= 50) return { label: "object operator", class: "bg-blue-500", icon: "fa-object-group" };
+    if (percent >= 25) return { label: "method mapper", class: "bg-yellow-400", icon: "fa-code-branch" };
+    return { label: "class crawler", class: "bg-gray-400", icon: "fa-cube" };
+  }
+
+  if (subject === "csharp") {
+    if (percent === 100) return { label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" };
+    if (percent >= 75) return { label: "LINQ luminary", class: "bg-purple-600", icon: "fa-filter" };
+    if (percent >= 50) return { label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" };
+    if (percent >= 25) return { label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" };
+    return { label: "namespace newbie", class: "bg-gray-400", icon: "fa-cube" };
+  }
+
+  return { label: "Rookie", class: "bg-gray-300", icon: "fa-user" };
+}
 
 // ─── Profile UI ────────────────────────────────────────────────────────────────
 
@@ -174,23 +185,22 @@ function renderBadgeGallery(allProgress) {
   gallery.innerHTML = "";
 
   Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
-    Object.entries(lessons).forEach(([lessonId, isDone]) => {
-      if (!isDone) return;
+    const completedCount = Object.values(lessons).filter(Boolean).length;
+    const totalModules = allProgress.totalModules?.[subject] || 1;
+    const percent = Math.min(100, Math.round((completedCount / totalModules) * 100));
 
-      const badge = badgeMap?.[subject]?.[lessonId];
-      if (!badge) return;
+    const { label, class: badgeClass, icon } = getBadgeInfo(subject, percent);
+    const escapedLabel = label.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-      const escapedLabel = badge.label.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-      const badgeHTML = `
-        <div>
-          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badge.class}" title="${subject.toUpperCase()} - ${lessonId}">
-            <i class="fas ${badge.icon} text-white opacity-80"></i>
-            ${escapedLabel}
-          </span>
-        </div>
-      `;
-      gallery.insertAdjacentHTML("beforeend", badgeHTML);
-    });
+    const badgeHTML = `
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery">
+          <i class="fas ${icon} text-white opacity-80"></i>
+          ${escapedLabel}
+        </span>
+      </div>
+    `;
+    gallery.insertAdjacentHTML("beforeend", badgeHTML);
   });
 }
 
