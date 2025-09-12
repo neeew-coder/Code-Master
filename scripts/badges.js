@@ -1,4 +1,4 @@
-function getBadgeInfo(percent) {
+function getBadgeInfo(subject, percent) {
   if (subject === "html") {
     if (percent === 100) return { label: "<html hero>", class: "bg-green-600", icon: "fa-code" };
     if (percent >= 75) return { label: "<form fluent>", class: "bg-purple-600", icon: "fa-code" };
@@ -39,10 +39,5 @@ function getBadgeInfo(percent) {
     return { label: "namespace newbie", class: "bg-gray-400", icon: "fa-cube" };
   }
 
-  // fallback
-  if (percent === 100) return { label: "Master", class: "bg-green-600", icon: "fa-star" };
-  if (percent >= 75) return { label: "Expert", class: "bg-purple-600", icon: "fa-star-half-alt" };
-  if (percent >= 50) return { label: "Achiever", class: "bg-blue-500", icon: "fa-check" };
-  if (percent >= 25) return { label: "Learner", class: "bg-yellow-400", icon: "fa-book" };
   return { label: "Rookie", class: "bg-gray-300", icon: "fa-user" };
 }

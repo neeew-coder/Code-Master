@@ -97,7 +97,114 @@ function initProfileUI() {
   renderProfileUI();
 }
 
+// ─── Navigation ────────────────────────────────────────────────────────────────
+
+function initNavigation() {
+  const toggleBtn = document.getElementById("menu-toggle");
+  const menuIcon = document.getElementById("menu-icon");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  if (toggleBtn && menuIcon && mobileMenu) {
+    toggleBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+      menuIcon.classList.toggle("fa-bars");
+      menuIcon.classList.toggle("fa-times");
+    });
+  }
+}
+
+// ─── Auth ──────────────────────────────────────────────────────────────────────
+
+function signOut() {
+  fetch(`${API_BASE}/auth/logout`, {
+    method: "POST",
+    credentials: "include"
+  })
+    .then(() => {
+      localStorage.clear();
+      window.location.href = "/Code-Master/index.html";
+    })
+    .catch(err => {
+      console.error("❌ Logout failed:", err);
+      alert("Could not log out. Try again.");
+    });
+}
+
+// ─── Badge Logic ───────────────────────────────────────────────────────────────
+
+function getBadgeInfo(subject, percent) {
+  if (subject === "html") {
+    if (percent === 100) return { label: "<html hero>", class: "bg-green-600", icon: "fa-code" };
+    if (percent >= 75) return { label: "<form fluent>", class: "bg-purple-600", icon: "fa-code" };
+    if (percent >= 50) return { label: "<article author>", class: "bg-blue-500", icon: "fa-code" };
+    if (percent >= 25) return { label: "<section starter>", class: "bg-yellow-400", icon: "fa-code" };
+    return { label: "<div dabbler>", class: "bg-gray-400", icon: "fa-code" };
+  }
+
+  if (subject === "css") {
+    if (percent === 100) return { label: ".style sorcerer", class: "bg-green-600", icon: "fa-paint-brush" };
+    if (percent >= 75) return { label: ".grid guru", class: "bg-purple-600", icon: "fa-border-style" };
+    if (percent >= 50) return { label: ".flexbox fighter", class: "bg-blue-500", icon: "fa-layer-group" };
+    if (percent >= 25) return { label: ".box-model builder", class: "bg-yellow-400", icon: "fa-ruler-combined" };
+    return { label: ".selector scout", class: "bg-gray-400", icon: "fa-paint-brush" };
+  }
+
+  if (subject === "javascript") {
+    if (percent === 100) return { label: "async overlord", class: "bg-green-600", icon: "fa-infinity" };
+    if (percent >= 75) return { label: "promise pilot", class: "bg-purple-600", icon: "fa-rocket" };
+    if (percent >= 50) return { label: "callback captain", class: "bg-blue-500", icon: "fa-sync-alt" };
+    if (percent >= 25) return { label: "event wrangler", class: "bg-yellow-400", icon: "fa-mouse-pointer" };
+    return { label: "function fledgling", class: "bg-gray-400", icon: "fa-bolt" };
+  }
+
+  if (subject === "java") {
+    if (percent === 100) return { label: "runtime ruler", class: "bg-green-600", icon: "fa-cogs" };
+    if (percent >= 75) return { label: "inheritance initiator", class: "bg-purple-600", icon: "fa-project-diagram" };
+    if (percent >= 50) return { label: "object operator", class: "bg-blue-500", icon: "fa-object-group" };
+    if (percent >= 25) return { label: "method mapper", class: "bg-yellow-400", icon: "fa-code-branch" };
+    return { label: "class crawler", class: "bg-gray-400", icon: "fa-cube" };
+  }
+
+  if (subject === "csharp") {
+    if (percent === 100) return { label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" };
+    if (percent >= 75) return { label: "LINQ luminary", class: "bg-purple-600", icon: "fa-filter" };
+    if (percent >= 50) return { label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" };
+    if (percent >= 25) return { label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" };
+    return { label: "namespace newbie", class: "bg-gray-400", icon: "fa-cube" };
+  }
+
+  return { label: "Rookie", class: "bg-gray-300", icon: "fa-user" };
+}
+
+function renderBadgeGallery(allProgress) {
+  const gallery = document.querySelector("#badgeGallery .space-y-2");
+  if (!gallery || !allProgress?.completed) return;
+
+  gallery.innerHTML = "";
+
+  Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
+    const completedCount = Object.values(lessons).filter(Boolean).length;
+    const totalModules = allProgress.totalModules?.[subject] || 1;
+        const percent = Math.min(100, Math.round((completedCount / totalModules) * 100));
+    const { label, class: badgeClass, icon } = getBadgeInfo(subject, percent);
+    const escapedLabel = label.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    const badgeHTML = `
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} badge">
+          <i class="fas ${icon} text-white opacity-80"></i>
+          ${escapedLabel}
+        </span>
+      </div>
+    `;
+    gallery.insertAdjacentHTML("beforeend", badgeHTML);
+  });
+}
+
 // ─── Progress UI ───────────────────────────────────────────────────────────────
+
+const allProgressData = { completed: {}, totalModules: {} };
+let subjectsLoaded = 0;
 
 function updateUIWithProgress({ completed, totalModules, subject }) {
   const percent = totalModules > 0
@@ -133,6 +240,14 @@ function loadProgressFor(subject) {
       }
 
       updateUIWithProgress({ completed, totalModules, subject });
+
+      allProgressData.completed[subject] = subjectProgress;
+      allProgressData.totalModules[subject] = totalModules;
+
+      subjectsLoaded++;
+      if (subjectsLoaded === 5) {
+        renderBadgeGallery(allProgressData);
+      }
     })
     .catch(err => {
       console.warn(`Progress fetch error for ${subject}:`, err.message);
@@ -163,39 +278,6 @@ function updateProgress(subject, lessonId) {
     })
     .catch(err => {
       console.warn("Progress update error:", err.message);
-    });
-}
-
-// ─── Navigation ────────────────────────────────────────────────────────────────
-
-function initNavigation() {
-  const toggleBtn = document.getElementById("menu-toggle");
-  const menuIcon = document.getElementById("menu-icon");
-  const mobileMenu = document.getElementById("mobile-menu");
-
-  if (toggleBtn && menuIcon && mobileMenu) {
-    toggleBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-      menuIcon.classList.toggle("fa-bars");
-      menuIcon.classList.toggle("fa-times");
-    });
-  }
-}
-
-// ─── Auth ──────────────────────────────────────────────────────────────────────
-
-function signOut() {
-  fetch(`${API_BASE}/auth/logout`, {
-    method: "POST",
-    credentials: "include"
-  })
-    .then(() => {
-      localStorage.clear();
-      window.location.href = "/Code-Master/index.html";
-    })
-    .catch(err => {
-      console.error("❌ Logout failed:", err);
-      alert("Could not log out. Try again.");
     });
 }
 
