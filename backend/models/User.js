@@ -23,7 +23,13 @@ const UserSchema = new mongoose.Schema(
       default: {}
     },
     badges: {
-      type: [String],
+      type: [
+        {
+          label: { type: String, required: true },
+          class: { type: String, default: "bg-gray-400" },
+          icon: { type: String, default: "fa-star" }
+        }
+      ],
       default: []
     },
     createdAt: {
@@ -32,10 +38,8 @@ const UserSchema = new mongoose.Schema(
     }
   },
   {
-    // Optional: adds createdAt and updatedAt automatically
     timestamps: true,
     toJSON: {
-      // Remove sensitive fields when converting to JSON
       transform(doc, ret) {
         delete ret.password;
         delete ret.__v;

@@ -86,6 +86,9 @@ function loadProfileFromBackend() {
         localStorage.setItem("codemasterTagline", data.bio || "");
         updateNavProfile();
         renderProfileUI();
+
+        // Store extra badges for later use
+        window.extraBadges = Array.isArray(data.badges) ? data.badges : [];
       }
     })
     .catch(err => {
@@ -178,29 +181,38 @@ function signOut() {
 
 // ─── Badge Gallery ─────────────────────────────────────────────────────────────
 
-function renderBadgeGallery(allProgress) {
+function renderBadgeGallery(allProgress, extraBadges = []) {
   const gallery = document.querySelector("#badgeGallery .space-y-2");
-  if (!gallery || !allProgress?.completed) return;
-
+  if (!gallery) return;
   gallery.innerHTML = "";
 
+  // Subject mastery badges
   Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
     const completedCount = Object.values(lessons).filter(Boolean).length;
-        const totalModules = allProgress.totalModules?.[subject] || 1;
+    const totalModules = allProgress.totalModules?.[subject] || 1;
     const percent = Math.min(100, Math.round((completedCount / totalModules) * 100));
-
     const { label, class: badgeClass, icon } = getBadgeInfo(subject, percent);
-    const escapedLabel = label.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    const badgeHTML = `
+    gallery.insertAdjacentHTML("beforeend", `
       <div>
-        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery level">
+        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery">
           <i class="fas ${icon} text-white opacity-80"></i>
-          ${escapedLabel}
+          ${label.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
         </span>
       </div>
-    `;
-    gallery.insertAdjacentHTML("beforeend", badgeHTML);
+    `);
+  });
+
+  // Extra achievement badges
+  extraBadges.forEach(({ label, class: badgeClass, icon }) => {
+    gallery.insertAdjacentHTML("beforeend", `
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="Achievement badge">
+          <i class="fas ${icon} text-white opacity-80"></i>
+          ${label}
+        </span>
+      </div>
+    `);
   });
 }
 
@@ -251,7 +263,7 @@ function loadProgressFor(subject) {
 
       subjectsLoaded++;
       if (subjectsLoaded === 5) {
-        renderBadgeGallery(allProgressData);
+        renderBadgeGallery(allProgressData, window.extraBadges || []);
       }
     })
     .catch(err => {
