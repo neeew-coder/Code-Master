@@ -2,48 +2,42 @@ const API_BASE = "https://code-master-kk2m.onrender.com/api";
 
 // ─── Badge Logic ───────────────────────────────────────────────────────────────
 
-function getBadgeInfo(subject, percent) {
-  if (subject === "html") {
-    if (percent === 100) return { label: "<html hero>", class: "bg-green-600", icon: "fa-code" };
-    if (percent > 75) return { label: "<form fluent>", class: "bg-purple-600", icon: "fa-code" };
-    if (percent > 50) return { label: "<article author>", class: "bg-blue-500", icon: "fa-code" };
-    if (percent > 25) return { label: "<section starter>", class: "bg-yellow-400", icon: "fa-code" };
-    return { label: "<div dabbler>", class: "bg-gray-400", icon: "fa-code" };
-  }
+function getAllBadgeTiers(subject, percent) {
+  const tiers = {
+    html: [
+      { threshold: 25, label: "<section starter>", class: "bg-yellow-400", icon: "fa-code" },
+      { threshold: 50, label: "<article author>", class: "bg-blue-500", icon: "fa-code" },
+      { threshold: 75, label: "<form fluent>", class: "bg-purple-600", icon: "fa-code" },
+      { threshold: 100, label: "<html hero>", class: "bg-green-600", icon: "fa-code" }
+    ],
+    css: [
+      { threshold: 25, label: ".box-model builder", class: "bg-yellow-400", icon: "fa-ruler-combined" },
+      { threshold: 50, label: ".flexbox fighter", class: "bg-blue-500", icon: "fa-layer-group" },
+      { threshold: 75, label: ".grid guru", class: "bg-purple-600", icon: "fa-border-style" },
+      { threshold: 100, label: ".style sorcerer", class: "bg-green-600", icon: "fa-paint-brush" }
+    ],
+    javascript: [
+      { threshold: 25, label: "event wrangler", class: "bg-yellow-400", icon: "fa-mouse-pointer" },
+      { threshold: 50, label: "callback captain", class: "bg-blue-500", icon: "fa-sync-alt" },
+      { threshold: 75, label: "promise pilot", class: "bg-purple-600", icon: "fa-rocket" },
+      { threshold: 100, label: "async overlord", class: "bg-green-600", icon: "fa-infinity" }
+    ],
+    java: [
+      { threshold: 25, label: "method mapper", class: "bg-yellow-400", icon: "fa-code-branch" },
+      { threshold: 50, label: "object operator", class: "bg-blue-500", icon: "fa-object-group" },
+      { threshold: 75, label: "inheritance initiator", class: "bg-purple-600", icon: "fa-project-diagram" },
+      { threshold: 100, label: "runtime ruler", class: "bg-green-600", icon: "fa-cogs" }
+    ],
+    csharp: [
+      { threshold: 25, label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" },
+      { threshold: 50, label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" },
+      { threshold: 75, label: "LINQ luminary", class: "bg-purple-600", icon: "fa-filter" },
+      { threshold: 100, label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" }
+    ]
+  };
 
-  if (subject === "css") {
-    if (percent === 100) return { label: ".style sorcerer", class: "bg-green-600", icon: "fa-paint-brush" };
-    if (percent > 75) return { label: ".grid guru", class: "bg-purple-600", icon: "fa-border-style" };
-    if (percent > 50) return { label: ".flexbox fighter", class: "bg-blue-500", icon: "fa-layer-group" };
-    if (percent > 25) return { label: ".box-model builder", class: "bg-yellow-400", icon: "fa-ruler-combined" };
-    return { label: ".selector scout", class: "bg-gray-400", icon: "fa-paint-brush" };
-  }
-
-  if (subject === "javascript") {
-    if (percent === 100) return { label: "async overlord", class: "bg-green-600", icon: "fa-infinity" };
-    if (percent > 75) return { label: "promise pilot", class: "bg-purple-600", icon: "fa-rocket" };
-    if (percent > 50) return { label: "callback captain", class: "bg-blue-500", icon: "fa-sync-alt" };
-    if (percent > 25) return { label: "event wrangler", class: "bg-yellow-400", icon: "fa-mouse-pointer" };
-    return { label: "function fledgling", class: "bg-gray-400", icon: "fa-bolt" };
-  }
-
-  if (subject === "java") {
-    if (percent === 100) return { label: "runtime ruler", class: "bg-green-600", icon: "fa-cogs" };
-    if (percent > 75) return { label: "inheritance initiator", class: "bg-purple-600", icon: "fa-project-diagram" };
-    if (percent > 50) return { label: "object operator", class: "bg-blue-500", icon: "fa-object-group" };
-    if (percent > 25) return { label: "method mapper", class: "bg-yellow-400", icon: "fa-code-branch" };
-    return { label: "class crawler", class: "bg-gray-400", icon: "fa-cube" };
-  }
-
-  if (subject === "csharp") {
-    if (percent === 100) return { label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" };
-    if (percent > 75) return { label: "LINQ luminary", class: "bg-purple-600", icon: "fa-filter" };
-    if (percent > 50) return { label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" };
-    if (percent > 25) return { label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" };
-    return { label: "namespace newbie", class: "bg-gray-400", icon: "fa-cube" };
-  }
-
-  return { label: "Rookie", class: "bg-gray-300", icon: "fa-user" };
+  const subjectTiers = tiers[subject] || [];
+  return subjectTiers.filter(tier => percent >= tier.threshold);
 }
 
 // ─── Profile UI ────────────────────────────────────────────────────────────────
@@ -186,21 +180,23 @@ function renderBadgeGallery(allProgress, extraBadges = []) {
   if (!gallery) return;
   gallery.innerHTML = "";
 
-  // Subject mastery badges
+  // Subject mastery badges — show all earned tiers
   Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
     const completedCount = Object.values(lessons).filter(Boolean).length;
     const totalModules = allProgress.totalModules?.[subject] || 1;
     const percent = Math.min(100, Math.round((completedCount / totalModules) * 100));
-    const { label, class: badgeClass, icon } = getBadgeInfo(subject, percent);
 
-    gallery.insertAdjacentHTML("beforeend", `
-      <div>
-        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery">
-          <i class="fas ${icon} text-white opacity-80"></i>
-          ${label.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
-        </span>
-      </div>
-    `);
+    const earnedTiers = getAllBadgeTiers(subject, percent);
+    earnedTiers.forEach(({ label, class: badgeClass, icon }) => {
+      gallery.insertAdjacentHTML("beforeend", `
+        <div>
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery tier">
+            <i class="fas ${icon} text-white opacity-80"></i>
+            ${label.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
+          </span>
+        </div>
+      `);
+    });
   });
 
   // Extra achievement badges
