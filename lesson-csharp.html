@@ -242,11 +242,22 @@ class Program {
     const API_BASE = "https://code-master-kk2m.onrender.com";
     let cachedTotalModules = 0;
 
+    function getBadgeInfo(percent) {
+      if (subject === "csharp") {
+        if (percent === 100) return { label: "runtime regent", class: "bg-green-600", icon: "fa-cogs" };
+        if (percent >= 75) return { label: "LINQ luminary", class: "bg-purple-600", icon: "fa-filter" };
+        if (percent >= 50) return { label: "delegate dominator", class: "bg-blue-500", icon: "fa-bolt" };
+        if (percent >= 25) return { label: "interface initiator", class: "bg-yellow-400", icon: "fa-puzzle-piece" };
+        return { label: "namespace newbie", class: "bg-gray-400", icon: "fa-cube" };
+      }
+
+      return { label: "Learner", class: "bg-gray-300", icon: "fa-user" };
+    }
+
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
       if (!container) return;
 
-      // Highlight active button
       document.querySelectorAll(`aside button[data-lesson]`).forEach(btn => {
         btn.classList.remove("bg-green-100", "font-semibold", "text-green-700");
         btn.classList.add("text-green-600");
@@ -258,7 +269,6 @@ class Program {
         activeBtn.classList.remove("text-green-600");
       }
 
-      // Show loading state
       container.innerHTML = `
         <div class="text-center py-10 text-green-500 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -266,7 +276,6 @@ class Program {
         </div>
       `;
 
-      // Fetch lesson content
       fetch(`lessons/${subject}/${lessonId}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
@@ -378,7 +387,7 @@ class Program {
       if (badge) {
         const { label: badgeLabel, class: badgeClass, icon = "fa-user" } = getBadgeInfo(percent);
         badge.innerHTML = `
-          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current ${subject.toUpperCase()} mastery level">
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current C# mastery level">
             <i class="fas ${icon} text-white opacity-80"></i>
             ${badgeLabel}
           </span>
