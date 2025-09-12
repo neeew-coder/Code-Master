@@ -205,8 +205,8 @@ class Program {
         <button onclick="loadModule('intro')" class="bg-green-600 text-white px-6 py-2 rounded-full font-bold hover:bg-green-700 transition shadow-md">Start Styling</button>
         <a href="userprofile/profile.html" class="bg-green-900 text-white px-6 py-2 rounded-full font-bold hover:bg-green-800 transition shadow-md">View Dashboard</a>
         <span class="progress-badge inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 bg-gray-400">
-          <i class="fas fa-code text-white opacity-80"></i>
-          &lt;div dabbler&gt;
+          <i class="fas fa-cube text-white opacity-80"></i>
+          namespace newbie
         </span>
       </div>
 
@@ -376,6 +376,17 @@ class Program {
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
       });
+
+      const badge = document.querySelector(".progress-badge");
+      if (badge) {
+        const { label: badgeLabel, class: badgeClass, icon } = getBadgeInfo(percent);
+        badge.innerHTML = `
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current C# mastery level">
+            <i class="fas ${icon} text-white opacity-80"></i>
+            ${badgeLabel}
+          </span>
+        `;
+      }
     }
 
     function scrollToTop() {

@@ -241,8 +241,8 @@ public class HelloWorld {
         <button onclick="loadModule('intro')" class="bg-red-600 text-white px-6 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Start Styling</button>
         <a href="userprofile/profile.html" class="bg-red-900 text-white px-6 py-2 rounded-full font-bold hover:bg-red-800 transition shadow-md">View Dashboard</a>
         <span class="progress-badge inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 bg-gray-400">
-          <i class="fas fa-code text-white opacity-80"></i>
-          &lt;div dabbler&gt;
+          <i class="fas fa-cube text-white opacity-80"></i>
+          class crawler
         </span>
       </div>
 
@@ -285,7 +285,6 @@ public class HelloWorld {
       const container = document.getElementById("moduleContent");
       if (!container) return;
 
-      // Highlight active button
       document.querySelectorAll(`aside button[data-lesson]`).forEach(btn => {
         btn.classList.remove("bg-red-100", "font-semibold", "text-red-700");
         btn.classList.add("text-red-600");
@@ -297,7 +296,6 @@ public class HelloWorld {
         activeBtn.classList.remove("text-red-600");
       }
 
-      // Show loading state
       container.innerHTML = `
         <div class="text-center py-10 text-gray-500 animate-pulse">
           <i class="fas fa-spinner fa-spin text-2xl mb-2"></i>
@@ -305,7 +303,6 @@ public class HelloWorld {
         </div>
       `;
 
-      // Fetch lesson content
       fetch(`lessons/${subject}/${lessonId}.html`)
         .then(res => {
           if (!res.ok) throw new Error("Module not found");
@@ -412,6 +409,17 @@ public class HelloWorld {
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
       });
+
+      const badge = document.querySelector(".progress-badge");
+      if (badge) {
+        const { label: badgeLabel, class: badgeClass, icon } = getBadgeInfo(percent);
+        badge.innerHTML = `
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current Java mastery level">
+            <i class="fas ${icon} text-white opacity-80"></i>
+            ${badgeLabel}
+          </span>
+        `;
+      }
     }
 
     function scrollToTop() {
