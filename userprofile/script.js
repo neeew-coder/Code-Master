@@ -210,7 +210,7 @@ const allProgressData = { completed: {}, totalModules: {} };
 let subjectsLoaded = 0;
 
 function updateUIWithProgress({ completed, totalModules, subject }) {
-  const percent = totalModules > 0
+  const percent = totalModules >= 0
     ? Math.min(100, Math.round((completed.length / totalModules) * 100))
     : 0;
 
