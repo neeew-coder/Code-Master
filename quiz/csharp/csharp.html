@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>CodeMaster | C# Quiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/quiz/style.css">
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+    .quiz-container input[type="radio"] { display: none; }
+    .quiz-container .option { cursor: pointer; }
+    .quiz-container .option[aria-checked="true"] { background-color: #ede9fe; border-color: #8b5cf6; }
+    .level-btn[disabled] {
+      opacity: 0.5;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+    .level-btn {
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+    .level-btn:not([disabled]):hover {
+      background-color: #6b21a8;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 font-sans text-purple-900">
+
+  <!-- Header -->
+  <nav class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="/index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="/lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="/exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="/code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
+      </div>
+      <div class="hidden md:flex items-center space-x-2 bg-white text-purple-700 px-3 py-1 rounded-full font-semibold">
+        <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold"></span>
+        <span></span>
+      </div>
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <div class="md:hidden hidden bg-gradient-to-r from-purple-500 to-indigo-600" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
+        <a href="/index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="/lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="/exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="/code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Layout -->
+  <div class="flex flex-col md:flex-row min-h-screen">
+    <!-- Sidebar -->
+    <aside class="w-full md:w-64 bg-purple-100 text-purple-100 p-6 space-y-6">
+      <h2 class="text-xl font-bold">Quiz Levels</h2>
+      <button id="basicBtn" class="level-btn w-full text-left px-4 py-2 rounded-md bg-purple-700 hover:bg-purple-800" data-level="basic">Basic</button>
+      <button id="intermediateBtn" class="level-btn w-full text-left px-4 py-2 rounded-md bg-purple-700 opacity-50 cursor-not-allowed" data-level="intermediate" disabled>Intermediate</button>
+      <button id="advancedBtn" class="level-btn w-full text-left px-4 py-2 rounded-md bg-purple-700 opacity-50 cursor-not-allowed" data-level="advanced" disabled>Advanced</button>
+    </aside>
+
+    <!-- Quiz Panel -->
+    <main class="flex-1 p-6">
+      <div class="quiz-container max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+        <header class="bg-gradient-to-r from-purple-100 to-indigo-100 px-6 py-4">
+          <h1 id="quizTitle" class="text-2xl font-bold text-gray-800">C# Quiz</h1>
+          <div class="flex gap-2 mt-2 text-sm font-medium text-purple-700">
+            <span class="bg-purple-200 px-3 py-1 rounded-full">10 Questions</span>
+            <span class="bg-purple-200 px-3 py-1 rounded-full">Multiple Choice</span>
+            <span class="bg-purple-200 px-3 py-1 rounded-full">Instant Feedback</span>
+          </div>
+          <div class="mt-4 h-2 bg-gray-200 rounded-full">
+            <div id="progressFill" class="h-full bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full" style="width: 0%;"></div>
+          </div>
+        </header>
+
+        <div class="quiz-main px-6 py-6 space-y-4">
+          <div class="flex justify-between text-sm text-gray-500">
+            <div id="qCounter">Question 1 of 10</div>
+            <div id="scoreChip" class="bg-purple-100 text-purple-700 px-3 py-1 rounded-full">Score: 0</div>
+          </div>
+
+          <div id="questionBox" class="text-lg font-semibold text-gray-800"></div>
+          <form id="optionsForm" class="space-y-3"></form>
+          <div id="feedback" class="text-sm text-gray-600"></div>
+
+          <div class="flex justify-end gap-3 pt-2">
+            <button id="skipBtn" class="px-4 py-2 rounded-md border border-gray-300 text-gray-700 bg-white hover:bg-gray-50">Skip</button>
+            <button id="submitBtn" class="px-4 py-2 rounded-md bg-purple-600 text-white hover:bg-purple-700">Submit</button>
+            <button id="nextBtn" class="px-4 py-2 rounded-md bg-green-600 text-white hover:bg-green-700 hidden">Next</button>
+          </div>
+        </div>
+
+        <section id="results" class="px-6 py-6 hidden bg-gray-50">
+          <h2 id="finalScore" class="text-xl font-bold text-purple-700"></h2>
+          <p id="remark" class="text-sm text-gray-600 mb-4"></p>
+          <div id="reviewList" class="space-y-4"></div>
+          <div class="text-center mt-6">
+            <button id="retryBtn" class="px-4 py-2 rounded-md bg-purple-600 text-white hover:bg-purple-700">Retry Quiz</button>
+          </div>
+        </section>
+
+        <footer class="text-center text-xs text-gray-400 py-4 bg-white border-t">
+          Built with plain HTML, CSS, and JavaScript. Accessible, keyboard-friendly, and responsive.
+        </footer>
+      </div>
+    </main>
+  </div>
+
+  <!-- Script -->
+  <script src="/quiz/mobileToggle.js"></script>
+  <script src="script.js" defer></script>
+</body>
+</html>
