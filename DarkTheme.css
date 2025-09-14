@@ -8,7 +8,6 @@
 
 body.dark {
   --bg-main: #444444;
-  --card-bg: #1e1e1e;
   --nav-bg: linear-gradient(to right, #4c1d95, #1e1b4b);
   --accent: #a78bfa;
 }
@@ -25,9 +24,3 @@ footer,
   background: var(--nav-bg);
 }
 
-.module {
-  background-color: var(--card-bg);
-  color: var(--text-main);
-  border-left: 4px solid var(--accent);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
