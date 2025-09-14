@@ -7,6 +7,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="DarkTheme.css">
 </head>
 <body class="bg-gray-50 font-sans">
    <nav class="gradient-bg text-white shadow-lg">
@@ -22,7 +23,7 @@
 
             <!-- Desktop Menu -->
             <div class="hidden md:flex space-x-6">
-                <a href="#" class="hover:text-gray-300 transition">Home</a>
+                <a href="#" class="hover:text-gray-300 transition underline">Home</a>
                 <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
                 <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
                 <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
@@ -30,7 +31,11 @@
 
             <!-- Auth Controls -->
             <div class="flex items-center space-x-4">
-            
+
+            <button id="themeToggle" class="bg-white text-purple-700 px-1 py-2 rounded-full font-semibold bg-gray-600 hover:bg-gray-100 transition">
+             -
+            </button>
+
             <!-- Sign In Button -->
             <a id="signInBtn" href="auth.html" class="bg-white text-purple-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
                 Sign In
@@ -57,7 +62,7 @@
         <!-- Mobile Menu -->
         <div class="md:hidden hidden gradient-bg" id="mobile-menu">
             <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
-                <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+                <a href="index.html" class="hover:text-gray-300 transition underline">Home</a>
                 <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
                 <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
                 <a href="code-playground.html" class="hover:text-gray-300 transition">Play Ground</a>
@@ -320,6 +325,7 @@
         </div>
     </section>
     <!-- Footer -->
+    <script src="scripts/DarkTheme.js"></script>
     <footer class="bg-gray-900 text-white py-12"  style="text-align: center;">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">

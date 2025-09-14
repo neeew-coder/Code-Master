@@ -1,0 +1,33 @@
+:root {
+  --bg-main: #f9f9f9;
+  --text-main: #1a1a1a;
+  --card-bg: #ffffff;
+  --nav-bg: linear-gradient(to right, #6b21a8, #4338ca);
+  --accent: #6b21a8;
+}
+
+body.dark {
+  --bg-main: #444444;
+  --card-bg: #1e1e1e;
+  --nav-bg: linear-gradient(to right, #4c1d95, #1e1b4b);
+  --accent: #a78bfa;
+}
+
+.dark{
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav,
+footer,
+.gradient-bg {
+  background: var(--nav-bg);
+}
+
+.module {
+  background-color: var(--card-bg);
+  color: var(--text-main);
+  border-left: 4px solid var(--accent);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
