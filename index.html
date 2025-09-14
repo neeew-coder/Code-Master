@@ -538,11 +538,10 @@
         
         // ✅ Apply theme-aware color to sign-in button
         const applySignInBtnTheme = () => {
-        if (!signInBtn) return;
+        if (!profileBtn) return;
 
-        const isDark = document.body.classList.contains('dark');
-        signInBtn.style.backgroundColor = 'gray(255 255 255 / 0.8)';
-        signInBtn.style.color = isDark ? '#2a245f' : '#1e1b4b';
+        profileBtn.style.backgroundColor = 'gray(255 255 255 / 0.8)';
+        profileBtn.style.color = isDark ? '#2a245f' : '#1e1b4b';
         };
 
         applySignInBtnTheme();
