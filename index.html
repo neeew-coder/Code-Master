@@ -356,7 +356,7 @@
         </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         console.log("✅ Script loaded");
 
         // DOM Elements
@@ -378,15 +378,15 @@
         // ✅ Session Check via Backend
         console.log("🔍 Checking session...");
         fetch("https://code-master-kk2m.onrender.com/api/profile/me", {
-            method: "GET",
-            credentials: "include"
+        method: "GET",
+        credentials: "include"
         })
-            .then(res => {
+        .then(res => {
             console.log("✅ Response status:", res.status);
             if (!res.ok) throw new Error("Not authenticated");
             return res.json();
-            })
-            .then(data => {
+        })
+        .then(data => {
             console.log("✅ Session data:", data);
 
             signInBtn?.classList.add("hidden");
@@ -397,89 +397,89 @@
             if (profileTaglineEl) profileTaglineEl.textContent = data.bio || "";
             if (nameInput) nameInput.value = data.username;
             if (taglineInput) taglineInput.value = data.bio || "";
-            })
-            .catch(err => {
+        })
+        .catch(err => {
             console.warn("❌ Session check failed:", err.message);
             signInBtn?.classList.remove("hidden");
             profileDropdownWrapper?.classList.add("hidden");
-            });
+        });
 
         // ✅ Dropdown toggle
         profileBtn?.addEventListener('click', () => {
-            profileDropdown?.classList.toggle('hidden');
+        profileDropdown?.classList.toggle('hidden');
         });
 
         // ✅ Sign out
         signOutLink?.addEventListener('click', () => {
-            fetch("https://code-master-kk2m.onrender.com/api/auth/logout", {
+        fetch("https://code-master-kk2m.onrender.com/api/auth/logout", {
             method: "POST",
             credentials: "include"
-            }).finally(() => {
+        }).finally(() => {
             window.location.href = "index.html";
-            });
+        });
         });
 
         // ✅ Mobile menu toggle
         mobileMenuBtn?.addEventListener('click', () => {
-            mobileMenu?.classList.toggle('hidden');
+        mobileMenu?.classList.toggle('hidden');
         });
 
         // ✅ Tab Switching
         document.querySelectorAll('.tab-button').forEach(button => {
-            button.addEventListener('click', function () {
+        button.addEventListener('click', function () {
             document.querySelectorAll('.tab-button').forEach(btn => {
-                btn.classList.remove('text-purple-600', 'border-purple-600');
-                btn.classList.add('text-gray-500');
+            btn.classList.remove('text-purple-600', 'border-purple-600');
+            btn.classList.add('text-gray-500');
             });
             this.classList.add('text-purple-600', 'border-purple-600');
             this.classList.remove('text-gray-500');
 
             const tabId = this.getAttribute('data-tab') + '-tab';
             document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.add('hidden');
-                tab.classList.remove('active');
+            tab.classList.add('hidden');
+            tab.classList.remove('active');
             });
             document.getElementById(tabId)?.classList.remove('hidden');
             document.getElementById(tabId)?.classList.add('active');
-            });
+        });
         });
 
         // ✅ Progress Ring Animation
         document.querySelectorAll('.progress-ring').forEach(ring => {
-            const circle = ring.querySelector('.progress-ring__circle');
-            const radius = circle.r.baseVal.value;
-            const circumference = 2 * Math.PI * radius;
-            const percent = parseInt(ring.getAttribute('data-percent'));
+        const circle = ring.querySelector('.progress-ring__circle');
+        const radius = circle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+        const percent = parseInt(ring.getAttribute('data-percent'));
 
-            circle.style.strokeDasharray = `${circumference} ${circumference}`;
-            circle.style.strokeDashoffset = circumference;
+        circle.style.strokeDasharray = `${circumference} ${circumference}`;
+        circle.style.strokeDashoffset = circumference;
 
-            const offset = circumference - (percent / 100) * circumference;
-            circle.style.strokeDashoffset = offset;
+        const offset = circumference - (percent / 100) * circumference;
+        circle.style.strokeDashoffset = offset;
         });
 
         // ✅ IDE Simulation
         document.getElementById('demoButton')?.addEventListener('click', function () {
-            const output = document.createElement('p');
-            output.textContent = '✅ Button clicked! Code executed.';
-            output.className = 'mt-4 text-green-600 font-semibold';
-            this.parentElement.appendChild(output);
+        const output = document.createElement('p');
+        output.textContent = '✅ Button clicked! Code executed.';
+        output.className = 'mt-4 text-green-600 font-semibold';
+        this.parentElement.appendChild(output);
         });
 
         // ✅ Lesson Progress Update
         document.querySelectorAll('.mark-complete-button').forEach(button => {
-            button.addEventListener('click', () => {
+        button.addEventListener('click', () => {
             const lessonId = button.getAttribute('data-lesson-id');
             updateLessonProgress(lessonId);
             calculateOverallProgress();
             updateLearningJourneyProgress();
             showLessonProgressSummary();
-            });
+        });
         });
 
         // ✅ View Profile Tab
         document.getElementById('viewProfileButton')?.addEventListener('click', () => {
-            document.querySelector('.tab-button[data-tab="profile"]')?.click();
+        document.querySelector('.tab-button[data-tab="profile"]')?.click();
         });
 
         // ✅ Edit Profile Modal
@@ -492,52 +492,70 @@
         cancelEdit?.addEventListener('click', () => modal?.classList.add('hidden'));
 
         form?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const name = nameInput?.value;
-            const tagline = taglineInput?.value;
-            const avatar = avatarInput?.value;
+        e.preventDefault();
+        const name = nameInput?.value;
+        const tagline = taglineInput?.value;
+        const avatar = avatarInput?.value;
 
-            if (profileNameEl) profileNameEl.textContent = name;
-            if (profileTaglineEl) profileTaglineEl.textContent = tagline;
-            if (profileAvatarEl) profileAvatarEl.src = avatar;
+        if (profileNameEl) profileNameEl.textContent = name;
+        if (profileTaglineEl) profileTaglineEl.textContent = tagline;
+        if (profileAvatarEl) profileAvatarEl.src = avatar;
 
-            localStorage.setItem('profileName', name);
-            localStorage.setItem('profileTagline', tagline);
-            localStorage.setItem('profileAvatar', avatar);
+        localStorage.setItem('profileName', name);
+        localStorage.setItem('profileTagline', tagline);
+        localStorage.setItem('profileAvatar', avatar);
 
-            modal?.classList.add('hidden');
+        modal?.classList.add('hidden');
         });
 
         // ✅ Reset Profile
         document.getElementById('resetProfile')?.addEventListener('click', () => {
-            localStorage.removeItem('profileName');
-            localStorage.removeItem('profileTagline');
-            localStorage.removeItem('profileAvatar');
-            loadProfile();
+        localStorage.removeItem('profileName');
+        localStorage.removeItem('profileTagline');
+        localStorage.removeItem('profileAvatar');
+        loadProfile();
         });
 
         // ✅ Load Profile from localStorage (fallback only)
         function loadProfile() {
-            const savedName = localStorage.getItem('profileName');
-            const savedTagline = localStorage.getItem('profileTagline');
-            const savedAvatar = localStorage.getItem('profileAvatar');
+        const savedName = localStorage.getItem('profileName');
+        const savedTagline = localStorage.getItem('profileTagline');
+        const savedAvatar = localStorage.getItem('profileAvatar');
 
-            if (savedName && profileNameEl && nameInput) {
+        if (savedName && profileNameEl && nameInput) {
             profileNameEl.textContent = savedName;
             nameInput.value = savedName;
-            }
-            if (savedTagline && profileTaglineEl && taglineInput) {
+        }
+        if (savedTagline && profileTaglineEl && taglineInput) {
             profileTaglineEl.textContent = savedTagline;
             taglineInput.value = savedTagline;
-            }
-            if (savedAvatar && profileAvatarEl && avatarInput) {
+        }
+        if (savedAvatar && profileAvatarEl && avatarInput) {
             profileAvatarEl.src = savedAvatar;
             avatarInput.value = savedAvatar;
-            }
+        }
         }
 
         loadProfile(); // fallback only
+
+        // ✅ Apply theme-aware color to profileBtn
+        function styleProfileBtn() {
+        if (!profileBtn) return;
+
+        const isDark = document.body.classList.contains('dark');
+        profileBtn.style.backgroundColor = isDark ? '#2a245f' : '#1e1b4b';
+        profileBtn.style.color = '#ffffff';
+        }
+
+        styleProfileBtn();
+
+        // ✅ Theme toggle and re-style
+        document.getElementById('themeToggle')?.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+        styleProfileBtn();
         });
+    });
     </script>
 
 </body>
