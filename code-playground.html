@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-subject="java">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VS Code Style Preview</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Fira Code', monospace;
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+    }
+    .editor-panel {
+      background-color: #1e1e1e;
+      border: 1px solid #3c3c3c;
+      border-radius: 6px;
+      box-shadow: 0 0 0 1px #000 inset;
+    }
+    .code-input {
+      background-color: #1e1e1e;
+      color: #d4d4d4;
+      border: none;
+      resize: vertical;
+    }
+    .code-input::placeholder {
+      color: #6a9955;
+    }
+    .output {
+      background-color: #252526;
+      color: #dcdcaa;
+      border: 1px solid #3c3c3c;
+    }
+    button {
+      background-color: #0e639c;
+    }
+    button:hover {
+      background-color: #1177bb;
+    }
+  </style>
+</head>
+<body class="p-6">
+
+  <h1 class="text-3xl font-bold mb-6 text-white">VS Code Style Java & C# Preview</h1>
+
+  <!-- JDoodle-style form preview -->
+  <div data-preview data-mode="jdoodle" class="mb-10 editor-panel p-4">
+    <h2 class="text-xl font-semibold mb-4 text-white">JDoodle Form (Java)</h2>
+    <form action="https://www.jdoodle.com/execute" method="POST" target="_blank" class="space-y-4">
+      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="// Write Java code here..."></textarea>
+      <textarea name="initScript" hidden></textarea>
+      <button type="submit" class="px-4 py-2 text-white rounded">Run via JDoodle</button>
+    </form>
+  </div>
+
+  <!-- Inline API preview -->
+  <div data-preview class="editor-panel p-4">
+    <h2 class="text-xl font-semibold mb-4 text-white">Inline API Preview (C#)</h2>
+    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="// Write C# code here..."></textarea>
+    <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
+    <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const API_BASE = "https://code-master-kk2m.onrender.com";
+    const subject = document.body.dataset.subject || "java";
+
+    function bindAllPreviews(lang = subject) {
+      document.querySelectorAll("[data-preview]").forEach(block => {
+        const mode = block.getAttribute("data-mode") || "inline";
+
+        if (mode === "jdoodle") {
+          const form = block.querySelector("form");
+          const codeInput = form?.querySelector(".code-input");
+          const hiddenField = form?.querySelector('textarea[name="initScript"]');
+
+          if (form && codeInput && hiddenField) {
+            const syncCode = () => {
+              hiddenField.value = codeInput.value;
+            };
+
+            form.addEventListener("submit", syncCode);
+
+            const runBtn = form.querySelector("button[type='submit']");
+            if (runBtn) {
+              runBtn.addEventListener("click", syncCode);
+            }
+          }
+        } else {
+          const runBtn = block.querySelector("button");
+          const outputDiv = block.querySelector(".output");
+          const codeBlock = block.querySelector("textarea, pre");
+
+          if (!runBtn || !codeBlock || !outputDiv) return;
+
+          runBtn.addEventListener("click", () => {
+            const code = codeBlock.tagName === "TEXTAREA"
+              ? codeBlock.value.trim()
+              : codeBlock.textContent.trim();
+
+            runBtn.disabled = true;
+            runBtn.innerText = "Running...";
+
+            fetch(`${API_BASE}/api/run`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ language: lang, code })
+            })
+            .then(res => res.text())
+            .then(text => {
+              let output = "";
+              try {
+                const data = JSON.parse(text);
+                output = data.output?.trim();
+              } catch {
+                output = null;
+              }
+              outputDiv.innerText = output || `⚠️ Simulation not available for ${lang}.`;
+            })
+            .catch(() => {
+              outputDiv.innerText = `⚠️ Simulation not available for ${lang}.`;
+            })
+            .finally(() => {
+              runBtn.disabled = false;
+              runBtn.innerText = "Run";
+            });
+          });
+        }
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      bindAllPreviews();
+    });
+  </script>
+</body>
+</html>
