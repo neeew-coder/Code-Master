@@ -41,51 +41,53 @@
     .hidden { display: none; }
   </style>
 </head>
-<body class="p-6">
+<body class="p-4 sm:p-6">
 
-  <h1 class="text-3xl font-bold mb-6 text-white">VS Code Style Multi-language Playground</h1>
+  <div class="max-w-screen-xl mx-auto">
+    <h1 class="text-2xl sm:text-3xl font-bold mb-6 text-white text-center">VS Code Style Multi-language Playground</h1>
 
-  <!-- Language Tabs -->
-  <div class="flex space-x-2 mb-6">
-    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="html">HTML</button>
-    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="css">CSS</button>
-    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="javascript">JavaScript</button>
-    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="java">Java</button>
-    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="csharp">C#</button>
+    <!-- Language Tabs -->
+    <div class="flex flex-wrap gap-2 justify-center mb-6">
+      <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="html">HTML</button>
+      <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="css">CSS</button>
+      <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="javascript">JavaScript</button>
+      <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="java">Java</button>
+      <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="csharp">C#</button>
+    </div>
+
+    <!-- Editor Panels -->
+    <div id="editor-html" data-preview data-lang="html" class="editor-panel p-4 mb-6">
+      <h2 class="text-lg sm:text-xl font-semibold mb-4 text-white">HTML</h2>
+      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="&lt;h1&gt;Hello World&lt;/h1&gt;"></textarea>
+    </div>
+
+    <div id="editor-css" data-preview data-lang="css" class="editor-panel p-4 mb-6 hidden">
+      <h2 class="text-lg sm:text-xl font-semibold mb-4 text-white">CSS</h2>
+      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="body { background: black; }"></textarea>
+    </div>
+
+    <div id="editor-javascript" data-preview data-lang="javascript" class="editor-panel p-4 mb-6 hidden">
+      <h2 class="text-lg sm:text-xl font-semibold mb-4 text-white">JavaScript</h2>
+      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="console.log('Hello!');"></textarea>
+    </div>
+
+    <div id="editor-java" data-preview data-lang="java" class="editor-panel p-4 mb-6 hidden">
+      <h2 class="text-lg sm:text-xl font-semibold mb-4 text-white">Java</h2>
+      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="public class Main { public static void main(String[] args) { System.out.println(&quot;Hello&quot;); } }"></textarea>
+      <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
+      <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
+    </div>
+
+    <div id="editor-csharp" data-preview data-lang="csharp" class="editor-panel p-4 mb-6 hidden">
+      <h2 class="text-lg sm:text-xl font-semibold mb-4 text-white">C#</h2>
+      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="using System; class Program { static void Main() { Console.WriteLine(&quot;Hello&quot;); } }"></textarea>
+      <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
+      <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
+    </div>
+
+    <!-- Live Preview -->
+    <iframe id="preview" class="w-full h-[50vh] sm:h-[60vh] mt-6 border rounded bg-white"></iframe>
   </div>
-
-  <!-- Editor Panels -->
-  <div id="editor-html" data-preview data-lang="html" class="editor-panel p-4">
-    <h2 class="text-xl font-semibold mb-4 text-white">HTML</h2>
-    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="&lt;h1&gt;Hello World&lt;/h1&gt;"></textarea>
-  </div>
-
-  <div id="editor-css" data-preview data-lang="css" class="editor-panel p-4 hidden">
-    <h2 class="text-xl font-semibold mb-4 text-white">CSS</h2>
-    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="body { background: black; }"></textarea>
-  </div>
-
-  <div id="editor-javascript" data-preview data-lang="javascript" class="editor-panel p-4 hidden">
-    <h2 class="text-xl font-semibold mb-4 text-white">JavaScript</h2>
-    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="console.log('Hello!');"></textarea>
-  </div>
-
-  <div id="editor-java" data-preview data-lang="java" class="editor-panel p-4 hidden">
-    <h2 class="text-xl font-semibold mb-4 text-white">Java</h2>
-    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="public class Main { public static void main(String[] args) { System.out.println(&quot;Hello&quot;); } }"></textarea>
-    <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
-    <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
-  </div>
-
-  <div id="editor-csharp" data-preview data-lang="csharp" class="editor-panel p-4 hidden">
-    <h2 class="text-xl font-semibold mb-4 text-white">C#</h2>
-    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="using System; class Program { static void Main() { Console.WriteLine(&quot;Hello&quot;); } }"></textarea>
-    <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
-    <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
-  </div>
-
-  <!-- Live Preview -->
-  <iframe id="preview" class="w-full h-96 mt-6 border rounded bg-white"></iframe>
 
   <!-- Script -->
   <script>
