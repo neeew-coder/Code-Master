@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" data-subject="java">
+<html lang="en" data-subject="html">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VS Code Style Preview</title>
+  <title>Multi-language Code Playground</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -38,70 +38,124 @@
     button:hover {
       background-color: #1177bb;
     }
+    .hidden { display: none; }
   </style>
 </head>
 <body class="p-6">
 
-  <h1 class="text-3xl font-bold mb-6 text-white">VS Code Style Java & C# Preview</h1>
+  <h1 class="text-3xl font-bold mb-6 text-white">VS Code Style Multi-language Playground</h1>
 
-  <!-- JDoodle-style form preview -->
-  <div data-preview data-mode="jdoodle" class="mb-10 editor-panel p-4">
-    <h2 class="text-xl font-semibold mb-4 text-white">JDoodle Form (Java)</h2>
-    <form action="https://www.jdoodle.com/execute" method="POST" target="_blank" class="space-y-4">
-      <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="// Write Java code here..."></textarea>
-      <textarea name="initScript" hidden></textarea>
-      <button type="submit" class="px-4 py-2 text-white rounded">Run via JDoodle</button>
-    </form>
+  <!-- Language Tabs -->
+  <div class="flex space-x-2 mb-6">
+    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="html">HTML</button>
+    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="css">CSS</button>
+    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="javascript">JavaScript</button>
+    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="java">Java</button>
+    <button class="tab px-4 py-2 rounded text-white bg-gray-700" data-lang="csharp">C#</button>
   </div>
 
-  <!-- Inline API preview -->
-  <div data-preview class="editor-panel p-4">
-    <h2 class="text-xl font-semibold mb-4 text-white">Inline API Preview (C#)</h2>
-    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="// Write C# code here..."></textarea>
+  <!-- Editor Panels -->
+  <div id="editor-html" data-preview data-lang="html" class="editor-panel p-4">
+    <h2 class="text-xl font-semibold mb-4 text-white">HTML</h2>
+    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="&lt;h1&gt;Hello World&lt;/h1&gt;"></textarea>
+  </div>
+
+  <div id="editor-css" data-preview data-lang="css" class="editor-panel p-4 hidden">
+    <h2 class="text-xl font-semibold mb-4 text-white">CSS</h2>
+    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="body { background: black; }"></textarea>
+  </div>
+
+  <div id="editor-javascript" data-preview data-lang="javascript" class="editor-panel p-4 hidden">
+    <h2 class="text-xl font-semibold mb-4 text-white">JavaScript</h2>
+    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="console.log('Hello!');"></textarea>
+  </div>
+
+  <div id="editor-java" data-preview data-lang="java" class="editor-panel p-4 hidden">
+    <h2 class="text-xl font-semibold mb-4 text-white">Java</h2>
+    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="public class Main { public static void main(String[] args) { System.out.println(&quot;Hello&quot;); } }"></textarea>
     <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
     <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
   </div>
 
+  <div id="editor-csharp" data-preview data-lang="csharp" class="editor-panel p-4 hidden">
+    <h2 class="text-xl font-semibold mb-4 text-white">C#</h2>
+    <textarea class="code-input w-full h-40 p-2 font-mono" placeholder="using System; class Program { static void Main() { Console.WriteLine(&quot;Hello&quot;); } }"></textarea>
+    <button class="mt-2 px-4 py-2 text-white rounded">Run</button>
+    <pre class="output mt-4 p-4 rounded whitespace-pre-wrap font-mono"></pre>
+  </div>
+
+  <!-- Live Preview -->
+  <iframe id="preview" class="w-full h-96 mt-6 border rounded bg-white"></iframe>
+
   <!-- Script -->
   <script>
     const API_BASE = "https://code-master-kk2m.onrender.com";
-    const subject = document.body.dataset.subject || "java";
 
-    function bindAllPreviews(lang = subject) {
+    // Tab switching
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.addEventListener("click", () => {
+        const lang = tab.dataset.lang;
+        document.querySelectorAll("[data-preview]").forEach(panel => {
+          panel.classList.toggle("hidden", panel.dataset.lang !== lang);
+        });
+        document.getElementById("preview").classList.toggle("hidden", !["html", "css", "javascript"].includes(lang));
+      });
+    });
+
+    // Preview logic
+    function bindAllPreviews() {
       document.querySelectorAll("[data-preview]").forEach(block => {
-        const mode = block.getAttribute("data-mode") || "inline";
+        const lang = block.dataset.lang;
+        const runBtn = block.querySelector("button");
+        const outputDiv = block.querySelector(".output");
+        const codeBlock = block.querySelector("textarea");
 
-        if (mode === "jdoodle") {
-          const form = block.querySelector("form");
-          const codeInput = form?.querySelector(".code-input");
-          const hiddenField = form?.querySelector('textarea[name="initScript"]');
+        // Live preview for HTML/CSS/JS
+        if (["html", "css", "javascript"].includes(lang)) {
+          document.querySelector(".tab[data-lang='html']").click();
 
-          if (form && codeInput && hiddenField) {
-            const syncCode = () => {
-              hiddenField.value = codeInput.value;
-            };
+          const updatePreview = () => {
+          const html = document.querySelector("[data-lang='html'] textarea").value;
+          const css = document.querySelector("[data-lang='css'] textarea").value;
+          const js = document.querySelector("[data-lang='javascript'] textarea").value;
 
-            form.addEventListener("submit", syncCode);
+          const previewFrame = document.getElementById("preview");
+          const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
 
-            const runBtn = form.querySelector("button[type='submit']");
-            if (runBtn) {
-              runBtn.addEventListener("click", syncCode);
-            }
-          }
-        } else {
-          const runBtn = block.querySelector("button");
-          const outputDiv = block.querySelector(".output");
-          const codeBlock = block.querySelector("textarea, pre");
+          previewDoc.open();
+          previewDoc.write(`<!DOCTYPE html>
+<html>
+<head><style>${css}</style></head>
+<body>${html}</body>
+</html>`);
+          previewDoc.close();
 
-          if (!runBtn || !codeBlock || !outputDiv) return;
+          // Inject JS safely via DOM
+          const scriptTag = previewDoc.createElement("script");
+          scriptTag.type = "text/javascript";
+          scriptTag.textContent = js;
+          previewDoc.body.appendChild(scriptTag);
+        };
 
+          document.querySelectorAll("[data-lang='html'] textarea, [data-lang='css'] textarea, [data-lang='javascript'] textarea").forEach(el => {
+            el.addEventListener("input", updatePreview);
+          });
+
+          updatePreview();
+        }
+
+        // Backend execution for Java and C#
+        if (runBtn && outputDiv && codeBlock && ["java", "csharp"].includes(lang)) {
           runBtn.addEventListener("click", () => {
-            const code = codeBlock.tagName === "TEXTAREA"
-              ? codeBlock.value.trim()
-              : codeBlock.textContent.trim();
+            const code = codeBlock.value.trim();
+            if (!code) {
+              outputDiv.innerText = "⚠️ Please enter some code.";
+              return;
+            }
 
             runBtn.disabled = true;
             runBtn.innerText = "Running...";
+            outputDiv.innerText = "";
 
             fetch(`${API_BASE}/api/run`, {
               method: "POST",
@@ -131,9 +185,8 @@
       });
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
-      bindAllPreviews();
-    });
+    document.addEventListener("DOMContentLoaded", bindAllPreviews);
   </script>
+
 </body>
 </html>
