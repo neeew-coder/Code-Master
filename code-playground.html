@@ -6,6 +6,7 @@
   <title>Multi-language Code Playground</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="DarkTheme.css">
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -78,9 +79,9 @@
 
       <div class="hidden md:flex space-x-6">
         <a href="index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
         <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition underline">Code Play Ground</a>
       </div>
 
       <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
@@ -92,9 +93,9 @@
     <div class="md:hidden hidden gradient-bg" id="mobile-menu">
       <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
         <a href="index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
         <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="code-playground.html" class="hover:text-gray-300 transition">Play Ground</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition underline">Play Ground</a>
       </div>
       <hr>
     </div>
@@ -147,7 +148,26 @@
   </div>
 
   <!-- Script -->
-   <script src="scripts/DarkTheme.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (!toggleBtn || !mobileMenu || !menuIcon) return;
+
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("open");
+
+        mobileMenu.classList.toggle("open");
+        mobileMenu.classList.toggle("hidden");
+
+        // Toggle icon
+        menuIcon.classList.toggle("fa-bars", isOpen);
+        menuIcon.classList.toggle("fa-times", !isOpen);
+      });
+    });
+  </script>
   <script>
     const API_BASE = "https://code-master-kk2m.onrender.com";
 
