@@ -3,6 +3,17 @@
   background: linear-gradient(to right, #7e5bef, #5a3ea1);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+#mobile-menu {
+  transition: transform 0.3s ease;
+}
+#mobile-menu.hidden {
+  transform: translateY(-100%);
+}
+#mobile-menu:not(.hidden) {
+  transform: translateY(0);
+}
+
 #progress-bar {
   min-width: 14px;
 }
