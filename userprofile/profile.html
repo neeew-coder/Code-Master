@@ -52,7 +52,7 @@
   <main class="dashboard">
     <div class="mainContainer">
       <!-- Profile Section -->
-      <section class="profile" id="profile">
+      <section class="profile border border-gray-300" id="profile">
         <h2 class="text-2xl font-bold mb-4">Your Profile</h2>
         <div class="center">
           <div id="profileAvatar" class="avatar bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mb-0">?</div>
@@ -66,18 +66,10 @@
           <h3 class="text-xl font-semibold mb-2">Earned Badges</h3>
           <div class="space-y-2"></div>
         </div>
-
-        <!-- Password Reset Section -->
-        <section class="mt-12">
-          <h3 class="text-xl font-semibold mb-4">Reset Password</h3>
-          <input id="newPassword" type="password" placeholder="New Password" class="input w-full mb-3 p-2 border rounded" />
-          <input id="confirmPassword" type="password" placeholder="Confirm Password" class="input w-full mb-3 p-2 border rounded" />
-          <button id="resetPasswordBtn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Update Password</button>
-        </section>
       </section>
 
       <!-- Progress Section -->
-      <div class="progressContainer">
+      <div class="progressContainer border border-gray-300">
         <section class="progress">
           <h2 class="text-2xl font-bold mb-4">Your Progress</h2>
 
@@ -122,13 +114,20 @@
           </div>
         </section>
       </div>
-    </div>
-  </main>
+    </div>           
 
+    <!-- Password Reset Section --> 
+    <section class=" md:w-40 mt-2 bg-white py-4 px-4 rounded-2xl border border-gray-300 shadow-gray-400 text-center">
+      <h3 class="text-xl font-semibold mb-4">Reset Password</h3>
+      <input id="newPassword" type="password" placeholder="New Password" class="input w-full mb-3 p-2 border rounded" />
+      <input id="confirmPassword" type="password" placeholder="Confirm Password" class="input w-full mb-3 p-2 border rounded" />
+      <button id="resetPasswordBtn" class="bg-red-600 text-white px-4 py-2 w-full rounded hover:bg-red-700 transition">Update Password</button>
+    </section>
+  </main>    
   <footer class="bg-gray-900">
     <p>&copy; 2025 CodeMaster. All rights reserved.</p>
   </footer>
   <script src="../scripts/DarkTheme.js"></script>
-  <script src="script.js"></script>
+  <!-- <script src="script.js"></script> -->
 </body>
 </html>

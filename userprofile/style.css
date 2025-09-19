@@ -30,7 +30,7 @@ body {
 .mainContainer {
   display: flex;
   gap: 2rem;
-  margin-top: 10vh;
+  margin-top: 1vh;
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
