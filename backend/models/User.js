@@ -9,9 +9,18 @@ const UserSchema = new mongoose.Schema(
       unique: true,
       trim: true
     },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+      trim: true,
+      match: /^[^\s@]+@[^\s@]+\.[^\s@]+$/ // ✅ basic email format validation
+    },
     password: {
       type: String,
-      required: true
+      required: true,
+      select: false
     },
     bio: {
       type: String,
@@ -31,6 +40,14 @@ const UserSchema = new mongoose.Schema(
         }
       ],
       default: []
+    },
+    resetToken: {
+      type: String,
+      default: null
+    },
+    resetTokenExpiry: {
+      type: Date,
+      default: null
     },
     createdAt: {
       type: Date,

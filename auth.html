@@ -8,19 +8,27 @@
 </head>
 <body class="bg-gray-100 font-sans">
 
-  <main class="min-h-screen flex items-center justify-center">
-    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+  <main class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md border border-gray-400">
       <h1 class="text-2xl font-bold mb-6 text-indigo-700 text-center">Welcome to CodeMaster</h1>
 
-      <input id="authUsername" type="text" placeholder="Username" class="border px-3 py-2 rounded w-full mb-3" />
-      <input id="authPassword" type="password" placeholder="Password" class="border px-3 py-2 rounded w-full mb-4" />
+      <label for="authUsername" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+      <input id="authUsername" type="text" placeholder="Enter your username" class="border border-gray-400 px-3 py-2 rounded w-full mb-3" />
 
-      <div class="flex justify-between mb-4">
-        <button id="registerBtn" onclick="registerUser()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Register</button>
-        <button id="loginBtn" onclick="loginUser()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Login</button>
+      <label for="authEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+      <input id="authEmail" type="email" placeholder="Enter your email" class="border border-gray-400 px-3 py-2 rounded w-full mb-3" />
+
+      <label for="authPassword" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+      <input id="authPassword" type="password" placeholder="Enter your password" class="border border-gray-400 px-3 py-2 rounded w-full mb-4" />
+
+      <button id="registerBtn" onclick="registerUser()" class="bg-green-600 text-white w-full px-4 py-2 rounded hover:bg-green-700 transition">Register</button>
+      <button id="loginBtn" onclick="loginUser()" class="bg-indigo-600 text-white w-full mt-3 mb-2 px-4 py-2 rounded hover:bg-indigo-700 transition">Login</button>
+
+      <div class="mt-2">
+        <a href="forgot-password.html" class="text-sm text-blue-600 hover:underline">Forgot Password?</a>
       </div>
 
-      <div id="authMessage" class="text-sm text-center font-medium"></div>
+      <div id="authMessage" class="text-sm text-center font-medium mt-4"></div>
     </div>
   </main>
 
@@ -39,20 +47,6 @@
       document.getElementById("registerBtn").disabled = disabled;
     }
 
-    function saveAuth(token, username) {
-      localStorage.setItem("codemasterToken", token);
-      localStorage.setItem("codemaster_user", username);
-    }
-
-    function isTokenExpired(token) {
-      try {
-        const payload = JSON.parse(atob(token.split('.')[1]));
-        return Date.now() >= payload.exp * 1000;
-      } catch {
-        return true;
-      }
-    }
-
     async function loginUser() {
       const username = document.getElementById("authUsername").value.trim();
       const password = document.getElementById("authPassword").value.trim();
@@ -65,7 +59,7 @@
         const res = await fetch(`${BASE_URL}/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include", // ✅ Comma added here
+          credentials: "include",
           body: JSON.stringify({ username, password })
         });
 
@@ -85,18 +79,20 @@
 
     async function registerUser() {
       const username = document.getElementById("authUsername").value.trim();
+      const email = document.getElementById("authEmail").value.trim();
       const password = document.getElementById("authPassword").value.trim();
 
-      if (!username || !password) return showAuthMessage("Please enter both username and password");
+      if (!username || !email || !password) return showAuthMessage("Please fill in all fields");
       if (username.length < 3 || password.length < 4) return showAuthMessage("Username must be at least 3 characters and password at least 4");
+      if (!email.includes("@") || !email.includes(".")) return showAuthMessage("Please enter a valid email");
 
       toggleButtons(true);
       try {
         const res = await fetch(`${BASE_URL}/register`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include", // ✅ Comma added here
-          body: JSON.stringify({ username, password })
+          credentials: "include",
+          body: JSON.stringify({ username, email, password })
         });
 
         const data = await res.json();
@@ -112,7 +108,6 @@
         toggleButtons(false);
       }
     }
-
   </script>
 
 </body>
