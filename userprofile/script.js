@@ -44,10 +44,24 @@ function getAllBadgeTiers(subject, percent) {
 
 function updateNavProfile() {
   const name = localStorage.getItem("codemasterUserName");
-  if (name) {
-    document.getElementById("navProfile")?.classList.remove("hidden");
-    document.getElementById("navName").textContent = name;
-    document.getElementById("navAvatar").textContent = name.charAt(0).toUpperCase();
+  const navProfile = document.getElementById("navProfile");
+  const navName = document.getElementById("navName");
+  const navAvatar = document.getElementById("navAvatar");
+
+  if (name && navProfile && navName && navAvatar) {
+    navProfile.classList.remove("hidden");
+    navName.textContent = name;
+
+    // ✅ Apply ellipsis styling
+    navName.style.display = "inline-block";
+    navName.style.maxWidth = "60px"; // restrict to ~4–5 characters
+    navName.style.whiteSpace = "nowrap";
+    navName.style.overflow = "hidden";
+    navName.style.textOverflow = "ellipsis";
+    navName.style.fontSize = "14px"; // optional: scale font
+    navName.style.fontFamily = "monospace"; // optional: consistent width
+
+    navAvatar.textContent = name.charAt(0).toUpperCase();
   }
 }
 
