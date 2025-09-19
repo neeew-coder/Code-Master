@@ -567,23 +567,28 @@
         
         // ✅ Apply theme-aware color to sign-in button
         const applySignInBtnTheme = () => {
-            if (!profileBtn) return;
+        if (!profileBtn) return;
 
-            profileBtn.style.backgroundColor = 'white';
-            profileBtn.style.color = '#1e1b4b';
+        profileBtn.style.backgroundColor = 'white';
+        profileBtn.style.color = '#1e1b4b';
 
-            const name = profileBtn.textContent.trim();
-            const nameLength = name.length;
+        const name = profileBtn.textContent.trim();
+        const nameLength = name.length;
 
-            // Font size scaling based on name length
-            let fontSize = 16;
-            if (nameLength > 14) fontSize = 10;
-            else if (nameLength > 12) fontSize = 12;
-            else if (nameLength > 10) fontSize = 14;
+        // Font size scaling based on name length
+        let fontSize = 16;
+        if (nameLength > 14) fontSize = 12;
+        else if (nameLength > 10) fontSize = 14;
 
-            profileBtn.style.fontSize = `${fontSize}px`;
-            profileBtn.style.maxWidth = "100px";
-            profileBtn.style.textOverflow;
+        profileBtn.style.fontSize = `${fontSize}px`;
+        profileBtn.style.padding = "6px 12px";
+        profileBtn.style.maxWidth = "120px";
+
+        // ✅ Overflow protection
+        profileBtn.style.whiteSpace = "nowrap";
+        profileBtn.style.overflow = "hidden";
+        profileBtn.style.textOverflow = "ellipsis";
+        profileBtn.style.display = "inline-block";
         };
 
         applySignInBtnTheme();
