@@ -55,8 +55,15 @@ router.post("/login", async (req, res) => {
       return res.status(400).json({ success: false, error: "Username and password are required" });
     }
 
-    const user = await User.findOne({ username });
-    if (!user || !(await user.comparePassword(password))) {
+    // ✅ Select password explicitly
+    const user = await User.findOne({ username }).select("+password");
+    if (!user) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+
+    // ✅ Use schema method to compare
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
       return res.status(401).json({ success: false, error: "Invalid credentials" });
     }
 
