@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const User = require("../models/User");
-const bcrypt = require("bcryptjs"); // ✅ For password hashing
+const bcrypt = require("bcryptjs");
 
 // 🔄 Handle CORS preflight for /me
 router.options("/me", (req, res) => {
@@ -35,60 +35,56 @@ router.get("/me", auth, async (req, res) => {
 router.put("/me", auth, async (req, res) => {
   try {
     const { username, bio, progress, badges, password } = req.body;
-    const updates = {};
+
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
 
     // ✅ Check for duplicate username
-    if (username !== undefined) {
+    if (username !== undefined && username !== user.username) {
       const existing = await User.findOne({ username });
       if (existing && existing._id.toString() !== req.user._id.toString()) {
         return res.status(409).json({ error: "Username already taken" });
       }
-      updates.username = username;
+      user.username = username;
     }
 
-    if (bio !== undefined) updates.bio = bio;
+    if (bio !== undefined) user.bio = bio;
 
     // 🔄 Modular progress update
     if (progress !== undefined && typeof progress === "object") {
       const validProgress = Object.entries(progress).filter(([key, val]) =>
         typeof key === "string" && typeof val === "number"
       );
-      updates.progress = new Map(validProgress);
+      user.progress = new Map(validProgress);
     }
 
     if (Array.isArray(badges)) {
-      updates.badges = badges;
+      user.badges = badges;
     }
 
     // 🔐 Password update logic
     if (password !== undefined) {
-      if (typeof password !== "string" || password.length < 5) {
-        return res.status(400).json({ error: "Password must be at least 5 characters." });
+      if (typeof password !== "string" || password.length < 6) {
+        return res.status(400).json({ error: "Password must be at least 6 characters." });
       }
 
       const hashedPassword = await bcrypt.hash(password, 10);
-      updates.password = hashedPassword;
-      console.log(`🔐 Password updated for user ${req.user._id}`);
+      user.password = hashedPassword;
+      console.log(`🔐 Password updated for user ${user._id}`);
     }
 
-    const updatedUser = await User.findByIdAndUpdate(
-      req.user._id,
-      updates,
-      { new: true, runValidators: true }
-    );
-
-    if (!updatedUser) {
-      return res.status(404).json({ error: "User not found" });
-    }
+    await user.save();
 
     res.json({
       message: "Profile updated",
       user: {
-        username: updatedUser.username,
-        bio: updatedUser.bio,
-        progress: Object.fromEntries(updatedUser.progress || []),
-        badges: updatedUser.badges || [],
-        createdAt: updatedUser.createdAt
+        username: user.username,
+        bio: user.bio,
+        progress: Object.fromEntries(user.progress || []),
+        badges: user.badges || [],
+        createdAt: user.createdAt
       }
     });
   } catch (err) {
