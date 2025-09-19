@@ -215,6 +215,62 @@ function initNavigation() {
   }
 }
 
+// ─── Auth ──────────────────────────────────────────────────────────────────────
+
+function signOut() {
+  fetch(`${API_BASE}/auth/logout`, {
+    method: "POST",
+    credentials: "include"
+  })
+    .then(() => {
+      localStorage.clear();
+      window.location.href = "/Code-Master/index.html";
+    })
+    .catch(err => {
+      console.error("❌ Logout failed:", err);
+      alert("Could not log out. Try again.");
+    });
+}
+
+// ─── Badge Gallery ─────────────────────────────────────────────────────────────
+
+function renderBadgeGallery(allProgress, extraBadges = []) {
+  const gallery = document.querySelector("#badgeGallery .space-y-2");
+  if (!gallery) return;
+  gallery.innerHTML = "";
+
+  // Subject mastery badges — show all earned tiers
+  Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
+    const completedCount = Object.values(lessons).filter(Boolean).length;
+    const totalModules = allProgress.totalModules?.[subject] || 1;
+    const percent = Math.min(100, Math.round((completedCount / totalModules) * 100));
+
+    const earnedTiers = getAllBadgeTiers(subject, percent);
+    earnedTiers.forEach(({ label, class: badgeClass, icon }) => {
+      gallery.insertAdjacentHTML("beforeend", `
+        <div>
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery tier">
+            <i class="fas ${icon} text-white opacity-80"></i>
+            ${label.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
+          </span>
+        </div>
+      `);
+    });
+  });
+
+  // Extra achievement badges
+  extraBadges.forEach(({ label, class: badgeClass, icon }) => {
+    gallery.insertAdjacentHTML("beforeend", `
+      <div>
+        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="Achievement badge">
+          <i class="fas ${icon} text-white opacity-80"></i>
+          ${label}
+        </span>
+      </div>
+    `);
+  });
+}
+
 // ─── Progress UI ───────────────────────────────────────────────────────────────
 
 const allProgressData = { completed: {}, totalModules: {} };
