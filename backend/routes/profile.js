@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const auth = require("../middleware/auth");
 const User = require("../models/User");
-const bcrypt = require("bcryptjs"); // ✅ Added for password hashing
+const bcrypt = require("bcryptjs"); // ✅ For password hashing
 
 // 🔄 Handle CORS preflight for /me
 router.options("/me", (req, res) => {
@@ -63,10 +63,12 @@ router.put("/me", auth, async (req, res) => {
     // 🔐 Password update logic
     if (password !== undefined) {
       if (typeof password !== "string" || password.length < 5) {
-        return res.status(400).json({ error: "Password must be at least 6 characters." });
+        return res.status(400).json({ error: "Password must be at least 5 characters." });
       }
+
       const hashedPassword = await bcrypt.hash(password, 10);
       updates.password = hashedPassword;
+      console.log(`🔐 Password updated for user ${req.user._id}`);
     }
 
     const updatedUser = await User.findByIdAndUpdate(
