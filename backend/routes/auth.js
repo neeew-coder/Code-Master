@@ -99,7 +99,7 @@ router.post("/forgot-password", async (req, res) => {
     await user.save();
 
     await resend.emails.send({
-      from: "no-reply@codemaster.com", // must match verified sender in Resend
+      from: "Resend <onboarding@resend.dev>", // must match verified sender in Resend
       to: user.email,
       subject: "Reset Your CodeMaster Password",
       html: `
