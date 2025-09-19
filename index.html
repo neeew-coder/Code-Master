@@ -572,23 +572,21 @@
             profileBtn.style.backgroundColor = 'white';
             profileBtn.style.color = '#1e1b4b';
 
-            const nameLength = profileBtn.textContent.trim().length;
+            const name = profileBtn.textContent.trim();
+            const nameLength = name.length;
 
-            // Adjust font size based on name length
-            if (nameLength <= 5) {
-                profileBtn.style.fontSize = '16px';
-                profileBtn.style.padding = 0;
-            } else if (nameLength <= 8) {
-                profileBtn.style.fontSize = '14px';
-            } else if (nameLength <= 10) {
-                profileBtn.style.fontSize = '12px';
-            } else if (nameLength <= 12) {
-                profileBtn.style.fontSize = '10px';
-            } else if (nameLength <= 14) {
-                profileBtn.style.fontSize = '8px';
-            } else {
-                profileBtn.style.fontSize = '4px';
-            }
+            // Font size scaling based on name length
+            let fontSize = 16;
+            if (nameLength > 14) fontSize = 10;
+            else if (nameLength > 12) fontSize = 12;
+            else if (nameLength > 10) fontSize = 14;
+
+            profileBtn.style.fontSize = `${fontSize}px`;
+            profileBtn.style.padding = "6px 12px";
+            profileBtn.style.maxWidth = "160px";
+            profileBtn.style.whiteSpace = "nowrap";
+            profileBtn.style.overflow = "hidden";
+            profileBtn.style.textOverflow = "ellipsis";
         };
 
         applySignInBtnTheme();
