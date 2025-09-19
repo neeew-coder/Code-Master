@@ -567,11 +567,27 @@
         
         // ✅ Apply theme-aware color to sign-in button
         const applySignInBtnTheme = () => {
-        if (!profileBtn) return;
+            if (!profileBtn) return;
 
-        profileBtn.style.backgroundColor = 'white';
-        profileBtn.style.color = '#1e1b4b';
-        profile.style.fontSize = '16px';
+            profileBtn.style.backgroundColor = 'white';
+            profileBtn.style.color = '#1e1b4b';
+
+            const nameLength = profileBtn.textContent.trim().length;
+
+            // Adjust font size based on name length
+            if (nameLength <= 8) {
+                profileBtn.style.fontSize = '16px';
+            } else if (nameLength <= 14) {
+                profileBtn.style.fontSize = '14px';
+            } else if (nameLength <= 20) {
+                profileBtn.style.fontSize = '12px';
+            } else if (nameLength <= 26) {
+                profileBtn.style.fontSize = '10px';
+            } else if (nameLength <= 32) {
+                profileBtn.style.fontSize = '8px';
+            } else {
+                profileBtn.style.fontSize = '4px';
+            }
         };
 
         applySignInBtnTheme();
