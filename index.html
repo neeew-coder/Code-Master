@@ -43,12 +43,12 @@
                 />
             </div>
 
-            <button id="themeToggle" class="px-1 py-2 rounded-full font-semibold transition text-white">
+            <button id="themeToggle" class="px-0 py-1 rounded-full font-semibold transition text-white">
                 <i id="themeIcon" class="fas fa-moon text-lg"></i>
             </button>
 
             <!-- Sign In Button -->
-            <a id="signInBtn" href="auth.html" class="bg-white text-purple-600 px-4 py-2 rounded-full font-medium hover:bg-gray-100 transition">
+            <a id="signInBtn" href="auth.html" class="bg-white text-purple-600 px-2 py-2 rounded-full font-medium hover:bg-gray-100 transition">
                 Sign In
             </a>
 
@@ -136,15 +136,7 @@
     <section class="py-16 bg-white">
         <div class="container mx-auto px-4">
         <h2 class="text-3xl font-bold text-center mb-12">Your Learning Journey</h2>
-        <div class="max-w-4xl mx-auto mb-16">
-            <div class="flex justify-between items-center mb-4">
-            <div class="text-sm font-medium text-gray-600" id="progress-label">0% Completed</div>
-            <div class="text-sm font-medium text-purple-600" id="module-label">Module 0 of 5</div>
-            </div>
-            <div class="w-full bg-gray-200 rounded-full h-2.5">
-            <div class="bg-purple-600 h-2.5 rounded-full" id="progress-bar" style="width: 0%"></div>
-            </div>
-        </div>
+
         <!-- Tabs -->
         <div class="max-w-5xl mx-auto">
             <div class="flex flex-wrap border-b border-gray-200 mb-8">
@@ -291,48 +283,63 @@
         </div>
     </section>
     <!-- Interactive IDE Section -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-4">Practice in Real-Time</h2>
-            <p class="text-xl text-center text-gray-600 mb-12">Try our embedded coding playground to experiment with what you learn</p>
-            
-            <div class="max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-                <div class="flex border-b border-gray-200">
-                    <div class="px-4 py-3 font-medium text-gray-500">HTML</div>
-                    <div class="px-4 py-3 font-medium text-gray-500">CSS</div>
-                    <div class="px-4 py-3 font-medium text-gray-500">JavaScript</div>
+    <section class="py-10 bg-gray-50">
+        <div class="container mx-auto px-4  ">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">Practice in Real-Time</h2>
+            <p class="text-lg md:text-xl text-center text-gray-600 mb-12">
+            Try our embedded coding playground to experiment with what you learn
+            </p>
+
+            <div class="max-w-5xl mx-auto bg-gray-200 rounded-xl shadow-lg overflow-hidden  border border-gray-300">
+                <!-- Tabs -->
+                <div class="flex flex-wrap justify-center border-b border-gray-200 text-sm md:text-base">
+                    <div class="px-4 py-3 font-medium text-gray-500 cursor-pointer hover:text-gray-700">HTML</div>
+                    <div class="px-4 py-3 font-medium text-gray-500 cursor-pointer hover:text-gray-700">CSS</div>
+                    <div class="px-4 py-3 font-medium text-gray-500 cursor-pointer hover:text-gray-700">JavaScript</div>
                 </div>
+
+                <!-- Header Bar -->
                 <div class="p-4 bg-gray-900">
-                    <div class="flex items-center">
-                        <div class="flex space-x-2 mr-4">
-                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
-                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
-                        </div>
-                        <div class="text-sm text-gray-400">Try editing the code below</div>
+                    <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
                     </div>
                 </div>
-                <div class="grid md:grid-cols-2 gap-0">
-                    <div class="bg-gray-800 p-4">
-                        <div class="font-mono text-sm text-gray-300">
-                            <div class="text-purple-300">&lt;div class="container"&gt;</div>
-                            <div class="pl-4 text-purple-300">&lt;h1&gt;<span class="text-white">Hello World!</span>&lt;/h1&gt;</div>
-                            <div class="pl-4 text-purple-300">&lt;button <span class="text-blue-300">id=</span><span class="text-yellow-300">"myButton"</span>&gt;<span class="text-white">Click Me</span>&lt;/button&gt;</div>
-                            <div class="text-purple-300">&lt;/div&gt;</div>
-                            <div class="mt-4 text-blue-300">document.getElementById(<span class="text-yellow-300">'myButton'</span>).addEventListener(<span class="text-yellow-300">'click'</span>, <span class="text-green-300">function</span>() {</div>
-                            <div class="pl-4 text-blue-300">alert(<span class="text-yellow-300">'Button clicked!'</span>);</div>
-                            <div class="text-blue-300">});</div>
-                        </div>
+
+                <!-- Code + Preview -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-0">
+                    <!-- Code Block -->
+                    <div class="bg-gray-800 p-4 overflow-x-auto">
+                    <div class="font-mono text-sm text-gray-300 whitespace-pre">
+                        <div class="text-purple-300">&lt;div class="container"&gt;</div>
+                        <div class="pl-4 text-purple-300">&lt;h1&gt;<span class="text-white">Hello World!</span>&lt;/h1&gt;</div>
+                        <div class="pl-4 text-purple-300">&lt;button <span class="text-blue-300">id=</span><span class="text-yellow-300">"myButton"</span>&gt;<span class="text-white">Click Me</span>&lt;/button&gt;</div>
+                        <div class="text-purple-300">&lt;/div&gt;</div>
+                        <div class="mt-4 text-blue-300">document.getElementById(<span class="text-yellow-300">'myButton'</span>).addEventListener(<span class="text-yellow-300">'click'</span>, <span class="text-green-300">function</span>() {</div>
+                        <div class="pl-4 text-blue-300">alert(<span class="text-yellow-300">'Button clicked!'</span>);</div>
+                        <div class="text-blue-300">});</div>
                     </div>
+                    </div>
+
+                    <!-- Preview Block -->
                     <div class="bg-white p-4 flex items-center justify-center">
-                        <div class="text-center">
-                            <h1 class="text-2xl font-bold mb-4">Hello World!</h1>
-                            <button id="demoButton" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">Click Me</button>
-                        </div>
+                    <div class="text-center">
+                        <h1 class="text-xl md:text-2xl font-bold mb-4">Hello World!</h1>
+                        <button id="demoButton" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700 transition">
+                        Click Me
+                        </button>
+                    </div>
                     </div>
                 </div>
-                <div class="bg-gray-100 p-4 flex text-align-right justify-end">
-                    <button class="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700 transition"><a href="code-playground.html">Try Coding</a></button>
+
+                <!-- Footer Button -->
+                <div class="bg-gray-200 p-4 flex justify-end">
+                    <a href="code-playground.html" class="bg-purple-600 text-white px-4 py-2 rounded text-sm hover:bg-purple-700 transition">
+                    Try Coding
+                    </a>
                 </div>
             </div>
         </div>
@@ -340,11 +347,11 @@
     <!-- CTA Section -->
     <section class="gradient-bg text-white py-16">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Coding Journey?</h2>
+            <h2 class="text-3xl md:text-4xl font-bold mb-3">Ready to Start Your Coding Journey?</h2>
         </div>
     </section>
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12"  style="text-align: center;">
+    <footer class="bg-gray-900 text-white py-2 pb-6"  style="text-align: center;">
         <div class="container mx-auto px-4">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
@@ -357,21 +364,24 @@
                 <div>
                 <h3 class="text-lg font-bold mb-4">Courses</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Frontend</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Backend</a></li>
+                    <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Frontend</a></li>
+                    <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Backend</a></li>
                 </ul>
                 </div>
                 <div>
                 <h3 class="text-lg font-bold mb-4">Resources</h3>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Documentation</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-white transition">Support</a></li>
+                    <li class="text-gray-400">Documentation</li>
+                    <li class="text-gray-400">Support</li>
                 </ul>
             </div>
-            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between ">
-                <p class="text-gray-400 mb-4 md:mb-0">© 2025 CodeMaster. All rights reserved.</p>
+            <div class=" mt-0 md:flex-row justify-between ">
+                <!-- Text -->
+                <span class="text-lg font-semibold">About Us</span>
+                <p class="text-gray-400 mb-4 md:mb-0 mt-6 hover:text-white"><a href="about.html">© 2025 CodeMaster. All rights reserved.</a></p>
             </div>
         </div>
+    </footer>
     <script src="scripts/DarkTheme.js"></script>
     <script src="scripts/searchBar.js"></script>
     <script>

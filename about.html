@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CodeMaster | About</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="DarkTheme.css">
+</head>
+<body class="bg-gray-50 font-sans">
+
+  <!-- Navigation -->
+  <nav class="gradient-bg text-white shadow-lg">
+    <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+      <div class="flex items-center space-x-2">
+        <i class="fas fa-code text-2xl"></i>
+        <span class="text-xl font-bold">CodeMaster</span>
+      </div>
+
+      <div class="hidden md:flex space-x-6">
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Code Play Ground</a>
+      </div>
+
+      <button id="menu-toggle" class="md:hidden text-white focus:outline-none">
+        <i id="menu-icon" class="fas fa-bars text-2xl"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden gradient-bg" id="mobile-menu">
+      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
+        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="code-playground.html" class="hover:text-gray-300 transition">Play Ground</a>
+      </div>
+      <hr>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="gradient-bg text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <h1 class="text-4xl font-bold mb-4">About CodeMaster</h1>
+      <p class="text-xl mb-6">Empowering learners to master full-stack development through interactive, hands-on experiences.</p>
+      <button class="bg-white text-purple-600 px-6 py-3 rounded-full font-bold hover:bg-gray-100 transition">Explore Lessons</button>
+    </div>
+  </section>
+
+  <!-- About Content -->
+  <main class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-xl shadow-md p-6 sm:p-8">
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Our Mission</h2>
+        <p class="text-gray-600 leading-relaxed">
+          CodeMaster is built for learners who crave clarity, momentum, and mastery. We combine structured lessons with real-time coding environments, progress tracking, and playful UI elements like badge systems and unlock animations. Whether you're just starting out or refining your skills, our platform adapts to your pace and celebrates every breakthrough.
+        </p>
+
+        <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Why CodeMaster?</h2>
+        <ul class="list-disc list-inside text-gray-600 space-y-2">
+          <li>Interactive lessons from HTML to backend development</li>
+          <li>Live code playgrounds with instant feedback</li>
+          <li>Progress tracking and personalized learning paths</li>
+          <li>Dark mode, responsive design, and mobile-friendly UI</li>
+        </ul>
+
+        <h2 class="text-2xl font-bold text-gray-800 mt-8 mb-4">Built for Developers</h2>
+        <p class="text-gray-600 leading-relaxed">
+          Whether you're building your first webpage or architecting scalable systems, CodeMaster gives you the tools, structure, and motivation to level up. We believe learning should be immersive, rewarding, and fun — and we’re here to make that happen.
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-2 pb-6 pt-12"  style="text-align: center;">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <i class="fas fa-code text-2xl"></i>
+                    <span class="text-xl font-bold">CodeMaster</span>
+                </div>
+                <p class="text-gray-400">Interactive learning platform.</p>
+                </div>
+                <div>
+                <h3 class="text-lg font-bold mb-4">Courses</h3>
+                <ul class="space-y-2">
+                    <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Frontend</a></li>
+                    <li><a href="lessons.html" class="text-gray-400 hover:text-white transition">Backend</a></li>
+                </ul>
+                </div>
+                <div>
+                <h3 class="text-lg font-bold mb-4">Resources</h3>
+                <ul class="space-y-2">
+                    <li class="text-gray-400">Documentation</li>
+                    <li class="text-gray-400">Support</li>
+                </ul>
+            </div>
+            <div class=" mt-0 md:flex-row justify-between ">
+                <!-- Text -->
+                <span class="text-lg font-semibold">About Us</span>
+                <p class="text-gray-400 mb-4 md:mb-0 mt-6 hover:text-white"><a href="about.html">© 2025 CodeMaster. All rights reserved.</a></p>
+            </div>
+        </div>
+  </footer>
+
+  <script src="scripts/DarkTheme.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      if (!toggleBtn || !mobileMenu || !menuIcon) return;
+
+      toggleBtn.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.contains("open");
+
+        mobileMenu.classList.toggle("open");
+        mobileMenu.classList.toggle("hidden");
+
+        menuIcon.classList.toggle("fa-bars", isOpen);
+        menuIcon.classList.toggle("fa-times", !isOpen);
+      });
+    });
+  </script>
+
+</body>
+</html>
