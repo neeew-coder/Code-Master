@@ -51,16 +51,13 @@ function updateNavProfile() {
   if (name && navProfile && navName && navAvatar) {
     navProfile.classList.remove("hidden");
     navName.textContent = name;
-
-    // ✅ Apply ellipsis styling
     navName.style.display = "inline-block";
-    navName.style.maxWidth = "60px"; // restrict to ~4–5 characters
+    navName.style.maxWidth = "60px";
     navName.style.whiteSpace = "nowrap";
     navName.style.overflow = "hidden";
     navName.style.textOverflow = "ellipsis";
-    navName.style.fontSize = "14px"; // optional: scale font
-    navName.style.fontFamily = "monospace"; // optional: consistent width
-
+    navName.style.fontSize = "14px";
+    navName.style.fontFamily = "monospace";
     navAvatar.textContent = name.charAt(0).toUpperCase();
   }
 }
@@ -94,8 +91,6 @@ function loadProfileFromBackend() {
         localStorage.setItem("codemasterTagline", data.bio || "");
         updateNavProfile();
         renderProfileUI();
-
-        // Store extra badges for later use
         window.extraBadges = Array.isArray(data.badges) ? data.badges : [];
       }
     })
@@ -109,14 +104,7 @@ function loadProfileFromBackend() {
 function saveProfile() {
   const name = document.getElementById("profileName").value.trim();
   const tagline = document.getElementById("profileTagline").value.trim();
-  const newPassword = document.getElementById("newPassword").value.trim();
-  const confirmPassword = document.getElementById("confirmPassword").value.trim();
   const button = document.getElementById("saveBtn");
-
-  if (newPassword && newPassword !== confirmPassword) {
-    alert("❌ Passwords do not match.");
-    return;
-  }
 
   localStorage.setItem("codemasterUserName", name);
   localStorage.setItem("codemasterTagline", tagline);
@@ -126,14 +114,11 @@ function saveProfile() {
   button.disabled = true;
   button.textContent = "Saving...";
 
-  const payload = { username: name, bio: tagline };
-  if (newPassword) payload.password = newPassword;
-
   fetch(`${API_BASE}/profile/me`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify(payload)
+    body: JSON.stringify({ username: name, bio: tagline })
   })
     .then(res => {
       if (!res.ok) throw new Error(`Server responded with ${res.status}`);
@@ -141,9 +126,7 @@ function saveProfile() {
     })
     .then(data => {
       console.log("✅ Profile updated:", data);
-      alert("Profile saved and password updated!");
-      document.getElementById("newPassword").value = "";
-      document.getElementById("confirmPassword").value = "";
+      alert("Profile saved!");
     })
     .catch(err => {
       console.error("❌ Update failed:", err);
@@ -155,11 +138,61 @@ function saveProfile() {
     });
 }
 
+function resetPassword() {
+  const newPassword = document.getElementById("newPassword").value.trim();
+  const confirmPassword = document.getElementById("confirmPassword").value.trim();
+  const button = document.getElementById("resetPasswordBtn");
+
+  if (!newPassword || !confirmPassword) {
+    alert("Please fill in both password fields.");
+    return;
+  }
+
+  if (newPassword !== confirmPassword) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  if (newPassword.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  button.disabled = true;
+  button.textContent = "Updating...";
+
+  fetch(`${API_BASE}/profile/me`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify({ password: newPassword })
+  })
+    .then(res => {
+      if (!res.ok) throw new Error(`Server responded with ${res.status}`);
+      return res.json();
+    })
+    .then(data => {
+      console.log("✅ Password updated:", data);
+      alert("Password successfully updated!");
+      document.getElementById("newPassword").value = "";
+      document.getElementById("confirmPassword").value = "";
+    })
+    .catch(err => {
+      console.error("❌ Password update failed:", err);
+      alert("Failed to update password.");
+    })
+    .finally(() => {
+      button.disabled = false;
+      button.textContent = "Update Password";
+    });
+}
+
 function initProfileUI() {
   const saveBtn = document.getElementById("saveBtn");
-  if (saveBtn) {
-    saveBtn.addEventListener("click", saveProfile);
-  }
+  if (saveBtn) saveBtn.addEventListener("click", saveProfile);
+
+  const resetBtn = document.getElementById("resetPasswordBtn");
+  if (resetBtn) resetBtn.addEventListener("click", resetPassword);
 
   loadProfileFromBackend();
   updateNavProfile();
@@ -180,62 +213,6 @@ function initNavigation() {
       menuIcon.classList.toggle("fa-times");
     });
   }
-}
-
-// ─── Auth ──────────────────────────────────────────────────────────────────────
-
-function signOut() {
-  fetch(`${API_BASE}/auth/logout`, {
-    method: "POST",
-    credentials: "include"
-  })
-    .then(() => {
-      localStorage.clear();
-      window.location.href = "/Code-Master/index.html";
-    })
-    .catch(err => {
-      console.error("❌ Logout failed:", err);
-      alert("Could not log out. Try again.");
-    });
-}
-
-// ─── Badge Gallery ─────────────────────────────────────────────────────────────
-
-function renderBadgeGallery(allProgress, extraBadges = []) {
-  const gallery = document.querySelector("#badgeGallery .space-y-2");
-  if (!gallery) return;
-  gallery.innerHTML = "";
-
-  // Subject mastery badges — show all earned tiers
-  Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
-    const completedCount = Object.values(lessons).filter(Boolean).length;
-    const totalModules = allProgress.totalModules?.[subject] || 1;
-    const percent = Math.min(100, Math.round((completedCount / totalModules) * 100));
-
-    const earnedTiers = getAllBadgeTiers(subject, percent);
-    earnedTiers.forEach(({ label, class: badgeClass, icon }) => {
-      gallery.insertAdjacentHTML("beforeend", `
-        <div>
-          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="${subject.toUpperCase()} mastery tier">
-            <i class="fas ${icon} text-white opacity-80"></i>
-            ${label.replace(/</g, "&lt;").replace(/>/g, "&gt;")}
-          </span>
-        </div>
-      `);
-    });
-  });
-
-  // Extra achievement badges
-  extraBadges.forEach(({ label, class: badgeClass, icon }) => {
-    gallery.insertAdjacentHTML("beforeend", `
-      <div>
-        <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow ring-2 ring-offset-1 ring-white ${badgeClass}" title="Achievement badge">
-          <i class="fas ${icon} text-white opacity-80"></i>
-          ${label}
-        </span>
-      </div>
-    `);
-  });
 }
 
 // ─── Progress UI ───────────────────────────────────────────────────────────────
