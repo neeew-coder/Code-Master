@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const { Resend } = require("resend");
+const resend = new Resend(process.env.RESEND_API_KEY);
 const User = require("../models/User");
 const auth = require("../middleware/auth");
 
@@ -96,13 +98,22 @@ router.post("/forgot-password", async (req, res) => {
     user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
     await user.save();
 
-    // TODO: Send token via email
-    console.log(`🔐 Reset token for ${email}: ${token}`);
+    await resend.emails.send({
+      from: "no-reply@codemaster.com", // must match verified sender in Resend
+      to: user.email,
+      subject: "Reset Your CodeMaster Password",
+      html: `
+        <p>Hi ${user.username},</p>
+        <p>You requested a password reset. Click the link below to set a new password:</p>
+        <a href="https://codemaster.com/reset-password?token=${token}">Reset Password</a>
+        <p>This link expires in 15 minutes.</p>
+      `
+    });
 
-    res.json({ message: "Reset token generated. Check your email.", token });
+    res.json({ message: "Reset link sent to your email." });
   } catch (err) {
     console.error("❌ Forgot password error:", err);
-    res.status(500).json({ error: "Failed to generate reset token" });
+    res.status(500).json({ error: "Failed to send reset email" });
   }
 });
 
