@@ -109,7 +109,14 @@ function loadProfileFromBackend() {
 function saveProfile() {
   const name = document.getElementById("profileName").value.trim();
   const tagline = document.getElementById("profileTagline").value.trim();
+  const newPassword = document.getElementById("newPassword").value.trim();
+  const confirmPassword = document.getElementById("confirmPassword").value.trim();
   const button = document.getElementById("saveBtn");
+
+  if (newPassword && newPassword !== confirmPassword) {
+    alert("❌ Passwords do not match.");
+    return;
+  }
 
   localStorage.setItem("codemasterUserName", name);
   localStorage.setItem("codemasterTagline", tagline);
@@ -119,23 +126,28 @@ function saveProfile() {
   button.disabled = true;
   button.textContent = "Saving...";
 
+  const payload = { username: name, bio: tagline };
+  if (newPassword) payload.password = newPassword;
+
   fetch(`${API_BASE}/profile/me`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify({ username: name, bio: tagline })
+    body: JSON.stringify(payload)
   })
     .then(res => {
       if (!res.ok) throw new Error(`Server responded with ${res.status}`);
       return res.json();
     })
     .then(data => {
-      console.log("✅ Profile synced:", data);
-      alert("Profile saved and synced!");
+      console.log("✅ Profile updated:", data);
+      alert("Profile saved and password updated!");
+      document.getElementById("newPassword").value = "";
+      document.getElementById("confirmPassword").value = "";
     })
     .catch(err => {
-      console.error("❌ Sync failed:", err);
-      alert("Failed to sync profile.");
+      console.error("❌ Update failed:", err);
+      alert("Failed to update profile.");
     })
     .finally(() => {
       button.disabled = false;
