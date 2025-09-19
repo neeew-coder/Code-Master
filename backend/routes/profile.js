@@ -62,7 +62,7 @@ router.put("/me", auth, async (req, res) => {
 
     // 🔐 Password update logic
     if (password !== undefined) {
-      if (typeof password !== "string" || password.length < 6) {
+      if (typeof password !== "string" || password.length < 5) {
         return res.status(400).json({ error: "Password must be at least 6 characters." });
       }
       const hashedPassword = await bcrypt.hash(password, 10);
