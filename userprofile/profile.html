@@ -59,13 +59,21 @@
         </div>
         <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 mt-3 p-2 border rounded" />
         <input id="profileTagline" type="text" placeholder="Your Tagline" class="input w-full mb-3 p-2 border rounded" />
-        <input id="newPassword" type="password" placeholder="New Password" class="input w-full mb-3 p-2 border rounded" />
-        <input id="confirmPassword" type="password" placeholder="Confirm Password" class="input w-full mb-3 p-2 border rounded" />
         <button id="saveBtn" class="save-btn bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
-          <div id="badgeGallery" class="mt-8">
+
+        <!-- Badge Gallery -->
+        <div id="badgeGallery" class="mt-8">
           <h3 class="text-xl font-semibold mb-2">Earned Badges</h3>
           <div class="space-y-2"></div>
         </div>
+
+        <!-- Password Reset Section -->
+        <section class="mt-12">
+          <h3 class="text-xl font-semibold mb-4">Reset Password</h3>
+          <input id="newPassword" type="password" placeholder="New Password" class="input w-full mb-3 p-2 border rounded" />
+          <input id="confirmPassword" type="password" placeholder="Confirm Password" class="input w-full mb-3 p-2 border rounded" />
+          <button id="resetPasswordBtn" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition">Update Password</button>
+        </section>
       </section>
 
       <!-- Progress Section -->
