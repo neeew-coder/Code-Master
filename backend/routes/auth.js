@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const { Resend } = require("resend");
-const resend = new Resend(process.env.RESEND_API_KEY);
+const nodemailer = require("nodemailer");
 const User = require("../models/User");
 const auth = require("../middleware/auth");
 
@@ -17,6 +16,15 @@ const createToken = (user) => {
     { expiresIn: "30d" }
   );
 };
+
+// 📧 Gmail SMTP transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD
+  }
+});
 
 // 📝 Register with email
 router.post("/register", async (req, res) => {
@@ -84,7 +92,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// 🔓 Forgot Password via email
+// 🔓 Forgot Password via Gmail SMTP
 router.post("/forgot-password", async (req, res) => {
   try {
     const { email } = req.body;
@@ -98,14 +106,14 @@ router.post("/forgot-password", async (req, res) => {
     user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
     await user.save();
 
-    await resend.emails.send({
-      from: "markkevinvillaflor25@gmail.com", // must match verified sender in Resend
+    await transporter.sendMail({
+      from: `"CodeMaster Support" <${process.env.GMAIL_USER}>`,
       to: user.email,
       subject: "Reset Your CodeMaster Password",
       html: `
         <p>Hi ${user.username},</p>
         <p>You requested a password reset. Click the link below to set a new password:</p>
-        <a href="https://codemaster.com/reset-password?token=${token}">Reset Password</a>
+        <a href="https://codemaster.vercel.app/reset-password?token=${token}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
         <p>This link expires in 15 minutes.</p>
       `
     });
