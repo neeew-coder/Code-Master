@@ -143,8 +143,10 @@ router.post("/reset-password", async (req, res) => {
     }
 
     user.password = password;
+    user.markModified("password"); // ✅ Ensures Mongoose triggers pre-save hook
     user.resetToken = undefined;
     user.resetTokenExpiry = undefined;
+
     await user.save();
 
     res.json({ message: "Password reset successful" });
