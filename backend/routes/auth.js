@@ -113,7 +113,7 @@ router.post("/forgot-password", async (req, res) => {
       html: `
         <p>Hi ${user.username},</p>
         <p>You requested a password reset. Click the link below to set a new password:</p>
-        <a href="https://code-master-kk2m.onrender.com/reset-password.html?token=${token}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
+        <a href="https://neeew-coder.github.io/Code-Master/reset-password.html?token=${token}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
         <p>This link expires in 15 minutes.</p>
       `
     });

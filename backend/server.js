@@ -4,7 +4,6 @@ const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const path = require("path");
 
 // ✅ Route imports
 const apiRoutes = require("./routes/api");       // JDoodle
@@ -32,8 +31,7 @@ mongoose
 const allowedOrigins = [
   "http://localhost:3000",
   "https://neeew-coder.github.io",
-  "https://codemaster-client.onrender.com",
-  "https://code-master-kk2m.onrender.com"
+  "https://codemaster-client.onrender.com"
 ];
 
 // ✅ CORS configuration
@@ -55,9 +53,6 @@ app.use(cors(corsOptions));
 app.use(helmet({ crossOriginResourcePolicy: false }));
 app.use(express.json());
 app.use(cookieParser());
-
-// ✅ Serve static HTML, CSS, JS from root
-app.use(express.static(path.join(__dirname, "..")));
 
 // ✅ Log requests and preflight
 app.use((req, res, next) => {
