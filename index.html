@@ -6,6 +6,7 @@
   <title>CodeMaster - Interactive Learning Platform</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="DarkTheme.css">
   <link href="./src/input.css" rel="stylesheet">
@@ -385,218 +386,226 @@
     <script src="scripts/DarkTheme.js"></script>
     <script src="scripts/searchBar.js"></script>
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        console.log("✅ Script loaded");
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("✅ Script loaded");
+            
+            // ✅ Register service worker for offline support
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/service-worker.js").then(() => {
+                console.log("✅ Service Worker registered");
+                }).catch((err) => {
+                console.error("❌ Service Worker registration failed:", err);
+                });
+            }
+            // DOM Elements
+            const signInBtn = document.getElementById('signInBtn');
+            const profileDropdownWrapper = document.getElementById('profileDropdownWrapper');
+            const profileBtn = document.getElementById('profileBtn');
+            const profileDropdown = document.getElementById('profileDropdown');
+            const signOutLink = document.getElementById('signOutLink');
+            const mobileMenuBtn = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
 
-        // DOM Elements
-        const signInBtn = document.getElementById('signInBtn');
-        const profileDropdownWrapper = document.getElementById('profileDropdownWrapper');
-        const profileBtn = document.getElementById('profileBtn');
-        const profileDropdown = document.getElementById('profileDropdown');
-        const signOutLink = document.getElementById('signOutLink');
-        const mobileMenuBtn = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+            const profileNameEl = document.querySelector('#profile-tab h2');
+            const profileTaglineEl = document.querySelector('#profile-tab p');
+            const profileAvatarEl = document.querySelector('#profile-tab img');
+            const nameInput = document.getElementById('profileName');
+            const taglineInput = document.getElementById('profileTagline');
+            const avatarInput = document.getElementById('profileAvatar');
 
-        const profileNameEl = document.querySelector('#profile-tab h2');
-        const profileTaglineEl = document.querySelector('#profile-tab p');
-        const profileAvatarEl = document.querySelector('#profile-tab img');
-        const nameInput = document.getElementById('profileName');
-        const taglineInput = document.getElementById('profileTagline');
-        const avatarInput = document.getElementById('profileAvatar');
-
-        // ✅ Session Check via Backend
-        console.log("🔍 Checking session...");
-        fetch("https://code-master-kk2m.onrender.com/api/profile/me", {
-        method: "GET",
-        credentials: "include"
-        })
-        .then(res => {
-            console.log("✅ Response status:", res.status);
-            if (!res.ok) throw new Error("Not authenticated");
-            return res.json();
-        })
-        .then(data => {
-            console.log("✅ Session data:", data);
-
-            signInBtn?.classList.add("hidden");
-            profileDropdownWrapper?.classList.remove("hidden");
-
-            if (profileBtn) profileBtn.textContent = data.username || "Profile";
-            if (profileNameEl) profileNameEl.textContent = data.username;
-            if (profileTaglineEl) profileTaglineEl.textContent = data.bio || "";
-            if (nameInput) nameInput.value = data.username;
-            if (taglineInput) taglineInput.value = data.bio || "";
-        })
-        .catch(err => {
-            console.warn("❌ Session check failed:", err.message);
-            signInBtn?.classList.remove("hidden");
-            profileDropdownWrapper?.classList.add("hidden");
-        });
-
-        // ✅ Dropdown toggle
-        profileBtn?.addEventListener('click', () => {
-        profileDropdown?.classList.toggle('hidden');
-        });
-
-        // ✅ Sign out
-        signOutLink?.addEventListener('click', () => {
-        fetch("https://code-master-kk2m.onrender.com/api/auth/logout", {
-            method: "POST",
+            // ✅ Session Check via Backend
+            console.log("🔍 Checking session...");
+            fetch("https://code-master-kk2m.onrender.com/api/profile/me", {
+            method: "GET",
             credentials: "include"
-        }).finally(() => {
-            window.location.href = "index.html";
-        });
-        });
+            })
+            .then(res => {
+                console.log("✅ Response status:", res.status);
+                if (!res.ok) throw new Error("Not authenticated");
+                return res.json();
+            })
+            .then(data => {
+                console.log("✅ Session data:", data);
 
-        // ✅ Mobile menu toggle
-        mobileMenuBtn?.addEventListener('click', () => {
-        mobileMenu?.classList.toggle('hidden');
-        });
+                signInBtn?.classList.add("hidden");
+                profileDropdownWrapper?.classList.remove("hidden");
 
-        // ✅ Tab Switching
-        document.querySelectorAll('.tab-button').forEach(button => {
-        button.addEventListener('click', function () {
-            document.querySelectorAll('.tab-button').forEach(btn => {
-            btn.classList.remove('text-purple-600', 'border-purple-600');
-            btn.classList.add('text-gray-500');
+                if (profileBtn) profileBtn.textContent = data.username || "Profile";
+                if (profileNameEl) profileNameEl.textContent = data.username;
+                if (profileTaglineEl) profileTaglineEl.textContent = data.bio || "";
+                if (nameInput) nameInput.value = data.username;
+                if (taglineInput) taglineInput.value = data.bio || "";
+            })
+            .catch(err => {
+                console.warn("❌ Session check failed:", err.message);
+                signInBtn?.classList.remove("hidden");
+                profileDropdownWrapper?.classList.add("hidden");
             });
-            this.classList.add('text-purple-600', 'border-purple-600');
-            this.classList.remove('text-gray-500');
 
-            const tabId = this.getAttribute('data-tab') + '-tab';
-            document.querySelectorAll('.tab-content').forEach(tab => {
-            tab.classList.add('hidden');
-            tab.classList.remove('active');
+            // ✅ Dropdown toggle
+            profileBtn?.addEventListener('click', () => {
+            profileDropdown?.classList.toggle('hidden');
             });
-            document.getElementById(tabId)?.classList.remove('hidden');
-            document.getElementById(tabId)?.classList.add('active');
+
+            // ✅ Sign out
+            signOutLink?.addEventListener('click', () => {
+            fetch("https://code-master-kk2m.onrender.com/api/auth/logout", {
+                method: "POST",
+                credentials: "include"
+            }).finally(() => {
+                window.location.href = "index.html";
+            });
+            });
+
+            // ✅ Mobile menu toggle
+            mobileMenuBtn?.addEventListener('click', () => {
+            mobileMenu?.classList.toggle('hidden');
+            });
+
+            // ✅ Tab Switching
+            document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', function () {
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                btn.classList.remove('text-purple-600', 'border-purple-600');
+                btn.classList.add('text-gray-500');
+                });
+                this.classList.add('text-purple-600', 'border-purple-600');
+                this.classList.remove('text-gray-500');
+
+                const tabId = this.getAttribute('data-tab') + '-tab';
+                document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+                tab.classList.remove('active');
+                });
+                document.getElementById(tabId)?.classList.remove('hidden');
+                document.getElementById(tabId)?.classList.add('active');
+            });
+            });
+
+            // ✅ Progress Ring Animation
+            document.querySelectorAll('.progress-ring').forEach(ring => {
+            const circle = ring.querySelector('.progress-ring__circle');
+            const radius = circle.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            const percent = parseInt(ring.getAttribute('data-percent'));
+
+            circle.style.strokeDasharray = `${circumference} ${circumference}`;
+            circle.style.strokeDashoffset = circumference;
+
+            const offset = circumference - (percent / 100) * circumference;
+            circle.style.strokeDashoffset = offset;
+            });
+
+            // ✅ IDE Simulation
+            document.getElementById('demoButton')?.addEventListener('click', function () {
+            const output = document.createElement('p');
+            output.textContent = '✅ Button clicked! Code executed.';
+            output.className = 'mt-4 text-green-600 font-semibold';
+            this.parentElement.appendChild(output);
+            });
+
+            // ✅ Lesson Progress Update
+            document.querySelectorAll('.mark-complete-button').forEach(button => {
+            button.addEventListener('click', () => {
+                const lessonId = button.getAttribute('data-lesson-id');
+                updateLessonProgress(lessonId);
+                calculateOverallProgress();
+                updateLearningJourneyProgress();
+                showLessonProgressSummary();
+            });
+            });
+
+            // ✅ View Profile Tab
+            document.getElementById('viewProfileButton')?.addEventListener('click', () => {
+            document.querySelector('.tab-button[data-tab="profile"]')?.click();
+            });
+
+            // ✅ Edit Profile Modal
+            const editButton = document.querySelector('#profile-tab .bg-purple-600');
+            const modal = document.getElementById('editProfileModal');
+            const cancelEdit = document.getElementById('cancelEdit');
+            const form = document.getElementById('editProfileForm');
+
+            editButton?.addEventListener('click', () => modal?.classList.remove('hidden'));
+            cancelEdit?.addEventListener('click', () => modal?.classList.add('hidden'));
+
+            form?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = nameInput?.value;
+            const tagline = taglineInput?.value;
+            const avatar = avatarInput?.value;
+
+            if (profileNameEl) profileNameEl.textContent = name;
+            if (profileTaglineEl) profileTaglineEl.textContent = tagline;
+            if (profileAvatarEl) profileAvatarEl.src = avatar;
+
+            localStorage.setItem('profileName', name);
+            localStorage.setItem('profileTagline', tagline);
+            localStorage.setItem('profileAvatar', avatar);
+
+            modal?.classList.add('hidden');
+            });
+
+            // ✅ Reset Profile
+            document.getElementById('resetProfile')?.addEventListener('click', () => {
+            localStorage.removeItem('profileName');
+            localStorage.removeItem('profileTagline');
+            localStorage.removeItem('profileAvatar');
+            loadProfile();
+            });
+
+            // ✅ Load Profile from localStorage (fallback only)
+            function loadProfile() {
+            const savedName = localStorage.getItem('profileName');
+            const savedTagline = localStorage.getItem('profileTagline');
+            const savedAvatar = localStorage.getItem('profileAvatar');
+
+            if (savedName && profileNameEl && nameInput) {
+                profileNameEl.textContent = savedName;
+                nameInput.value = savedName;
+            }
+            if (savedTagline && profileTaglineEl && taglineInput) {
+                profileTaglineEl.textContent = savedTagline;
+                taglineInput.value = savedTagline;
+            }
+            if (savedAvatar && profileAvatarEl && avatarInput) {
+                profileAvatarEl.src = savedAvatar;
+                avatarInput.value = savedAvatar;
+            }
+            }
+            
+            // ✅ Apply theme-aware color to sign-in button
+            const applySignInBtnTheme = () => {
+            if (!profileBtn) return;
+
+            profileBtn.style.backgroundColor = 'white';
+            profileBtn.style.color = '#1e1b4b';
+
+            const name = profileBtn.textContent.trim();
+            const nameLength = name.length;
+
+            // Font size scaling based on name length
+            let fontSize = 16;
+            if (nameLength > 14) fontSize = 12;
+            else if (nameLength > 10) fontSize = 14;
+
+            profileBtn.style.fontSize = `${fontSize}px`;
+            profileBtn.style.padding = "6px 12px";
+
+            // ✅ Force ellipsis after ~4–5 characters
+            profileBtn.style.width = "70px"; // tightly restrict width
+            profileBtn.style.maxWidth = "80px";
+            profileBtn.style.whiteSpace = "nowrap";
+            profileBtn.style.overflow = "hidden";
+            profileBtn.style.textOverflow = "ellipsis";
+            profileBtn.style.display = "inline-block";
+            profileBtn.style.fontFamily = "monospace"; // optional for consistent character width
+            };
+
+            applySignInBtnTheme();
+            loadProfile(); // fallback only
+
         });
-        });
-
-        // ✅ Progress Ring Animation
-        document.querySelectorAll('.progress-ring').forEach(ring => {
-        const circle = ring.querySelector('.progress-ring__circle');
-        const radius = circle.r.baseVal.value;
-        const circumference = 2 * Math.PI * radius;
-        const percent = parseInt(ring.getAttribute('data-percent'));
-
-        circle.style.strokeDasharray = `${circumference} ${circumference}`;
-        circle.style.strokeDashoffset = circumference;
-
-        const offset = circumference - (percent / 100) * circumference;
-        circle.style.strokeDashoffset = offset;
-        });
-
-        // ✅ IDE Simulation
-        document.getElementById('demoButton')?.addEventListener('click', function () {
-        const output = document.createElement('p');
-        output.textContent = '✅ Button clicked! Code executed.';
-        output.className = 'mt-4 text-green-600 font-semibold';
-        this.parentElement.appendChild(output);
-        });
-
-        // ✅ Lesson Progress Update
-        document.querySelectorAll('.mark-complete-button').forEach(button => {
-        button.addEventListener('click', () => {
-            const lessonId = button.getAttribute('data-lesson-id');
-            updateLessonProgress(lessonId);
-            calculateOverallProgress();
-            updateLearningJourneyProgress();
-            showLessonProgressSummary();
-        });
-        });
-
-        // ✅ View Profile Tab
-        document.getElementById('viewProfileButton')?.addEventListener('click', () => {
-        document.querySelector('.tab-button[data-tab="profile"]')?.click();
-        });
-
-        // ✅ Edit Profile Modal
-        const editButton = document.querySelector('#profile-tab .bg-purple-600');
-        const modal = document.getElementById('editProfileModal');
-        const cancelEdit = document.getElementById('cancelEdit');
-        const form = document.getElementById('editProfileForm');
-
-        editButton?.addEventListener('click', () => modal?.classList.remove('hidden'));
-        cancelEdit?.addEventListener('click', () => modal?.classList.add('hidden'));
-
-        form?.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = nameInput?.value;
-        const tagline = taglineInput?.value;
-        const avatar = avatarInput?.value;
-
-        if (profileNameEl) profileNameEl.textContent = name;
-        if (profileTaglineEl) profileTaglineEl.textContent = tagline;
-        if (profileAvatarEl) profileAvatarEl.src = avatar;
-
-        localStorage.setItem('profileName', name);
-        localStorage.setItem('profileTagline', tagline);
-        localStorage.setItem('profileAvatar', avatar);
-
-        modal?.classList.add('hidden');
-        });
-
-        // ✅ Reset Profile
-        document.getElementById('resetProfile')?.addEventListener('click', () => {
-        localStorage.removeItem('profileName');
-        localStorage.removeItem('profileTagline');
-        localStorage.removeItem('profileAvatar');
-        loadProfile();
-        });
-
-        // ✅ Load Profile from localStorage (fallback only)
-        function loadProfile() {
-        const savedName = localStorage.getItem('profileName');
-        const savedTagline = localStorage.getItem('profileTagline');
-        const savedAvatar = localStorage.getItem('profileAvatar');
-
-        if (savedName && profileNameEl && nameInput) {
-            profileNameEl.textContent = savedName;
-            nameInput.value = savedName;
-        }
-        if (savedTagline && profileTaglineEl && taglineInput) {
-            profileTaglineEl.textContent = savedTagline;
-            taglineInput.value = savedTagline;
-        }
-        if (savedAvatar && profileAvatarEl && avatarInput) {
-            profileAvatarEl.src = savedAvatar;
-            avatarInput.value = savedAvatar;
-        }
-        }
-        
-        // ✅ Apply theme-aware color to sign-in button
-        const applySignInBtnTheme = () => {
-        if (!profileBtn) return;
-
-        profileBtn.style.backgroundColor = 'white';
-        profileBtn.style.color = '#1e1b4b';
-
-        const name = profileBtn.textContent.trim();
-        const nameLength = name.length;
-
-        // Font size scaling based on name length
-        let fontSize = 16;
-        if (nameLength > 14) fontSize = 12;
-        else if (nameLength > 10) fontSize = 14;
-
-        profileBtn.style.fontSize = `${fontSize}px`;
-        profileBtn.style.padding = "6px 12px";
-
-        // ✅ Force ellipsis after ~4–5 characters
-        profileBtn.style.width = "70px"; // tightly restrict width
-        profileBtn.style.maxWidth = "80px";
-        profileBtn.style.whiteSpace = "nowrap";
-        profileBtn.style.overflow = "hidden";
-        profileBtn.style.textOverflow = "ellipsis";
-        profileBtn.style.display = "inline-block";
-        profileBtn.style.fontFamily = "monospace"; // optional for consistent character width
-        };
-
-        applySignInBtnTheme();
-        loadProfile(); // fallback only
-
-    });
     </script>
 
 </body>
