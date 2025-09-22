@@ -40,8 +40,6 @@ function getAllBadgeTiers(subject, percent) {
   return subjectTiers.filter(tier => percent >= tier.threshold);
 }
 
-// ─── Profile UI ────────────────────────────────────────────────────────────────
-
 function updateNavProfile() {
   const name = localStorage.getItem("codemasterUserName");
   const navProfile = document.getElementById("navProfile");
@@ -199,6 +197,15 @@ function initProfileUI() {
   const resetBtn = document.getElementById("resetPasswordBtn");
   if (resetBtn) resetBtn.addEventListener("click", resetPassword);
 
+  const resetAvatarBtn = document.getElementById("resetAvatarBtn");
+  if (resetAvatarBtn) {
+    resetAvatarBtn.addEventListener("click", () => {
+      localStorage.removeItem("selectedAvatar");
+      updateNavProfile();
+      renderProfileUI();
+    });
+  }
+
   loadProfileFromBackend();
 }
 
@@ -247,26 +254,40 @@ document.addEventListener("DOMContentLoaded", () => {
   const profileAvatarWrapper = document.getElementById("profileAvatarWrapper");
   const navAvatar = document.getElementById("navAvatar");
   const avatarSelector = document.getElementById("avatarSelector");
+  const resetAvatarBtn = document.getElementById("resetAvatarBtn");
 
+  // Toggle avatar selector when clicking avatar
+  profileAvatarWrapper.addEventListener("click", (e) => {
+    e.stopPropagation();
+    avatarSelector.classList.toggle("hidden");
+  });
+
+  // Close selector when clicking outside
   document.addEventListener("click", (e) => {
     if (!avatarSelector.contains(e.target) && !profileAvatarWrapper.contains(e.target)) {
       avatarSelector.classList.add("hidden");
     }
   });
 
+  // Handle avatar selection
   avatarOptions.forEach(img => {
     img.addEventListener("click", () => {
       avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
       img.classList.add("border-indigo-600");
 
-      profileAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Selected Avatar" />`;
-      navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
+      const selected = img.src;
+      localStorage.setItem("selectedAvatar", selected);
 
-      localStorage.setItem("selectedAvatar", img.src);
+      profileAvatar.innerHTML = `<img src="${selected}" class="w-full h-full rounded-full" alt="Selected Avatar" />`;
+      navAvatar.innerHTML = `<img src="${selected}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
       avatarSelector.classList.add("hidden");
+
+      updateNavProfile();
+      renderProfileUI();
     });
   });
 
+  // Handle avatar upload
   avatarUpload.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -274,18 +295,40 @@ document.addEventListener("DOMContentLoaded", () => {
     const reader = new FileReader();
     reader.onload = () => {
       const imageUrl = reader.result;
+      localStorage.setItem("selectedAvatar", imageUrl);
 
       profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Uploaded Avatar" />`;
       navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-      localStorage.setItem("selectedAvatar", imageUrl);
       avatarSelector.classList.add("hidden");
+
+      updateNavProfile();
+      renderProfileUI();
     };
     reader.readAsDataURL(file);
   });
 
+  // Handle avatar reset
+  if (resetAvatarBtn) {
+    resetAvatarBtn.addEventListener("click", () => {
+      localStorage.removeItem("selectedAvatar");
+
+      const name = localStorage.getItem("codemasterUserName") || "?";
+      const initial = name.charAt(0).toUpperCase();
+
+      profileAvatar.textContent = initial;
+      profileAvatar.className = "bg-indigo-600 text-white w-full h-full rounded-full flex items-center justify-center text-xl font-bold";
+
+      navAvatar.textContent = initial;
+      avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
+
+      updateNavProfile();
+      renderProfileUI();
+    });
+  }
+
+  // Load saved avatar on page load
   const savedAvatar = localStorage.getItem("selectedAvatar");
-  if (savedAvatar) {
+  if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
     profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
     navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
   }
