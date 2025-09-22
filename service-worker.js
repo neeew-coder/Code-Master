@@ -1,4 +1,4 @@
-const CACHE_NAME = "codemaster-cache-v1";
+const CACHE_NAME = "codemaster-cache-v2";
 const urlsToCache = [
   // Main pages
   "/Code-Master/",
@@ -21,7 +21,7 @@ const urlsToCache = [
   "/Code-Master/scripts/DarkTheme.js",
   "/Code-Master/scripts/badges.js",
   "/Code-Master/postcss.config.js",
-  
+
   // Quiz pages
   "/Code-Master/quiz/mobileToggle.js",
   "/Code-Master/quiz/style.css",
