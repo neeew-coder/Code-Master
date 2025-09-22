@@ -1,6 +1,6 @@
 const CACHE_NAME = "codemaster-cache-v1";
 const urlsToCache = [
-  //main function or files
+  // Main pages
   "/Code-Master/",
   "/Code-Master/index.html",
   "/Code-Master/auth.html",
@@ -14,32 +14,27 @@ const urlsToCache = [
   "/Code-Master/lesson-js.html",
   "/Code-Master/lesson-java.html",
   "/Code-Master/lesson-csharp.html",
+
+  // Styles and scripts
   "/Code-Master/style.css",
   "/Code-Master/DarkTheme.js",
-
-  "/Code-Master/userprofile/profile.html",
-  "/Code-Master/userprofile/style.css",
-  "/Code-Master/userprofile/script.js",
-
-  //needed script
   "/Code-Master/scripts/navToggle.js",
   "/Code-Master/scripts/session-check.js",
   "/Code-Master/scripts/searchBar.js",
   "/Code-Master/scripts/DarkTheme.js",
   "/Code-Master/scripts/badge.js",
-  "/Code-Master/quiz/mobileToggle.js",
   "/Code-Master/package.js",
   "/Code-Master/postcss.config.js",
   "/Code-Master/quizData.js",
 
-  //design
-  "/Code-Master/src/style.css",
-  "/Code-Master/src/main.js",
-  "/Code-Master/src/counter.js",
-  "/Code-Master/src/javascript.svg",
-  "/Code-Master/quiz/style.css",
+  // User profile
+  "/Code-Master/userprofile/profile.html",
+  "/Code-Master/userprofile/style.css",
+  "/Code-Master/userprofile/script.js",
 
-  //quiz
+  // Quiz pages
+  "/Code-Master/quiz/mobileToggle.js",
+  "/Code-Master/quiz/style.css",
   "/Code-Master/quiz/html/html.html",
   "/Code-Master/quiz/html/script.js",
   "/Code-Master/quiz/css/css.html",
@@ -49,7 +44,13 @@ const urlsToCache = [
   "/Code-Master/quiz/java/java.html",
   "/Code-Master/quiz/java/script.js",
   "/Code-Master/quiz/csharp/csharp.html",
-  "/Code-Master/quiz/csharp/script.js"
+  "/Code-Master/quiz/csharp/script.js",
+
+  // Assets
+  "/Code-Master/src/style.css",
+  "/Code-Master/src/main.js",
+  "/Code-Master/src/counter.js",
+  "/Code-Master/src/javascript.svg"
 ];
 
 // ✅ Install and cache assets
@@ -57,6 +58,7 @@ self.addEventListener("install", (event) => {
   console.log("📦 Service Worker installing...");
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
+      console.log("📦 Caching:", urlsToCache);
       return Promise.all(
         urlsToCache.map((url) =>
           cache.add(url).catch((err) => {
@@ -85,11 +87,27 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// ✅ Serve cached content when offline
+// ✅ Serve cached content with safe fallback
 self.addEventListener("fetch", (event) => {
+  console.log("🔍 Fetching:", event.request.url);
   event.respondWith(
     caches.match(event.request).then((response) => {
-      return response || fetch(event.request);
+      if (response) return response;
+
+      return fetch(event.request).catch((err) => {
+        console.warn("❌ Fetch failed:", event.request.url, err);
+
+        // Fallback for navigation requests
+        if (event.request.mode === "navigate") {
+          return caches.match("/Code-Master/index.html");
+        }
+
+        // Fallback for other requests
+        return new Response("Offline or resource unavailable", {
+          status: 503,
+          statusText: "Service Unavailable"
+        });
+      });
     })
   );
 });
