@@ -68,22 +68,22 @@ function updateNavProfile() {
   }
 }
 
-function renderProfileUI() {
-  const name = localStorage.getItem("codemasterUserName") || "";
-  const tagline = localStorage.getItem("codemasterTagline") || "";
-  const avatar = document.getElementById("profileAvatar");
-  const savedAvatar = localStorage.getItem("selectedAvatar");
+// function renderProfileUI() {
+//   const name = localStorage.getItem("codemasterUserName") || "";
+//   const tagline = localStorage.getItem("codemasterTagline") || "";
+//   const avatar = document.getElementById("profileAvatar");
+//   const savedAvatar = localStorage.getItem("selectedAvatar");
 
-  document.getElementById("profileName").value = name;
-  document.getElementById("profileTagline").value = tagline;
+//   document.getElementById("profileName").value = name;
+//   document.getElementById("profileTagline").value = tagline;
 
-  if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
-    avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
-  } else {
-    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-    avatar.className = `bg-indigo-600 text-white rounded-full w-full h-full flex items-center justify-center text-xl font-bold`;
-  }
-}
+//   if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
+//     avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
+//   } else {
+//     avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+//     avatar.className = `bg-indigo-600 text-white rounded-full w-full h-full flex items-center justify-center text-xl font-bold`;
+//   }
+// }
 
 function loadProfileFromBackend() {
   return fetch(`${API_BASE}/profile/me`, { credentials: "include" })
