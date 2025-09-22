@@ -1,5 +1,6 @@
 const CACHE_NAME = "codemaster-cache-v1";
 const urlsToCache = [
+  //main function or files
   "/Code-Master/",
   "/Code-Master/index.html",
   "/Code-Master/auth.html",
@@ -20,16 +21,32 @@ const urlsToCache = [
   "/Code-Master/userprofile/style.css",
   "/Code-Master/userprofile/script.js",
 
+  //needed script
   "/Code-Master/scripts/navToggle.js",
   "/Code-Master/scripts/session-check.js",
   "/Code-Master/scripts/searchBar.js",
   "/Code-Master/scripts/DarkTheme.js",
   "/Code-Master/scripts/badge.js",
+  "/Code-Master/quiz/mobileToggle.js",
 
+  //design
   "/Code-Master/src/style.css",
   "/Code-Master/src/main.js",
   "/Code-Master/src/counter.js",
-  "/Code-Master/src/javascript.svg"
+  "/Code-Master/src/javascript.svg",
+  "/Code-Master/quiz/style.css",
+
+  //quiz
+  "/Code-Master/quiz/html/html.html",
+  "/Code-Master/quiz/html/script.js",
+  "/Code-Master/quiz/css/css.html",
+  "/Code-Master/quiz/css/script.js",
+  "/Code-Master/quiz/javascript/javascript.html",
+  "/Code-Master/quiz/javascript/script.js",
+  "/Code-Master/quiz/java/java.html",
+  "/Code-Master/quiz/java/script.js",
+  "/Code-Master/quiz/csharp/csharp.html",
+  "/Code-Master/quiz/csharp/script.js"
 ];
 
 // ✅ Install and cache assets
