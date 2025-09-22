@@ -65,6 +65,15 @@
     button:hover {
       opacity: 0.9;
     }
+    .hidden {
+      display: none;
+    }
+    iframe {
+      background-color: white;
+      border: 1px solid #374151;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
   </style>
 </head>
 <body>
@@ -145,12 +154,9 @@
     <!-- Live Preview -->
     <h3 class="text-lg sm:text-xl font-semibold mb-4 text-white">Output</h3>
     <iframe id="preview" class="w-full h-[50vh] sm:h-[60vh] mt-6 border rounded bg-white"></iframe>
-
   </div>
 
   <!-- Script -->
-
-<!-- 
   <script>
     const API_BASE = "https://code-master-kk2m.onrender.com";
 
@@ -267,6 +273,6 @@
     });
 
     document.addEventListener("DOMContentLoaded", bindAllPreviews);
-  </script> -->
+  </script>
 </body>
 </html>
