@@ -58,13 +58,7 @@ function updateNavProfile() {
     navName.style.textOverflow = "ellipsis";
     navName.style.fontSize = "14px";
     navName.style.fontFamily = "monospace";
-
-    const savedAvatar = localStorage.getItem("selectedAvatar");
-    if (savedAvatar) {
-      navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-    } else {
-      navAvatar.textContent = name.charAt(0).toUpperCase();
-    }
+    navAvatar.textContent = name.charAt(0).toUpperCase();
   }
 }
 
@@ -76,13 +70,8 @@ function renderProfileUI() {
   document.getElementById("profileName").value = name;
   document.getElementById("profileTagline").value = tagline;
 
-  const savedAvatar = localStorage.getItem("selectedAvatar");
-  if (savedAvatar) {
-    avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
-  } else {
-    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-    avatar.className = `bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
-  }
+  avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+  avatar.className = `bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
 }
 
 function loadProfileFromBackend() {
@@ -198,6 +187,18 @@ function resetPassword() {
     });
 }
 
+function initProfileUI() {
+  const saveBtn = document.getElementById("saveBtn");
+  if (saveBtn) saveBtn.addEventListener("click", saveProfile);
+
+  const resetBtn = document.getElementById("resetPasswordBtn");
+  if (resetBtn) resetBtn.addEventListener("click", resetPassword);
+
+  loadProfileFromBackend();
+  updateNavProfile();
+  renderProfileUI();
+}
+
 // ─── Navigation ────────────────────────────────────────────────────────────────
 
 function initNavigation() {
@@ -238,6 +239,7 @@ function renderBadgeGallery(allProgress, extraBadges = []) {
   if (!gallery) return;
   gallery.innerHTML = "";
 
+  // Subject mastery badges — show all earned tiers
   Object.entries(allProgress.completed).forEach(([subject, lessons]) => {
     const completedCount = Object.values(lessons).filter(Boolean).length;
     const totalModules = allProgress.totalModules?.[subject] || 1;
@@ -256,6 +258,7 @@ function renderBadgeGallery(allProgress, extraBadges = []) {
     });
   });
 
+  // Extra achievement badges
   extraBadges.forEach(({ label, class: badgeClass, icon }) => {
     gallery.insertAdjacentHTML("beforeend", `
       <div>
@@ -287,6 +290,8 @@ function updateUIWithProgress({ completed, totalModules, subject }) {
   if (bar) bar.style.width = `${percent}%`;
   if (label) label.textContent = `${percent}% Completed`;
 }
+
+// ─── Progress Fetch and Update ─────────────────────────────────────────────────
 
 function loadProgressFor(subject) {
   fetch(`${API_BASE}/progress/${subject}`, {
@@ -321,64 +326,41 @@ function loadProgressFor(subject) {
     });
 }
 
+function updateProgress(subject, lessonId) {
+  fetch(`${API_BASE}/progress/update`, {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ subject, lesson: lessonId })
+  })
+    .then(res => res.json())
+    .then(data => {
+      const subjectProgress = data?.progress?.completed?.[subject] || {};
+      const completed = Object.entries(subjectProgress)
+        .filter(([_, isDone]) => isDone)
+        .map(([lessonId]) => lessonId);
+
+      const totalModules = data?.progress?.totalModules;
+      if (typeof totalModules !== "number" || totalModules <= 0) {
+        console.warn(`⚠️ Invalid totalModules for ${subject}.`);
+        return;
+      }
+
+      updateUIWithProgress({ completed, totalModules, subject });
+
+      allProgressData.completed[subject] = subjectProgress;
+      allProgressData.totalModules[subject] = totalModules;
+
+      renderBadgeGallery(allProgressData);
+    })
+    .catch(err => {
+      console.warn("Progress update error:", err.message);
+    });
+}
+
 // ─── Initialization ───────────────────────────────────────────────────────────
 
 document.addEventListener("DOMContentLoaded", () => {
-  // Avatar Selection
-  const avatarOptions = document.querySelectorAll(".avatar-option");
-  const avatarUpload = document.getElementById("avatarUpload");
-  const profileAvatar = document.getElementById("profileAvatar");
-  const navAvatar = document.getElementById("navAvatar");
-  const avatarSelector = document.getElementById("avatarSelector");
-
-  profileAvatar.addEventListener("click", (e) => {
-    e.stopPropagation();
-    avatarSelector.classList.toggle("hidden");
-  });
-
-  document.addEventListener("click", (e) => {
-    if (!avatarSelector.contains(e.target) && e.target !== profileAvatar) {
-      avatarSelector.classList.add("hidden");
-    }
-  });
-
-  avatarOptions.forEach(img => {
-    img.addEventListener("click", () => {
-      avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
-      img.classList.add("border-indigo-600");
-
-      profileAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Selected Avatar" />`;
-      navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-      localStorage.setItem("selectedAvatar", img.src);
-      avatarSelector.classList.add("hidden");
-    });
-  });
-
-  avatarUpload.addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const imageUrl = reader.result;
-
-      profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Uploaded Avatar" />`;
-      navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-      localStorage.setItem("selectedAvatar", imageUrl);
-      avatarSelector.classList.add("hidden");
-    };
-    reader.readAsDataURL(file);
-  });
-
-  const savedAvatar = localStorage.getItem("selectedAvatar");
-  if (savedAvatar) {
-    profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
-    navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
-  }
-
-  // Init
   initNavigation();
   initProfileUI();
   ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
