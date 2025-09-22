@@ -51,7 +51,11 @@ router.put("/me", auth, async (req, res) => {
     }
 
     if (bio !== undefined) user.bio = bio;
-    if (avatar !== undefined) user.avatar = avatar;
+
+    // ✅ Only update avatar if it's non-empty
+    if (avatar !== undefined && avatar !== "") {
+      user.avatar = avatar;
+    }
 
     // 🔄 Modular progress update
     if (progress !== undefined && typeof progress === "object") {
@@ -65,12 +69,11 @@ router.put("/me", auth, async (req, res) => {
       user.badges = badges;
     }
 
-    // 🔐 Password update logic (raw password — schema will hash it)
+    // 🔐 Password update logic
     if (password !== undefined) {
       if (typeof password !== "string" || password.length < 6) {
         return res.status(400).json({ error: "Password must be at least 6 characters." });
       }
-
       user.password = password;
       console.log(`🔐 Raw password set for user ${user._id}`);
     }
