@@ -68,12 +68,6 @@
     .hidden {
       display: none;
     }
-    iframe {
-      background-color: white;
-      border: 1px solid #374151;
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    }
   </style>
 </head>
 <body>
@@ -152,8 +146,10 @@
     </div>
 
     <!-- Live Preview -->
-    <h3 class="text-lg sm:text-xl font-semibold mb-4 text-white">Output</h3>
-    <iframe id="preview" class="w-full h-[50vh] sm:h-[60vh] mt-6 border rounded bg-white"></iframe>
+    <div class="editor-panel p-4 mb-6">
+      <h3 class="text-lg sm:text-xl font-semibold mb-4 text-white">Output</h3>
+      <iframe id="preview" class="w-full h-[50vh] sm:h-[60vh] border rounded bg-white"></iframe>
+    </div>
   </div>
 
   <!-- Script -->
