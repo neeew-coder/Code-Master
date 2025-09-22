@@ -20,6 +20,7 @@ router.get("/me", auth, async (req, res) => {
     res.json({
       username: user.username,
       bio: user.bio,
+      avatar: user.avatar || "",
       progress: Object.fromEntries(user.progress || []),
       badges: user.badges || [],
       createdAt: user.createdAt
@@ -33,7 +34,7 @@ router.get("/me", auth, async (req, res) => {
 // 🛠️ Update profile info (partial updates allowed)
 router.put("/me", auth, async (req, res) => {
   try {
-    const { username, bio, progress, badges, password } = req.body;
+    const { username, bio, progress, badges, password, avatar } = req.body;
 
     const user = await User.findById(req.user._id);
     if (!user) {
@@ -50,6 +51,7 @@ router.put("/me", auth, async (req, res) => {
     }
 
     if (bio !== undefined) user.bio = bio;
+    if (avatar !== undefined) user.avatar = avatar;
 
     // 🔄 Modular progress update
     if (progress !== undefined && typeof progress === "object") {
@@ -69,7 +71,7 @@ router.put("/me", auth, async (req, res) => {
         return res.status(400).json({ error: "Password must be at least 6 characters." });
       }
 
-      user.password = password; // ✅ Let schema hash it via pre("save")
+      user.password = password;
       console.log(`🔐 Raw password set for user ${user._id}`);
     }
 
@@ -80,6 +82,7 @@ router.put("/me", auth, async (req, res) => {
       user: {
         username: user.username,
         bio: user.bio,
+        avatar: user.avatar || "",
         progress: Object.fromEntries(user.progress || []),
         badges: user.badges || [],
         createdAt: user.createdAt
@@ -94,7 +97,7 @@ router.put("/me", auth, async (req, res) => {
 // 🌐 Optional: Public profile view by ID
 router.get("/:id", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id).select("username bio badges");
+    const user = await User.findById(req.params.id).select("username bio avatar badges");
     if (!user) return res.status(404).json({ error: "User not found" });
 
     res.setHeader("Access-Control-Allow-Origin", req.headers.origin || "*");
@@ -102,6 +105,7 @@ router.get("/:id", async (req, res) => {
     res.json({
       username: user.username,
       bio: user.bio,
+      avatar: user.avatar || "",
       badges: user.badges || []
     });
   } catch (err) {

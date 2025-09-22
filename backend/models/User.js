@@ -26,6 +26,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       default: ""
     },
+    avatar: {
+      type: String,
+      default: "" // ✅ stores base64 string or image URL
+    },
     progress: {
       type: Map,
       of: Number,
