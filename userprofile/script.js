@@ -66,12 +66,17 @@ function renderProfileUI() {
   const name = localStorage.getItem("codemasterUserName") || "";
   const tagline = localStorage.getItem("codemasterTagline") || "";
   const avatar = document.getElementById("profileAvatar");
+  const savedAvatar = localStorage.getItem("selectedAvatar");
 
   document.getElementById("profileName").value = name;
   document.getElementById("profileTagline").value = tagline;
 
-  avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-  avatar.className = `bg-indigo-600 text-white rounded-full w-12 h-12 flex items-center justify-center text-xl font-bold`;
+  if (savedAvatar) {
+    avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
+  } else {
+    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+    avatar.className = `bg-indigo-600 text-white rounded-full w-full h-full flex items-center justify-center text-xl font-bold`;
+  }
 }
 
 function loadProfileFromBackend() {
@@ -93,6 +98,9 @@ function loadProfileFromBackend() {
         renderProfileUI();
         window.extraBadges = Array.isArray(data.badges) ? data.badges : [];
       }
+      if (data.avatar) {
+        localStorage.setItem("selectedAvatar", data.avatar);
+      }
     })
     .catch(err => {
       console.warn("⚠️ Failed to load profile:", err);
@@ -104,6 +112,7 @@ function loadProfileFromBackend() {
 function saveProfile() {
   const name = document.getElementById("profileName").value.trim();
   const tagline = document.getElementById("profileTagline").value.trim();
+  const avatar = localStorage.getItem("selectedAvatar");
   const button = document.getElementById("saveBtn");
 
   localStorage.setItem("codemasterUserName", name);
@@ -118,7 +127,7 @@ function saveProfile() {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify({ username: name, bio: tagline })
+    body: JSON.stringify({ username: name, bio: tagline, avatar})
   })
     .then(res => {
       if (!res.ok) throw new Error(`Server responded with ${res.status}`);
