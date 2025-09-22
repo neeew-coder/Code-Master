@@ -43,26 +43,9 @@ const urlsToCache = [
   "/Code-Master/src/javascript.svg"
 ];
 
-// ✅ Install and cache assets
-self.addEventListener("install", (event) => {
-  console.log("📦 Service Worker installing...");
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      console.log("📦 Caching:", urlsToCache);
-      return Promise.all(
-        urlsToCache.map((url) =>
-          cache.add(url).catch((err) => {
-            console.warn(`⚠️ Failed to cache ${url}:`, err);
-          })
-        )
-      );
-    })
-  );
-});
-
 // ✅ Activate and clean old caches
 self.addEventListener("activate", (event) => {
-  console.log("🚀 Service Worker activated");
+  console.log("🚀 Activating Service Worker...");
   event.waitUntil(
     caches.keys().then((keys) =>
       Promise.all(
@@ -77,22 +60,35 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// ✅ Serve cached content with safe fallback
+// ✅ Fetch handler with profile-safe logic
 self.addEventListener("fetch", (event) => {
-  console.log("🔍 Fetching:", event.request.url);
+  const { request } = event;
+
+  // Skip caching for profile or session-related requests
+  if (
+    request.url.includes("/profile") ||
+    request.url.includes("/session") ||
+    request.url.includes("/user") ||
+    request.url.includes("/api")
+  ) {
+    console.log("🚫 Skipping cache for:", request.url);
+    return;
+  }
+
   event.respondWith(
-    caches.match(event.request).then((response) => {
-      if (response) return response;
+    caches.match(request).then((cachedResponse) => {
+      if (cachedResponse) {
+        return cachedResponse;
+      }
 
-      return fetch(event.request).catch((err) => {
-        console.warn("❌ Fetch failed:", event.request.url, err);
+      return fetch(request).catch((err) => {
+        console.warn("❌ Fetch failed:", request.url, err);
 
-        // Fallback for navigation requests
-        if (event.request.mode === "navigate") {
+        // Fallback for navigation
+        if (request.mode === "navigate") {
           return caches.match("/Code-Master/index.html");
         }
 
-        // Fallback for other requests
         return new Response("Offline or resource unavailable", {
           status: 503,
           statusText: "Service Unavailable"
