@@ -358,9 +358,8 @@ function updateProgress(subject, lessonId) {
     });
 }
 
-// ─── Avatar Selection ─────────────────────────────────────────────────────────
-
 document.addEventListener("DOMContentLoaded", () => {
+  // ─── Avatar Selection ───────────────────────────────────────────────────────
   const avatarOptions = document.querySelectorAll(".avatar-option");
   const avatarUpload = document.getElementById("avatarUpload");
   const profileAvatar = document.getElementById("profileAvatar");
@@ -368,13 +367,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarSelector = document.getElementById("avatarSelector");
 
   // Toggle avatar selector on avatar click
-  profileAvatar.addEventListener("click", () => {
+  profileAvatar.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent bubbling to document
     avatarSelector.classList.toggle("hidden");
   });
 
   // Hide selector when clicking outside
   document.addEventListener("click", (e) => {
-    if (!avatarSelector.contains(e.target) && e.target !== profileAvatar) {
+    if (!avatarSelector.contains(e.target)) {
       avatarSelector.classList.add("hidden");
     }
   });
@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
 
       localStorage.setItem("selectedAvatar", img.src);
-      avatarSelector.classList.add("hidden"); // Hide after selection
+      avatarSelector.classList.add("hidden");
     });
   });
 
@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
       navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
 
       localStorage.setItem("selectedAvatar", imageUrl);
-      avatarSelector.classList.add("hidden"); // Hide after upload
+      avatarSelector.classList.add("hidden");
     };
     reader.readAsDataURL(file);
   });
@@ -417,11 +417,8 @@ document.addEventListener("DOMContentLoaded", () => {
     profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
     navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
   }
-});
 
-// ─── Initialization ───────────────────────────────────────────────────────────
-
-document.addEventListener("DOMContentLoaded", () => {
+  // ─── Initialization ─────────────────────────────────────────────────────────
   initNavigation();
   initProfileUI();
   ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
