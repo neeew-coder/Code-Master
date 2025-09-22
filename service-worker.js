@@ -1,26 +1,38 @@
 const CACHE_NAME = "codemaster-cache-v1";
 const urlsToCache = [
-  "/Code-Master/",
-  "/Code-Master/index.html",
-  "/Code-Master/auth.html",
-  "/Code-Master/reset-password.html",
-  "/Code-Master/excercises.html",
-  "/Code-Master/lessons.html",
-  "/Code-Master/lesson-html.html",
-  "/Code-Master/lesson-css.html",
-  "/Code-Master/lesson-java.html",
-  "/Code-Master/lesson-js.html",
-  "/Code-Master/lesson-csharp.html",
-  "/Code-Master/about.html",
-  "/Code-Master/code-playground.html",
-  "/Code-Master/styles.css",
-  "/Code-Master/DarkTheme.css",
-  "/Code-Master/scripts/badges.js",
-  "/Code-Master/scripts/DarkTheme.js",
-  "/Code-Master/scripts/session-check.js",
-  "/Code-Master/scripts/searchBar.js",
-  "/Code-Master/scripts/navToggle.js",
-  "https://cdn.tailwindcss.com"
+  "/", // resolves to /Code-Master/
+  "/index.html",
+  "/auth.html",
+  "/reset-password.html",
+  "/forgot-password.html",
+  "/exercises.html",
+  "/code-playground.html",
+  "/lesson.html",
+  "/lesson-html.html",
+  "/lesson-css.html",
+  "/lesson-js.html",
+  "/lesson-java.html",
+  "/lesson-csharp.html",
+  "/style.css",
+  "/DarkTheme.js",
+
+  // Profile section
+  "/userprofile/profile.html",
+  "/userprofile/style.css",
+  "/userprofile/script.js",
+
+  // Shared scripts
+  "/scripts/navToggle.js",
+  "/scripts/session-check.js",
+  "/scripts/searchBar.js",
+  "/scripts/DarkTheme.js",
+  "/scripts/badge.js",
+
+  // Vite/src assets
+  "/src/style.css",
+  "/src/main.js",
+  "/src/counter.js",
+  "/src/javascript.svg"
 ];
 
 // ✅ Install and cache assets
