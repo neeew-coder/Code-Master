@@ -3,9 +3,6 @@ const urlsToCache = [
   // Main pages
   "/Code-Master/",
   "/Code-Master/index.html",
-  "/Code-Master/auth.html",
-  "/Code-Master/reset-password.html",
-  "/Code-Master/forgot-password.html",
   "/Code-Master/exercises.html",
   "/Code-Master/code-playground.html",
   "/Code-Master/lessons.html",
@@ -24,12 +21,7 @@ const urlsToCache = [
   "/Code-Master/scripts/DarkTheme.js",
   "/Code-Master/scripts/badges.js",
   "/Code-Master/postcss.config.js",
-
-  // User profile
-  "/Code-Master/userprofile/profile.html",
-  "/Code-Master/userprofile/style.css",
-  "/Code-Master/userprofile/script.js",
-
+  
   // Quiz pages
   "/Code-Master/quiz/mobileToggle.js",
   "/Code-Master/quiz/style.css",
