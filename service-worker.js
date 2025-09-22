@@ -8,7 +8,7 @@ const urlsToCache = [
   "/Code-Master/forgot-password.html",
   "/Code-Master/exercises.html",
   "/Code-Master/code-playground.html",
-  "/Code-Master/lesson.html",
+  "/Code-Master/lessons.html",
   "/Code-Master/lesson-html.html",
   "/Code-Master/lesson-css.html",
   "/Code-Master/lesson-js.html",
@@ -17,15 +17,13 @@ const urlsToCache = [
 
   // Styles and scripts
   "/Code-Master/style.css",
-  "/Code-Master/DarkTheme.js",
+  "/Code-Master/DarkTheme.css",
   "/Code-Master/scripts/navToggle.js",
   "/Code-Master/scripts/session-check.js",
   "/Code-Master/scripts/searchBar.js",
   "/Code-Master/scripts/DarkTheme.js",
-  "/Code-Master/scripts/badge.js",
-  "/Code-Master/package.js",
+  "/Code-Master/scripts/badges.js",
   "/Code-Master/postcss.config.js",
-  "/Code-Master/quizData.js",
 
   // User profile
   "/Code-Master/userprofile/profile.html",
