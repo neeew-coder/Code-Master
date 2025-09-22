@@ -61,30 +61,35 @@
         </div>
 
         <!-- Avatar Selection -->
-        <div id="avatarSelector" class="mt-4 hidden">
-          <label class="block font-semibold mb-2">Choose Your Avatar</label>
-          <div id="avatarOptions" class="flex flex-wrap gap-4">
-            <img src="../image/avatar1.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 1" />
-            <img src="../image/avatar2.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 2" />
-            <img src="../image/avatar3.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 3" />
-            <img src="../image/avatar4.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 4" />
-            <img src="../image/avatar5.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 5" />
-            <img src="../image/avatar6.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 6" />
-            <img src="../image/avatar7.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 7" />
-            <img src="../image/avatar8.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 8" />
-            <img src="../image/avatar9.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 9" />
-            <img src="../image/avatar10.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 10" />
-            <img src="../image/avatar11.png" class="avatar-option w-12 h-12 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-600" alt="Avatar 11" />
+        <div id="avatarSelector" class="mt-6 hidden bg-white border border-gray-300 rounded-lg p-4 shadow-md">
+          <label class="block text-lg font-semibold text-gray-800 mb-3">Choose Your Avatar</label>
+          <div id="avatarOptions" class="grid grid-cols-4 sm:grid-cols-6 gap-4">
+            <img src="../image/avatar1.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 1" />
+            <img src="../image/avatar2.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 2" />
+            <img src="../image/avatar3.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 3" />
+            <img src="../image/avatar4.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 4" />
+            <img src="../image/avatar5.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 5" />
+            <img src="../image/avatar6.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 6" />
+            <img src="../image/avatar7.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 7" />
+            <img src="../image/avatar8.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 8" />
+            <img src="../image/avatar9.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 9" />
+            <img src="../image/avatar10.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 10" />
+            <img src="../image/avatar11.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 11" />
           </div>
         </div>
 
         <!-- Avatar Upload -->
-        <div class="mt-4">
-          <label class="block font-semibold mb-2">Upload Your Avatar</label>
-          <input type="file" id="avatarUpload" accept="image/*" class="mb-2" />
+        <div class="mt-6">
+          <label class="block text-lg font-semibold text-gray-800 mb-2">Upload Your Avatar</label>
+          <label for="avatarUpload" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-indigo-700 transition duration-200">
+            Choose File
+          </label>
+          <input type="file" id="avatarUpload" accept="image/*" class="hidden" />
         </div>
-        <div class="mt-2">
-          <button id="resetAvatarBtn" class="text-sm text-red-600 underline">Reset to Initial</button>
+
+        <!-- Reset Button -->
+        <div class="mt-4">
+          <button id="resetAvatarBtn" class="text-sm text-red-600 underline hover:text-red-800 transition duration-150">Reset to Initial</button>
         </div>
 
         <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 mt-3 p-2 border rounded" />
