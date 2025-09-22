@@ -214,7 +214,7 @@ function initProfileUI() {
 function initNavigation() {
   const toggleBtn = document.getElementById("menu-toggle");
   const menuIcon = document.getElementById("menu-icon");
-  const mobileMenu = document.getElementById("mobile-menu");
+  const mobileMenu = document.getElementById("mobile-menu"); // Make sure this ID exists in your HTML
 
   if (toggleBtn && menuIcon && mobileMenu) {
     toggleBtn.addEventListener("click", () => {
@@ -224,6 +224,10 @@ function initNavigation() {
     });
   }
 }
+
+// Initialize navigation once DOM is ready
+document.addEventListener("DOMContentLoaded", initNavigation);
+
 
 // ─── Auth ──────────────────────────────────────────────────────────────────────
 
