@@ -52,14 +52,15 @@ function updateNavProfile() {
   if (name && navProfile && navName && navAvatar) {
     navProfile.classList.remove("hidden");
     navName.textContent = name;
-    navName.style.display = "inline-block";
-    navName.style.maxWidth = "60px";
-    navName.style.whiteSpace = "nowrap";
-    navName.style.overflow = "hidden";
-    navName.style.textOverflow = "ellipsis";
-    navName.style.fontSize = "14px";
-    navName.style.fontFamily = "monospace";
-
+    navName.style.cssText = `
+      display: inline-block;
+      max-width: 60px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 14px;
+      font-family: monospace;
+    `;
     if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
       navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
     } else {
@@ -68,22 +69,22 @@ function updateNavProfile() {
   }
 }
 
-// function renderProfileUI() {
-//   const name = localStorage.getItem("codemasterUserName") || "";
-//   const tagline = localStorage.getItem("codemasterTagline") || "";
-//   const avatar = document.getElementById("profileAvatar");
-//   const savedAvatar = localStorage.getItem("selectedAvatar");
+function renderProfileUI() {
+  const name = localStorage.getItem("codemasterUserName") || "";
+  const tagline = localStorage.getItem("codemasterTagline") || "";
+  const avatar = document.getElementById("profileAvatar");
+  const savedAvatar = localStorage.getItem("selectedAvatar");
 
-//   document.getElementById("profileName").value = name;
-//   document.getElementById("profileTagline").value = tagline;
+  document.getElementById("profileName").value = name;
+  document.getElementById("profileTagline").value = tagline;
 
-//   if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
-//     avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
-//   } else {
-//     avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
-//     avatar.className = `bg-indigo-600 text-white rounded-full w-full h-full flex items-center justify-center text-xl font-bold`;
-//   }
-// }
+  if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
+    avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
+  } else {
+    avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
+    avatar.className = `bg-indigo-600 text-white rounded-full w-full h-full flex items-center justify-center text-xl font-bold`;
+  }
+}
 
 function loadProfileFromBackend() {
   return fetch(`${API_BASE}/profile/me`, { credentials: "include" })
@@ -100,11 +101,9 @@ function loadProfileFromBackend() {
       if (data?.username) {
         localStorage.setItem("codemasterUserName", data.username);
         localStorage.setItem("codemasterTagline", data.bio || "");
-
         if (data.avatar && data.avatar !== "" && data.avatar !== "/image/default.png") {
           localStorage.setItem("selectedAvatar", data.avatar);
         }
-
         updateNavProfile();
         renderProfileUI();
         window.extraBadges = Array.isArray(data.badges) ? data.badges : [];
@@ -160,20 +159,9 @@ function resetPassword() {
   const confirmPassword = document.getElementById("confirmPassword").value.trim();
   const button = document.getElementById("resetPasswordBtn");
 
-  if (!newPassword || !confirmPassword) {
-    alert("Please fill in both password fields.");
-    return;
-  }
-
-  if (newPassword !== confirmPassword) {
-    alert("Passwords do not match.");
-    return;
-  }
-
-  if (newPassword.length < 6) {
-    alert("Password must be at least 6 characters.");
-    return;
-  }
+  if (!newPassword || !confirmPassword) return alert("Please fill in both password fields.");
+  if (newPassword !== confirmPassword) return alert("Passwords do not match.");
+  if (newPassword.length < 6) return alert("Password must be at least 6 characters.");
 
   button.disabled = true;
   button.textContent = "Updating...";
@@ -248,19 +236,17 @@ function signOut() {
 }
 
 // ─── Avatar Selection ─────────────────────────────────────────────────────────
-
 document.addEventListener("DOMContentLoaded", () => {
+  initNavigation();
+  initProfileUI();
+  ["html", "css", "javascript", "java", "csharp"].forEach(loadProgressFor);
+
   const avatarOptions = document.querySelectorAll(".avatar-option");
   const avatarUpload = document.getElementById("avatarUpload");
   const profileAvatar = document.getElementById("profileAvatar");
   const profileAvatarWrapper = document.getElementById("profileAvatarWrapper");
   const navAvatar = document.getElementById("navAvatar");
   const avatarSelector = document.getElementById("avatarSelector");
-
-  profileAvatarWrapper.addEventListener("click", (e) => {
-    e.stopPropagation();
-    avatarSelector.classList.toggle("hidden");
-  });
 
   document.addEventListener("click", (e) => {
     if (!avatarSelector.contains(e.target) && !profileAvatarWrapper.contains(e.target)) {
@@ -286,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!file) return;
 
     const reader = new FileReader();
-        reader.onload = () => {
+    reader.onload = () => {
       const imageUrl = reader.result;
 
       profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Uploaded Avatar" />`;
@@ -298,14 +284,12 @@ document.addEventListener("DOMContentLoaded", () => {
     reader.readAsDataURL(file);
   });
 
-  // Load saved avatar
   const savedAvatar = localStorage.getItem("selectedAvatar");
   if (savedAvatar) {
     profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
     navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
   }
 });
-
 
 // ─── Badge Gallery ─────────────────────────────────────────────────────────────
 
