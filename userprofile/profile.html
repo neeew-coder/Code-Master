@@ -55,7 +55,9 @@
       <section class="profile border border-gray-300" id="profile">
         <h2 class="text-2xl font-bold mb-4">Your Profile</h2>
         <div class="center">
-          <div id="profileAvatar" class="avatar bg-indigo-600 text-white rounded-full w-16 h-16 flex items-center justify-center text-xl font-bold mb-0">?</div>
+          <div id="profileAvatarWrapper" class="w-16 h-16 rounded-full flex items-center justify-center cursor-pointer hover:ring-2 hover:ring-indigo-400 transition">
+            <div id="profileAvatar" class="avatar bg-indigo-600 text-white w-full h-full rounded-full flex items-center justify-center text-xl font-bold">?</div>
+          </div>
         </div>
 
         <!-- Avatar Selection -->
@@ -152,68 +154,6 @@
   <footer class="bg-gray-900">
     <p>&copy; 2025 CodeMaster. All rights reserved.</p>
   </footer>
-  <script>
-    // ─── Avatar Selection ─────────────────────────────────────────────────────────
-
-    document.addEventListener("DOMContentLoaded", () => {
-      const avatarOptions = document.querySelectorAll(".avatar-option");
-      const avatarUpload = document.getElementById("avatarUpload");
-      const profileAvatar = document.getElementById("profileAvatar");
-      const navAvatar = document.getElementById("navAvatar");
-      const avatarSelector = document.getElementById("avatarSelector");
-
-      // Toggle avatar selector on avatar click
-      profileAvatar.addEventListener("click", () => {
-        avatarSelector.classList.toggle("hidden");
-      });
-
-      // Hide selector when clicking outside
-      document.addEventListener("click", (e) => {
-        if (!avatarSelector.contains(e.target) && e.target !== profileAvatar) {
-          avatarSelector.classList.add("hidden");
-        }
-      });
-
-      // Handle avatar selection
-      avatarOptions.forEach(img => {
-        img.addEventListener("click", () => {
-          avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
-          img.classList.add("border-indigo-600");
-
-          profileAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Selected Avatar" />`;
-          navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-          localStorage.setItem("selectedAvatar", img.src);
-          avatarSelector.classList.add("hidden"); // Hide after selection
-        });
-      });
-
-      // Handle avatar upload
-      avatarUpload.addEventListener("change", (event) => {
-        const file = event.target.files[0];
-        if (!file) return;
-
-        const reader = new FileReader();
-        reader.onload = () => {
-          const imageUrl = reader.result;
-
-          profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Uploaded Avatar" />`;
-          navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-          localStorage.setItem("selectedAvatar", imageUrl);
-          avatarSelector.classList.add("hidden"); // Hide after upload
-        };
-        reader.readAsDataURL(file);
-      });
-
-      // Load saved avatar
-      const savedAvatar = localStorage.getItem("selectedAvatar");
-      if (savedAvatar) {
-        profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
-        navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
-      }
-    });
-  </script>
   <script src="script.js" defer></script>
 </body>
 </html>
