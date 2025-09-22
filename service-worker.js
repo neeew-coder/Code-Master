@@ -4,6 +4,22 @@ const urlsToCache = [
   "/Code-Master/index.html",
   "/Code-Master/auth.html",
   "/Code-Master/reset-password.html",
+  "/Code-Master/excercises.html",
+  "/Code-Master/lessons.html",
+  "/Code-Master/lesson-html.html",
+  "/Code-Master/lesson-css.html",
+  "/Code-Master/lesson-java.html",
+  "/Code-Master/lesson-js.html",
+  "/Code-Master/lesson-csharp.html",
+  "/Code-Master/about.html",
+  "/Code-Master/code-playground.html",
+  "/Code-Master/styles.css",
+  "/Code-Master/DarkTheme.css",
+  "/Code-Master/scripts/badges.js",
+  "/Code-Master/scripts/DarkTheme.js",
+  "/Code-Master/scripts/session-check.js",
+  "/Code-Master/scripts/searchBar.js",
+  "/Code-Master/scripts/navToggle.js",
   "https://cdn.tailwindcss.com"
 ];
 
