@@ -47,6 +47,7 @@ function updateNavProfile() {
   const navProfile = document.getElementById("navProfile");
   const navName = document.getElementById("navName");
   const navAvatar = document.getElementById("navAvatar");
+  const savedAvatar = localStorage.getItem("selectedAvatar");
 
   if (name && navProfile && navName && navAvatar) {
     navProfile.classList.remove("hidden");
@@ -58,7 +59,12 @@ function updateNavProfile() {
     navName.style.textOverflow = "ellipsis";
     navName.style.fontSize = "14px";
     navName.style.fontFamily = "monospace";
-    navAvatar.textContent = name.charAt(0).toUpperCase();
+
+    if (savedAvatar) {
+      navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
+    } else {
+      navAvatar.textContent = name.charAt(0).toUpperCase();
+    }
   }
 }
 
@@ -94,12 +100,12 @@ function loadProfileFromBackend() {
       if (data?.username) {
         localStorage.setItem("codemasterUserName", data.username);
         localStorage.setItem("codemasterTagline", data.bio || "");
+        if (data.avatar) {
+          localStorage.setItem("selectedAvatar", data.avatar);
+        }
         updateNavProfile();
         renderProfileUI();
         window.extraBadges = Array.isArray(data.badges) ? data.badges : [];
-      }
-      if (data.avatar) {
-        localStorage.setItem("selectedAvatar", data.avatar);
       }
     })
     .catch(err => {
@@ -127,7 +133,7 @@ function saveProfile() {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     credentials: "include",
-    body: JSON.stringify({ username: name, bio: tagline, avatar})
+    body: JSON.stringify({ username: name, bio: tagline, avatar })
   })
     .then(res => {
       if (!res.ok) throw new Error(`Server responded with ${res.status}`);
@@ -204,8 +210,6 @@ function initProfileUI() {
   if (resetBtn) resetBtn.addEventListener("click", resetPassword);
 
   loadProfileFromBackend();
-  updateNavProfile();
-  renderProfileUI();
 }
 
 // ─── Navigation ────────────────────────────────────────────────────────────────
@@ -240,6 +244,66 @@ function signOut() {
       alert("Could not log out. Try again.");
     });
 }
+
+// ─── Avatar Selection ─────────────────────────────────────────────────────────
+
+document.addEventListener("DOMContentLoaded", () => {
+  const avatarOptions = document.querySelectorAll(".avatar-option");
+  const avatarUpload = document.getElementById("avatarUpload");
+  const profileAvatar = document.getElementById("profileAvatar");
+  const profileAvatarWrapper = document.getElementById("profileAvatarWrapper");
+  const navAvatar = document.getElementById("navAvatar");
+  const avatarSelector = document.getElementById("avatarSelector");
+
+  profileAvatarWrapper.addEventListener("click", (e) => {
+    e.stopPropagation();
+    avatarSelector.classList.toggle("hidden");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!avatarSelector.contains(e.target) && !profileAvatarWrapper.contains(e.target)) {
+      avatarSelector.classList.add("hidden");
+    }
+  });
+
+  avatarOptions.forEach(img => {
+    img.addEventListener("click", () => {
+      avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
+      img.classList.add("border-indigo-600");
+
+      profileAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Selected Avatar" />`;
+      navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
+
+      localStorage.setItem("selectedAvatar", img.src);
+      avatarSelector.classList.add("hidden");
+    });
+  });
+
+  avatarUpload.addEventListener("change", (event) => {
+    const file = event.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+        reader.onload = () => {
+      const imageUrl = reader.result;
+
+      profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Uploaded Avatar" />`;
+      navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
+
+      localStorage.setItem("selectedAvatar", imageUrl);
+      avatarSelector.classList.add("hidden");
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Load saved avatar
+  const savedAvatar = localStorage.getItem("selectedAvatar");
+  if (savedAvatar) {
+    profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
+    navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
+  }
+});
+
 
 // ─── Badge Gallery ─────────────────────────────────────────────────────────────
 
@@ -366,69 +430,6 @@ function updateProgress(subject, lessonId) {
       console.warn("Progress update error:", err.message);
     });
 }
-
-// ─── Avatar Selection ─────────────────────────────────────────────────────────
-
-document.addEventListener("DOMContentLoaded", () => {
-  const avatarOptions = document.querySelectorAll(".avatar-option");
-  const avatarUpload = document.getElementById("avatarUpload");
-  const profileAvatar = document.getElementById("profileAvatar");
-  const profileAvatarWrapper = document.getElementById("profileAvatarWrapper");
-  const navAvatar = document.getElementById("navAvatar");
-  const avatarSelector = document.getElementById("avatarSelector");
-
-  // Toggle avatar selector on avatar wrapper click
-  profileAvatarWrapper.addEventListener("click", (e) => {
-    e.stopPropagation();
-    avatarSelector.classList.toggle("hidden");
-  });
-
-  // Hide selector when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!avatarSelector.contains(e.target) && !profileAvatarWrapper.contains(e.target)) {
-      avatarSelector.classList.add("hidden");
-    }
-  });
-
-  // Handle avatar selection
-  avatarOptions.forEach(img => {
-    img.addEventListener("click", () => {
-      avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
-      img.classList.add("border-indigo-600");
-
-      profileAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Selected Avatar" />`;
-      navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-      localStorage.setItem("selectedAvatar", img.src);
-      avatarSelector.classList.add("hidden");
-    });
-  });
-
-  // Handle avatar upload
-  avatarUpload.addEventListener("change", (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = () => {
-      const imageUrl = reader.result;
-
-      profileAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Uploaded Avatar" />`;
-      navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
-
-      localStorage.setItem("selectedAvatar", imageUrl);
-      avatarSelector.classList.add("hidden");
-    };
-    reader.readAsDataURL(file);
-  });
-
-  // Load saved avatar
-  const savedAvatar = localStorage.getItem("selectedAvatar");
-  if (savedAvatar) {
-    profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
-    navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Nav Avatar" />`;
-  }
-});
 
 // ─── Initialization ───────────────────────────────────────────────────────────
 
