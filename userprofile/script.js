@@ -365,7 +365,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const avatarUpload = document.getElementById("avatarUpload");
   const profileAvatar = document.getElementById("profileAvatar");
   const navAvatar = document.getElementById("navAvatar");
+  const avatarSelector = document.getElementById("avatarSelector");
 
+  // Toggle avatar selector on avatar click
+  profileAvatar.addEventListener("click", () => {
+    avatarSelector.classList.toggle("hidden");
+  });
+
+  // Hide selector when clicking outside
+  document.addEventListener("click", (e) => {
+    if (!avatarSelector.contains(e.target) && e.target !== profileAvatar) {
+      avatarSelector.classList.add("hidden");
+    }
+  });
+
+  // Handle avatar selection
   avatarOptions.forEach(img => {
     img.addEventListener("click", () => {
       avatarOptions.forEach(opt => opt.classList.remove("border-indigo-600"));
@@ -375,9 +389,11 @@ document.addEventListener("DOMContentLoaded", () => {
       navAvatar.innerHTML = `<img src="${img.src}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
 
       localStorage.setItem("selectedAvatar", img.src);
+      avatarSelector.classList.add("hidden"); // Hide after selection
     });
   });
 
+  // Handle avatar upload
   avatarUpload.addEventListener("change", (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -390,10 +406,12 @@ document.addEventListener("DOMContentLoaded", () => {
       navAvatar.innerHTML = `<img src="${imageUrl}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
 
       localStorage.setItem("selectedAvatar", imageUrl);
+      avatarSelector.classList.add("hidden"); // Hide after upload
     };
     reader.readAsDataURL(file);
   });
 
+  // Load saved avatar
   const savedAvatar = localStorage.getItem("selectedAvatar");
   if (savedAvatar) {
     profileAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
