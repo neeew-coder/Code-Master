@@ -28,6 +28,9 @@ const urlsToCache = [
   "/Code-Master/scripts/DarkTheme.js",
   "/Code-Master/scripts/badge.js",
   "/Code-Master/quiz/mobileToggle.js",
+  "/Code-Master/package.js",
+  "/Code-Master/postcss.config.js",
+  "/Code-Master/quizData.js",
 
   //design
   "/Code-Master/src/style.css",
