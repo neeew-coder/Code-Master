@@ -60,7 +60,7 @@ function updateNavProfile() {
     navName.style.fontSize = "14px";
     navName.style.fontFamily = "monospace";
 
-    if (savedAvatar) {
+    if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
       navAvatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Nav Avatar" />`;
     } else {
       navAvatar.textContent = name.charAt(0).toUpperCase();
@@ -77,7 +77,7 @@ function renderProfileUI() {
   document.getElementById("profileName").value = name;
   document.getElementById("profileTagline").value = tagline;
 
-  if (savedAvatar) {
+  if (savedAvatar && savedAvatar !== "" && savedAvatar !== "/image/default.png") {
     avatar.innerHTML = `<img src="${savedAvatar}" class="w-full h-full rounded-full" alt="Saved Avatar" />`;
   } else {
     avatar.textContent = name ? name.charAt(0).toUpperCase() : "?";
@@ -100,9 +100,11 @@ function loadProfileFromBackend() {
       if (data?.username) {
         localStorage.setItem("codemasterUserName", data.username);
         localStorage.setItem("codemasterTagline", data.bio || "");
-        if (data.avatar) {
+
+        if (data.avatar && data.avatar !== "" && data.avatar !== "/image/default.png") {
           localStorage.setItem("selectedAvatar", data.avatar);
         }
+
         updateNavProfile();
         renderProfileUI();
         window.extraBadges = Array.isArray(data.badges) ? data.badges : [];
