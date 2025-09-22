@@ -37,7 +37,7 @@
     </div>
 
     <!-- Mobile menu -->
-    <div class="md:hidden hidden gradient-bg" id="mobile-menu">
+    <div class="md:hidden hidden gradient-bg" id="menu-toggle">
       <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">        
         <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
         <a href="../lessons.html" class="hover:text-gray-300 transition">Lessons</a>
@@ -76,25 +76,25 @@
             <img src="../image/avatar10.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 10" />
             <img src="../image/avatar11.png" class="avatar-option w-14 h-14 rounded-full cursor-pointer border-2 border-transparent hover:border-indigo-500 transition duration-200" alt="Avatar 11" />
           </div>
+          <!-- Avatar Upload -->
+          <div class="mt-6">
+            <label class="block text-lg font-semibold text-gray-800 mb-2">Upload Your Avatar</label>
+            <label for="avatarUpload" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-indigo-700 transition duration-200">
+              Choose File
+            </label>
+            <input type="file" id="avatarUpload" accept="image/*" class="hidden" />
+          </div>
+
+          <!-- Reset Button -->
+          <div class="mt-4">
+            <button id="resetAvatarBtn" class="text-sm text-red-600 underline hover:text-red-800 transition duration-150">Reset to Initial</button>
+          </div>
+
+          <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 mt-3 p-2 border rounded" />
+          <input id="profileTagline" type="text" placeholder="Your Tagline" class="input w-full mb-3 p-2 border rounded" />
+          <button id="saveBtn" class="save-btn bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
         </div>
 
-        <!-- Avatar Upload -->
-        <div class="mt-6">
-          <label class="block text-lg font-semibold text-gray-800 mb-2">Upload Your Avatar</label>
-          <label for="avatarUpload" class="inline-block bg-indigo-600 text-white px-4 py-2 rounded cursor-pointer hover:bg-indigo-700 transition duration-200">
-            Choose File
-          </label>
-          <input type="file" id="avatarUpload" accept="image/*" class="hidden" />
-        </div>
-
-        <!-- Reset Button -->
-        <div class="mt-4">
-          <button id="resetAvatarBtn" class="text-sm text-red-600 underline hover:text-red-800 transition duration-150">Reset to Initial</button>
-        </div>
-
-        <input id="profileName" type="text" placeholder="Your Name" class="input w-full mb-3 mt-3 p-2 border rounded" />
-        <input id="profileTagline" type="text" placeholder="Your Tagline" class="input w-full mb-3 p-2 border rounded" />
-        <button id="saveBtn" class="save-btn bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition">Save Profile</button>
 
         <!-- Badge Gallery -->
         <div id="badgeGallery" class="mt-8">
