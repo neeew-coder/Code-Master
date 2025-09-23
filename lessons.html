@@ -31,13 +31,14 @@
       </button>
     </div>
 
-    <!-- Mobile menu placed outside the flex container -->
+    <!-- Mobile menu -->
     <div class="md:hidden hidden gradient-bg" id="mobile-menu">
-      <div class="container mx-auto px-4 py-4 flex flex-row space-x-4 justify-center">
-        <a href="index.html" class="hover:text-gray-300 transition">Home</a>
-        <a href="lessons.html" class="hover:text-gray-300 transition underline">Lessons</a>
-        <a href="exercises.html" class="hover:text-gray-300 transition">Exercises</a>
-        <a href="code-playground.html" class="hover:text-gray-300 transition">Play Ground</a>
+      <div class="container mx-auto px-4 py-4 flex flex-col space-y-4 items-center text-center">
+        <a href="../index.html" class="hover:text-gray-300 transition">Home</a>
+        <a href="../lessons.html" class="hover:text-gray-300 transition">Lessons</a>
+        <a href="../exercises.html" class="hover:text-gray-300 transition">Exercises</a>
+        <a href="#profile" class="hover:text-gray-200 transition underline">Profile</a>
+        <a href="#" onclick="signOut()" class="hover:text-red-300 transition">Sign Out</a>
       </div>
       <hr>
     </div>
