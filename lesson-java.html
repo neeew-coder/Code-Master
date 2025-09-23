@@ -240,8 +240,12 @@ public class HelloWorld {
       <div class="flex flex-row gap-2 col-auto text-center">
         <button onclick="loadModule('intro')" class="bg-red-600 text-white px-4 py-2 rounded-full font-bold hover:bg-red-700 transition shadow-md">Start Learning</button>
         <a href="userprofile/profile.html" class="bg-red-900 text-white px-4 py-3 rounded-full font-bold hover:bg-red-800 transition shadow-md">View Dashboard</a>  
-        <div class="progress-badge overflow-scroll mt-6"></div>
       </div>
+
+      <!-- Badge Toast Pop-Up -->
+      <div id="badgeToast" class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-full shadow-lg z-50 hidden transition-all duration-300 ease-in-out">
+        <div class="progress-badge"></div>
+      </div>     
 
       <!-- Progress Bar -->
       <div class="mt-4">
@@ -277,6 +281,39 @@ public class HelloWorld {
     const subject = document.body.dataset.subject || "java";
     const API_BASE = "https://code-master-kk2m.onrender.com";
     let cachedTotalModules = 0;
+
+    function getBadgeInfo(percent) {
+      if (subject === "java") {
+        if (percent === 100) return { label: "Java Virtuoso", class: "bg-green-600", icon: "fa-coffee" };
+        if (percent >= 75) return { label: "OOP Expert", class: "bg-purple-600", icon: "fa-cubes" };
+        if (percent >= 50) return { label: "Class Commander", class: "bg-blue-500", icon: "fa-code" };
+        if (percent >= 25) return { label: "Syntax Starter", class: "bg-yellow-400", icon: "fa-terminal" };
+        return { label: "Java Dabbler", class: "bg-gray-400", icon: "fa-user" };
+      }
+
+      if (percent === 100) return { label: "Master", class: "bg-green-600", icon: "fa-star" };
+      if (percent >= 75) return { label: "Expert", class: "bg-purple-600", icon: "fa-star-half-alt" };
+      if (percent >= 50) return { label: "Achiever", class: "bg-blue-500", icon: "fa-check" };
+      if (percent >= 25) return { label: "Learner", class: "bg-yellow-400", icon: "fa-book" };
+      return { label: "Rookie", class: "bg-gray-300", icon: "fa-user" };
+    }
+
+    function showBadgeToast(percent) {
+      const toast = document.getElementById("badgeToast");
+      const badge = toast.querySelector(".progress-badge");
+
+      if (badge && toast) {
+        const { label: badgeLabel, class: badgeClass, icon } = getBadgeInfo(percent);
+        badge.innerHTML = `
+          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white ${badgeClass}" title="Your current ${subject.toUpperCase()} mastery level">
+            <i class="fas ${icon} text-white opacity-80"></i>
+            ${badgeLabel}
+          </span>
+        `;
+        toast.classList.remove("hidden");
+        setTimeout(() => toast.classList.add("hidden"), 10000);
+      }
+    }
 
     function loadModule(lessonId) {
       const container = document.getElementById("moduleContent");
@@ -346,6 +383,7 @@ public class HelloWorld {
 
         const totalModules = data?.progress?.totalModules || 1;
         updateUIWithProgress({ completed, totalModules });
+        showBadgeToast(Math.min(100, Math.round((completed.length / totalModules) * 100)));
 
         completed.forEach(id => {
           const btn = document.querySelector(`aside button[data-lesson="${id}"]`);
@@ -406,17 +444,6 @@ public class HelloWorld {
       document.querySelectorAll(".progress-label").forEach(label => {
         label.textContent = `${percent}% Completed`;
       });
-
-      const badge = document.querySelector(".progress-badge");
-      if (badge) {
-        const { label: badgeLabel, class: badgeClass, icon = "fa-user" } = getBadgeInfo(percent);
-        badge.innerHTML = `
-          <span class="inline-flex items-center gap-2 px-4 py-1 text-xs font-mono font-bold text-white rounded-full shadow-md ring-2 ring-offset-1 ring-white transition-all duration-300 ${badgeClass}" title="Your current ${subject.toUpperCase()} mastery level">
-            <i class="fas ${icon} text-white opacity-80"></i>
-            ${badgeLabel}
-          </span>
-        `;
-      }
     }
 
     function scrollToTop() {
