@@ -1,4 +1,6 @@
-const CACHE_NAME = "codemaster-cache-v2";
+const CACHE_VERSION = "v3"; // 🔄 bump this to force reactivation
+const CACHE_NAME = `codemaster-cache-${CACHE_VERSION}`;
+
 const urlsToCache = [
   // Main pages
   "/Code-Master/",
@@ -43,49 +45,71 @@ const urlsToCache = [
   "/Code-Master/src/javascript.svg"
 ];
 
+// ✅ Install and cache static assets
+self.addEventListener("install", (event) => {
+  console.log("📦 Service Worker installing...");
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      console.log("📦 Caching static assets:", urlsToCache.length, "files");
+      return Promise.all(
+        urlsToCache.map((url) =>
+          cache.add(url).catch((err) => {
+            console.warn(`⚠️ Failed to cache ${url}:`, err);
+          })
+        )
+      );
+    })
+  );
+});
+
 // ✅ Activate and clean old caches
 self.addEventListener("activate", (event) => {
   console.log("🚀 Activating Service Worker...");
   event.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(
+    caches.keys().then((keys) => {
+      console.log("🧠 Existing caches:", keys);
+      return Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
             console.log("🧹 Removing old cache:", key);
             return caches.delete(key);
           }
         })
-      )
-    )
+      );
+    })
   );
 });
 
 // ✅ Fetch handler with profile-safe logic
 self.addEventListener("fetch", (event) => {
   const { request } = event;
+  const url = request.url;
 
-  // Skip caching for profile or session-related requests
+  // Skip caching for dynamic/profile-related requests
   if (
-    request.url.includes("/profile") ||
-    request.url.includes("/session") ||
-    request.url.includes("/user") ||
-    request.url.includes("/api")
+    url.includes("/profile") ||
+    url.includes("/session") ||
+    url.includes("/user") ||
+    url.includes("/api")
   ) {
-    console.log("🚫 Skipping cache for:", request.url);
+    console.log("🚫 Skipping cache for dynamic request:", url);
     return;
   }
 
   event.respondWith(
     caches.match(request).then((cachedResponse) => {
       if (cachedResponse) {
+        console.log("✅ Serving from cache:", url);
         return cachedResponse;
       }
 
+      console.log("🌐 Fetching from network:", url);
       return fetch(request).catch((err) => {
-        console.warn("❌ Fetch failed:", request.url, err);
+        console.warn("❌ Network fetch failed:", url, err);
 
         // Fallback for navigation
         if (request.mode === "navigate") {
+          console.log("📄 Fallback to cached index.html");
           return caches.match("/Code-Master/index.html");
         }
 
