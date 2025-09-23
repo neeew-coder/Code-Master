@@ -228,6 +228,20 @@ body {
   <script src="scripts/badges.js"></script>
 
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleBtn = document.getElementById("menu-toggle");
+      const menuIcon = document.getElementById("menu-icon");
+      const mobileMenu = document.getElementById("mobile-menu");
+
+      toggleBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+        menuIcon.classList.toggle("fa-bars");
+        menuIcon.classList.toggle("fa-times");
+      });
+    });
+  </script>
+  
+  <script>
     const subject = document.body.dataset.subject || "css";
     const API_BASE = "https://code-master-kk2m.onrender.com";
     let cachedTotalModules = 0;
