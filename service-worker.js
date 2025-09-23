@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v3"; // 🔄 bump this to force reactivation
+const CACHE_VERSION = "v4"; // 🔄 bump this to force reactivation
 const CACHE_NAME = `codemaster-cache-${CACHE_VERSION}`;
 
 const urlsToCache = [
