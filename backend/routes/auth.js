@@ -2,11 +2,12 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
-const nodemailer = require("nodemailer");
 const User = require("../models/User");
 const auth = require("../middleware/auth");
+const { Resend } = require("resend");
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 // 🔐 Utility: Create JWT
 const createToken = (user) => {
@@ -17,16 +18,7 @@ const createToken = (user) => {
   );
 };
 
-// 📧 Gmail SMTP transporter
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: process.env.GMAIL_USER,
-    pass: process.env.GMAIL_APP_PASSWORD
-  }
-});
-
-// 📝 Register with email
+// 📝 Register
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password, bio } = req.body;
@@ -67,12 +59,7 @@ router.post("/login", async (req, res) => {
     }
 
     const user = await User.findOne({ username }).select("+password");
-    if (!user) {
-      return res.status(401).json({ success: false, error: "Invalid credentials" });
-    }
-
-    const isMatch = await user.comparePassword(password);
-    if (!isMatch) {
+    if (!user || !(await user.comparePassword(password))) {
       return res.status(401).json({ success: false, error: "Invalid credentials" });
     }
 
@@ -92,7 +79,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// 🔓 Forgot Password via Gmail SMTP
+// 🔓 Forgot Password via Resend
 router.post("/forgot-password", async (req, res) => {
   try {
     const { email } = req.body;
@@ -106,22 +93,26 @@ router.post("/forgot-password", async (req, res) => {
     user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
     await user.save();
 
-    await transporter.sendMail({
-      from: `"CodeMaster Support" <${process.env.GMAIL_USER}>`,
+    const resetLink = `https://neeew-coder.github.io/Code-Master/reset-password.html?token=${token}`;
+
+    const { error } = await resend.emails.send({
+      from: "CodeMaster <noreply@codemaster.com>",
       to: user.email,
       subject: "Reset Your CodeMaster Password",
       html: `
         <p>Hi ${user.username},</p>
         <p>You requested a password reset. Click the link below to set a new password:</p>
-        <a href="https://neeew-coder.github.io/Code-Master/reset-password.html?token=${token}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
+        <a href="${resetLink}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
         <p>This link expires in 15 minutes.</p>
       `
     });
 
+    if (error) throw error;
+
     res.json({ message: "Reset link sent to your email." });
   } catch (err) {
     console.error("❌ Forgot password error:", err);
-    res.status(500).json({ error: "Failed to send reset email" });
+    res.status(503).json({ error: "Email service unavailable" });
   }
 });
 
@@ -143,7 +134,7 @@ router.post("/reset-password", async (req, res) => {
     }
 
     user.password = password;
-    user.markModified("password"); // ✅ Ensures Mongoose triggers pre-save hook
+    user.markModified("password");
     user.resetToken = undefined;
     user.resetTokenExpiry = undefined;
 
