@@ -1,4 +1,4 @@
-const CACHE_VERSION = "v7"; // 🔄 bump this to force reactivation
+const CACHE_VERSION = "v8"; // 🔄 bump this to force reactivation
 const CACHE_NAME = `codemaster-cache-${CACHE_VERSION}`;
 
 const urlsToCache = [
@@ -341,22 +341,34 @@ const urlsToCache = [
   "/Code-Master/src/javascript.svg"
 ];
 
-// ✅ Install and cache static assets
+// ✅ Install and cache static + external assets
 self.addEventListener("install", (event) => {
   console.log("📦 Service Worker installing...");
+
+  const externalAssets = [
+    "https://cdn.tailwindcss.com?plugins=typography"
+  ];
+
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("📦 Caching static assets:", urlsToCache.length, "files");
-      return Promise.all(
-        urlsToCache.map((url) =>
+      console.log("📦 Caching assets:", urlsToCache.length + externalAssets.length, "files");
+
+      return Promise.all([
+        ...urlsToCache.map((url) =>
           cache.add(url).catch((err) => {
             console.warn(`⚠️ Failed to cache ${url}:`, err);
           })
+        ),
+        ...externalAssets.map((url) =>
+          cache.add(url).catch((err) => {
+            console.warn(`⚠️ Failed to cache external asset: ${url}`, err);
+          })
         )
-      );
+      ]);
     })
   );
 });
+
 
 // ✅ Activate and clean old caches
 self.addEventListener("activate", (event) => {
