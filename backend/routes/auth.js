@@ -90,12 +90,12 @@ router.post("/forgot-password", async (req, res) => {
 
     const token = crypto.randomBytes(32).toString("hex");
     user.resetToken = token;
-    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
+    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15;
     await user.save();
 
     const resetLink = `https://neeew-coder.github.io/Code-Master/reset-password.html?token=${token}`;
 
-    const { error } = await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: "CodeMaster <noreply@codemaster.com>",
       to: user.email,
       subject: "Reset Your CodeMaster Password",
@@ -107,8 +107,12 @@ router.post("/forgot-password", async (req, res) => {
       `
     });
 
-    if (error) throw error;
+    if (error) {
+      console.error("❌ Resend error:", error);
+      return res.status(503).json({ error: "Email service unavailable" });
+    }
 
+    console.log("✅ Resend email sent:", data);
     res.json({ message: "Reset link sent to your email." });
   } catch (err) {
     console.error("❌ Forgot password error:", err);
@@ -162,6 +166,24 @@ router.get("/me", auth, (req, res) => {
   const user = { ...req.user.toObject() };
   delete user.password;
   res.json({ success: true, user });
+});
+
+// 🧪 Test Resend Email
+router.get("/test-email", async (req, res) => {
+  try {
+    const { data, error } = await resend.emails.send({
+      from: "CodeMaster <noreply@codemaster.com>",
+      to: "your@email.com",
+      subject: "Test Email",
+      html: "<p>This is a test from CodeMaster.</p>"
+    });
+
+    if (error) throw error;
+    res.json({ message: "Email sent", data });
+  } catch (err) {
+    console.error("❌ Test email error:", err);
+    res.status(500).json({ error: "Failed to send test email" });
+  }
 });
 
 module.exports = router;
