@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+const nodemailer = require("nodemailer");
 const User = require("../models/User");
 const auth = require("../middleware/auth");
-const { Resend } = require("resend");
 
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 // 🔐 Utility: Create JWT
 const createToken = (user) => {
@@ -18,7 +17,16 @@ const createToken = (user) => {
   );
 };
 
-// 📝 Register
+// 📧 Gmail SMTP transporter
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD
+  }
+});
+
+// 📝 Register with email
 router.post("/register", async (req, res) => {
   try {
     const { username, email, password, bio } = req.body;
@@ -59,7 +67,12 @@ router.post("/login", async (req, res) => {
     }
 
     const user = await User.findOne({ username }).select("+password");
-    if (!user || !(await user.comparePassword(password))) {
+    if (!user) {
+      return res.status(401).json({ success: false, error: "Invalid credentials" });
+    }
+
+    const isMatch = await user.comparePassword(password);
+    if (!isMatch) {
       return res.status(401).json({ success: false, error: "Invalid credentials" });
     }
 
@@ -79,7 +92,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-// 🔓 Forgot Password via Resend
+// 🔓 Forgot Password via Gmail SMTP
 router.post("/forgot-password", async (req, res) => {
   try {
     const { email } = req.body;
@@ -90,33 +103,25 @@ router.post("/forgot-password", async (req, res) => {
 
     const token = crypto.randomBytes(32).toString("hex");
     user.resetToken = token;
-    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15;
+    user.resetTokenExpiry = Date.now() + 1000 * 60 * 15; // 15 minutes
     await user.save();
 
-    const resetLink = `https://neeew-coder.github.io/Code-Master/reset-password.html?token=${token}`;
-
-    const { data, error } = await resend.emails.send({
-      from: "CodeMaster <noreply@codemaster.com>",
+    await transporter.sendMail({
+      from: `"CodeMaster Support" <${process.env.GMAIL_USER}>`,
       to: user.email,
       subject: "Reset Your CodeMaster Password",
       html: `
         <p>Hi ${user.username},</p>
         <p>You requested a password reset. Click the link below to set a new password:</p>
-        <a href="${resetLink}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
+        <a href="https://neeew-coder.github.io/Code-Master/reset-password.html?token=${token}" style="display:inline-block;padding:10px 20px;background:#4f46e5;color:#fff;border-radius:6px;text-decoration:none;">Reset Password</a>
         <p>This link expires in 15 minutes.</p>
       `
     });
 
-    if (error) {
-      console.error("❌ Resend error:", error);
-      return res.status(503).json({ error: "Email service unavailable" });
-    }
-
-    console.log("✅ Resend email sent:", data);
     res.json({ message: "Reset link sent to your email." });
   } catch (err) {
     console.error("❌ Forgot password error:", err);
-    res.status(503).json({ error: "Email service unavailable" });
+    res.status(500).json({ error: "Failed to send reset email" });
   }
 });
 
@@ -138,7 +143,7 @@ router.post("/reset-password", async (req, res) => {
     }
 
     user.password = password;
-    user.markModified("password");
+    user.markModified("password"); // ✅ Ensures Mongoose triggers pre-save hook
     user.resetToken = undefined;
     user.resetTokenExpiry = undefined;
 
@@ -166,24 +171,6 @@ router.get("/me", auth, (req, res) => {
   const user = { ...req.user.toObject() };
   delete user.password;
   res.json({ success: true, user });
-});
-
-// 🧪 Test Resend Email
-router.get("/test-email", async (req, res) => {
-  try {
-    const { data, error } = await resend.emails.send({
-      from: "CodeMaster <noreply@codemaster.com>",
-      to: "your@email.com",
-      subject: "Test Email",
-      html: "<p>This is a test from CodeMaster.</p>"
-    });
-
-    if (error) throw error;
-    res.json({ message: "Email sent", data });
-  } catch (err) {
-    console.error("❌ Test email error:", err);
-    res.status(500).json({ error: "Failed to send test email" });
-  }
 });
 
 module.exports = router;
