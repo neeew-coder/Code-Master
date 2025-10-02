@@ -3,18 +3,25 @@
 <p class="mb-6 text-gray-700">
   OOP is a programming paradigm based on the concept of "objects" — reusable units that encapsulate data and behavior. C# supports OOP through classes, interfaces, and inheritance.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Creating and using classes and objects</li>
-    <li>Encapsulation with fields and properties</li>
-    <li>Inheritance and base classes</li>
-    <li>Polymorphism and method overriding</li>
-    <li>Abstraction via interfaces and abstract classes</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/iA0XZwFqqKI" title="C# OOP Explained | Simplilearn" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Simplilearn</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=iA0XZwFqqKI" target="_blank">Watch on YouTube</a><br>
+    <strong>C# OOP Explained</strong> introduces the four pillars of object-oriented programming — encapsulation, inheritance, abstraction, and polymorphism — with practical C# examples.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define classes and objects in C#</li>
+  <li>How encapsulation protects data using access modifiers</li>
+  <li>How inheritance enables code reuse and hierarchy</li>
+  <li>How abstraction hides complexity and exposes essential behavior</li>
+  <li>How polymorphism allows method overriding and dynamic behavior</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -108,3 +115,31 @@ namespace OOPDemo {
     💡 <strong>Tips:</strong> Use <code>virtual</code> and <code>override</code> for polymorphism. Prefer interfaces for abstraction. Keep classes focused and cohesive.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Object-oriented programming (OOP) in C# is a paradigm that organizes code into reusable, modular components. This tutorial walks through the four pillars — encapsulation, inheritance, abstraction, and polymorphism — showing how to build scalable, maintainable applications using classes, interfaces, and method overrides.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// OOPDemo.cs
+using System;
+
+class Animal {
+  public virtual void Speak() {
+    Console.WriteLine("Animal speaks");
+  }
+}
+
+class Dog : Animal {
+  public override void Speak() {
+    Console.WriteLine("Dog barks");
+  }
+}
+
+class Program {
+  static void Main() {
+    Animal myAnimal = new Dog(); // Polymorphism
+    myAnimal.Speak();            // Output: Dog barks
+  }
+}
+</pre>

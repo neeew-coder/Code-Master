@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   A <code>Map</code> stores key-value pairs. Each key maps to a single value, and keys must be unique. Maps are ideal for fast lookups, associations, and indexing.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/VcXYlkICcQU" title="Java Map Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=VcXYlkICcQU" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Map Explained</strong> introduces the <code>Map</code> interface and its key implementations — <code>HashMap</code>, <code>LinkedHashMap</code>, and <code>TreeMap</code> — with examples of key-value storage, lookup, and iteration.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>Map</code> stores data as key-value pairs</li>
+  <li>How <code>HashMap</code> provides fast access with no order</li>
+  <li>How <code>LinkedHashMap</code> preserves insertion order</li>
+  <li>How <code>TreeMap</code> maintains sorted keys</li>
+  <li>How to use <code>put()</code>, <code>get()</code>, <code>remove()</code>, and <code>containsKey()</code></li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -91,4 +110,28 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>Map</code> is like a dictionary — each word (key) maps to a definition (value), and you can look it up instantly.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>Map</code> interface defines a structure for storing key-value pairs. <code>HashMap</code> is the most commonly used implementation, offering constant-time performance for basic operations. <code>LinkedHashMap</code> maintains insertion order, while <code>TreeMap</code> keeps keys sorted. Maps are ideal for fast lookups, indexing, and associative data modeling.
+</p>
 
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// MapDemo.java
+import java.util.*;
+
+public class MapDemo {
+  public static void main(String[] args) {
+    Map<String, Integer> scores = new HashMap<>();
+    scores.put("Alice", 90);
+    scores.put("Bob", 85);
+    scores.put("Charlie", 92);
+
+    System.out.println("Bob's score: " + scores.get("Bob"));
+    scores.remove("Alice");
+
+    for (String name : scores.keySet()) {
+      System.out.println(name + " → " + scores.get(name));
+    }
+  }
+}

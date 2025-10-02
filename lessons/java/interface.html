@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   An <strong>interface</strong> in Java is a reference type that defines a contract of methods a class must implement. It supports full abstraction and multiple inheritance of type.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/A1uqgEz3hB0" title="Java Interface Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=A1uqgEz3hB0" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Interface Explained</strong> introduces how interfaces define behavior contracts in Java — enabling abstraction, polymorphism, and multiple inheritance.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What an interface is and how it differs from a class</li>
+  <li>How to declare and implement interfaces in Java</li>
+  <li>How interfaces support abstraction and polymorphism</li>
+  <li>How multiple classes can implement the same interface</li>
+  <li>How interfaces enable multiple inheritance of type</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -104,3 +123,35 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of interfaces like job descriptions. A person (class) can fulfill multiple roles (interfaces) by implementing the required tasks (methods).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  An interface in Java is a reference type that defines a set of abstract methods a class must implement. It provides a way to achieve abstraction and multiple inheritance. Interfaces are ideal for defining capabilities without enforcing implementation details, making them essential for scalable, loosely coupled design.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// InterfaceDemo.java
+interface Vehicle {
+  void start();
+}
+
+class Car implements Vehicle {
+  public void start() {
+    System.out.println("Car starts with key");
+  }
+}
+
+class Bike implements Vehicle {
+  public void start() {
+    System.out.println("Bike starts with button");
+  }
+}
+
+public class InterfaceDemo {
+  public static void main(String[] args) {
+    Vehicle v1 = new Car();
+    Vehicle v2 = new Bike();
+    v1.start();
+    v2.start();
+  }
+}
+</pre>

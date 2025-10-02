@@ -1,8 +1,28 @@
-<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML class Attribute</h2>
+<h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Class Attribute</h2>
 
 <p class="mb-4 text-gray-700">
-The <code>class</code> attribute lets you assign style rules to HTML elements. You can reuse class names across multiple elements, combine them, and target them with CSS or JavaScript.
+In this tutorial, you'll learn how to use the <code>class</code> attribute to style HTML elements, reuse styles across multiple tags, and interact with them using CSS and JavaScript.
 </p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/8Rezp0CQ5eg" title="HTML Class Attribute Explained | Code Crush" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Code Crush</strong> –  
+    <a class="text-orange-600 underline" href="https://www.youtube.com/watch?v=8Rezp0CQ5eg" target="_blank">Watch on YouTube</a><br>
+    <strong>HTML Class Attribute Explained</strong> covers syntax, multiple classes, and styling connections — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to add a <code>class</code> attribute to any HTML element</li>
+  <li>How to assign multiple classes using space-separated values</li>
+  <li>How CSS uses class selectors to style elements</li>
+  <li>How classes improve modularity and layout control</li>
+</ul>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Styling with a Class</h3>
 <p class="mb-2 text-gray-700">Define a class in CSS using a period (.) followed by the class name:</p>
@@ -10,57 +30,28 @@ The <code>class</code> attribute lets you assign style rules to HTML elements. Y
 <!-- CSS Syntax -->
 <div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
 <pre>
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-  &lt;meta charset=&quot;UTF-8&quot;&gt;
-  &lt;title&gt;City Class Example&lt;/title&gt;
-  &lt;style&gt;
-    .city {
-      background-color: tomato;
-      color: white;
-      border: 2px solid black;
-      margin: 20px;
-      padding: 20px;
-    }
-  &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-  &lt;div class=&quot;city&quot;&gt;
-    &lt;h2&gt;London&lt;/h2&gt;
-    &lt;p&gt;London is the capital of England.&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&quot;city&quot;&gt;
-    &lt;h2&gt;Paris&lt;/h2&gt;
-    &lt;p&gt;Paris is the capital of France.&lt;/p&gt;
-  &lt;/div&gt;
-
-  &lt;div class=&quot;city&quot;&gt;
-    &lt;h2&gt;Tokyo&lt;/h2&gt;
-    &lt;p&gt;Tokyo is the capital of Japan.&lt;/p&gt;
-  &lt;/div&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
+&lt;style&gt;
+  .city {
+    background-color: tomato;
+    color: white;
+    border: 2px solid black;
+    margin: 20px;
+    padding: 20px;
+  }
+&lt;/style&gt>
 </pre>
 </div>
 
-<!-- HTML Elements with "city" class -->
-<div class="bg-white p-4 rounded-lg shadow-md border mb-6">
-  <div class="city" style="background-color: tomato; color: white; border: 2px solid black; margin: 20px; padding: 20px;">
-    <h2>London</h2>
-    <p>London is the capital of England.</p>
-  </div>
-  <div class="city" style="background-color: tomato; color: white; border: 2px solid black; margin: 20px; padding: 20px;">
-    <h2>Paris</h2>
-    <p>Paris is the capital of France.</p>
-  </div>
-  <div class="city" style="background-color: tomato; color: white; border: 2px solid black; margin: 20px; padding: 20px;">
-    <h2>Tokyo</h2>
-    <p>Tokyo is the capital of Japan.</p>
-  </div>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🏙️ Applying the Class</h3>
+<p class="mb-2 text-gray-700">Use the <code>class</code> attribute in HTML to apply the style:</p>
+
+<div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
+<pre>
+&lt;div class="city"&gt;
+  &lt;h2&gt;London&lt;/h2&gt;
+  &lt;p&gt;London is the capital of England.&lt;/p&gt;
+&lt;/div&gt;
+</pre>
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📝 Styling Inline Elements</h3>
@@ -68,23 +59,15 @@ The <code>class</code> attribute lets you assign style rules to HTML elements. Y
 The <code>class</code> attribute works with inline elements too — like <code>&lt;span&gt;</code>:
 </p>
 
-<!-- CSS and HTML -->
 <div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
-  <pre>
+<pre>
 .note {
   font-size: 120%;
   color: red;
 }
 ...
 &lt;h1&gt;My &lt;span class="note"&gt;Important&lt;/span&gt; Heading&lt;/h1&gt;
-&lt;p&gt;Some &lt;span class="note"&gt;important&lt;/span&gt; text.&lt;/p&gt;
-  </pre>
-</div>
-
-<!-- Preview -->
-<div class="bg-white p-4 rounded-lg border mb-6">
-  <h1>My <span style="font-size:120%; color:red;">Important</span> Heading</h1>
-  <p style="color: black;">This is some <span style="font-size:120%; color:red;">important</span> text.</p>
+</pre>
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Multiple Classes</h3>
@@ -93,25 +76,19 @@ You can assign more than one class to an element. Just separate them by spaces:
 </p>
 
 <div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
-  <pre>
+<pre>
 &lt;h2 class="city main"&gt;London&lt;/h2&gt;
-&lt;h2 class="city"&gt;Paris&lt;/h2&gt;
-&lt;h2 class="city"&gt;Tokyo&lt;/h2&gt;
-  </pre>
+</pre>
 </div>
-
-<p class="text-gray-700 mb-4">
-The <code>London</code> heading will inherit styles from both <code>.city</code> and <code>.main</code>.
-</p>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔁 Shared Classes Across Elements</h3>
 <p class="mb-2 text-gray-700">Different element types can share the same class:</p>
 
 <div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
-  <pre>
+<pre>
 &lt;h2 class="city"&gt;Paris&lt;/h2&gt;
 &lt;p class="city"&gt;Paris is the capital of France&lt;/p&gt;
-  </pre>
+</pre>
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Using Class in JavaScript</h3>
@@ -119,19 +96,16 @@ The <code>London</code> heading will inherit styles from both <code>.city</code>
 You can target classes with JavaScript using <code>getElementsByClassName()</code>:
 </p>
 
-<!-- JS Code -->
 <div class="bg-gray-900 text-green-100 p-4 font-mono text-sm rounded-lg mb-2 overflow-x-auto">
-  <pre>
+<pre>
 function hideCities() {
   var x = document.getElementsByClassName("city");
   for (var i = 0; i &lt; x.length; i++) {
     x[i].style.display = "none";
   }
 }
-  </pre>
+</pre>
 </div>
-
-<p class="text-gray-700 mb-6">Clicking a button could trigger this function to hide all elements with the class <code>city</code>.</p>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📌 Syntax Reminder</h3>
 <ul class="list-disc list-inside text-gray-700 mb-6">
@@ -142,10 +116,35 @@ function hideCities() {
   <li>Multiple classes = space-separated values</li>
 </ul>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Chapter Summary</h3>
-<ul class="list-disc list-inside text-gray-700 mb-6">
-  <li><code>class</code> allows you to style and target HTML elements</li>
-  <li>It can be reused across elements and combined with other classes</li>
-  <li>Works with both CSS and JavaScript</li>
-  <li>Syntax: <code>.classname</code> in CSS, <code>class="classname"</code> in HTML</li>
+
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>class="button"</code> assigns a reusable label to an element</li>
+  <li><code>class="btn primary"</code> applies multiple styles</li>
+  <li>CSS targets classes using <code>.classname</code> selectors</li>
+  <li>Classes can be reused across multiple elements for consistent styling</li>
 </ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>html-class-demo.html</code> and paste the following:
+</p>
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Class Demo</title>
+    <style>
+      .highlight { background-color: orange; }
+      .card { border: 1px solid #ccc; padding: 1rem; }
+    </style>
+  </head>
+  <body>
+    <div class="card highlight">
+      <h2 class="highlight">Welcome</h2>
+      <p>This card uses multiple classes for styling.</p>
+    </div>
+  </body>
+</html>

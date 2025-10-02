@@ -4,6 +4,26 @@
 Pseudo-elements style specific parts of an element — like the first letter, first line, or allow injected content before/after without modifying HTML. They’re written with <strong>double colons (::)</strong>.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/_LxYNxeWpBo" title="CSS Pseudo Elements Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=_LxYNxeWpBo" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Pseudo Elements Explained</strong> covers <code>::before</code>, <code>::after</code>, <code>::first-line</code>, and <code>::first-letter</code> — with clear visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How pseudo-elements differ from pseudo-classes</li>
+  <li>How to insert virtual content using <code>::before</code> and <code>::after</code></li>
+  <li>How to style the first line or letter of a paragraph</li>
+  <li>How to use pseudo-elements for decorative and typographic effects</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">🎯 Common Pseudo-Elements</h3>
 
 <table class="w-full text-sm border border-gray-300 mb-6">
@@ -60,3 +80,22 @@ input::placeholder {
   <li>Double colon <code>::</code> is standard, but single colon <code>:</code> still works for older browsers</li>
 </ul>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>::before</code> inserts content before the element’s actual content</li>
+  <li><code>::after</code> inserts content after the element’s actual content</li>
+  <li><code>::first-line</code> styles only the first line of text</li>
+  <li><code>::first-letter</code> styles the first character — useful for drop caps</li>
+  <li>Pseudo-elements require <code>content</code> property to render</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-pseudoelements-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Use <code>::before</code> to add a decorative icon before a heading</li>
+  <li>Use <code>::after</code> to append a note after a paragraph</li>
+  <li>Style the first line of a paragraph with <code>::first-line</code></li>
+  <li>Style the first letter with <code>::first-letter</code> for a drop cap effect</li>
+</ul>

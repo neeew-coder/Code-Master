@@ -15,6 +15,27 @@
     Hoisting is JavaScript’s behavior of moving declarations to the top of their scope. Only declarations are hoisted — not initializations.
   </p>
 
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/ppMlvGMT2qE" title="JavaScript Hoisting Explained | Dani Krossing" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Dani Krossing</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=ppMlvGMT2qE" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Hoisting Explained</strong> breaks down how variable and function declarations are moved to the top of their scope during compilation — with clear examples and common pitfalls.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What hoisting means in JavaScript and how it works under the hood</li>
+  <li>How <code>var</code>, <code>let</code>, and <code>const</code> behave differently when hoisted</li>
+  <li>Why accessing variables before declaration can lead to <code>undefined</code> or <code>ReferenceError</code></li>
+  <li>How function declarations are hoisted entirely, but function expressions are not</li>
+  <li>How to avoid hoisting-related bugs with clear declaration order</li>
+</ul>
+
   <!-- var hoisting -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 var is Hoisted</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
@@ -68,6 +89,34 @@ var y = 7;
     </pre>
     <div id="initOutput" class="text-sm text-gray-700">Output will appear here.</div>
   </div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Hoisting is JavaScript’s behavior of moving declarations to the top of their scope during compilation. Variables declared with <code>var</code> are hoisted and initialized as <code>undefined</code>, while <code>let</code> and <code>const</code> are hoisted but remain in a “temporal dead zone” until their actual declaration. Function declarations are fully hoisted, allowing them to be called before they appear in code. Understanding hoisting helps prevent bugs and ensures predictable execution flow.
+</p>
+
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// Hoisted with var
+console.log(a); // → undefined
+var a = 5;
+
+// Temporal Dead Zone with let
+console.log(b); // ❌ ReferenceError
+let b = 10;
+
+// Function declaration hoisted
+sayHi(); // → "Hi"
+function sayHi() {
+  console.log("Hi");
+}
+
+// Function expression not hoisted
+sayBye(); // ❌ TypeError
+var sayBye = function() {
+  console.log("Bye");
+};
+</pre>
 
   <!-- Script -->
   <script>

@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Typecasting is the process of converting one data type into another. C# supports both implicit and explicit casting. Implicit casting happens automatically when there's no risk of data loss. Explicit casting requires manual conversion and may lose data.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Difference between implicit and explicit casting</li>
-    <li>How to safely convert between types</li>
-    <li>Common pitfalls and how to avoid them</li>
-    <li>Using helper methods like <code>Convert</code> and <code>Parse</code></li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/uajWePMMs84" title="C# Type Casting Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=uajWePMMs84" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Type Casting Explained</strong> introduces implicit and explicit type conversion — showing how to safely cast between numeric types, strings, and objects.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How implicit casting works when converting smaller types to larger types</li>
+  <li>How explicit casting is required for narrowing conversions</li>
+  <li>How to use <code>Convert</code> and <code>Parse</code> methods for string-to-type conversion</li>
+  <li>How to avoid runtime errors with safe casting techniques</li>
+  <li>How type casting applies to inheritance and object references</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -98,3 +106,29 @@ namespace CastingDemo {
     💡 <strong>Tips:</strong> Always validate user input before using <code>Parse()</code>. Prefer <code>TryParse()</code> when working with unpredictable data.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Type casting in C# allows you to convert values between compatible types. Implicit casting happens automatically when no data loss is possible, while explicit casting requires manual syntax to prevent errors. This tutorial covers numeric conversions, string parsing, and object casting — essential for data handling and polymorphism.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// TypeCastingDemo.cs
+using System;
+
+class TypeCastingDemo {
+  static void Main() {
+    int x = 10;
+    double y = x; // Implicit casting
+
+    double z = 9.7;
+    int w = (int)z; // Explicit casting
+
+    string s = "123";
+    int num = int.Parse(s); // String to int
+
+    Console.WriteLine("y: " + y);
+    Console.WriteLine("w: " + w);
+    Console.WriteLine("num: " + num);
+  }
+}
+</pre>

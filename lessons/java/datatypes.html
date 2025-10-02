@@ -13,6 +13,25 @@
   <p class="mb-4">
     Java has two main categories of data types: <strong>primitive</strong> and <strong>non-primitive</strong>. Think of primitives as the basic building blocks, and non-primitives as more complex structures built from them.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/UwpXXiGdlOE" title="Java Data Types Explained | Neso Academy" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Neso Academy</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=UwpXXiGdlOE" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Data Types Explained</strong> introduces primitive and non-primitive data types in Java, their memory sizes, ranges, and use cases.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Difference between primitive and non-primitive (reference) data types</li>
+  <li>Memory size and value range of types like <code>byte</code>, <code>int</code>, <code>float</code>, <code>char</code>, and <code>boolean</code></li>
+  <li>How to choose the right data type for a given task</li>
+  <li>How strings and arrays behave as reference types</li>
+  <li>How type safety and casting work in Java</li>
+</ul>
 
   <h3 class="text-lg font-semibold mt-6 mb-2">✅ Primitive Types</h3>
   <table class="table-auto w-full mb-4 text-sm">
@@ -112,6 +131,30 @@ public class DataTypeDemo {
       <button class="bg-red-600 text-white px-4 py-1 rounded hover:bg-red-700">Run</button>
     </div>
   </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java supports two categories of data types: primitive types like <code>int</code>, <code>double</code>, and <code>char</code> which store simple values directly, and non-primitive types like <code>String</code> and arrays which reference objects in memory. Each primitive type has a fixed size and range, making Java memory-efficient and predictable. Understanding data types is essential for writing safe, optimized, and bug-free code.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// DataTypeDemo.java
+public class DataTypeDemo {
+  public static void main(String[] args) {
+    byte b = 100;
+    int i = 100000;
+    float f = 5.75f;
+    char c = 'A';
+    boolean isJavaFun = true;
+    String message = "Hello, CodeMaster!";
 
+    System.out.println("Byte: " + b);
+    System.out.println("Int: " + i);
+    System.out.println("Float: " + f);
+    System.out.println("Char: " + c);
+    System.out.println("Boolean: " + isJavaFun);
+    System.out.println("String: " + message);
+  }
+}
+</pre>
 </body>
 </html>

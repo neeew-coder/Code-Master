@@ -4,6 +4,26 @@
 Combinators let you target elements based on their position or relationship in the HTML tree. They enhance selector precision and help you apply styles only where needed.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/swZFmJsU54s" title="CSS Combinators Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=swZFmJsU54s" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Combinators Explained</strong> covers descendant, child, adjacent sibling, and general sibling combinators — with clear visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use the descendant combinator (<code>div p</code>)</li>
+  <li>How to target direct children with (<code>div > p</code>)</li>
+  <li>How to style adjacent siblings (<code>h2 + p</code>)</li>
+  <li>How to apply styles to all following siblings (<code>h2 ~ p</code>)</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📘 Types of Combinators</h3>
 
 <table class="w-full text-sm border border-gray-300 mb-6">
@@ -64,3 +84,21 @@ h2 ~ p {
   <li>Combine with classes for scoped precision</li>
 </ul>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>div p</code> targets all <code>&lt;p&gt;</code> inside a <code>&lt;div&gt;</code>, regardless of depth</li>
+  <li><code>div > p</code> targets only direct child <code>&lt;p&gt;</code> elements</li>
+  <li><code>h2 + p</code> targets the first <code>&lt;p&gt;</code> immediately after an <code>&lt;h2&gt;</code></li>
+  <li><code>h2 ~ p</code> targets all <code>&lt;p&gt;</code> siblings that follow an <code>&lt;h2&gt;</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-combinators-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Style all paragraphs inside a container using the descendant combinator</li>
+  <li>Style only direct children with the child combinator</li>
+  <li>Style the first paragraph after a heading using the adjacent sibling combinator</li>
+  <li>Style all following paragraphs using the general sibling combinator</li>
+</ul>

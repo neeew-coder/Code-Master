@@ -4,6 +4,26 @@
 The <code>z-index</code> property controls the <strong>stacking order</strong> of overlapping elements. Higher values appear in front — but only for elements with a <strong>position</strong> value other than <code>static</code>.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/vo1JBj-OAa8" title="CSS z-index Property Explained | Cem Eygi Media" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Cem Eygi Media</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=vo1JBj-OAa8" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS z-index Property Explained</strong> demonstrates stacking behavior, layering with positioned elements, and how to control visual depth.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>z-index</code> affects stacking order</li>
+  <li>How to layer elements using <code>position</code> and <code>z-index</code></li>
+  <li>How higher values bring elements to the front</li>
+  <li>How to resolve overlap issues in UI design</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -49,3 +69,22 @@ The <code>z-index</code> property controls the <strong>stacking order</strong> o
   z-index: 5;
 }
 </pre>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>z-index</code> only works on positioned elements (<code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>sticky</code>)</li>
+  <li>Higher <code>z-index</code> values appear above lower ones</li>
+  <li>Default stacking is based on HTML order if no <code>z-index</code> is set</li>
+  <li>Use <code>z-index</code> to manage modals, dropdowns, tooltips, and overlays</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-zindex-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Create overlapping boxes with different <code>z-index</code> values</li>
+  <li>Use <code>position: absolute</code> and <code>relative</code> to control layout</li>
+  <li>Apply hover effects to bring elements forward</li>
+  <li>Build a modal or tooltip with layered depth</li>
+</ul>

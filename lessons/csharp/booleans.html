@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Booleans represent truth values: <code>true</code> or <code>false</code>. They're essential for decision-making in code, especially in conditions and loops. This module covers boolean variables, comparisons, and logical operators.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Declaring boolean variables</li>
-    <li>Using comparison operators</li>
-    <li>Logical operators: AND, OR, NOT</li>
-    <li>Boolean expressions in <code>if</code> statements</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/F92V_b8rbng" title="C# Boolean Explained | CodeWithParveen" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>CodeWithParveen</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=F92V_b8rbng" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Boolean Explained</strong> introduces the <code>bool</code> data type — used to represent true/false logic in conditions, comparisons, and control flow.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare and assign <code>bool</code> variables</li>
+  <li>How boolean values control <code>if</code>, <code>else</code>, and <code>while</code> statements</li>
+  <li>How comparison operators return boolean results</li>
+  <li>How logical operators like <code>&&</code>, <code>||</code>, and <code>!</code> combine or invert conditions</li>
+  <li>How to use booleans for decision-making and flow control</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -102,3 +110,27 @@ namespace BooleanDemo {
     💡 <strong>Tips:</strong> Use parentheses to group complex boolean expressions for clarity and correct evaluation order.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>bool</code> type in C# stores either <code>true</code> or <code>false</code>. It’s essential for controlling program logic, evaluating conditions, and building interactive flows. This tutorial shows how booleans work with comparisons, logical operators, and control structures — forming the backbone of decision-making in C#.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// BooleanDemo.cs
+using System;
+
+class BooleanDemo {
+  static void Main() {
+    bool isLoggedIn = true;
+    bool hasAccess = false;
+
+    if (isLoggedIn && hasAccess) {
+      Console.WriteLine("Welcome to the system.");
+    } else {
+      Console.WriteLine("Access denied.");
+    }
+
+    Console.WriteLine("Negation: " + !isLoggedIn);
+  }
+}
+</pre>

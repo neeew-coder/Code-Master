@@ -15,6 +15,27 @@
     RegExp patterns define how strings are matched. Flags, character classes, metacharacters, assertions, and quantifiers shape the behavior of these matches.
   </p>
 
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+  <div class="mb-6">
+    <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+      <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/rhzKDrUiJVk" title="Learn Regular Expressions In 20 Minutes | Web Dev Simplified" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p class="text-sm text-gray-600 mt-2">
+      Video by <strong>Web Dev Simplified</strong> –  
+      <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=rhzKDrUiJVk" target="_blank">Watch on YouTube</a><br>
+      <strong>Learn Regular Expressions In 20 Minutes</strong> breaks down regex syntax, character classes, quantifiers, and anchors — with clear examples and real-time testing.
+    </p>
+  </div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+  <ul class="list-disc list-inside mb-4 text-gray-700">
+    <li>How to define regex patterns using <code>/pattern/flags</code> and <code>new RegExp()</code></li>
+    <li>How to use character classes like <code>\d</code>, <code>\w</code>, <code>\s</code>, and their negations</li>
+    <li>How quantifiers like <code>*</code>, <code>+</code>, <code>?</code>, and <code>{n,m}</code> control repetition</li>
+    <li>How anchors like <code>^</code> and <code>$</code> match start and end of strings</li>
+    <li>How to apply regex with <code>.test()</code>, <code>.match()</code>, and <code>.replace()</code></li>
+  </ul>
+
   <!-- Flag: /g -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚩 Flag: /g (Global)</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
@@ -79,6 +100,39 @@ const result = text.match(/o+/g);
     </pre>
     <div id="quantifierOutput" class="text-sm text-gray-700">Output will appear here.</div>
   </div>
+
+  <h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+  <p class="text-gray-700 mb-4 text-sm">
+    Regular expressions (regex) are powerful tools for matching patterns in strings. In JavaScript, you can use literal syntax or the <code>RegExp</code> constructor to define patterns. Character classes like <code>\d</code> (digits) and <code>\w</code> (word characters) help target specific types of input. Quantifiers control how many times a pattern repeats, while anchors define position. Methods like <code>.test()</code> and <code>.match()</code> let you validate or extract matches. Regex is essential for form validation, search logic, and parsing structured data.
+  </p>
+
+  <h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+  <div class="bg-gray-100 p-4 rounded-lg shadow-sm mb-6">
+    <label class="block text-sm font-medium text-gray-700 mb-1">Test Input:</label>
+    <input type="text" id="testInput" value="123-45-6789" class="w-full px-3 py-2 border rounded mb-4">
+
+    <label class="block text-sm font-medium text-gray-700 mb-1">Regex Pattern:</label>
+    <input type="text" id="regexPattern" value="\\d{3}-\\d{2}-\\d{4}" class="w-full px-3 py-2 border rounded mb-4">
+
+    <button onclick="runRegexTest()" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded">Run Test</button>
+
+    <p id="regexResult" class="mt-4 text-sm text-gray-800 font-mono"></p>
+  </div>
+
+  <script>
+    function runRegexTest() {
+      const input = document.getElementById("testInput").value;
+      const pattern = document.getElementById("regexPattern").value;
+      try {
+        const escapedPattern = pattern.replace(/\\\\/g, "\\");
+        const regex = new RegExp(escapedPattern);
+        const result = regex.test(input);
+        document.getElementById("regexResult").textContent = `Result: ${result}`;
+      } catch (e) {
+        document.getElementById("regexResult").textContent = `Error: ${e.message}`;
+      }
+    }
+  </script>
 
   <!-- Script -->
   <script>

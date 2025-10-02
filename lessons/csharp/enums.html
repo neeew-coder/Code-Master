@@ -3,17 +3,26 @@
 <p class="mb-6 text-gray-700">
   Enums (short for “enumerations”) define a set of named constants. They improve code readability, enforce valid values, and support type-safe logic.
 </p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/17Ipxqk7P3E" title="C# Enums Explained | tutorialsEU" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>tutorialsEU - C#</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=17Ipxqk7P3E" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Enums Explained</strong> introduces enumerations — named constants that improve code readability, safety, and intent clarity.
+  </p>
+</div>
 
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Declaring and using enums</li>
-    <li>Assigning and comparing enum values</li>
-    <li>Casting enums to integers</li>
-    <li>Using enums in switch statements</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare enums using the <code>enum</code> keyword</li>
+  <li>How enums group related named constants under a single type</li>
+  <li>How to assign and cast enum values</li>
+  <li>How enums improve switch-case logic and reduce magic numbers</li>
+  <li>How to use enums in method parameters and class fields</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -103,3 +112,39 @@ namespace EnumDemo {
     💡 <strong>Tips:</strong> Use enums for fixed categories. Avoid magic numbers. Prefer named values for clarity and maintainability.
   </p>
 </div>
+
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Enums in C# are strongly typed constants that represent a fixed set of named values. This tutorial shows how to define enums, use them in control flow, and improve semantic clarity in your code. Enums are ideal for representing states, categories, roles, or options in a readable and maintainable way.
+</p>
+
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// EnumsDemo.cs
+using System;
+
+enum Day {
+  Sunday,
+  Monday,
+  Tuesday,
+  Wednesday,
+  Thursday,
+  Friday,
+  Saturday
+}
+
+class Program {
+  static void Main() {
+    Day today = Day.Friday;
+
+    switch (today) {
+      case Day.Friday:
+        Console.WriteLine("It's Friday! Time to celebrate.");
+        break;
+      default:
+        Console.WriteLine("Just another day.");
+        break;
+    }
+  }
+}
+</pre>

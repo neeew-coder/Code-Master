@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Java allows you to delete files using the <code>File</code> class. Always check if the file exists before attempting deletion to avoid errors.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/bt--m8OerIU" title="Java Delete Files Explained | Max O'Didily" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Max O'Didily</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=bt--m8OerIU" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Delete Files Explained</strong> demonstrates how to safely delete files using the <code>File</code> class — with existence checks, exception handling, and feedback.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>File.delete()</code> to remove files from disk</li>
+  <li>How to check if a file exists before attempting deletion</li>
+  <li>How to handle deletion success and failure gracefully</li>
+  <li>How to use <code>File.exists()</code> and <code>File.getName()</code> for diagnostics</li>
+  <li>How file deletion supports cleanup, versioning, and resource management</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -60,3 +79,28 @@ public class Main {
   </p>
 </div>
 
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>File</code> class provides a simple method <code>delete()</code> to remove files from the filesystem. Before deletion, it’s best practice to check file existence and confirm success afterward. This helps avoid silent failures and ensures proper resource cleanup. Deletion is irreversible, so exception handling and user feedback are essential.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// DeleteFileDemo.java
+import java.io.File;
+
+public class DeleteFileDemo {
+  public static void main(String[] args) {
+    File file = new File("old_data.txt");
+
+    if (file.exists()) {
+      if (file.delete()) {
+        System.out.println("Deleted file: " + file.getName());
+      } else {
+        System.out.println("Failed to delete file.");
+      }
+    } else {
+      System.out.println("File does not exist.");
+    }
+  }
+}
+</pre>

@@ -4,24 +4,33 @@
 HTML entities let you display characters that have reserved meaning, don't exist on your keyboard, or serve formatting purposes. They’re crucial for writing clean, readable HTML — especially in multilingual, math-heavy, or code-oriented projects.
 </p>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">📎 Why We Need Entities</h3>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/mGDPbiY6eLY" title="HTML Character Entities: Beginner's Guide to Special Characters" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by Web Dev Simplified – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=mGDPbiY6eLY" target="_blank">Watch on YouTube</a><br>
+    <strong>HTML Character Entities</strong> explains named and numeric entities, spacing control, and how to safely display reserved characters.
+  </p>
+</div>
 
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📎 Why We Need Entities</h3>
 <ul class="list-disc list-inside text-gray-700 mb-6">
-  <li><strong>Prevent browser misreading:</strong> Using <code>&lt;</code> instead of <code><</code> avoids breaking HTML</li>
+  <li><strong>Prevent browser misreading:</strong> Using <code>&amp;lt;</code> instead of <code><</code> avoids breaking HTML</li>
   <li><strong>Display special symbols:</strong> ©, ™, €, ₹ using <code>&amp;copy;</code>, <code>&amp;trade;</code>, etc.</li>
   <li><strong>Control whitespace:</strong> <code>&amp;nbsp;</code> and <code>&amp;thinsp;</code> allow precise layout control</li>
   <li><strong>Enable international characters:</strong> á, ñ, ç, Ø with accent or Unicode entities</li>
 </ul>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔣 Entity Types</h3>
-
 <ul class="list-disc list-inside text-gray-700 mb-4">
   <li><strong>Named:</strong> <code>&amp;lt;</code>, <code>&amp;euro;</code> (easier to remember)</li>
   <li><strong>Numeric:</strong> <code>&amp;#60;</code>, <code>&amp;#8364;</code> (universal across encodings)</li>
 </ul>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🧾 HTML Entities Table</h3>
-
 <table class="w-full border border-gray-300 text-sm mb-6" style="color: black;">
   <thead class="bg-orange-100 text-left">
     <tr>
@@ -48,38 +57,23 @@ HTML entities let you display characters that have reserved meaning, don't exist
   </tbody>
 </table>
 
-<p class="text-sm text-gray-500 italic">
+<p class="text-sm text-gray-500 italic mb-6">
 💡 Note: Entity names are case-sensitive. Some may not work in older browsers unless your document uses UTF-8 encoding.
 </p>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🪙 Currency & Trademark Symbols</h3>
-
 <pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">
 &lt;p&gt;&amp;cent; &amp;pound; &amp;yen; &amp;euro; &amp;copy; &amp;reg; &amp;trade;&lt;/p&gt;
 </pre>
-
-<!-- Visual -->
 <p class="text-gray-700 mb-4">Result: ¢ £ ¥ € © ® ™</p>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📐 Spacing Control</h3>
-
-<p class="text-gray-700 mb-2">
-Browsers collapse normal spaces — use entities for precision:
-</p>
-
-<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
-X&amp;nbsp;Y&amp;thinsp;Z
-</pre>
-
-<!-- Visual -->
-<p class="text-gray-700">X Y Z (wide, thin, normal spacing)</p>
+<p class="text-gray-700 mb-2">Browsers collapse normal spaces — use entities for precision:</p>
+<pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm overflow-x-auto">X&amp;nbsp;Y&amp;thinsp;Z</pre>
+<p class="text-gray-700 mb-6">Result: X Y Z (wide, thin, normal spacing)</p>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🌍 Accented Characters</h3>
-
-<p class="text-gray-700 mb-2">
-Support international letters by combining base characters with accents:
-</p>
-
+<p class="text-gray-700 mb-2">Support international letters by combining base characters with accents:</p>
 <table class="w-full border text-sm mb-6" style="color: black;">
   <thead class="bg-orange-100">
     <tr><th class="border px-2 py-1">Entity</th><th class="border px-2 py-1">Character</th></tr>
@@ -93,9 +87,12 @@ Support international letters by combining base characters with accents:
 </table>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">⚠️ Common Pitfalls</h3>
-
 <ul class="list-disc list-inside text-red-600 mb-6">
   <li><code>&lt;</code> must be escaped to <code>&amp;lt;</code> when inside plain text</li>
   <li><code>&amp;</code> must be escaped unless starting a valid entity like <code>&amp;amp;</code></li>
   <li>Accented characters may not render without correct encoding (use <code>&lt;meta charset="UTF-8"&gt;</code>)</li>
 </ul>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Experiment with HTML entities by creating a simple webpage. Include various symbols and accented characters using their entity names. Validate your HTML to ensure proper rendering.
+</p>

@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   A <code>Set</code> is a collection that does not allow duplicate elements. It models mathematical sets and is useful for filtering, uniqueness, and membership checks.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/gMEVx7e5x6A" title="Java Set Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=gMEVx7e5x6A" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Set Explained</strong> introduces the <code>Set</code> interface and its key implementations — <code>HashSet</code>, <code>LinkedHashSet</code>, and <code>TreeSet</code> — with examples and uniqueness guarantees.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>Set</code> differs from <code>List</code> by disallowing duplicates</li>
+  <li>How <code>HashSet</code> offers fast access with no order</li>
+  <li>How <code>LinkedHashSet</code> preserves insertion order</li>
+  <li>How <code>TreeSet</code> maintains sorted order</li>
+  <li>How to use <code>add()</code>, <code>remove()</code>, and <code>contains()</code> with sets</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -91,3 +110,27 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>Set</code> is like a guest list — no one gets invited twice, and you can quickly check if someone’s on it.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>Set</code> interface defines a collection that cannot contain duplicate elements. <code>HashSet</code> is the most commonly used implementation, offering constant-time performance for basic operations. <code>LinkedHashSet</code> maintains insertion order, while <code>TreeSet</code> keeps elements sorted. Sets are ideal for membership testing, uniqueness enforcement, and mathematical set operations.
+</p>
+  <h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// SetDemo.java
+import java.util.*;
+
+public class SetDemo {
+  public static void main(String[] args) {
+    Set<String> tools = new HashSet<>();
+    tools.add("Java");
+    tools.add("Python");
+    tools.add("Java"); // Duplicate ignored
+
+    System.out.println("Tools: " + tools);
+    System.out.println("Contains Python? " + tools.contains("Python"));
+
+    tools.remove("Python");
+    System.out.println("After removal: " + tools);
+  }
+}
+</pre>

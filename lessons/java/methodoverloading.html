@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Method overloading</strong> allows multiple methods to share the same name but differ in the number or type of parameters. This makes your code more intuitive and flexible, especially when performing similar operations with different inputs.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/KpwBVAYbPDA" title="Java Method Overloading Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=KpwBVAYbPDA" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Method Overloading Explained</strong> introduces how multiple methods with the same name can coexist by varying parameter types, counts, or order — enabling flexible, readable code.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How method overloading works in Java</li>
+  <li>How to define multiple methods with the same name but different parameter signatures</li>
+  <li>How Java resolves which method to call based on argument types</li>
+  <li>How overloading improves modularity and readability</li>
+  <li>How overloading differs from overriding (compile-time vs runtime)</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -65,3 +84,32 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of a smartphone camera app. You tap once to take a photo, hold to record video, or swipe to open filters. Same button, different actions — just like overloaded methods.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Method overloading allows you to define multiple versions of a method with the same name but different parameter lists. This enables flexible logic reuse while keeping method names intuitive. Overloading is resolved at compile time, and it’s a key feature for building APIs, utility classes, and user-friendly interfaces. It’s distinct from overriding, which involves inheritance and runtime polymorphism.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// OverloadDemo.java
+public class OverloadDemo {
+  public static void main(String[] args) {
+    greet();
+    greet("Mark");
+    greet("Mark", 3);
+  }
+
+  static void greet() {
+    System.out.println("Hello!");
+  }
+
+  static void greet(String name) {
+    System.out.println("Hello, " + name + "!");
+  }
+
+  static void greet(String name, int times) {
+    for (int i = 0; i < times; i++) {
+      System.out.println("Hi, " + name + "!");
+    }
+  }
+}
+</pre>

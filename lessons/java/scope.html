@@ -4,6 +4,27 @@
   <strong>Scope</strong> in Java defines where a variable can be accessed or modified. Understanding scope helps prevent bugs and makes your code more predictable and secure.
 </p>
 
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/2nTjUAeD5WE" title="Java Scope Explained | Neso Academy" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Neso Academy</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=2nTjUAeD5WE" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Scope Explained</strong> introduces variable visibility in Java — covering block scope, method scope, class scope, and how lifetimes and access rules affect behavior.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How scope defines where a variable can be accessed or modified</li>
+  <li>How local variables exist only within methods or blocks</li>
+  <li>How instance variables belong to objects and persist across method calls</li>
+  <li>How static variables belong to the class and share state across instances</li>
+  <li>How shadowing and naming conflicts affect scope resolution</li>
+</ul>
+
 <!-- Collapsible Explanation -->
 <details class="mb-6">
   <summary class="text-red-500 font-semibold cursor-pointer">📘 Types of Scope</summary>
@@ -80,3 +101,23 @@ public class BlockScope {
     🧠 <strong>Analogy:</strong> Think of scope like access cards in a building. A local card only opens one room, a class-level card opens all rooms on a floor, and a block-level card works only inside a specific meeting room.
   </p>
 </div>
+
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Scope in Java determines the visibility and lifetime of variables. Local variables are confined to blocks or methods, instance variables belong to objects, and static variables belong to the class itself. Understanding scope helps prevent naming conflicts, manage memory, and write clean, predictable code. It’s foundational to debugging, encapsulation, and modular design.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ScopeDemo.java
+public class ScopeDemo {
+  static int staticCount = 0; // Class scope
+
+  public static void main(String[] args) {
+    int localCount = 5; // Method scope
+    for (int i = 0; i < localCount; i++) {
+      int loopVar = i * 2; // Block scope
+      System.out.println("LoopVar: " + loopVar);
+    }
+  }
+}
+</pre>

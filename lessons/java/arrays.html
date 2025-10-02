@@ -13,6 +13,25 @@
   <p class="mb-4 text-gray-700">
     Arrays store multiple values of the same type. In Java, arrays are fixed in size and accessed by index.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/9dr2mHYYoug" title="Java Arrays Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=9dr2mHYYoug" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Arrays Explained</strong> introduces how arrays work in Java — including declaration, initialization, indexing, iteration, and memory behavior.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare and initialize arrays with fixed size</li>
+  <li>How to access and update array elements using indices</li>
+  <li>How to iterate over arrays using <code>for</code> and <code>for-each</code> loops</li>
+  <li>How arrays are stored in memory and how reference behavior works</li>
+  <li>How to handle common errors like <code>ArrayIndexOutOfBoundsException</code></li>
+</ul>
 
   <div class="mb-6">
     <h3 class="text-xl font-semibold text-red-500 mb-2">📌 Syntax Example</h3>
@@ -54,3 +73,27 @@ for (int i = 0; i < scores.length; i++) {
       <li>Reverse the array and print the values</li>
     </ul>
   </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Arrays in Java are fixed-size containers that hold multiple values of the same type. Each element is accessed by its index, starting from 0. Arrays are reference types, meaning they point to memory locations rather than storing values directly. They’re ideal for storing structured data like scores, names, or flags, and can be looped through for processing or display.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ArrayDemo.java
+public class ArrayDemo {
+  public static void main(String[] args) {
+    String[] fruits = {"Apple", "Banana", "Cherry"};
+
+    for (int i = 0; i < fruits.length; i++) {
+      System.out.println("Fruit " + i + ": " + fruits[i]);
+    }
+
+    // Enhanced for loop
+    for (String fruit : fruits) {
+      System.out.println("Fruit: " + fruit);
+    }
+  }
+}
+</pre>
+</body>
+</html>

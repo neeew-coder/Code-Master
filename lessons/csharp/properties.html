@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Properties provide a flexible mechanism to read, write, or compute the values of private fields. They encapsulate data access while maintaining control and validation.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Auto-implemented properties</li>
-    <li>Custom <code>get</code> and <code>set</code> accessors</li>
-    <li>Read-only and write-only properties</li>
-    <li>Property validation logic</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Zv7-tVJDPv0" title="C# Properties Explained | TutorialsPoint" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>TutorialsPoint</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=Zv7-tVJDPv0" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Properties Explained</strong> introduces how to use properties to encapsulate fields — enabling controlled access with <code>get</code> and <code>set</code> accessors.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare properties with <code>get</code> and <code>set</code> blocks</li>
+  <li>How properties wrap private fields for controlled access</li>
+  <li>How to use auto-implemented properties for cleaner syntax</li>
+  <li>How to apply access modifiers to <code>get</code> or <code>set</code> individually</li>
+  <li>How properties support encapsulation and validation logic</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -99,3 +107,38 @@ namespace PropertyDemo {
     💡 <strong>Tips:</strong> Use properties to enforce rules. Avoid exposing fields directly. Prefer auto-properties for simple data, and custom accessors for logic.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Properties in C# act as intermediaries between fields and external access. They allow you to expose data safely, enforce validation, and maintain encapsulation. This tutorial shows how to define properties, use auto-implemented syntax, and customize accessors for robust class design.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// PropertiesDemo.cs
+using System;
+
+class Student {
+  private string name;
+  public string Name {
+    get { return name; }
+    set {
+      if (!string.IsNullOrWhiteSpace(value)) {
+        name = value;
+      }
+    }
+  }
+
+  public int Age { get; private set; }
+
+  public Student(string name, int age) {
+    Name = name;
+    Age = age;
+  }
+}
+
+class Program {
+  static void Main() {
+    Student s = new Student("Mark", 20);
+    Console.WriteLine($"Name: {s.Name}, Age: {s.Age}");
+  }
+}
+</pre>

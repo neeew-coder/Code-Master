@@ -4,10 +4,27 @@
 The <code>&lt;colgroup&gt;</code> element allows styling for entire columns. It belongs inside <code>&lt;table&gt;</code> before any <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, or <code>&lt;tr&gt;</code>.
 </p>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 Style First Two Columns</h3>
-<p class="mb-2 text-gray-700">
-Use a single <code>&lt;col&gt;</code> with <code>span</code> to style multiple columns at once.
-</p>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/OGqp1Nmq_F4" title="HTML Table Tutorial: From Basic to Advanced with Colgroup | Code And Course" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Code And Course</strong> –  
+    <a class="text-orange-600 underline" href="https://www.youtube.com/watch?v=OGqp1Nmq_F4" target="_blank">Watch on YouTube</a><br>
+    <strong>HTML Table Tutorial: From Basic to Advanced</strong> includes a focused walkthrough of <code>&lt;colgroup&gt;</code>, <code>colspan</code>, <code>rowspan</code>, and semantic table structure — ideal for reinforcing column-level styling and layout control.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>&lt;colgroup&gt;</code> to target and style entire columns</li>
+  <li>How to apply styles to multiple columns using the <code>span</code> attribute</li>
+  <li>How to skip styling with empty <code>&lt;col&gt;</code> elements for layout control</li>
+  <li>How to hide columns using <code>visibility: collapse</code> for conditional rendering</li>
+  <li>Which CSS properties are valid for column-level styling (e.g., <code>background-color</code>, <code>width</code>)</li>
+</ul>
+
 
 <!-- Code Block -->
 <div class="bg-gray-900 text-green-100 p-6 font-mono text-sm rounded-lg overflow-x-auto mb-2">
@@ -145,10 +162,16 @@ Use <code>visibility: collapse</code> to hide columns (support varies by browser
   </tr>
 </table>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">📜 Legal CSS Properties</h3>
-<ul class="list-disc list-inside text-gray-700 mb-6">
-  <li><code>width</code></li>
-  <li><code>visibility</code></li>
-  <li><code>background</code> / <code>background-color</code></li>
-  <li><code>border</code></li>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>&lt;colgroup&gt;</code> targets column-level styling</li>
+  <li><code>span</code> lets one <code>&lt;col&gt;</code> affect multiple columns</li>
+  <li>Empty <code>&lt;col&gt;</code> skips styling</li>
+  <li><code>visibility: collapse</code> hides columns (browser support varies)</li>
+  <li>Legal CSS properties include <code>width</code>, <code>background-color</code>, <code>border</code>, and <code>visibility</code></li>
 </ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>table-colgroup.html</code>. Add a table with four columns and two rows. Use <code>&lt;colgroup&gt;</code> to style the first two columns with a background color, skip the third column, and hide the fourth using <code>visibility: collapse</code>. Bonus: try combining <code>colgroup</code> with <code>colspan</code> and <code>rowspan</code> for advanced layout control.
+</p>

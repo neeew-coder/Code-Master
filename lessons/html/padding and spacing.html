@@ -4,10 +4,26 @@
 HTML tables can control how data looks inside and between cells. Use <strong>padding</strong> to adjust space inside cells, and <strong>spacing</strong> to create gaps between cells.
 </p>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">🔳 Cell Padding</h3>
-<p class="mb-2 text-gray-700">
-Padding is the space between the cell border and the cell content. By default, cell padding is 0. To add padding, use the <code>padding</code> property on <code>th</code> and <code>td</code>:
-</p>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/T_HLVO3bvGU" title="Border Collapsing and Spacing with CSS | Steve Griffith - Prof3ssorSt3v3" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Steve Griffith - Prof3ssorSt3v3</strong> –  
+    <a class="text-orange-600 underline" href="https://www.youtube.com/watch?v=T_HLVO3bvGU" target="_blank">Watch on YouTube</a><br>
+    <strong>Border Collapsing and Spacing with CSS</strong> explains how <code>padding</code> and <code>border-spacing</code> affect table layout — including visual gaps, alignment, and collapsing behavior for cleaner design and improved readability.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to add padding inside table cells using CSS</li>
+  <li>How to control padding on each side individually with shorthand and longhand properties</li>
+  <li>How to add spacing between cells using <code>border-spacing</code> on the <code>&lt;table&gt;</code></li>
+  <li>How <code>border-collapse</code> affects spacing and border behavior</li>
+  <li>How to preview and test spacing visually for layout clarity</li>
+</ul>
 
 <!-- Code: Uniform Padding -->
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm mb-2 overflow-x-auto">
@@ -97,9 +113,16 @@ table {
   </table>
 </div>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Summary</h3>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
 <ul class="list-disc list-inside mb-6 text-gray-700">
-  <li>Use <code>padding</code> for space inside table cells</li>
-  <li>Use <code>border-spacing</code> for space between cells</li>
-  <li>Apply to <code>th</code>, <code>td</code>, and <code>table</code> elements</li>
+  <li><code>padding</code> adds space inside cells</li>
+  <li><code>padding-top</code>, <code>padding-right</code>, etc. control sides individually</li>
+  <li><code>border-spacing</code> adds space between cells</li>
+  <li>Apply padding to <code>th</code> and <code>td</code></li>
+  <li>Apply spacing to the <code>table</code> element</li>
 </ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>table-spacing.html</code>. Add a table with three columns and two rows. Apply uniform padding to all cells, then experiment with directional padding (top, bottom, left, right). Add <code>border-spacing</code> to the table and observe how it changes the layout. Bonus: try combining spacing with <code>border-collapse</code> and see the difference.
+</p>

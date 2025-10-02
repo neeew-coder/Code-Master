@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Constructors are special methods used to initialize objects when they’re created. They can accept parameters, set default values, and even call other constructors using chaining.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Default and parameterized constructors</li>
-    <li>Constructor overloading</li>
-    <li>Using <code>this</code> for chaining</li>
-    <li>Best practices for initialization</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/PdlcHSyZRo0" title="C# Constructor Explained | tutorialsEU" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>tutorialsEU - C#</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=PdlcHSyZRo0" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Constructor Explained</strong> introduces constructors — special methods used to initialize objects with default or custom values when they’re created.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define constructors with and without parameters</li>
+  <li>How constructors run automatically when an object is instantiated</li>
+  <li>How to use constructor overloading for flexible initialization</li>
+  <li>How to assign values to fields during object creation</li>
+  <li>How constructors differ from regular methods</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -108,3 +116,33 @@ namespace ConstructorDemo {
     💡 <strong>Tips:</strong> Use constructor chaining to avoid duplication. Always ensure required fields are initialized. Avoid heavy logic inside constructors.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Constructors in C# are special methods that run when an object is created. They allow you to set initial values, enforce required parameters, and streamline object setup. This tutorial shows how to define constructors, overload them, and use them to build robust, self-initializing classes.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ConstructorDemo.cs
+using System;
+
+class Book {
+  public string Title;
+  public string Author;
+
+  public Book(string title, string author) {
+    Title = title;
+    Author = author;
+  }
+
+  public void Display() {
+    Console.WriteLine($"\"{Title}\" by {Author}");
+  }
+}
+
+class Program {
+  static void Main() {
+    Book b = new Book("Clean Code", "Robert C. Martin");
+    b.Display();
+  }
+}
+</pre>

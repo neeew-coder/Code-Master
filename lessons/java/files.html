@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Java provides powerful classes for working with files. You can read, write, and manipulate file content using built-in I/O classes.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/SslMi6ptwH8" title="Java File Handling Explained | edureka!" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>edureka!</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=SslMi6ptwH8" target="_blank">Watch on YouTube</a><br>
+    <strong>Java File Handling Explained</strong> introduces how to create, read, write, and delete files using Java’s <code>File</code>, <code>FileWriter</code>, <code>BufferedReader</code>, and <code>Scanner</code> classes.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to create and delete files using <code>java.io.File</code></li>
+  <li>How to write data to files using <code>FileWriter</code> and <code>BufferedWriter</code></li>
+  <li>How to read data from files using <code>BufferedReader</code> and <code>Scanner</code></li>
+  <li>How to handle exceptions during file operations</li>
+  <li>How file handling supports persistent storage and data exchange</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -96,3 +115,36 @@ public class Main {
     🧠 <strong>Analogy:</strong> File handling is like writing and reading from a notebook. You jot down notes (write), and later flip through pages to review them (read).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s file handling API allows programs to interact with the file system for reading and writing data. The <code>File</code> class checks file existence and metadata, while <code>FileWriter</code> and <code>BufferedWriter</code> write content efficiently. <code>BufferedReader</code> and <code>Scanner</code> enable line-by-line reading. Exception handling ensures safe and reliable I/O operations.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// FileHandlingDemo.java
+import java.io.*;
+
+public class FileHandlingDemo {
+  public static void main(String[] args) {
+    try {
+      File file = new File("example.txt");
+      if (file.createNewFile()) {
+        System.out.println("File created: " + file.getName());
+      }
+
+      FileWriter writer = new FileWriter(file);
+      writer.write("Hello, Java file handling!");
+      writer.close();
+
+      BufferedReader reader = new BufferedReader(new FileReader(file));
+      String line;
+      while ((line = reader.readLine()) != null) {
+        System.out.println(line);
+      }
+      reader.close();
+    } catch (IOException e) {
+      System.out.println("An error occurred: " + e.getMessage());
+    }
+  }
+}
+</pre>

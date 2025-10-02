@@ -4,6 +4,26 @@
 CSS performance matters for rendering speed, layout recalculations, and overall user experience. Clean, scoped, and optimized styles minimize browser work and improve interactivity — especially on mobile.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/J24xS21FlmY" title="CSS Performance Tips | Kevin Powell" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Kevin Powell</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=J24xS21FlmY" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Performance Tips</strong> covers rendering cost, selector optimization, and layout efficiency — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How CSS affects rendering, repaint, and reflow cycles</li>
+  <li>How to write efficient selectors (avoid deep descendant chains)</li>
+  <li>How to minimize costly properties like <code>box-shadow</code> and <code>filter</code></li>
+  <li>How to reduce layout shifts and improve paint performance</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">🚀 Efficient Selectors</h3>
 
 <ul class="list-disc list-inside text-gray-700 mb-4">
@@ -53,3 +73,21 @@ div.container ul li a.button {
 }
 </pre>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li>Use class selectors over descendant chains for faster matching</li>
+  <li>Minimize use of properties that trigger reflow or repaint</li>
+  <li>Group related rules and avoid redundant declarations</li>
+  <li>Use shorthand properties and avoid excessive overrides</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-performance-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Refactor a stylesheet to reduce selector depth</li>
+  <li>Replace expensive effects with lightweight alternatives</li>
+  <li>Group and order rules for faster parsing</li>
+  <li>Test layout shifts using Chrome DevTools Performance tab</li>
+</ul>

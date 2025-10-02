@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Java uses <strong>exceptions</strong> to handle unexpected events during program execution. Errors are serious issues that usually can't be recovered from, while exceptions can be caught and handled using <code>try-catch</code> blocks.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dPQaQWyqYoc?start=68" title="Java Errors Explained | Neso Academy" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Neso Academy</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=dPQaQWyqYoc&t=68s" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Errors Explained</strong> introduces the types of errors in Java — including compile-time errors, runtime exceptions, and logical flaws — with clear examples and distinctions.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What compile-time errors are and how the compiler detects them</li>
+  <li>What runtime errors are and how exceptions are thrown</li>
+  <li>What logical errors are and why they’re hardest to catch</li>
+  <li>How to differentiate syntax errors from semantic errors</li>
+  <li>How to use debugging and exception handling to manage faults</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -90,3 +109,30 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of exceptions like potholes on a road. A good driver (your program) doesn’t crash — it slows down, adjusts, and keeps going.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java errors fall into three main categories: <strong>compile-time errors</strong> (like syntax violations), <strong>runtime errors</strong> (like division by zero or null pointer access), and <strong>logical errors</strong> (where code runs but produces incorrect results). Understanding these distinctions helps developers debug effectively, write safer code, and implement robust exception handling strategies.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ErrorDemo.java
+public class ErrorDemo {
+  public static void main(String[] args) {
+    // Compile-time error: Uncommenting below line causes syntax error
+    // int x = "hello";
+
+    // Runtime error: Division by zero
+    try {
+      int result = 10 / 0;
+      System.out.println(result);
+    } catch (ArithmeticException e) {
+      System.out.println("Runtime error: " + e);
+    }
+
+    // Logical error: Incorrect formula
+    int a = 5, b = 10;
+    int avg = (a + b) / 2; // Correct
+    System.out.println("Average: " + avg); // Output is correct, but logic may vary
+  }
+}
+</pre>

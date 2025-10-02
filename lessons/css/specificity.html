@@ -4,6 +4,26 @@
 Specificity is the system CSS uses to decide which rule wins when multiple selectors target the same element. It calculates "weight" based on how specific a selector is.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/c0kfcP_nD9E" title="CSS Specificity Explained | Kevin Powell" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Kevin Powell</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=c0kfcP_nD9E" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Specificity Explained</strong> covers selector hierarchy, specificity scoring, and conflict resolution — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How specificity affects which rule is applied</li>
+  <li>How to calculate specificity scores (inline > ID > class > element)</li>
+  <li>How to resolve conflicts between overlapping selectors</li>
+  <li>How to use <code>!important</code> and when to avoid it</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📐 Specificity Scoring</h3>
 
 <table class="w-full text-sm border border-gray-300 mb-6">
@@ -56,4 +76,24 @@ If a paragraph has <code>#main</code> as an ancestor and <code>class="text"</cod
   <li><code>!important</code> overrides specificity but should be avoided unless necessary</li>
   <li>Specificity is cumulative — multiple classes beat a single type</li>
   <li>Inline styles beat all selectors from stylesheets</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li>Inline styles have the highest specificity (score: 1000)</li>
+  <li>ID selectors score 100, class/attribute/pseudo-class selectors score 10</li>
+  <li>Element and pseudo-element selectors score 1</li>
+  <li>More specific rules override less specific ones — regardless of order</li>
+  <li><code>!important</code> overrides specificity but should be used sparingly</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-specificity-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Write conflicting rules for the same element using different selectors</li>
+  <li>Calculate specificity scores and predict which rule will apply</li>
+  <li>Test overrides using <code>!important</code> and inline styles</li>
+  <li>Refactor selectors to reduce specificity conflicts</li>
 </ul>

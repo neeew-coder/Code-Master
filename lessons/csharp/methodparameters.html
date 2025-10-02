@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Parameters allow methods to receive input values. C# supports value parameters, reference parameters, optional parameters, and named arguments.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Value vs reference parameters</li>
-    <li>Using <code>ref</code> and <code>out</code></li>
-    <li>Optional and named parameters</li>
-    <li>Best practices for parameter design</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/y-cmEbVfF04" title="C# Method Parameters Explained | Kampa Plays" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Kampa Plays</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=y-cmEbVfF04" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Method Parameters Explained</strong> introduces how to define, pass, and use parameters in methods — enabling flexible, reusable logic.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare methods with parameters and return types</li>
+  <li>How to pass arguments by value and by reference</li>
+  <li>How to use <code>ref</code>, <code>out</code>, and <code>params</code> keywords</li>
+  <li>How parameter types affect method behavior and memory</li>
+  <li>How to structure reusable methods with flexible inputs</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -100,3 +108,31 @@ namespace ParameterDemo {
     💡 <strong>Tips:</strong> Use <code>ref</code> and <code>out</code> sparingly — they can reduce clarity. Prefer optional parameters for flexibility. Named arguments improve readability.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Method parameters in C# allow you to pass data into functions for processing. You can pass values directly, reference variables for modification, or use flexible argument lists. This tutorial explores how to define parameters, use them effectively, and build modular, reusable logic blocks for scalable applications.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// MethodParametersDemo.cs
+using System;
+
+class MethodParametersDemo {
+  static void Main() {
+    int result = Multiply(4, 5);
+    Console.WriteLine("Product: " + result);
+
+    Greet("Mark", 3);
+  }
+
+  static int Multiply(int a, int b) {
+    return a * b;
+  }
+
+  static void Greet(string name, int times) {
+    for (int i = 0; i < times; i++) {
+      Console.WriteLine("Hello, " + name + "!");
+    }
+  }
+}
+</pre>

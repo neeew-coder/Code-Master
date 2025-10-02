@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Packages</strong> group related classes together, making code modular and easier to manage. <strong>APIs</strong> (Application Programming Interfaces) are libraries of pre-written code that provide useful functionality — like working with dates, files, or networks.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Bua6LQO2vQ8" title="What is a Java Package? | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=Bua6LQO2vQ8" target="_blank">Watch on YouTube</a><br>
+    <strong>What is a Java Package?</strong> introduces how packages organize Java classes into namespaces — improving modularity, access control, and code reuse.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What a Java package is and why it matters</li>
+  <li>How to declare a package using the <code>package</code> keyword</li>
+  <li>How packages group related classes for modular design</li>
+  <li>How to import classes from other packages using <code>import</code></li>
+  <li>How packages support access control and namespace management</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -49,3 +68,28 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of packages like folders in your computer, and APIs like apps you install — they give you tools without needing to build everything from scratch.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  A package in Java is a namespace that organizes classes and interfaces into a structured hierarchy. It helps avoid naming conflicts, supports modular development, and enables access control through visibility rules. Packages are declared with the <code>package</code> keyword and accessed using <code>import</code>. They’re foundational to scalable, maintainable Java applications.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// File: myapp/Greeting.java
+package myapp;
+
+public class Greeting {
+  public void sayHello() {
+    System.out.println("Hello from myapp package!");
+  }
+}
+
+// File: Main.java
+import myapp.Greeting;
+
+public class Main {
+  public static void main(String[] args) {
+    Greeting g = new Greeting();
+    g.sayHello();
+  }
+}
+</pre>

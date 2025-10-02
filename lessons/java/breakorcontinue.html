@@ -13,6 +13,25 @@
   <p class="mb-6 text-gray-700">
     The <code>break</code> and <code>continue</code> statements control loop flow. <code>break</code> exits the loop early, while <code>continue</code> skips the current iteration and moves to the next.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/aITdnsUTeek" title="Java Break and Continue Explained | Neso Academy" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Neso Academy</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=aITdnsUTeek" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Break and Continue Explained</strong> introduces how <code>break</code> and <code>continue</code> statements affect loop execution — with examples, flow diagrams, and practical use cases.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>break</code> exits a loop or switch block immediately</li>
+  <li>How <code>continue</code> skips the current iteration and jumps to the next</li>
+  <li>How these statements interact with <code>for</code>, <code>while</code>, and <code>do-while</code> loops</li>
+  <li>How to use them for input validation, filtering, and early exits</li>
+  <li>How improper use can lead to confusing control flow or missed logic</li>
+</ul>
 
   <h3 class="text-lg font-semibold text-red-500 mb-2">🔁 Loop Control Example</h3>
   <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
@@ -73,6 +92,22 @@ public class Main {
   <p class="text-gray-700 mb-4">
     Modify the loop to skip even numbers using <code>continue</code>, and stop the loop when <code>i == 6</code> using <code>break</code>. What output do you expect?
   </p>
-
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  In Java, <code>break</code> is used to exit a loop or switch block prematurely, while <code>continue</code> skips the rest of the current iteration and proceeds to the next. These control statements help manage loop behavior, especially when filtering data or handling edge cases. Used wisely, they simplify logic and improve performance — but overuse can reduce readability.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// BreakContinueDemo.java
+public class BreakContinueDemo {
+  public static void main(String[] args) {
+    for (int i = 1; i <= 10; i++) {
+      if (i == 7) break;
+      if (i % 2 == 0) continue;
+      System.out.println("Odd: " + i);
+    }
+  }
+}
+</pre>
 </body>
 </html>

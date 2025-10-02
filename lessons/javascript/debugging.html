@@ -14,6 +14,25 @@
   <p class="mb-6 text-gray-700">
     Debugging is the process of finding and fixing errors in your code. JavaScript provides tools like <code>console.log()</code>, <code>debugger</code>, and browser developer tools to help you track down issues.
   </p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/ABlaMXkUwzY" title="JavaScript Debugging Explained | freeCodeCamp.org" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>freeCodeCamp.org</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=ABlaMXkUwzY" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Debugging Explained</strong> walks through how to use browser developer tools, breakpoints, and console strategies to identify and fix bugs efficiently.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use Chrome DevTools for inspecting and debugging JavaScript</li>
+  <li>How breakpoints pause execution and reveal variable states</li>
+  <li>How to step through code line by line and watch expressions</li>
+  <li>How to use <code>console.log()</code>, <code>console.error()</code>, and <code>console.table()</code> effectively</li>
+  <li>How to trace stack frames and isolate logic errors</li>
+</ul>
 
   <div class="mb-6 text-gray-700">
     <ul class="list-disc pl-6 space-y-1">
@@ -70,7 +89,22 @@ console.log(x);
       <li><strong>Safari:</strong> Preferences → Advanced → Enable Develop menu → Show Error Console</li>
     </ul>
   </div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Debugging in JavaScript involves identifying and resolving issues in your code using tools like browser consoles and breakpoints. Chrome DevTools lets you inspect variables, pause execution, and trace logic flow. Strategic use of <code>console</code> methods helps surface hidden bugs and clarify program state. Mastering debugging techniques improves code reliability, speeds up development, and builds confidence in troubleshooting complex flows.
+</p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+function calculateTotal(price, taxRate) {
+  const total = price * taxRate;
+  console.log("Price:", price);
+  console.log("Tax Rate:", taxRate);
+  console.log("Total:", total); // Check if this is correct
+  return total;
+}
 
+calculateTotal(100, 0.15); // → Should log intermediate values
+</pre>
   <!-- Script -->
   <script>
     document.getElementById("runBtn").addEventListener("click", () => {

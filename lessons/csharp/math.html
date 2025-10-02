@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   C# provides built-in mathematical operators and functions through the <code>Math</code> class. You can perform basic arithmetic, rounding, powers, roots, and trigonometric calculations. This module introduces the most common math operations used in programming.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Basic arithmetic operations</li>
-    <li>Using the <code>Math</code> class for advanced calculations</li>
-    <li>Rounding and absolute value functions</li>
-    <li>Working with powers and square roots</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/tzRK0QFEte0" title="C# Math Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=tzRK0QFEte0" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Math Explained</strong> introduces the <code>Math</code> class in C# — covering built-in methods for rounding, powers, roots, and absolute values.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>Math.Round()</code>, <code>Math.Floor()</code>, and <code>Math.Ceiling()</code></li>
+  <li>How to calculate powers with <code>Math.Pow()</code> and roots with <code>Math.Sqrt()</code></li>
+  <li>How to get absolute values using <code>Math.Abs()</code></li>
+  <li>How to use <code>Math.Max()</code> and <code>Math.Min()</code> for comparisons</li>
+  <li>How to apply math functions in real-world scenarios like finance, physics, and game logic</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -93,3 +101,26 @@ namespace MathDemo {
     💡 <strong>Tips:</strong> Use <code>Math.Round()</code> with a second argument to control decimal precision. For example: <code>Math.Round(3.14159, 2)</code> returns <code>3.14</code>.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>Math</code> class in C# provides static methods for performing common mathematical operations. This tutorial walks through rounding, exponentiation, square roots, and comparisons — giving learners the tools to build calculators, simulations, and logic-driven applications with precision and clarity.
+</p>
+  <h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// MathDemo.cs
+using System;
+
+class MathDemo {
+  static void Main() {
+    double x = 5.7;
+    Console.WriteLine("Round: " + Math.Round(x));
+    Console.WriteLine("Ceiling: " + Math.Ceiling(x));
+    Console.WriteLine("Floor: " + Math.Floor(x));
+    Console.WriteLine("Power: " + Math.Pow(2, 3));
+    Console.WriteLine("Square Root: " + Math.Sqrt(49));
+    Console.WriteLine("Absolute: " + Math.Abs(-10));
+    Console.WriteLine("Max: " + Math.Max(10, 20));
+    Console.WriteLine("Min: " + Math.Min(10, 20));
+  }
+}
+</pre>

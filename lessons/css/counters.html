@@ -4,6 +4,26 @@
 CSS counters allow you to create and manage automatic numbering — useful for headings, steps, list items, or dynamic labels. You define, increment, and inject them with <code>content</code>.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/tnSzkAiiQ4w" title="CSS Counters Explained | Kevin Powell" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Kevin Powell</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=tnSzkAiiQ4w" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Counters Explained</strong> covers counter setup, incrementing, and formatting — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to initialize a counter with <code>counter-reset</code></li>
+  <li>How to increment it with <code>counter-increment</code></li>
+  <li>How to display it using <code>content: counter(name)</code></li>
+  <li>How to nest counters for multi-level numbering</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">🔢 Basic Setup</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -57,4 +77,23 @@ li::before {
   <li><code>counter-increment</code> adds one (or a custom value)</li>
   <li><code>content: counter(name)</code> or <code>counters(name, separator)</code> injects number</li>
   <li>Counters work best with pseudo-elements like <code>::before</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li>Use <code>counter-reset</code> to start a counter at zero</li>
+  <li>Apply <code>counter-increment</code> to elements that should increase the count</li>
+  <li>Use <code>content</code> in <code>::before</code> or <code>::after</code> to display the value</li>
+  <li>Nest counters for hierarchical numbering (e.g., 1.1, 1.2)</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-counters-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Build a list of steps using custom counters</li>
+  <li>Style each step with <code>::before</code> and <code>content: counter(step)</code></li>
+  <li>Use nested counters for substeps</li>
+  <li>Customize numbering format (e.g., Roman numerals, dots)</li>
 </ul>

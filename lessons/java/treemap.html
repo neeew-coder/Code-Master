@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>TreeMap</code> is a Map implementation that stores key-value pairs in sorted order. It uses a Red-Black tree and maintains natural or custom key ordering.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Xor0uh37PIM" title="Java TreeMap Explained | SimpliCode" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>SimpliCode</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=Xor0uh37PIM" target="_blank">Watch on YouTube</a><br>
+    <strong>Java TreeMap Explained</strong> introduces the <code>TreeMap</code> class — a sorted implementation of the <code>Map</code> interface — with examples of key ordering, navigation, and comparator logic.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>TreeMap</code> stores key-value pairs in sorted order</li>
+  <li>How it differs from <code>HashMap</code> and <code>LinkedHashMap</code></li>
+  <li>How to use <code>put()</code>, <code>get()</code>, <code>remove()</code>, and <code>containsKey()</code></li>
+  <li>How to retrieve boundary keys with <code>firstKey()</code> and <code>lastKey()</code></li>
+  <li>How to use custom comparators for sorting logic</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -90,3 +109,25 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>TreeMap</code> is like a leaderboard — entries are automatically sorted by score, and you can easily find the top or bottom rank.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>TreeMap</code> is a Java collection that stores key-value pairs in ascending key order using a Red-Black tree. It supports efficient navigation and range queries, making it ideal for ordered maps, sorted dictionaries, and interval-based logic. Unlike <code>HashMap</code>, it guarantees key order and supports comparator-based customization.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// TreeMapDemo.java
+import java.util.*;
+
+public class TreeMapDemo {
+  public static void main(String[] args) {
+    TreeMap<Integer, String> ranks = new TreeMap<>();
+    ranks.put(3, "Bronze");
+    ranks.put(1, "Gold");
+    ranks.put(2, "Silver");
+
+    System.out.println("Ranks: " + ranks);
+    System.out.println("Top rank: " + ranks.firstEntry());
+    System.out.println("Lowest rank: " + ranks.lastEntry());
+  }
+}
+</pre>

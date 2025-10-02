@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>HashMap</code> is a Map implementation that stores key-value pairs using hashing. It allows fast access, insertion, and deletion, with no guaranteed order.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/NMHk1CGb28o" title="Java HashMap Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=NMHk1CGb28o" target="_blank">Watch on YouTube</a><br>
+    <strong>Java HashMap Explained</strong> introduces the <code>HashMap</code> class — a fast, unordered implementation of the <code>Map</code> interface — with examples of key-value storage, lookup, and iteration.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>HashMap</code> stores key-value pairs with fast access</li>
+  <li>How to use <code>put()</code>, <code>get()</code>, <code>remove()</code>, and <code>containsKey()</code></li>
+  <li>How hashing enables constant-time performance for basic operations</li>
+  <li>How to iterate over keys, values, and entries</li>
+  <li>How <code>HashMap</code> differs from <code>TreeMap</code> and <code>LinkedHashMap</code></li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -94,3 +113,28 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>HashMap</code> is like a phonebook — each name (key) maps to a number (value), and you can look it up instantly.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>HashMap</code> is a Java collection that stores data as key-value pairs with no guaranteed order. It uses hashing to provide fast access, insertion, and deletion. Keys must be unique, and values can be retrieved efficiently using the key. It’s ideal for dictionaries, caches, and lookup tables.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// HashMapDemo.java
+import java.util.HashMap;
+
+public class HashMapDemo {
+  public static void main(String[] args) {
+    HashMap<String, String> capitals = new HashMap<>();
+    capitals.put("Philippines", "Manila");
+    capitals.put("Japan", "Tokyo");
+    capitals.put("France", "Paris");
+
+    System.out.println("Capital of Japan: " + capitals.get("Japan"));
+    capitals.remove("France");
+
+    for (String country : capitals.keySet()) {
+      System.out.println(country + " → " + capitals.get(country));
+    }
+  }
+}
+</pre>

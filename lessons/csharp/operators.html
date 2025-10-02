@@ -3,18 +3,25 @@
 <p class="mb-6 text-gray-700">
   Operators in C# are used to perform operations on variables and values. They include arithmetic, comparison, logical, assignment, and more. Understanding how operators work is essential for writing effective expressions and control logic.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Common arithmetic and comparison operators</li>
-    <li>Logical operators for conditional logic</li>
-    <li>Assignment and compound assignment operators</li>
-    <li>Operator precedence and evaluation order</li>
-  </ul>
-</details>
-
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/SvD3m4apJZ4" title="C# Operators Explained | Dani Krossing" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Dani Krossing</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=SvD3m4apJZ4" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Operators Explained</strong> introduces arithmetic, comparison, logical, and assignment operators — with clear examples and beginner-friendly walkthroughs.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How arithmetic operators like <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, and <code>%</code> work</li>
+  <li>How comparison operators like <code>==</code>, <code>!=</code>, <code>&gt;</code>, <code>&lt;</code> evaluate conditions</li>
+  <li>How logical operators like <code>&&</code>, <code>||</code>, and <code>!</code> combine boolean expressions</li>
+  <li>How assignment operators like <code>=</code>, <code>+=</code>, <code>*=</code> update values</li>
+  <li>How operator precedence affects evaluation order</li>
+</ul>
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
   <h3 class="text-lg font-semibold text-green-500">📄 Operator Syntax</h3>
@@ -97,3 +104,23 @@ namespace OperatorDemo {
     💡 <strong>Tips:</strong> Use parentheses to clarify complex expressions. Operator precedence can lead to unexpected results if not handled carefully.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Operators in C# are symbols that perform operations on variables and values. This tutorial covers the most common types — arithmetic for math, comparison for logic, and assignment for value updates. Understanding how operators work and interact is essential for building conditions, loops, and expressions in any C# program.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// OperatorsDemo.cs
+using System;
+
+class OperatorsDemo {
+  static void Main() {
+    int a = 10, b = 3;
+    Console.WriteLine("Sum: " + (a + b));
+    Console.WriteLine("Is a > b? " + (a > b));
+    Console.WriteLine("Logical AND: " + (a > 5 && b < 5));
+    a += 5;
+    Console.WriteLine("Updated a: " + a);
+  }
+}
+</pre>

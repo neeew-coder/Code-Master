@@ -4,6 +4,26 @@
 The <code>inline-block</code> value lets elements flow inline — side by side — while allowing you to control width, height, and margin like block elements. It's perfect for menus, buttons, badges, and small layout components.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/x_i2gga-sYg" title="CSS Inline Block Property Explained | Kevin Powell" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Kevin Powell</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=x_i2gga-sYg" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Inline Block Property Explained</strong> covers layout behavior, spacing quirks, and use cases for <code>inline-block</code> — with clear visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>inline-block</code> differs from <code>inline</code> and <code>block</code></li>
+  <li>How to style width, height, and margins on inline-block elements</li>
+  <li>How to use inline-block for horizontal layouts</li>
+  <li>How to fix spacing issues between inline-block elements</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -56,4 +76,23 @@ By default, <code>inline-block</code> elements have whitespace between them (fro
   <li><code>font-size: 0;</code> on parent (then reset for children)</li>
   <li>HTML comments or tighter markup</li>
   <li>Flexbox for more precise control</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>inline</code> flows horizontally but ignores width/height</li>
+  <li><code>block</code> stacks vertically and respects box styling</li>
+  <li><code>inline-block</code> flows inline but allows full box styling</li>
+  <li>Whitespace between inline-block elements can cause layout gaps</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-inlineblock-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Create three boxes with <code>display: inline-block</code></li>
+  <li>Style each with width, height, margin, and background</li>
+  <li>Observe horizontal flow and spacing quirks</li>
+  <li>Fix spacing using font-size reset or comment hacks</li>
 </ul>

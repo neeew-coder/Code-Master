@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>TreeSet</code> is a Set implementation that stores elements in sorted order. It uses a Red-Black tree under the hood and ensures uniqueness and ordering.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/lUvJHTPoxys" title="Java TreeSet Explained | Programming For Beginners" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Programming For Beginners</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=lUvJHTPoxys" target="_blank">Watch on YouTube</a><br>
+    <strong>Java TreeSet Explained</strong> introduces the <code>TreeSet</code> class — a sorted implementation of the <code>Set</code> interface — with ordering, navigation, and uniqueness guarantees.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>TreeSet</code> automatically sorts elements in natural order</li>
+  <li>How it enforces uniqueness like other <code>Set</code> types</li>
+  <li>How to use <code>add()</code>, <code>remove()</code>, <code>first()</code>, <code>last()</code>, and <code>subSet()</code></li>
+  <li>How <code>TreeSet</code> differs from <code>HashSet</code> and <code>LinkedHashSet</code></li>
+  <li>How to use custom comparators for sorting logic</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -90,3 +109,26 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>TreeSet</code> is like a sorted guest list — names are automatically arranged alphabetically, and duplicates are silently ignored.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>TreeSet</code> is a Java collection that stores unique elements in sorted order. It uses a Red-Black tree internally to maintain order and supports navigation methods like <code>first()</code>, <code>last()</code>, and <code>subSet()</code>. It’s ideal for range queries, ordered iteration, and scenarios where sorting and uniqueness are both required.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// TreeSetDemo.java
+import java.util.TreeSet;
+
+public class TreeSetDemo {
+  public static void main(String[] args) {
+    TreeSet<Integer> scores = new TreeSet<>();
+    scores.add(85);
+    scores.add(92);
+    scores.add(75);
+    scores.add(85); // Duplicate ignored
+
+    System.out.println("Scores: " + scores);
+    System.out.println("Lowest: " + scores.first());
+    System.out.println("Highest: " + scores.last());
+    System.out.println("Between 80 and 95: " + scores.subSet(80, 95));
+  }
+}

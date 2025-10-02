@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>LinkedHashMap</code> is a Map implementation that maintains insertion order. It combines a hash table with a linked list for predictable iteration.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/ry9ijzA7zhQ" title="Java LinkedHashMap Explained | Programming For Beginners" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Programming For Beginners</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=ry9ijzA7zhQ" target="_blank">Watch on YouTube</a><br>
+    <strong>Java LinkedHashMap Explained</strong> introduces the <code>LinkedHashMap</code> class — a key-value map that preserves insertion order — with examples of iteration, access, and comparison to <code>HashMap</code>.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>LinkedHashMap</code> stores key-value pairs with predictable iteration order</li>
+  <li>How it differs from <code>HashMap</code> and <code>TreeMap</code></li>
+  <li>How to use <code>put()</code>, <code>get()</code>, <code>remove()</code>, and <code>containsKey()</code></li>
+  <li>How to iterate over entries in insertion order</li>
+  <li>How <code>LinkedHashMap</code> supports access-order mode for LRU caching</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -90,3 +109,27 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>LinkedHashMap</code> is like a guestbook — entries are stored in the order people signed in, and you can look them up by name.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>LinkedHashMap</code> is a Java map implementation that maintains the order in which entries were inserted. It combines the fast access of <code>HashMap</code> with predictable iteration, making it ideal for ordered dictionaries, history tracking, and cache structures. It also supports access-order mode for least-recently-used (LRU) eviction strategies.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// LinkedHashMapDemo.java
+import java.util.LinkedHashMap;
+
+public class LinkedHashMapDemo {
+  public static void main(String[] args) {
+    LinkedHashMap<String, Integer> inventory = new LinkedHashMap<>();
+    inventory.put("Apples", 50);
+    inventory.put("Bananas", 30);
+    inventory.put("Oranges", 20);
+
+    inventory.remove("Bananas");
+
+    for (String item : inventory.keySet()) {
+      System.out.println(item + " → " + inventory.get(item));
+    }
+  }
+}
+</pre>

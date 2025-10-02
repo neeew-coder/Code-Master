@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Java uses the <code>Scanner</code> class to read user input from the console. It supports various data types and is part of the <code>java.util</code> package.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/wAEPokhj5Q4" title="Java User Input Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=wAEPokhj5Q4" target="_blank">Watch on YouTube</a><br>
+    <strong>Java User Input Explained</strong> introduces how to capture input from users using the <code>Scanner</code> class — enabling interactive programs and dynamic behavior.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to import and use <code>java.util.Scanner</code></li>
+  <li>How to read different types of input: <code>String</code>, <code>int</code>, <code>double</code>, etc.</li>
+  <li>How to prompt users and store their responses</li>
+  <li>How to handle multiple inputs and avoid common pitfalls</li>
+  <li>How user input supports interactive and personalized applications</li>
+</ul>
 
 <!-- Input Limitations Notice -->
 <details class="mb-6">
@@ -101,3 +120,28 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of user input like a conversation. Your program asks a question, the user responds, and your program reacts — just like a chatbot or a form.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java uses the <code>Scanner</code> class to read input from the console. It allows developers to capture user responses and use them to drive program logic. Input can be read as strings, numbers, or booleans, and prompts can be customized for clarity. Proper input handling is essential for building responsive, user-driven applications.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// UserInputDemo.java
+import java.util.Scanner;
+
+public class UserInputDemo {
+  public static void main(String[] args) {
+    Scanner scanner = new Scanner(System.in);
+
+    System.out.print("Enter your name: ");
+    String name = scanner.nextLine();
+
+    System.out.print("Enter your age: ");
+    int age = scanner.nextInt();
+
+    System.out.println("Hello, " + name + "! You are " + age + " years old.");
+    
+    scanner.close();
+  }
+}
+</pre>

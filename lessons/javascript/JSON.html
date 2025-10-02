@@ -14,6 +14,25 @@
   <p class="mb-6 text-gray-700">
     JSON (JavaScript Object Notation) is a lightweight format for storing and transporting data. It’s commonly used to exchange data between a server and a web page.
   </p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/r4MLHHLctKw" title="JavaScript JSON Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=r4MLHHLctKw" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript JSON Explained</strong> introduces the structure, syntax, and usage of JSON in JavaScript — including parsing, stringifying, and working with APIs.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What JSON is and how it differs from JavaScript objects</li>
+  <li>How to convert JSON strings to JavaScript objects using <code>JSON.parse()</code></li>
+  <li>How to convert JavaScript objects to JSON strings using <code>JSON.stringify()</code></li>
+  <li>How JSON is used in APIs and data exchange</li>
+  <li>Common pitfalls when working with JSON (e.g., circular references, invalid syntax)</li>
+</ul>
 
   <div class="mb-6 text-gray-700">
     <ul class="list-disc pl-6 space-y-1">
@@ -71,6 +90,20 @@ document.getElementById("output").innerText =
 const obj = JSON.parse(jsonString);
     </pre>
   </div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  JSON (JavaScript Object Notation) is a lightweight data format used for storing and exchanging structured data. It uses key-value pairs and arrays, similar to JavaScript objects, but with strict syntax rules. You can convert JSON strings into usable objects with <code>JSON.parse()</code>, and serialize objects into JSON strings with <code>JSON.stringify()</code>. JSON is widely used in APIs, configuration files, and data storage, making it essential for frontend and backend communication.
+</p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+const jsonString = '{"name":"Mark","age":30}';
+const obj = JSON.parse(jsonString);
+console.log(obj.name); // → "Mark"
+
+const newObj = { language: "JavaScript", level: "Advanced" };
+const newJson = JSON.stringify(newObj);
+console.log(newJson); // → '{"language":"JavaScript","level":"Advanced"}'
+</pre>
 
   <!-- Script -->
   <script>

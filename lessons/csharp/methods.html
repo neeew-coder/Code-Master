@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Methods are reusable blocks of code that perform specific tasks. They help organize logic, reduce repetition, and improve readability.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Declaring and calling methods</li>
-    <li>Using parameters and return values</li>
-    <li>Understanding method scope</li>
-    <li>Best practices for modular design</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/IPpEefuFiVM" title="C# Methods Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=IPpEefuFiVM" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Methods Explained</strong> introduces how to declare, call, and structure methods — the building blocks of reusable logic in C#.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare methods with return types and parameters</li>
+  <li>How to call methods from <code>Main()</code> or other methods</li>
+  <li>How to use <code>void</code> vs typed return values</li>
+  <li>How to pass arguments and receive results</li>
+  <li>How methods improve modularity, readability, and reuse</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -92,3 +100,28 @@ namespace MethodDemo {
     💡 <strong>Tips:</strong> Use descriptive names. Keep methods focused on one task. Avoid long methods — break them into smaller ones.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Methods in C# are named blocks of code that perform specific tasks. They can return values, accept parameters, and be reused across your program. This tutorial shows how to define methods, invoke them, and structure logic for clarity and maintainability — essential for building scalable applications.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// MethodsDemo.cs
+using System;
+
+class MethodsDemo {
+  static void Main() {
+    Greet("Mark");
+    int sum = Add(5, 7);
+    Console.WriteLine("Sum: " + sum);
+  }
+
+  static void Greet(string name) {
+    Console.WriteLine("Hello, " + name + "!");
+  }
+
+  static int Add(int a, int b) {
+    return a + b;
+  }
+}
+</pre>

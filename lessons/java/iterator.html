@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   An <code>Iterator</code> provides a way to traverse collections element by element. It works with <code>List</code>, <code>Set</code>, and other <code>Collection</code> types.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/G3uNYHtn83c" title="Java Iterator Explained | Alex Lee" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Alex Lee</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=G3uNYHtn83c" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Iterator Explained</strong> introduces the <code>Iterator</code> interface — with examples of safe traversal, element removal, and comparison to for-each loops.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>Iterator</code> to traverse collections safely</li>
+  <li>How <code>hasNext()</code> and <code>next()</code> control iteration</li>
+  <li>How to remove elements during iteration using <code>remove()</code></li>
+  <li>Why <code>Iterator</code> avoids <code>ConcurrentModificationException</code></li>
+  <li>How <code>Iterator</code> compares to enhanced for-loops</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -101,3 +120,31 @@ public class Main {
     🧠 <strong>Analogy:</strong> An <code>Iterator</code> is like a ticket scanner — it checks each ticket (element) one by one and can reject invalid ones on the spot.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>Iterator</code> interface provides a safe way to traverse collections like <code>ArrayList</code>, <code>HashSet</code>, and <code>LinkedList</code>. It supports element removal during iteration and avoids modification errors. Iterators are especially useful when you need fine-grained control over traversal and mutation logic.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// IteratorDemo.java
+import java.util.*;
+
+public class IteratorDemo {
+  public static void main(String[] args) {
+    List<String> names = new ArrayList<>();
+    names.add("Alice");
+    names.add("Bob");
+    names.add("Charlie");
+
+    Iterator<String> iterator = names.iterator();
+    while (iterator.hasNext()) {
+      String name = iterator.next();
+      if (name.equals("Bob")) {
+        iterator.remove(); // Safe removal
+      }
+    }
+
+    System.out.println("Remaining names: " + names);
+  }
+}
+</pre>

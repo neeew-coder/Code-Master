@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Method overloading allows multiple methods with the same name but different parameter lists. It improves flexibility and readability by tailoring behavior to different inputs.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>How to overload methods</li>
-    <li>Rules for valid overloads</li>
-    <li>Use cases for overloading</li>
-    <li>Best practices for overload clarity</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/LjRyW-W4uDs" title="C# Overloading Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=LjRyW-W4uDs" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Overloading Explained</strong> introduces method overloading — defining multiple methods with the same name but different parameter signatures.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare multiple methods with the same name but different parameters</li>
+  <li>How C# resolves which method to call based on argument types and count</li>
+  <li>How overloading improves readability and flexibility</li>
+  <li>How to overload methods with different return types (if parameter signatures differ)</li>
+  <li>How to apply overloading to constructors and utility methods</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -93,3 +101,34 @@ namespace OverloadDemo {
     💡 <strong>Tips:</strong> Keep overloads intuitive. Avoid excessive overloads that confuse intent. Use optional parameters when appropriate.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Method overloading in C# allows you to define multiple versions of a method with the same name but different parameter lists. This enables flexible logic reuse and cleaner APIs. The compiler selects the appropriate method based on the arguments passed, making your code more intuitive and adaptable.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// OverloadingDemo.cs
+using System;
+
+class OverloadingDemo {
+  static void Main() {
+    Greet();
+    Greet("Mark");
+    Greet("Mark", 3);
+  }
+
+  static void Greet() {
+    Console.WriteLine("Hello!");
+  }
+
+  static void Greet(string name) {
+    Console.WriteLine("Hello, " + name + "!");
+  }
+
+  static void Greet(string name, int times) {
+    for (int i = 0; i < times; i++) {
+      Console.WriteLine("Hello, " + name + "!");
+    }
+  }
+}
+</pre>

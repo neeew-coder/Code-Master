@@ -3,17 +3,26 @@
 <p class="mb-6 text-gray-700">
   File handling in C# allows you to read from, write to, and manage files using the <code>System.IO</code> namespace. It’s essential for data persistence, logging, and configuration.
 </p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/hv-c4TX7wQU" title="C# Files Explained | Code Hub" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Code Hub</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=hv-c4TX7wQU" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Files Explained</strong> introduces how to read from, write to, and manage files using the <code>System.IO</code> namespace.
+  </p>
+</div>
 
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Reading and writing text files</li>
-    <li>Appending content</li>
-    <li>Checking file existence</li>
-    <li>Using <code>File</code>, <code>StreamReader</code>, and <code>StreamWriter</code></li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>File</code>, <code>StreamReader</code>, and <code>StreamWriter</code> classes</li>
+  <li>How to create, read, write, and append text files</li>
+  <li>How to check if a file exists and delete files safely</li>
+  <li>How to handle exceptions during file operations</li>
+  <li>How file I/O supports data persistence and logging</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -96,3 +105,32 @@ namespace FileDemo {
     💡 <strong>Tips:</strong> Always check file existence before reading. Use <code>using</code> blocks for stream safety. Avoid hardcoded paths in production.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  File handling in C# allows programs to store and retrieve data from the filesystem. This tutorial shows how to use the <code>System.IO</code> namespace to create, read, write, and manage text files. It covers essential operations for building persistent applications like loggers, config managers, and data processors.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// FileDemo.cs
+using System;
+using System.IO;
+
+class Program {
+  static void Main() {
+    string path = "sample.txt";
+
+    // Write to file
+    File.WriteAllText(path, "Hello, Mark!");
+
+    // Read from file
+    string content = File.ReadAllText(path);
+    Console.WriteLine("File content: " + content);
+
+    // Append to file
+    File.AppendAllText(path, "\nWelcome to CodeMaster!");
+
+    // Read again
+    Console.WriteLine(File.ReadAllText(path));
+  }
+}
+</pre>

@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Inheritance allows one class to acquire the properties and behaviors of another. It promotes code reuse, logical hierarchy, and polymorphic behavior.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Base and derived class relationships</li>
-    <li>Using <code>: base</code> syntax</li>
-    <li>Method overriding with <code>virtual</code> and <code>override</code></li>
-    <li>Accessing base class members</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/EvSyka9vJho" title="C# Inheritance Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=EvSyka9vJho" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Inheritance Explained</strong> introduces how one class can inherit members from another — enabling code reuse, hierarchy, and polymorphic behavior.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use the <code>:</code> symbol to inherit from a base class</li>
+  <li>How derived classes reuse fields and methods from parent classes</li>
+  <li>How to override base methods using <code>virtual</code> and <code>override</code></li>
+  <li>How inheritance supports polymorphism and abstraction</li>
+  <li>How to structure class hierarchies for maintainable code</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -91,3 +99,31 @@ namespace InheritanceDemo {
     💡 <strong>Tips:</strong> Use inheritance for shared behavior. Prefer composition when relationships are not hierarchical. Avoid deep inheritance chains.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Inheritance in C# allows a class to derive from another, gaining access to its members and behaviors. This tutorial shows how to define base and derived classes, override methods, and use inheritance to build scalable, modular applications. It’s a core pillar of object-oriented programming.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// InheritanceDemo.cs
+using System;
+
+class Animal {
+  public virtual void Speak() {
+    Console.WriteLine("Animal makes a sound");
+  }
+}
+
+class Cat : Animal {
+  public override void Speak() {
+    Console.WriteLine("Cat meows");
+  }
+}
+
+class Program {
+  static void Main() {
+    Animal a = new Cat();
+    a.Speak(); // Output: Cat meows
+  }
+}
+</pre>

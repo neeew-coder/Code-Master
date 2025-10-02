@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   A <strong>class</strong> is a blueprint for creating objects. It defines the structure and behavior. An <strong>object</strong> is an instance of a class — a real-world entity with state and behavior.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/IUqKuGNasdM" title="Java Classes and Objects Explained | Keep On Coding" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Keep On Coding</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=IUqKuGNasdM" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Classes and Objects Explained</strong> introduces how to define classes, create objects, and use constructors and fields to model real-world entities in Java.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define a class with fields and methods</li>
+  <li>How to create objects using the <code>new</code> keyword</li>
+  <li>How constructors initialize object state</li>
+  <li>How to access and modify object fields</li>
+  <li>How classes encapsulate behavior and data for modular design</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -57,3 +76,31 @@ public class Main {
     🧠 <strong>Analogy:</strong> A class is like a blueprint for a house. You can build many houses (objects) from the same blueprint, each with its own paint color, furniture, and address.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  In Java, a class is a blueprint for creating objects — each object is an instance with its own state and behavior. Fields store data, methods define actions, and constructors initialize values. This structure supports encapsulation, modularity, and reuse. Understanding classes and objects is foundational to mastering Java and building scalable applications.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ClassDemo.java
+class Car {
+  String model;
+  int year;
+
+  Car(String model, int year) {
+    this.model = model;
+    this.year = year;
+  }
+
+  void displayInfo() {
+    System.out.println("Model: " + model + ", Year: " + year);
+  }
+}
+
+public class ClassDemo {
+  public static void main(String[] args) {
+    Car myCar = new Car("Toyota", 2022);
+    myCar.displayInfo();
+  }
+}
+</pre>

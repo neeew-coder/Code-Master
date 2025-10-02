@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>ArrayList</code> is a resizable array implementation of the <code>List</code> interface. It allows dynamic growth and indexed access.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/wsTSREgCE5E" title="Java ArrayLists Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=wsTSREgCE5E" target="_blank">Watch on YouTube</a><br>
+    <strong>Java ArrayLists Explained</strong> introduces the <code>ArrayList</code> class — a resizable array implementation of the <code>List</code> interface — with practical examples and method walkthroughs.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare and initialize an <code>ArrayList</code></li>
+  <li>How to add, remove, and access elements by index</li>
+  <li>How <code>ArrayList</code> differs from arrays in flexibility</li>
+  <li>How to iterate using loops and enhanced for-loops</li>
+  <li>How to use methods like <code>size()</code>, <code>contains()</code>, and <code>clear()</code></li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -96,3 +115,31 @@ public class Main {
     🧠 <strong>Analogy:</strong> An <code>ArrayList</code> is like a flexible bookshelf — you can add, remove, and rearrange books without worrying about shelf size.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>ArrayList</code> is a part of Java’s Collection framework and provides a dynamic array that grows as needed. Unlike fixed-size arrays, <code>ArrayList</code> allows flexible insertion and deletion of elements. It supports indexed access, iteration, and built-in methods for searching and modifying contents, making it ideal for managing ordered data collections.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ArrayListDemo.java
+import java.util.ArrayList;
+
+public class ArrayListDemo {
+  public static void main(String[] args) {
+    ArrayList<String> colors = new ArrayList<>();
+    colors.add("Red");
+    colors.add("Green");
+    colors.add("Blue");
+
+    colors.remove("Green");
+    colors.add(1, "Yellow");
+
+    for (String color : colors) {
+      System.out.println(color);
+    }
+
+    System.out.println("Contains Blue? " + colors.contains("Blue"));
+    System.out.println("Size: " + colors.size());
+  }
+}
+</pre>

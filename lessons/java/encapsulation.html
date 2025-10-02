@@ -3,6 +3,26 @@
 <p class="mb-6 text-gray-700">
   <strong>Encapsulation</strong> is the practice of keeping fields private and exposing access through public methods. It protects internal state and allows validation or transformation before data is accessed or modified.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/eboNNUADeIc" title="Java Encapsulation Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=eboNNUADeIc" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Encapsulation Explained</strong> introduces how to protect object data using access modifiers, getters, and setters — enforcing controlled access and modular design.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How encapsulation hides internal object state from external access</li>
+  <li>How to use <code>private</code> fields with <code>public</code> getters and setters</li>
+  <li>How encapsulation supports modularity, security, and maintainability</li>
+  <li>How to validate input before updating fields</li>
+  <li>How encapsulation relates to abstraction and object-oriented design</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -70,3 +90,40 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of encapsulation like a vending machine. You don’t reach inside to grab snacks — you press buttons (methods) that control access to the internal inventory (fields).
   </p>
 </div>
+
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Encapsulation in Java is the practice of restricting direct access to object fields and exposing controlled interfaces through methods. By declaring fields <code>private</code> and using <code>public</code> getters/setters, developers can protect data integrity, enforce validation rules, and maintain clean separation between internal logic and external usage. It’s a core pillar of OOP and essential for scalable design.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// EncapsulationDemo.java
+class Account {
+  private double balance;
+
+  public double getBalance() {
+    return balance;
+  }
+
+  public void deposit(double amount) {
+    if (amount > 0) {
+      balance += amount;
+    }
+  }
+
+  public void withdraw(double amount) {
+    if (amount > 0 && amount <= balance) {
+      balance -= amount;
+    }
+  }
+}
+
+public class EncapsulationDemo {
+  public static void main(String[] args) {
+    Account acc = new Account();
+    acc.deposit(500);
+    acc.withdraw(200);
+    System.out.println("Balance: " + acc.getBalance());
+  }
+}
+</pre>

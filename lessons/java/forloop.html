@@ -13,6 +13,25 @@
   <p class="mb-6 text-gray-700">
     The <code>for</code> loop is ideal when you know how many times you want to repeat an action. It combines initialization, condition, and update in one line, making it compact and powerful.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/vOmZ4JFhRds" title="Java For Loop Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=vOmZ4JFhRds" target="_blank">Watch on YouTube</a><br>
+    <strong>Java For Loop Explained</strong> introduces the <code>for</code> loop in Java — how it works, when to use it, and how it compares to <code>while</code> and <code>do-while</code>.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to write a <code>for</code> loop with initialization, condition, and increment</li>
+  <li>How loop variables control iteration count</li>
+  <li>How to use <code>break</code> and <code>continue</code> inside loops</li>
+  <li>How <code>for</code> loops compare to <code>while</code> and <code>do-while</code></li>
+  <li>How to use nested <code>for</code> loops for grids and patterns</li>
+</ul>
 
   <h3 class="text-lg font-semibold text-red-500 mb-2">🔁 Counting Example</h3>
   <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
@@ -72,6 +91,28 @@ public class Main {
   <p class="text-gray-700 mb-4">
     Modify the loop to count down from 5 to 1. What changes do you need in initialization, condition, and update?
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>for</code> loop in Java is a compact way to repeat code a fixed number of times. It includes an initializer, a condition, and an increment step — all in one line. This makes it ideal for counting, iterating over arrays, and building structured patterns. Understanding loop control and scope is key to writing efficient, readable iteration logic.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ForLoopDemo.java
+public class ForLoopDemo {
+  public static void main(String[] args) {
+    for (int i = 1; i <= 5; i++) {
+      System.out.println("Iteration: " + i);
+    }
 
+    // Nested loop example
+    for (int row = 1; row <= 3; row++) {
+      for (int col = 1; col <= 3; col++) {
+        System.out.print("* ");
+      }
+      System.out.println();
+    }
+  }
+}
+</pre>
 </body>
 </html>

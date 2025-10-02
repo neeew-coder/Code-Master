@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Modifiers</strong> in Java control how classes, methods, and variables behave. They define visibility, inheritance rules, and usage restrictions. Java has two main types: <strong>access modifiers</strong> and <strong>non-access modifiers</strong>.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/T632kAJ_9VA" title="Java Modifiers Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=T632kAJ_9VA" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Modifiers Explained</strong> introduces access and non-access modifiers in Java — including <code>public</code>, <code>private</code>, <code>static</code>, <code>final</code>, and <code>abstract</code>.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How access modifiers control visibility: <code>public</code>, <code>private</code>, <code>protected</code>, and package-private</li>
+  <li>How non-access modifiers affect behavior: <code>static</code>, <code>final</code>, <code>abstract</code>, <code>synchronized</code></li>
+  <li>How modifiers apply to classes, methods, and variables</li>
+  <li>How to combine modifiers for specific design goals (e.g., <code>private static final</code>)</li>
+  <li>How modifiers support encapsulation, inheritance, and immutability</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -95,3 +114,23 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of access modifiers like door locks. <code>public</code> is an open door, <code>private</code> is a locked room, and <code>protected</code> is a room only accessible to family (subclasses).
   </p>
 </div>
+
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Modifiers in Java define how classes, methods, and variables behave and who can access them. Access modifiers control visibility across packages and subclasses, while non-access modifiers define characteristics like immutability (<code>final</code>), shared state (<code>static</code>), or abstraction (<code>abstract</code>). Understanding modifiers is key to writing secure, maintainable, and well-structured Java code.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ModifierDemo.java
+public class ModifierDemo {
+  private static final double PI = 3.14159;
+
+  public static void main(String[] args) {
+    System.out.println("PI: " + PI);
+  }
+
+  protected void greet() {
+    System.out.println("Hello from a protected method!");
+  }
+}
+</pre>

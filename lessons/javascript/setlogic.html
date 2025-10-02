@@ -17,22 +17,20 @@
   </p>
 
   <!-- Union -->
-  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔗 union()</h3>
-  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
-    <div class="flex justify-between items-center">
-      <span class="text-sm font-semibold text-yellow-500">▶️ Run union()</span>
-      <button onclick="runUnion()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
-    </div>
-    <div id="unionOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
-  </div>
-
-  <!-- Intersection -->
   <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔗 intersection()</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
     <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-yellow-500">▶️ Run intersection()</span>
       <button onclick="runIntersection()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runIntersection() {
+    const A = new Set(['a', 'b', 'c']);
+    const B = new Set(['b', 'c', 'd']);
+    const C = new Set([...A].filter(x => B.has(x)));
+    document.getElementById("intersectionOutput").innerHTML = [...C].join(", ");
+  }
+    </code></pre>
     <div id="intersectionOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
@@ -43,6 +41,14 @@
       <span class="text-sm font-semibold text-yellow-500">▶️ Run difference()</span>
       <button onclick="runDifference()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runDifference() {
+    const A = new Set(['a', 'b', 'c']);
+    const B = new Set(['b', 'c', 'd']);
+    const C = new Set([...A].filter(x => !B.has(x)));
+    document.getElementById("differenceOutput").innerHTML = [...C].join(", ");
+  }
+    </code></pre>
     <div id="differenceOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
@@ -53,6 +59,14 @@
       <span class="text-sm font-semibold text-yellow-500">▶️ Run symmetricDifference()</span>
       <button onclick="runSymmetricDifference()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runSymmetricDifference() {
+    const A = new Set(['a', 'b', 'c']);
+    const B = new Set(['b', 'c', 'd']);
+    const C = new Set([...A, ...B].filter(x => !(A.has(x) && B.has(x))));
+    document.getElementById("symmetricOutput").innerHTML = [...C].join(", ");
+  }
+    </code></pre>
     <div id="symmetricOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
@@ -63,6 +77,14 @@
       <span class="text-sm font-semibold text-yellow-500">▶️ Check isSubsetOf()</span>
       <button onclick="runSubset()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runSubset() {
+    const A = new Set(['a', 'b']);
+    const B = new Set(['a', 'b', 'c']);
+    const result = [...A].every(x => B.has(x));
+    document.getElementById("subsetOutput").innerHTML = \`A is subset of B → \${result}\`;
+  }
+    </code></pre>
     <div id="subsetOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
@@ -73,6 +95,14 @@
       <span class="text-sm font-semibold text-yellow-500">▶️ Check isSupersetOf()</span>
       <button onclick="runSuperset()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runSuperset() {
+    const A = new Set(['a', 'b', 'c']);
+    const B = new Set(['a', 'b']);
+    const result = [...B].every(x => A.has(x));
+    document.getElementById("supersetOutput").innerHTML = \`A is superset of B → \${result}\`;
+  }
+    </code></pre>
     <div id="supersetOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
@@ -83,6 +113,14 @@
       <span class="text-sm font-semibold text-yellow-500">▶️ Check isDisjointFrom()</span>
       <button onclick="runDisjoint()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runDisjoint() {
+    const A = new Set(['a', 'b']);
+    const B = new Set(['c', 'd']);
+    const result = ![...A].some(x => B.has(x));
+    document.getElementById("disjointOutput").innerHTML = \`A is disjoint from B → \${result}\`;
+  }
+    </code></pre>
     <div id="disjointOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 

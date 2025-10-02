@@ -4,6 +4,26 @@
 Attribute selectors let you apply styles to elements based on their attributes and values — such as <code>type</code>, <code>href</code>, or <code>data-*</code>. This improves specificity and enables dynamic targeting.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/m_upHrxjR8s" title="CSS Attribute Selectors Explained | dcode" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>dcode</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=m_upHrxjR8s" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Attribute Selectors Explained</strong> covers exact, partial, prefix, and suffix matching — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to style elements with specific attributes</li>
+  <li>How to use <code>[attr="value"]</code> for exact matches</li>
+  <li>How to use <code>[attr*="value"]</code> for partial matches</li>
+  <li>How to use <code>[attr^="value"]</code> and <code>[attr$="value"]</code> for prefix/suffix targeting</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax Variants</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -53,4 +73,23 @@ button[title*="delete"] {
   <li><code>[attr="value"]</code> matches exact value</li>
   <li><code>^=</code>, <code>$=</code>, and <code>*=</code> match start, end, or partial values</li>
   <li>Combine with tags or classes for more precision: <code>input[type="email"]</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>[href]</code> targets all elements with an <code>href</code> attribute</li>
+  <li><code>[target="_blank"]</code> styles links that open in a new tab</li>
+  <li><code>[type="email"]</code> targets email input fields</li>
+  <li><code>[alt*="logo"]</code> styles images with “logo” in their alt text</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-attributes-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Style all external links using <code>[target="_blank"]</code></li>
+  <li>Highlight email fields with <code>[type="email"]</code></li>
+  <li>Style images with alt text containing “icon” using <code>[alt*="icon"]</code></li>
+  <li>Use <code>[href^="https"]</code> to style secure links</li>
 </ul>

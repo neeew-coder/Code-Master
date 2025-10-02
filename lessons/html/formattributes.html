@@ -4,6 +4,27 @@
 Attributes on the <code>&lt;form&gt;</code> element define how user input is submitted, processed, displayed, and validated. These attributes affect HTTP behavior, browser experience, and form accessibility.
 </p>
 
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/fNcJuPIZ2WE" title="Learn HTML Forms In 25 Minutes" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by Web Dev Simplified – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=fNcJuPIZ2WE" target="_blank">Watch on YouTube</a><br>
+    <strong>Learn HTML Forms In 25 Minutes</strong> explains form attributes like <code>action</code>, <code>method</code>, <code>target</code>, and <code>autocomplete</code> with live examples and best practices.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>action</code> defines the server endpoint</li>
+  <li>How <code>method</code> controls data transmission (GET vs POST)</li>
+  <li>How <code>target</code> affects response display</li>
+  <li>How <code>autocomplete</code> improves user experience</li>
+  <li>How <code>novalidate</code> disables browser validation</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📤 <code>action</code></h3>
 
 <p class="mb-2 text-gray-700">Sets the server endpoint that processes the form data when submitted.</p>
@@ -74,21 +95,28 @@ Prevents browser-based form validation. Useful when handling validation server-s
 <pre class="bg-gray-900 text-green-100 p-4 rounded-lg text-sm">
 &lt;form action=&quot;/action_page.php&quot; novalidate&gt;
 </pre>
-<h3 class="text-lg font-semibold text-orange-500 mb-2">📦 Full Attribute Summary</h3>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>action</code> sets the destination URL for form data</li>
+  <li><code>method</code> defines how data is sent: <code>GET</code> or <code>POST</code></li>
+  <li><code>target</code> controls where the response appears (e.g. <code>_blank</code>)</li>
+  <li><code>autocomplete</code> enables autofill from browser history</li>
+  <li><code>novalidate</code> skips built-in validation checks</li>
+</ul>
 
-<table class="w-full text-sm border border-gray-300 mb-6 text-gray-700">
-  <thead class="bg-orange-100">
-    <tr><th class="border px-2 py-2">Attribute</th><th class="border px-2 py-2">Purpose</th></tr>
-  </thead>
-  <tbody>
-    <tr><td class="border px-2 py-2">accept-charset</td><td class="border px-2 py-2">Form encoding set</td></tr>
-    <tr><td class="border px-2 py-2">action</td><td class="border px-2 py-2">Submission URL target</td></tr>
-    <tr><td class="border px-2 py-2">autocomplete</td><td class="border px-2 py-2">Enable/disable autofill</td></tr>
-    <tr><td class="border px-2 py-2">enctype</td><td class="border px-2 py-2">Data encoding type (POST only)</td></tr>
-    <tr><td class="border px-2 py-2">method</td><td class="border px-2 py-2">GET or POST behavior</td></tr>
-    <tr><td class="border px-2 py-2">name</td><td class="border px-2 py-2">Form name (for scripting)</td></tr>
-    <tr><td class="border px-2 py-2">novalidate</td><td class="border px-2 py-2">Skip validation on submit</td></tr>
-    <tr><td class="border px-2 py-2">rel</td><td class="border px-2 py-2">Relation hint (linked resources)</td></tr>
-    <tr><td class="border px-2 py-2">target</td><td class="border px-2 py-2">Where to load response</td></tr>
-  </tbody>
-</table>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>form-attributes.html</code>. Build a form with:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li><code>action="/submit.php"</code></li>
+  <li><code>method="post"</code></li>
+  <li><code>target="_blank"</code></li>
+  <li><code>autocomplete="on"</code></li>
+  <li><code>novalidate</code></li>
+</ul>
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>elements.html</code>. Add nested elements, use headings and paragraphs, and include an empty element like <code>&lt;br&gt;</code>. Open it in your browser and inspect the structure.
+Our code playground allows you to experiment with HTML code.
+</p>

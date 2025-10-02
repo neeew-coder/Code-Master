@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Validating user input ensures your program behaves correctly and avoids crashes. This module demonstrates how to safely convert user input using <code>int.TryParse()</code> and handle invalid cases gracefully.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>How to retrieve user input via placeholders</li>
-    <li>Safely convert strings to integers</li>
-    <li>Display formatted output</li>
-    <li>Handle invalid input using conditional logic</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/_SXJyA605bI" title="C# User Input Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=_SXJyA605bI" target="_blank">Watch on YouTube</a><br>
+    <strong>C# User Input Explained</strong> introduces <code>Console.ReadLine()</code> for capturing user input and converting it to usable data types.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to prompt and read input using <code>Console.ReadLine()</code></li>
+  <li>How to store input in variables</li>
+  <li>How to convert string input to <code>int</code>, <code>double</code>, or <code>bool</code></li>
+  <li>How to handle basic input validation and parsing</li>
+  <li>How user input drives interactive console applications</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -91,3 +99,24 @@ public class Program
     💡 <strong>Tips:</strong> Always use <code>TryParse()</code> when working with user input. It prevents crashes and lets you handle errors gracefully.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  C# uses <code>Console.ReadLine()</code> to capture user input from the terminal. Since input is read as a string, it often needs to be converted to other types using <code>int.Parse()</code>, <code>Convert.ToDouble()</code>, or similar methods. This tutorial shows how to build interactive programs that respond to user data.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// UserInputDemo.cs
+using System;
+
+class UserInputDemo {
+  static void Main() {
+    Console.Write("Enter your name: ");
+    string name = Console.ReadLine();
+
+    Console.Write("Enter your age: ");
+    int age = int.Parse(Console.ReadLine());
+
+    Console.WriteLine("Hello, " + name + "! You are " + age + " years old.");
+  }
+}
+</pre>

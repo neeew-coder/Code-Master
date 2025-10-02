@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>LinkedList</code> is a doubly-linked list implementation of the <code>List</code> and <code>Deque</code> interfaces. It excels at insertions and deletions.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/N6dOwBde7-M" title="Java LinkedLists Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=N6dOwBde7-M" target="_blank">Watch on YouTube</a><br>
+    <strong>Java LinkedLists Explained</strong> introduces the <code>LinkedList</code> class — a doubly-linked implementation of the <code>List</code> interface — with insertion, deletion, and traversal examples.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>LinkedList</code> differs from <code>ArrayList</code> in structure and performance</li>
+  <li>How to add, remove, and access elements in a linked list</li>
+  <li>How nodes are connected via references</li>
+  <li>How to use <code>addFirst()</code>, <code>addLast()</code>, <code>removeFirst()</code>, and <code>removeLast()</code></li>
+  <li>How linked lists support efficient insertions and deletions</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -94,3 +113,29 @@ public class Main {
     🧠 <strong>Analogy:</strong> A <code>LinkedList</code> is like a conga line — each person knows who’s in front and behind, making it easy to insert or remove someone without shifting the whole line.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>LinkedList</code> in Java is a doubly-linked list that allows fast insertions and deletions at both ends. Unlike <code>ArrayList</code>, it doesn’t require shifting elements during insert/remove operations. Each node contains data and references to the previous and next nodes. It’s ideal for queue-like structures and dynamic data flows.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// LinkedListDemo.java
+import java.util.LinkedList;
+
+public class LinkedListDemo {
+  public static void main(String[] args) {
+    LinkedList<String> tasks = new LinkedList<>();
+    tasks.add("Write");
+    tasks.add("Test");
+    tasks.addFirst("Plan");
+    tasks.addLast("Deploy");
+
+    tasks.remove("Test");
+    tasks.removeFirst();
+
+    for (String task : tasks) {
+      System.out.println(task);
+    }
+  }
+}
+</pre>

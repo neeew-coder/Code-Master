@@ -4,6 +4,26 @@
 Math functions let you calculate CSS values directly — combining units, enforcing limits, and defining fluid responsiveness. They work inside properties like `width`, `margin`, `font-size`, and more.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/zb25z_hR2Gk" title="CSS Math Functions Explained | SimpliCode" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>SimpliCode</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=zb25z_hR2Gk" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Math Functions Explained</strong> covers <code>calc()</code>, <code>min()</code>, <code>max()</code>, and <code>clamp()</code> — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>calc()</code> to combine units (e.g., <code>100% - 50px</code>)</li>
+  <li>How <code>min()</code> and <code>max()</code> choose the smallest/largest value</li>
+  <li>How <code>clamp()</code> sets a flexible value with min and max bounds</li>
+  <li>How math functions improve responsive design and layout control</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">🧮 `calc()`</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -56,4 +76,23 @@ Combines percentage and pixel units — great for padding-aware layouts, sidebar
   <li>`clamp()` handles scaling and limits in one declaration</li>
   <li>`min()` and `max()` help enforce layout bounds</li>
   <li>Use for fluid type, adaptive padding, auto-scaling grids</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>calc()</code> lets you mix units and perform arithmetic</li>
+  <li><code>min()</code> picks the smallest of multiple values</li>
+  <li><code>max()</code> picks the largest of multiple values</li>
+  <li><code>clamp()</code> defines a scalable value with limits: <code>clamp(min, preferred, max)</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-math-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Use <code>calc()</code> to set container width as <code>100% - 2rem</code></li>
+  <li>Use <code>min()</code> to cap image width at <code>100%</code> or <code>400px</code></li>
+  <li>Use <code>max()</code> to ensure buttons are at least <code>120px</code> wide</li>
+  <li>Use <code>clamp()</code> for responsive font sizing: <code>clamp(1rem, 2vw, 2rem)</code></li>
 </ul>

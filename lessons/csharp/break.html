@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   The <code>break</code> and <code>continue</code> statements give you control over loop execution. <code>break</code> exits the loop entirely, while <code>continue</code> skips the current iteration and moves to the next.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>How <code>break</code> exits a loop early</li>
-    <li>How <code>continue</code> skips to the next iteration</li>
-    <li>Common use cases for both</li>
-    <li>How to combine them with conditions</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/crPvYO27gFc" title="C# Break and Continue Explained | CoffeeNCode" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>CoffeeNCode</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=crPvYO27gFc" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Break and Continue Explained</strong> introduces two control statements — <code>break</code> and <code>continue</code> — used to manage loop execution flow.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>break</code> exits a loop immediately</li>
+  <li>How <code>continue</code> skips the current iteration and moves to the next</li>
+  <li>How to use these statements inside <code>for</code>, <code>while</code>, and <code>foreach</code> loops</li>
+  <li>How to apply conditional logic to control loop behavior</li>
+  <li>How to avoid infinite loops and improve performance with early exits</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -99,3 +107,22 @@ namespace ControlFlowDemo {
     💡 <strong>Tips:</strong> Use <code>break</code> to exit loops when a goal is met. Use <code>continue</code> to skip unwanted data or conditions.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  In C#, <code>break</code> and <code>continue</code> are essential tools for controlling loop execution. <code>break</code> exits the loop entirely when a condition is met, while <code>continue</code> skips the rest of the current iteration and proceeds to the next. This tutorial shows how to use both effectively to manage flow and optimize logic.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// BreakContinueDemo.cs
+using System;
+
+class BreakContinueDemo {
+  static void Main() {
+    for (int i = 1; i <= 10; i++) {
+      if (i == 7) break;
+      if (i % 2 == 0) continue;
+      Console.WriteLine("Value: " + i);
+    }
+  }
+}
+</pre>

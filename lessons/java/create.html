@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Java allows you to create files and write content using classes like <code>File</code>, <code>FileWriter</code>, and <code>PrintWriter</code>. You can choose to overwrite or append data.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Pg0aoSbrqOE" title="Java File Create and Write Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=Pg0aoSbrqOE" target="_blank">Watch on YouTube</a><br>
+    <strong>Java File Create and Write Explained</strong> walks through how to create a file and write content to it using <code>File</code> and <code>FileWriter</code> — with exception handling and overwrite control.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to create a file using <code>File</code> and <code>createNewFile()</code></li>
+  <li>How to write text to a file using <code>FileWriter</code></li>
+  <li>How to overwrite vs append content</li>
+  <li>How to handle <code>IOException</code> safely</li>
+  <li>How file creation supports persistent data storage</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -96,3 +115,34 @@ public class Main {
     🧠 <strong>Analogy:</strong> Creating a file is like opening a new notebook. Writing to it is like jotting down notes — you can start fresh or add to existing pages.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>File</code> and <code>FileWriter</code> classes allow developers to create and write to files on disk. <code>createNewFile()</code> checks for existence before creation, while <code>FileWriter</code> writes character data. You can choose to overwrite or append, and wrap operations in <code>try-catch</code> blocks to handle exceptions. This is foundational for logging, config files, and persistent storage.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// FileCreateWriteDemo.java
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class FileCreateWriteDemo {
+  public static void main(String[] args) {
+    try {
+      File file = new File("output.txt");
+      if (file.createNewFile()) {
+        System.out.println("File created: " + file.getName());
+      } else {
+        System.out.println("File already exists.");
+      }
+
+      FileWriter writer = new FileWriter(file);
+      writer.write("Hello, this is written to the file!");
+      writer.close();
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("An error occurred: " + e.getMessage());
+    }
+  }
+}
+</pre>

@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <code>LinkedHashSet</code> is a Set implementation that maintains insertion order while ensuring uniqueness. It combines a hash table with a linked list.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/plcZvG_TeAk" title="Java TreeSet Explained | Engineering Digest" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Engineering Digest</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=plcZvG_TeAk" target="_blank">Watch on YouTube</a><br>
+    <strong>Java TreeSet Explained</strong> covers how <code>TreeSet</code> maintains sorted order, enforces uniqueness, and supports navigation methods like <code>first()</code>, <code>last()</code>, and <code>subSet()</code>.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>TreeSet</code> automatically sorts elements in ascending order</li>
+  <li>How it prevents duplicates like all <code>Set</code> types</li>
+  <li>How to use <code>add()</code>, <code>remove()</code>, <code>contains()</code>, and <code>clear()</code></li>
+  <li>How to retrieve boundary elements with <code>first()</code> and <code>last()</code></li>
+  <li>How to extract ranges using <code>subSet()</code> and <code>headSet()</code></li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -94,3 +113,27 @@ public class Main {
   </p>
 </div>
 
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  <code>TreeSet</code> is a Java collection that stores unique elements in sorted order using a Red-Black tree. It’s ideal for ordered iteration, range queries, and scenarios where both sorting and uniqueness are required. Unlike <code>HashSet</code>, it guarantees order and supports navigation methods for boundary and subset access.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// TreeSetExample.java
+import java.util.TreeSet;
+
+public class TreeSetExample {
+  public static void main(String[] args) {
+    TreeSet<String> cities = new TreeSet<>();
+    cities.add("Manila");
+    cities.add("Cebu");
+    cities.add("Davao");
+    cities.add("Cebu"); // Duplicate ignored
+
+    System.out.println("Cities: " + cities);
+    System.out.println("First: " + cities.first());
+    System.out.println("Last: " + cities.last());
+    System.out.println("Subset before Davao: " + cities.headSet("Davao"));
+  }
+}
+</pre>

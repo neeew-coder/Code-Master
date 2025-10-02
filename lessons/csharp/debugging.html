@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Debugging is the process of identifying and resolving issues in your code. C# provides powerful tools like breakpoints, step execution, and logging to help you inspect and fix problems efficiently.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Setting breakpoints and stepping through code</li>
-    <li>Using watch and locals windows</li>
-    <li>Logging with <code>Console.WriteLine</code> and <code>Debug.WriteLine</code></li>
-    <li>Common debugging strategies</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/YEL92u-3cRY" title="C# Debugging Explained | tutorialsEU" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>tutorialsEU - C#</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=YEL92u-3cRY" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Debugging Explained</strong> introduces how to identify, trace, and fix errors using breakpoints, watches, and step-through logic in Visual Studio.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to set breakpoints and pause execution at key lines</li>
+  <li>How to inspect variables and expressions using the Watch and Locals windows</li>
+  <li>How to step into, over, and out of methods during runtime</li>
+  <li>How to use the Call Stack to trace execution flow</li>
+  <li>How debugging improves code reliability and developer confidence</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -93,3 +101,30 @@ namespace DebugDemo {
     💡 <strong>Tips:</strong> Reproduce bugs consistently. Use logging for non-interactive debugging. Isolate logic to test in smaller units. Don’t ignore warnings.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Debugging in C# is the process of identifying and resolving errors by observing program behavior during execution. This tutorial walks through Visual Studio’s debugging tools — breakpoints, watches, step controls, and call stack navigation — helping developers trace logic, fix bugs, and understand flow with precision.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// DebuggingDemo.cs
+using System;
+
+class Program {
+  static void Main() {
+    int a = 5;
+    int b = 0;
+
+    try {
+      int result = Divide(a, b); // Set breakpoint here
+      Console.WriteLine("Result: " + result);
+    } catch (DivideByZeroException ex) {
+      Console.WriteLine("Error: " + ex.Message);
+    }
+  }
+
+  static int Divide(int x, int y) {
+    return x / y; // Step into this method
+  }
+}
+</pre>

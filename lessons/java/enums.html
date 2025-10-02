@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   An <strong>enum</strong> (short for "enumeration") is a special Java type used to define a collection of constants. Enums are type-safe and can include fields, methods, and constructors.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/wq9SJb8VeyM" title="Java Enums Explained | Coding with John" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Coding with John</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=wq9SJb8VeyM" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Enums Explained</strong> introduces how <code>enum</code> types define fixed sets of constants — enabling type-safe, readable, and maintainable code.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What enums are and how they differ from constants</li>
+  <li>How to declare and use enums in Java</li>
+  <li>How enums improve type safety and readability</li>
+  <li>How to add fields, constructors, and methods to enums</li>
+  <li>How to use enums in switch statements and control flow</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -93,3 +112,26 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of enums like traffic lights. You only have three valid states — RED, YELLOW, GREEN — and each can have its own behavior or timing.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Enums in Java are special classes that represent a fixed set of constants. They’re ideal for modeling states, categories, or options — like days of the week or user roles. Unlike primitive constants, enums are type-safe and can include fields, methods, and constructors. They simplify control flow and reduce bugs by enforcing valid values.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// EnumDemo.java
+enum Level {
+  LOW, MEDIUM, HIGH
+}
+
+public class EnumDemo {
+  public static void main(String[] args) {
+    Level l = Level.HIGH;
+
+    switch (l) {
+      case LOW -> System.out.println("Low level");
+      case MEDIUM -> System.out.println("Medium level");
+      case HIGH -> System.out.println("High level");
+    }
+  }
+}
+</pre>

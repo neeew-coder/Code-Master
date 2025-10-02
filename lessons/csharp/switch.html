@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   The <code>switch</code> statement provides a streamlined way to handle multiple conditions based on a single variable. It’s ideal when comparing discrete values like enums, integers, or strings.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>How to use <code>switch</code> for multi-branch logic</li>
-    <li>How <code>case</code> and <code>default</code> work</li>
-    <li>Why <code>break</code> is essential</li>
-    <li>Best practices for readable switch blocks</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Qu93CRt-FGc" title="C# Switch Case Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=Qu93CRt-FGc" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Switch Case Explained</strong> introduces the <code>switch</code> statement — a cleaner alternative to multiple <code>if-else</code> blocks for discrete value matching.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>switch</code> to match a variable against multiple <code>case</code> values</li>
+  <li>How to use <code>break</code> to prevent fall-through</li>
+  <li>How to use <code>default</code> for unmatched cases</li>
+  <li>How <code>switch</code> improves readability over long <code>if-else</code> chains</li>
+  <li>How to apply <code>switch</code> to <code>int</code>, <code>string</code>, <code>char</code>, and <code>enum</code> types</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -111,3 +119,40 @@ namespace SwitchDemo {
     💡 <strong>Tips:</strong> Use <code>switch</code> when comparing a single variable to multiple discrete values. Avoid complex conditions — use <code>if</code> for those.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>switch</code> statement in C# allows you to test a variable against a list of values and execute code based on the match. It’s ideal for menu systems, command routing, and discrete logic flows. This tutorial shows how to structure cases, use <code>break</code> and <code>default</code>, and avoid redundancy in branching logic.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// SwitchCaseDemo.cs
+using System;
+
+class SwitchCaseDemo {
+  static void Main() {
+    Console.Write("Enter a grade (A–F): ");
+    string grade = Console.ReadLine();
+
+    switch (grade.ToUpper()) {
+      case "A":
+        Console.WriteLine("Excellent!");
+        break;
+      case "B":
+        Console.WriteLine("Good job.");
+        break;
+      case "C":
+        Console.WriteLine("Fair effort.");
+        break;
+      case "D":
+        Console.WriteLine("Needs improvement.");
+        break;
+      case "F":
+        Console.WriteLine("Failed.");
+        break;
+      default:
+        Console.WriteLine("Invalid grade.");
+        break;
+    }
+  }
+}
+</pre>

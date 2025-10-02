@@ -14,6 +14,25 @@
   <p class="mb-6 text-gray-700">
     Arrow functions provide a concise syntax for writing functions and preserve the <code>this</code> context from their lexical scope.
   </p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/fRRRkognpOs" title="JavaScript Arrow Functions Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=fRRRkognpOs" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Arrow Functions Explained</strong> introduces arrow function syntax, compares it to traditional functions, and explains how <code>this</code> behaves differently.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to write arrow functions with concise syntax</li>
+  <li>How arrow functions differ from regular functions in behavior</li>
+  <li>Why arrow functions don’t bind their own <code>this</code></li>
+  <li>When to use arrow functions vs traditional functions</li>
+  <li>Common pitfalls and best practices for arrow functions</li>
+</ul>
 
   <!-- Basic Arrow Function -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Basic Arrow Function</h3>
@@ -55,6 +74,37 @@ Arrow: this is lexically bound
     </pre>
     <div id="thisOutput" class="text-sm text-gray-700">Output will appear here.</div>
   </div>
+
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Arrow functions in JavaScript offer a shorter syntax for writing functions and automatically inherit <code>this</code> from their surrounding scope. Unlike regular functions, they don’t have their own <code>this</code>, <code>arguments</code>, or <code>super</code>. This makes them ideal for callbacks and methods where lexical scoping is preferred. However, they should not be used as constructors or in places where dynamic <code>this</code> binding is required.
+</p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// Regular function
+function add(a, b) {
+  return a + b;
+}
+
+// Arrow function
+const addArrow = (a, b) => a + b;
+
+console.log(add(2, 3));       // → 5
+console.log(addArrow(2, 3));  // → 5
+
+// 'this' behavior
+const obj = {
+  value: 42,
+  regular: function() {
+    console.log(this.value); // → 42
+  },
+  arrow: () => {
+    console.log(this.value); // → undefined (inherits from outer scope)
+  }
+};
+obj.regular();
+obj.arrow();
+
 
   <!-- Script -->
   <script>

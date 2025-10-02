@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Attributes</strong> (also called fields or member variables) define the state of a class. They can be <strong>instance</strong> (unique to each object) or <strong>static</strong> (shared across all objects). Access modifiers like <code>private</code>, <code>public</code>, and <code>protected</code> control visibility.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/PAN6AAmsToo" title="Java Class Attributes Explained | Arfisto!" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Arfisto!</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=PAN6AAmsToo" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Class Attributes Explained</strong> introduces how fields (attributes) are declared, accessed, and modified in Java classes — including visibility, default values, and best practices.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare attributes (fields) inside a Java class</li>
+  <li>How access modifiers like <code>private</code>, <code>public</code>, and <code>protected</code> affect visibility</li>
+  <li>How to initialize attributes using constructors or default values</li>
+  <li>How to use getters and setters to encapsulate access</li>
+  <li>How attributes relate to object state and class design</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -62,3 +81,41 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of a passport. Your name and birthdate are unique (instance attributes), but the issuing country is the same for all citizens (static attribute).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Attributes in Java are variables declared inside a class to represent the state of an object. They can be primitive or reference types, and their visibility is controlled by access modifiers. Encapsulation encourages using private attributes with public getters and setters. Understanding how attributes work is essential for designing clean, maintainable object-oriented code.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// AttributeDemo.java
+class Student {
+  private String name;
+  private int age;
+
+  public Student(String name, int age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  public String getName() {
+    return name;
+  }
+
+  public void setAge(int age) {
+    this.age = age;
+  }
+
+  public void display() {
+    System.out.println("Name: " + name + ", Age: " + age);
+  }
+}
+
+public class AttributeDemo {
+  public static void main(String[] args) {
+    Student s = new Student("user", 21);
+    s.display();
+    s.setAge(22);
+    s.display();
+  }
+}
+</pre>

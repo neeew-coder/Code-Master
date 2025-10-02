@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Variables are containers for storing data values. In C#, every variable has a type that determines what kind of data it can hold. You must declare the type before using the variable.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>How to declare and initialize variables</li>
-    <li>Common data types in C#</li>
-    <li>Rules for naming variables</li>
-    <li>Best practices for variable usage</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/IxBMVztdlr4" title="C# Variables Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=IxBMVztdlr4" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Variables Explained</strong> introduces how to declare, assign, and use variables in C# — covering types, naming rules, and memory behavior.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare variables using types like <code>int</code>, <code>string</code>, <code>bool</code>, and <code>double</code></li>
+  <li>How to assign and update values</li>
+  <li>How variable scope and lifetime work in C#</li>
+  <li>How to follow naming conventions and avoid errors</li>
+  <li>How value types differ from reference types</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -86,3 +94,26 @@ namespace VariableDemo {
   </p>
 </div>
 
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Variables in C# are containers for storing data during program execution. Each variable has a type that defines what kind of data it can hold. This tutorial walks through declaring variables, assigning values, and understanding scope — laying the foundation for logic, input handling, and memory management in C#.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// VariablesDemo.cs
+using System;
+
+class VariablesDemo {
+  static void Main() {
+    int age = 25;
+    string name = "Mark";
+    bool isStudent = true;
+    double gpa = 3.85;
+
+    Console.WriteLine("Name: " + name);
+    Console.WriteLine("Age: " + age);
+    Console.WriteLine("Student: " + isStudent);
+    Console.WriteLine("GPA: " + gpa);
+  }
+}
+</pre>

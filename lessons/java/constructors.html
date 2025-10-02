@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   A <strong>constructor</strong> is a special method used to initialize objects. It runs automatically when an object is created. Constructors can be <strong>default</strong>, <strong>parameterized</strong>, or <strong>overloaded</strong>.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/pgBk8HC7jbU" title="Java Constructor Explained | Coding with John" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Coding with John</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=pgBk8HC7jbU" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Constructor Explained</strong> introduces how constructors work in Java — including default, parameterized, and overloaded forms, and how they initialize object state.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define constructors in Java classes</li>
+  <li>How constructors initialize object attributes during instantiation</li>
+  <li>How default constructors differ from parameterized ones</li>
+  <li>How constructor overloading enables flexible object creation</li>
+  <li>How to use <code>this</code> to resolve naming conflicts and chain constructors</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -101,3 +120,38 @@ public class Main {
     🧠 <strong>Analogy:</strong> A constructor is like a hotel check-in form. You can fill in your name and room type (parameterized), or just get a default room if you skip the form.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Constructors in Java are special methods used to initialize new objects. They share the class name and have no return type. A default constructor takes no arguments, while parameterized constructors allow custom initialization. Overloading lets you define multiple constructors with different signatures. Constructors ensure objects start with valid state and support clean, readable instantiation.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ConstructorDemo.java
+class Book {
+  String title;
+  int pages;
+
+  Book() {
+    this.title = "Untitled";
+    this.pages = 0;
+  }
+
+  Book(String title, int pages) {
+    this.title = title;
+    this.pages = pages;
+  }
+
+  void display() {
+    System.out.println("Title: " + title + ", Pages: " + pages);
+  }
+}
+
+public class ConstructorDemo {
+  public static void main(String[] args) {
+    Book b1 = new Book();
+    Book b2 = new Book("Java Basics", 120);
+    b1.display();
+    b2.display();
+  }
+}
+</pre>

@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   A <code>List</code> is an ordered collection that allows duplicates. You can access elements by index, insert at specific positions, and iterate in order.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/wR3T7WO4TTA" title="Java Lists Explained | LinkedIn Learning" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>LinkedIn Learning</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=wR3T7WO4TTA" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Lists Explained</strong> introduces the <code>List</code> interface and its key implementations — <code>ArrayList</code> and <code>LinkedList</code> — with usage patterns and performance insights.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What the <code>List</code> interface provides in terms of ordered collections</li>
+  <li>How <code>ArrayList</code> and <code>LinkedList</code> differ in structure and performance</li>
+  <li>How to add, remove, and access elements by index</li>
+  <li>How to iterate over lists using loops and iterators</li>
+  <li>How to choose the right list type for your use case</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -98,3 +117,28 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of a <code>List</code> like a playlist: you can add songs, remove them, reorder them, and play by position.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>List</code> interface defines an ordered collection that allows duplicates and indexed access. <code>ArrayList</code> offers fast random access but slower insertions/removals, while <code>LinkedList</code> excels at frequent insertions and deletions. Lists are ideal for managing sequences, queues, and dynamic arrays, and are central to many Java applications.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ListDemo.java
+import java.util.*;
+
+public class ListDemo {
+  public static void main(String[] args) {
+    List<String> items = new ArrayList<>();
+    items.add("Java");
+    items.add("Python");
+    items.add("C++");
+
+    items.remove("Python");
+    items.add(1, "JavaScript");
+
+    for (String item : items) {
+      System.out.println(item);
+    }
+  }
+}
+</pre>

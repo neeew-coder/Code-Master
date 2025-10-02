@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Polymorphism</strong> allows objects of different classes to be treated as objects of a common superclass. It enables dynamic method dispatch, where the method that gets called is determined at runtime based on the object's actual type.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/jhDUxynEQRI" title="Java Polymorphism Explained | Coding with John" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Coding with John</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=jhDUxynEQRI" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Polymorphism Explained</strong> introduces how objects can take many forms — enabling flexible method behavior and dynamic dispatch through inheritance and interfaces.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What polymorphism means in object-oriented programming</li>
+  <li>How method overriding enables dynamic behavior at runtime</li>
+  <li>How a superclass reference can point to subclass objects</li>
+  <li>How polymorphism supports flexible code and interface-based design</li>
+  <li>How to use polymorphism with arrays, loops, and method parameters</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -115,3 +134,37 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of a remote control (reference type) that can operate different devices — TV, AC, or fan (actual types). The button you press behaves differently depending on the device.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Polymorphism in Java allows objects to be treated as instances of their parent class or interface, enabling dynamic method resolution. It’s achieved through method overriding and interface implementation. This design principle supports flexibility, scalability, and clean abstraction — letting you write code that works with general types while executing specific behavior.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// PolymorphismDemo.java
+class Animal {
+  void speak() {
+    System.out.println("Animal speaks");
+  }
+}
+
+class Cat extends Animal {
+  void speak() {
+    System.out.println("Cat meows");
+  }
+}
+
+class Dog extends Animal {
+  void speak() {
+    System.out.println("Dog barks");
+  }
+}
+
+public class PolymorphismDemo {
+  public static void main(String[] args) {
+    Animal[] animals = {new Cat(), new Dog()};
+    for (Animal a : animals) {
+      a.speak(); // Dynamic dispatch
+    }
+  }
+}
+</pre>

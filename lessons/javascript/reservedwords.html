@@ -14,6 +14,25 @@
   <p class="mb-6 text-gray-700">
     Reserved words are identifiers that cannot be used as variable names, function names, or labels. They are part of the JavaScript language syntax or built-in objects.
   </p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/uZDORNSz_Mc" title="JavaScript Reserved Words Explained | CodeLucky" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>CodeLucky</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=uZDORNSz_Mc" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Reserved Words Explained</strong> clarifies which keywords are protected by the language and why using them improperly leads to syntax errors.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What reserved words are and why they’re restricted</li>
+  <li>Examples of reserved keywords like <code>class</code>, <code>return</code>, <code>function</code>, <code>await</code>, and <code>let</code></li>
+  <li>How using reserved words as variable names causes syntax errors</li>
+  <li>How to check for reserved words when naming identifiers</li>
+  <li>How reserved words evolve with new ECMAScript versions</li>
+</ul>
 
   <!-- Preview -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚫 Naming Error Simulation</h3>
@@ -82,6 +101,23 @@ let className = "Math"; // ✅
       </div>
     </div>
   </div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Reserved words in JavaScript are keywords that have special meaning in the language syntax and cannot be used as variable or function names. Examples include <code>if</code>, <code>else</code>, <code>return</code>, <code>class</code>, and <code>await</code>. Using these words incorrectly leads to syntax errors. As JavaScript evolves, new reserved words are added, so it’s important to stay updated and use meaningful, safe identifiers in your code.
+</p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ❌ Invalid: reserved word used as variable name
+let class = "Math"; // → SyntaxError
+
+// ✅ Valid: use a descriptive alternative
+let className = "Math";
+
+// ❌ Invalid: reserved word used in function name
+function return() { } // → SyntaxError
+
+// ✅ Valid
+function getReturnValue() { return true; }
 
   <!-- Script -->
   <script>

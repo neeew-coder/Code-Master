@@ -4,11 +4,31 @@
 The <code>!important</code> flag forces a CSS rule to override all others — regardless of selector specificity or source order. It’s powerful, but often used as a last resort when the cascade isn’t working as expected.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/MU80l5XrAbc" title="CSS !important Explained | Knowledge Meetup" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Knowledge Meetup</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=MU80l5XrAbc" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS !important Explained</strong> covers override behavior, specificity conflicts, and best practices — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>!important</code> overrides normal specificity rules</li>
+  <li>How it interacts with inline styles and ID/class selectors</li>
+  <li>How to use it for emergency overrides or third-party fixes</li>
+  <li>Why overusing <code>!important</code> can lead to brittle CSS</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Syntax</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
 .element {
-  color: red !important;
+  color: green !important;
 }
 </pre>
 
@@ -50,3 +70,21 @@ p.text {
 }
 </pre>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>!important</code> makes a rule take precedence over others — even more specific ones</li>
+  <li>Inline styles with <code>!important</code> beat external styles with <code>!important</code></li>
+  <li>Use <code>!important</code> only when necessary — e.g., overriding third-party styles</li>
+  <li>Refactor selectors and cascade before resorting to <code>!important</code></li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-important-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Write conflicting rules for the same element</li>
+  <li>Apply <code>!important</code> to one rule and observe the override</li>
+  <li>Test inline styles with and without <code>!important</code></li>
+  <li>Refactor to remove <code>!important</code> and resolve with specificity</li>
+</ul>

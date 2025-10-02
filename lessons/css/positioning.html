@@ -1,8 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
 <h2 class="text-2xl font-bold mb-4 text-blue-600">CSS Positioning</h2>
 
 <p class="mb-6 text-gray-700">
 Positioning controls how elements are placed in relation to their containers, the viewport, or other elements. You can offset them, fix them during scroll, or remove them from flow entirely.
 </p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/YEmdHbQBCSQ" title="CSS Position Property Explained | Coding2Go" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Coding2Go</strong> – 
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=YEmdHbQBCSQ" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Position Property Explained</strong> covers static, relative, absolute, fixed, and sticky positioning — with clear visuals and offset examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How each <code>position</code> value affects layout behavior</li>
+  <li>How to use <code>top</code>, <code>left</code>, <code>right</code>, and <code>bottom</code> offsets</li>
+  <li>How <code>absolute</code> and <code>relative</code> interact with parent containers</li>
+  <li>How <code>fixed</code> and <code>sticky</code> behave with scrolling</li>
+</ul>
 
 <h3 class="text-lg font-semibold text-blue-500 mb-2">📄 Position Values</h3>
 
@@ -42,10 +71,6 @@ Positioning controls how elements are placed in relation to their containers, th
 }
 </pre>
 
-<div class="bg-blue-50 p-4 rounded mb-6 text-white text-center" style="position: fixed; bottom: 0; left: 0; width: 100%; background: steelblue;">
-  Fixed Bar — stays at bottom while scrolling
-</div>
-
 <h3 class="text-lg font-semibold text-blue-500 mb-2">🧲 Sticky Position Demo</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -68,3 +93,25 @@ Sticky elements act like relative until scrolled to a threshold, then stick to t
   <li><code>sticky</code> requires scrollable parent and <code>top</code> value</li>
   <li>Z-index controls stack order for positioned elements</li>
 </ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>static</code> is the default — follows normal flow</li>
+  <li><code>relative</code> shifts from its normal position</li>
+  <li><code>absolute</code> positions relative to the nearest positioned ancestor</li>
+  <li><code>fixed</code> sticks to the viewport — unaffected by scroll</li>
+  <li><code>sticky</code> toggles between relative and fixed based on scroll position</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-position-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Apply <code>position: relative</code> and shift with <code>top</code> or <code>left</code></li>
+  <li>Use <code>position: absolute</code> inside a relative container</li>
+  <li>Fix a header with <code>position: fixed</code></li>
+  <li>Create a sticky sidebar using <code>position: sticky</code></li>
+</ul>  
+</body>
+</html>

@@ -15,43 +15,26 @@
     JavaScript modules let you split code into reusable files using <code>export</code> and <code>import</code>. This makes your code easier to maintain, test, and organize.
   </p>
 
-  <div class="mb-6 text-gray-700">
-    <ul class="list-disc pl-6 space-y-1">
-      <li><strong>Named exports</strong> let you export multiple values by name</li>
-      <li><strong>Default exports</strong> let you export a single main value</li>
-      <li><strong>Modules must use <code>type="module"</code></strong> in the script tag</li>
-      <li><strong>Modules only work over HTTP(s)</strong> — not file://</li>
-    </ul>
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+  <div class="mb-6">
+    <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+      <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/qgRUr-YUk1Q" title="JavaScript Modules Explained | Fireship" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p class="text-sm text-gray-600 mt-2">
+      Video by <strong>Fireship</strong> –  
+      <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=qgRUr-YUk1Q" target="_blank">Watch on YouTube</a><br>
+      <strong>JavaScript Modules Explained</strong> introduces ES6 module syntax, how to split code across files, and how <code>import</code>/<code>export</code> streamline maintainability and reuse.
+    </p>
   </div>
 
-  <!-- Preview -->
-  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📦 Module Simulation Preview</h3>
-  <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-4">
-    <div class="flex justify-end space-x-2">
-      <button id="runNamed" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
-        Run Named Export
-      </button>
-      <button id="runDefault" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">
-        Run Default Export
-      </button>
-    </div>
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JavaScript Modules (Simplified) | CodeMaster</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../../style.css">
-</head>
-<body class="bg-yellow-50 font-sans p-6 overflow-auto min-h-screen">
-
-  <h2 class="text-2xl font-bold mb-4 text-yellow-500">JavaScript Modules (Simplified)</h2>
-
-  <p class="mb-6 text-gray-700">
-    JavaScript modules let you split code into reusable files using <code>export</code> and <code>import</code>. This makes your code easier to maintain, test, and organize.
-  </p>
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+  <ul class="list-disc list-inside mb-4 text-gray-700">
+    <li>How to use <code>export</code> and <code>import</code> to share code between files</li>
+    <li>Difference between named exports and default exports</li>
+    <li>How modules improve code organization and reduce global scope pollution</li>
+    <li>How to structure reusable functions, classes, and constants</li>
+    <li>How to configure modules in HTML and bundlers like Webpack or Vite</li>
+  </ul>
 
   <div class="mb-6 text-gray-700">
     <ul class="list-disc pl-6 space-y-1">
@@ -114,6 +97,34 @@ import { name, age } from "./person.js";
 import message from "./message.js";
     </pre>
   </div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+  <p class="text-gray-700 mb-4 text-sm">
+    JavaScript modules allow you to split your code into separate files and share functionality using <code>export</code> and <code>import</code>. Named exports let you export multiple items, while default exports simplify single-entry modules. Modules help avoid global namespace conflicts, improve maintainability, and support scalable architecture. To use modules in the browser, scripts must be marked with <code>type="module"</code>, and bundlers can optimize them for production.
+  </p>
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+  <pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+  // math.js
+  export function add(a, b) {
+    return a + b;
+  }
+  export const PI = 3.14159;
+
+  // main.js
+  import { add, PI } from './math.js';
+  console.log(add(2, 3)); // → 5
+  console.log(PI);        // → 3.14159
+
+  // default export
+  // greet.js
+  export default function greet(name) {
+    return `Hello, ${name}!`;
+  }
+
+  // main.js
+  import greet from './greet.js';
+  console.log(greet("Mark")); // → "Hello, Mark!"
+  </pre>
 
   <!-- Simulated Module Logic -->
   <script type="module">

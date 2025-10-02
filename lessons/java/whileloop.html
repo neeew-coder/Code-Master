@@ -13,6 +13,25 @@
   <p class="mb-6 text-gray-700">
     Loops allow your program to repeat actions until a condition changes. The <code>while</code> loop is one of Java’s simplest looping constructs. It checks a condition before each iteration and continues as long as the condition is <code>true</code>.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/ZjHJrmYknrk" title="Java While Loop Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=ZjHJrmYknrk" target="_blank">Watch on YouTube</a><br>
+    <strong>Java While Loop Explained</strong> introduces how <code>while</code> and <code>do-while</code> loops work in Java — including syntax, control flow, and common use cases.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to write a <code>while</code> loop with a boolean condition</li>
+  <li>How <code>do-while</code> loops guarantee one execution before checking the condition</li>
+  <li>How to increment counters and avoid infinite loops</li>
+  <li>How loop control interacts with <code>break</code> and <code>continue</code></li>
+  <li>How to use loops for input validation, repetition, and iteration</li>
+</ul>
 
   <h3 class="text-lg font-semibold text-red-500 mb-2">🔁 Counting Example</h3>
   <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
@@ -75,6 +94,29 @@ public class Main {
   <p class="text-gray-700 mb-4">
     Change the loop to count down from 5 to 1. What condition and update do you need?
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s <code>while</code> loop repeatedly executes a block of code as long as its condition remains true. The <code>do-while</code> variant runs the block once before checking the condition. These loops are ideal for tasks that require repetition, such as input validation or menu systems. Proper control and incrementing are essential to avoid infinite loops and ensure predictable behavior.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// WhileLoopDemo.java
+public class WhileLoopDemo {
+  public static void main(String[] args) {
+    int count = 1;
 
+    while (count <= 5) {
+      System.out.println("Count: " + count);
+      count++;
+    }
+
+    int num = 0;
+    do {
+      System.out.println("Do-While: " + num);
+      num++;
+    } while (num < 3);
+  }
+}
+</pre>
 </body>
 </html>

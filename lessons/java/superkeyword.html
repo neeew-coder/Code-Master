@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   The <code>super</code> keyword in Java refers to the immediate parent class. It’s used to access superclass methods, constructors, and fields that may be hidden or overridden in the subclass.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Qb_NUn0TSAU" title="Java super Keyword Explained | Coding with John" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Coding with John</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=Qb_NUn0TSAU" target="_blank">Watch on YouTube</a><br>
+    <strong>Java super Keyword Explained</strong> introduces how <code>super</code> accesses superclass methods, fields, and constructors — enabling controlled inheritance and reuse.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>super</code> refers to the immediate superclass</li>
+  <li>How to call a superclass constructor using <code>super()</code></li>
+  <li>How to access overridden methods and hidden fields from the superclass</li>
+  <li>How <code>super</code> supports constructor chaining and method reuse</li>
+  <li>How to avoid ambiguity and enforce hierarchy clarity with <code>super</code></li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -101,3 +120,40 @@ public class Main {
     🧠 <strong>Analogy:</strong> Imagine you’re customizing a cake recipe. You start with your parent’s base recipe (<code>super</code>) and then add your own twist. You’re not replacing it — you’re building on it.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>super</code> keyword in Java allows a subclass to access members of its immediate superclass. It’s used to invoke superclass constructors, call overridden methods, and access hidden fields. This supports clean inheritance, constructor chaining, and modular behavior reuse. Understanding <code>super</code> is essential for building robust class hierarchies and avoiding shadowing issues.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// SuperKeywordDemo.java
+class Animal {
+  String name;
+
+  Animal(String name) {
+    this.name = name;
+  }
+
+  void speak() {
+    System.out.println(name + " makes a sound");
+  }
+}
+
+class Dog extends Animal {
+  Dog(String name) {
+    super(name); // Call superclass constructor
+  }
+
+  void speak() {
+    super.speak(); // Call superclass method
+    System.out.println(name + " barks");
+  }
+}
+
+public class SuperKeywordDemo {
+  public static void main(String[] args) {
+    Dog d = new Dog("Buddy");
+    d.speak();
+  }
+}
+</pre> 

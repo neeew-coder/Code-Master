@@ -15,7 +15,7 @@
   <p class="mb-6 text-gray-700">
     Typed arrays support many standard array methods, plus some unique properties and constructors for working with binary data efficiently.
   </p>
-
+  
   <!-- from() -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">📥 from()</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3 mb-4">
@@ -111,6 +111,41 @@ myArr.some(x => x > 18);
     </pre>
     <div id="someOutput" class="text-sm text-gray-700">Output will appear here.</div>
   </div>
+
+        <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
+// Typed Array: Uint8Array
+
+new Uint8Array([10, 20, 30, 40]).set([99], 1); 
+// → [10, 99, 30, 40]
+
+new Uint8Array([10, 20, 30, 40]).subarray(1, 3); 
+// → [20, 30]
+
+new Uint8Array([10, 20, 30, 40]).slice(1, 3); 
+// → [20, 30]
+
+new Uint8Array([10, 20, 30, 40]).map(x => x + 1); 
+// → [11, 21, 31, 41]
+
+new Uint8Array([10, 20, 30, 40]).filter(x => x > 25); 
+// → [30, 40]
+
+new Uint8Array([10, 20, 30, 40]).reduce((acc, x) => acc + x); 
+// → 100
+
+new Uint8Array([10, 20, 30, 40]).includes(30); 
+// → true
+
+new Uint8Array([10, 20, 30, 40]).reverse(); 
+// → [40, 30, 20, 10]
+
+new Uint8Array([10, 20, 30, 40]).sort(); 
+// → [10, 20, 30, 40] (already sorted)
+
+new Uint8Array([10, 20, 30, 40]).buffer.byteLength; 
+// → 4
+
+    </pre>
 
     <!-- Unsupported Methods Table -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚫 Unsupported Methods</h3>

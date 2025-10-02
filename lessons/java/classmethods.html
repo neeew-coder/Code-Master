@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Methods</strong> define the actions that a class or object can perform. They can be <strong>instance methods</strong> (called on objects) or <strong>static methods</strong> (called on the class itself). Access modifiers like <code>public</code> and <code>private</code> control visibility.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/cCgOESMQe44" title="Java Class Methods Explained | Alex Lee" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Alex Lee</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=cCgOESMQe44" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Class Methods Explained</strong> introduces how to define and use methods inside Java classes — including instance methods, static methods, and how they interact with object state.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare methods inside a class</li>
+  <li>How instance methods operate on object fields</li>
+  <li>How static methods belong to the class and don’t require an object</li>
+  <li>How to call methods from other methods within the same class</li>
+  <li>How methods improve modularity, readability, and reuse</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -85,3 +104,28 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of a vending machine. Pressing a button (method) performs an action. Some buttons work for every machine (static), while others depend on the machine’s settings (instance).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Class methods in Java define the behavior of objects. Instance methods use object fields and require an object to be called, while static methods belong to the class itself and can be called without instantiation. Methods encapsulate logic, promote reuse, and help organize code into meaningful actions. Understanding their structure and scope is key to object-oriented design.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// MethodDemo.java
+class Calculator {
+  int add(int a, int b) {
+    return a + b;
+  }
+
+  static double square(double x) {
+    return x * x;
+  }
+}
+
+public class MethodDemo {
+  public static void main(String[] args) {
+    Calculator calc = new Calculator();
+    System.out.println("Sum: " + calc.add(3, 4));
+    System.out.println("Square: " + Calculator.square(5.5));
+  }
+}
+</pre>

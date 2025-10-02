@@ -1,8 +1,28 @@
 <h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Basic Examples</h2>
 
 <p class="mb-4 text-gray-700">
-In this chapter we’ll explore some basic HTML examples. Don’t worry if we use tags you haven’t learned yet — you’ll get there!
+In this tutorial, you'll explore basic HTML examples including headings, paragraphs, links, and images. These are the building blocks of every webpage.
 </p>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/vY2xUc4TVmY" title="HTML Basics for Beginners | The Coding Sloth" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>The Coding Sloth</strong> –  
+    <a class="text-orange-600 underline" href="https://www.youtube.com/watch?v=vY2xUc4TVmY" target="_blank">Watch on YouTube</a><br>
+    <strong>HTML Basics for Beginners</strong> covers core tags, semantic structure, and page building — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to structure a webpage using <code>&lt;html&gt;</code>, <code>&lt;head&gt;</code>, and <code>&lt;body&gt;</code></li>
+  <li>How to use headings, paragraphs, and line breaks</li>
+  <li>How to create links and embed images</li>
+  <li>How to build ordered and unordered lists</li>
+</ul>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📄 HTML Documents</h3>
 <p class="mb-2 text-gray-700">
@@ -19,12 +39,13 @@ The document begins with <code>&lt;html&gt;</code> and ends with <code>&lt;/html
   &lt;body&gt;
 
     &lt;h1&gt;First Heading&lt;/h1&gt;
-    &lt;p&gt;first paragraph.&lt;/p&gt;
+    &lt;p&gt;First paragraph.&lt;/p&gt;
 
   &lt;/body&gt;
 &lt;/html&gt;
     </pre>
   </div>
+</div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📌 The &lt;!DOCTYPE&gt; Declaration</h3>
 <ul class="list-disc list-inside mb-4 text-gray-700">
@@ -38,10 +59,10 @@ The document begins with <code>&lt;html&gt;</code> and ends with <code>&lt;/html
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔠 HTML Headings</h3>
 <p class="mb-2 text-gray-700">
 Headings are defined with <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>. <code>&lt;h1&gt;</code> is the most important, <code>&lt;h6&gt;</code> the least.
-<img src="image/headings.png" alt="" srcset="">
 </p>
+<img src="image/headings.png" alt="HTML Headings Example" class="mb-4">
 <div class="bg-gray-100 p-6 rounded shadow mb-4">
-  <pre class="text-sm  font-mono whitespace-pre-wrap">
+  <pre class="text-sm font-mono whitespace-pre-wrap">
 <h1 style="color: white;">This is heading 1</h1>
 <h2 style="color: white;">This is heading 2</h2>
 <h3 style="color: white;">This is heading 3</h3>
@@ -52,35 +73,71 @@ Headings are defined with <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code>. <c
 <p class="mb-2 text-gray-700">
 Paragraphs are defined with the <code>&lt;p&gt;</code> tag.
 </p>
-  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
-    <pre>
-    &lt;p&gt;this is a paragraph&lt;/p&gt;
-    &lt;p&gt;this is another paragraph.&lt;/p&gt;
-    </pre>
-  </div>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+&lt;p&gt;This is another paragraph.&lt;/p&gt;
+  </pre>
+</div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔗 HTML Links</h3>
 <p class="mb-2 text-gray-700">
 Links are defined with the <code>&lt;a&gt;</code> tag. The destination is set using the <code>href</code> attribute.
 </p>
-  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
-    <pre>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
 &lt;a href="https://www.example.com"&gt;This is a link&lt;/a&gt;
-    </pre>
-  </div>
+  </pre>
+</div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🖼️ HTML Images</h3>
 <p class="mb-2 text-gray-700">
 Images are defined with the <code>&lt;img&gt;</code> tag. Attributes like <code>src</code>, <code>alt</code>, <code>width</code>, and <code>height</code> provide details.
 </p>
-  <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
-    <pre>
+<div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-6">
+  <pre>
 &lt;img src="image.jpg" alt="Description" width="300" height="200"&gt;
-    </pre>
-  </div>
+  </pre>
+</div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔍 How to View HTML Source</h3>
 <ul class="list-disc list-inside mb-4 text-gray-700">
   <li>Press <strong>CTRL + U</strong> or right-click and choose “View Page Source”</li>
   <li>Use “Inspect” to view and edit HTML/CSS live in the browser</li>
 </ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li>HTML tags define structure and meaning — not style</li>
+  <li>Use <code>&lt;h1&gt;</code> to <code>&lt;h6&gt;</code> for headings</li>
+  <li><code>&lt;p&gt;</code> defines paragraphs; <code>&lt;br&gt;</code> adds line breaks</li>
+  <li><code>&lt;a href=""&gt;</code> creates links; <code>&lt;img src="" alt=""&gt;</code> embeds images</li>
+  <li><code>&lt;ul&gt;</code> and <code>&lt;ol&gt;</code> define lists; <code>&lt;li&gt;</code> defines list items</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>html-basics-demo.html</code> and paste the following:
+</p>
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HTML Basics</title>
+  </head>
+  <body style="color: black;">
+    <h1>Welcome to HTML</h1>
+    <p>This is a paragraph of text.</p>
+    <a href="https://example.com">Visit Example</a>
+    <img style="color: black;" src="logo.png" alt="Site Logo">
+    <ul>
+      <li style="color: black;">First item</li>
+      <li style="color: black;">Second item</li>
+    </ul>
+  </body>
+</html>
+
+<p class="mb-4 text-gray-700">
+Our code playground allows you to experiment with HTML code:
+</p>

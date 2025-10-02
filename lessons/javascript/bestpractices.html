@@ -14,6 +14,25 @@
   <p class="mb-6 text-gray-700">
     Writing clean, safe, and predictable JavaScript helps prevent bugs and improves maintainability. Follow these best practices to avoid common pitfalls.
   </p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Mus_vwhTCq0" title="JavaScript Best Practices Explained | Fireship" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Fireship</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=Mus_vwhTCq0" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Best Practices Explained</strong> outlines key habits and patterns for writing clean, efficient, and maintainable JavaScript code — ideal for both beginners and seasoned developers.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to name variables and functions clearly and consistently</li>
+  <li>Why modular code improves readability and reusability</li>
+  <li>How to avoid global scope pollution and use <code>const</code>/<code>let</code> properly</li>
+  <li>How to handle errors gracefully and validate inputs</li>
+  <li>Why comments, formatting, and documentation matter for collaboration</li>
+</ul>
 
   <div class="mb-6 text-gray-700">
     <ul class="list-disc pl-6 space-y-1">
@@ -81,6 +100,23 @@ eval("x = 2 + 2");
 const x = 2 + 2;
     </pre>
   </div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  JavaScript best practices help developers write code that’s easier to read, debug, and scale. Using meaningful names, keeping functions small and focused, and avoiding side effects are key habits. Prefer <code>const</code> for values that don’t change, and use <code>let</code> for block-scoped variables. Avoid <code>var</code> to prevent hoisting confusion. Validate inputs, handle errors with <code>try...catch</code>, and document your logic to support future maintenance and teamwork.
+</p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ✅ Best practice
+function calculateArea(width, height) {
+  if (typeof width !== "number" || typeof height !== "number") {
+    throw new Error("Invalid input");
+  }
+  return width * height;
+}
+
+// ❌ Anti-pattern
+function c(w,h){return w*h}
+</pre>
 
   <!-- Script -->
   <script>

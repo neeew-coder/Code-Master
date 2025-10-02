@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Data types define the kind of data a variable can store. C# is a statically typed language, so you must specify the type when declaring a variable. Choosing the right type helps your program run efficiently and correctly.
 </p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/6CW-znzcqx4" title="C# Data Types Explained | Giraffe Academy" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Giraffe Academy</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=6CW-znzcqx4" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Data Types Explained</strong> introduces the core value and reference types in C# — including <code>int</code>, <code>double</code>, <code>char</code>, <code>bool</code>, and <code>string</code>.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare variables with specific data types</li>
+  <li>How value types like <code>int</code> and <code>double</code> store data directly</li>
+  <li>How reference types like <code>string</code> and arrays store memory addresses</li>
+  <li>How to choose the right type for precision, performance, and readability</li>
+  <li>How to use type conversion and casting safely</li>
+</ul>
 
 <!-- Collapsible Overview -->
 <details class="mb-6">
@@ -90,3 +109,28 @@ namespace DataTypeDemo {
     💡 <strong>Tips:</strong> Use <code>float</code> for small decimals, <code>double</code> for precise calculations, and <code>string</code> for text. Always match the type to the data you're working with.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  C# is a statically typed language, meaning every variable must have a defined type. This tutorial walks through the most common types — from whole numbers and decimals to characters and booleans — and explains how they behave in memory. Understanding data types is essential for writing safe, efficient, and bug-free code.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// DataTypesDemo.cs
+using System;
+
+class DataTypesDemo {
+  static void Main() {
+    int age = 30;
+    double height = 5.9;
+    char grade = 'A';
+    bool isActive = true;
+    string name = "Mark";
+
+    Console.WriteLine("Name: " + name);
+    Console.WriteLine("Age: " + age);
+    Console.WriteLine("Height: " + height);
+    Console.WriteLine("Grade: " + grade);
+    Console.WriteLine("Active: " + isActive);
+  }
+}
+</pre>

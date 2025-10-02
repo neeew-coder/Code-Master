@@ -14,6 +14,25 @@
   <p class="mb-6 text-gray-700">
     Classes are templates for creating JavaScript objects. They encapsulate data and behavior using constructors and methods.
   </p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/U2vxAEiaVRY" title="JavaScript Classes Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=U2vxAEiaVRY" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Classes Explained</strong> introduces the <code>class</code> syntax, constructors, methods, inheritance, and how classes simplify object-oriented programming in JavaScript.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define a class using <code>class</code> and <code>constructor()</code></li>
+  <li>How to create methods and access properties with <code>this</code></li>
+  <li>How to instantiate objects using <code>new</code></li>
+  <li>How to extend classes using <code>extends</code> and <code>super()</code></li>
+  <li>How classes relate to prototypes and improve code organization</li>
+</ul>
 
   <!-- Class Declaration -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🚗 Class Declaration</h3>
@@ -77,6 +96,30 @@ myCar.age(2025); // returns 11
     </pre>
     <div id="paramOutput" class="text-sm text-gray-700">Output will appear here.</div>
   </div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  JavaScript classes provide a cleaner syntax for creating objects and handling inheritance. A class defines a blueprint with a <code>constructor()</code> and methods. You can create instances using <code>new</code>, and extend other classes with <code>extends</code>. The <code>super()</code> keyword allows child classes to access parent constructors. Classes are syntactic sugar over prototypes, making object-oriented patterns easier to read and maintain.
+</p>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+  speak() {
+    console.log(`${this.name} makes a sound.`);
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(`${this.name} barks.`);
+  }
+}
+
+const pet = new Dog("Buddy");
+pet.speak(); // → "Buddy barks."
+</pre>
 
   <!-- Script -->
   <script>

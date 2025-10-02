@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Data structures help you store, organize, and access data efficiently. Java provides built-in structures like arrays, lists, sets, and maps to solve different types of problems.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/4_HOnhB64Dg" title="Java Data Structures Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=4_HOnhB64Dg" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Data Structures Explained</strong> introduces core collection types like <code>ArrayList</code>, <code>LinkedList</code>, <code>HashSet</code>, and <code>HashMap</code> — with practical examples and performance insights.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How Java organizes data using built-in structures</li>
+  <li>How <code>ArrayList</code> and <code>LinkedList</code> differ in access and insertion</li>
+  <li>How <code>HashSet</code> ensures uniqueness and fast lookup</li>
+  <li>How <code>HashMap</code> stores key-value pairs efficiently</li>
+  <li>How to choose the right structure based on use case and performance</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -120,3 +139,31 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of data structures like containers: arrays are egg cartons, ArrayLists are expandable boxes, and HashMaps are labeled drawers.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java’s data structures are part of the <code>java.util</code> package and include powerful tools for organizing and accessing data. Lists like <code>ArrayList</code> and <code>LinkedList</code> support ordered collections, while sets like <code>HashSet</code> enforce uniqueness. Maps like <code>HashMap</code> enable fast key-based retrieval. Understanding their trade-offs helps developers write efficient, scalable code.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// DataStructureDemo.java
+import java.util.*;
+
+public class DataStructureDemo {
+  public static void main(String[] args) {
+    List<String> list = new ArrayList<>();
+    list.add("Apple");
+    list.add("Banana");
+
+    Set<String> set = new HashSet<>(list);
+    set.add("Apple"); // Duplicate ignored
+
+    Map<String, Integer> map = new HashMap<>();
+    map.put("Apple", 2);
+    map.put("Banana", 5);
+
+    System.out.println("List: " + list);
+    System.out.println("Set: " + set);
+    System.out.println("Map: " + map);
+  }
+}
+</pre>

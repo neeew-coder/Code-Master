@@ -1,13 +1,31 @@
 <h2 class="text-2xl font-bold mb-4 text-orange-600">HTML Quotation and Citation Elements</h2>
 
 <p class="mb-4 text-gray-700">
-HTML provides semantic elements for quotations, citations, abbreviations, contact info, and text direction control.
+In this tutorial, you'll learn how to use semantic HTML elements for quotations, citations, abbreviations, contact info, and text direction control. These tags help convey meaning and improve accessibility.
 </p>
 
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/0iqN4368-xI" title="HTML Quotation Tags Explained | Dataisgood" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Dataisgood</strong> –  
+    <a class="text-orange-600 underline" href="https://www.youtube.com/watch?v=0iqN4368-xI" target="_blank">Watch on YouTube</a><br>
+    <strong>HTML Quotation Tags Explained</strong> covers semantic quoting, citation, and abbreviation — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to use <code>&lt;q&gt;</code> for short inline quotes</li>
+  <li>How to use <code>&lt;blockquote&gt;</code> for longer quotations</li>
+  <li>How to cite sources with <code>&lt;cite&gt;</code></li>
+  <li>How to define abbreviations with <code>&lt;abbr&gt;</code></li>
+</ul>
+
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🧾 <code>&lt;blockquote&gt;</code> — Long Quotations</h3>
-<p class="mb-2 text-gray-700">
-Defines a section quoted from another source. Browsers usually indent it.
-</p>
+<p class="mb-2 text-gray-700">Defines a section quoted from another source. Browsers usually indent it.</p>
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
   <pre>
 &lt;p&gt;Here is a quote from WWF's website:&lt;/p&gt;
@@ -24,9 +42,7 @@ For 60 years, WWF has worked to help people and nature thrive...
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">💬 <code>&lt;q&gt;</code> — Short Quotations</h3>
-<p class="mb-2 text-gray-700">
-Defines a short inline quotation. Browsers automatically add quotation marks.
-</p>
+<p class="mb-2 text-gray-700">Defines a short inline quotation. Browsers automatically add quotation marks.</p>
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
   <pre>
 &lt;p&gt;WWF's goal is to: &lt;q&gt;Build a future where people live in harmony with nature.&lt;/q&gt;&lt;/p&gt;
@@ -37,9 +53,7 @@ Defines a short inline quotation. Browsers automatically add quotation marks.
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔤 <code>&lt;abbr&gt;</code> — Abbreviations</h3>
-<p class="mb-2 text-gray-700">
-Defines an abbreviation or acronym. Use the <code>title</code> attribute to show full meaning on hover.
-</p>
+<p class="mb-2 text-gray-700">Defines an abbreviation or acronym. Use the <code>title</code> attribute to show full meaning on hover.</p>
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
   <pre>
 &lt;p&gt;The &lt;abbr title="World Health Organization"&gt;WHO&lt;/abbr&gt; was founded in 1948.&lt;/p&gt;
@@ -50,9 +64,7 @@ Defines an abbreviation or acronym. Use the <code>title</code> attribute to show
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📬 <code>&lt;address&gt;</code> — Contact Info</h3>
-<p class="mb-2 text-gray-700">
-Defines contact information. Usually renders in italic with line breaks.
-</p>
+<p class="mb-2 text-gray-700">Defines contact information. Usually renders in italic with line breaks.</p>
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
   <pre>
 &lt;address&gt;
@@ -75,9 +87,7 @@ USA
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🎨 <code>&lt;cite&gt;</code> — Creative Work Titles</h3>
-<p class="mb-2 text-gray-700">
-Defines the title of a creative work. Usually renders in italic.
-</p>
+<p class="mb-2 text-gray-700">Defines the title of a creative work. Usually renders in italic.</p>
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
   <pre>
 &lt;p&gt;&lt;cite&gt;The Scream&lt;/cite&gt; by Edvard Munch. Painted in 1893.&lt;/p&gt;
@@ -88,9 +98,7 @@ Defines the title of a creative work. Usually renders in italic.
 </div>
 
 <h3 class="text-lg font-semibold text-orange-500 mb-2">↔️ <code>&lt;bdo&gt;</code> — Bi-Directional Override</h3>
-<p class="mb-2 text-gray-700">
-Overrides the current text direction. Use <code>dir="rtl"</code> for right-to-left.
-</p>
+<p class="mb-2 text-gray-700">Overrides the current text direction. Use <code>dir="rtl"</code> for right-to-left.</p>
 <div class="bg-gray-900 text-green-100 p-6 rounded-lg shadow-md font-mono text-sm overflow-x-auto mb-2">
   <pre>
 &lt;bdo dir="rtl"&gt;This text will be written from right to left&lt;/bdo&gt;
@@ -99,3 +107,16 @@ Overrides the current text direction. Use <code>dir="rtl"</code> for right-to-le
 <div class="bg-white p-6 rounded-lg shadow-md mb-6">
   <bdo dir="rtl" style="color: black;">This text will be written from right to left</bdo>
 </div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li><code>&lt;q&gt;</code> wraps short quotes and adds quotation marks automatically</li>
+  <li><code>&lt;blockquote&gt;</code> is for longer, standalone quotes — often styled with indentation</li>
+  <li><code>&lt;cite&gt;</code> references the source of a quote or creative work</li>
+  <li><code>&lt;abbr&gt;</code> defines abbreviations with a full form in the <code>title</code> attribute</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>quotes-citations.html</code>. Add a long quote using <code>&lt;blockquote&gt;</code>, a short quote using <code>&lt;q&gt;</code>, and an abbreviation with <code>&lt;abbr&gt;</code>. Include a creative work title with <code>&lt;cite&gt;</code> and a contact section using <code>&lt;address&gt;</code>. Try reversing text direction with <code>&lt;bdo dir="rtl"&gt;</code>.
+</p>

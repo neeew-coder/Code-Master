@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>OOP</strong> is a programming paradigm based on the concept of "objects" — containers that hold data and behavior. Java is built around OOP, making it easier to model real-world systems.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/CWYv7xlKydw" title="Java OOP Explained | Alex Lee" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Alex Lee</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=CWYv7xlKydw" target="_blank">Watch on YouTube</a><br>
+    <strong>Java OOP Explained</strong> introduces the four pillars of Object-Oriented Programming — encapsulation, inheritance, abstraction, and polymorphism — with practical Java examples.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How Java uses classes and objects to model real-world entities</li>
+  <li>How encapsulation protects data using access modifiers</li>
+  <li>How inheritance enables code reuse and hierarchy</li>
+  <li>How abstraction hides complexity and exposes essential behavior</li>
+  <li>How polymorphism allows flexible method behavior across types</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -102,3 +121,29 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of a car. The steering wheel, pedals, and dashboard are the interface (abstraction). You don’t need to know how the engine works (encapsulation). Different cars may drive differently (polymorphism), and electric cars may inherit features from traditional ones (inheritance).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Object-Oriented Programming (OOP) in Java organizes code around objects rather than actions. Classes define blueprints, and objects are instances with state and behavior. Encapsulation secures data, inheritance builds relationships, abstraction simplifies interfaces, and polymorphism enables dynamic behavior. Mastering OOP is key to building scalable, maintainable, and intuitive Java applications.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// OOPDemo.java
+class Animal {
+  void speak() {
+    System.out.println("Animal speaks");
+  }
+}
+
+class Dog extends Animal {
+  void speak() {
+    System.out.println("Dog barks");
+  }
+}
+
+public class OOPDemo {
+  public static void main(String[] args) {
+    Animal a = new Dog(); // Polymorphism
+    a.speak(); // Output: Dog barks
+  }
+}
+</pre>

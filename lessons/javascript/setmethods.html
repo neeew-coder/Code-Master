@@ -16,105 +16,160 @@
     JavaScript <code>Set</code> objects store unique values. You can use methods like <code>add()</code>, <code>has()</code>, <code>clear()</code>, <code>forEach()</code>, and iterators like <code>values()</code>, <code>keys()</code>, and <code>entries()</code>.
   </p>
 
-  <!-- Add and Uniqueness -->
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/llTMYi4yyWM" title="JavaScript set Methods Explained | Software Developer Diaries" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Software Developer Diaries</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=llTMYi4yyWM" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript set Methods Explained</strong> walks through how to update values using setter methods — with examples that clarify mutation, overflow, and dynamic control.
+  </p>
+</div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+  <ul class="list-disc list-inside mb-4 text-gray-700">
+    <li>How to use <code>setFullYear()</code>, <code>setMonth()</code>, <code>setDate()</code> to update calendar values</li>
+    <li>How to use <code>setHours()</code>, <code>setMinutes()</code>, <code>setSeconds()</code> for time updates</li>
+    <li>How setter methods mutate the original object</li>
+    <li>How overflow logic adjusts other components (e.g. setting 13 as month rolls into next year)</li>
+    <li>How to apply setters for scheduling, simulation, and dynamic control</li>
+  </ul>
+  <!-- ➕ add() and Uniqueness -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">➕ add() and Uniqueness</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
     <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-yellow-500">▶️ Add Values</span>
       <button onclick="runAddDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runAddDemo() {
+    const fruits = new Set();
+    fruits.add("apple");
+    fruits.add("banana");
+    fruits.add("apple"); // duplicate ignored
+    document.getElementById("addOutput").textContent = [...fruits].join(", ");
+  }
+    </code></pre>
     <div id="addOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
-  <!-- size Property -->
+  <!-- 📏 size Property -->
   <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📏 size Property</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
     <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-yellow-500">▶️ Check Size</span>
       <button onclick="runSizeDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runSizeDemo() {
+    const tools = new Set(["hammer", "wrench", "screwdriver"]);
+    document.getElementById("sizeOutput").textContent = \`Tool count: \${tools.size}\`;
+  }
+    </code></pre>
     <div id="sizeOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
-  <!-- has() Method -->
+  <!-- 🔍 has() Method -->
   <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔍 has() Method</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
     <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-yellow-500">▶️ Check Membership</span>
       <button onclick="runHasDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runHasDemo() {
+    const colors = new Set(["red", "green", "blue"]);
+    const result = colors.has("green") ? "Found green!" : "Green not found.";
+    document.getElementById("hasOutput").textContent = result;
+  }
+    </code></pre>
     <div id="hasOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
-  <!-- forEach() Method -->
+  <!-- 🔁 forEach() Method -->
   <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">🔁 forEach() Method</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm">
     <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-yellow-500">▶️ Loop with forEach()</span>
       <button onclick="runForEachDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runForEachDemo() {
+    const animals = new Set(["cat", "dog", "bird"]);
+    let result = "";
+    animals.forEach(animal => {
+      result += \`I like \${animal}. \`;
+    });
+    document.getElementById("forEachOutput").textContent = result.trim();
+  }
+    </code></pre>
     <div id="forEachOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
-  <!-- values(), keys(), entries() -->
+  <!-- 📦 Iterators -->
   <h3 class="text-lg font-semibold text-yellow-500 mt-6 mb-2">📦 Iterators: values(), keys(), entries()</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
     <div class="flex justify-between items-center">
       <span class="text-sm font-semibold text-yellow-500">▶️ Run Iterators</span>
       <button onclick="runIteratorDemo()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
+    <pre class="bg-yellow-100 text-sm p-3 rounded mt-2 overflow-x-auto"><code>
+  function runIteratorDemo() {
+    const numbers = new Set([10, 20, 30]);
+    const values = [...numbers.values()];
+    const keys = [...numbers.keys()];
+    const entries = [...numbers.entries()];
+    document.getElementById("iteratorOutput").innerHTML = \`
+      🔹 values(): \${values.join(", ")}<br>
+      🔹 keys(): \${keys.join(", ")}<br>
+      🔹 entries(): \${entries.map(e => \`[\${e}]\`).join(", ")}
+    \`;
+  }
+    </code></pre>
     <div id="iteratorOutput" class="text-sm text-gray-700 mt-2 space-y-1">Output will appear here.</div>
   </div>
 
   <!-- Script -->
   <script>
     function runAddDemo() {
-      const letters = new Set();
-      letters.add("a");
-      letters.add("b");
-      letters.add("c");
-      letters.add("c");
-      letters.add("c");
-      let result = "";
-      for (const x of letters) result += x + " ";
-      document.getElementById("addOutput").innerHTML = `Set contents: ${result.trim()}`;
+      const fruits = new Set();
+      fruits.add("apple");
+      fruits.add("banana");
+      fruits.add("apple"); // duplicate ignored
+      document.getElementById("addOutput").innerHTML = `Set contents: ${[...fruits].join(", ")}`;
     }
 
     function runSizeDemo() {
-      const mySet = new Set(["a", "b", "c"]);
-      document.getElementById("sizeOutput").innerHTML = `Set size: ${mySet.size}`;
+      const tools = new Set(["hammer", "wrench", "screwdriver"]);
+      document.getElementById("sizeOutput").innerHTML = `Tool count: ${tools.size}`;
     }
 
     function runHasDemo() {
-      const letters = new Set(["a", "b", "c"]);
-      const result = letters.has("d");
-      document.getElementById("hasOutput").innerHTML = `Set has "d"? → ${result}`;
+      const colors = new Set(["red", "green", "blue"]);
+      const result = colors.has("green");
+      document.getElementById("hasOutput").innerHTML = `Set has "green"? → ${result}`;
     }
 
     function runForEachDemo() {
-      const letters = new Set(["a", "b", "c"]);
+      const animals = new Set(["cat", "dog", "bird"]);
       let result = "";
-      letters.forEach(value => result += value + " ");
-      document.getElementById("forEachOutput").innerHTML = `forEach output: ${result.trim()}`;
+      animals.forEach(animal => result += `I like ${animal}. `);
+      document.getElementById("forEachOutput").innerHTML = result.trim();
     }
 
     function runIteratorDemo() {
-      const letters = new Set(["a", "b", "c"]);
-      let values = [...letters.values()].join(" ");
-      let keys = [...letters.keys()].join(" ");
-      let entries = [...letters.entries()].map(pair => `[${pair}]`).join(" ");
+      const numbers = new Set([10, 20, 30]);
+      const values = [...numbers.values()].join(", ");
+      const keys = [...numbers.keys()].join(", ");
+      const entries = [...numbers.entries()].map(pair => `[${pair}]`).join(", ");
       document.getElementById("iteratorOutput").innerHTML = `
         <div><strong>values():</strong> ${values}</div>
         <div><strong>keys():</strong> ${keys}</div>
         <div><strong>entries():</strong> ${entries}</div>
       `;
     }
-
-    window.addEventListener("message", (event) => {
-      if (event.data.type === "scroll-top") {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    });
   </script>
 
   <!-- Notes -->

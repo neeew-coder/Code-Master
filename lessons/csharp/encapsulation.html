@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Encapsulation is the practice of hiding internal data and exposing only what’s necessary. It helps maintain control, prevent misuse, and enforce consistency in object behavior.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Using <code>private</code> fields and <code>public</code> properties</li>
-    <li>Validating data through accessors</li>
-    <li>Designing safe and predictable APIs</li>
-    <li>Encapsulation vs exposure trade-offs</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/EgfRA_PG25M" title="C# Encapsulation Explained | Caleb Curry" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Caleb Curry</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=EgfRA_PG25M" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Encapsulation Explained</strong> introduces how to protect internal data and expose controlled access using fields, properties, and access modifiers.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How encapsulation hides internal state and logic from external access</li>
+  <li>How to use <code>private</code> fields and <code>public</code> properties</li>
+  <li>How to validate input through <code>set</code> accessors</li>
+  <li>How encapsulation improves security, maintainability, and modularity</li>
+  <li>How to design classes with clean, intentional interfaces</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -105,3 +113,36 @@ namespace EncapsulationDemo {
     💡 <strong>Tips:</strong> Always validate inputs. Avoid exposing fields directly. Use properties and methods to enforce rules and protect state.
   </p>
 </div>
+
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Encapsulation in C# is the practice of restricting direct access to class members and exposing controlled interfaces. This tutorial shows how to use private fields, public properties, and validation logic to protect data integrity and simplify class usage. It’s a core principle of object-oriented programming.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// EncapsulationDemo.cs
+using System;
+
+class BankAccount {
+  private decimal balance;
+
+  public decimal Balance {
+    get { return balance; }
+    set {
+      if (value >= 0) balance = value;
+    }
+  }
+
+  public void Deposit(decimal amount) {
+    if (amount > 0) balance += amount;
+  }
+}
+
+class Program {
+  static void Main() {
+    BankAccount account = new BankAccount();
+    account.Deposit(1000);
+    Console.WriteLine("Balance: " + account.Balance);
+  }
+}
+</pre>

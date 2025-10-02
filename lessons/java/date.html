@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   Java provides the <code>java.time</code> package to handle dates and times in a modern, immutable, and thread-safe way. Key classes include <code>LocalDate</code>, <code>LocalTime</code>, and <code>LocalDateTime</code>.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/F2bZ1fkAQx0" title="Java Date Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=F2bZ1fkAQx0" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Date Explained</strong> introduces how to work with date and time in Java — using <code>Date</code>, <code>Calendar</code>, and <code>LocalDate</code> APIs for formatting, manipulation, and display.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to create and display current date/time using <code>java.util.Date</code></li>
+  <li>How to format dates using <code>SimpleDateFormat</code></li>
+  <li>How to manipulate dates with <code>Calendar</code></li>
+  <li>How modern Java uses <code>java.time.LocalDate</code> and <code>LocalDateTime</code></li>
+  <li>How to parse and format dates for user-friendly output</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -89,3 +108,26 @@ public class Main {
     🧠 <strong>Analogy:</strong> Think of date objects like calendar entries. You can view them, format them for display, or calculate how many days until your next deadline.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Java provides multiple APIs for handling date and time. The legacy <code>Date</code> and <code>Calendar</code> classes offer basic functionality, while the modern <code>java.time</code> package (introduced in Java 8) provides immutable, thread-safe classes like <code>LocalDate</code>, <code>LocalTime</code>, and <code>LocalDateTime</code>. Formatting and parsing are handled via <code>DateTimeFormatter</code>, enabling clean, localized output.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// DateDemo.java
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+public class DateDemo {
+  public static void main(String[] args) {
+    LocalDate today = LocalDate.now();
+    LocalDateTime now = LocalDateTime.now();
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM dd, yyyy HH:mm");
+
+    System.out.println("Today's date: " + today);
+    System.out.println("Current time: " + now.format(formatter));
+  }
+}
+</pre>

@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   <strong>Recursion</strong> is when a method calls itself to solve a smaller version of a problem. It continues until it reaches a <strong>base case</strong>, which stops the recursion. Recursion is useful for tasks like calculating factorials, traversing trees, or solving puzzles.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/k-7jJP7QFEM" title="Java Recursion Explained | Coding with John" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Coding with John</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=k-7jJP7QFEM" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Recursion Explained</strong> introduces how methods can call themselves to solve problems — covering base cases, stack frames, and common recursive patterns.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What recursion is and how it works in Java</li>
+  <li>How to define a base case to prevent infinite recursion</li>
+  <li>How recursive calls build up and unwind on the call stack</li>
+  <li>How to solve problems like factorial, Fibonacci, and tree traversal recursively</li>
+  <li>How to debug and visualize recursive flow using stack diagrams</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -89,3 +108,21 @@ public class Countdown {
     🧠 <strong>Analogy:</strong> Recursion is like Russian nesting dolls. Each doll opens to reveal a smaller one, until you reach the smallest — the base case. Then you close them back up in reverse order.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Recursion in Java allows a method to call itself to solve a problem by breaking it into smaller subproblems. Each recursive call pushes a new frame onto the call stack, and the base case ensures termination. Recursion is elegant for problems with repetitive structure, but must be used carefully to avoid stack overflow and ensure clarity.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// RecursionDemo.java
+public class RecursionDemo {
+  public static void main(String[] args) {
+    System.out.println("Factorial of 5: " + factorial(5));
+  }
+
+  static int factorial(int n) {
+    if (n == 0) return 1; // Base case
+    return n * factorial(n - 1); // Recursive call
+  }
+}
+</pre>

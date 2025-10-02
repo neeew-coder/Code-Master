@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   A <strong>method</strong> in Java is a reusable block of code that performs a specific task. Methods can accept <strong>parameters</strong> (inputs) and optionally return values. This makes your code more flexible, organized, and reusable.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/Jszmzj_8L1Q" title="Java Method Parameters Explained | Alex Lee" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Alex Lee</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=Jszmzj_8L1Q" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Method Parameters Explained</strong> introduces how to pass arguments into methods, how parameter types work, and how values are handled during method calls.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define methods with parameters of various types</li>
+  <li>How to pass arguments when calling a method</li>
+  <li>How Java handles primitive vs reference types in method calls</li>
+  <li>How parameter order and type matching affect method invocation</li>
+  <li>How to use parameters for modular, reusable logic</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -88,3 +107,22 @@ public class Main {
     🧠 <strong>Analogy:</strong> A method is like a blender. You put in ingredients (parameters), press a button (call the method), and get a smoothie (return value).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Method parameters in Java allow you to pass data into a method for processing. Each parameter has a type and name, and arguments must match these when calling the method. Java uses pass-by-value for primitives and pass-by-reference-like behavior for objects. Understanding how parameters work enables modular design, flexible logic, and clean code reuse.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ParameterDemo.java
+public class ParameterDemo {
+  public static void main(String[] args) {
+    greet("Mark", 3);
+  }
+
+  static void greet(String name, int times) {
+    for (int i = 0; i < times; i++) {
+      System.out.println("Hello, " + name + "!");
+    }
+  }
+}
+</pre>

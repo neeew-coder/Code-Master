@@ -4,6 +4,26 @@
 Accessibility ensures users of all abilities can navigate and understand content. CSS plays a vital role in color contrast, focus indicators, readability, and screen reader compatibility.
 </p>
 
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/2oiBKSjOOFE" title="CSS Accessibility Tips | Web Dev Simplified" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Web Dev Simplified</strong> –  
+    <a class="text-blue-600 underline" href="https://www.youtube.com/watch?v=2oiBKSjOOFE&t=64s" target="_blank">Watch on YouTube</a><br>
+    <strong>CSS Accessibility Tips</strong> covers contrast, focus styling, and layout clarity — with clean visuals and practical examples.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to ensure sufficient color contrast for text and UI elements</li>
+  <li>How to style <code>:focus</code> states for keyboard navigation</li>
+  <li>How to use scalable units for readable typography</li>
+  <li>How to avoid layout traps and hidden content</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-blue-500 mb-2">🎨 Color Contrast</h3>
 
 <pre class="bg-gray-900 text-blue-200 p-4 rounded-lg text-sm overflow-x-auto">
@@ -64,3 +84,22 @@ body {
 <p class="text-gray-700 mb-4">
 Try tabbing through controls — ensure focus states are visible and obvious.
 </p>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside mb-6 text-gray-700">
+  <li>Use <code>:focus</code> and <code>:focus-visible</code> to highlight active elements</li>
+  <li>Ensure text contrast meets WCAG AA (minimum 4.5:1 for body text)</li>
+  <li>Use relative units like <code>em</code>, <code>rem</code>, <code>%</code> for scalable text</li>
+  <li>Avoid hiding content with <code>display: none</code> unless it’s truly irrelevant</li>
+</ul>
+
+<h3 class="text-lg font-semibold text-blue-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>css-accessibility-demo.html</code> and link it to <code>style.css</code>. Then:
+</p>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>Style buttons and links with visible <code>:focus</code> outlines</li>
+  <li>Test color contrast using online tools like WebAIM or Contrast Checker</li>
+  <li>Use <code>clamp()</code> or <code>rem</code> units for responsive font sizing</li>
+  <li>Ensure all interactive elements are reachable via keyboard</li>
+</ul>

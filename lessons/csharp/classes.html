@@ -3,17 +3,25 @@
 <p class="mb-6 text-gray-700">
   Classes define the structure and behavior of objects. Objects are instances of classes, each with their own state and access to class-defined functionality.
 </p>
-
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>Declaring classes and fields</li>
-    <li>Creating objects with <code>new</code></li>
-    <li>Using constructors</li>
-    <li>Accessing properties and methods</li>
-  </ul>
-</details>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/t2SPg6IuT3k" title="C# Class and Object Explained | Dani Krossing" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Dani Krossing</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=t2SPg6IuT3k" target="_blank">Watch on YouTube</a><br>
+    <strong>C# Class and Object Explained</strong> introduces how to define classes and create objects — the foundation of object-oriented programming in C#.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to define a class with fields and methods</li>
+  <li>How to instantiate objects using the <code>new</code> keyword</li>
+  <li>How to access and modify object properties</li>
+  <li>How classes encapsulate behavior and data</li>
+  <li>How objects represent real-world entities in code</li>
+</ul>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -101,3 +109,33 @@ namespace ClassObjectDemo {
     💡 <strong>Tips:</strong> Keep classes focused. Use constructors to enforce required data. Avoid exposing fields directly — use properties.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  In C#, a class is a blueprint for creating objects — each object is an instance of a class with its own data and behavior. This tutorial shows how to define classes, create objects, and use them to model real-world concepts like users, products, or shapes. It’s the first step toward mastering object-oriented design.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ClassObjectDemo.cs
+using System;
+
+class Car {
+  public string brand;
+  public int year;
+
+  public void Honk() {
+    Console.WriteLine("Beep beep!");
+  }
+}
+
+class Program {
+  static void Main() {
+    Car myCar = new Car();
+    myCar.brand = "Toyota";
+    myCar.year = 2022;
+
+    Console.WriteLine("Brand: " + myCar.brand);
+    Console.WriteLine("Year: " + myCar.year);
+    myCar.Honk();
+  }
+}
+</pre>

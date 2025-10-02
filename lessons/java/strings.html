@@ -13,6 +13,25 @@
   <p class="mb-6 text-gray-700">
     In Java, a <code>String</code> is an object that represents a sequence of characters. Strings are widely used for storing and manipulating text. Java provides a rich set of methods to work with strings.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/cV-sOpOgof8" title="Java String Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=cV-sOpOgof8" target="_blank">Watch on YouTube</a><br>
+    <strong>Java String Explained</strong> introduces how strings work in Java — including immutability, methods, memory behavior, and performance tips.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare and initialize strings using literals and constructors</li>
+  <li>Why strings are immutable and how that affects memory</li>
+  <li>How to use methods like <code>length()</code>, <code>charAt()</code>, <code>substring()</code>, <code>equals()</code>, and <code>compareTo()</code></li>
+  <li>How string pooling works and why it matters for performance</li>
+  <li>How to manipulate and format strings safely and efficiently</li>
+</ul>
 
   <h3 class="text-lg font-semibold text-red-500 mb-2">📦 Declaring Strings</h3>
   <ul class="list-disc list-inside text-gray-700 mb-6">
@@ -91,6 +110,22 @@ public class Main {
       <button class="bg-red-400 hover:bg-red-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
   </div>
-
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Strings in Java are objects backed by a character array and stored in a special memory area called the string pool. They are immutable, meaning once created, their value cannot change. Java provides a rich set of methods for string manipulation, comparison, and formatting. Understanding how strings behave helps prevent memory leaks, optimize performance, and write cleaner code.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// StringDemo.java
+public class StringDemo {
+  public static void main(String[] args) {
+    String name = "Mark";
+    System.out.println("Length: " + name.length());
+    System.out.println("First letter: " + name.charAt(0));
+    System.out.println("Uppercase: " + name.toUpperCase());
+    System.out.println("Equals 'mark'? " + name.equals("mark"));
+  }
+}
+</pre>
 </body>
 </html>

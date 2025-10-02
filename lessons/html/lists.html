@@ -4,7 +4,27 @@
 HTML supports three types of lists: unordered, ordered, and description. Each serves a different purpose and helps structure content clearly.
 </p>
 
-<!-- UNORDERED LISTS -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/gJWNA3Fduek" title="HTML Lists Tutorial | Dave Gray" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Dave Gray</strong> –  
+    <a class="text-orange-600 underline" href="https://www.youtube.com/watch?v=gJWNA3Fduek" target="_blank">Watch on YouTube</a><br>
+    This tutorial covers all three list types — unordered, ordered, and description — with nesting and styling tips.
+  </p>
+</div>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to create unordered lists using <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code></li>
+  <li>How to create ordered lists using <code>&lt;ol&gt;</code> and <code>&lt;li&gt;</code></li>
+  <li>How to define description lists using <code>&lt;dl&gt;</code>, <code>&lt;dt&gt;</code>, and <code>&lt;dd&gt;</code></li>
+  <li>How to nest lists for hierarchical content</li>
+  <li>How to style lists and build horizontal navigation menus</li>
+</ul>
+
 <h3 class="text-lg font-semibold text-orange-500 mb-2">📋 Unordered Lists</h3>
 <p class="mb-2 text-gray-700">
 Use <code>&lt;ul&gt;</code> for unordered lists and <code>&lt;li&gt;</code> for each item. The default marker is a bullet.
@@ -94,7 +114,6 @@ li a:hover {
   &lt;li&gt;Contact&lt;/li&gt;
   &lt;li&gt;About&lt;/li&gt;
 &lt;/ul&gt;
-
 </pre>
 <ul style="list-style-type:none; margin:0; padding:0; overflow:hidden; background-color:#333;" class="mb-6">
   <li style="float:left;"><a href="#" style="color:white; padding:16px; display:block;">Home</a></li>
@@ -103,12 +122,10 @@ li a:hover {
   <li style="float:left;"><a href="#" style="color:white; padding:16px; display:block;">About</a></li>
 </ul>
 
-<!-- ORDERED LISTS -->
 <h3 class="text-lg font-semibold text-orange-500 mb-2">🔢 Ordered Lists</h3>
 <p class="mb-2 text-gray-700">
 Use <code>&lt;ol&gt;</code> for ordered lists. <code>type</code> controls numbering style:
 </p>
-
 <pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg">
 &lt;ol type="A"&gt;
   &lt;li&gt;Coffee&lt;/li&gt;
@@ -155,7 +172,18 @@ Use <code>&lt;ol&gt;</code> for ordered lists. <code>type</code> controls number
   <li>Milk</li>
 </ol>
 
-<!-- Preview: Description List -->
+<h3 class="text-lg font-semibold text-orange-500 mb-2">📄 Description Lists</h3>
+<p class="mb-2 text-gray-700">
+Use <code>&lt;dl&gt;</code> for description lists, <code>&lt;dt&gt;</code> for terms, and <code>&lt;dd&gt;</code> for definitions.
+</p>
+<pre class="bg-gray-900 text-green-100 p-4 font-mono text-sm mb-2 rounded-lg">
+&lt;dl&gt;
+  &lt;dt&gt;Coffee&lt;/dt&gt;
+  &lt;dd&gt;– black hot drink&lt;/dd&gt;
+  &lt;dt&gt;Milk&lt;/dt&gt;
+  &lt;dd&gt;– white cold drink&lt;/dd&gt;
+&lt;/dl&gt;
+</pre>
 <dl class="text-gray-800 mb-6">
   <dt class="font-semibold">Coffee</dt>
   <dd class="ml-4">– black hot drink</dd>
@@ -178,8 +206,8 @@ Use <code>&lt;ol&gt;</code> for ordered lists. <code>type</code> controls number
   </tbody>
 </table>
 
-<h3 class="text-lg font-semibold text-orange-500 mb-2">📚 Chapter Summary</h3>
-<ul class="list-disc list-inside text-gray-700">
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧠 Lesson Summary</h3>
+<ul class="list-disc list-inside text-gray-700 mb-6">
   <li><code>&lt;ul&gt;</code> creates an unordered bullet list</li>
   <li><code>&lt;ol&gt;</code> creates a numbered list</li>
   <li><code>&lt;li&gt;</code> defines a list item</li>
@@ -189,3 +217,8 @@ Use <code>&lt;ol&gt;</code> for ordered lists. <code>type</code> controls number
   <li>Use <code>type</code> and <code>start</code> for ordered list control</li>
   <li>Lists can be nested, styled, or even used for horizontal navigation</li>
 </ul>
+
+<h3 class="text-lg font-semibold text-orange-500 mb-2">🧪 Try It Yourself</h3>
+<p class="mb-4 text-gray-700">
+Create a file named <code>lists.html</code>. Add examples of each list type: unordered, ordered, and description. Try nesting lists and styling them with <code>list-style-type</code>. Bonus: build a horizontal navigation menu using an unordered list.
+</p>

@@ -3,6 +3,25 @@
 <p class="mb-6 text-gray-700">
   An <strong>inner class</strong> is a class defined within another class. It helps logically group classes that are only used in one place, and can access members of the outer class directly.
 </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/UVOztdkD7WE" title="Java Inner Classes Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=UVOztdkD7WE" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Inner Classes Explained</strong> introduces how classes can be nested within other classes — enabling tighter encapsulation, logical grouping, and scoped access.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>What inner classes are and why they’re used</li>
+  <li>How to declare non-static and static inner classes</li>
+  <li>How inner classes access outer class members</li>
+  <li>How anonymous and local inner classes work</li>
+  <li>How inner classes support modular design and event handling</li>
+</ul>
 
 <!-- Collapsible Explanation -->
 <details class="mb-6">
@@ -90,3 +109,37 @@ class Outer {
     🧠 <strong>Analogy:</strong> Think of inner classes like departments inside a company. They’re part of the company (outer class) and can access its resources, but some (static) operate independently.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Inner classes in Java are classes defined within another class. They help logically group code that’s only used in one place, improve encapsulation, and simplify event-driven programming. Non-static inner classes have access to outer class members, while static inner classes do not. Anonymous and local inner classes offer concise ways to implement interfaces or override methods inline.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// InnerClassDemo.java
+class Outer {
+  int outerValue = 10;
+
+  class Inner {
+    void show() {
+      System.out.println("Outer value: " + outerValue);
+    }
+  }
+
+  static class StaticInner {
+    void display() {
+      System.out.println("Inside static inner class");
+    }
+  }
+}
+
+public class InnerClassDemo {
+  public static void main(String[] args) {
+    Outer outer = new Outer();
+    Outer.Inner inner = outer.new Inner();
+    inner.show();
+
+    Outer.StaticInner staticInner = new Outer.StaticInner();
+    staticInner.display();
+  }
+}
+</pre>

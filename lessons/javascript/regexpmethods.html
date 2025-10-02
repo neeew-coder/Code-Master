@@ -15,6 +15,27 @@
     The <code>RegExp</code> object and string methods provide powerful tools for pattern matching, text extraction, and transformation.
   </p>
 
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/RtY5xPots3Y" title="JavaScript Regex Methods Explained | Dosomecode" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Dosomecode</strong> –  
+    <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=RtY5xPots3Y" target="_blank">Watch on YouTube</a><br>
+    <strong>JavaScript Regex Methods Explained</strong> breaks down how to use <code>.test()</code>, <code>.exec()</code>, <code>.match()</code>, <code>.replace()</code>, and <code>.search()</code> with clear examples and practical use cases.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How <code>.test()</code> validates patterns with boolean output</li>
+  <li>How <code>.exec()</code> extracts matches and capture groups</li>
+  <li>How <code>.match()</code> returns arrays of matched substrings</li>
+  <li>How <code>.replace()</code> modifies matched content using patterns and groups</li>
+  <li>How <code>.search()</code> finds the index of the first match</li>
+</ul>
+
+
   <!-- exec() -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔍 RegExp exec()</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
@@ -80,6 +101,32 @@ const result = text.replace(/Microsoft/, "CodeMaster");
     </pre>
     <div id="replaceOutput" class="text-sm text-gray-700">Output will appear here.</div>
   </div>
+
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  JavaScript’s <code>RegExp</code> methods allow you to validate, extract, and manipulate strings using pattern logic. <code>.test()</code> is ideal for quick checks, while <code>.exec()</code> gives detailed match info including capture groups. String methods like <code>.match()</code> and <code>.replace()</code> integrate regex for powerful transformations. Understanding how each method behaves — especially with flags like <code>g</code> and <code>i</code> — is key to building robust input handling and search logic.
+</p>
+
+<h3 class="text-lg font-semibold text-yellow-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+const pattern = /(\d+)-(\d+)/;
+const input = "123-456";
+
+console.log(pattern.test(input)); 
+// → true
+
+console.log(pattern.exec(input)); 
+// → ["123-456", "123", "456"]
+
+console.log(input.match(pattern)); 
+// → ["123-456", "123", "456"]
+
+console.log(input.replace(pattern, "$2:$1")); 
+// → "456:123"
+
+console.log(input.search(pattern)); 
+// → 0
+</pre>
 
   <!-- Script -->
   <script>

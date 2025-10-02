@@ -4,6 +4,26 @@
   A <strong>method</strong> in Java is a block of code that performs a specific task. Methods help organize code, promote reuse, and improve readability.
 </p>
 
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/v5p_SUfi710" title="Java Methods Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=v5p_SUfi710" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Methods Explained</strong> introduces how to define, call, and organize methods in Java — including parameters, return types, and modular design principles.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to declare methods with <code>void</code> or return types like <code>int</code>, <code>String</code>, etc.</li>
+  <li>How to pass parameters and receive return values</li>
+  <li>How method scope and visibility affect access</li>
+  <li>How methods improve modularity, reusability, and readability</li>
+  <li>How to organize logic into reusable blocks for better structure</li>
+</ul>
+
 <!-- Collapsible Explanation -->
 <details class="mb-6">
   <summary class="text-red-500 font-semibold cursor-pointer">📘 Why Use Methods?</summary>
@@ -92,3 +112,26 @@ public class Main {
     🧠 <strong>Analogy:</strong> A method is like a vending machine. You press a button (call the method), insert coins (pass parameters), and get a snack (return value).
   </p>
 </div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  Methods in Java are reusable blocks of code that perform specific tasks. They can take parameters, return values, or simply execute logic. Declaring methods with clear names and scopes improves code organization and readability. Understanding method signatures, return types, and invocation patterns is essential for building scalable, maintainable Java applications.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// MethodDemo.java
+public class MethodDemo {
+  public static void main(String[] args) {
+    greet("Mark");
+    int sum = add(5, 7);
+    System.out.println("Sum: " + sum);
+  }
+
+  static void greet(String name) {
+    System.out.println("Hello, " + name + "!");
+  }
+
+  static int add(int a, int b) {
+    return a + b;
+  }
+}
+</pre>

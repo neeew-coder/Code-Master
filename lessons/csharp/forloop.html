@@ -3,17 +3,26 @@
 <p class="mb-6 text-gray-700">
   The <code>for</code> loop is ideal for repeating actions a specific number of times. It uses a counter variable, a condition, and an increment step — all in one compact line.
 </p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/h4hY2hho73Q" title="C# For Loop with User Input Explained | Bro Code" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Bro Code</strong> –  
+    <a class="text-green-600 underline" href="https://www.youtube.com/watch?v=h4hY2hho73Q" target="_blank">Watch on YouTube</a><br>
+    <strong>C# For Loop with User Input Explained</strong> demonstrates how to use a <code>for</code> loop to repeat actions based on user-defined limits — ideal for controlled iteration and input-driven logic.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to prompt the user for a loop count using <code>Console.ReadLine()</code></li>
+  <li>How to convert input to an integer using <code>int.Parse()</code></li>
+  <li>How to structure a <code>for</code> loop with initialization, condition, and increment</li>
+  <li>How to use loop variables to control output and logic</li>
+  <li>How to validate input and avoid runtime errors</li>
+</ul>
 
-<!-- Collapsible Overview -->
-<details class="mb-6">
-  <summary class="text-green-500 font-semibold cursor-pointer">📘 What You'll Learn</summary>
-  <ul class="list-disc list-inside text-gray-700 mt-2 space-y-2">
-    <li>How <code>for</code> loops work</li>
-    <li>How to control iteration with counters</li>
-    <li>How to loop through ranges and arrays</li>
-    <li>Best practices for loop readability</li>
-  </ul>
-</details>
 
 <!-- Syntax Example -->
 <div data-preview data-lang="csharp" data-mode="inline" class="bg-white border border-green-300 rounded-lg p-4 shadow-sm space-y-4 mb-8">
@@ -95,3 +104,23 @@ namespace ForLoopDemo {
     💡 <strong>Tips:</strong> Use <code>for</code> when you know the exact number of iterations. For unknown counts, prefer <code>while</code>.
   </p>
 </div>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>for</code> loop in C# is ideal for repeating actions a known number of times. This tutorial shows how to capture user input to determine loop length, convert it to an integer, and use it to drive iteration. It’s a foundational pattern for counters, batch operations, and interactive flows.
+</p>
+<h3 class="text-lg font-semibold text-green-600 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// ForLoopInputDemo.cs
+using System;
+
+class ForLoopInputDemo {
+  static void Main() {
+    Console.Write("How many times should I greet you? ");
+    int count = int.Parse(Console.ReadLine());
+
+    for (int i = 1; i <= count; i++) {
+      Console.WriteLine("Hello #" + i);
+    }
+  }
+}
+</pre>

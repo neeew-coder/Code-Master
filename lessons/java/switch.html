@@ -13,6 +13,25 @@
   <p class="mb-6 text-gray-700">
     The <code>switch</code> statement is a cleaner alternative to multiple <code>if...else if</code> conditions. It compares a single value against multiple cases and executes matching code blocks.
   </p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🎥 Video Tutorial</h3>
+<div class="mb-6">
+  <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+    <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/AZb1wLIQ1R4" title="Java Switch Explained | Telusko" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <p class="text-sm text-gray-600 mt-2">
+    Video by <strong>Telusko</strong> –  
+    <a class="text-red-600 underline" href="https://www.youtube.com/watch?v=AZb1wLIQ1R4" target="_blank">Watch on YouTube</a><br>
+    <strong>Java Switch Explained</strong> introduces the <code>switch</code> statement in Java — how it compares to <code>if-else</code>, how to use <code>case</code> and <code>default</code>, and how fall-through works.
+  </p>
+</div>
+<h3 class="text-lg font-semibold text-red-500 mb-2">📘 What You’ll Learn</h3>
+<ul class="list-disc list-inside mb-4 text-gray-700">
+  <li>How to write a <code>switch</code> block with multiple <code>case</code> labels</li>
+  <li>How <code>break</code> prevents fall-through between cases</li>
+  <li>How <code>default</code> acts as a fallback when no case matches</li>
+  <li>How <code>switch</code> compares to <code>if-else</code> for clarity and performance</li>
+  <li>How to use <code>switch</code> with <code>int</code>, <code>char</code>, <code>String</code>, and <code>enum</code> types</li>
+</ul>
 
   <h3 class="text-lg font-semibold text-red-500 mb-2">🎯 Example: Day of the Week</h3>
   <div data-preview data-lang="java" class="bg-white border border-red-300 rounded-lg p-4 shadow-sm space-y-4">
@@ -70,6 +89,32 @@ public class Main {
     <li><code>default</code> runs if no case matches — like an <code>else</code>.</li>
     <li>Switch is ideal for clean, readable branching when comparing one variable to many values.</li>
   </ul>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧠 Lesson Summary</h3>
+<p class="text-gray-700 mb-4 text-sm">
+  The <code>switch</code> statement in Java offers a clean way to handle multiple conditions based on a single variable. Each <code>case</code> matches a value, and <code>break</code> prevents unintended execution of subsequent cases. <code>default</code> handles unmatched values. Switch is ideal for discrete, predictable branching and improves readability over long <code>if-else</code> chains.
+</p>
+<h3 class="text-lg font-semibold text-red-500 mb-2">🧪 Try It Yourself</h3>
+<pre class="bg-gray-100 p-4 rounded text-sm overflow-x-auto text-gray-800 mb-4">
+// SwitchDemo.java
+public class SwitchDemo {
+  public static void main(String[] args) {
+    int day = 3;
 
+    switch (day) {
+      case 1:
+        System.out.println("Monday");
+        break;
+      case 2:
+        System.out.println("Tuesday");
+        break;
+      case 3:
+        System.out.println("Wednesday");
+        break;
+      default:
+        System.out.println("Invalid day");
+    }
+  }
+}
+</pre>  
 </body>
 </html>

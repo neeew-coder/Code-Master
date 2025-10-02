@@ -16,6 +16,27 @@
     Iterables are objects that can be looped over using <code>for..of</code>. They implement the <code>Symbol.iterator</code> method and return an iterator object.
   </p>
 
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">🎥 Video Tutorial</h3>
+  <div class="mb-6">
+    <div class="relative pb-[40.25%] h-0 overflow-hidden rounded-lg shadow-md">
+      <iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/dbs_6opD_QU" title="Understanding Iterable in JavaScript | DwanW Dev" frameborder="0" allowfullscreen></iframe>
+    </div>
+    <p class="text-sm text-gray-600 mt-2">
+      Video by <strong>DwanW Dev</strong> –  
+      <a class="text-yellow-600 underline" href="https://www.youtube.com/watch?v=dbs_6opD_QU" target="_blank">Watch on YouTube</a><br>
+      <strong>Understanding Iterable in JavaScript</strong> explains how iterable objects work using the <code>Symbol.iterator</code> protocol — with examples that clarify how arrays, strings, sets, and maps support iteration.
+    </p>
+  </div>
+
+  <h3 class="text-lg font-semibold text-yellow-500 mb-2">📘 What You’ll Learn</h3>
+  <ul class="list-disc list-inside mb-4 text-gray-700">
+    <li>What makes an object iterable in JavaScript</li>
+    <li>How <code>Symbol.iterator</code> enables iteration over arrays, strings, sets, and maps</li>
+    <li>How <code>for...of</code> loops interact with iterable objects</li>
+    <li>How to manually use <code>.next()</code> with iterators</li>
+    <li>How to build custom iterable objects for controlled looping</li>
+  </ul>
+
   <!-- String Iteration -->
   <h3 class="text-lg font-semibold text-yellow-500 mb-2">🔤 Iterating Over a String</h3>
   <div class="bg-white border border-yellow-300 rounded-lg p-4 shadow-sm space-y-3">
@@ -24,7 +45,7 @@
       <button onclick="runString()" class="bg-yellow-400 hover:bg-yellow-500 text-white font-semibold px-4 py-2 rounded">Run</button>
     </div>
     <pre class="bg-gray-900 text-yellow-200 p-3 rounded text-sm overflow-x-auto">
-const name = "W3Schools";
+const name = "hello";
 for (const x of name) {
   console.log(x);
 }
@@ -111,7 +132,7 @@ n.next(); // 20
   <!-- Script -->
   <script>
     function runString() {
-      const name = "W3Schools";
+      const name = "hello";
       document.getElementById("stringOutput").innerHTML = [...name].join(", ");
     }
 
